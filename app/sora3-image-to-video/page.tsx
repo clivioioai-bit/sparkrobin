@@ -6,12 +6,12 @@ export const metadata = {
   title: 'Sora3 Image to Video Generator | Photo to Video Converter',
   description: 'Sora3 image-to-video generator - Convert photos into animated videos using Sora3 AI technology. Sora3 image-to-video converter. Transform static images into cinematic videos. No watermark required. Try Sora3 now!',
   alternates: {
-    canonical: 'https://sora3ai.io/image-to-video',
+    canonical: 'https://sora3ai.io/sora3-image-to-video',
   },
   openGraph: {
     title: 'Sora3 Image to Video Generator | Photo to Video Converter',
     description: 'Sora3 image-to-video generator - Convert photos into animated videos using Sora3 AI. Sora3 image-to-video converter. Transform static images into cinematic videos. No watermark required. Try Sora3 now!',
-    url: 'https://sora3ai.io/image-to-video',
+    url: 'https://sora3ai.io/sora3-image-to-video',
     siteName: 'Saro 2',
     images: [
       {

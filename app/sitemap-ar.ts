@@ -11,10 +11,10 @@ export default async function sitemapAr(): Promise<MetadataRoute.Sitemap> {
   // Base pages
   const pages = [
     '', // home
-    'text-to-video',
+    'sora3-text-to-video',
     'sora-3-storyboard',
     'multi-scene',
-    'image-to-video',
+    'sora3-image-to-video',
     'watermark-remover',
     'plans',
     'faq',
@@ -30,11 +30,11 @@ export default async function sitemapAr(): Promise<MetadataRoute.Sitemap> {
     basePages.push({
       url,
       lastModified: new Date(),
-      changeFrequency: page === '' || page === 'text-to-video' || page === 'sora-3-storyboard' || page === 'image-to-video' ? 'daily' as const
+      changeFrequency: page === '' || page === 'sora3-text-to-video' || page === 'sora-3-storyboard' || page === 'sora3-image-to-video' ? 'daily' as const
         : page === 'plans' || page === 'faq' ? 'weekly' as const
         : 'yearly' as const,
       priority: page === '' ? 1
-        : page === 'text-to-video' || page === 'sora-3-storyboard' || page === 'image-to-video' ? 0.95
+        : page === 'sora3-text-to-video' || page === 'sora-3-storyboard' || page === 'sora3-image-to-video' ? 0.95
         : page === 'multi-scene' || page === 'watermark-remover' ? 0.9
         : page === 'plans' || page === 'faq' ? 0.8
         : 0.3,

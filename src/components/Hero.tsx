@@ -51,7 +51,7 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="hero" size="lg" className="group" onClick={() => (window.location.pathname = '/text-to-video')}>
+              <Button variant="hero" size="lg" className="group" onClick={() => (window.location.pathname = '/sora3-text-to-video')}>
                 <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                 Generate Video
               </Button>

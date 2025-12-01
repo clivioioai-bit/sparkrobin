@@ -100,6 +100,6 @@ export function getRedirectPath(): string {
       return savedPath;
     }
   }
-  return '/text-to-video';
+  return '/sora3-text-to-video';
 }
 

@@ -6,12 +6,12 @@ export const metadata = {
   title: 'Sora3 Text to Video Generator | AI Video Creator Online',
   description: 'Sora3 text-to-video generator - Create cinematic videos from text prompts using Sora3 AI technology. Sora3 text-to-video with advanced motion realism. No watermark, no invite code. Start creating with Sora3 now!',
   alternates: {
-    canonical: 'https://sora3ai.io/text-to-video',
+    canonical: 'https://sora3ai.io/sora3-text-to-video',
   },
   openGraph: {
     title: 'Sora3 Text to Video Generator | AI Video Creator Online',
     description: 'Sora3 text-to-video generator - Create cinematic videos from text prompts using Sora3 AI. Sora3 text-to-video with advanced motion realism. No watermark required. Try Sora3 now!',
-    url: 'https://sora3ai.io/text-to-video',
+    url: 'https://sora3ai.io/sora3-text-to-video',
     siteName: 'Saro 2',
     images: [
       {

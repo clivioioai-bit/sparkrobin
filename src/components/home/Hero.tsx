@@ -95,7 +95,7 @@ const Hero = () => {
           {/* Action Buttons - Side by Side */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 w-full max-w-2xl mx-auto">
             {/* Primary CTA - Sora 3 Early Access */}
-            <Link href="/text-to-video" className="w-full sm:w-auto sm:flex-1">
+            <Link href="/sora3-text-to-video" className="w-full sm:w-auto sm:flex-1">
               <Button
                 variant="hero"
                 size="lg"

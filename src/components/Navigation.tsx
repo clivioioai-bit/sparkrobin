@@ -28,7 +28,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: t('home'), href: '/', icon: Home },
-    { name: t('generate'), href: '/text-to-video', icon: Play },
+    { name: t('generate'), href: '/sora3-text-to-video', icon: Play },
     { name: t('pricing'), href: '/plans', icon: DollarSign },
   ];
 
@@ -90,7 +90,7 @@ const Navigation = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" sideOffset={8} className="w-80 p-2 rounded-xl bg-popover border border-border shadow-xl" suppressHydrationWarning>
                 <DropdownMenuItem asChild>
-                  <Link href="/text-to-video" className="group flex gap-3 p-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors" suppressHydrationWarning>
+                  <Link href="/sora3-text-to-video" className="group flex gap-3 p-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors" suppressHydrationWarning>
                     <div className="flex h-8 w-8 items-center justify-center rounded-md bg-muted text-muted-foreground group-hover:bg-accent-foreground/10">
                       <FileText className="h-4 w-4" />
                     </div>
@@ -101,7 +101,7 @@ const Navigation = () => {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/image-to-video" className="group flex gap-3 p-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors" suppressHydrationWarning>
+                  <Link href="/sora3-image-to-video" className="group flex gap-3 p-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors" suppressHydrationWarning>
                     <div className="flex h-8 w-8 items-center justify-center rounded-md bg-muted text-muted-foreground group-hover:bg-accent-foreground/10">
                       <ImageIcon className="h-4 w-4" />
                     </div>
@@ -225,11 +225,11 @@ const Navigation = () => {
                   className=""
                   onClick={() => {
                     if (isAuthenticated) {
-                      router.push('/text-to-video');
+                      router.push('/sora3-text-to-video');
                     } else {
                       // Save current path for redirect after login
                       if (typeof window !== 'undefined') {
-                        sessionStorage.setItem('redirectAfterLogin', '/text-to-video');
+                        sessionStorage.setItem('redirectAfterLogin', '/sora3-text-to-video');
                       }
                       setIsAuthModalOpen(true);
                     }
@@ -266,8 +266,8 @@ const Navigation = () => {
               <div className="px-2 pt-2">
                 <div className="text-xs text-slate-600 dark:text-slate-400 pb-1">{t('generate')}</div>
                 <div className="flex flex-col">
-                  <Link href="/text-to-video" className="px-2 py-1 rounded-md text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">{t('textToVideo')}</Link>
-                  <Link href="/image-to-video" className="px-2 py-1 rounded-md text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">{t('imageToVideo')}</Link>
+                  <Link href="/sora3-text-to-video" className="px-2 py-1 rounded-md text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">{t('textToVideo')}</Link>
+                  <Link href="/sora3-image-to-video" className="px-2 py-1 rounded-md text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">{t('imageToVideo')}</Link>
                   <Link href="/sora-3-storyboard" className="px-2 py-1 rounded-md text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">{t('storyboard')}</Link>
                   <Link href="/watermark-remover" className="px-2 py-1 rounded-md text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">{t('watermarkRemover')}</Link>
                 </div>
@@ -325,11 +325,11 @@ const Navigation = () => {
                       size="sm"
                       onClick={() => {
                         if (isAuthenticated) {
-                          router.push('/text-to-video');
+                          router.push('/sora3-text-to-video');
                         } else {
                           // Save current path for redirect after login
                           if (typeof window !== 'undefined') {
-                            sessionStorage.setItem('redirectAfterLogin', '/text-to-video');
+                            sessionStorage.setItem('redirectAfterLogin', '/sora3-text-to-video');
                           }
                           setIsAuthModalOpen(true);
                         }

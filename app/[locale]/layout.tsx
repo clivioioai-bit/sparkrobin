@@ -101,7 +101,7 @@ export async function generateMetadata({
       description: ogDescription,
       images: [
         {
-          url: 'https://sora3ai.io/logo.png',
+          url: 'https://sora3ai.io/logo.jpg',
           width: 1200,
           height: 630,
           alt: title,
@@ -112,7 +112,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: ogTitle,
       description: ogDescription,
-      images: ['https://sora3ai.io/logo.png'],
+      images: ['https://sora3ai.io/logo.jpg'],
       creator: '@sora3aiteam',
     },
     robots: {
@@ -133,9 +133,9 @@ export async function generateMetadata({
       },
     },
     icons: {
-      icon: '/favicon.png',
-      shortcut: '/favicon.png',
-      apple: '/favicon.png'
+      icon: '/favicon.jpg',
+      shortcut: '/favicon.jpg',
+      apple: '/favicon.jpg'
     },
   }
 }
@@ -197,7 +197,7 @@ export default async function LocaleLayout({
               "@type": "Organization",
               "name": "Sora3",
               "url": "https://sora3ai.io",
-              "logo": "https://sora3ai.io/logo.png",
+              "logo": "https://sora3ai.io/logo.jpg",
               "description": locale === 'ar' 
                 ? "Sora3ai.io هي منصة مستقلة لإنشاء فيديوهات Sora 3 الاحترافية. نستخدم تقنيات Sora 3 المتقدمة لإنشاء فيديوهات إعلانية جاهزة للاستخدام بدون علامة مائية. منصة Sora 3 مثالية لفرق التسويق والمنشئين."
                 : locale === 'ja'

@@ -149,11 +149,11 @@ const Generate = () => {
   }, [getUserDisplayName]);
 
   const routeFromMode = useCallback((mode: GenerationMode) => (
-    mode === 'reframe' ? '/image-to-video' : '/text-to-video'
+    mode === 'reframe' ? '/sora3-image-to-video' : '/sora3-text-to-video'
   ), []);
 
   const modeFromPathname = useCallback((path: string): GenerationMode => (
-    path?.startsWith('/image-to-video') ? 'reframe' : 'sora3'
+    path?.startsWith('/sora3-image-to-video') ? 'reframe' : 'sora3'
   ), []);
 
   const handleModeChange = useCallback(
@@ -1310,20 +1310,20 @@ const Generate = () => {
       <SEOHead 
         title={isWatermarkRemover 
           ? tGenerate('watermarkRemover.seoTitle')
-          : routeFromMode(generationMode) === '/image-to-video' 
+          : routeFromMode(generationMode) === '/sora3-image-to-video' 
           ? tGenerate('imageToVideoTitle')
           : tGenerate('textToVideoTitle')}
         description={isWatermarkRemover
           ? tGenerate('watermarkRemover.seoDescription')
-          : routeFromMode(generationMode) === '/image-to-video'
+          : routeFromMode(generationMode) === '/sora3-image-to-video'
           ? tGenerate('imageToVideoSubtitle')
           : tGenerate('textToVideoSubtitle')}
         canonical={isWatermarkRemover 
           ? 'https://sora3ai.io/watermark-remover'
-          : routeFromMode(generationMode) === '/image-to-video' ? 'https://sora3ai.io/image-to-video' : 'https://sora3ai.io/text-to-video'}
+          : routeFromMode(generationMode) === '/sora3-image-to-video' ? 'https://sora3ai.io/sora3-image-to-video' : 'https://sora3ai.io/sora3-text-to-video'}
         keywords={isWatermarkRemover
           ? "sora3 watermark remover,Sora watermark remover,remove watermark sora,watermark removal Sora3"
-          : routeFromMode(generationMode) === '/image-to-video'
+          : routeFromMode(generationMode) === '/sora3-image-to-video'
           ? "Sora3 workspace,Sora3 studio,Sora video generator,image to video,Sora3 AI,AI video workflow"
           : "text to video,AI video generator,text to video AI,AI video creator,cinematic video generator,AI video maker"}
       />
@@ -1687,12 +1687,12 @@ const Generate = () => {
               {/* Page Header with H1 */}
               <header className="text-center mb-8">
                 <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                  {routeFromMode(generationMode) === '/image-to-video' 
+                  {routeFromMode(generationMode) === '/sora3-image-to-video' 
                     ? tGenerate('imageToVideoPageTitle')
                     : tGenerate('textToVideoTitle')}
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  {routeFromMode(generationMode) === '/image-to-video'
+                  {routeFromMode(generationMode) === '/sora3-image-to-video'
                     ? tGenerate('imageToVideoPageSubtitle')
                     : tGenerate('textToVideoSubtitle')}
                 </p>
@@ -1861,7 +1861,7 @@ const Generate = () => {
             </div>
 
             {/* Marketing Content - Only for text-to-video */}
-            {routeFromMode(generationMode) === '/text-to-video' && (
+            {routeFromMode(generationMode) === '/sora3-text-to-video' && (
               <>
                 {/* Hero Section */}
                 <section className="mt-16 mb-12">
@@ -2087,7 +2087,7 @@ const Generate = () => {
             )}
 
             {/* Marketing Content - Only for image-to-video */}
-            {routeFromMode(generationMode) === '/image-to-video' && (
+            {routeFromMode(generationMode) === '/sora3-image-to-video' && (
               <>
                 {/* Hero Section */}
                 <section className="mt-16 mb-12">
@@ -2324,14 +2324,14 @@ const Generate = () => {
             {/* SEO-Optimized FAQ Section */}
             <section className="mt-12 mb-8" itemScope itemType="https://schema.org/FAQPage">
               <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-                {routeFromMode(generationMode) === '/text-to-video' 
+                {routeFromMode(generationMode) === '/sora3-text-to-video' 
                   ? "Frequently Asked Questions About AI Video Generator for Text to Video"
-                  : routeFromMode(generationMode) === '/image-to-video'
+                  : routeFromMode(generationMode) === '/sora3-image-to-video'
                   ? tGenerate('faqImageToVideoTitle')
                   : "Frequently Asked Questions About Sora3 AI Video Generator"}
               </h2>
               <div className="max-w-4xl mx-auto space-y-6">
-                {routeFromMode(generationMode) === '/text-to-video' ? (
+                {routeFromMode(generationMode) === '/sora3-text-to-video' ? (
                   <>
                     <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
@@ -2399,7 +2399,7 @@ const Generate = () => {
                       </div>
                     </div>
                   </>
-                ) : routeFromMode(generationMode) === '/image-to-video' ? (
+                ) : routeFromMode(generationMode) === '/sora3-image-to-video' ? (
                   <>
                     <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
@@ -2529,22 +2529,22 @@ const Generate = () => {
             </section>
 
             {/* Get Started Section - For text-to-video and image-to-video */}
-            {(routeFromMode(generationMode) === '/text-to-video' || routeFromMode(generationMode) === '/image-to-video') && (
+            {(routeFromMode(generationMode) === '/sora3-text-to-video' || routeFromMode(generationMode) === '/sora3-image-to-video') && (
               <section className="mt-16 mb-12">
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/20 rounded-2xl p-8 text-center">
                   <h2 className="text-3xl font-bold text-foreground mb-4">
-                    {routeFromMode(generationMode) === '/text-to-video' 
+                    {routeFromMode(generationMode) === '/sora3-text-to-video' 
                       ? "Get Started with AI Video Generator for Text to Video"
                       : tGenerate('getStartedImageToVideo.title')}
                   </h2>
                   <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
-                    {routeFromMode(generationMode) === '/text-to-video' 
+                    {routeFromMode(generationMode) === '/sora3-text-to-video' 
                       ? "Ready to take your videos to the next level? Upgrade to access faster rendering, longer video durations, advanced customization, and premium styles. Whether you're creating for business, education, or content marketing, our Pro plan gives you everything you need to turn scripts into stunning, high-quality videos - effortlessly."
                       : tGenerate('getStartedImageToVideo.description')}
                   </p>
                   <Link href="/plans">
                     <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
-                      {routeFromMode(generationMode) === '/image-to-video' 
+                      {routeFromMode(generationMode) === '/sora3-image-to-video' 
                         ? tGenerate('getStartedImageToVideo.button')
                         : tGenerate('fallbacks.getPremium')}
                     </Button>
