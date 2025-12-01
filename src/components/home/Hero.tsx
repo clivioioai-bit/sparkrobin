@@ -12,21 +12,19 @@ const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMounted, setIsMounted] = useState(false);
-  const [videoError, setVideoError] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   useEffect(() => {
-    if (isMounted && videoRef.current && !videoError && videoLoaded) {
+    if (isMounted && videoRef.current) {
       // 确保视频播放
       videoRef.current.play().catch((error) => {
         console.log('Video autoplay prevented:', error);
       });
     }
-  }, [isMounted, videoError, videoLoaded]);
+  }, [isMounted]);
 
   return (
     <section 
@@ -46,73 +44,22 @@ const Hero = () => {
         )}
         
         {/* Video Background - only render on client */}
-        {isMounted && !videoError && (
+        {isMounted && (
           <video
             ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ zIndex: 0 }}
             onError={(e) => {
-              const target = e.target as HTMLVideoElement;
-              const error = target.error;
-              const errorInfo: any = {
-                networkState: target.networkState,
-                readyState: target.readyState,
-                src: target.currentSrc || target.src,
-                allSources: Array.from(target.querySelectorAll('source')).map(s => ({
-                  src: s.src,
-                  type: s.type,
-                })),
-              };
-              
-              if (error) {
-                errorInfo.error = {
-                  code: error.code,
-                  message: error.message,
-                  codeName: getErrorCodeName(error.code),
-                };
-              } else {
-                errorInfo.error = 'Unknown error - no error object available';
-              }
-              
-              console.error('Video failed to load:', errorInfo);
-              setVideoError(true);
-            }}
-            onLoadStart={() => {
-              console.log('Video load started:', {
-                src: videoRef.current?.currentSrc || videoRef.current?.src,
-              });
-              setVideoError(false);
-            }}
-            onLoadedMetadata={() => {
-              console.log('Video metadata loaded:', {
-                duration: videoRef.current?.duration,
-                videoWidth: videoRef.current?.videoWidth,
-                videoHeight: videoRef.current?.videoHeight,
-              });
-              setVideoLoaded(true);
-            }}
-            onCanPlay={() => {
-              console.log('Video can play');
-              if (videoRef.current) {
-                videoRef.current.play().catch((err) => {
-                  console.log('Autoplay prevented, will try again:', err);
-                });
-              }
+              console.error('Video failed to load:', e);
             }}
           >
             <source src="/videos/sora3.mp4" type="video/mp4" />
-            <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
-        )}
-        
-        {/* Fallback background if video fails to load */}
-        {videoError && (
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/10 dark:from-primary/30 dark:via-background dark:to-primary/20" />
         )}
         
         {/* Dark overlay for better text readability - reduced opacity to see video */}
@@ -176,6 +123,11 @@ const Hero = () => {
               </Button>
             </a>
           </div>
+          
+          {/* Sora 2 Description - Below buttons */}
+          <p className="text-xs sm:text-sm text-muted-foreground dark:text-white/70 text-center max-w-md px-4 -mt-1">
+            {t('sora2Description')}
+          </p>
 
           {/* Feature Points */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-6 sm:mt-8 w-full max-w-4xl">
@@ -205,16 +157,5 @@ const Hero = () => {
     </section>
   );
 };
-
-// Helper function to get error code name
-function getErrorCodeName(code: number): string {
-  const errorCodes: Record<number, string> = {
-    1: 'MEDIA_ERR_ABORTED',
-    2: 'MEDIA_ERR_NETWORK',
-    3: 'MEDIA_ERR_DECODE',
-    4: 'MEDIA_ERR_SRC_NOT_SUPPORTED',
-  };
-  return errorCodes[code] || `UNKNOWN_ERROR_${code}`;
-}
 
 export default Hero;

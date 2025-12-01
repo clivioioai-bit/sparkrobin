@@ -79,16 +79,16 @@ const Navigation = () => {
             </Link>
 
             {/* Generate dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger 
-                className="flex items-center space-x-1 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-300 hover:scale-105 rounded-lg px-3 py-2 hover:bg-muted/50"
-                suppressHydrationWarning
-              >
-                <Play className="w-4 h-4" />
-                <span className="font-medium">{navItems[1].name}</span>
-                <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" sideOffset={8} className="w-80 p-2 rounded-xl bg-popover border border-border shadow-xl" suppressHydrationWarning>
+            <div suppressHydrationWarning>
+              <DropdownMenu>
+                <DropdownMenuTrigger 
+                  className="flex items-center space-x-1 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-300 hover:scale-105 rounded-lg px-3 py-2 hover:bg-muted/50"
+                >
+                  <Play className="w-4 h-4" />
+                  <span className="font-medium">{navItems[1].name}</span>
+                  <ChevronDown className="w-4 h-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" sideOffset={8} className="w-80 p-2 rounded-xl bg-popover border border-border shadow-xl" suppressHydrationWarning>
                 <DropdownMenuItem asChild>
                   <Link href="/text-to-video" className="group flex gap-3 p-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors" suppressHydrationWarning>
                     <div className="flex h-8 w-8 items-center justify-center rounded-md bg-muted text-muted-foreground group-hover:bg-accent-foreground/10">
@@ -133,8 +133,9 @@ const Navigation = () => {
                     </div>
                   </Link>
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
 
             <Link
               href="/plans"
@@ -152,12 +153,12 @@ const Navigation = () => {
             <ThemeToggle />
             
             {isAuthenticated ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+              <div suppressHydrationWarning>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
                     className="flex items-center space-x-2 hover:bg-muted/50 transition-colors rounded-full px-2 py-1"
-                    suppressHydrationWarning
                   >
                     {/* User Avatar */}
                     <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
@@ -171,7 +172,7 @@ const Navigation = () => {
                     <ChevronDown className="w-4 h-4 text-muted-foreground" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56" suppressHydrationWarning>
+                  <DropdownMenuContent align="end" className="w-56">
                   <div className="flex items-center space-x-2 p-2">
                     <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
                       {getUserInitials()}
@@ -195,8 +196,9 @@ const Navigation = () => {
                     <LogOut className="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" />
                     {t('signOut')}
                   </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             ) : (
               <>
                 <Button
