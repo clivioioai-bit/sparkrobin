@@ -201,7 +201,7 @@ export default function HomePage() {
       '@type': 'VideoObject',
       name: 'Sora 3 Video Generator Demo - Create Ad-Ready Content',
       description: 'Discover how Sora3ai.io transforms concepts into polished Sora 3 video clips using advanced Sora 3 technology. Learn to create Sora 3 videos for text-to-video, image-to-video, and Sora 3 Storyboard narratives. Sora3ai.io is an independent Sora 3 platform.',
-      thumbnailUrl: 'https://sora3ai.io/logo.png',
+      thumbnailUrl: 'https://sora3ai.io/logo.jpg',
       uploadDate: '2024-01-01T00:00:00Z',
       contentUrl: 'https://sora3ai.io',
       embedUrl: 'https://sora3ai.io',
@@ -211,7 +211,7 @@ export default function HomePage() {
         name: 'Sora3',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://sora3ai.io/logo.png'
+          url: 'https://sora3ai.io/logo.jpg'
         }
       }
     }

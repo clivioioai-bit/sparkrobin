@@ -15,7 +15,7 @@ export const metadata = {
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sora3ai.io/logo.png',
+        url: 'https://sora3ai.io/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Sora3 Watermark Remover',
@@ -28,7 +28,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Sora3 Watermark Remover | Remove Watermark Tool',
     description: 'Sora3 watermark remover - Remove watermarks from Sora3 videos instantly. Sora3 watermark removal tool. API-ready, commercial use.',
-    images: ['https://sora3ai.io/logo.png']
+    images: ['https://sora3ai.io/logo.jpg']
   },
 }
 

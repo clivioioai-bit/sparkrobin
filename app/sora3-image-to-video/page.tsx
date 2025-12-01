@@ -15,7 +15,7 @@ export const metadata = {
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sora3ai.io/logo.png',
+        url: 'https://sora3ai.io/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Sora3 Image to Video Generator',
@@ -28,7 +28,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Sora3 Image to Video Generator | Photo to Video Converter',
     description: 'Sora3 image-to-video generator - Convert photos into animated videos using Sora3 AI. Sora3 image-to-video converter. No watermark required.',
-    images: ['https://sora3ai.io/logo.png']
+    images: ['https://sora3ai.io/logo.jpg']
   },
 }
 

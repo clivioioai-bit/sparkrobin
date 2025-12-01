@@ -15,7 +15,7 @@ export const metadata = {
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sora3ai.io/logo.png',
+        url: 'https://sora3ai.io/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Sora3 Pricing Plans',
@@ -28,7 +28,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Sora3 Pricing Plans | Choose Your Sora3 Plan',
     description: 'View Sora3 pricing plans. Choose from Basic, Creator, or Pro plans.',
-    images: ['https://sora3ai.io/logo.png']
+    images: ['https://sora3ai.io/logo.jpg']
   },
   robots: {
     index: true,

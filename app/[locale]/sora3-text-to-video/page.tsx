@@ -42,7 +42,7 @@ export async function generateMetadata({
       siteName: 'Sora3',
       images: [
         {
-          url: 'https://sora3ai.io/logo.png',
+          url: 'https://sora3ai.io/logo.jpg',
           width: 1200,
           height: 630,
           alt: title,
@@ -55,7 +55,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sora3ai.io/logo.png']
+      images: ['https://sora3ai.io/logo.jpg']
     },
   }
 }
@@ -75,4 +75,5 @@ export default async function Page({
 }
 
 export const revalidate = 300
+
 

@@ -15,7 +15,7 @@ export const metadata = {
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sora3ai.io/logo.png',
+        url: 'https://sora3ai.io/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Sora3 Text to Video Generator',
@@ -28,7 +28,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Sora3 Text to Video Generator | AI Video Creator Online',
     description: 'Sora3 text-to-video generator - Create cinematic videos from text prompts. Sora3 text-to-video with advanced motion realism. No watermark required.',
-    images: ['https://sora3ai.io/logo.png']
+    images: ['https://sora3ai.io/logo.jpg']
   },
 }
 

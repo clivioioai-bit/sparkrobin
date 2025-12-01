@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sora3ai.io/logo.png',
+        url: 'https://sora3ai.io/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Terms of Service',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Terms of Service | AI video generation service',
     description: 'Terms of Service for AI video generation service - Read our terms and conditions for using our AI video generation service.',
-    images: ['https://sora3ai.io/logo.png']
+    images: ['https://sora3ai.io/logo.jpg']
   },
 };
 

@@ -45,7 +45,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: 'https://sora3ai.io/logo.png',
+          url: 'https://sora3ai.io/logo.jpg',
           width: 1200,
           height: 630,
           alt: title,
@@ -56,7 +56,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sora3ai.io/logo.png']
+      images: ['https://sora3ai.io/logo.jpg']
     },
   }
 }

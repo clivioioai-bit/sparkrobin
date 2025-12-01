@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sora3ai.io/logo.png',
+        url: 'https://sora3ai.io/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Refund Policy',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Refund Policy | AI video generation service',
     description: 'Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms.',
-    images: ['https://sora3ai.io/logo.png']
+    images: ['https://sora3ai.io/logo.jpg']
   },
 };
 

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sora3ai.io/logo.png',
+        url: 'https://sora3ai.io/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Sora3 FAQ',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sora3 FAQ | Frequently Asked Questions About Sora3',
     description: 'Find answers to common Sora3 questions: What is Sora3? How to use Sora3? Learn about Sora3 features and pricing.',
-    images: ['https://sora3ai.io/logo.png']
+    images: ['https://sora3ai.io/logo.jpg']
   },
 }
 
