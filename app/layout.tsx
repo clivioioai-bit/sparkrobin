@@ -11,6 +11,8 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <head>
+        {/* Google Site Verification */}
+        <meta name="google-site-verification" content="NjZczag78DS8-WMVBUNwIjPdLnascRmdeX6r9oF4oPA" />
         {/* 资源预连接和优先级优化 */}
         <link rel="dns-prefetch" href="https://*.supabase.co" />
         <link rel="preconnect" href="https://*.supabase.co" crossOrigin="anonymous" />
