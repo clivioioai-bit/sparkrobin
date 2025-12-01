@@ -1,0 +1,877 @@
+{
+  "common": {
+    "brand": "Sora3",
+    "new": "新着",
+    "generate": "生成",
+    "home": "ホーム",
+    "pricing": "料金",
+    "blog": "ブログ",
+    "faq": "よくある質問",
+    "signIn": "ログイン",
+    "getStarted": "今すぐ始める",
+    "signOut": "ログアウト",
+    "dashboard": "ダッシュボード",
+    "account": "アカウント",
+    "settings": "設定",
+    "language": "言語",
+    "goHome": "ホーム",
+    "contactSupport": "サポートに連絡",
+    "viewAllFaqs": "すべてのFAQを表示",
+    "haveMoreQuestions": "他にご質問がありますか？お手伝いします。"
+  },
+  "hero": {
+    "badge": "Next-Gen Sora 3 Platform",
+    "discord": "Discordコミュニティに参加",
+    "title": "Sora 3 — 次世代AI動画エンジン、まもなく登場",
+    "subtitle": "より長く、より鮮明でリアルな映像を実現する新モデル Sora 3。クリエイター、ブランド、ストーリーテラーのためのハイエンドAI動画ツールです。",
+    "placeholder": "作成したい動画を説明してください...",
+    "cta": "今すぐ作る",
+    "trySora3": "🚀 まもなく公開 — 先行アクセスに登録",
+    "trySora2": "Sora 2 を今すぐ試す",
+    "sora2Description": "Sora 2 なら、今日から透かしなしの動画を生成できます。広告・TikTok 向けに最適。",
+    "storyboard25s": "25秒ストーリーボード",
+    "disclaimer": "Sora互換およびマルチモデルエンジンを使用する独立したサードパーティプラットフォーム。OpenAIまたはSora3とは提携していません。",
+    "features": {
+      "noWatermark": {
+        "title": "Sora 3 ウォーターマークなし",
+        "description": "商用利用に最適なクリーンでプロフェッショナルな動画"
+      },
+      "noRegionalLimits": {
+        "title": "グローバル Sora 3 アクセス",
+        "description": "世界中のどこからでもアクセス可能"
+      },
+      "noInviteCode": {
+        "title": "即座に Sora 3 アクセス",
+        "description": "待機なしで即座に作成を開始"
+      }
+    }
+  },
+  "navigation": {
+    "home": "ホーム",
+    "generate": "生成",
+    "textToVideo": "テキストから動画",
+    "imageToVideo": "画像から動画",
+    "storyboard": "Sora3ストーリーボード",
+    "watermarkRemover": "ウォーターマーク除去",
+    "pricing": "料金",
+    "blog": "ブログ",
+    "dashboard": "ダッシュボード",
+    "user": "ユーザー",
+    "account": "アカウント",
+    "settings": "設定",
+    "signOut": "ログアウト",
+    "aiTools": "AIツール",
+    "upgradeNow": "今すぐアップグレード",
+    "login": "ログイン",
+    "startForFree": "今すぐ始める",
+    "preferences": "設定",
+    "generationHistory": "生成履歴",
+    "textToVideoDescription": "プロンプトを入力して動画を取得",
+    "imageToVideoDescription": "静止画を動きに変換",
+    "storyboardDescription": "より長い映画のような動画を作成",
+    "watermarkRemoverDescription": "動画からSoraのウォーターマークを削除",
+    "whoThisIsFor": {
+      "ecommerce": {
+        "title": "TikTok・Reels 広告を運用している方"
+      },
+      "shortFilmStudios": {
+        "title": "短編映画スタジオ"
+      },
+      "advertisers": {
+        "title": "広告主"
+      }
+    }
+  },
+  "footer": {
+    "description": "Sora3 AI動画生成ツール。Sora3テキストから動画、画像から動画、Sora3ストーリーボード（マルチシーンストーリーボード）で映画のような動画を作成。ウォーターマークなしでSora3にアクセス。",
+    "product": "製品",
+    "company": "会社",
+    "resources": "リソース",
+    "support": "サポート",
+    "sora3TextToVideo": "Sora3テキストから動画",
+    "sora3ImageToVideo": "Sora3画像から動画",
+    "sora3Pricing": "Sora3料金",
+    "sora3Faq": "Sora3よくある質問",
+    "sora3Blog": "Sora3ブログ",
+    "aiVideoPromptGpt": "AI動画プロンプトGPT",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "refundPolicy": "返金ポリシー",
+    "support247": "24時間サポート",
+    "contactUs": "お問い合わせ / パートナーシップ",
+    "disclaimer": "sora3ai.ioは独立したAI動画生成プラットフォームです。OpenAIまたは公式「Sora」製品とは提携、承認、または後援されていません。すべての商標はそれぞれの所有者に帰属します。",
+    "poweredBy": "独自の動画合成ワークフローによって提供されています。公式ベンダーとは提携していません。",
+    "copyright": "© 2024 Sora3. 全著作権所有。",
+    "companyName": "Aivido LLC",
+    "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
+    "supportEmail": "24時間サポート: support@sora3ai.io",
+    "businessEmail": "ビジネス・パートナーシップ: team@sora3ai.io",
+    "logoAlt": "Sora3 AI動画生成ツールのロゴ",
+    "socialLabels": {
+      "twitter": "Twitterでフォロー",
+      "discord": "Discordコミュニティに参加",
+      "github": "GitHubを訪問",
+      "email": "メールでお問い合わせ",
+      "supportEmail": "24時間サポートメール",
+      "businessEmail": "ビジネス・パートナーシップメール"
+    }
+  },
+  "whyThisMatters": {
+    "title": "sora3ai.io が選ばれる理由",
+    "subtitle": "プロ向けの広告動画を、編集経験なしで簡単に作成できます。すべての動画はウォーターマークなし。TikTok、Instagram、Shopify の広告に最適です。",
+    "challenges": "課題",
+    "solutions": "機能一覧",
+    "watermarks": {
+      "title": "重いウォーターマーク",
+      "description": "プラットフォームのロゴにより、商用利用に適さない動画になります。"
+    },
+    "pricing": {
+      "title": "高価な料金",
+      "description": "高いコストにより、頻繁な動画作成が制限されます。"
+    },
+    "storyboarding": {
+      "title": "複雑なストーリーボード",
+      "description": "Sora3ストーリーボード動画には技術的な専門知識が必要です。"
+    },
+    "speed": {
+      "title": "生成が遅い",
+      "description": "長い待機時間がクリエイティブなワークフローと生産性を妨げます。"
+    },
+    "noWatermark": {
+      "title": "わずか10秒で高品質なAI動画を自動生成",
+      "description": "最新のSora3モデルを利用し、テキストや画像からリアルな動画を生成します。"
+    },
+    "costPerformance": {
+      "title": "ウォーターマークなしで安心利用",
+      "description": "広告、LP、商品紹介、SNS投稿など、商用利用にも安心してお使いいただけます。"
+    },
+    "multiModel": {
+      "title": "Shopify・TikTok・Instagram に最適化",
+      "description": "商品PR動画やSNS広告向けに調整されたテンプレートと動きを採用。"
+    },
+    "storyboard": {
+      "title": "25秒のストーリーボードにも対応",
+      "description": "ストーリー性のある25秒動画を自動作成。プロモーション動画としてそのまま利用できます。"
+    },
+    "solution": "Sora3スタイルの生成でそれらすべてを解決します"
+  },
+  "whoThisIsFor": {
+    "title": "こんな方におすすめ",
+    "subtitle": "Shopify の商品紹介動画を作りたい方、TikTok・Reels 広告を運用している方、Instagram 用の短尺動画を量産したい方、クオリティの高い商品動画が必要な EC オーナー、広告代理店・クリエイター。",
+    "creators": {
+      "title": "Shopify の商品紹介動画を作りたい方",
+      "description": "商品PR動画を簡単に作成できます。"
+    },
+    "ecommerce": {
+      "title": "TikTok・Reels 広告を運用している方",
+      "description": "SNS広告向けに最適化された動画を生成します。"
+    },
+    "businesses": {
+      "title": "Instagram 用の短尺動画を量産したい方",
+      "description": "高品質な短尺動画を効率的に作成できます。"
+    },
+    "marketers": {
+      "title": "広告代理店・クリエイター",
+      "description": "クオリティの高い商品動画を迅速に作成できます。"
+    },
+    "shortFilmStudios": {
+      "title": "短編映画スタジオ",
+      "description": "プロフェッショナルな品質の映画的な短編映画を作成します。"
+    },
+    "advertisers": {
+      "title": "広告主",
+      "description": "プロフェッショナルな動画品質で魅力的な広告コンテンツを作成します。"
+    }
+  },
+  "blogShowcase": {
+    "title": "クリエイターとブランドのためのSora3プレイブック",
+    "subtitle": "より多くの視聴回数と売上を獲得するための実践的なガイド。",
+    "viewAll": "すべてのブログ投稿を表示",
+    "readMore": "続きを読む",
+    "featured": "おすすめ"
+  },
+  "howItWorks": {
+    "title": "使い方",
+    "subtitle": "3つの簡単なステップでプロフェッショナルなAI動画を作成します。",
+    "step1": {
+      "title": "Step 1：テキストを入力、または画像をアップロード",
+      "description": "商品説明、雰囲気、スタイルなどを入力します。"
+    },
+    "step2": {
+      "title": "Step 2：動画タイプを選択",
+      "description": "10秒動画、25秒ストーリーボード、テキストから動画、画像から動画。"
+    },
+    "step3": {
+      "title": "Step 3：生成ボタンを押すだけ",
+      "description": "AI が高品質な動画を自動で作成します。"
+    }
+  },
+  "faq": {
+    "title": "よくある質問",
+    "subtitle": "Sora3 AI動画広告に関するよくある質問への回答。Sora3の仕組みと、クリエイターがSora3を選ぶ理由を学びます。",
+    "viewAllFaqs": "すべてのFAQを表示",
+    "contactSupport": "サポートに連絡",
+    "haveMoreQuestions": "他にご質問がありますか？お手伝いします。",
+    "questions": {
+      "whatMakesDifferent": {
+        "question": "Sora3は他のAI動画生成ツールとどう違いますか？",
+        "answer": "Sora3は一貫したキャラクターを持つSora3ストーリーボード動画広告に特化しています。他のツールが10秒の単一ショットを生成するのに対し、TikTok、Shopify、商品プロモーションに最適な25秒以上のストーリーを作成します。"
+      },
+      "characterConsistency": {
+        "question": "複数のシーンでキャラクターの一貫性はどのように機能しますか？",
+        "answer": "Sora3ストーリーボード機能は、動画内のすべてのシーンで外見、服装、髪型の一貫性を維持します。"
+      },
+      "videosLongerThan10s": {
+        "question": "10秒より長い動画を作成できますか？",
+        "answer": "はい。Sora3スタイルの生成は、ストーリーボードモードを通じて25-30秒の動画生成をサポートしています。"
+      },
+      "commercialUse": {
+        "question": "生成された動画を商用広告に使用できますか？",
+        "answer": "はい、すべての動画は商用利用が可能です。"
+      },
+      "watermarks": {
+        "question": "動画にウォーターマークはありますか？",
+        "answer": "いいえ — すべてのSora3スタイルの動画はウォーターマークなしです。"
+      },
+      "officialModel": {
+        "question": "Saroは公式のSora3モデルを使用していますか？",
+        "answer": "Saro.aiは本物のSoraモデルを使用しています。これにより、クリエイターは公式アクセスを必要とせずに、すぐにSora3の結果を生成できます。"
+      },
+      "25SecondVideos": {
+        "question": "Sora3スタイルの25秒動画を作成できますか？",
+        "answer": "はい — Sora3ストーリーボード機能は25秒のSora3スタイルのマルチシーン生成をサポートしています。"
+      },
+      "paymentSafe": {
+        "question": "支払いを行う場合、支払い情報は安全ですか？",
+        "answer": "はい。安全で信頼できる支払いプラットフォームと銀行を使用しています。"
+      },
+      "hiddenCharges": {
+        "question": "隠れた料金はありますか？",
+        "answer": "いいえ、表示されている価格がお支払いいただく合計金額です。追加の隠れた料金はありません。"
+      }
+    }
+  },
+  "pricing": {
+    "title": "料金プラン",
+    "subtitle": "AI動画生成のニーズに最適なプランを選択してください。いつでもキャンセルできます。",
+    "secureCheckout": "安全なチェックアウト",
+    "cancelAnytime": "いつでもキャンセル",
+    "noSurpriseCharges": "予期しない料金なし",
+    "fastSupport": "迅速なサポート",
+    "priceIncreaseAlert": "まもなく価格が上がります！今すぐ購読して低価格をロックしてください！",
+    "pricePerVideoGeneration": "動画生成あたりの価格",
+    "marketPrice": "市場価格",
+    "ourPrice": "当社の価格",
+    "marketPriceValue": "$0.10/秒",
+    "ourPriceValue": "$0.05/秒",
+    "fiftyPercentCheaper": "50%安い",
+    "thanMarket": "市場より",
+    "chooseYourPlan": "プランを選択",
+    "teaserSubtitle": "プロフェッショナルなAI動画広告生成。いつでもキャンセル可能。年間プランで50%節約。",
+    "proTip": "💡 <strong>プロのヒント:</strong> サブスクリプションプランには、APIアクセス、webhooks、優先サポートが含まれます",
+    "plans": {
+      "monthly": "月額",
+      "annual": "年額",
+      "oneTime": "ワンタイム",
+      "save50Percent": "50%節約",
+      "mostPopular": "最も人気",
+      "billedAnnually": "年額請求",
+      "billedMonthly": "月額請求 · いつでもキャンセル可能",
+      "savePerYear": "年間 ${amount} 節約",
+      "perMonth": "/月",
+      "perYear": "/年",
+      "payOnce": "一度支払えば、いつでも使用可能 — クレジットは期限切れになりません",
+      "oneTimePurchase": "ワンタイム購入 • サブスクリプション特典なし",
+      "buyNow": "今すぐ購入",
+      "upToVideos": "最大 {count} 本の sora3 動画",
+      "oneTimePurchaseLabel": "ワンタイム購入",
+      "noSubscriptionRequired": "サブスクリプション不要",
+      "commercialUsageRights": "商用利用権",
+      "pleaseLogInFirst": "まずログインしてください",
+      "logInToProceed": "支払いのために Creem に進むにはログインしてください。",
+      "loginSessionExpired": "ログインセッションが期限切れ",
+      "pleaseLogInAgain": "購入を続行するには、再度ログインしてください。",
+      "tooManyRequests": "リクエストが多すぎます",
+      "pleaseWait": "しばらく待ってから再試行してください。",
+      "tryAgainLater": "後でもう一度お試しください。",
+      "failedToCreatePaymentLink": "支払いリンクの作成に失敗しました",
+      "needHelp": "ヘルプが必要ですか？",
+      "contactSupport": "サポートについては support@sora3ai.io にお問い合わせください。",
+      "contactSupportLink": "サポートに連絡",
+      "features": {
+        "creditsIncluded": "{count} クレジット付き",
+        "aiVideosPerMonth": "月額 {count} 本の AI 動画",
+        "aiVideosPerYear": "年間 {count} 本の AI 動画",
+        "hd4kQuality": "HD および 4K 品質オプション",
+        "commercialUsageRights": "商用利用権",
+        "emailSupport": "メールサポート",
+        "priorityEmailSupport": "優先メールサポート",
+        "apiAccess": "API アクセス（近日公開）",
+        "generationHistory": "生成履歴",
+        "fastestProcessing": "最速処理",
+        "professionalConsultation": "1対1のプロフェッショナルコンサルテーションサポート"
+      },
+      "cta": {
+        "startCreating": "作成を開始",
+        "getAnnualDeal": "年額プランを取得",
+        "getCreator": "Creator を取得",
+        "bestValue": "ベストバリュー",
+        "goPro": "Pro に進む",
+        "unlockPro": "Pro をアンロック",
+        "saveWithAnnual": "年額で節約"
+      },
+      "planNames": {
+        "basic": "Basic",
+        "creator": "Creator",
+        "pro": "Pro"
+      },
+      "credits": "クレジット"
+    },
+    "modal": {
+      "insufficientCredits": "クレジット不足",
+      "upgradeYourPlan": "プランをアップグレード",
+      "subscriptionRequired": "サブスクリプションが必要",
+      "insufficientCreditsDescription": "現在のクレジットでは、この動画を生成するのに十分ではありません。プランに登録して、より多くのクレジットで無制限の創造的な可能性を解き放ちましょう！",
+      "upgradePlanDescription": "プレミアム機能にアクセスするには、サブスクリプションプランを選択してください。",
+      "subscriptionRequiredDescription": "{feature} するには、アクティブなサブスクリプションプランが必要です。",
+      "pleaseLogInFirst": "まずログインしてください",
+      "logInToProceed": "サブスクリプションに進むにはログインしてください。",
+      "loginSessionExpired": "ログインセッションが期限切れ",
+      "pleaseLogInAgain": "サブスクリプションを続行するには、再度ログインしてください。",
+      "subscriptionFailed": "サブスクリプションに失敗しました",
+      "unexpectedError": "予期しないエラーが発生しました。"
+    },
+    "faqTitle": "よくある質問",
+    "faqCancelAnytime": {
+      "question": "いつでもキャンセルできますか？",
+      "answer": "はい！すべてのプランはいつでもキャンセルできます。請求期間の終了までアクセスを維持できます。"
+    },
+    "faqCreditsRollOver": {
+      "question": "未使用のクレジットは繰り越されますか？",
+      "answer": "サブスクリプションバケットは各請求期間にリセットされ、繰り越されません。ワンタイムアドオンのクレジットは柔軟なバケットに移動し、サブスクリプションリセットによってクリアされません。"
+    },
+    "faqRefundPolicy": {
+      "question": "返金ポリシーは何ですか？",
+      "answer": "すべてのサブスクリプションプランに対して7日間の返金保証を提供しています。返金は5-7営業日以内に処理されます。"
+    },
+    "faqContentRestrictions": {
+      "question": "動画コンテンツに制限はありますか？",
+      "answer": "当社のプラットフォームは厳格なコンテンツポリシーを実施しています。有害、違法、または不適切なコンテンツの生成を禁止しています。生成されたすべての動画は、ポリシー準拠を確保するために自動スクリーニングを受けます。"
+    },
+    "faqCreditsDeduction": {
+      "question": "生成が失敗した場合、クレジットは差し引かれますか？",
+      "answer": "いいえ。クレジットはジョブが開始されると原子的に差し引かれ、生成が失敗した場合、または上流サービスがエラーを返した場合、自動的に返金されます。返金は通常1分以内に表示されます。"
+    },
+    "faqCancelSubscription": {
+      "question": "サブスクリプションをキャンセルした場合、クレジットはどうなりますか？",
+      "answer": "いつでもキャンセルできます。柔軟な（ワンタイム）クレジットは引き続き利用可能です。サブスクリプションバケットは請求期間に従い、現在の期間が終了した後は更新を停止します。"
+    },
+    "generate": {
+      "insufficientCredits": "クレジットが不足しています。クレジットを購入するか、プランに登録してください。",
+      "insufficientCreditsWithDetails": "クレジットが不足しています。{required} クレジットが必要ですが、{available} クレジットしかありません。{details}",
+      "insufficientCreditsRetry": "クレジットが不足しています。再試行するには、クレジットを購入してください。",
+      "creditDeductionFailed": "クレジットの引き落としに失敗しました: {error}。データベースの問題が原因である可能性があります。もう一度お試しいただくか、サポートにお問い合わせください。",
+      "creditSystemError": "クレジットシステムエラー: {error}。この問題が続く場合は、サポートにお問い合わせください。",
+      "storageBucketNotConfigured": "ストレージバケットが設定されていません。Supabase ダッシュボード → Storage → New bucket → Name: \"videos\" → Public bucket → Create bucket で \"videos\" バケットを作成してください。",
+      "pleaseEnterPrompt": "プロンプトを入力してください",
+      "pleaseUploadImage": "動画を生成するための画像をアップロードしてください",
+      "watermarkRemover": {
+        "title": "Sora3 ウォーターマーク除去",
+        "description": "Sora でホストされている動画から Sora のウォーターマークを削除します。公開されている `sora.chatgpt.com` URL を貼り付けて実行してください。通常、API での処理には 1〜3 秒かかります。",
+        "seoTitle": "Sora3 ウォーターマーク除去 | ウォーターマーク削除ツール",
+        "seoDescription": "Sora3 ウォーターマーク除去: Sora でホストされている動画から Sora のウォーターマークを数秒で削除。商用利用可能、API対応、公開 sora.chatgpt.com リンクで動作します。",
+        "input": "入力",
+        "output": "出力",
+        "videoUrl": "video_url",
+        "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
+        "videoUrlHint": "公開アクセス可能で、`https://sora.chatgpt.com/` で始まる必要があります。",
+        "reset": "リセット",
+        "running": "実行中…",
+        "run": "{credits} クレジットで実行",
+        "processing": "処理中…",
+        "waitingForResult": "結果を待機中…",
+        "noOutputYet": "まだ出力がありません",
+        "exampleVideo": "サンプル動画",
+        "exampleVideoDescription": "これは Sora3 AI によって生成されたサンプル動画です。独自の Sora 動画をアップロードしてウォーターマークを削除してください！",
+        "creditsInfo": "このツールは実行ごとに 10 クレジットを消費します。Sora3 動画をクリーンでブランド対応の状態に保ちます。",
+        "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。"
+      }
+    }
+  },
+  "generate": {
+    "generate": "生成",
+    "generating": "生成中...",
+    "readyToGenerate": "生成準備完了",
+    "startGeneration": "生成を開始",
+    "enterPrompt": "プロンプトを入力し、生成をクリックして動画を作成します",
+    "videoBeingCreated": "動画を作成しています。数分かかる場合があります。",
+    "initializingGeneration": "生成を初期化中...",
+    "aiWorkSubtitles": {
+      "writingOpeningScene": "🎬 オープニングシーンを書いています…",
+      "paintingBackground": "🎨 背景の詳細を描いています…",
+      "recordingNarrator": "🎙️ ナレーターの声を録音しています…",
+      "addingSoundscape": "🔊 背景サウンドスケープを追加しています…",
+      "syncingEverything": "🚀 すべてを同期しています…"
+    },
+    "videoGeneratedSuccessfully": "動画が正常に生成されました！",
+    "videoReady": "動画の準備ができました。動画URLはまもなく利用可能になります。",
+    "generateWithCredits": "生成 · {creditCost} クレジット",
+    "generateShots": "{count}ショットのストーリーボードを生成",
+    "addPromptsToAllShots": "すべてのショットにプロンプトを追加して生成",
+    "reset": "リセット",
+    "input": "入力",
+    "output": "出力",
+    "video": "動画",
+    "credits": "クレジット",
+    "exampleVideo": "サンプル動画",
+    "sampleVideoDescription": "これは Sora3 AI によって生成されたサンプル動画です。入力パネルを使用して独自の動画を作成してください！",
+    "sampleVideoDescriptionUnauthenticated": "これは Sora3 AI によって生成されたサンプル動画です。登録して独自の動画を作成してください！",
+    "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。",
+    "signUpToCreate": "登録して独自の動画を作成",
+    "textToVideoTitle": "テキストから動画 AI動画生成ツール",
+    "textToVideoSubtitle": "アイデアを映画のような動画に変換 - タイピングするだけ。",
+    "textToVideoFeaturesTitle": "テキストから動画 AI動画生成ツールの機能",
+    "featureAIPowered": {
+      "title": "AI パワード スクリプトからスクリーンへの魔法",
+      "description": "テキストから動画では、プロンプトだけで十分です。1つの文でも詳細なストーリーでも、AIエンジンがテキストを解釈し、見事なビジュアルに変換します。クリエイター、マーケター、教育者、言葉を高インパクトな動画に変えたいすべての人に最適です。"
+    },
+    "featureCinematic": {
+      "title": "編集スキル不要のシネマ品質",
+      "description": "高度なAIにより、すべてのフレームがプロフェッショナルにレンダリングされます。ビデオエディタを開くことなく、スムーズなトランジション、リアルな照明、ダイナミックな動きを実現。ソーシャルリールから製品説明まで、コンテンツがスタジオレベルのアップグレードを受けます。"
+    },
+    "featureAudio": {
+      "title": "メッセージにマッチする内蔵オーディオ",
+      "description": "別のサウンドデザインは不要です。AIがスクリプトと同期して背景音楽、環境音、さらには音声オーバーレイを生成します。急いでいるクリエイター向けに構築された、エンドツーエンドのAI動画生成ツール体験です。"
+    },
+    "featureContextual": {
+      "title": "人間中心の焦点を持つコンテキストシーン生成",
+      "description": "システムは単に言葉だけでなく、その背後にあるムード、トーン、意図を理解します。サスペンス、ユーモア、感情、明確さを望む場合でも、AIは目的に合ったビジュアルを選択します。"
+    },
+    "howToUseTitle": "テキストから動画 AI動画生成ツールの使い方",
+    "howToUseStep1": {
+      "title": "sora3ai.io に登録またはログイン",
+      "description": "アカウントを作成して、テキストから動画インターフェースの全機能を解除します。"
+    },
+    "howToUseStep2": {
+      "title": "テキストから動画作成パネルにアクセス",
+      "description": "ダッシュボードでツールを見つけ、ゼロから始めるか、AIアシスタンスを使用するかを選択します。"
+    },
+    "howToUseStep3": {
+      "title": "スクリプトを入力または貼り付け",
+      "description": "テキストボックスにアイデアを入力します。簡単なプロンプト、シーン説明、または完全なスクリプトを入力できます。"
+    },
+    "howToUseStep4": {
+      "title": "クリックして生成",
+      "description": "「生成」ボタンをクリックします。AIがスクリプトを処理し、マッチするビジュアル、動き、音楽で動画を作成します。わずか数分で、動画をプレビューしてダウンロードできるようになります。"
+    },
+    "whoUsesTitle": "Sora3 を使用する人",
+    "whoUsesContentCreators": "コンテンツクリエイター",
+    "whoUsesTikTokMarketers": "TikTokマーケター",
+    "imageToVideoTitle": "Sora3 画像から動画生成ツール - 写真を映画のような動画に変換",
+    "imageToVideoSubtitle": "Sora3 AIを使用して、静止画像を映画のような動きで生き生きとさせます。Sora3画像から動画技術は、自然な動きとリアルな効果で写真からプロフェッショナルな動画を作成します。画像をアップロードするだけで、残りはSora3が処理します。",
+    "imageToVideoFeaturesTitle": "Sora3画像から動画機能 - 高度なAI動画生成",
+    "imageToVideoFeature1": {
+      "title": "Sora3 シンプルな画像から動きへの変換",
+      "description": "Sora3画像から動画では、写真をアップロードするだけで、それが生き生きとします。Sora3 AIエンジンが画像を分析し、シーンを強化する自然で映画のような動きを生成します。Sora3は製品紹介、芸術作品、静止した瞬間を動的なストーリーに変えるのに最適です。"
+    },
+    "imageToVideoFeature2": {
+      "title": "アニメーションスキル不要のSora3プロフェッショナル動き",
+      "description": "Sora3高度なAIは深度、照明、構図を理解します。Sora3は、アニメーションや動画編集の専門知識を必要とせずに、スムーズなカメラの動き、自然なオブジェクトの動き、リアルな環境効果を生成します。Sora3でポートフォリオ写真をプロフェッショナルな動画コンテンツに変換します。"
+    },
+    "imageToVideoFeature3": {
+      "title": "Sora3自動オーディオ生成",
+      "description": "すべてのSora3動画には、完璧にマッチした背景音楽と環境音が付属しています。Sora3 AIが画像のムードと雰囲気を分析し、視覚的なストーリーを補完するオーディオを作成します。1つの画像からの完全なSora3動画作成体験です。"
+    },
+    "imageToVideoFeature4": {
+      "title": "Sora3インテリジェントシーン理解",
+      "description": "Sora3 AIは画像内のオブジェクト、人物、風景、シーンを認識します。Sora3は、文脈的に意味のある動きを生成します - 木々を通るそよ風、3D空間で回転する製品、微妙な動きのあるポートレートなど。すべてのSora3アニメーションは自然で目的のあるものに感じられます。"
+    },
+    "imageToVideoHowToUseTitle": "Sora3画像から動画生成ツールの使い方",
+    "imageToVideoHowToUseStep1": {
+      "title": "sora3ai.io に登録またはログイン",
+      "description": "アカウントを作成して、Sora3画像から動画の全機能を解除し、Sora3 AI技術の使用を開始します。"
+    },
+    "imageToVideoHowToUseStep2": {
+      "title": "Sora3画像から動画パネルにアクセス",
+      "description": "ダッシュボードでSora3画像から動画ツールに移動します。Sora3インターフェースは、簡単な画像から動画への変換のために設計されています。"
+    },
+    "imageToVideoHowToUseStep3": {
+      "title": "画像をSora3にアップロード",
+      "description": "Sora3処理のために画像ファイルをドラッグアンドドロップまたは選択します。Sora3は写真、イラスト、製品画像、またはSora3でアニメーション化したい任意の静止画像をサポートします。"
+    },
+    "imageToVideoHowToUseStep4": {
+      "title": "Sora3で生成",
+      "description": "「生成」ボタンをクリックして、Sora3 AIに画像を分析させます。Sora3は自然な動き、カメラの動き、同期されたオーディオで動画を作成します。Sora3アニメーション動画は数分で準備できます。"
+    },
+    "imageToVideoPageTitle": "Sora3 画像から動画生成ツール",
+    "imageToVideoPageSubtitle": "Sora3 AI技術を使用して画像を映画のような動画に変換 — ウォーターマークなし",
+    "imageToVideoTestimonialsTitle": "Sora3画像から動画生成ツールを選ぶ理由",
+    "imageToVideoTestimonial1": {
+      "quote": "商品写真をアップロードしたところ、Sora3が数分でプロフェッショナルな動画広告を生成しました。Sora3はオンラインストアのコンテンツ作成方法を完全に変えました！",
+      "author": "Emma L., Eコマースオーナー"
+    },
+    "imageToVideoTestimonial2": {
+      "quote": "写真家として、Sora3が静止画像を生き生きとさせる方法が大好きです。Sora3の動きは自然で、ポートフォリオに深みを加えます。",
+      "author": "Michael R., プロフェッショナル写真家"
+    },
+    "imageToVideoTestimonial3": {
+      "quote": "Sora3画像から動画機能により、何時間ものアニメーション作業を節約できました。既存の写真からSora3で即座に魅力的なソーシャルメディアコンテンツを作成できます。",
+      "author": "Jessica T., ソーシャルメディアマネージャー"
+    },
+    "imageToVideoTestimonial4": {
+      "quote": "不動産リストの物件写真をアニメーション化するために使用しました。動画はプロフェッショナルに見え、物件を市場で際立たせるのに役立ちます。",
+      "author": "Robert K., 不動産エージェント"
+    },
+    "imageToVideoTestimonial5": {
+      "quote": "デザインモックアップをアニメーション化されたプレゼンテーションに変換するのに最適です。AIは構図を理解し、意味のある動きを追加します。",
+      "author": "Alex W., グラフィックデザイナー"
+    },
+    "imageToVideoTestimonial6": {
+      "quote": "1つの商品写真から完全な動画広告まで - このツールはコンテンツ作成ワークフロー全体を効率化しました。強くお勧めします！",
+      "author": "Sarah H., マーケティングディレクター"
+    },
+    "pricingBanner": "💎 料金: 高品質な100本のAI生成動画（音声付き）が月額$19から",
+    "faqImageToVideoTitle": "画像から動画 AI動画生成ツールに関するよくある質問",
+    "faqImageToVideo": {
+      "whatIsTool": {
+        "question": "画像から動画ツールとは何ですか？",
+        "answer": "AI画像から動画ツールは、高度なAIを使用して静止画像を完全にアニメーション化された動画に変換します。写真、イラスト、または商品画像をアップロードするだけで、AIが自然な動き、カメラの動き、同期されたオーディオで画像を生き生きとさせます。"
+      },
+      "needExperience": {
+        "question": "画像から動画ツールを使用するために、アニメーションや動画編集の経験は必要ですか？",
+        "answer": "経験は不要です。画像ファイルをアップロードするだけで、AIが自然な動きとプロフェッショナルな効果を持つ高品質なアニメーション動画を自動生成します - 技術的なスキルは不要です。"
+      },
+      "imageTypes": {
+        "question": "画像から動画ツールに最適な画像の種類は何ですか？",
+        "answer": "このツールは、商品写真、ポートレート、風景、イラスト、建築写真、デザインモックアップなど、幅広い種類の画像で動作します。AIは構図を分析し、各画像タイプに文脈的に意味のある動きを生成します。"
+      },
+      "howLong": {
+        "question": "画像から動画を生成するのにどのくらい時間がかかりますか？",
+        "answer": "複雑さによって異なりますが、ほとんどの動画は数分で生成されます。AIは画像を分析し、動きを生成し、同期されたオーディオを追加します。準備ができ次第、アニメーション動画をプレビューしてダウンロードできます。"
+      },
+      "motionType": {
+        "question": "AIは画像にどのような種類の動きを追加しますか？",
+        "answer": "AIは、スムーズなカメラの動き、自然なオブジェクトの動き、環境効果（木々を通る風など）、商品の回転、微妙なポートレートの動きなど、文脈的に適切な動きを生成します。動きは画像を強化し、気を散らすことなく自然です。"
+      },
+      "commercialUse": {
+        "question": "画像から動画で生成された動画を商用目的で使用できますか？",
+        "answer": "はい。AIを使用して作成された動画は、使用とライセンス条件に従う限り、マーケティング、Eコマース、ソーシャルメディア、ビジネスプレゼンテーション、その他の商用利用に使用できます。"
+      }
+    },
+    "getStartedImageToVideo": {
+      "title": "画像から動画 AI動画生成ツールを始める",
+      "description": "画像を生き生きとさせる準備はできていますか？より高速なレンダリング、より長い動画時間、高度な動き効果、プレミアムスタイルにアクセスするためにアップグレードしてください。商品広告、ポートフォリオショーケース、またはソーシャルメディアコンテンツを作成している場合でも、Proプランは静止画像を美しいアニメーション動画に変換するために必要なすべてを提供します - 簡単に。",
+      "button": "プレミアムを取得"
+    },
+    "reframeMode": {
+      "model": "モデル",
+      "sora3": "Sora3",
+      "sora3Pro": "Sora3 pro",
+      "sora3Description": "高品質な出力と精密な制御を備えたOpenAIの高度な動画生成モデル。",
+      "sora3ProDescription": "強化された品質、優れたリアリズム、高度な制御機能を備えたOpenAIのプレミアム動画生成モデル。",
+      "prompt": "プロンプト *",
+      "promptTooltip": "参照画像から作成したい動きを説明してください",
+      "aiExamples": "AI例",
+      "promptExamplesTitle": "画像から動画プロンプト例",
+      "promptExamplesDescription": "画像から動画生成のインスピレーションを得るためのプロンプト例を閲覧",
+      "useThisPrompt": "このプロンプトを使用",
+      "promptGpt": "プロンプトGPT",
+      "promptGptTooltip": "インスピレーションが必要ですか？AI動画プロンプトGPTでカメラの動き、ストーリービート、音響キューをブレインストームし、アップグレードされたプロンプトをここに貼り付けてください。",
+      "promptPlaceholder": "作成したい動きを説明してください。例：「寿司職人の手が米を丁寧に形作る様子を、背景をソフトフォーカスで優しくズームイン」",
+      "referenceImage": "参照画像 *",
+      "referenceImageTooltip": "開始フレームとして使用される参照画像または動画（JPG、PNG、WEBP、MP4、MOV、最大10MB）をアップロードしてください。",
+      "changeImage": "画像を変更",
+      "uploadReferenceFile": "参照ファイルをアップロード",
+      "dragDropText": "画像または動画をここにドラッグアンドドロップするか、クリックして参照",
+      "fileFormatText": "JPG、PNG、WEBP、MP4、MOVをサポート、最大10MB",
+      "aspectRatio": "アスペクト比",
+      "aspectRatioTooltip": "生成される動画出力のターゲットアスペクト比を選択してください。",
+      "portrait": "縦向き",
+      "landscape": "横向き",
+      "duration": "時間",
+      "durationTooltip": "動画の時間を選択：10秒または15秒",
+      "quality": "品質",
+      "qualityTooltip": "標準：低コスト、良好な品質。高：プレミアム品質、高コスト。",
+      "standard": "標準",
+      "high": "高"
+    },
+    "veo3ImageMode": {
+      "image": "画像 *",
+      "startFrame": "開始フレーム",
+      "endFrame": "終了フレーム",
+      "uploadStartFrame": "開始フレームをアップロード",
+      "uploadEndFrame": "終了フレームをアップロード",
+      "dragDropImage": "画像をドラッグアンドドロップするか、クリックしてアップロード",
+      "supportedFormats": "サポート形式：JPG、JPEG、PNG；各ファイル最大10MB",
+      "generationPrompt": "生成プロンプト *",
+      "promptPlaceholder": "カメラは、歌手の正面からのビューから始まり、彼女の周りを滑らかに180度のアークショットを実行し、ステージ上の彼女の後ろからのPOVショットでシームレスに終了します。歌手は「あなたが私の目を見つめるとき、私は百万の星を見ることができます」と歌います。",
+      "ratio": "比率",
+      "ratioTooltip": "16:9：横向きフォーマット、1080P HDをサポート（16:9のみが1080Pをサポート）\n9:16：モバイル動画用の縦向きフォーマット\n自動：アップロードされた画像に基づいてアスペクト比を自動的に一致",
+      "auto": "自動",
+      "seed": "シード（オプション）",
+      "seedTooltip": "ランダムシード（10000-99999）。同じシードは類似のコンテンツを生成します。",
+      "seedPlaceholder": "シードを入力してください",
+      "generating": "生成中...",
+      "generate": "生成"
+    },
+    "errors": {
+      "uploadAtLeastOneImage": "少なくとも1つの画像（開始フレームまたは終了フレーム）をアップロードしてください",
+      "invalidSoraUrl": "https://sora.chatgpt.com/で始まる有効なSora URLを入力してください。",
+      "atLeastOneImageRequired": "少なくとも1つの画像（開始フレームまたは終了フレーム）が必要です",
+      "referenceImageUrlRequired": "画像から動画モードには参照画像URLが必要です"
+    },
+    "defaultPrompts": {
+      "smoothTransition": "フレーム間の滑らかな動画トランジションを作成",
+      "smoothAnimation": "参照画像からの滑らかな動画アニメーションを作成"
+    },
+    "fallbacks": {
+      "getPremium": "プレミアムを取得",
+      "generating": "生成中...",
+      "startGeneration": "生成を開始"
+    },
+    "costEstimate": "コスト見積もり",
+    "baseCost": "基本コスト ({duration}秒)",
+    "aspectRatioCost": "アスペクト比 ({aspectRatio})",
+    "total": "合計",
+    "creditsCount": "{count} クレジット",
+    "availableCredits": "利用可能なクレジット: {count}",
+    "sufficientBalance": "✓ 残高十分",
+    "insufficientCredits": "⚠ クレジット不足",
+    "acceptableUsePolicy": "利用規約",
+    "acceptableUsePolicyDescription": "詐欺、なりすまし、著作権侵害などの違法コンテンツを生成するためにこのサービスを使用することは厳禁です。",
+    "brandStatement": "ブランド声明",
+    "brandStatementDescription": "このサービスは、Google、Vertex AI、またはFlowとの提携や公式関係はありません。",
+    "veo3Mode": {
+      "generationPrompt": "生成プロンプト",
+      "promptPlaceholder": "キーがさまざまな種類のキャンディで作られたキーボード。タイピングすると甘く、カリカリした音がします。オーディオ: カリカリした、砂糖のようなタイピング音、嬉しそうな笑い声。",
+      "enterImageUrl": "画像URLを入力:",
+      "imageUrls": "画像URL",
+      "imageUrlsTooltip": "FIRST_AND_LAST_FRAMES_2_VIDEOの場合: 1-2枚の画像\nREFERENCE_2_VIDEOの場合: 1-3枚の画像（高速モデル、16:9のみ）\n画像はアクセス可能な公開URLである必要があります",
+      "addImageUrl": "画像URLを追加",
+      "imageUrlPlaceholder": "https://example.com/image.jpg",
+      "noImagesAdded": "画像が追加されていません。「画像URLを追加」をクリックして参照画像を追加してください。",
+      "ratio": "比率",
+      "ratioTooltip": "16:9: 横向きフォーマット、1080P HDをサポート（16:9のみが1080Pをサポート）\n9:16: モバイル動画用の縦向きフォーマット\n自動: アップロードされた画像に基づいてアスペクト比を自動的に一致",
+      "advancedOptions": "高度なオプション",
+      "seed": "シード（オプション）",
+      "seedTooltip": "ランダムシード（10000-99999）。同じシードは類似のコンテンツを生成します。",
+      "seedPlaceholder": "シードを入力してください",
+      "enableTranslation": "翻訳を有効化",
+      "enableTranslationTooltip": "より良い生成結果のためにプロンプトを自動的に英語に翻訳",
+      "on": "オン",
+      "off": "オフ",
+      "watermark": "ウォーターマーク（オプション）",
+      "watermarkPlaceholder": "MyBrand",
+      "audioDisclaimer": "Googleによると、オーディオは実験的な機能であり、一部の動画では利用できない場合があります。",
+      "audioDisclaimerTooltip": "GoogleのVeo 3.1はデフォルトでオーディオ生成を含みますが、一部の場合（例：未成年者を含む機密コンテンツ）ではオーディオが抑制される場合があります。"
+    },
+    "storyboard": {
+      "invalidImageFile": "有効な画像ファイルを選択してください",
+      "imageSizeTooLarge": "画像サイズは10MB未満である必要があります",
+      "totalDuration": "合計時間 *",
+      "totalLengthDescription": "動画の合計長さ",
+      "shots": "ショット",
+      "remaining": "残り",
+      "addShot": "ショットを追加",
+      "maximumDurationReached": "最大時間に達しました",
+      "allocateRemainingDuration": "生成前に残りの時間（{duration}秒）をすべてシーンに割り当ててください。",
+      "imageUrls": "画像をアップロード",
+      "removeAll": "すべて削除",
+      "selectedImage": "選択された画像",
+      "referenceImage": "参照画像",
+      "imageUploadOnGenerate": "動画生成時に画像がアップロードされます",
+      "selectImage": "画像を選択",
+      "supportedFormats": "サポート形式: JPEG、PNG、WEBP 最大ファイルサイズ: 10MB；最大ファイル数: 1",
+      "uploadImageDescription": "APIの入力として使用する画像ファイルをアップロード",
+      "aspectRatio": "アスペクト比",
+      "portrait": "縦向き",
+      "landscape": "横向き",
+      "aspectRatioDescription": "このパラメータは画像のアスペクト比を定義します。",
+      "shot": "ショット",
+      "shotDescription": "ショット説明",
+      "shotDescriptionPlaceholder": "このショットで何が起こるか説明してください...",
+      "duration": "時間",
+      "generatingStoryboard": "ストーリーボードを生成中...",
+      "generationTimeNote": "⏱️ 通常5-15分かかります。このページを開いたままにしてください。",
+      "exampleDescription": "25秒のマルチシーンストーリーボード動画の例です。シーンを設定して生成をクリックして独自の動画を作成してください。",
+      "exampleNote": "例: 3シーンのストーリーボード（8秒 + 8秒 + 9秒 = 合計25秒）",
+      "whatIsSora3ProStoryboard": "Sora3 Proストーリーボードとは？",
+      "sora3ProStoryboardDescription": "Sora3 Proストーリーボードは、シーケンシャルコンテンツ制作向けに設計された最先端のAI動画生成システムです。YouTube Shorts、TikTok、Reels用に最大25秒のマルチシーンAI動画を構築します。この堅牢なプラットフォームは、マルチシーンの調整を可能にし、視覚的な一貫性と一貫性を維持し、最大25秒の長さの出力を正確に制御し、オーディオ付きのHD品質動画をエクスポートします。",
+      "upTo25sDuration": "最大25秒",
+      "multiSceneControl": "マルチシーン制御（ストーリーボード）",
+      "socialMediaReady": "ソーシャルメディア対応",
+      "hdQualityAudio": "HD品質 + オーディオ",
+      "whatPeopleAreSaying": "Sora3 Proストーリーボードについて人々が言っていること",
+      "keyFeatures": "Sora3 Proストーリーボードの主な機能",
+      "multiSceneSequencing": "マルチシーンシーケンシング",
+      "multiSceneSequencingDescription": "Sora3 Proストーリーボードを使用して、一貫したストーリーラインを作成するために複数のシーンを定義します。Sora3 Proストーリーボードエンジンは、シームレスなマルチシーン動画のためにシーン間のスムーズなトランジションを保証します。",
+      "visualConsistency": "視覚的一貫性",
+      "visualConsistencyDescription": "Sora3 Proストーリーボードは、すべてのシーンにわたって一貫した視覚スタイルと要素を維持し、視聴者がSora3 Proストーリーボードから期待するプロフェッショナル品質の動画出力を提供します。",
+      "flexibleOutputControl": "柔軟な出力制御",
+      "flexibleOutputControlDescription": "Sora3 Proストーリーボードで最大25秒の動画を生成します。Sora3 Proストーリーボードを使用して、コンテンツのニーズに合わせて10秒、15秒、または25秒の時間オプションを選択します。",
+      "referenceImageSupport": "参照画像サポート",
+      "referenceImageSupportDescription": "参照画像をアップロードしてSora3 Proストーリーボード生成プロセスをガイドし、Sora3ストーリーボード動画全体で視覚的一貫性を確保します。",
+      "howToUse": "Sora3 Proストーリーボードの使い方",
+      "step1DefineScenes": "シーンを定義",
+      "step1Description": "Sora3 Proストーリーボードの各シーンを詳細に説明",
+      "step2SetParameters": "パラメータを設定",
+      "step2Description": "時間（10秒/15秒/25秒）とアスペクト比を選択",
+      "step3UploadReference": "参照をアップロード",
+      "step3Description": "Sora3 Proストーリーボードをガイドする画像を追加（オプション）",
+      "step4Generate": "生成",
+      "step4Description": "生成をクリックしてSora3 Proストーリーボードに動画を作成させます",
+      "perfectFor": "TikTok、Instagram Reels、YouTube Shorts、ブランドコンテンツ制作に最適です。詳細については",
+      "pricingPlans": "料金プラン",
+      "pricing": "💎 料金",
+      "pricingDescription": "オーディオ付き高品質マルチシーンAI動画は月額19ドルから",
+      "powerfulStoryboardFeatures": "強力なストーリーボード機能",
+      "sceneBySceneControl": "シーンごとの制御",
+      "sceneBySceneControlDescription": "シーンをドラッグ&ドロップし、プロンプトとアセットをカスタマイズして完璧なフローを実現。",
+      "socialMediaFormats": "ソーシャルメディアフォーマット",
+      "socialMediaFormatsDescription": "TikTok、Instagram Reels、YouTube Shorts用の組み込みテンプレート。",
+      "fastExportShare": "高速エクスポートと共有",
+      "fastExportShareDescription": "Sora3ストーリーボード動画を数分で生成、プレビュー、ダウンロード。"
+    },
+    "promptExamples": {
+      "categories": {
+        "cinematicCameraMoves": "シネマティックカメラムーブ",
+        "lifestyleProductMotion": "ライフスタイル・商品モーション",
+        "natureTravel": "自然・旅行",
+        "futuristicTech": "未来的・テクノロジー",
+        "portraitFashion": "ポートレート・ファッション",
+        "artisticTransformations": "アーティスティック変換"
+      }
+    },
+    "watermarkRemover": {
+      "title": "Sora3 ウォーターマーク除去",
+      "description": "Sora でホストされている動画から Sora のウォーターマークを削除します。公開されている `sora.chatgpt.com` URL を貼り付けて実行してください。通常、API での処理には 1〜3 秒かかります。",
+      "seoTitle": "Sora3 ウォーターマーク除去 | ウォーターマーク削除ツール",
+      "seoDescription": "Sora3 ウォーターマーク除去: Sora でホストされている動画から Sora のウォーターマークを数秒で削除。商用利用可能、API対応、公開 sora.chatgpt.com リンクで動作します。",
+      "input": "入力",
+      "output": "出力",
+      "videoUrl": "video_url",
+      "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
+      "videoUrlHint": "公開アクセス可能で、`https://sora.chatgpt.com/` で始まる必要があります。",
+      "reset": "リセット",
+      "running": "実行中…",
+      "run": "{credits} クレジットで実行",
+      "processing": "処理中…",
+      "waitingForResult": "結果を待機中…",
+      "noOutputYet": "まだ出力がありません",
+      "exampleVideo": "サンプル動画",
+      "exampleVideoDescription": "これは Sora3 AI によって生成されたサンプル動画です。独自の Sora 動画をアップロードしてウォーターマークを削除してください！",
+      "creditsInfo": "このツールは実行ごとに 10 クレジットを消費します。Sora3 動画をクリーンでブランド対応の状態に保ちます。",
+      "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。"
+    }
+  },
+  "demoGallery": {
+    "title": "Sora3で作成できる動画を見る",
+    "description": "Saroのマルチモデルエンジンで生成された本物の映画のような動画。Sora3スタイルのプロンプトとストーリーボード出力を含みます。",
+    "seeMoreExamples": "もっと見る",
+    "tapToUnmute": "タップして音声をオン"
+  },
+  "keyFeatures": {
+    "title": "Sora3 AIの特徴",
+    "noWatermark": {
+      "title": "ウォーターマークなし",
+      "description": "動画はクリーンで、ブランディング可能で、商用利用に最適です。"
+    },
+    "bestCostPerformance": {
+      "title": "最高の費用対効果",
+      "description": "他のAI動画ツールよりも最大10倍安く、充実したクレジットを提供します。"
+    },
+    "fastConvenient": {
+      "title": "高速で便利",
+      "description": "数分で10秒のクリップを生成 — ブラウザで直接。"
+    },
+    "sora3ProStoryboard": {
+      "title": "Sora3 プロストーリーボード（25秒）",
+      "description": "広告、トレーラー、商品紹介、映画のような短編動画のためのSora3ストーリーボードストーリーテリング。"
+    },
+    "textToVideoImageToVideo": {
+      "title": "テキストから動画＆画像から動画",
+      "description": "画像をアップロードして動きをアニメーション化するか、1つの文でシーンを説明します。"
+    },
+    "socialReady": {
+      "title": "SNS対応",
+      "description": "TikTok、Reels、Shorts、有料広告に最適です。"
+    },
+    "trySora3Free": {
+      "title": "Sora3を無料でお試し — 編集不要",
+      "description": "Sora3 AI搭載ツールで映画のような動画の作成を始めましょう。Sora3は動画作成を簡単にします - 経験は不要です。Sora3がプロジェクトで何ができるか発見してください。Sora3を無料でお試し、クリエイターがAI動画生成にSora3を選ぶ理由をご覧ください。",
+      "startGenerating": "生成を開始"
+    }
+  },
+  "testimonials": {
+    "title": "世界中のクリエイターに愛されています",
+    "subtitle": "AI動画生成にSora3を使用している世界中のクリエイターに参加してください。プラットフォームのウォーターマークなしの動画とレンダリング機能について、ユーザーが何と言っているかご覧ください。Sora3テクノロジーを使用するクリエイターがSora3を信頼する理由を発見してください。",
+    "ctaTitle": "AIで動画を作成するクリエイターに参加",
+    "ctaDescription": "ウォーターマークなしの動画、音声機能、効率的なレンダリングを備えたAI動画生成を体験してください。今すぐ動画の作成を始めましょう。",
+    "ctaButton": "今すぐ作成を開始"
+  },
+  "error": {
+    "goHome": "ホーム",
+    "refreshPage": "ページを更新"
+  },
+  "auth": {
+    "signIn": "ログイン",
+    "signInToSora3": "Sora3にログイン",
+    "createAccount": "アカウントを作成",
+    "checkEmail": "メールを確認",
+    "backToSignUp": "サインアップに戻る",
+    "backToSignIn": "ログインに戻る",
+    "confirmationEmailSent": "確認メールを送信しました！",
+    "magicLinkSent": "マジックリンクを送信しました！",
+    "confirmationEmailDescription": "確認リンクを {email} に送信しました。メールを確認し、リンクをクリックしてアカウントを確認してください。",
+    "magicLinkDescription": "ログインリンクを {email} に送信しました",
+    "afterVerification": "確認後、アカウントにログインできます。",
+    "checkEmailAndClick": "メールを確認し、リンクをクリックしてログインしてください。",
+    "fullName": "氏名",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "confirmPassword": "パスワード確認",
+    "enterFullName": "氏名を入力",
+    "enterEmail": "メールアドレスを入力",
+    "createPassword": "パスワードを作成（6文字以上）",
+    "enterPassword": "パスワードを入力",
+    "confirmPasswordPlaceholder": "パスワードを確認",
+    "redirectingToGoogle": "Googleにリダイレクト中..."
+  },
+  "sora3Capabilities": {
+    "title": "Sora3 — 6つの核心機能",
+    "cinematicRealism": {
+      "title": "シネマ級のリアリズム",
+      "description": "Sora3 は映画のような質感・光・カメラワークを再現します。\n\n安定した、高品質で自然な映像。AIっぽさを感じさせません。\n\n商品紹介やストーリー動画に最適。"
+    },
+    "naturalCameraMotion": {
+      "title": "自然なカメラモーション",
+      "description": "トラッキング、ドリー、クレーン、ドローン、横移動などを自動理解。\n\nロボット的でぎくしゃくした動きのない滑らかなトランジション。\n\n動画の映画的な雰囲気を即座に向上させます。"
+    },
+    "consistentCharacters": {
+      "title": "キャラクターと動きの一貫性",
+      "description": "複数のカットでキャラクターが一貫性を保ちます — 顔、服装、プロポーション。\n\n走る、回転、相互作用、ダンスなどの複雑なアクションを処理。\n\nマルチショットストーリーテリングと高品質な広告クリエイティブに最適。"
+    },
+    "longFormPlatformReady": {
+      "title": "最長 25 秒 & マルチプラットフォーム対応",
+      "description": "ストーリーを完全に表現する最大 25 秒の動画を生成。\n\nTikTok、Reels、YouTube Shorts、広告、Eコマース向けに最適化。\n\n透かし無しで、商用利用が可能。"
+    },
+    "advancedSceneIntelligence": {
+      "title": "高度なシーン理解",
+      "description": "オブジェクト、物理、環境、空間関係を理解します。\n\n正確な深度、影、反射を持つ一貫したシーンを生成。\n\nライフスタイル動画、商品デモ、映画的な世界構築に最適。"
+    },
+    "audioSoundGeneration": {
+      "title": "オーディオ・サウンド生成",
+      "description": "同期されたオーディオ（対話、環境音、効果音）を生成。\n\nアクションに合わせて環境音とリアルなフォーリー音を自動追加。\n\n外部の音声編集なしで、没入感のある即座に使用可能な動画を作成。"
+    }
+  },
+  "paymentSuccess": {
+    "title": "お支払いが完了しました！",
+    "message": "ご購入ありがとうございます。クレジットがアカウントに追加されました。",
+    "amount": "金額",
+    "redirecting": "アカウントにリダイレクトしています...",
+    "goToStudio": "スタジオへ",
+    "viewDashboard": "ダッシュボードを表示",
+    "autoRedirect": "数秒後に自動的にリダイレクトされます..."
+  }
+}
+

@@ -1,0 +1,878 @@
+{
+  "common": {
+    "brand": "Sora3",
+    "new": "НОВОЕ",
+    "generate": "Создать",
+    "home": "Главная",
+    "pricing": "Тарифы",
+    "blog": "Блог",
+    "faq": "FAQ",
+    "signIn": "Войти",
+    "getStarted": "Начать",
+    "signOut": "Выйти",
+    "dashboard": "Панель управления",
+    "account": "Аккаунт",
+    "settings": "Настройки",
+    "language": "Язык",
+    "goHome": "На главную",
+    "contactSupport": "Связаться с поддержкой",
+    "viewAllFaqs": "Посмотреть все FAQ",
+    "haveMoreQuestions": "Есть ещё вопросы? Мы здесь, чтобы помочь."
+  },
+  "hero": {
+    "badge": "Next-Gen Sora 3 Platform",
+    "discord": "Вступить в сообщество Discord",
+    "title": "Sora 3 — новое поколение AI-видео скоро здесь",
+    "subtitle": "Создавайте более длинные, четкие и реалистичные видео с Sora 3 — моделью нового поколения, созданной для брендов, креаторов и рассказчиков.",
+    "placeholder": "Опишите видео, которое хотите создать...",
+    "cta": "Создать",
+    "trySora3": "🚀 Скоро — Подписаться на ранний доступ",
+    "trySora2": "Попробовать Sora 2 сейчас",
+    "sora2Description": "Создавайте видео уже сегодня — без водяных знаков, готово для TikTok и рекламы.",
+    "storyboard25s": "Build 25s Sora 3 Stories",
+    "disclaimer": "Независимая платформа, использующая совместимые с Sora и мультимодельные движки. Не аффилирована с OpenAI или Sora3.",
+    "features": {
+      "noWatermark": {
+        "title": "Sora 3 без водяных знаков",
+        "description": "Чистые профессиональные ролики, готовые к коммерческому использованию"
+      },
+      "noRegionalLimits": {
+        "title": "Глобальный доступ к Sora 3",
+        "description": "Доступ из любой точки мира"
+      },
+      "noInviteCode": {
+        "title": "Мгновенный доступ к Sora 3",
+        "description": "Начните создавать сразу, без ожидания"
+      }
+    }
+  },
+  "navigation": {
+    "home": "Главная",
+    "generate": "Создать",
+    "textToVideo": "Текст в видео",
+    "imageToVideo": "Картинка в видео",
+    "storyboard": "Sora3 Storyboard",
+    "watermarkRemover": "Удалить водяной знак",
+    "pricing": "Тарифы",
+    "blog": "Блог",
+    "dashboard": "Панель",
+    "user": "Пользователь",
+    "account": "Аккаунт",
+    "settings": "Настройки",
+    "signOut": "Выйти",
+    "aiTools": "AI‑инструменты",
+    "upgradeNow": "Обновить тариф",
+    "login": "Войти",
+    "startForFree": "Начать сейчас",
+    "preferences": "Предпочтения",
+    "generationHistory": "История генераций",
+    "textToVideoDescription": "Напишите промпт — получите видео",
+    "imageToVideoDescription": "Оживите статичную картинку",
+    "storyboardDescription": "Создавайте более длинные сюжеты",
+    "watermarkRemoverDescription": "Уберите watermark Sora с видео",
+    "whoThisIsFor": {
+      "ecommerce": {
+        "title": "Интернет‑магазины и маркетплейсы"
+      },
+      "shortFilmStudios": {
+        "title": "Студии и продакшны"
+      },
+      "advertisers": {
+        "title": "Рекламодатели"
+      }
+    }
+  },
+  "footer": {
+    "description": "Sora3 AI Видео‑Генератор. Создавайте кинематографические ролики: текст→видео, картинка→видео и Sora3 Storyboard (мультисценовая раскадровка). Доступ к Sora3 без водяных знаков.",
+    "product": "Продукт",
+    "company": "Компания",
+    "resources": "Ресурсы",
+    "support": "Поддержка",
+    "sora3TextToVideo": "Sora3 Текст в видео",
+    "sora3ImageToVideo": "Sora3 Картинка в видео",
+    "sora3Pricing": "Тарифы Sora3",
+    "sora3Faq": "Sora3 FAQ",
+    "sora3Blog": "Блог Sora3",
+    "aiVideoPromptGpt": "AI Video Prompt GPT",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfService": "Условия использования",
+    "refundPolicy": "Политика возврата",
+    "support247": "Поддержка 24/7",
+    "contactUs": "Связаться / Партнёрство",
+    "disclaimer": "sora3ai.io — независимая платформа генерации AI‑видео. Не аффилирована, не одобрена и не спонсируется OpenAI или какими‑либо официальными продуктами \"Sora\". Все товарные знаки принадлежат их владельцам.",
+    "poweredBy": "Работает на собственных пайплайнах видео‑синтеза. Не связана ни с одним официальным вендором.",
+    "copyright": "© 2024 Sora3. Все права защищены.",
+    "companyName": "Aivido LLC",
+    "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
+    "supportEmail": "Поддержка 24/7: support@sora3ai.io",
+    "businessEmail": "Бизнес и партнёрство: team@sora3ai.io",
+    "logoAlt": "Логотип Sora3 AI Видео‑Генератор",
+    "socialLabels": {
+      "twitter": "Подписаться на Twitter",
+      "discord": "Присоединиться к сообществу Discord",
+      "github": "Посетить GitHub",
+      "email": "Связаться по электронной почте",
+      "supportEmail": "Email поддержки 24/7",
+      "businessEmail": "Email для бизнеса и партнёрства"
+    }
+  },
+  "whyThisMatters": {
+    "title": "Почему создатели выбирают нас",
+    "subtitle": "Короткое видео взрывается по всему миру, но доступ к Sora3 ограничен. sora3ai.io помогает сразу получать результат уровня Sora3 без ожиданий.",
+    "challenges": "Проблемы рынка",
+    "solutions": "Чем мы отличаемся",
+    "watermarks": {
+      "title": "Тяжёлые водяные знаки",
+      "description": "Логотипы платформ убивают конверсию и делают ролики непригодными для рекламы."
+    },
+    "pricing": {
+      "title": "Высокие цены",
+      "description": "Западные сервисы слишком дороги для частого теста креативов."
+    },
+    "storyboarding": {
+      "title": "Сложная раскадровка",
+      "description": "25‑секундные Sora3 Storyboard‑ролики обычно требуют продакшн и тех. навыков."
+    },
+    "speed": {
+      "title": "Медленная генерация",
+      "description": "Долгое ожидание ломает поток идей и мешает запускать много тестов."
+    },
+    "noWatermark": {
+      "title": "Sora3 без водяных знаков",
+      "description": "Чистые, сразу готовые к рекламе ролики."
+    },
+    "costPerformance": {
+      "title": "Лучшее соотношение цена/результат",
+      "description": "До 10× дешевле многих AI‑видео‑сервисов при сопоставимом качестве."
+    },
+    "multiModel": {
+      "title": "Мультимодельный пайплайн",
+      "description": "Комбинируем несколько моделей, чтобы повысить стабильность и процент удачных прогонов."
+    },
+    "storyboard": {
+      "title": "25‑секундный Sora3 Storyboard",
+      "description": "Длинные сторителлинг‑ролики, которые реально конвертят в продажу."
+    },
+    "solution": "Все эти проблемы мы закрываем одним сервисом."
+  },
+  "whoThisIsFor": {
+    "title": "Кому подходит sora3ai.io",
+    "subtitle": "Создатели, маркетологи, владельцы бизнеса — любой, кому нужны продающие видео без студийного продакшна.",
+    "creators": {
+      "title": "Создатели и инфлюенсеры",
+      "description": "Выпускайте контент чаще: без водяных знаков и без жёстких бюджетов."
+    },
+    "ecommerce": {
+      "title": "Интернет‑магазины и маркетплейсы",
+      "description": "Генерируйте видео для карточек товара и креативы для рекламы."
+    },
+    "businesses": {
+      "title": "Малый и средний бизнес",
+      "description": "Профессиональное видео по цене нескольких кликов рекламы."
+    },
+    "marketers": {
+      "title": "Маркетологи и агентства",
+      "description": "Быстрый A/B‑тест креативов без ожидания продакшна."
+    },
+    "shortFilmStudios": {
+      "title": "Студии и продакшны",
+      "description": "Кинематографичные короткие форматы для питчей и пилотов."
+    },
+    "advertisers": {
+      "title": "Рекламодатели",
+      "description": "Креативы для TikTok, Reels, Shorts и перформанс‑рекламы."
+    }
+  },
+  "blogShowcase": {
+    "title": "Практическое руководство Sora3 для создателей и брендов",
+    "subtitle": "Короткие практические руководства, которые помогут вам получить больше просмотров и продаж.",
+    "viewAll": "Посмотреть все статьи блога",
+    "readMore": "Читать далее",
+    "featured": "Рекомендуемое"
+  },
+  "howItWorks": {
+    "title": "Как мы генерируем видео уровня Sora3",
+    "subtitle": "Три шага от идеи до готового ролика.",
+    "step1": {
+      "title": "Опишите идею или загрузите картинку",
+      "description": "Введите текстовый промпт или дайте референс‑изображение — модель поймёт контекст."
+    },
+    "step2": {
+      "title": "Выберите длительность и формат",
+      "description": "Настройте соотношение сторон, длину ролика или тайминг для Storyboard до 25 секунд."
+    },
+    "step3": {
+      "title": "Получите и скачайте видео",
+      "description": "Мы собираем видео, добавляем движение и звук — вы скачиваете файл и сразу запускаете в рекламу."
+    }
+  },
+  "faq": {
+    "title": "Часто задаваемые вопросы",
+    "subtitle": "Ответы на основные вопросы о Sora3 и платформе sora3ai.io.",
+    "viewAllFaqs": "Посмотреть все вопросы",
+    "contactSupport": "Связаться с поддержкой",
+    "haveMoreQuestions": "Остались вопросы? Напишите нам — поможем.",
+    "questions": {
+      "whatMakesDifferent": {
+        "question": "Чем sora3ai.io отличается от других AI‑генераторов видео?",
+        "answer": "Мы фокусируемся на рекламе и сторителлинге: 10‑секундные клипы и до 25‑секундных Sora3 Storyboard‑роликов с единым персонажем. Это удобно для TikTok, Reels, YouTube Shorts, карточек товара и лендингов."
+      },
+      "characterConsistency": {
+        "question": "Насколько стабилен персонаж между сценами?",
+        "answer": "sora3ai.io старается сохранять внешний вид, одежду и пропорции персонажа между кадрами, что важно для брендов, маскотов и продуктовых роликов."
+      },
+      "videosLongerThan10s": {
+        "question": "Можно ли делать ролики длиннее 10 секунд?",
+        "answer": "Да, через режим Storyboard можно собирать ролики до 25–30 секунд с несколькими сценами."
+      },
+      "commercialUse": {
+        "question": "Можно ли использовать ролики в коммерческой рекламе?",
+        "answer": "Да, вы можете использовать сгенерированные видео в рекламных кампаниях, на маркетплейсах и в соцсетях при соблюдении нашей политики допустимого использования."
+      },
+      "watermarks": {
+        "question": "Будет ли на видео водяной знак?",
+        "answer": "Наши платные тарифы позволяют скачивать видео без платформенного watermark, чтобы вы могли использовать ролики в брендинге и рекламе."
+      },
+      "officialModel": {
+        "question": "Использует ли sora3ai.io официальный Sora3?",
+        "answer": "sora3ai.io использует совместимые с Sora3 модели и мультимодельный пайплайн. Мы не являемся официальным сервисом OpenAI или Sora3."
+      },
+      "25SecondVideos": {
+        "question": "Можно ли делать 25‑секундные видео?",
+        "answer": "Да, режим Sora3 Storyboard поддерживает мультисценовые ролики до 25 секунд."
+      },
+      "paymentSafe": {
+        "question": "Насколько безопасны платежи?",
+        "answer": "Оплата проходит через защищённые платёжные провайдеры и банки. Данные карт не хранятся на нашей стороне."
+      },
+      "hiddenCharges": {
+        "question": "Есть ли скрытые комиссии?",
+        "answer": "Нет, вы платите только указанную сумму. Для годовых планов действует экономия до 50% по сравнению с помесячной оплатой."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Тарифные планы",
+    "subtitle": "Выберите удобный объём кредитов для генерации AI‑видео. Можно отменить в любой момент.",
+    "secureCheckout": "Безопасная оплата",
+    "cancelAnytime": "Отмена в любой момент",
+    "noSurpriseCharges": "Без скрытых платежей",
+    "fastSupport": "Быстрая поддержка",
+    "priceIncreaseAlert": "Скоро возможен рост цен — зафиксируйте текущую стоимость сейчас!",
+    "pricePerVideoGeneration": "Стоимость за генерацию видео",
+    "marketPrice": "Рыночная цена",
+    "ourPrice": "Наша цена",
+    "marketPriceValue": "$0.10/с",
+    "ourPriceValue": "$0.05/с",
+    "fiftyPercentCheaper": "НА 50% ДЕШЕВЛЕ",
+    "thanMarket": "чем средний рынок",
+    "chooseYourPlan": "Выберите план",
+    "teaserSubtitle": "Профессиональная генерация AI‑видео для рекламы. Отмена в любой момент. Годовой план экономит 50%.",
+    "proTip": "💡 <strong>Pro tip:</strong> Subscription plans include API access, webhooks, and priority support",
+    "plans": {
+      "monthly": "Месячный",
+      "annual": "Годовой",
+      "oneTime": "Разовый пакет",
+      "save50Percent": "Экономия 50%",
+      "mostPopular": "Популярный",
+      "billedAnnually": "Оплата раз в год",
+      "billedMonthly": "Оплата раз в месяц, отмена в любой момент",
+      "savePerYear": "Экономия ${amount} в год",
+      "perMonth": "/месяц",
+      "perYear": "/год",
+      "payOnce": "Оплата один раз — кредиты не сгорают",
+      "oneTimePurchase": "Разовая покупка, без подписки",
+      "buyNow": "Купить",
+      "upToVideos": "до {count} видео Sora3",
+      "oneTimePurchaseLabel": "Разовая покупка",
+      "noSubscriptionRequired": "Подписка не требуется",
+      "commercialUsageRights": "Права коммерческого использования",
+      "pleaseLogInFirst": "Please log in first",
+      "logInToProceed": "Log in to proceed to Creem for payment.",
+      "loginSessionExpired": "Login session expired",
+      "pleaseLogInAgain": "Please log in again to continue your purchase.",
+      "tooManyRequests": "Too many requests",
+      "pleaseWait": "Please wait a moment before trying again.",
+      "tryAgainLater": "Please try again later.",
+      "failedToCreatePaymentLink": "Failed to create payment link",
+      "needHelp": "Need Help?",
+      "contactSupport": "Contact support@sora3ai.io for assistance.",
+      "contactSupportLink": "Contact Support",
+      "features": {
+        "creditsIncluded": "{count} кредитов включено",
+        "aiVideosPerMonth": "{count} AI‑видео в месяц",
+        "aiVideosPerYear": "{count} AI‑видео в год",
+        "hd4kQuality": "Качество HD и 4K",
+        "commercialUsageRights": "Права коммерческого использования",
+        "emailSupport": "Почтовая поддержка",
+        "priorityEmailSupport": "Приоритетная поддержка",
+        "apiAccess": "Доступ к API (скоро)",
+        "generationHistory": "История генераций",
+        "fastestProcessing": "Максимальный приоритет очереди",
+        "professionalConsultation": "1‑на‑1 консультации по креативам"
+      },
+      "cta": {
+        "startCreating": "Начать создавать",
+        "getAnnualDeal": "Взять годовой план",
+        "getCreator": "Выбрать Creator",
+        "bestValue": "Лучшая ценность",
+        "goPro": "Перейти на Pro",
+        "unlockPro": "Открыть Pro‑функции",
+        "saveWithAnnual": "Экономить с годовым планом"
+      },
+      "planNames": {
+        "basic": "Basic",
+        "creator": "Creator",
+        "pro": "Pro"
+      },
+      "credits": "Кредиты"
+    },
+    "generate": {
+      "insufficientCredits": "Недостаточно кредитов. Пожалуйста, купите больше кредитов или подпишитесь на план.",
+      "insufficientCreditsWithDetails": "Недостаточно кредитов. Вам нужно {required} кредитов, но у вас только {available}. {details}",
+      "insufficientCreditsRetry": "Недостаточно кредитов. Пожалуйста, купите больше кредитов для повторной попытки.",
+      "creditDeductionFailed": "Не удалось списать кредиты: {error}. Это может быть связано с проблемой базы данных. Пожалуйста, попробуйте снова или свяжитесь с поддержкой.",
+      "creditSystemError": "Ошибка системы кредитов: {error}. Пожалуйста, свяжитесь с поддержкой, если проблема сохраняется.",
+      "storageBucketNotConfigured": "Хранилище не настроено. Пожалуйста, создайте bucket \"videos\" в Supabase Dashboard → Storage → New bucket → Name: \"videos\" → Public bucket → Create bucket.",
+      "pleaseEnterPrompt": "Пожалуйста, введите ваш промпт",
+      "pleaseUploadImage": "Пожалуйста, загрузите изображение для генерации видео",
+      "watermarkRemover": {
+        "title": "Удаление водяного знака Sora3",
+        "description": "Удалите водяной знак Sora с ваших видео, размещённых на Sora. Вставьте публичный URL `sora.chatgpt.com` и запустите. Обычная обработка занимает 1–3 секунды в API.",
+        "seoTitle": "Удаление водяного знака Sora3 | Удалить водяные знаки Sora",
+        "seoDescription": "Удаление водяного знака Sora3: удалите водяные знаки Sora с видео, размещённых на Sora, за секунды. Коммерческое использование, готово к API, работает с публичными ссылками sora.chatgpt.com.",
+        "input": "Ввод",
+        "output": "Вывод",
+        "videoUrl": "URL видео",
+        "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
+        "videoUrlHint": "Должен быть публично доступен и начинаться с `https://sora.chatgpt.com/`.",
+        "reset": "Сбросить",
+        "running": "Запущено…",
+        "run": "Запустить {credits} кредитов",
+        "processing": "Обработка…",
+        "waitingForResult": "Ожидание результата…",
+        "noOutputYet": "Пока нет результата",
+        "exampleVideo": "Пример видео",
+        "exampleVideoDescription": "Это пример видео, сгенерированного Sora3 AI. Загрузите своё видео Sora для удаления водяных знаков!",
+        "creditsInfo": "Этот инструмент потребляет 10 кредитов за запуск. Держите ваши видео Sora3 чистыми и готовыми к брендингу.",
+        "browserNotSupportVideo": "Ваш браузер не поддерживает тег video."
+      }
+    },
+    "modal": {
+      "insufficientCredits": "Недостаточно кредитов",
+      "upgradeYourPlan": "Обновить ваш план",
+      "subscriptionRequired": "Требуется подписка",
+      "insufficientCreditsDescription": "Ваших текущих кредитов недостаточно для генерации этого видео. Подпишитесь на план и откройте неограниченные творческие возможности с большим количеством кредитов!",
+      "upgradePlanDescription": "Выберите план подписки для доступа к премиум функциям.",
+      "subscriptionRequiredDescription": "Для {feature} вам нужен активный план подписки.",
+      "pleaseLogInFirst": "Пожалуйста, сначала войдите",
+      "logInToProceed": "Войдите, чтобы перейти к подписке.",
+      "loginSessionExpired": "Сессия входа истекла",
+      "pleaseLogInAgain": "Пожалуйста, войдите снова, чтобы продолжить подписку.",
+      "subscriptionFailed": "Подписка не удалась",
+      "unexpectedError": "Произошла неожиданная ошибка."
+    },
+    "faqTitle": "Frequently Asked Questions",
+    "faqCancelAnytime": {
+      "question": "Can I cancel anytime?",
+      "answer": "Yes! All plans can be canceled anytime. You'll retain access until the end of your billing period."
+    },
+    "faqCreditsRollOver": {
+      "question": "Do unused credits roll over?",
+      "answer": "Subscription bucket resets each billing period and does not roll over. One-time add-on credits go to the flexible bucket and are not cleared by subscription resets."
+    },
+    "faqRefundPolicy": {
+      "question": "What is sora3ai.io refund policy?",
+      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@sora3ai.io for refunds. For general inquiries and partnerships, contact team@sora3ai.io. Refunds are processed within 5-7 business days."
+    },
+    "faqContentRestrictions": {
+      "question": "Are there any video content restrictions?",
+      "answer": "Our platform enforces strict content policies. We prohibit the generation of harmful, illegal, or inappropriate content. All generated videos undergo automatic screening to ensure policy compliance."
+    },
+    "faqCreditsDeduction": {
+      "question": "Will credits be deducted if generation fails?",
+      "answer": "No. Credits are deducted atomically when a job starts, and automatically refunded if the generation fails or the upstream service returns an error. Refunds usually appear within a minute."
+    },
+    "faqCancelSubscription": {
+      "question": "What happens to credits if I cancel my subscription?",
+      "answer": "You can cancel anytime. Flexible (one-time) credits remain available. Subscription bucket follows your billing period and stops refreshing after the current period ends."
+    }
+  },
+  "auth": {
+    "signIn": "Войти",
+    "signInToSora3": "Войти в Sora3",
+    "createAccount": "Создать аккаунт",
+    "checkEmail": "Проверьте почту",
+    "backToSignUp": "Назад к регистрации",
+    "backToSignIn": "Назад ко входу",
+    "confirmationEmailSent": "Письмо с подтверждением отправлено!",
+    "magicLinkSent": "Magic‑ссылка отправлена!",
+    "confirmationEmailDescription": "Мы отправили ссылку на {email}. Перейдите по ней, чтобы подтвердить аккаунт.",
+    "magicLinkDescription": "Мы отправили ссылку для входа на {email}",
+    "afterVerification": "После подтверждения вы сможете войти.",
+    "checkEmailAndClick": "Проверьте почту и перейдите по ссылке.",
+    "fullName": "Полное имя",
+    "email": "Email",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "enterFullName": "Введите полное имя",
+    "enterEmail": "Введите email",
+    "createPassword": "Создайте пароль (мин. 6 символов)",
+    "enterPassword": "Введите пароль",
+    "confirmPasswordPlaceholder": "Повторите пароль",
+    "redirectingToGoogle": "Перенаправляем на Google..."
+  },
+  "generate": {
+    "generate": "Генерировать",
+    "generating": "Генерация...",
+    "readyToGenerate": "Готово к генерации",
+    "startGeneration": "Запустить генерацию",
+    "enterPrompt": "Введите промпт и нажмите \"Генерировать\", чтобы создать видео",
+    "videoBeingCreated": "Ваше видео создаётся. Это может занять несколько минут.",
+    "initializingGeneration": "Инициализация генерации...",
+    "aiWorkSubtitles": {
+      "writingOpeningScene": "🎬 Writing your opening scene…",
+      "paintingBackground": "🎨 Painting background details…",
+      "recordingNarrator": "🎙️ Recording the narrator's voice…",
+      "addingSoundscape": "🔊 Adding background soundscape…",
+      "syncingEverything": "🚀 Syncing everything together…"
+    },
+    "videoGeneratedSuccessfully": "Видео успешно сгенерировано!",
+    "videoReady": "Ваше видео готово. URL видео будет доступен в ближайшее время.",
+    "generateWithCredits": "Генерировать · {creditCost} кредитов",
+    "generateShots": "Генерировать раскадровку из {count} сцен",
+    "addPromptsToAllShots": "Добавьте промпты ко всем сценам для генерации",
+    "reset": "Сбросить",
+    "input": "Ввод",
+    "output": "Вывод",
+    "video": "Видео",
+    "credits": "Кредиты",
+    "exampleVideo": "Пример видео",
+    "sampleVideoDescription": "Это пример видео, сгенерированного Sora3 AI. Создайте свои видео, используя панель ввода!",
+    "sampleVideoDescriptionUnauthenticated": "Это пример видео, сгенерированного Sora3 AI. Зарегистрируйтесь, чтобы создать своё!",
+    "browserNotSupportVideo": "Ваш браузер не поддерживает тег video.",
+    "signUpToCreate": "Зарегистрируйтесь, чтобы создавать свои ролики",
+    "textToVideoTitle": "AI‑генератор: текст в видео",
+    "textToVideoSubtitle": "Превратите идею в кинематографический ролик — просто текстом.",
+    "textToVideoFeaturesTitle": "The Features of AI Video Generator for Text to Video",
+    "featureAIPowered": {
+      "title": "AI-Powered Script-to-Screen Magic",
+      "description": "With Text to Video, all you need is a prompt. Whether it's a single sentence or a detailed story, our AI engine interprets your text and converts it into stunning visuals. Ideal for creators, marketers, educators, and anyone who wants to turn words into high-impact video."
+    },
+    "featureCinematic": {
+      "title": "Cinematic Quality with Zero Editing Skills",
+      "description": "Our advanced AI ensures every frame is professionally rendered. You get smooth transitions, realistic lighting, and dynamic motion - without ever opening a video editor. From social reels to product explainers, your content gets a studio-level upgrade."
+    },
+    "featureAudio": {
+      "title": "Built-in Audio That Matches Your Message",
+      "description": "No need for separate sound design. The AI generates background music, ambient sounds, or even voiceovers in sync with your script. It's an end-to-end AI Video Generator experience, built for creators in a hurry."
+    },
+    "featureContextual": {
+      "title": "Contextual Scene Generation with Human-Centric Focus",
+      "description": "The system understands not just your words, but the mood, tone, and intent behind them. Whether you want suspense, humor, emotion, or clarity - the AI chooses visuals that align with your purpose."
+    },
+    "howToUseTitle": "How to Use the AI Video Generator for Text to Video",
+    "howToUseStep1": {
+      "title": "Sign Up or Log In to sora3ai.io",
+      "description": "Create an account to unlock the full features of our Text to Video interface."
+    },
+    "howToUseStep2": {
+      "title": "Access the Text to Video Creation Panel",
+      "description": "Find the tool on your dashboard and choose to start from scratch or use AI assistance."
+    },
+    "howToUseStep3": {
+      "title": "Type or Paste Your Script",
+      "description": "Enter your idea in the text box. You can type a simple prompt, scene description, or full script."
+    },
+    "howToUseStep4": {
+      "title": "Click to Generate",
+      "description": "Click the \"Generate\" button. The AI will process your script and create a video with matching visuals, motion, and music. It only takes a few minutes, and your video will be ready to preview and download."
+    },
+    "whoUsesTitle": "Who Uses Sora3?",
+    "whoUsesContentCreators": "Content creators",
+    "whoUsesTikTokMarketers": "TikTok marketers",
+    "imageToVideoTitle": "Sora3 Image to Video Generator - Transform Photos into Cinematic Videos",
+    "imageToVideoSubtitle": "Use Sora3 AI to bring your static images to life with cinematic motion. Sora3 image-to-video technology creates professional videos from photos with natural movement and realistic effects. Just upload your image and let Sora3 handle the rest.",
+    "imageToVideoFeaturesTitle": "Sora3 Image to Video Features - Advanced AI Video Generation",
+    "imageToVideoFeature1": {
+      "title": "Sora3 Simple Image-to-Motion Transformation",
+      "description": "With Sora3 Image to Video, just upload your photo and watch it come alive. Sora3 AI engine analyzes your image and generates natural, cinematic motion that enhances the scene. Sora3 is perfect for product showcases, artistic creations, and bringing still moments into dynamic stories."
+    },
+    "imageToVideoFeature2": {
+      "title": "Sora3 Professional Motion with Zero Animation Skills",
+      "description": "Sora3 advanced AI understands depth, lighting, and composition. Sora3 generates smooth camera movements, natural object motion, and realistic environmental effects - all without requiring any animation or video editing expertise. Transform your portfolio photos into professional video content with Sora3."
+    },
+    "imageToVideoFeature3": {
+      "title": "Sora3 Automatic Audio Generation",
+      "description": "Every Sora3 video comes with perfectly matched background music and ambient sounds. Sora3 AI analyzes your image's mood and atmosphere to create audio that complements the visual story. It's a complete Sora3 video creation experience from a single image."
+    },
+    "imageToVideoFeature4": {
+      "title": "Sora3 Intelligent Scene Understanding",
+      "description": "Sora3 AI recognizes objects, people, landscapes, and scenes in your image. Sora3 generates motion that makes sense contextually - whether it's a gentle breeze through trees, a product rotating in 3D space, or a portrait with subtle movement. Every Sora3 animation feels natural and purposeful."
+    },
+    "imageToVideoHowToUseTitle": "How to Use Sora3 Image to Video Generator",
+    "imageToVideoHowToUseStep1": {
+      "title": "Sign Up or Log In to sora3ai.io",
+      "description": "Create an account to unlock the full Sora3 Image to Video features and start using Sora3 AI technology."
+    },
+    "imageToVideoHowToUseStep2": {
+      "title": "Access Sora3 Image to Video Panel",
+      "description": "Navigate to the Sora3 Image to Video tool on your dashboard. Sora3 interface is designed for easy image-to-video conversion."
+    },
+    "imageToVideoHowToUseStep3": {
+      "title": "Upload Your Image to Sora3",
+      "description": "Drag and drop or select your image file for Sora3 processing. Sora3 supports photos, illustrations, product images, or any static visual you want to animate with Sora3."
+    },
+    "imageToVideoHowToUseStep4": {
+      "title": "Generate with Sora3",
+      "description": "Click the \"Generate\" button and let Sora3 AI analyze your image. Sora3 creates videos with natural motion, camera movement, and synchronized audio. Your Sora3 animated video will be ready in minutes."
+    },
+    "imageToVideoPageTitle": "Sora3 Image to Video Generator",
+    "imageToVideoPageSubtitle": "Transform your images into cinematic videos with Sora3 AI technology — no watermark",
+    "imageToVideoTestimonialsTitle": "Why Choose Sora3 Image to Video Generator",
+    "imageToVideoTestimonial1": {
+      "quote": "I uploaded a product photo and Sora3 generated a professional video ad in minutes. Sora3 has completely changed how I create content for my online store!",
+      "author": "Emma L., E-commerce Owner"
+    },
+    "imageToVideoTestimonial2": {
+      "quote": "As a photographer, I love how Sora3 brings my static images to life. Sora3 motion feels natural and adds so much depth to my portfolio.",
+      "author": "Michael R., Professional Photographer"
+    },
+    "imageToVideoTestimonial3": {
+      "quote": "Sora3 Image to Video feature saved me hours of animation work. I can now create engaging social media content from my existing photos instantly with Sora3.",
+      "author": "Jessica T., Social Media Manager"
+    },
+    "imageToVideoTestimonial4": {
+      "quote": "I used this to animate property photos for my real estate listings. The videos look professional and help properties stand out in the market.",
+      "author": "Robert K., Real Estate Agent"
+    },
+    "imageToVideoTestimonial5": {
+      "quote": "Perfect for turning my design mockups into animated presentations. The AI understands the composition and adds motion that makes sense.",
+      "author": "Alex W., Graphic Designer"
+    },
+    "imageToVideoTestimonial6": {
+      "quote": "From a single product photo to a full video ad - this tool has streamlined my entire content creation workflow. Highly recommend!",
+      "author": "Sarah H., Marketing Director"
+    },
+    "pricingBanner": "💎 Pricing: Starting from $19/month for high-quality 100 AI-generated videos with audio",
+    "faqImageToVideoTitle": "Frequently Asked Questions About AI Video Generator for Image to Video",
+    "faqImageToVideo": {
+      "whatIsTool": {
+        "question": "What is the Image to Video tool?",
+        "answer": "Our AI Image to Video tool transforms your static images into fully animated videos using advanced AI. Simply upload your photo, illustration, or product image, and the AI brings it to life with natural motion, camera movements, and synchronized audio."
+      },
+      "needExperience": {
+        "question": "Do I need any animation or video editing experience to use the Image to Video tool?",
+        "answer": "No experience is needed. Simply upload your image file, and the AI will automatically generate a high-quality animated video with natural motion and professional effects - no technical skills required."
+      },
+      "imageTypes": {
+        "question": "What types of images work best with the Image to Video tool?",
+        "answer": "The tool works with a wide variety of images including product photos, portraits, landscapes, illustrations, architectural photos, and design mockups. The AI analyzes the composition and generates motion that makes sense contextually for each image type."
+      },
+      "howLong": {
+        "question": "How long does it take to generate a video from an image?",
+        "answer": "Most videos are generated in just a few minutes, depending on complexity. The AI analyzes your image, generates motion, and adds synchronized audio. You'll be able to preview and download your animated video once it's ready."
+      },
+      "motionType": {
+        "question": "What kind of motion does the AI add to images?",
+        "answer": "The AI generates contextually appropriate motion such as smooth camera movements, natural object motion, environmental effects (like wind through trees), product rotations, and subtle portrait movements. The motion enhances the image without being distracting."
+      },
+      "commercialUse": {
+        "question": "Can I use Image to Video generated videos for commercial purposes?",
+        "answer": "Yes. Videos created using our AI can be used for marketing, e-commerce, social media, business presentations, and any other commercial use, as long as they follow our usage and licensing terms."
+      }
+    },
+    "getStartedImageToVideo": {
+      "title": "Get Started with AI Video Generator for Image to Video",
+      "description": "Ready to bring your images to life? Upgrade to access faster rendering, longer video durations, advanced motion effects, and premium styles. Whether you're creating product ads, portfolio showcases, or social media content, our Pro plan gives you everything you need to transform static images into stunning, animated videos - effortlessly.",
+      "button": "Get Premium"
+    },
+    "reframeMode": {
+      "model": "Модель",
+      "sora3": "Sora3",
+      "sora3Pro": "Sora3 Pro",
+      "sora3Description": "Продвинутая модель генерации видео OpenAI с высоким качеством и точным контролем.",
+      "sora3ProDescription": "Премиум модель генерации видео OpenAI с улучшенным качеством, превосходным реализмом и расширенными возможностями контроля.",
+      "prompt": "Промпт *",
+      "promptTooltip": "Опишите движение, которое хотите создать из референсного изображения",
+      "aiExamples": "Примеры AI",
+      "promptExamplesTitle": "Примеры промптов для изображение→видео",
+      "promptExamplesDescription": "Просмотрите примеры промптов для вдохновения при генерации видео из изображений",
+      "useThisPrompt": "Использовать этот промпт",
+      "promptGpt": "Prompt GPT",
+      "promptGptTooltip": "Нужно вдохновение? Обсудите движения камеры, сюжетные моменты и аудио-подсказки с AI Video Prompt GPT, затем вставьте улучшенный промпт сюда.",
+      "promptPlaceholder": "Опишите движение, которое хотите создать. Например: \"Плавный зум на руки суши-повара, когда он аккуратно формирует рис, с мягким фокусом на фоне\"",
+      "referenceImage": "Референсное изображение *",
+      "referenceImageTooltip": "Загрузите одно референсное изображение или видео (JPG, PNG, WEBP, MP4, MOV до 10 МБ), которое будет использоваться как начальный кадр.",
+      "changeImage": "Изменить изображение",
+      "uploadReferenceFile": "Загрузить референсный файл",
+      "dragDropText": "Перетащите изображение или видео сюда, или нажмите для выбора",
+      "fileFormatText": "Поддерживаются JPG, PNG, WEBP, MP4, MOV до 10 МБ",
+      "aspectRatio": "Соотношение сторон",
+      "aspectRatioTooltip": "Выберите целевое соотношение сторон для выходного видео.",
+      "portrait": "Вертикальное",
+      "landscape": "Горизонтальное",
+      "duration": "Длительность",
+      "durationTooltip": "Выберите длительность видео: 10 секунд или 15 секунд",
+      "quality": "Качество",
+      "qualityTooltip": "Standard: Ниже стоимость, хорошее качество. High: Премиум качество с более высокой стоимостью.",
+      "standard": "Стандарт",
+      "high": "Высокое"
+    },
+    "veo3ImageMode": {
+      "image": "Изображение *",
+      "startFrame": "Начальный кадр",
+      "endFrame": "Конечный кадр",
+      "uploadStartFrame": "Загрузить начальный кадр",
+      "uploadEndFrame": "Загрузить конечный кадр",
+      "dragDropImage": "Перетащите или нажмите для загрузки изображения",
+      "supportedFormats": "Поддерживаемые форматы: JPG, JPEG, PNG; каждый файл макс. 10 МБ",
+      "generationPrompt": "Промпт генерации *",
+      "promptPlaceholder": "Камера выполняет плавный 180-градусный дуговой кадр, начиная с фронтального вида певицы и обходя её вокруг, чтобы плавно закончить на кадре POV сзади неё на сцене. Певица поёт \"когда ты смотришь мне в глаза, я вижу миллион звёзд\".",
+      "ratio": "Соотношение сторон",
+      "ratioTooltip": "16:9: Горизонтальный формат, поддерживает 1080P HD (только 16:9 поддерживает 1080P)\n9:16: Вертикальный формат для мобильных видео\nAuto: Автоматически подбирает соотношение сторон на основе загруженного изображения",
+      "auto": "Авто",
+      "seed": "Seed (опционально)",
+      "seedTooltip": "Случайное seed (10000-99999). Одинаковое seed генерирует похожий контент.",
+      "seedPlaceholder": "введите seed",
+      "generating": "Генерация...",
+      "generate": "Генерировать"
+    },
+    "errors": {
+      "uploadAtLeastOneImage": "Пожалуйста, загрузите хотя бы одно изображение (Начальный кадр или Конечный кадр)",
+      "invalidSoraUrl": "Введите корректный URL Sora, начинающийся с https://sora.chatgpt.com/.",
+      "referenceImageUrlRequired": "URL эталонного изображения требуется для режима преобразования изображения в видео"
+    },
+    "defaultPrompts": {
+      "smoothTransition": "Создать плавный переход между кадрами",
+      "smoothAnimation": "Создать плавную анимацию из референсного изображения"
+    },
+    "fallbacks": {
+      "getPremium": "Получить Premium",
+      "generating": "Генерация...",
+      "startGeneration": "Запустить генерацию"
+    },
+    "costEstimate": "Расчёт стоимости",
+    "baseCost": "Базовая стоимость ({duration}с)",
+    "aspectRatioCost": "Соотношение сторон ({aspectRatio})",
+    "total": "Итого",
+    "creditsCount": "{count} кредитов",
+    "availableCredits": "Доступно кредитов: {count}",
+    "sufficientBalance": "✓ Достаточно средств",
+    "insufficientCredits": "⚠ Недостаточно кредитов",
+    "acceptableUsePolicy": "Политика допустимого использования",
+    "acceptableUsePolicyDescription": "Строго запрещено использовать этот сервис для генерации незаконного контента, такого как мошенничество, выдача себя за другое лицо, нарушение авторских прав и т.д.",
+    "brandStatement": "Заявление о бренде",
+    "brandStatementDescription": "Этот сервис не имеет связи или официальных отношений с Google, Vertex AI или Flow.",
+    "veo3Mode": {
+      "generationPrompt": "Промпт генерации",
+      "promptPlaceholder": "Клавиатура, клавиши которой сделаны из разных видов конфет. Печать издаёт сладкие, хрустящие звуки. Аудио: Хрустящие, сахарные звуки печати, радостный смех.",
+      "enterImageUrl": "Введите URL изображения:",
+      "imageUrls": "URL изображений",
+      "imageUrlsTooltip": "Для FIRST_AND_LAST_FRAMES_2_VIDEO: 1-2 изображения\nДля REFERENCE_2_VIDEO: 1-3 изображения (Быстрая модель, только 16:9)\nИзображения должны быть доступными публичными URL",
+      "addImageUrl": "Добавить URL изображения",
+      "imageUrlPlaceholder": "https://example.com/image.jpg",
+      "noImagesAdded": "Изображения не добавлены. Нажмите \"Добавить URL изображения\" для добавления референсных изображений.",
+      "ratio": "Соотношение сторон",
+      "ratioTooltip": "16:9: Горизонтальный формат, поддерживает 1080P HD (только 16:9 поддерживает 1080P)\n9:16: Вертикальный формат для мобильных видео\nAuto: Автоматически подбирает соотношение сторон на основе загруженного изображения",
+      "advancedOptions": "Дополнительные настройки",
+      "seed": "Seed (опционально)",
+      "seedTooltip": "Случайное seed (10000-99999). Одинаковое seed генерирует похожий контент.",
+      "seedPlaceholder": "введите seed",
+      "enableTranslation": "Включить перевод",
+      "enableTranslationTooltip": "Автоматически переводить промпты на английский для лучших результатов генерации",
+      "on": "Вкл",
+      "off": "Выкл",
+      "watermark": "Водяной знак (опционально)",
+      "watermarkPlaceholder": "MyBrand",
+      "audioDisclaimer": "According to google, audio is an experimental feature and may be unavailable on some videos.",
+      "audioDisclaimerTooltip": "Google's Veo 3.1 includes audio generation by default, but in some cases (e.g., sensitive content involving minors) audio may be suppressed.",
+      "auto": "Авто"
+    },
+    "storyboard": {
+      "invalidImageFile": "Пожалуйста, выберите корректный файл изображения",
+      "imageSizeTooLarge": "Размер изображения должен быть менее 10 МБ",
+      "totalDuration": "Общая длительность *",
+      "totalLengthDescription": "Общая длина видео",
+      "shots": "сцен",
+      "remaining": "Осталось",
+      "addShot": "Добавить сцену",
+      "maximumDurationReached": "Достигнута максимальная длительность",
+      "allocateRemainingDuration": "Пожалуйста, распределите всю оставшуюся длительность ({duration}с) по сценам перед генерацией.",
+      "imageUrls": "Загрузить изображение",
+      "removeAll": "Удалить всё",
+      "selectedImage": "Выбранное изображение",
+      "referenceImage": "Референсное изображение",
+      "imageUploadOnGenerate": "Изображение будет загружено при генерации видео",
+      "selectImage": "Выбрать изображение",
+      "supportedFormats": "Поддерживаемые форматы: JPEG, PNG, WEBP Максимальный размер файла: 10 МБ; Максимум файлов: 1",
+      "uploadImageDescription": "Загрузите файл изображения для использования в качестве входных данных для API",
+      "aspectRatio": "Соотношение сторон",
+      "portrait": "Вертикальное",
+      "landscape": "Горизонтальное",
+      "aspectRatioDescription": "Этот параметр определяет соотношение сторон изображения.",
+      "shot": "Сцена",
+      "shotDescription": "Описание сцены",
+      "shotDescriptionPlaceholder": "Опишите, что происходит в этой сцене...",
+      "duration": "Длительность",
+      "generatingStoryboard": "Генерация раскадровки...",
+      "generationTimeNote": "⏱️ Обычно занимает 5-15 минут. Пожалуйста, держите эту страницу открытой.",
+      "exampleDescription": "Вот пример 25-секундного мультисценового видео-раскадровки. Настройте свои сцены и нажмите генерацию, чтобы создать своё.",
+      "exampleNote": "Пример: 3-сценовая раскадровка (8с + 8с + 9с = 25с всего)",
+      "whatIsSora3ProStoryboard": "What is Sora3 Pro Storyboard?",
+      "sora3ProStoryboardDescription": "Sora3 Pro Storyboard is a cutting-edge AI video generation system designed for sequential content production. Build multi-scene AI videos up to 25s for Youtube Shorts, TikTok and Reels. This robust platform enables multi-scene coordination, maintains visual consistency and coherence, provides precise control over outputs up to 25 seconds in length, and exports HD quality videos with audio.",
+      "upTo25sDuration": "Up to 25s Duration",
+      "multiSceneControl": "Multi-Scene Control (Storyboard)",
+      "socialMediaReady": "Social Media Ready",
+      "hdQualityAudio": "HD Quality + Audio",
+      "whatPeopleAreSaying": "What People Are Saying About Sora3 Pro Storyboard",
+      "keyFeatures": "Key Features of Sora3 Pro Storyboard",
+      "multiSceneSequencing": "Multi-Scene Sequencing",
+      "multiSceneSequencingDescription": "With Sora3 Pro Storyboard, define multiple scenes in order to create coherent storylines. The Sora3 Pro Storyboard engine ensures smooth transitions between scenes for seamless multi-scene videos.",
+      "visualConsistency": "Visual Consistency",
+      "visualConsistencyDescription": "Sora3 Pro Storyboard maintains consistent visual style and elements across all scenes, delivering professional-quality video output that viewers expect from Sora3 Pro Storyboard.",
+      "flexibleOutputControl": "Flexible Output Control",
+      "flexibleOutputControlDescription": "Generate videos up to 25 seconds with Sora3 Pro Storyboard. Choose 10s, 15s, or 25s duration options to fit your content needs using Sora3 Pro Storyboard.",
+      "referenceImageSupport": "Reference Image Support",
+      "referenceImageSupportDescription": "Upload a reference image to guide the Sora3 Pro Storyboard generation process, ensuring visual consistency throughout your Sora3 Storyboard video.",
+      "howToUse": "How to Use Sora3 Pro Storyboard",
+      "step1DefineScenes": "Define Scenes",
+      "step1Description": "Describe each scene in detail for Sora3 Pro Storyboard",
+      "step2SetParameters": "Set Parameters",
+      "step2Description": "Choose duration (10s/15s/25s) and aspect ratio",
+      "step3UploadReference": "Upload Reference",
+      "step3Description": "Add an image to guide Sora3 Pro Storyboard (Optional)",
+      "step4Generate": "Generate",
+      "step4Description": "Click generate and let Sora3 Pro Storyboard create your video",
+      "perfectFor": "Perfect for TikTok, Instagram Reels, YouTube Shorts, and brand content creation. Learn more about our",
+      "pricingPlans": "pricing plans",
+      "pricing": "💎 Pricing",
+      "pricingDescription": "Starting from $19/month for high-quality multi-scene AI videos with audio",
+      "powerfulStoryboardFeatures": "Powerful Storyboard Features",
+      "sceneBySceneControl": "Scene-by-Scene Control",
+      "sceneBySceneControlDescription": "Drag & drop scenes, customize prompts & assets for perfect flow.",
+      "socialMediaFormats": "Social Media Formats",
+      "socialMediaFormatsDescription": "Built-in templates for TikTok, Instagram Reels, YouTube Shorts.",
+      "fastExportShare": "Fast Export & Share",
+      "fastExportShareDescription": "Generate, preview and download your Sora3 Storyboard videos in minutes."
+    },
+    "promptExamples": {
+      "categories": {
+        "cinematicCameraMoves": "Кинематографические движения камеры",
+        "lifestyleProductMotion": "Образ жизни и движение продукта",
+        "natureTravel": "Природа и путешествия",
+        "futuristicTech": "Футуристика и технологии",
+        "portraitFashion": "Портрет и мода",
+        "artisticTransformations": "Художественные преобразования"
+      }
+    },
+    "watermarkRemover": {
+      "title": "Sora3 Watermark Remover",
+      "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
+      "seoTitle": "Sora3 Watermark Remover | Remove Sora Watermarks",
+      "seoDescription": "Sora3 watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+      "input": "Input",
+      "output": "Output",
+      "videoUrl": "video_url",
+      "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
+      "videoUrlHint": "Must be publicly accessible and start with `https://sora.chatgpt.com/`.",
+      "reset": "Reset",
+      "running": "Running…",
+      "run": "Run {credits}credits",
+      "processing": "Processing…",
+      "waitingForResult": "Waiting for result…",
+      "noOutputYet": "No output yet",
+      "exampleVideo": "Example Video",
+      "exampleVideoDescription": "This is a sample video generated by Sora3 AI. Upload your own Sora video to remove watermarks!",
+      "creditsInfo": "This tool consumes 10 credits per run. Keep your Sora3 videos clean and brand-ready.",
+      "browserNotSupportVideo": "Your browser does not support the video tag."
+    },
+    "pleaseEnterPrompt": "Пожалуйста, введите промпт для генерации видео",
+    "pleaseUploadImage": "Пожалуйста, загрузите изображение для генерации видео"
+  },
+  "demoGallery": {
+    "title": "Примеры того, что можно сделать",
+    "description": "Реальные кинематографические ролики, сгенерированные нашим мультимодельным движком Sora3.",
+    "seeMoreExamples": "Смотреть ещё примеры",
+    "tapToUnmute": "Нажмите, чтобы включить звук"
+  },
+  "keyFeatures": {
+    "title": "Почему именно sora3ai.io",
+    "noWatermark": {
+      "title": "Без водяных знаков",
+      "description": "Чистые ролики, готовые под бренд и рекламу."
+    },
+    "bestCostPerformance": {
+      "title": "Максимальная выгода",
+      "description": "До 10× дешевле аналогичных AI‑сервисов при сопоставимом качестве."
+    },
+    "fastConvenient": {
+      "title": "Быстро и удобно",
+      "description": "10‑секундные клипы за минуты прямо в браузере."
+    },
+    "sora3ProStoryboard": {
+      "title": "Sora3 Pro Storyboard (25 секунд)",
+      "description": "Мультисценовые истории для реклам и продуктовых роликов."
+    },
+    "textToVideoImageToVideo": {
+      "title": "Текст→видео и картинка→видео",
+      "description": "Опишите сцену или загрузите изображение — всё остальное сделает модель."
+    },
+    "socialReady": {
+      "title": "Готово для соцсетей",
+      "description": "Форматы под TikTok, Reels, Shorts и перформанс‑рекламу."
+    },
+    "trySora3Free": {
+      "title": "Попробуйте Sora3 бесплатно — без монтажа",
+      "description": "Начните генерировать ролики уже сегодня и оцените качество своими глазами.",
+      "startGenerating": "Начать генерацию"
+    }
+  },
+  "testimonials": {
+    "title": "Создатели по всему миру уже с нами",
+    "subtitle": "Присоединяйтесь к авторам, которые используют Sora3 для AI‑видео без водяных знаков.",
+    "ctaTitle": "Начните делать видео с AI",
+    "ctaDescription": "Генерируйте ролики с озвучкой и без watermark, оптимизированные под рекламу.",
+    "ctaButton": "Начать сейчас"
+  },
+  "error": {
+    "goHome": "На главную",
+    "refreshPage": "Обновить страницу"
+  },
+  "sora3Capabilities": {
+    "title": "Sora3 — Шесть основных возможностей",
+    "cinematicRealism": {
+      "title": "Кинематографичный реализм",
+      "description": "Sora3 даёт киношный свет, камеру и текстуры. Стабильная картинка без артефактов — идеально для реклам и бренд‑видео."
+    },
+    "naturalCameraMotion": {
+      "title": "Натуральное движение камеры",
+      "description": "Понимает трекинг, долли, кран, дрон и боковые проезды автоматически.\n\nПлавные переходы без роботного или дёрганого движения.\n\nМгновенно повышает кинематографичность вашего видео."
+    },
+    "consistentCharacters": {
+      "title": "Стабильные персонажи и движение",
+      "description": "Персонажи остаются стабильными между кадрами — лицо, одежда, пропорции.\n\nОбрабатывает сложные действия: бег, повороты, взаимодействие или танцы.\n\nИдеально для мультикадрового сторителлинга и качественной рекламной креативности."
+    },
+    "longFormPlatformReady": {
+      "title": "До 25 секунд и готово для площадок",
+      "description": "Генерируйте видео до 25 секунд, полностью представляющие вашу историю.\n\nОптимизировано для TikTok, Reels, YouTube Shorts, рекламы и e‑commerce.\n\nБез водяных знаков, готово к коммерческому использованию."
+    },
+    "advancedSceneIntelligence": {
+      "title": "Продвинутый интеллект сцен",
+      "description": "Понимает объекты, физику, окружение и пространственные отношения.\n\nСоздаёт связные сцены с точной глубиной, тенями и отражениями.\n\nОтлично подходит для lifestyle‑видео, демо продуктов и кинематографического построения мира."
+    },
+    "audioSoundGeneration": {
+      "title": "Генерация аудио и звука",
+      "description": "Генерирует синхронизированное аудио — диалоги, фоновые звуки и звуковые эффекты.\n\nАвтоматически добавляет окружающие звуки и реалистичный фoley, соответствующий действиям.\n\nСоздаёт погружающие, готовые к использованию видео без внешнего редактирования звука."
+    }
+  },
+  "paymentSuccess": {
+    "title": "Платёж успешно выполнен!",
+    "message": "Спасибо за покупку. Кредиты были добавлены на ваш счёт.",
+    "amount": "Сумма",
+    "redirecting": "Перенаправление в ваш аккаунт...",
+    "goToStudio": "Перейти в студию",
+    "viewDashboard": "Просмотр панели управления",
+    "autoRedirect": "Вы будете автоматически перенаправлены через несколько секунд..."
+  }
+}
