@@ -1,4 +1,5 @@
 import Generate from '@/page-components/Generate'
+import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import { generateHreflangAlternates } from '@/utils/hreflang'
@@ -19,25 +20,25 @@ export async function generateMetadata({
   const baseUrl = 'https://sora3ai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
-  let title = 'Sora 3 Image to Video | Animate Photos for Ads'
-  let description = 'Transform static photos into professional Sora 3 video content perfect for campaigns. Our Sora 3 image-to-video tool animates images with natural motion. Export Sora 3 videos without watermarks for immediate use.'
+  let title = 'Sora 3 Text to Video | Create Ad-Ready Clips'
+  let description = 'Transform text into polished Sora 3 video clips ready for ads and campaigns. Our Sora 3 text-to-video generator produces professional content without watermarks. Start creating Sora 3 videos from prompts today.'
   
   if (locale === 'ar') {
-    title = 'Sora 3 من الصورة إلى الفيديو | تحريك الصور للإعلانات'
-    description = 'حول الصور الثابتة إلى محتوى Sora 3 احترافي مثالي للحملات. أداة Sora 3 من الصورة إلى الفيديو تحرك الصور بحركة طبيعية. تصدير فيديوهات Sora 3 بدون علامة مائية.'
+    title = 'Sora 3 من النص إلى الفيديو | إنشاء فيديوهات إعلانية'
+    description = 'حول النص إلى فيديوهات Sora 3 جاهزة للإعلانات. مولد Sora 3 من النص إلى الفيديو ينتج محتوى احترافي بدون علامة مائية. ابدأ في إنشاء فيديوهات Sora 3 اليوم.'
   } else if (locale === 'ja') {
-    title = 'Sora 3 画像から動画 | 広告向け写真アニメーション'
-    description = '静止画をキャンペーン向けのプロフェッショナルなSora 3動画コンテンツに変換。Sora 3画像から動画ツールは自然な動きで画像をアニメーション化。ウォーターマークなしのSora 3動画をエクスポート。'
+    title = 'Sora 3 テキストから動画 | 広告向け動画作成'
+    description = 'テキストを広告向けのSora 3動画クリップに変換。Sora 3テキストから動画生成ツールは、ウォーターマークなしのプロフェッショナルなコンテンツを生成。今すぐSora 3動画を作成開始。'
   }
 
   return {
     title,
     description,
-    alternates: generateHreflangAlternates('/image-to-video', locale),
+    alternates: generateHreflangAlternates('/sora3-text-to-video', locale),
     openGraph: {
       title,
       description,
-      url: `${baseUrl}${prefix}/image-to-video`,
+      url: `${baseUrl}${prefix}/sora3-text-to-video`,
       siteName: 'Sora3',
       images: [
         {
@@ -74,5 +75,4 @@ export default async function Page({
 }
 
 export const revalidate = 300
-
 

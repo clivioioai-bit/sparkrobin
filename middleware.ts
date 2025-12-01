@@ -23,7 +23,8 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith('/logo') ||
       pathname.startsWith('/robots.txt') ||
       pathname.startsWith('/sitemap.xml') ||
-      pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|woff|woff2|ttf|eot)$/)
+      pathname.startsWith('/videos/') ||
+      pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|woff|woff2|ttf|eot|mp4|webm|mov|avi|mkv)$/)
     ) {
       return NextResponse.next();
     }

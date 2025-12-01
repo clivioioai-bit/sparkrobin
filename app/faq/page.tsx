@@ -116,7 +116,7 @@ export default function FAQPage() {
       <p className="text-muted-foreground mb-8">
         Find answers to common questions about Sora3 video generation. For more information, visit our 
         <a href="/" className="text-primary hover:underline"> homepage</a>, 
-        <a href="/text-to-video" className="text-primary hover:underline"> Text to Video</a>, 
+        <a href="/sora3-text-to-video" className="text-primary hover:underline"> Text to Video</a>, 
         <a href="/plans" className="text-primary hover:underline"> Pricing</a>, or review our 
         <a href="/terms" className="text-primary hover:underline"> Terms of Service</a> and 
         <a href="/privacy" className="text-primary hover:underline"> Privacy Policy</a>.

@@ -50,7 +50,7 @@ export default function AdsLandingPage() {
             <div className="flex items-center space-x-2">
               <span className="text-xl font-bold text-primary">sora3ai.io</span>
             </div>
-            <Link href="/text-to-video">
+            <Link href="/sora3-text-to-video">
               <Button variant="outline" size="sm">
                 Start Creating
               </Button>
@@ -69,7 +69,7 @@ export default function AdsLandingPage() {
             Transform concepts into professional Sora 3 video content without any branding on top. Our Sora 3 platform generates ad-ready clips perfect for marketing campaigns, brand storytelling, and social media. Start creating Sora 3 videos today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/text-to-video">
+            <Link href="/sora3-text-to-video">
               <Button size="lg" className="w-full sm:w-auto">
                 Create Sora 3 Videos
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -147,7 +147,7 @@ export default function AdsLandingPage() {
           <p className="text-xl text-muted-foreground mb-8">
             Start creating Sora 3 videos with free credits. Upgrade your Sora 3 plan when you need more capacity for campaigns.
           </p>
-          <Link href="/text-to-video">
+          <Link href="/sora3-text-to-video">
             <Button size="lg" className="bg-primary hover:bg-primary/90">
               Start Creating Sora 3
               <ArrowRight className="w-5 h-5 ml-2" />

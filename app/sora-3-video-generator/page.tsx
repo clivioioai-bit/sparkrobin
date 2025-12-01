@@ -12,13 +12,13 @@ const features = [
     icon: Play,
     title: 'Sora3 Text-to-Video',
     description: 'Generate cinematic videos from text prompts using Sora-compatible models. Create professional content instantly.',
-    href: '/text-to-video'
+    href: '/sora3-text-to-video'
   },
   {
     icon: ImageIcon,
     title: 'Sora3 Image-to-Video',
     description: 'Transform static images into dynamic Sora3 videos. Perfect for product demos and creative projects.',
-    href: '/image-to-video'
+    href: '/sora3-image-to-video'
   },
   {
     icon: Clapperboard,
@@ -97,7 +97,7 @@ export default function Sora3VideoGeneratorPage() {
                   className="text-lg px-8 py-6"
                   asChild
                 >
-                  <Link href="/text-to-video">
+                  <Link href="/sora3-text-to-video">
                     <Play className="w-5 h-5 mr-2" />
                     Start Creating Sora3 Videos
                   </Link>

@@ -92,7 +92,7 @@ const KeyFeatures = () => {
               asChild
               className="text-lg px-14 py-7 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl shadow-glow hover:shadow-glow hover:scale-105 transition-all duration-300"
             >
-              <Link href="/text-to-video">
+              <Link href="/sora3-text-to-video">
                 {t('trySora3Free.startGenerating')}
               </Link>
             </Button>

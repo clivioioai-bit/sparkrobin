@@ -40,7 +40,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
                 <Image 
-                  src="/logo.png" 
+                  src="/logo.jpg" 
                   alt={t('logoAlt')} 
                   width={40} 
                   height={40}

@@ -94,7 +94,7 @@ const Features = () => {
             <Code className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium">Ready to get started?</span>
             <a 
-            href="/text-to-video" 
+            href="/sora3-text-to-video" 
               className="text-primary hover:text-primary-glow transition-colors font-medium"
             >
               Start Generating Videos →

@@ -19,12 +19,12 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     nameKey: "imageToVideo",
-    href: "/image-to-video",
+    href: "/sora3-image-to-video",
     icon: ImageIcon,
   },
   {
     nameKey: "textToVideo",
-    href: "/text-to-video",
+    href: "/sora3-text-to-video",
     icon: FileText,
   },
   {
@@ -127,7 +127,7 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
           <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
             <div className="w-8 h-8 rounded-lg overflow-hidden">
               <Image
-                src="/logo.png"
+                src="/logo.jpg"
                 alt="Sora3 Logo"
                 width={32}
                 height={32}
@@ -140,7 +140,7 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
         {isCollapsed && !isMobile && (
           <div className="w-8 h-8 rounded-lg overflow-hidden mx-auto">
             <Image
-              src="/favicon.png"
+              src="/favicon.jpg"
               alt="aivido Logo"
               width={32}
               height={32}

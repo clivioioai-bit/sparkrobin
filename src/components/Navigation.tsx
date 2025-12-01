@@ -56,7 +56,7 @@ const Navigation = () => {
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
             <div className="w-8 h-8 rounded-lg overflow-hidden">
               <Image 
-                src="/logo.png" 
+                src="/logo.jpg" 
                 alt="Logo" 
                 width={32} 
                 height={32}

@@ -66,13 +66,13 @@ const features = [
     icon: Play,
     title: 'Sora3 Текст-в-Видео',
     description: 'Создавайте кинематографические видео из текстовых запросов с помощью моделей, совместимых с Sora. Создавайте профессиональный контент мгновенно.',
-    href: '/ru/text-to-video'
+    href: '/ru/sora3-text-to-video'
   },
   {
     icon: ImageIcon,
     title: 'Sora3 Изображение-в-Видео',
     description: 'Превращайте статичные изображения в динамичные видео Sora3. Идеально для демонстрации продуктов и творческих проектов.',
-    href: '/ru/image-to-video'
+    href: '/ru/sora3-image-to-video'
   },
   {
     icon: Clapperboard,
@@ -151,7 +151,7 @@ export default async function Sora3VideoGeneratorPage({
                   className="text-lg px-8 py-6"
                   asChild
                 >
-                  <Link href="/ru/text-to-video">
+                  <Link href="/ru/sora3-text-to-video">
                     <Play className="w-5 h-5 mr-2" />
                     Начать Создание
                   </Link>
@@ -416,7 +416,7 @@ export default async function Sora3VideoGeneratorPage({
               👉 <strong>sora3ai.io — лучший российский генератор Sora-видео</strong>
             </p>
             <Button size="lg" className="text-lg px-8 py-6" asChild>
-              <Link href="/ru/text-to-video">
+              <Link href="/ru/sora3-text-to-video">
                 <Play className="w-5 h-5 mr-2" />
                 Начать Создание
               </Link>

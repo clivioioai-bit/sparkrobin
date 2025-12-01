@@ -12,6 +12,7 @@ const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -19,10 +20,69 @@ const Hero = () => {
 
   useEffect(() => {
     if (isMounted && videoRef.current) {
+      const video = videoRef.current;
+      
       // 确保视频播放
-      videoRef.current.play().catch((error) => {
-        console.log('Video autoplay prevented:', error);
-      });
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log('Video autoplay prevented:', error);
+          // 如果自动播放失败，尝试用户交互后播放
+          const handleUserInteraction = () => {
+            video.play().catch(console.error);
+            document.removeEventListener('click', handleUserInteraction);
+            document.removeEventListener('touchstart', handleUserInteraction);
+          };
+          document.addEventListener('click', handleUserInteraction, { once: true });
+          document.addEventListener('touchstart', handleUserInteraction, { once: true });
+        });
+      }
+
+      // 监听视频加载事件
+      const handleLoadedData = () => {
+        console.log('Video loaded successfully');
+        video.play().catch(console.error);
+      };
+
+      const handleError = (e: Event) => {
+        const video = e.target as HTMLVideoElement;
+        const error = video.error;
+        if (error) {
+          let errorMessage = 'Unknown error';
+          switch (error.code) {
+            case error.MEDIA_ERR_ABORTED:
+              errorMessage = 'Video loading aborted';
+              break;
+            case error.MEDIA_ERR_NETWORK:
+              errorMessage = 'Network error while loading video';
+              break;
+            case error.MEDIA_ERR_DECODE:
+              errorMessage = 'Video decoding error';
+              break;
+            case error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+              errorMessage = 'Video format not supported';
+              break;
+          }
+          console.error('Video error:', {
+            code: error.code,
+            message: errorMessage,
+            videoSrc: video.src,
+            networkState: video.networkState,
+            readyState: video.readyState
+          });
+        } else {
+          console.error('Video failed to load:', e);
+        }
+        setVideoError(true);
+      };
+
+      video.addEventListener('loadeddata', handleLoadedData);
+      video.addEventListener('error', handleError);
+
+      return () => {
+        video.removeEventListener('loadeddata', handleLoadedData);
+        video.removeEventListener('error', handleError);
+      };
     }
   }, [isMounted]);
 
@@ -39,12 +99,12 @@ const Hero = () => {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         {/* Fallback background - only shown during SSR or if video fails to load */}
-        {!isMounted && (
-          <div className="absolute inset-0 bg-white dark:bg-black" />
+        {(!isMounted || videoError) && (
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary/5" />
         )}
         
         {/* Video Background - only render on client */}
-        {isMounted && (
+        {isMounted && !videoError && (
           <video
             ref={videoRef}
             autoPlay
@@ -55,10 +115,55 @@ const Hero = () => {
             className="absolute inset-0 w-full h-full object-cover"
             style={{ zIndex: 0 }}
             onError={(e) => {
-              console.error('Video failed to load:', e);
+              const video = e.currentTarget;
+              const error = video.error;
+              if (error) {
+                let errorMessage = 'Unknown error';
+                switch (error.code) {
+                  case error.MEDIA_ERR_ABORTED:
+                    errorMessage = 'Video loading aborted';
+                    break;
+                  case error.MEDIA_ERR_NETWORK:
+                    errorMessage = 'Network error while loading video';
+                    break;
+                  case error.MEDIA_ERR_DECODE:
+                    errorMessage = 'Video decoding error';
+                    break;
+                  case error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                    errorMessage = 'Video format not supported';
+                    break;
+                }
+                console.error('Video error details:', {
+                  code: error.code,
+                  message: errorMessage,
+                  videoSrc: video.src || '/videos/sora3.mp4',
+                  networkState: video.networkState,
+                  readyState: video.readyState,
+                  currentSrc: video.currentSrc
+                });
+              } else {
+                console.error('Video failed to load (no error code):', {
+                  videoSrc: video.src || '/videos/sora3.mp4',
+                  networkState: video.networkState,
+                  readyState: video.readyState,
+                  currentSrc: video.currentSrc
+                });
+              }
+              setVideoError(true);
+            }}
+            onLoadedData={() => {
+              console.log('Video loaded and ready');
+            }}
+            onLoadStart={() => {
+              console.log('Video load started');
+            }}
+            onCanPlay={() => {
+              console.log('Video can play');
             }}
           >
             <source src="/videos/sora3.mp4" type="video/mp4" />
+            <source src="/videos/hero.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
         )}
         
