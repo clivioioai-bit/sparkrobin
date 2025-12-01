@@ -1,28 +1,54 @@
 User-agent: *
 Allow: /
 
-# Bing-specific crawler rules
+# Bing-specific crawler rules (optimized for Bing indexing)
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Sitemap
+# Additional Bing crawlers
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot-media
+Allow: /
+Crawl-delay: 1
+
+# Sitemaps (both Google and Bing)
+# Main sitemap index
 Sitemap: https://sora3ai.io/sitemap.xml
+# Language-specific sitemaps
+Sitemap: https://sora3ai.io/sitemap-en.xml
+Sitemap: https://sora3ai.io/sitemap-ar.xml
+Sitemap: https://sora3ai.io/sitemap-ja.xml
+Sitemap: https://sora3ai.io/sitemap-ru.xml
 
 # Disallow admin and API routes
 Disallow: /api/
 Disallow: /admin/
 Disallow: /_next/
 Disallow: /dashboard/
+Disallow: /auth/
 
-# Allow important pages
-Allow: /text-to-video
+# Allow important pages (explicitly allow for better indexing)
+Allow: /
+Allow: /sora3-text-to-video
 Allow: /sora-3-storyboard
 Allow: /multi-scene
-Allow: /image-to-video
+Allow: /sora3-image-to-video
+Allow: /sora-3-video-generator
 Allow: /watermark-remover
 Allow: /plans
 Allow: /blog
 Allow: /faq
-Allow: /about
-Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /refund
+
+# Allow locale-specific pages
+Allow: /en/
+Allow: /ar/
+Allow: /ja/
+Allow: /ru/
+Allow: /es/

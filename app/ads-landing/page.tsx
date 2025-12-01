@@ -10,6 +10,33 @@ export const metadata: Metadata = {
   robots: {
     index: false,
     follow: false,
+    // Note: This page is set to noindex for SEO reasons, but it's still included in sitemap
+    // so search engines are aware of its existence
+  },
+  openGraph: {
+    title: 'Sora 3 Video Generator | Ad-Ready Content Platform',
+    description: 'Transform ideas into polished Sora 3 video clips perfect for ads and brand campaigns. Our Sora 3 platform generates professional videos without watermarks.',
+    url: 'https://sora3ai.io/ads-landing',
+    siteName: 'Sora3',
+    images: [
+      {
+        url: 'https://sora3ai.io/logo.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Sora 3 Video Generator',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sora 3 Video Generator | Ad-Ready Content Platform',
+    description: 'Transform ideas into polished Sora 3 video clips perfect for ads and brand campaigns.',
+    images: ['https://sora3ai.io/logo.jpg'],
+  },
+  alternates: {
+    canonical: 'https://sora3ai.io/ads-landing',
   },
 }
 

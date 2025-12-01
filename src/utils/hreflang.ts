@@ -43,6 +43,8 @@ export function generateHreflangAlternates(
       'ja': urls['ja'],
       'ru': urls['ru'],
       'ru-RU': urls['ru'], // Russia variant
+      'es': urls['es'],
+      'es-ES': urls['es'], // Spain variant
       'x-default': urls['en'], // Default fallback
     }
   }
