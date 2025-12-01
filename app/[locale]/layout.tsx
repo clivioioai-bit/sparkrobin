@@ -46,9 +46,9 @@ export async function generateMetadata({
   
   // Get locale-specific metadata - Sora 3 focused, keyword density >3%
   let title = 'Sora 3 AI Video Generator — Next-Gen Model | Coming Soon'
-  let description = 'Explore Sora 3, the next-generation AI video generator designed for creators, brands, and advertisers. Produce longer, sharper, and more realistic videos with advanced physics and scene control. Join the early-access waitlist. Try Sora 2 now while Sora 3 is coming soon.'
+  let description = 'Explore Sora 3, the next-generation AI video generator designed for creators, brands, and advertisers. Produce longer, sharper, and more realistic videos with advanced physics and scene control.'
   let ogTitle = 'Sora 3 AI Video Generator — Next-Gen Model | Coming Soon'
-  let ogDescription = 'Explore Sora 3, the next-generation AI video generator designed for creators, brands, and advertisers. Produce longer, sharper, and more realistic videos with advanced physics and scene control. Join the early-access waitlist. Try Sora 2 now while Sora 3 is coming soon.'
+  let ogDescription = 'Explore Sora 3, the next-generation AI video generator designed for creators, brands, and advertisers. Produce longer, sharper, and more realistic videos with advanced physics and scene control.'
   
   if (locale === 'ar') {
     title = 'مولّد فيديو Sora 3 بالذكاء الاصطناعي | قريبًا'
