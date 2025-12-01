@@ -26,7 +26,7 @@ const Hero = () => {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch((error) => {
-        console.log('Video autoplay prevented:', error);
+          console.log('Video autoplay prevented:', error);
           // 如果自动播放失败，尝试用户交互后播放
           const handleUserInteraction = () => {
             video.play().catch(console.error);

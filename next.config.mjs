@@ -91,7 +91,7 @@ const nextConfig = {
       },
       // Public folder assets caching
       {
-        source: '/favicon.ico',
+        source: '/favicon.jpg',
         headers: [
           {
             key: 'Cache-Control',

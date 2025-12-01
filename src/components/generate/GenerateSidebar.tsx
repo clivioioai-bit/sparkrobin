@@ -141,7 +141,7 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
           <div className="w-8 h-8 rounded-lg overflow-hidden mx-auto">
             <Image
               src="/favicon.jpg"
-              alt="aivido Logo"
+              alt="Sora3 Logo"
               width={32}
               height={32}
               className="w-full h-full object-contain"

@@ -22,7 +22,7 @@ const SEOHead = ({
   canonical,
   noindex = false,
   keywords = "AI video ads, Sora3 Storyboard, sora3 storyboard, multi-scene storyboard, consistent characters, 25 second AI video, vertical ad templates, TikTok ad generator, Shopify product video, AI storyboard builder",
-  image = "https://sora3ai.io/placeholder.svg"
+  image = "https://sora3ai.io/logo.jpg"
 }: SEOHeadProps) => {
   const pathname = usePathname();
   const baseUrl = "https://sora3ai.io"; // Replace with your actual domain
@@ -171,7 +171,7 @@ const SEOHead = ({
           "@type": "Organization",
           "name": "Sora3",
           "url": baseUrl,
-          "logo": `${baseUrl}/favicon.ico`
+          "logo": `${baseUrl}/logo.jpg`
         },
         "aggregateRating": {
           "@type": "AggregateRating",
