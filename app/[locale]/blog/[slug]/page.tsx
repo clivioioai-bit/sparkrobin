@@ -8,14 +8,22 @@ export const dynamic = 'force-static';
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  try {
+    const posts = getAllPosts();
+    if (!posts || posts.length === 0) {
+      return [];
+    }
 
-  return routing.locales.flatMap((locale) =>
-    posts.map((post) => ({
-      slug: post.slug,
-      locale,
-    }))
-  );
+    return routing.locales.flatMap((locale) =>
+      posts.map((post) => ({
+        slug: post.slug,
+        locale,
+      }))
+    );
+  } catch (error) {
+    console.error('Error generating static params for blog:', error);
+    return [];
+  }
 }
 
 export async function generateMetadata({

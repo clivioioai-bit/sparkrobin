@@ -28,8 +28,12 @@ const formatDate = (value: string | undefined, locale: string) => {
 };
 
 const BlogPostPage = async ({ post, locale = 'en' }: Props) => {
-  const t = await getTranslations('blogPage');
-  const blogTexts = await getTranslations('blogShowcase');
+  if (!post || !post.meta) {
+    return null;
+  }
+
+  const t = await getTranslations({ locale, namespace: 'blogPage' });
+  const blogTexts = await getTranslations({ locale, namespace: 'blogShowcase' });
 
   return (
     <div className="min-h-screen bg-background" suppressHydrationWarning>
