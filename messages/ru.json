@@ -190,6 +190,14 @@
     "readMore": "Читать далее",
     "featured": "Рекомендуемое"
   },
+  "blogPage": {
+    "featured": "Рекомендуемое",
+    "readTime": "мин. чтения",
+    "publishedOn": "Дата публикации",
+    "tags": "Теги",
+    "emptyTitle": "Пока нет статей",
+    "emptyDescription": "Добавьте Markdown-файлы в content/blog, и они появятся здесь."
+  },
   "howItWorks": {
     "title": "Как мы генерируем видео уровня Sora3",
     "subtitle": "Три шага от идеи до готового ролика.",

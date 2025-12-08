@@ -1,0 +1,761 @@
+{
+  "common": {
+    "brand": "Sora3",
+    "new": "NEU",
+    "generate": "Generieren",
+    "home": "Startseite",
+    "pricing": "Preise",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "signIn": "Anmelden",
+    "getStarted": "Sora 3 erstellen starten",
+    "signOut": "Abmelden",
+    "dashboard": "Dashboard",
+    "account": "Konto",
+    "settings": "Einstellungen",
+    "language": "Sprache",
+    "goHome": "Zur Startseite",
+    "contactSupport": "Support kontaktieren",
+    "viewAllFaqs": "Alle FAQs anzeigen",
+    "haveMoreQuestions": "Haben Sie weitere Fragen? Wir helfen Ihnen gerne."
+  },
+  "hero": {
+    "badge": "Next-Gen Sora 3 Plattform",
+    "discord": "Discord-Community beitreten",
+    "title": "Sora 3 — Neudefinition dessen, was KI-Video sein kann",
+    "subtitle": "Das neue Sora 3 liefert ultrarealistische Bewegungen, längere Szenen und kinematografische Details — endlich können Creator reine Vorstellungskraft in Sekunden in Studioqualitäts-Videos verwandeln.",
+    "placeholder": "Beschreiben Sie das Video, das Sie erstellen möchten...",
+    "cta": "Generieren",
+    "trySora3": "🚀 Kommt bald — Early Access beitreten",
+    "trySora2": "Sora 2 jetzt testen",
+    "sora2Description": "Generieren Sie noch heute Videos mit unserer Sora 2 Engine — ohne Wasserzeichen, bereit für TikTok & Werbung.",
+    "storyboard25s": "25s Sora 3 Geschichten erstellen",
+    "disclaimer": "Unabhängige Plattform, spezialisiert auf Sora 3 Videogenerierung. Wir nutzen fortschrittliche Sora 3 Technologie zur Produktion professioneller Inhalte. Nicht verbunden mit OpenAI oder offiziellen Sora-Produkten.",
+    "features": {
+      "noWatermark": {
+        "title": "Sora 3 ohne Wasserzeichen",
+        "description": "Exportieren Sie saubere Sora 3 Videos, bereit für kommerzielle Kampagnen"
+      },
+      "noRegionalLimits": {
+        "title": "Globaler Sora 3 Zugang",
+        "description": "Erstellen Sie Sora 3 Inhalte von überall auf der Welt"
+      },
+      "noInviteCode": {
+        "title": "Sofortiger Sora 3 Zugang",
+        "description": "Starten Sie sofort mit der Generierung von Sora 3 Videos, keine Warteliste"
+      }
+    }
+  },
+  "navigation": {
+    "home": "Startseite",
+    "generate": "Generieren",
+    "textToVideo": "Text zu Video",
+    "imageToVideo": "Bild zu Video",
+    "storyboard": "Sora3 Storyboard",
+    "watermarkRemover": "Wasserzeichen entfernen",
+    "pricing": "Preise",
+    "blog": "Blog",
+    "dashboard": "Dashboard",
+    "user": "Benutzer",
+    "account": "Konto",
+    "settings": "Einstellungen",
+    "signOut": "Abmelden",
+    "aiTools": "KI-Tools",
+    "upgradeNow": "Jetzt upgraden",
+    "login": "Anmelden",
+    "startForFree": "Jetzt starten",
+    "preferences": "Einstellungen",
+    "generationHistory": "Generierungsverlauf",
+    "textToVideoDescription": "Verwandeln Sie Ideen in polierte Sora 3 Clips, bereit für Werbung",
+    "imageToVideoDescription": "Animieren Sie Fotos zu professionellen Sora 3 Videoinhalten",
+    "storyboardDescription": "Erstellen Sie mehrszenige Sora 3 Erzählungen bis zu 25 Sekunden",
+    "watermarkRemoverDescription": "Entfernen Sie Wasserzeichen von Sora 3 Videos sofort",
+    "whoThisIsFor": {
+      "ecommerce": {
+        "title": "Shopify & E-Commerce-Händler"
+      },
+      "shortFilmStudios": {
+        "title": "Kurzfilmstudios"
+      },
+      "advertisers": {
+        "title": "Werbetreibende"
+      }
+    }
+  },
+  "footer": {
+    "description": "sora3ai.io verwandelt Ideen in polierte Sora 3 Videoclips, perfekt für Werbung und Markenkampagnen. Unsere Sora 3 Plattform generiert professionelle Videos ohne Wasserzeichen, ideal für Marketingteams und Creator. Beginnen Sie noch heute mit der Erstellung von Sora 3 Inhalten.",
+    "product": "Produkt",
+    "company": "Unternehmen",
+    "resources": "Ressourcen",
+    "support": "Support",
+    "sora3TextToVideo": "Sora3 Text zu Video",
+    "sora3ImageToVideo": "Sora3 Bild zu Video",
+    "sora3Pricing": "Sora3 Preise",
+    "sora3Faq": "Sora3 FAQ",
+    "sora3Blog": "Sora3 Blog",
+    "aiVideoPromptGpt": "KI-Video Prompt GPT",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsOfService": "Nutzungsbedingungen",
+    "refundPolicy": "Rückerstattungsrichtlinie",
+    "support247": "24/7 Support",
+    "contactUs": "Kontakt / Partnerschaft",
+    "disclaimer": "sora3ai.io ist eine unabhängige Plattform, spezialisiert auf Sora 3 Videogenerierung. Wir nutzen fortschrittliche Sora 3 Technologie zur Produktion werbefertiger professioneller Videos. sora3ai.io ist nicht verbunden mit OpenAI, Google oder offiziellen Sora-Produkten. Alle Marken gehören ihren jeweiligen Eigentümern.",
+    "poweredBy": "Angetrieben von proprietärer Sora 3 Videosynthese-Technologie. Nicht verbunden mit offiziellen Anbietern.",
+    "copyright": "© 2024 Sora3. Alle Rechte vorbehalten.",
+    "companyName": "Aivido LLC",
+    "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
+    "supportEmail": "24/7 Support: support@sora3ai.io",
+    "businessEmail": "Geschäft & Partnerschaft: team@sora3ai.io",
+    "logoAlt": "Sora3 KI-Videogenerator Logo",
+    "socialLabels": {
+      "twitter": "Folgen Sie uns auf Twitter",
+      "discord": "Treten Sie unserer Discord-Community bei",
+      "github": "Besuchen Sie unser GitHub",
+      "email": "Kontaktieren Sie uns per E-Mail",
+      "supportEmail": "24/7 Support E-Mail",
+      "businessEmail": "Geschäfts- und Partnerschafts-E-Mail"
+    }
+  },
+  "whyThisMatters": {
+    "title": "Warum Marketingteams Sora 3 wählen",
+    "subtitle": "Werbekampagnen benötigen qualitativ hochwertige Videoinhalte — Sora 3 liefert ohne Barrieren. Unsere Sora 3 Plattform ermöglicht sofortige Erstellung professioneller Videos für Marken und Agenturen.",
+    "challenges": "Häufige Hindernisse",
+    "solutions": "Wie Sora 3 das löst",
+    "watermarks": {
+      "title": "Plattform-Branding auf Exporten",
+      "description": "Wasserzeichen untergraben professionelle Präsentation für Kundenarbeit."
+    },
+    "pricing": {
+      "title": "Prohibitive Kosten pro Video",
+      "description": "Teure Preise schränken häufige Content-Produktion ein."
+    },
+    "storyboarding": {
+      "title": "Technische Komplexität",
+      "description": "Mehrszenige Sora 3 Storyboard-Erstellung erfordert spezialisiertes Wissen."
+    },
+    "speed": {
+      "title": "Lange Verarbeitungszeiten",
+      "description": "Langsame Generierung stört Kampagnen-Timelines und kreativen Schwung."
+    },
+    "noWatermark": {
+      "title": "Sora 3 ohne jegliches Branding",
+      "description": "Exportieren Sie saubere Sora 3 Videos, perfekt für Kundenlieferungen."
+    },
+    "costPerformance": {
+      "title": "Sora 3 zu wettbewerbsfähigen Preisen",
+      "description": "Sora 3 Generierung kostet deutlich weniger als vergleichbare Plattformen."
+    },
+    "multiModel": {
+      "title": "Sora 3 Multi-Modell-Ansatz",
+      "description": "Sora 3 nutzt mehrere Engines für zuverlässige, konsistente Ausgabe."
+    },
+    "storyboard": {
+      "title": "Sora 3 erweiterte Erzählungen",
+      "description": "Sora 3 Storyboard erstellt komplette Markengeschichten bis zu 25 Sekunden."
+    },
+    "solution": "Sora 3 adressiert alle diese Herausforderungen"
+  },
+  "whoThisIsFor": {
+    "title": "Wer erstellt Kampagnen mit Sora 3",
+    "subtitle": "Von Content-Creatorn bis zu Marketingdirektoren — Sora 3 befähigt Teams, professionelle Videoinhalte zu produzieren, die Ergebnisse liefern.",
+    "creators": {
+      "title": "Content-Creator & Influencer",
+      "description": "Produzieren Sie Sora 3 Videos für soziale Plattformen ohne Wasserzeichen oder Produktionsaufwand."
+    },
+    "ecommerce": {
+      "title": "E-Commerce & Marktplatz-Händler",
+      "description": "Generieren Sie Sora 3 Produktvideos und Werbeinhalte, die konvertieren, ohne Studio-Kosten."
+    },
+    "businesses": {
+      "title": "Wachsende Unternehmen",
+      "description": "Zugang zu Sora 3 Qualitäts-Videoproduktion zu einem Bruchteil der Agenturpreise."
+    },
+    "marketers": {
+      "title": "Marketingteams, die Creatives testen",
+      "description": "Schnell Sora 3 Video-Variationen für A/B-Tests und Kampagnenoptimierung produzieren."
+    },
+    "shortFilmStudios": {
+      "title": "Produktionsstudios",
+      "description": "Nutzen Sie Sora 3 Technologie, um Projekte mit kinematografischer Qualität zu verbessern."
+    },
+    "advertisers": {
+      "title": "Werbeagenturen",
+      "description": "Liefern Sie Sora 3 Videoinhalte, die Kundenerwartungen und Kampagnenziele erfüllen."
+    }
+  },
+  "blogShowcase": {
+    "title": "Sora 3 Strategien für Creator & Marken",
+    "subtitle": "Umsetzbare Einblicke zur Maximierung Ihrer Sora 3 Video-Performance und Kampagnenergebnisse.",
+    "viewAll": "Alle Blog-Beiträge anzeigen",
+    "readMore": "Weiterlesen",
+    "featured": "Empfohlen"
+  },
+  "blogPage": {
+    "featured": "Empfohlen",
+    "readTime": "Min. Lesezeit",
+    "publishedOn": "Veröffentlicht am",
+    "tags": "Tags",
+    "emptyTitle": "Noch keine Beiträge",
+    "emptyDescription": "Fügen Sie Markdown-Dateien zu content/blog hinzu und sie werden hier angezeigt."
+  },
+  "howItWorks": {
+    "title": "So erstellen Sie Sora 3 Videos in Minuten",
+    "subtitle": "Verwandeln Sie Ihre Konzepte in polierte Sora 3 Inhalte durch drei einfache Schritte.",
+    "step1": {
+      "title": "Teilen Sie Ihre Vision oder laden Sie ein Bild hoch",
+      "description": "Beschreiben Sie, was Sie in Ihrem Sora 3 Video sehen möchten, oder geben Sie ein Startbild für Sora 3 zur Animation."
+    },
+    "step2": {
+      "title": "Konfigurieren Sie Ihre Sora 3 Ausgabe-Einstellungen",
+      "description": "Wählen Sie Seitenverhältnis und Dauer, oder richten Sie Sora 3 Storyboard-Szenen für erweiterte Erzählungen ein."
+    },
+    "step3": {
+      "title": "Exportieren Sie Ihr Sora 3 Video, bereit für Kampagnen",
+      "description": "Laden Sie Ihre Sora 3 Kreation in HD oder 4K herunter, sofort einsetzbar für Werbung und Markeninhalte."
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen zu Sora 3",
+    "subtitle": "Finden Sie Antworten zu Sora 3 Videogenerierung, Kampagnennutzung und Plattform-Fähigkeiten. Verstehen Sie, wie Sora 3 funktioniert und warum Marketingteams Sora 3 für ihre Videoinhalts-Bedürfnisse wählen.",
+    "viewAllFaqs": "Alle FAQs anzeigen",
+    "contactSupport": "Support kontaktieren",
+    "haveMoreQuestions": "Haben Sie weitere Fragen? Wir helfen Ihnen gerne.",
+    "questions": {
+      "whatMakesDifferent": {
+        "question": "Was unterscheidet Sora 3 von anderen Videogenerierungs-Plattformen?",
+        "answer": "Sora 3 zeichnet sich durch den Aufbau erweiterter Erzählungen über Sora 3 Storyboard aus und behält dabei Charakterkonsistenz bei. Während Konkurrenten die Ausgabe auf kurze Clips beschränken, produziert Sora 3 25+ Sekunden Geschichten, ideal für Markenkampagnen, Produktlaunches und soziale Inhalte. Sora 3 Storyboard gibt Ihnen Szenen-für-Szenen-Kontrolle, bewahrt Charakteridentität und liefert kampagnenfertige Sora 3 Videos."
+      },
+      "characterConsistency": {
+        "question": "Wie behält Sora 3 Charakterkonsistenz über Szenen hinweg bei?",
+        "answer": "Sora 3 Storyboard bewahrt Charakteraussehen, Garderobe und Styling über jede Szene in Ihrem Sora 3 Video hinweg. Diese Sora 3 Fähigkeit ist entscheidend für Markenerzählungen, charaktergetriebene Kampagnen und Produktdemonstrationen, bei denen konsistente Identität wichtig ist."
+      },
+      "videosLongerThan10s": {
+        "question": "Kann Sora 3 Videos länger als 10 Sekunden generieren?",
+        "answer": "Ja. Sora 3 unterstützt erweiterte Dauer bis zu 25-30 Sekunden über Sora 3 Storyboard-Modus. Diese Sora 3 Funktion löst eine wichtige Einschränkung und ermöglicht vollständige Markengeschichten statt fragmentierter Clips. Sora 3 erweiterte Videos performen besser in Kampagnen."
+      },
+      "commercialUse": {
+        "question": "Sind Sora 3 Videos für kommerzielle Werbung geeignet?",
+        "answer": "Absolut. Sora 3 generierte Inhalte sind vollständig für kommerzielle Nutzung lizenziert, einschließlich bezahlter Werbung, E-Commerce-Videos und sozialer Kampagnen. Sie behalten alle Rechte an Sora 3 Videos, die Sie erstellen, vorbehaltlich unserer Nutzungsrichtlinien."
+      },
+      "watermarks": {
+        "question": "Enthalten Sora 3 Videos Wasserzeichen?",
+        "answer": "Nein — alle Sora 3 Exporte sind vollständig wasserzeichenfrei. Premium Sora 3 Pläne stellen sicher, dass kein Plattform-Branding auf Downloads erscheint. Ihre Sora 3 Videos exportieren sauber und bereit für sofortigen Kampagneneinsatz. Hinweis: Dies gilt nur für Wasserzeichen, die von unserer Plattform hinzugefügt wurden, nicht für Drittanbieter-Inhalte."
+      },
+      "officialModel": {
+        "question": "Nutzt diese Plattform offizielle Sora 3 Technologie?",
+        "answer": "Wir nutzen fortschrittliche Sora 3 kompatible Technologie, um professionelle Ergebnisse zu liefern. Dies ermöglicht sofortige Sora 3 Videogenerierung ohne Warten auf offiziellen Zugang."
+      },
+      "25SecondVideos": {
+        "question": "Kann ich 25-Sekunden Sora 3 Videos erstellen?",
+        "answer": "Ja — Sora 3 Storyboard ermöglicht 25-Sekunden Sora 3 Mehrszenen-Generierung für komplette Markenerzählungen."
+      },
+      "paymentSafe": {
+        "question": "Wenn ich eine Zahlung tätige, werden meine Zahlungsinformationen sicher sein?",
+        "answer": "Absolut. Wir nutzen sichere, vertrauenswürdige Zahlungsplattformen und Banken. Ihre Zahlung ist vollständig geschützt und keine persönlichen Informationen werden jemals preisgegeben oder geleakt."
+      },
+      "hiddenCharges": {
+        "question": "Gibt es versteckte Gebühren?",
+        "answer": "Nein, der angezeigte Preis ist der Gesamtbetrag, den Sie zahlen werden. Es gibt keine zusätzlichen versteckten Gebühren. Jahrespläne sparen bis zu 50% im Vergleich zur monatlichen Abrechnung."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Preispläne",
+    "subtitle": "Wählen Sie den perfekten Plan für Ihre KI-Videogenerierungs-Bedürfnisse. Jederzeit kündbar.",
+    "secureCheckout": "Sicherer Checkout",
+    "cancelAnytime": "Jederzeit kündbar",
+    "noSurpriseCharges": "Keine Überraschungsgebühren",
+    "fastSupport": "Schneller Support",
+    "priceIncreaseAlert": "Preiserhöhung kommt bald! Abonnieren Sie jetzt, um niedrige Preise zu sichern!",
+    "pricePerVideoGeneration": "Preis pro Videogenerierung",
+    "marketPrice": "Marktpreis",
+    "ourPrice": "Unser Preis",
+    "marketPriceValue": "$0,10/s",
+    "ourPriceValue": "$0,05/s",
+    "fiftyPercentCheaper": "50% GÜNSTIGER",
+    "thanMarket": "als Markt",
+    "chooseYourPlan": "Wählen Sie Ihren Sora 3 Plan",
+    "teaserSubtitle": "Professionelle Sora 3 Videogenerierung für Kampagnen. Jederzeit kündbar. Jahrespläne sparen 50%.",
+    "proTip": "💡 <strong>Pro-Tipp:</strong> Abonnement-Pläne beinhalten API-Zugang, Webhooks und Prioritäts-Support",
+    "plans": {
+      "monthly": "Monatlich",
+      "annual": "Jährlich",
+      "oneTime": "Einmalig",
+      "save50Percent": "50% sparen",
+      "mostPopular": "Beliebtester",
+      "billedAnnually": "jährlich abgerechnet",
+      "billedMonthly": "Monatlich abgerechnet · jederzeit kündbar",
+      "savePerYear": "Sparen Sie ${amount}/Jahr",
+      "perMonth": "/Monat",
+      "perYear": "/Jahr",
+      "payOnce": "Einmal zahlen, jederzeit nutzen — Credits laufen nie ab",
+      "oneTimePurchase": "Einmaliger Kauf • Keine Abonnement-Vorteile",
+      "buyNow": "Jetzt kaufen",
+      "upToVideos": "bis zu {count} sora3 Videos",
+      "oneTimePurchaseLabel": "Einmaliger Kauf",
+      "noSubscriptionRequired": "Kein Abonnement erforderlich",
+      "commercialUsageRights": "Kommerzielle Nutzungsrechte",
+      "pleaseLogInFirst": "Bitte melden Sie sich zuerst an",
+      "logInToProceed": "Melden Sie sich an, um zu Creem für die Zahlung zu gelangen.",
+      "loginSessionExpired": "Anmeldesitzung abgelaufen",
+      "pleaseLogInAgain": "Bitte melden Sie sich erneut an, um Ihren Kauf fortzusetzen.",
+      "tooManyRequests": "Zu viele Anfragen",
+      "pleaseWait": "Bitte warten Sie einen Moment, bevor Sie es erneut versuchen.",
+      "tryAgainLater": "Bitte versuchen Sie es später erneut.",
+      "failedToCreatePaymentLink": "Zahlungslink konnte nicht erstellt werden",
+      "needHelp": "Brauchen Sie Hilfe?",
+      "contactSupport": "Kontaktieren Sie support@sora3ai.io für Unterstützung.",
+      "contactSupportLink": "Support kontaktieren",
+      "features": {
+        "creditsIncluded": "{count} Credits enthalten",
+        "aiVideosPerMonth": "{count} KI-Videos pro Monat",
+        "aiVideosPerYear": "{count} KI-Videos pro Jahr",
+        "hd4kQuality": "HD & 4K Qualitätsoptionen",
+        "commercialUsageRights": "Kommerzielle Nutzungsrechte",
+        "emailSupport": "E-Mail-Support",
+        "priorityEmailSupport": "Prioritäts-E-Mail-Support",
+        "apiAccess": "API-Zugang (kommt bald)",
+        "generationHistory": "Generierungsverlauf",
+        "fastestProcessing": "Schnellste Verarbeitung",
+        "professionalConsultation": "1-zu-1 professionelle Beratungsunterstützung"
+      },
+      "cta": {
+        "startCreating": "Erstellen starten",
+        "getAnnualDeal": "Jahresangebot erhalten",
+        "getCreator": "Creator erhalten",
+        "bestValue": "Bester Wert",
+        "goPro": "Pro werden",
+        "unlockPro": "Pro freischalten",
+        "saveWithAnnual": "Mit Jahresplan sparen"
+      },
+      "planNames": {
+        "basic": "Basic",
+        "creator": "Creator",
+        "pro": "Pro"
+      },
+      "credits": "Credits"
+    },
+    "generate": {
+      "insufficientCredits": "Unzureichende Credits. Bitte kaufen Sie mehr Credits oder abonnieren Sie einen Plan.",
+      "insufficientCreditsWithDetails": "Unzureichende Credits. Sie benötigen {required} Credits, haben aber nur {available}. {details}",
+      "insufficientCreditsRetry": "Unzureichende Credits. Bitte kaufen Sie mehr Credits, um es erneut zu versuchen.",
+      "creditDeductionFailed": "Credit-Abzug fehlgeschlagen: {error}. Dies könnte an einem Datenbankproblem liegen. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.",
+      "creditSystemError": "Credit-Systemfehler: {error}. Bitte kontaktieren Sie den Support, wenn dies weiterhin besteht.",
+      "storageBucketNotConfigured": "Speicher-Bucket nicht konfiguriert. Bitte erstellen Sie einen \"videos\" Bucket im Supabase Dashboard → Storage → New bucket → Name: \"videos\" → Public bucket → Create bucket.",
+      "pleaseEnterPrompt": "Bitte geben Sie Ihren Prompt ein",
+      "pleaseUploadImage": "Bitte laden Sie ein Bild hoch, um das Video zu generieren",
+      "watermarkRemover": {
+        "title": "Sora3 Wasserzeichen-Entferner",
+        "description": "Entfernen Sie das Sora-Wasserzeichen von Ihren Sora-gehosteten Videos. Fügen Sie eine öffentliche `sora.chatgpt.com` URL ein und führen Sie es aus. Typische Verarbeitung dauert 1–3 Sekunden auf der API.",
+        "seoTitle": "Sora3 Wasserzeichen-Entferner | Sora-Wasserzeichen entfernen",
+        "seoDescription": "Sora3 Wasserzeichen-Entferner: Entfernen Sie Sora-Wasserzeichen von Sora-gehosteten Videos in Sekunden. Kommerzielle Nutzung, API-ready, funktioniert mit öffentlichen sora.chatgpt.com Links.",
+        "input": "Eingabe",
+        "output": "Ausgabe",
+        "videoUrl": "video_url",
+        "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
+        "videoUrlHint": "Muss öffentlich zugänglich sein und mit `https://sora.chatgpt.com/` beginnen.",
+        "reset": "Zurücksetzen",
+        "running": "Läuft…",
+        "run": "Ausführen {credits}Credits",
+        "processing": "Verarbeitung…",
+        "waitingForResult": "Warten auf Ergebnis…",
+        "noOutputYet": "Noch keine Ausgabe",
+        "exampleVideo": "Beispielvideo",
+        "exampleVideoDescription": "Dies ist ein Beispielvideo, das von Sora3 KI generiert wurde. Laden Sie Ihr eigenes Sora-Video hoch, um Wasserzeichen zu entfernen!",
+        "creditsInfo": "Dieses Tool verbraucht 10 Credits pro Ausführung. Halten Sie Ihre Sora3 Videos sauber und markenfertig.",
+        "browserNotSupportVideo": "Ihr Browser unterstützt das Video-Tag nicht."
+      }
+    },
+    "modal": {
+      "insufficientCredits": "Unzureichende Credits",
+      "upgradeYourPlan": "Upgraden Sie Ihren Plan",
+      "subscriptionRequired": "Abonnement erforderlich",
+      "insufficientCreditsDescription": "Ihre aktuellen Credits reichen nicht aus, um dieses Video zu generieren. Abonnieren Sie einen Plan und schalten Sie unbegrenzte kreative Möglichkeiten mit mehr Credits frei!",
+      "upgradePlanDescription": "Wählen Sie einen Abonnement-Plan, um auf Premium-Funktionen zuzugreifen.",
+      "subscriptionRequiredDescription": "Um {feature} zu nutzen, benötigen Sie einen aktiven Abonnement-Plan.",
+      "pleaseLogInFirst": "Bitte melden Sie sich zuerst an",
+      "logInToProceed": "Melden Sie sich an, um zum Abonnement zu gelangen.",
+      "loginSessionExpired": "Anmeldesitzung abgelaufen",
+      "pleaseLogInAgain": "Bitte melden Sie sich erneut an, um Ihr Abonnement fortzusetzen.",
+      "subscriptionFailed": "Abonnement fehlgeschlagen",
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
+    },
+    "faqTitle": "Häufig gestellte Fragen",
+    "faqCancelAnytime": {
+      "question": "Kann ich jederzeit kündigen?",
+      "answer": "Ja! Alle Pläne können jederzeit gekündigt werden. Sie behalten den Zugang bis zum Ende Ihres Abrechnungszeitraums."
+    },
+    "faqCreditsRollOver": {
+      "question": "Werden ungenutzte Credits übertragen?",
+      "answer": "Das Abonnement-Bucket wird jeden Abrechnungszeitraum zurückgesetzt und wird nicht übertragen. Einmalige Add-on-Credits gehen in das flexible Bucket und werden nicht durch Abonnement-Rücksetzungen gelöscht."
+    },
+    "faqRefundPolicy": {
+      "question": "Wie ist die Rückerstattungsrichtlinie von sora3ai.io?",
+      "answer": "Wir bieten eine 7-Tage-Geld-zurück-Garantie für alle Abonnement-Pläne. Kontaktieren Sie support@sora3ai.io für Rückerstattungen. Für allgemeine Anfragen und Partnerschaften kontaktieren Sie team@sora3ai.io. Rückerstattungen werden innerhalb von 5-7 Werktagen bearbeitet."
+    },
+    "faqContentRestrictions": {
+      "question": "Gibt es Videoinhalts-Beschränkungen?",
+      "answer": "Unsere Plattform setzt strenge Inhaltsrichtlinien durch. Wir verbieten die Generierung von schädlichen, illegalen oder unangemessenen Inhalten. Alle generierten Videos durchlaufen automatische Überprüfung, um Richtlinienkonformität sicherzustellen."
+    },
+    "faqCreditsDeduction": {
+      "question": "Werden Credits abgezogen, wenn die Generierung fehlschlägt?",
+      "answer": "Nein. Credits werden atomar abgezogen, wenn ein Job startet, und automatisch zurückerstattet, wenn die Generierung fehlschlägt oder der Upstream-Service einen Fehler zurückgibt. Rückerstattungen erscheinen normalerweise innerhalb einer Minute."
+    },
+    "faqCancelSubscription": {
+      "question": "Was passiert mit Credits, wenn ich mein Abonnement kündige?",
+      "answer": "Sie können jederzeit kündigen. Flexible (einmalige) Credits bleiben verfügbar. Das Abonnement-Bucket folgt Ihrem Abrechnungszeitraum und stoppt die Aktualisierung nach dem Ende der aktuellen Periode."
+    }
+  },
+  "generate": {
+    "generate": "Generieren",
+    "generating": "Generiere...",
+    "readyToGenerate": "Bereit zum Generieren",
+    "startGeneration": "Generierung starten",
+    "enterPrompt": "Geben Sie Ihren Prompt ein und klicken Sie auf Generieren, um Ihr Video zu erstellen",
+    "videoBeingCreated": "Ihr Video wird erstellt. Dies kann einige Minuten dauern.",
+    "initializingGeneration": "Generierung wird initialisiert...",
+    "aiWorkSubtitles": {
+      "writingOpeningScene": "🎬 Schreibe Ihre Eröffnungsszene…",
+      "paintingBackground": "🎨 Male Hintergrunddetails…",
+      "recordingNarrator": "🎙️ Nehme die Stimme des Erzählers auf…",
+      "addingSoundscape": "🔊 Füge Hintergrund-Soundscape hinzu…",
+      "syncingEverything": "🚀 Synchronisiere alles zusammen…"
+    },
+    "videoGeneratedSuccessfully": "Video erfolgreich generiert!",
+    "videoReady": "Ihr Video ist bereit. Die Video-URL wird in Kürze verfügbar sein.",
+    "generateWithCredits": "Generieren · {creditCost} Credits",
+    "generateShots": "Generiere {count} Shot Storyboard",
+    "addPromptsToAllShots": "Fügen Sie Prompts zu allen Shots hinzu, um zu generieren",
+    "reset": "Zurücksetzen",
+    "input": "Eingabe",
+    "output": "Ausgabe",
+    "video": "Video",
+    "credits": "Credits",
+    "exampleVideo": "Beispielvideo",
+    "sampleVideoDescription": "Dies ist ein Beispielvideo, das von Sora3 KI generiert wurde. Erstellen Sie Ihre eigenen Videos mit dem Eingabepanel!",
+    "sampleVideoDescriptionUnauthenticated": "Dies ist ein Beispielvideo, das von Sora3 KI generiert wurde. Registrieren Sie sich, um Ihre eigenen zu erstellen!",
+    "browserNotSupportVideo": "Ihr Browser unterstützt das Video-Tag nicht.",
+    "signUpToCreate": "Registrieren Sie sich, um Ihre eigenen zu erstellen",
+    "textToVideoTitle": "Text zu Video KI-Videogenerator",
+    "textToVideoSubtitle": "Verwandeln Sie Ihre Ideen in kinematografische Videos - einfach durch Tippen.",
+    "textToVideoFeaturesTitle": "Die Funktionen des KI-Videogenerators für Text zu Video",
+    "featureAIPowered": {
+      "title": "KI-gestützte Script-zu-Bildschirm-Magie",
+      "description": "Mit Text zu Video benötigen Sie nur einen Prompt. Ob es ein einzelner Satz oder eine detaillierte Geschichte ist, unsere KI-Engine interpretiert Ihren Text und wandelt ihn in atemberaubende Visuals um. Ideal für Creator, Vermarkter, Pädagogen und jeden, der Worte in hochwirksame Videos verwandeln möchte."
+    },
+    "featureCinematic": {
+      "title": "Kinematografische Qualität ohne Bearbeitungsfähigkeiten",
+      "description": "Unsere fortschrittliche KI stellt sicher, dass jeder Frame professionell gerendert wird. Sie erhalten sanfte Übergänge, realistische Beleuchtung und dynamische Bewegung - ohne jemals einen Videoeditor zu öffnen. Von sozialen Reels bis zu Produkterklärungen erhält Ihr Content ein Studio-Level-Upgrade."
+    },
+    "featureAudio": {
+      "title": "Integrierte Audio, die zu Ihrer Nachricht passt",
+      "description": "Keine separate Soundgestaltung erforderlich. Die KI generiert Hintergrundmusik, Umgebungsgeräusche oder sogar Voiceovers synchron zu Ihrem Script. Es ist eine End-to-End KI-Videogenerator-Erfahrung, gebaut für Creator in Eile."
+    },
+    "featureContextual": {
+      "title": "Kontextuelle Szenengenerierung mit menschenzentriertem Fokus",
+      "description": "Das System versteht nicht nur Ihre Worte, sondern auch die Stimmung, den Ton und die Absicht dahinter. Ob Sie Spannung, Humor, Emotion oder Klarheit wollen - die KI wählt Visuals, die zu Ihrem Zweck passen."
+    },
+    "howToUseTitle": "So verwenden Sie den KI-Videogenerator für Text zu Video",
+    "howToUseStep1": {
+      "title": "Registrieren Sie sich oder melden Sie sich bei sora3ai.io an",
+      "description": "Erstellen Sie ein Konto, um die vollen Funktionen unserer Text-zu-Video-Oberfläche freizuschalten."
+    },
+    "howToUseStep2": {
+      "title": "Zugriff auf das Text-zu-Video-Erstellungspanel",
+      "description": "Finden Sie das Tool auf Ihrem Dashboard und wählen Sie, ob Sie von Grund auf beginnen oder KI-Unterstützung verwenden möchten."
+    },
+    "howToUseStep3": {
+      "title": "Tippen oder fügen Sie Ihr Script ein",
+      "description": "Geben Sie Ihre Idee in das Textfeld ein. Sie können einen einfachen Prompt, eine Szenenbeschreibung oder ein vollständiges Script eingeben."
+    },
+    "howToUseStep4": {
+      "title": "Klicken Sie zum Generieren",
+      "description": "Klicken Sie auf die Schaltfläche \"Generieren\". Die KI verarbeitet Ihr Script und erstellt ein Video mit passenden Visuals, Bewegung und Musik. Es dauert nur wenige Minuten und Ihr Video ist bereit zur Vorschau und zum Download."
+    },
+    "whoUsesTitle": "Wer nutzt Sora3?",
+    "whoUsesContentCreators": "Content-Creator",
+    "whoUsesTikTokMarketers": "TikTok-Vermarkter",
+    "imageToVideoTitle": "Sora3 Bild zu Video Generator - Verwandeln Sie Fotos in kinematografische Videos",
+    "imageToVideoSubtitle": "Nutzen Sie Sora3 KI, um Ihre statischen Bilder mit kinematografischer Bewegung zum Leben zu erwecken. Sora3 Bild-zu-Video-Technologie erstellt professionelle Videos aus Fotos mit natürlicher Bewegung und realistischen Effekten. Laden Sie einfach Ihr Bild hoch und lassen Sie Sora3 den Rest erledigen.",
+    "imageToVideoFeaturesTitle": "Sora3 Bild zu Video Funktionen - Fortschrittliche KI-Videogenerierung",
+    "imageToVideoFeature1": {
+      "title": "Sora3 Einfache Bild-zu-Bewegung-Transformation",
+      "description": "Mit Sora3 Bild zu Video laden Sie einfach Ihr Foto hoch und sehen es zum Leben erwachen. Sora3 KI-Engine analysiert Ihr Bild und generiert natürliche, kinematografische Bewegung, die die Szene verbessert. Sora3 ist perfekt für Produktpräsentationen, künstlerische Kreationen und das Erwecken stiller Momente zu dynamischen Geschichten."
+    },
+    "imageToVideoFeature2": {
+      "title": "Sora3 Professionelle Bewegung ohne Animationsfähigkeiten",
+      "description": "Sora3 fortschrittliche KI versteht Tiefe, Beleuchtung und Komposition. Sora3 generiert sanfte Kamerabewegungen, natürliche Objektbewegung und realistische Umgebungseffekte - alles ohne Animations- oder Video-Bearbeitungsexpertise. Verwandeln Sie Ihre Portfolio-Fotos in professionelle Videoinhalte mit Sora3."
+    },
+    "imageToVideoFeature3": {
+      "title": "Sora3 Automatische Audiogenerierung",
+      "description": "Jedes Sora3 Video kommt mit perfekt passender Hintergrundmusik und Umgebungsgeräuschen. Sora3 KI analysiert die Stimmung und Atmosphäre Ihres Bildes, um Audio zu erstellen, das die visuelle Geschichte ergänzt. Es ist eine komplette Sora3 Video-Erstellungserfahrung aus einem einzigen Bild."
+    },
+    "imageToVideoFeature4": {
+      "title": "Sora3 Intelligente Szenenverständnis",
+      "description": "Sora3 KI erkennt Objekte, Menschen, Landschaften und Szenen in Ihrem Bild. Sora3 generiert Bewegung, die kontextuell Sinn macht - ob es eine sanfte Brise durch Bäume, ein Produkt, das sich im 3D-Raum dreht, oder ein Porträt mit subtiler Bewegung ist. Jede Sora3 Animation fühlt sich natürlich und zielgerichtet an."
+    },
+    "imageToVideoHowToUseTitle": "So verwenden Sie den Sora3 Bild zu Video Generator",
+    "imageToVideoHowToUseStep1": {
+      "title": "Registrieren Sie sich oder melden Sie sich bei sora3ai.io an",
+      "description": "Erstellen Sie ein Konto, um die vollen Sora3 Bild-zu-Video-Funktionen freizuschalten und mit der Nutzung der Sora3 KI-Technologie zu beginnen."
+    },
+    "imageToVideoHowToUseStep2": {
+      "title": "Zugriff auf Sora3 Bild zu Video Panel",
+      "description": "Navigieren Sie zum Sora3 Bild-zu-Video-Tool auf Ihrem Dashboard. Die Sora3 Oberfläche ist für einfache Bild-zu-Video-Konvertierung designed."
+    },
+    "imageToVideoHowToUseStep3": {
+      "title": "Laden Sie Ihr Bild zu Sora3 hoch",
+      "description": "Ziehen und ablegen oder wählen Sie Ihre Bilddatei für Sora3-Verarbeitung. Sora3 unterstützt Fotos, Illustrationen, Produktbilder oder jedes statische Bild, das Sie mit Sora3 animieren möchten."
+    },
+    "imageToVideoHowToUseStep4": {
+      "title": "Generieren mit Sora3",
+      "description": "Klicken Sie auf die Schaltfläche \"Generieren\" und lassen Sie Sora3 KI Ihr Bild analysieren. Sora3 erstellt Videos mit natürlicher Bewegung, Kamerabewegung und synchronisiertem Audio. Ihr Sora3 animiertes Video wird in Minuten bereit sein."
+    },
+    "imageToVideoPageTitle": "Sora3 Bild zu Video Generator",
+    "imageToVideoPageSubtitle": "Verwandeln Sie Ihre Bilder in kinematografische Videos mit Sora3 KI-Technologie — ohne Wasserzeichen",
+    "imageToVideoTestimonialsTitle": "Warum Sora3 Bild zu Video Generator wählen",
+    "imageToVideoTestimonial1": {
+      "quote": "Ich habe ein Produktfoto hochgeladen und Sora3 hat in Minuten ein professionelles Videowerbespot generiert. Sora3 hat komplett verändert, wie ich Content für meinen Online-Shop erstelle!",
+      "author": "Emma L., E-Commerce-Besitzerin"
+    },
+    "imageToVideoTestimonial2": {
+      "quote": "Als Fotograf liebe ich, wie Sora3 meine statischen Bilder zum Leben erweckt. Sora3 Bewegung fühlt sich natürlich an und fügt meinem Portfolio so viel Tiefe hinzu.",
+      "author": "Michael R., Professioneller Fotograf"
+    },
+    "imageToVideoTestimonial3": {
+      "quote": "Die Sora3 Bild zu Video Funktion hat mir Stunden an Animationsarbeit gespart. Ich kann jetzt sofort ansprechende Social-Media-Inhalte aus meinen bestehenden Fotos mit Sora3 erstellen.",
+      "author": "Jessica T., Social-Media-Managerin"
+    },
+    "imageToVideoTestimonial4": {
+      "quote": "Ich habe dies verwendet, um Immobilienfotos für meine Immobilieninserate zu animieren. Die Videos sehen professionell aus und helfen Immobilien, sich auf dem Markt abzuheben.",
+      "author": "Robert K., Immobilienmakler"
+    },
+    "imageToVideoTestimonial5": {
+      "quote": "Perfekt, um meine Design-Mockups in animierte Präsentationen zu verwandeln. Die KI versteht die Komposition und fügt Bewegung hinzu, die Sinn macht.",
+      "author": "Alex W., Grafikdesigner"
+    },
+    "imageToVideoTestimonial6": {
+      "quote": "Von einem einzigen Produktfoto zu einem vollständigen Videowerbespot - dieses Tool hat meinen gesamten Content-Erstellungsworkflow optimiert. Sehr empfehlenswert!",
+      "author": "Sarah H., Marketingdirektorin"
+    },
+    "pricingBanner": "💎 Preise: Ab $19/Monat für hochwertige 100 KI-generierte Videos mit Audio",
+    "faqImageToVideoTitle": "Häufig gestellte Fragen zum KI-Videogenerator für Bild zu Video",
+    "faqImageToVideo": {
+      "whatIsTool": {
+        "question": "Was ist das Bild zu Video Tool?",
+        "answer": "Unser KI Bild zu Video Tool verwandelt Ihre statischen Bilder in vollständig animierte Videos mit fortschrittlicher KI. Laden Sie einfach Ihr Foto, Ihre Illustration oder Ihr Produktbild hoch, und die KI erweckt es mit natürlicher Bewegung, Kamerabewegungen und synchronisiertem Audio zum Leben."
+      },
+      "needExperience": {
+        "question": "Benötige ich Animations- oder Video-Bearbeitungserfahrung, um das Bild zu Video Tool zu verwenden?",
+        "answer": "Keine Erfahrung erforderlich. Laden Sie einfach Ihre Bilddatei hoch, und die KI generiert automatisch ein hochwertiges animiertes Video mit natürlicher Bewegung und professionellen Effekten - keine technischen Fähigkeiten erforderlich."
+      },
+      "imageTypes": {
+        "question": "Welche Bildtypen funktionieren am besten mit dem Bild zu Video Tool?",
+        "answer": "Das Tool funktioniert mit einer Vielzahl von Bildern, einschließlich Produktfotos, Porträts, Landschaften, Illustrationen, Architekturfotos und Design-Mockups. Die KI analysiert die Komposition und generiert Bewegung, die kontextuell für jeden Bildtyp Sinn macht."
+      },
+      "howLong": {
+        "question": "Wie lange dauert es, ein Video aus einem Bild zu generieren?",
+        "answer": "Die meisten Videos werden in nur wenigen Minuten generiert, abhängig von der Komplexität. Die KI analysiert Ihr Bild, generiert Bewegung und fügt synchronisiertes Audio hinzu. Sie können Ihr animiertes Video in der Vorschau anzeigen und herunterladen, sobald es bereit ist."
+      },
+      "motionType": {
+        "question": "Welche Art von Bewegung fügt die KI Bildern hinzu?",
+        "answer": "Die KI generiert kontextuell angemessene Bewegung wie sanfte Kamerabewegungen, natürliche Objektbewegung, Umgebungseffekte (wie Wind durch Bäume), Produktrotationen und subtile Porträtbewegungen. Die Bewegung verbessert das Bild, ohne ablenkend zu sein."
+      },
+      "commercialUse": {
+        "question": "Kann ich Bild zu Video generierte Videos für kommerzielle Zwecke verwenden?",
+        "answer": "Ja. Mit unserer KI erstellte Videos können für Marketing, E-Commerce, soziale Medien, Geschäftspräsentationen und jede andere kommerzielle Nutzung verwendet werden, solange sie unseren Nutzungs- und Lizenzbedingungen entsprechen."
+      }
+    },
+    "getStartedImageToVideo": {
+      "title": "Beginnen Sie mit dem KI-Videogenerator für Bild zu Video",
+      "description": "Bereit, Ihre Bilder zum Leben zu erwecken? Upgraden Sie, um auf schnellere Rendering, längere Videodauer, fortgeschrittene Bewegungseffekte und Premium-Stile zuzugreifen. Ob Sie Produktwerbung, Portfolio-Präsentationen oder Social-Media-Inhalte erstellen, unser Pro-Plan gibt Ihnen alles, was Sie brauchen, um statische Bilder mühelos in atemberaubende, animierte Videos zu verwandeln.",
+      "button": "Premium erhalten"
+    },
+    "reframeMode": {
+      "model": "Modell",
+      "sora3": "Sora3",
+      "sora3Pro": "Sora3 pro",
+      "sora3Description": "OpenAIs fortschrittliches Videogenerierungsmodell mit hochwertiger Ausgabe und präziser Kontrolle.",
+      "sora3ProDescription": "OpenAIs Premium-Videogenerierungsmodell mit verbesserter Qualität, überlegener Realismus und fortgeschrittenen Kontrollfähigkeiten.",
+      "prompt": "Prompt *",
+      "promptTooltip": "Beschreiben Sie die Bewegung, die Sie aus dem Referenzbild erstellen möchten",
+      "aiExamples": "KI-Beispiele",
+      "promptExamplesTitle": "Bild-zu-Video Prompt-Beispiele",
+      "promptExamplesDescription": "Durchsuchen Sie Beispiel-Prompts, um Ihre Bild-zu-Video-Generierung zu inspirieren",
+      "useThisPrompt": "Diesen Prompt verwenden",
+      "promptGpt": "Prompt GPT",
+      "promptGptTooltip": "Brauchen Sie Inspiration? Brainstormen Sie Kamerabewegungen, Story-Beats und Audio-Cues mit dem KI-Video Prompt GPT, dann fügen Sie den verbesserten Prompt hier ein.",
+      "promptPlaceholder": "Beschreiben Sie die Bewegung, die Sie erstellen möchten. Zum Beispiel: 'Ein sanftes Zoom auf die Hände des Sushi-Kochs, während er vorsichtig den Reis formt, mit weichem Fokus auf den Hintergrund'",
+      "referenceImage": "Referenzbild *",
+      "referenceImageTooltip": "Laden Sie ein Referenzbild oder Video hoch (JPG, PNG, WEBP, MP4, MOV bis zu 10MB), das als Eröffnungsframe verwendet wird.",
+      "changeImage": "Bild ändern",
+      "uploadReferenceFile": "Referenzdatei hochladen",
+      "dragDropText": "Ziehen Sie ein Bild oder Video hierher oder klicken Sie zum Durchsuchen",
+      "fileFormatText": "Unterstützt JPG, PNG, WEBP, MP4, MOV bis zu 10MB",
+      "aspectRatio": "Seitenverhältnis",
+      "aspectRatioTooltip": "Wählen Sie das Ziel-Seitenverhältnis für die generierte Videoausgabe.",
+      "portrait": "Hochformat",
+      "landscape": "Querformat",
+      "duration": "Dauer",
+      "durationTooltip": "Wählen Sie die Videodauer: 10 Sekunden oder 15 Sekunden",
+      "quality": "Qualität",
+      "qualityTooltip": "Standard: Niedrigere Kosten, gute Qualität. Hoch: Premium-Qualität mit höheren Kosten.",
+      "standard": "Standard",
+      "high": "Hoch"
+    },
+    "veo3ImageMode": {
+      "image": "Bild *",
+      "startFrame": "Startframe",
+      "endFrame": "Endframe",
+      "uploadStartFrame": "Startframe hochladen",
+      "uploadEndFrame": "Endframe hochladen",
+      "dragDropImage": "Ziehen und ablegen oder klicken, um Ihr Bild hochzuladen",
+      "supportedFormats": "Unterstützte Formate: JPG, JPEG, PNG; jede Datei max. 10MB",
+      "generationPrompt": "Generierungs-Prompt *",
+      "promptPlaceholder": "Die Kamera führt eine sanfte 180-Grad-Bogenszene aus, beginnend mit der frontalen Ansicht der Sängerin und umkreist sie, um nahtlos auf der POV-Szene von hinten auf der Bühne zu enden. Die Sängerin singt \"wenn du mir in die Augen schaust, kann ich eine Million Sterne sehen.\"",
+      "ratio": "Verhältnis",
+      "ratioTooltip": "16:9: Querformat, unterstützt 1080P HD (nur 16:9 unterstützt 1080P)\n9:16: Hochformat für mobile Videos\nAuto: Passt automatisch das Seitenverhältnis basierend auf dem hochgeladenen Bild an",
+      "auto": "Auto",
+      "seed": "Seed (Optional)",
+      "seedTooltip": "Zufälliger Seed (10000-99999). Gleicher Seed generiert ähnliche Inhalte.",
+      "seedPlaceholder": "Bitte Seed eingeben",
+      "generating": "Generiere...",
+      "generate": "Generieren"
+    },
+    "errors": {
+      "uploadAtLeastOneImage": "Bitte laden Sie mindestens ein Bild hoch (Startframe oder Endframe)",
+      "invalidSoraUrl": "Geben Sie eine gültige Sora-URL ein, die mit https://sora.chatgpt.com/ beginnt.",
+      "referenceImageUrlRequired": "Referenzbild-URL ist für Bild-zu-Video-Modus erforderlich"
+    },
+    "defaultPrompts": {
+      "smoothTransition": "Erstellen Sie einen sanften Videoübergang zwischen den Frames",
+      "smoothAnimation": "Erstellen Sie eine sanfte Videoanimation aus dem Referenzbild"
+    },
+    "fallbacks": {
+      "getPremium": "Premium erhalten",
+      "generating": "Generiere...",
+      "startGeneration": "Generierung starten"
+    },
+    "costEstimate": "Kostenschätzung",
+    "baseCost": "Grundkosten ({duration}s)",
+    "aspectRatioCost": "Seitenverhältnis ({aspectRatio})",
+    "total": "Gesamt",
+    "creditsCount": "{count} Credits",
+    "availableCredits": "Verfügbare Credits: {count}",
+    "sufficientBalance": "✓ Ausreichendes Guthaben",
+    "insufficientCredits": "⚠ Unzureichende Credits",
+    "acceptableUsePolicy": "Akzeptable Nutzungsrichtlinie",
+    "acceptableUsePolicyDescription": "Es ist strengstens verboten, diesen Service zur Generierung illegaler Inhalte wie Betrug, Identitätsdiebstahl, Urheberrechtsverletzung usw. zu verwenden.",
+    "brandStatement": "Markenerklärung",
+    "brandStatementDescription": "Dieser Service hat keine Verbindung oder offizielle Beziehung zu Google, Vertex AI oder Flow."
+  },
+  "demoGallery": {
+    "title": "Erkunden Sie Sora 3 Video-Beispiele",
+    "description": "Echte Sora 3 Videos, die von unserer Plattform erstellt wurden und Sora 3 Fähigkeiten für Werbung und Markeninhalte zeigen.",
+    "seeMoreExamples": "Weitere Beispiele anzeigen",
+    "tapToUnmute": "Tippen zum Stummschalten aufheben"
+  },
+  "keyFeatures": {
+    "title": "Was macht Sora3 KI anders",
+    "noWatermark": {
+      "title": "Kein Wasserzeichen",
+      "description": "Ihre Videos sind sauber, markenfähig und bereit für kommerzielle Nutzung."
+    },
+    "bestCostPerformance": {
+      "title": "Beste Kosten-Leistung",
+      "description": "Bis zu 10× günstiger als andere KI-Video-Tools, mit großzügigen Credits."
+    },
+    "fastConvenient": {
+      "title": "Schnell & bequem",
+      "description": "Generieren Sie 10-Sekunden-Clips innerhalb von Minuten — direkt im Browser."
+    },
+    "sora3ProStoryboard": {
+      "title": "Sora3 Pro Storyboard (25 Sekunden)",
+      "description": "Sora3 Storyboard-Storytelling für Werbung, Trailer, Produktpräsentationen und kinematografische Kurzfilme."
+    },
+    "textToVideoImageToVideo": {
+      "title": "Text-zu-Video & Bild-zu-Video",
+      "description": "Laden Sie ein Bild hoch und animieren Sie Bewegung darum, oder beschreiben Sie eine Szene in einem Satz."
+    },
+    "socialReady": {
+      "title": "Social-ready",
+      "description": "Perfekt für TikTok, Reels, Shorts und bezahlte Werbung."
+    },
+    "trySora3Free": {
+      "title": "Sora3 kostenlos testen — Keine Bearbeitung erforderlich",
+      "description": "Beginnen Sie mit der Erstellung kinematografischer Videos mit Sora3 KI-gestützten Tools. Sora3 macht Videogenerierung einfach - keine Erfahrung erforderlich. Entdecken Sie, was Sora3 für Ihre Projekte tun kann. Testen Sie Sora3 kostenlos und sehen Sie, warum Creator Sora3 für KI-Videogenerierung wählen.",
+      "startGenerating": "Generierung starten"
+    }
+  },
+  "testimonials": {
+    "title": "Von Creator weltweit geliebt",
+    "subtitle": "Treten Sie Creator weltweit bei, die Sora3 für KI-Videogenerierung nutzen. Sehen Sie, was Benutzer über unsere Plattform wasserzeichenfreie Videos und Rendering-Funktionen sagen. Entdecken Sie, warum Sora3 von Creator vertraut wird, die Sora3-Technologie nutzen.",
+    "ctaTitle": "Treten Sie Creator bei, die Videos mit KI erstellen",
+    "ctaDescription": "Erleben Sie KI-Videogenerierung mit wasserzeichenfreien Videos, Audio-Funktionen und effizientem Rendering. Beginnen Sie noch heute mit der Videogenerierung.",
+    "ctaButton": "Jetzt erstellen starten"
+  },
+  "error": {
+    "goHome": "Zur Startseite",
+    "refreshPage": "Seite aktualisieren"
+  },
+  "auth": {
+    "signIn": "Anmelden",
+    "signInToSora3": "Bei Sora3 anmelden",
+    "createAccount": "Konto erstellen",
+    "checkEmail": "E-Mail prüfen",
+    "backToSignUp": "Zurück zur Registrierung",
+    "backToSignIn": "Zurück zur Anmeldung",
+    "confirmationEmailSent": "Bestätigungs-E-Mail gesendet!",
+    "magicLinkSent": "Magic Link gesendet!",
+    "confirmationEmailDescription": "Wir haben einen Bestätigungslink an {email} gesendet. Bitte prüfen Sie Ihre E-Mail und klicken Sie auf den Link, um Ihr Konto zu verifizieren.",
+    "magicLinkDescription": "Wir haben einen Anmeldelink an {email} gesendet",
+    "afterVerification": "Nach der Verifizierung können Sie sich bei Ihrem Konto anmelden.",
+    "checkEmailAndClick": "Prüfen Sie Ihre E-Mail und klicken Sie auf den Link, um sich anzumelden.",
+    "fullName": "Vollständiger Name",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "enterFullName": "Geben Sie Ihren vollständigen Namen ein",
+    "enterEmail": "Geben Sie Ihre E-Mail ein",
+    "createPassword": "Erstellen Sie ein Passwort (min. 6 Zeichen)",
+    "enterPassword": "Geben Sie Ihr Passwort ein",
+    "confirmPasswordPlaceholder": "Bestätigen Sie Ihr Passwort",
+    "redirectingToGoogle": "Weiterleitung zu Google..."
+  },
+  "sora3Capabilities": {
+    "title": "Warum Sora 3 für Werbekampagnen hervorragend ist",
+    "cinematicRealism": {
+      "title": "Sora 3 Filmqualität",
+      "description": "Sora 3 produziert Studio-Level-Visuals, die Markenbotschaften erhöhen.\n\nJedes Sora 3 Video behält konsistente Qualität ohne Artefakte.\n\nSora 3 Ausgabe funktioniert nahtlos für Produktlaunches, Markengeschichten und Marketingkampagnen."
+    },
+    "naturalCameraMotion": {
+      "title": "Sora 3 Intelligente Kamerakontrolle",
+      "description": "Sora 3 behandelt automatisch professionelle Kamerabewegungen und -winkel.\n\nSora 3 generiert sanfte, natürliche Bewegung, die absichtlich wirkt.\n\nSora 3 Kameraführung verbessert den Produktionswert Ihrer Werbung sofort."
+    },
+    "consistentCharacters": {
+      "title": "Sora 3 Charakterkonsistenz",
+      "description": "Sora 3 behält Charakteraussehen über mehrere Szenen hinweg bei.\n\nSora 3 behandelt komplexe Charakteraktionen, während Identität bewahrt wird.\n\nSora 3 ist für mehrszenige Markenerzählungen und Werbe-Storytelling gebaut."
+    },
+    "longFormPlatformReady": {
+      "title": "Sora 3 Erweiterte Dauer",
+      "description": "Sora 3 unterstützt bis zu 25-Sekunden-Videos für komplette Markengeschichten.\n\nSora 3 Inhalte sind für soziale Plattformen und Werbeplatzierungen optimiert.\n\nSora 3 Videos exportieren sauber und bereit für sofortigen Kampagneneinsatz."
+    },
+    "advancedSceneIntelligence": {
+      "title": "Sora 3 Szenenverständnis",
+      "description": "Sora 3 versteht räumliche Beziehungen und Umgebungskontext.\n\nSora 3 generiert Szenen mit realistischer Physik und natürlichen Interaktionen.\n\nSora 3 zeichnet sich bei Produktpräsentationen, Lifestyle-Inhalten und Marken-Weltaufbau aus."
+    },
+    "audioSoundGeneration": {
+      "title": "Sora 3 Integriertes Audio",
+      "description": "Sora 3 generiert synchronisierte Soundscapes, die zu Ihren Visuals passen.\n\nSora 3 fügt automatisch Dialog, Umgebungsgeräusche und Effekte hinzu.\n\nSora 3 liefert komplette Videos, bereit für den Einsatz ohne zusätzliche Bearbeitung."
+    }
+  },
+  "paymentSuccess": {
+    "title": "Zahlung erfolgreich!",
+    "message": "Vielen Dank für Ihren Kauf. Ihre Credits wurden Ihrem Konto hinzugefügt.",
+    "amount": "Betrag",
+    "redirecting": "Weiterleitung zu Ihrem Konto...",
+    "goToStudio": "Zum Studio",
+    "viewDashboard": "Dashboard anzeigen",
+    "autoRedirect": "Sie werden in wenigen Sekunden automatisch weitergeleitet..."
+  }
+}

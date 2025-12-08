@@ -190,6 +190,14 @@
     "readMore": "Read More",
     "featured": "Featured"
   },
+  "blogPage": {
+    "featured": "Featured",
+    "readTime": "min read",
+    "publishedOn": "Published on",
+    "tags": "Tags",
+    "emptyTitle": "No posts yet",
+    "emptyDescription": "Add Markdown files to content/blog and they will appear here."
+  },
   "howItWorks": {
     "title": "How to Create Sora 3 Videos in Minutes",
     "subtitle": "Transform your concepts into polished Sora 3 content through three straightforward steps.",
@@ -873,4 +881,3 @@
     "autoRedirect": "You will be automatically redirected in a few seconds..."
   }
 }
-

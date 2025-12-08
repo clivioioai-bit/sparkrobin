@@ -1,0 +1,883 @@
+{
+  "common": {
+    "brand": "Sora3",
+    "new": "新",
+    "generate": "生成",
+    "home": "首页",
+    "pricing": "定价",
+    "blog": "博客",
+    "faq": "常见问题",
+    "signIn": "登录",
+    "getStarted": "开始创建 Sora 3",
+    "signOut": "退出",
+    "dashboard": "仪表板",
+    "account": "账户",
+    "settings": "设置",
+    "language": "语言",
+    "goHome": "返回首页",
+    "contactSupport": "联系支持",
+    "viewAllFaqs": "查看所有常见问题",
+    "haveMoreQuestions": "还有更多问题？我们随时为您提供帮助。"
+  },
+  "hero": {
+    "badge": "Next-Gen Sora 3 Platform",
+    "discord": "加入 Discord 社区",
+    "title": "Sora 3 — 重新定义 AI 视频的可能性",
+    "subtitle": "全新的 Sora 3 带来超真实动感、更长场景和电影级细节 — 让创作者在数秒内将纯想象转化为工作室级别的视频。",
+    "placeholder": "描述您想要创建的视频...",
+    "cta": "生成",
+    "trySora3": "🚀 即将推出 — 加入抢先体验",
+    "trySora2": "立即试用 Sora 2",
+    "sora2Description": "使用我们的 Sora 2 引擎立即生成视频 — 无水印，适用于 TikTok 和广告。",
+    "storyboard25s": "构建 25 秒 Sora 3 故事",
+    "disclaimer": "专注于 Sora 3 视频生成的独立平台。我们利用先进的 Sora 3 技术生产专业内容。与 OpenAI 或任何官方 Sora 产品无关。",
+    "features": {
+      "noWatermark": {
+        "title": "Sora 3 无水印",
+        "description": "导出干净整洁的 Sora 3 视频，适用于商业活动"
+      },
+      "noRegionalLimits": {
+        "title": "全球 Sora 3 访问",
+        "description": "从世界任何地方创建 Sora 3 内容"
+      },
+      "noInviteCode": {
+        "title": "即时 Sora 3 访问",
+        "description": "立即开始生成 Sora 3 视频，无需等待名单"
+      }
+    }
+  },
+  "navigation": {
+    "home": "首页",
+    "generate": "生成",
+    "textToVideo": "文本转视频",
+    "imageToVideo": "图片转视频",
+    "storyboard": "Sora3 故事板",
+    "watermarkRemover": "水印移除",
+    "pricing": "定价",
+    "blog": "博客",
+    "dashboard": "仪表板",
+    "user": "用户",
+    "account": "账户",
+    "settings": "设置",
+    "signOut": "退出",
+    "aiTools": "AI 工具",
+    "upgradeNow": "立即升级",
+    "login": "登录",
+    "startForFree": "立即开始",
+    "preferences": "偏好设置",
+    "generationHistory": "生成历史",
+    "textToVideoDescription": "将想法转化为精美的 Sora 3 片段，适用于广告",
+    "imageToVideoDescription": "将照片动画化为专业的 Sora 3 视频内容",
+    "storyboardDescription": "构建最多 25 秒的多场景 Sora 3 叙事",
+    "watermarkRemoverDescription": "即时移除 Sora 3 视频中的水印",
+    "whoThisIsFor": {
+      "ecommerce": {
+        "title": "Shopify 和电商卖家"
+      },
+      "shortFilmStudios": {
+        "title": "短片工作室"
+      },
+      "advertisers": {
+        "title": "广告主"
+      }
+    }
+  },
+  "footer": {
+    "description": "sora3ai.io 将想法转化为精美的 Sora 3 视频片段，完美适用于广告和品牌活动。我们的 Sora 3 平台生成无水印的专业视频，非常适合营销团队和创作者。立即开始创建 Sora 3 内容。",
+    "product": "产品",
+    "company": "公司",
+    "resources": "资源",
+    "support": "支持",
+    "sora3TextToVideo": "Sora3 文本转视频",
+    "sora3ImageToVideo": "Sora3 图片转视频",
+    "sora3Pricing": "Sora3 定价",
+    "sora3Faq": "Sora3 常见问题",
+    "sora3Blog": "Sora3 博客",
+    "aiVideoPromptGpt": "AI 视频提示 GPT",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "refundPolicy": "退款政策",
+    "support247": "24/7 支持",
+    "contactUs": "联系我们 / 合作",
+    "disclaimer": "sora3ai.io 是专注于 Sora 3 视频生成的独立平台。我们利用先进的 Sora 3 技术生产广告就绪的专业视频。sora3ai.io 与 OpenAI、Google 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
+    "poweredBy": "由专有的 Sora 3 视频合成技术提供支持。与任何官方供应商无关。",
+    "copyright": "© 2024 Sora3. 保留所有权利。",
+    "companyName": "Aivido LLC",
+    "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
+    "supportEmail": "24/7 支持: support@sora3ai.io",
+    "businessEmail": "商务与合作: team@sora3ai.io",
+    "logoAlt": "Sora3 AI 视频生成器标志",
+    "socialLabels": {
+      "twitter": "在 Twitter 上关注我们",
+      "discord": "加入我们的 Discord 社区",
+      "github": "访问我们的 GitHub",
+      "email": "通过电子邮件联系我们",
+      "supportEmail": "24/7 支持电子邮件",
+      "businessEmail": "商务与合作电子邮件"
+    }
+  },
+  "whyThisMatters": {
+    "title": "为什么营销团队选择 Sora 3",
+    "subtitle": "广告活动需要高质量的视频内容 — Sora 3 无阻碍交付。我们的 Sora 3 平台能够为品牌和代理商即时创建专业视频。",
+    "challenges": "常见障碍",
+    "solutions": "Sora 3 如何解决",
+    "watermarks": {
+      "title": "导出时的平台品牌标识",
+      "description": "水印会削弱客户工作的专业呈现。"
+    },
+    "pricing": {
+      "title": "每个视频的高昂成本",
+      "description": "昂贵的定价限制了频繁的内容制作。"
+    },
+    "storyboarding": {
+      "title": "技术复杂性",
+      "description": "多场景 Sora 3 故事板创建需要专业知识。"
+    },
+    "speed": {
+      "title": "冗长的处理时间",
+      "description": "生成速度慢会打乱活动时间表和创作动力。"
+    },
+    "noWatermark": {
+      "title": "Sora 3 无任何品牌标识",
+      "description": "导出干净整洁的 Sora 3 视频，完美适用于客户交付。"
+    },
+    "costPerformance": {
+      "title": "Sora 3 具有竞争力的价格",
+      "description": "Sora 3 生成成本显著低于同类平台。"
+    },
+    "multiModel": {
+      "title": "Sora 3 多模型方法",
+      "description": "Sora 3 利用多个引擎实现可靠、一致的输出。"
+    },
+    "storyboard": {
+      "title": "Sora 3 扩展叙事",
+      "description": "Sora 3 故事板构建最多 25 秒的完整品牌故事。"
+    },
+    "solution": "Sora 3 解决了所有这些挑战"
+  },
+  "whoThisIsFor": {
+    "title": "谁使用 Sora 3 构建活动",
+    "subtitle": "从内容创作者到营销总监，Sora 3 赋能团队制作推动结果的专业视频内容。",
+    "creators": {
+      "title": "内容创作者和影响者",
+      "description": "为社交平台制作 Sora 3 视频，无水印或制作开销。"
+    },
+    "ecommerce": {
+      "title": "电商和市场卖家",
+      "description": "生成转化率高的 Sora 3 产品视频和促销内容，无需工作室成本。"
+    },
+    "businesses": {
+      "title": "成长中的企业",
+      "description": "以代理商定价的一小部分获得 Sora 3 质量的视频制作。"
+    },
+    "marketers": {
+      "title": "测试创意的营销团队",
+      "description": "快速制作 Sora 3 视频变体，用于 A/B 测试和活动优化。"
+    },
+    "shortFilmStudios": {
+      "title": "制作工作室",
+      "description": "利用 Sora 3 技术以电影级质量增强项目。"
+    },
+    "advertisers": {
+      "title": "广告代理商",
+      "description": "交付满足客户期望和活动目标的 Sora 3 视频内容。"
+    }
+  },
+  "blogShowcase": {
+    "title": "Sora 3 创作者和品牌策略",
+    "subtitle": "可操作的见解，最大化您的 Sora 3 视频表现和活动结果。",
+    "viewAll": "查看所有博客文章",
+    "readMore": "阅读更多",
+    "featured": "精选"
+  },
+  "blogPage": {
+    "featured": "精选",
+    "readTime": "分钟阅读",
+    "publishedOn": "发布于",
+    "tags": "标签",
+    "emptyTitle": "暂无文章",
+    "emptyDescription": "将 Markdown 文件添加到 content/blog，它们将显示在这里。"
+  },
+  "howItWorks": {
+    "title": "如何在几分钟内创建 Sora 3 视频",
+    "subtitle": "通过三个简单的步骤将您的概念转化为精美的 Sora 3 内容。",
+    "step1": {
+      "title": "分享您的愿景或上传图片",
+      "description": "描述您想在 Sora 3 视频中看到的内容，或提供起始图片供 Sora 3 动画化。"
+    },
+    "step2": {
+      "title": "配置您的 Sora 3 输出设置",
+      "description": "选择宽高比和时长，或设置 Sora 3 故事板场景以扩展叙事。"
+    },
+    "step3": {
+      "title": "导出您的 Sora 3 视频，准备用于活动",
+      "description": "以 HD 或 4K 下载您的 Sora 3 创作，可立即部署用于广告和品牌内容。"
+    }
+  },
+  "faq": {
+    "title": "关于 Sora 3 的常见问题",
+    "subtitle": "查找关于 Sora 3 视频生成、活动使用和平台功能的答案。了解 Sora 3 的工作原理以及为什么营销团队选择 Sora 3 来满足他们的视频内容需求。",
+    "viewAllFaqs": "查看所有常见问题",
+    "contactSupport": "联系支持",
+    "haveMoreQuestions": "还有更多问题？我们随时为您提供帮助。",
+    "questions": {
+      "whatMakesDifferent": {
+        "question": "Sora 3 与其他视频生成平台有何不同？",
+        "answer": "Sora 3 擅长通过 Sora 3 故事板构建扩展叙事，在整个过程中保持角色一致性。虽然竞争对手将输出限制为简短片段，但 Sora 3 可生成 25 秒以上的故事，非常适合品牌活动、产品发布和社交内容。Sora 3 故事板提供逐场景控制，保留角色身份，并交付活动就绪的 Sora 3 视频。"
+      },
+      "characterConsistency": {
+        "question": "Sora 3 如何在多个场景中保持角色一致性？",
+        "answer": "Sora 3 故事板在您的 Sora 3 视频的每个场景中保留角色外观、服装和造型。这一 Sora 3 功能对于品牌叙事、角色驱动的活动和产品演示至关重要，在这些场景中一致的身份很重要。"
+      },
+      "videosLongerThan10s": {
+        "question": "Sora 3 能否生成超过 10 秒的视频？",
+        "answer": "是的。Sora 3 通过 Sora 3 故事板模式支持最多 25-30 秒的扩展时长。这一 Sora 3 功能解决了关键限制，能够实现完整的品牌故事而不是碎片化的片段。Sora 3 扩展视频在活动中表现更好。"
+      },
+      "commercialUse": {
+        "question": "Sora 3 视频是否适用于商业广告？",
+        "answer": "绝对可以。Sora 3 生成的内容完全授权用于商业用途，包括付费广告、电商视频和社交活动。您保留对创建的 Sora 3 视频的完全权利，但需遵守我们的使用指南。"
+      },
+      "watermarks": {
+        "question": "Sora 3 视频是否包含水印？",
+        "answer": "不 — 所有 Sora 3 导出完全无水印。高级 Sora 3 计划确保下载时不会出现平台品牌标识。您的 Sora 3 视频导出干净整洁，可立即部署用于活动。注意：这仅适用于我们平台添加的水印，不适用于第三方内容。"
+      },
+      "officialModel": {
+        "question": "此平台是否使用官方 Sora 3 技术？",
+        "answer": "我们利用先进的 Sora 3 兼容技术来交付专业结果。这使您能够立即创建 Sora 3 视频，而无需等待官方访问。"
+      },
+      "25SecondVideos": {
+        "question": "我可以构建 25 秒的 Sora 3 视频吗？",
+        "answer": "是的 — Sora 3 故事板支持 25 秒的 Sora 3 多场景生成，用于完整的品牌叙事。"
+      },
+      "paymentSafe": {
+        "question": "如果我付款，我的付款信息是否安全？",
+        "answer": "绝对安全。我们使用安全、可信的支付平台和银行。您的付款完全受保护，个人信息永远不会被泄露。"
+      },
+      "hiddenCharges": {
+        "question": "是否有隐藏费用？",
+        "answer": "没有，显示的价格是您将支付的总金额。没有额外的隐藏费用。年度计划相比月度计费可节省高达 50%。"
+      }
+    }
+  },
+  "pricing": {
+    "title": "定价计划",
+    "subtitle": "选择适合您 AI 视频生成需求的完美计划。随时取消。",
+    "secureCheckout": "安全结账",
+    "cancelAnytime": "随时取消",
+    "noSurpriseCharges": "无意外费用",
+    "fastSupport": "快速支持",
+    "priceIncreaseAlert": "价格即将上涨！立即订阅以锁定低价！",
+    "pricePerVideoGeneration": "每次视频生成的价格",
+    "marketPrice": "市场价格",
+    "ourPrice": "我们的价格",
+    "marketPriceValue": "$0.10/秒",
+    "ourPriceValue": "$0.05/秒",
+    "fiftyPercentCheaper": "便宜 50%",
+    "thanMarket": "比市场",
+    "chooseYourPlan": "选择您的 Sora 3 计划",
+    "teaserSubtitle": "专业的 Sora 3 视频生成，适用于活动。随时取消。年度计划节省 50%。",
+    "proTip": "💡 <strong>专业提示：</strong> 订阅计划包括 API 访问、webhooks 和优先支持",
+    "plans": {
+      "monthly": "月度",
+      "annual": "年度",
+      "oneTime": "一次性",
+      "save50Percent": "节省 50%",
+      "mostPopular": "最受欢迎",
+      "billedAnnually": "按年计费",
+      "billedMonthly": "按月计费 · 随时取消",
+      "savePerYear": "每年节省 ${amount}",
+      "perMonth": "/月",
+      "perYear": "/年",
+      "payOnce": "一次性付款，随时使用 — 积分永不过期",
+      "oneTimePurchase": "一次性购买 • 无订阅权益",
+      "buyNow": "立即购买",
+      "upToVideos": "最多 {count} 个 sora3 视频",
+      "oneTimePurchaseLabel": "一次性购买",
+      "noSubscriptionRequired": "无需订阅",
+      "commercialUsageRights": "商业使用权",
+      "pleaseLogInFirst": "请先登录",
+      "logInToProceed": "登录以继续前往 Creem 付款。",
+      "loginSessionExpired": "登录会话已过期",
+      "pleaseLogInAgain": "请再次登录以继续购买。",
+      "tooManyRequests": "请求过多",
+      "pleaseWait": "请稍候再试。",
+      "tryAgainLater": "请稍后再试。",
+      "failedToCreatePaymentLink": "创建支付链接失败",
+      "needHelp": "需要帮助？",
+      "contactSupport": "联系 support@sora3ai.io 获取帮助。",
+      "contactSupportLink": "联系支持",
+      "features": {
+        "creditsIncluded": "包含 {count} 积分",
+        "aiVideosPerMonth": "每月 {count} 个 AI 视频",
+        "aiVideosPerYear": "每年 {count} 个 AI 视频",
+        "hd4kQuality": "HD 和 4K 质量选项",
+        "commercialUsageRights": "商业使用权",
+        "emailSupport": "电子邮件支持",
+        "priorityEmailSupport": "优先电子邮件支持",
+        "apiAccess": "API 访问（即将推出）",
+        "generationHistory": "生成历史",
+        "fastestProcessing": "最快处理",
+        "professionalConsultation": "一对一专业咨询支持"
+      },
+      "cta": {
+        "startCreating": "开始创建",
+        "getAnnualDeal": "获取年度优惠",
+        "getCreator": "获取 Creator",
+        "bestValue": "最佳价值",
+        "goPro": "升级到 Pro",
+        "unlockPro": "解锁 Pro",
+        "saveWithAnnual": "年度节省"
+      },
+      "planNames": {
+        "basic": "Basic",
+        "creator": "Creator",
+        "pro": "Pro"
+      },
+      "credits": "积分"
+    },
+    "generate": {
+      "insufficientCredits": "积分不足。请购买更多积分或订阅计划。",
+      "insufficientCreditsWithDetails": "积分不足。您需要 {required} 积分，但只有 {available}。{details}",
+      "insufficientCreditsRetry": "积分不足。请购买更多积分以重试。",
+      "creditDeductionFailed": "积分扣除失败：{error}。这可能是由于数据库问题。请重试或联系支持。",
+      "creditSystemError": "积分系统错误：{error}。如果此问题持续存在，请联系支持。",
+      "storageBucketNotConfigured": "存储桶未配置。请在 Supabase 仪表板 → Storage → New bucket → Name: \"videos\" → Public bucket → Create bucket 中创建 \"videos\" 存储桶。",
+      "pleaseEnterPrompt": "请输入您的提示",
+      "pleaseUploadImage": "请上传图片以生成视频",
+      "watermarkRemover": {
+        "title": "Sora3 水印移除器",
+        "description": "从您托管的 Sora 视频中移除 Sora 水印。粘贴公开的 `sora.chatgpt.com` URL 并运行。API 上的典型处理时间为 1-3 秒。",
+        "seoTitle": "Sora3 水印移除器 | 移除 Sora 水印",
+        "seoDescription": "Sora3 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
+        "input": "输入",
+        "output": "输出",
+        "videoUrl": "video_url",
+        "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
+        "videoUrlHint": "必须可公开访问且以 `https://sora.chatgpt.com/` 开头。",
+        "reset": "重置",
+        "running": "运行中…",
+        "run": "运行 {credits}积分",
+        "processing": "处理中…",
+        "waitingForResult": "等待结果…",
+        "noOutputYet": "暂无输出",
+        "exampleVideo": "示例视频",
+        "exampleVideoDescription": "这是由 Sora3 AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
+        "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Sora3 视频干净整洁，适合品牌使用。",
+        "browserNotSupportVideo": "您的浏览器不支持视频标签。"
+      }
+    },
+    "modal": {
+      "insufficientCredits": "积分不足",
+      "upgradeYourPlan": "升级您的计划",
+      "subscriptionRequired": "需要订阅",
+      "insufficientCreditsDescription": "您当前的积分不足以生成此视频。订阅计划，解锁更多积分的无限创作可能性！",
+      "upgradePlanDescription": "选择订阅计划以访问高级功能。",
+      "subscriptionRequiredDescription": "要 {feature}，您需要有效的订阅计划。",
+      "pleaseLogInFirst": "请先登录",
+      "logInToProceed": "登录以继续订阅。",
+      "loginSessionExpired": "登录会话已过期",
+      "pleaseLogInAgain": "请再次登录以继续订阅。",
+      "subscriptionFailed": "订阅失败",
+      "unexpectedError": "发生意外错误。"
+    },
+    "faqTitle": "常见问题",
+    "faqCancelAnytime": {
+      "question": "我可以随时取消吗？",
+      "answer": "可以！所有计划都可以随时取消。您将保留访问权限直到计费期结束。"
+    },
+    "faqCreditsRollOver": {
+      "question": "未使用的积分会结转吗？",
+      "answer": "订阅存储桶在每个计费期重置，不会结转。一次性附加积分转到灵活存储桶，不会被订阅重置清除。"
+    },
+    "faqRefundPolicy": {
+      "question": "sora3ai.io 的退款政策是什么？",
+      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@sora3ai.io 退款。一般咨询和合作，请联系 team@sora3ai.io。退款在 5-7 个工作日内处理。"
+    },
+    "faqContentRestrictions": {
+      "question": "是否有视频内容限制？",
+      "answer": "我们的平台执行严格的内容政策。我们禁止生成有害、非法或不适当的内容。所有生成的视频都经过自动筛选，以确保符合政策。"
+    },
+    "faqCreditsDeduction": {
+      "question": "如果生成失败，积分会被扣除吗？",
+      "answer": "不会。积分在任务开始时原子性扣除，如果生成失败或上游服务返回错误，会自动退款。退款通常在一分钟内显示。"
+    },
+    "faqCancelSubscription": {
+      "question": "如果我取消订阅，积分会怎样？",
+      "answer": "您可以随时取消。灵活（一次性）积分仍然可用。订阅存储桶遵循您的计费期，在当前期结束后停止刷新。"
+    }
+  },
+  "generate": {
+    "generate": "生成",
+    "generating": "生成中...",
+    "readyToGenerate": "准备生成",
+    "startGeneration": "开始生成",
+    "enterPrompt": "输入您的提示并点击生成以创建您的视频",
+    "videoBeingCreated": "正在创建您的视频。这可能需要几分钟。",
+    "initializingGeneration": "正在初始化生成...",
+    "aiWorkSubtitles": {
+      "writingOpeningScene": "🎬 正在编写您的开场场景…",
+      "paintingBackground": "🎨 正在绘制背景细节…",
+      "recordingNarrator": "🎙️ 正在录制旁白声音…",
+      "addingSoundscape": "🔊 正在添加背景音效…",
+      "syncingEverything": "🚀 正在同步所有内容…"
+    },
+    "videoGeneratedSuccessfully": "视频生成成功！",
+    "videoReady": "您的视频已准备就绪。视频 URL 将很快可用。",
+    "generateWithCredits": "生成 · {creditCost} 积分",
+    "generateShots": "生成 {count} 个镜头故事板",
+    "addPromptsToAllShots": "为所有镜头添加提示以生成",
+    "reset": "重置",
+    "input": "输入",
+    "output": "输出",
+    "video": "视频",
+    "credits": "积分",
+    "exampleVideo": "示例视频",
+    "sampleVideoDescription": "这是由 Sora3 AI 生成的示例视频。使用输入面板创建您自己的视频！",
+    "sampleVideoDescriptionUnauthenticated": "这是由 Sora3 AI 生成的示例视频。注册以创建您自己的视频！",
+    "browserNotSupportVideo": "您的浏览器不支持视频标签。",
+    "signUpToCreate": "注册以创建您自己的视频",
+    "textToVideoTitle": "AI 视频生成器文本转视频",
+    "textToVideoSubtitle": "将您的想法转化为电影级视频 - 只需输入文字。",
+    "textToVideoFeaturesTitle": "AI 视频生成器文本转视频功能",
+    "featureAIPowered": {
+      "title": "AI 驱动的脚本到屏幕魔法",
+      "description": "使用文本转视频，您只需要一个提示。无论是单个句子还是详细故事，我们的 AI 引擎都会解释您的文本并将其转换为令人惊叹的视觉效果。非常适合创作者、营销人员、教育工作者以及任何想要将文字转化为高影响力视频的人。"
+    },
+    "featureCinematic": {
+      "title": "零编辑技能的电影级质量",
+      "description": "我们先进的 AI 确保每一帧都经过专业渲染。您获得流畅的过渡、逼真的照明和动态运动 - 无需打开视频编辑器。从社交短片到产品说明，您的内容获得工作室级别的升级。"
+    },
+    "featureAudio": {
+      "title": "与您的消息匹配的内置音频",
+      "description": "无需单独的音效设计。AI 会生成与您的脚本同步的背景音乐、环境声音甚至旁白。这是端到端的 AI 视频生成器体验，专为匆忙的创作者而设计。"
+    },
+    "featureContextual": {
+      "title": "以人为中心的上下文场景生成",
+      "description": "系统不仅理解您的文字，还理解背后的情绪、语调和意图。无论您想要悬疑、幽默、情感还是清晰 - AI 都会选择符合您目的的视觉效果。"
+    },
+    "howToUseTitle": "如何使用 AI 视频生成器进行文本转视频",
+    "howToUseStep1": {
+      "title": "注册或登录 sora3ai.io",
+      "description": "创建账户以解锁我们文本转视频界面的全部功能。"
+    },
+    "howToUseStep2": {
+      "title": "访问文本转视频创建面板",
+      "description": "在您的仪表板上找到该工具，选择从头开始或使用 AI 辅助。"
+    },
+    "howToUseStep3": {
+      "title": "输入或粘贴您的脚本",
+      "description": "在文本框中输入您的想法。您可以输入简单的提示、场景描述或完整脚本。"
+    },
+    "howToUseStep4": {
+      "title": "点击生成",
+      "description": "点击\"生成\"按钮。AI 将处理您的脚本并创建带有匹配视觉效果、运动和音乐的视频。只需几分钟，您的视频就可以预览和下载了。"
+    },
+    "whoUsesTitle": "谁使用 Sora3？",
+    "whoUsesContentCreators": "内容创作者",
+    "whoUsesTikTokMarketers": "TikTok 营销人员",
+    "imageToVideoTitle": "Sora3 图片转视频生成器 - 将照片转化为电影级视频",
+    "imageToVideoSubtitle": "使用 Sora3 AI 通过电影级动感让您的静态图片栩栩如生。Sora3 图片转视频技术从照片创建专业视频，具有自然运动和逼真效果。只需上传您的图片，剩下的交给 Sora3。",
+    "imageToVideoFeaturesTitle": "Sora3 图片转视频功能 - 高级 AI 视频生成",
+    "imageToVideoFeature1": {
+      "title": "Sora3 简单的图片到动感转换",
+      "description": "使用 Sora3 图片转视频，只需上传您的照片，看着它变得生动。Sora3 AI 引擎分析您的图片并生成自然的电影级动感，增强场景效果。Sora3 非常适合产品展示、艺术创作以及将静态时刻转化为动态故事。"
+    },
+    "imageToVideoFeature2": {
+      "title": "Sora3 专业动感，零动画技能",
+      "description": "Sora3 先进的 AI 理解深度、照明和构图。Sora3 生成流畅的相机运动、自然的物体运动和逼真的环境效果 - 所有这些都无需任何动画或视频编辑专业知识。使用 Sora3 将您的作品集照片转化为专业视频内容。"
+    },
+    "imageToVideoFeature3": {
+      "title": "Sora3 自动音频生成",
+      "description": "每个 Sora3 视频都配有完美匹配的背景音乐和环境声音。Sora3 AI 分析您图片的情绪和氛围，创建与视觉故事互补的音频。这是从单张图片开始的完整 Sora3 视频创建体验。"
+    },
+    "imageToVideoFeature4": {
+      "title": "Sora3 智能场景理解",
+      "description": "Sora3 AI 识别您图片中的物体、人物、风景和场景。Sora3 生成在上下文中有意义的动感 - 无论是穿过树木的微风、在 3D 空间中旋转的产品，还是带有微妙动作的肖像。每个 Sora3 动画都感觉自然且有目的。"
+    },
+    "imageToVideoHowToUseTitle": "如何使用 Sora3 图片转视频生成器",
+    "imageToVideoHowToUseStep1": {
+      "title": "注册或登录 sora3ai.io",
+      "description": "创建账户以解锁 Sora3 图片转视频的全部功能并开始使用 Sora3 AI 技术。"
+    },
+    "imageToVideoHowToUseStep2": {
+      "title": "访问 Sora3 图片转视频面板",
+      "description": "导航到您仪表板上的 Sora3 图片转视频工具。Sora3 界面专为简单的图片到视频转换而设计。"
+    },
+    "imageToVideoHowToUseStep3": {
+      "title": "将您的图片上传到 Sora3",
+      "description": "拖放或选择您的图片文件进行 Sora3 处理。Sora3 支持照片、插图、产品图片或您想要使用 Sora3 动画化的任何静态视觉。"
+    },
+    "imageToVideoHowToUseStep4": {
+      "title": "使用 Sora3 生成",
+      "description": "点击\"生成\"按钮，让 Sora3 AI 分析您的图片。Sora3 创建具有自然运动、相机运动和同步音频的视频。您的 Sora3 动画视频将在几分钟内准备就绪。"
+    },
+    "imageToVideoPageTitle": "Sora3 图片转视频生成器",
+    "imageToVideoPageSubtitle": "使用 Sora3 AI 技术将您的图片转化为电影级视频 — 无水印",
+    "imageToVideoTestimonialsTitle": "为什么选择 Sora3 图片转视频生成器",
+    "imageToVideoTestimonial1": {
+      "quote": "我上传了一张产品照片，Sora3 在几分钟内生成了专业的视频广告。Sora3 完全改变了我为在线商店创建内容的方式！",
+      "author": "Emma L.，电商店主"
+    },
+    "imageToVideoTestimonial2": {
+      "quote": "作为摄影师，我喜欢 Sora3 如何让我的静态图片变得生动。Sora3 的运动感觉自然，为我的作品集增加了深度。",
+      "author": "Michael R.，专业摄影师"
+    },
+    "imageToVideoTestimonial3": {
+      "quote": "Sora3 图片转视频功能为我节省了数小时的动画工作。我现在可以使用 Sora3 从现有照片即时创建引人入胜的社交媒体内容。",
+      "author": "Jessica T.，社交媒体经理"
+    },
+    "imageToVideoTestimonial4": {
+      "quote": "我用它来为我的房地产列表动画化房产照片。视频看起来很专业，帮助房产在市场中脱颖而出。",
+      "author": "Robert K.，房地产经纪人"
+    },
+    "imageToVideoTestimonial5": {
+      "quote": "非常适合将我的设计模型转化为动画演示。AI 理解构图并添加有意义的运动。",
+      "author": "Alex W.，平面设计师"
+    },
+    "imageToVideoTestimonial6": {
+      "quote": "从单张产品照片到完整的视频广告 - 这个工具简化了我的整个内容创建工作流程。强烈推荐！",
+      "author": "Sarah H.，营销总监"
+    },
+    "pricingBanner": "💎 定价：从每月 $19 起，提供高质量 100 个 AI 生成视频（含音频）",
+    "faqImageToVideoTitle": "关于 AI 视频生成器图片转视频的常见问题",
+    "faqImageToVideo": {
+      "whatIsTool": {
+        "question": "图片转视频工具是什么？",
+        "answer": "我们的 AI 图片转视频工具使用先进的 AI 将您的静态图片转化为完全动画化的视频。只需上传您的照片、插图或产品图片，AI 就会通过自然运动、相机运动和同步音频让它变得生动。"
+      },
+      "needExperience": {
+        "question": "使用图片转视频工具是否需要任何动画或视频编辑经验？",
+        "answer": "不需要经验。只需上传您的图片文件，AI 将自动生成具有自然运动和专业效果的高质量动画视频 - 无需技术技能。"
+      },
+      "imageTypes": {
+        "question": "哪些类型的图片最适合图片转视频工具？",
+        "answer": "该工具适用于各种图片，包括产品照片、肖像、风景、插图、建筑照片和设计模型。AI 分析构图并为每种图片类型生成在上下文中有意义的运动。"
+      },
+      "howLong": {
+        "question": "从图片生成视频需要多长时间？",
+        "answer": "大多数视频只需几分钟即可生成，具体取决于复杂性。AI 分析您的图片，生成运动，并添加同步音频。一旦准备就绪，您就可以预览和下载您的动画视频。"
+      },
+      "motionType": {
+        "question": "AI 为图片添加什么类型的运动？",
+        "answer": "AI 生成在上下文上适当的运动，例如流畅的相机运动、自然的物体运动、环境效果（如穿过树木的风）、产品旋转和微妙的肖像运动。运动增强图片效果而不会分散注意力。"
+      },
+      "commercialUse": {
+        "question": "我可以将图片转视频生成的视频用于商业目的吗？",
+        "answer": "可以。使用我们的 AI 创建的视频可用于营销、电商、社交媒体、商业演示和任何其他商业用途，只要它们遵循我们的使用和许可条款。"
+      }
+    },
+    "getStartedImageToVideo": {
+      "title": "开始使用 AI 视频生成器进行图片转视频",
+      "description": "准备好让您的图片变得生动了吗？升级以访问更快的渲染、更长的视频时长、高级动感效果和高级样式。无论您是在创建产品广告、作品集展示还是社交媒体内容，我们的 Pro 计划都为您提供将静态图片转化为令人惊叹的动画视频所需的一切 - 轻松自如。",
+      "button": "获取高级版"
+    },
+    "reframeMode": {
+      "model": "模型",
+      "sora3": "Sora3",
+      "sora3Pro": "Sora3 pro",
+      "sora3Description": "OpenAI 的高级视频生成模型，具有高质量输出和精确控制。",
+      "sora3ProDescription": "OpenAI 的高级视频生成模型，具有增强的质量、卓越的逼真度和高级控制功能。",
+      "prompt": "提示 *",
+      "promptTooltip": "描述您想从参考图片创建的运动",
+      "aiExamples": "AI 示例",
+      "promptExamplesTitle": "图片转视频提示示例",
+      "promptExamplesDescription": "浏览示例提示以激发您的图片转视频生成",
+      "useThisPrompt": "使用此提示",
+      "promptGpt": "提示 GPT",
+      "promptGptTooltip": "需要灵感？使用 AI 视频提示 GPT 集思广益相机运动、故事节拍和音频提示，然后将升级的提示粘贴到这里。",
+      "promptPlaceholder": "描述您想创建的运动。例如：'温柔地放大寿司师傅的手，他们仔细地塑造米饭，背景柔和聚焦'",
+      "referenceImage": "参考图片 *",
+      "referenceImageTooltip": "上传一张参考图片或视频（JPG、PNG、WEBP、MP4、MOV，最大 10MB），将用作起始帧。",
+      "changeImage": "更改图片",
+      "uploadReferenceFile": "上传参考文件",
+      "dragDropText": "拖放图片或视频到这里，或点击浏览",
+      "fileFormatText": "支持 JPG、PNG、WEBP、MP4、MOV，最大 10MB",
+      "aspectRatio": "宽高比",
+      "aspectRatioTooltip": "选择生成视频输出的目标宽高比。",
+      "portrait": "竖屏",
+      "landscape": "横屏",
+      "duration": "时长",
+      "durationTooltip": "选择视频时长：10 秒或 15 秒",
+      "quality": "质量",
+      "qualityTooltip": "标准：成本较低，质量良好。高：高级质量，成本较高。",
+      "standard": "标准",
+      "high": "高"
+    },
+    "veo3ImageMode": {
+      "image": "图片 *",
+      "startFrame": "起始帧",
+      "endFrame": "结束帧",
+      "uploadStartFrame": "上传起始帧",
+      "uploadEndFrame": "上传结束帧",
+      "dragDropImage": "拖放或点击上传您的图片",
+      "supportedFormats": "支持格式：JPG、JPEG、PNG；每个文件最大 10MB",
+      "generationPrompt": "生成提示 *",
+      "promptPlaceholder": "相机执行流畅的 180 度弧形拍摄，从歌手的正面视图开始，围绕她旋转，无缝地结束于舞台上她身后的 POV 镜头。歌手唱着\"当你看着我的眼睛时，我能看到百万颗星星。\"",
+      "ratio": "比例",
+      "ratioTooltip": "16:9：横屏格式，支持 1080P HD（仅 16:9 支持 1080P）\n9:16：移动视频的竖屏格式\n自动：根据上传的图片自动匹配宽高比",
+      "auto": "自动",
+      "seed": "种子（可选）",
+      "seedTooltip": "随机种子（10000-99999）。相同的种子生成相似的内容。",
+      "seedPlaceholder": "请输入种子",
+      "generating": "生成中...",
+      "generate": "生成"
+    },
+    "errors": {
+      "uploadAtLeastOneImage": "请至少上传一张图片（起始帧或结束帧）",
+      "invalidSoraUrl": "请输入以 https://sora.chatgpt.com/ 开头的有效 Sora URL。",
+      "referenceImageUrlRequired": "图片转视频模式需要参考图片 URL"
+    },
+    "defaultPrompts": {
+      "smoothTransition": "在帧之间创建流畅的视频过渡",
+      "smoothAnimation": "从参考图片创建流畅的视频动画"
+    },
+    "fallbacks": {
+      "getPremium": "获取高级版",
+      "generating": "生成中...",
+      "startGeneration": "开始生成"
+    },
+    "costEstimate": "成本估算",
+    "baseCost": "基础成本（{duration}秒）",
+    "aspectRatioCost": "宽高比（{aspectRatio}）",
+    "total": "总计",
+    "creditsCount": "{count} 积分",
+    "availableCredits": "可用积分：{count}",
+    "sufficientBalance": "✓ 余额充足",
+    "insufficientCredits": "⚠ 积分不足",
+    "acceptableUsePolicy": "可接受使用政策",
+    "acceptableUsePolicyDescription": "严禁使用此服务生成非法内容，如欺诈、冒充、版权侵权等。",
+    "brandStatement": "品牌声明",
+    "brandStatementDescription": "此服务与 Google、Vertex AI 或 Flow 没有关联或官方关系。",
+    "veo3Mode": {
+      "generationPrompt": "生成提示",
+      "promptPlaceholder": "一个键盘，其按键由不同类型的糖果制成。打字时发出甜美、清脆的声音。音频：清脆、含糖的打字声，愉快的笑声。",
+      "enterImageUrl": "输入图片 URL：",
+      "imageUrls": "图片 URL",
+      "imageUrlsTooltip": "对于 FIRST_AND_LAST_FRAMES_2_VIDEO：1-2 张图片\n对于 REFERENCE_2_VIDEO：1-3 张图片（快速模型，仅 16:9）\n图片必须是可访问的公开 URL",
+      "addImageUrl": "添加图片 URL",
+      "imageUrlPlaceholder": "https://example.com/image.jpg",
+      "noImagesAdded": "未添加图片。点击\"添加图片 URL\"以添加参考图片。",
+      "ratio": "比例",
+      "ratioTooltip": "16:9：横屏格式，支持 1080P HD（仅 16:9 支持 1080P）\n9:16：移动视频的竖屏格式\n自动：根据上传的图片自动匹配宽高比",
+      "advancedOptions": "高级选项",
+      "seed": "种子（可选）",
+      "seedTooltip": "随机种子（10000-99999）。相同的种子生成相似的内容。",
+      "seedPlaceholder": "请输入种子",
+      "enableTranslation": "启用翻译",
+      "enableTranslationTooltip": "自动将提示翻译为英语以获得更好的生成结果",
+      "on": "开启",
+      "off": "关闭",
+      "watermark": "水印（可选）",
+      "watermarkPlaceholder": "MyBrand",
+      "audioDisclaimer": "根据 google，音频是实验性功能，可能在某些视频上不可用。",
+      "audioDisclaimerTooltip": "Google 的 Veo 3.1 默认包含音频生成，但在某些情况下（例如，涉及未成年人的敏感内容）可能会抑制音频。"
+    },
+    "storyboard": {
+      "invalidImageFile": "请选择有效的图片文件",
+      "imageSizeTooLarge": "图片大小必须小于 10MB",
+      "totalDuration": "总时长 *",
+      "totalLengthDescription": "视频的总长度",
+      "shots": "镜头",
+      "remaining": "剩余",
+      "addShot": "添加镜头",
+      "maximumDurationReached": "已达到最大时长",
+      "allocateRemainingDuration": "请在生成前将所有剩余时长（{duration}秒）分配给场景。",
+      "imageUrls": "上传图片",
+      "removeAll": "全部删除",
+      "selectedImage": "已选图片",
+      "referenceImage": "参考图片",
+      "imageUploadOnGenerate": "生成视频时将上传图片",
+      "selectImage": "选择图片",
+      "supportedFormats": "支持格式：JPEG、PNG、WEBP 最大文件大小：10MB；最大文件数：1",
+      "uploadImageDescription": "上传图片文件以用作 API 的输入",
+      "aspectRatio": "宽高比",
+      "portrait": "竖屏",
+      "landscape": "横屏",
+      "aspectRatioDescription": "此参数定义图片的宽高比。",
+      "shot": "镜头",
+      "shotDescription": "镜头描述",
+      "shotDescriptionPlaceholder": "描述此镜头中发生的情况...",
+      "duration": "时长",
+      "generatingStoryboard": "正在生成故事板...",
+      "generationTimeNote": "⏱️ 这通常需要 5-15 分钟。请保持此页面打开。",
+      "exampleDescription": "这是一个 25 秒多场景故事板视频的示例。配置您的场景并点击生成以创建您自己的视频。",
+      "exampleNote": "示例：3 场景故事板（8秒 + 8秒 + 9秒 = 总计 25秒）",
+      "whatIsSora3ProStoryboard": "什么是 Sora3 Pro 故事板？",
+      "sora3ProStoryboardDescription": "Sora3 Pro 故事板是为顺序内容制作而设计的尖端 AI 视频生成系统。为 YouTube Shorts、TikTok 和 Reels 构建最多 25 秒的多场景 AI 视频。这个强大的平台支持多场景协调，保持视觉一致性和连贯性，提供对最多 25 秒长度的输出的精确控制，并导出带音频的 HD 质量视频。",
+      "upTo25sDuration": "最多 25 秒时长",
+      "multiSceneControl": "多场景控制（故事板）",
+      "socialMediaReady": "社交媒体就绪",
+      "hdQualityAudio": "HD 质量 + 音频",
+      "whatPeopleAreSaying": "人们对 Sora3 Pro 故事板的评价",
+      "keyFeatures": "Sora3 Pro 故事板的主要功能",
+      "multiSceneSequencing": "多场景排序",
+      "multiSceneSequencingDescription": "使用 Sora3 Pro 故事板，定义多个场景以创建连贯的故事线。Sora3 Pro 故事板引擎确保场景之间的流畅过渡，实现无缝的多场景视频。",
+      "visualConsistency": "视觉一致性",
+      "visualConsistencyDescription": "Sora3 Pro 故事板在所有场景中保持一致的视觉样式和元素，提供观众期望从 Sora3 Pro 故事板获得的专业质量视频输出。",
+      "flexibleOutputControl": "灵活的输出控制",
+      "flexibleOutputControlDescription": "使用 Sora3 Pro 故事板生成最多 25 秒的视频。使用 Sora3 Pro 故事板选择 10 秒、15 秒或 25 秒时长选项以适应您的内容需求。",
+      "referenceImageSupport": "参考图片支持",
+      "referenceImageSupportDescription": "上传参考图片以指导 Sora3 Pro 故事板生成过程，确保整个 Sora3 故事板视频的视觉一致性。",
+      "howToUse": "如何使用 Sora3 Pro 故事板",
+      "step1DefineScenes": "定义场景",
+      "step1Description": "为 Sora3 Pro 故事板详细描述每个场景",
+      "step2SetParameters": "设置参数",
+      "step2Description": "选择时长（10秒/15秒/25秒）和宽高比",
+      "step3UploadReference": "上传参考",
+      "step3Description": "添加图片以指导 Sora3 Pro 故事板（可选）",
+      "step4Generate": "生成",
+      "step4Description": "点击生成，让 Sora3 Pro 故事板创建您的视频",
+      "perfectFor": "非常适合 TikTok、Instagram Reels、YouTube Shorts 和品牌内容制作。了解更多关于我们的",
+      "pricingPlans": "定价计划",
+      "pricing": "💎 定价",
+      "pricingDescription": "从每月 $19 起，提供带音频的高质量多场景 AI 视频",
+      "powerfulStoryboardFeatures": "强大的故事板功能",
+      "sceneBySceneControl": "逐场景控制",
+      "sceneBySceneControlDescription": "拖放场景，自定义提示和资源以实现完美流程。",
+      "socialMediaFormats": "社交媒体格式",
+      "socialMediaFormatsDescription": "TikTok、Instagram Reels、YouTube Shorts 的内置模板。",
+      "fastExportShare": "快速导出和分享",
+      "fastExportShareDescription": "在几分钟内生成、预览和下载您的 Sora3 故事板视频。"
+    },
+    "watermarkRemover": {
+      "title": "Sora3 水印移除器",
+      "description": "从您托管的 Sora 视频中移除 Sora 水印。粘贴公开的 `sora.chatgpt.com` URL 并运行。API 上的典型处理时间为 1-3 秒。",
+      "seoTitle": "Sora3 水印移除器 | 移除 Sora 水印",
+      "seoDescription": "Sora3 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
+      "input": "输入",
+      "output": "输出",
+      "videoUrl": "video_url",
+      "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
+      "videoUrlHint": "必须可公开访问且以 `https://sora.chatgpt.com/` 开头。",
+      "reset": "重置",
+      "running": "运行中…",
+      "run": "运行 {credits}积分",
+      "processing": "处理中…",
+      "waitingForResult": "等待结果…",
+      "noOutputYet": "暂无输出",
+      "exampleVideo": "示例视频",
+      "exampleVideoDescription": "这是由 Sora3 AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
+      "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Sora3 视频干净整洁，适合品牌使用。",
+      "browserNotSupportVideo": "您的浏览器不支持视频标签。"
+    },
+    "promptExamples": {
+      "categories": {
+        "cinematicCameraMoves": "电影级相机运动",
+        "lifestyleProductMotion": "生活方式和产品动感",
+        "natureTravel": "自然和旅行",
+        "futuristicTech": "未来科技",
+        "portraitFashion": "肖像和时尚",
+        "artisticTransformations": "艺术转换"
+      }
+    }
+  },
+  "demoGallery": {
+    "title": "探索 Sora 3 视频示例",
+    "description": "由我们平台创建的真实 Sora 3 视频，展示 Sora 3 在广告和品牌内容方面的能力。",
+    "seeMoreExamples": "查看更多示例",
+    "tapToUnmute": "点击取消静音"
+  },
+  "keyFeatures": {
+    "title": "Sora3 AI 的独特之处",
+    "noWatermark": {
+      "title": "无水印",
+      "description": "您的视频干净、可品牌化，随时可用于商业用途。"
+    },
+    "bestCostPerformance": {
+      "title": "最佳性价比",
+      "description": "比其他 AI 视频工具便宜多达 10 倍，提供丰富的积分。"
+    },
+    "fastConvenient": {
+      "title": "快速便捷",
+      "description": "在几分钟内在浏览器中生成 10 秒片段。"
+    },
+    "sora3ProStoryboard": {
+      "title": "Sora3 Pro 故事板（25 秒）",
+      "description": "Sora3 故事板叙事，适用于广告、预告片、产品展示和电影级短片。"
+    },
+    "textToVideoImageToVideo": {
+      "title": "文本转视频和图片转视频",
+      "description": "上传图片并为其添加动画动感，或用一句话描述场景。"
+    },
+    "socialReady": {
+      "title": "社交媒体就绪",
+      "description": "非常适合 TikTok、Reels、Shorts 和付费广告。"
+    },
+    "trySora3Free": {
+      "title": "免费试用 Sora3 — 无需编辑",
+      "description": "开始使用 Sora3 AI 驱动的工具创建电影级视频。Sora3 使视频创建变得简单 - 无需经验。发现 Sora3 能为您的项目做什么。免费试用 Sora3，了解为什么创作者选择 Sora3 进行 AI 视频生成。",
+      "startGenerating": "开始生成"
+    }
+  },
+  "testimonials": {
+    "title": "受到全球创作者喜爱",
+    "subtitle": "加入全球使用 Sora3 进行 AI 视频生成的创作者。查看用户对我们平台无水印视频和渲染功能的评价。发现为什么使用 Sora3 技术的创作者信任 Sora3。",
+    "ctaTitle": "加入使用 AI 制作视频的创作者",
+    "ctaDescription": "体验 AI 视频生成，具有无水印视频、音频功能和高效渲染。立即开始创建视频。",
+    "ctaButton": "立即开始创建"
+  },
+  "error": {
+    "goHome": "返回首页",
+    "refreshPage": "刷新页面"
+  },
+  "auth": {
+    "signIn": "登录",
+    "signInToSora3": "登录 Sora3",
+    "createAccount": "创建账户",
+    "checkEmail": "检查您的电子邮件",
+    "backToSignUp": "返回注册",
+    "backToSignIn": "返回登录",
+    "confirmationEmailSent": "确认电子邮件已发送！",
+    "magicLinkSent": "魔法链接已发送！",
+    "confirmationEmailDescription": "我们已向 {email} 发送确认链接。请检查您的电子邮件并点击链接以验证您的账户。",
+    "magicLinkDescription": "我们已向 {email} 发送登录链接",
+    "afterVerification": "验证后，您可以登录您的账户。",
+    "checkEmailAndClick": "检查您的电子邮件并点击链接以登录。",
+    "fullName": "全名",
+    "email": "电子邮件",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "enterFullName": "输入您的全名",
+    "enterEmail": "输入您的电子邮件",
+    "createPassword": "创建密码（最少 6 个字符）",
+    "enterPassword": "输入您的密码",
+    "confirmPasswordPlaceholder": "确认您的密码",
+    "redirectingToGoogle": "正在重定向到 Google..."
+  },
+  "sora3Capabilities": {
+    "title": "为什么 Sora 3 在广告活动中表现出色",
+    "cinematicRealism": {
+      "title": "Sora 3 电影级质量",
+      "description": "Sora 3 产生工作室级别的视觉效果，提升品牌信息传递。\n\n每个 Sora 3 视频保持一致的质量，无伪影。\n\nSora 3 输出无缝适用于产品发布、品牌故事和营销活动。"
+    },
+    "naturalCameraMotion": {
+      "title": "Sora 3 智能相机控制",
+      "description": "Sora 3 自动处理专业的相机运动和角度。\n\nSora 3 生成流畅、自然的运动，感觉是有意的。\n\nSora 3 相机工作立即增强您广告的制作价值。"
+    },
+    "consistentCharacters": {
+      "title": "Sora 3 角色一致性",
+      "description": "Sora 3 在多个场景中保持角色外观。\n\nSora 3 处理复杂的角色动作，同时保留身份。\n\nSora 3 专为多场景品牌叙事和广告故事讲述而构建。"
+    },
+    "longFormPlatformReady": {
+      "title": "Sora 3 扩展时长",
+      "description": "Sora 3 支持最多 25 秒的视频，用于完整的品牌故事。\n\nSora 3 内容针对社交平台和广告投放进行了优化。\n\nSora 3 视频导出干净整洁，可立即用于活动。"
+    },
+    "advancedSceneIntelligence": {
+      "title": "Sora 3 场景理解",
+      "description": "Sora 3 理解空间关系和环境上下文。\n\nSora 3 生成具有逼真物理和自然交互的场景。\n\nSora 3 在产品展示、生活方式内容和品牌世界构建方面表现出色。"
+    },
+    "audioSoundGeneration": {
+      "title": "Sora 3 集成音频",
+      "description": "Sora 3 生成与您的视觉效果匹配的同步音效。\n\nSora 3 自动添加对话、环境声音和效果。\n\nSora 3 交付完整的视频，无需额外编辑即可部署。"
+    }
+  },
+  "paymentSuccess": {
+    "title": "付款成功！",
+    "message": "感谢您的购买。您的积分已添加到您的账户。",
+    "amount": "金额",
+    "redirecting": "正在重定向到您的账户...",
+    "goToStudio": "前往工作室",
+    "viewDashboard": "查看仪表板",
+    "autoRedirect": "您将在几秒钟内自动重定向..."
+  }
+}

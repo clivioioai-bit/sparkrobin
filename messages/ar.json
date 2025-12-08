@@ -190,6 +190,14 @@
     "readMore": "اقرأ المزيد",
     "featured": "مميز"
   },
+  "blogPage": {
+    "featured": "مميز",
+    "readTime": "دقيقة قراءة",
+    "publishedOn": "تاريخ النشر",
+    "tags": "الوسوم",
+    "emptyTitle": "لا توجد مقالات بعد",
+    "emptyDescription": "أضف ملفات Markdown إلى content/blog وستظهر هنا."
+  },
   "howItWorks": {
     "title": "كيف يعمل sora3ai.io؟",
     "subtitle": "أنشئ فيديوهات احترافية باستخدام Sora3 في ثلاث خطوات بسيطة.",
@@ -874,4 +882,3 @@
     "autoRedirect": "سيتم إعادة توجيهك تلقائيًا خلال بضع ثوانٍ..."
   }
 }
-

@@ -20,6 +20,7 @@ const Footer = () => {
     ],
     resources: [
       { name: t('aiVideoPromptGpt'), href: "https://chatgpt.com/g/g-690c3e49fb308191aa623c67543a766a-sarogpt-ai-video-prompt-script-assistant", external: true },
+      { name: t('sora3Blog'), href: `${localePrefix}/blog`, external: false },
       { name: t('privacyPolicy'), href: `${localePrefix}/privacy`, external: false },
       { name: t('termsOfService'), href: `${localePrefix}/terms`, external: false },
       { name: t('refundPolicy'), href: `${localePrefix}/refund`, external: false },

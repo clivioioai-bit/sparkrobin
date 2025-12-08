@@ -190,6 +190,14 @@
     "readMore": "続きを読む",
     "featured": "おすすめ"
   },
+  "blogPage": {
+    "featured": "おすすめ",
+    "readTime": "分で読めます",
+    "publishedOn": "公開日",
+    "tags": "タグ",
+    "emptyTitle": "まだ投稿がありません",
+    "emptyDescription": "content/blog に Markdown ファイルを追加するとここに表示されます。"
+  },
   "howItWorks": {
     "title": "使い方",
     "subtitle": "3つの簡単なステップでプロフェッショナルなAI動画を作成します。",
@@ -874,4 +882,3 @@
     "autoRedirect": "数秒後に自動的にリダイレクトされます..."
   }
 }
-
