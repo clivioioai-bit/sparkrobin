@@ -4,6 +4,7 @@ import { generateHreflangAlternates } from '@/utils/hreflang';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { Providers } from '../../providers';
 
 export const dynamic = 'force-static';
 export const revalidate = 3600;
@@ -84,7 +85,9 @@ export default async function Page({
 
   return (
     <NextIntlClientProvider messages={messages} locale="en">
-      <BlogPostPage post={post} locale="en" />
+      <Providers>
+        <BlogPostPage post={post} locale="en" />
+      </Providers>
     </NextIntlClientProvider>
   );
 }

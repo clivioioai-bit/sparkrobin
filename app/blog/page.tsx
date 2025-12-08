@@ -2,6 +2,7 @@ import BlogIndex from '@/components/blog/BlogIndex';
 import { generateHreflangAlternates } from '@/utils/hreflang';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { Providers } from '../providers';
 
 export const dynamic = 'force-static';
 export const revalidate = 3600;
@@ -36,10 +37,12 @@ export const metadata = {
 
 export default async function Page() {
   const messages = await getMessages({ locale: 'en' });
-  
+
   return (
     <NextIntlClientProvider messages={messages} locale="en">
-      <BlogIndex locale="en" />
+      <Providers>
+        <BlogIndex locale="en" />
+      </Providers>
     </NextIntlClientProvider>
   );
 }
