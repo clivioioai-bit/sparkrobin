@@ -32,8 +32,8 @@ const BlogPostPage = async ({ post, locale = 'en' }: Props) => {
     return null;
   }
 
-  const t = await getTranslations({ locale, namespace: 'blogPage' });
-  const blogTexts = await getTranslations({ locale, namespace: 'blogShowcase' });
+  const t = await getTranslations('blogPage');
+  const blogTexts = await getTranslations('blogShowcase');
 
   return (
     <div className="min-h-screen bg-background" suppressHydrationWarning>

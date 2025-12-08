@@ -2,6 +2,8 @@ import BlogPostPage from '@/components/blog/BlogPostPage';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import { generateHreflangAlternates } from '@/utils/hreflang';
 import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 export const dynamic = 'force-static';
 export const revalidate = 3600;
@@ -78,5 +80,11 @@ export default async function Page({
     notFound();
   }
 
-  return <BlogPostPage post={post} locale="en" />;
+  const messages = await getMessages({ locale: 'en' });
+
+  return (
+    <NextIntlClientProvider messages={messages} locale="en">
+      <BlogPostPage post={post} locale="en" />
+    </NextIntlClientProvider>
+  );
 }
