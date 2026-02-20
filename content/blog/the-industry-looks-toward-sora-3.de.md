@@ -169,3 +169,4 @@ Von Soras 1s atemberaubendem Debüt bis zu Soras 2s praktischer Erkundung war Op
 
 5. [Sora (text-to-video model) - Wikipedia](https://en.wikipedia.org/wiki/Sora_\(text-to-video_model\))
 
+

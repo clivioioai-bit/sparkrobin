@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { mapKieStateToJobStatus, parseResultJson } from '@/lib/kie';
+import { isRetryableError } from '@/lib/kie-errors';
+import { refundCredits } from '@/lib/credits';
+import { getEvolinkTaskStatus } from '@/lib/evolink';
 
 export const runtime = 'nodejs';
 
 const KIE_API_KEY = process.env.KIE_API_KEY;
 const KIE_API_BASE_URL = (process.env.KIE_API_BASE_URL || 'https://api.kie.ai').trim();
+const APIMART_API_KEY = process.env.APIMART_API_KEY;
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -20,10 +24,187 @@ function normalizeBaseUrl(baseUrl: string) {
   return trimmed;
 }
 
+function isVeo3Model(model?: string) {
+  return model === 'veo3' || model === 'veo3_fast' || model === 'veo3.1';
+}
+
+function extractTaskIdFromResponse(response: any): string | undefined {
+  if (!response || typeof response !== 'object') return undefined;
+  const payload = response as Record<string, unknown>;
+
+  const data = payload.data;
+  if (data && typeof data === 'object') {
+    const taskPayload = data as Record<string, unknown>;
+    const candidate =
+      taskPayload.taskId ??
+      taskPayload.task_id ??
+      taskPayload.id ??
+      taskPayload.jobId ??
+      taskPayload.job_id;
+    if (typeof candidate === 'string' && candidate.trim().length > 0) {
+      return candidate.trim();
+    }
+  }
+
+  const rootCandidate =
+    payload.taskId ??
+    payload.task_id ??
+    payload.id ??
+    payload.jobId ??
+    payload.job_id;
+
+  if (typeof rootCandidate === 'string' && rootCandidate.trim().length > 0) {
+    return rootCandidate.trim();
+  }
+
+  return undefined;
+}
+
+function isKieSuccessResponse(response: any): boolean {
+  if (!response || typeof response !== 'object') return false;
+  const code = (response.code ?? response.statusCode ?? response.status) as number | string | undefined;
+  if (typeof code === 'number') {
+    if (code === 200 || code === 0) return true;
+    if (code >= 200 && code < 300) return true;
+  }
+  if (typeof code === 'string') {
+    const parsed = Number.parseInt(code.trim(), 10);
+    if (!Number.isNaN(parsed)) {
+      if (parsed === 200 || parsed === 0) return true;
+      if (parsed >= 200 && parsed < 300) return true;
+    }
+  }
+  if (response.success === true) return true;
+  if (typeof response.msg === 'string' && response.msg.trim().toLowerCase() === 'success') return true;
+  return false;
+}
+
+function isRetryableFailure(failCode?: unknown, failMsg?: unknown): boolean {
+  if (typeof failCode === 'string' && isRetryableError(failCode)) {
+    return true;
+  }
+  if (typeof failMsg !== 'string' || !failMsg.trim()) return false;
+  const msg = failMsg.toLowerCase();
+  const keywords = [
+    'heavy load',
+    'not responding',
+    'timeout',
+    'timed out',
+    'time out',
+    'busy',
+    'overload',
+    'overloaded',
+    'service unavailable',
+    'temporary',
+    'try again later',
+    'rate limit',
+    'too many requests',
+    'gateway timeout',
+  ];
+  return keywords.some(k => msg.includes(k));
+}
+
+async function refundGenerationFailureOnce(params: {
+  userId: string;
+  generationId: string;
+  amount: number;
+  source: 'kie_status_standard' | 'kie_status_apimart';
+  errorMessage?: string;
+}) {
+  const { userId, generationId, amount, source, errorMessage } = params;
+  if (!supabase || !userId || !generationId || amount <= 0) {
+    return false;
+  }
+
+  const knownRefundReasons = [
+    'generation_failed',
+    'refund_generation_failed',
+    'generation_refund',
+    'refund_generation_error',
+    'refund_api_failed',
+    'refund_veo3_generation_error',
+    'refund_veo3_api_failed',
+    'refund_veo3_missing_taskid',
+    'refund_kie_api_failed',
+    'refund_kie_api_error',
+    'refund_unexpected_error',
+  ];
+
+  const { data: existingRefund, error: lookupError } = await supabase
+    .from('credit_transactions')
+    .select('id, reason')
+    .eq('user_id', userId)
+    .eq('transaction_type', 'credit')
+    .in('reason', knownRefundReasons)
+    .or(
+      `metadata->>job_id.eq.${generationId},metadata->>generation_id.eq.${generationId},metadata->>refund_for.eq.${generationId},metadata->>storyboard_task_id.eq.${generationId}`
+    )
+    .limit(1)
+    .maybeSingle();
+
+  if (lookupError) {
+    console.error('[KIE STATUS] Failed to check existing refund:', lookupError);
+  }
+
+  if (existingRefund) {
+    console.log('[KIE STATUS] Skip duplicate refund:', {
+      userId,
+      generationId,
+      refundReason: existingRefund.reason,
+      source,
+    });
+    return false;
+  }
+
+  await refundCredits(userId, amount, 'generation_failed', {
+    job_id: generationId,
+    generation_id: generationId,
+    source,
+    error: errorMessage ?? null,
+  });
+
+  console.log('[KIE STATUS] Refunded credits for failed generation:', {
+    userId,
+    generationId,
+    amount,
+    source,
+  });
+  return true;
+}
+
+async function resolveGenerationCreditAmount(userId: string, generationId: string, fallbackAmount: number): Promise<number> {
+  if (!supabase) {
+    return Math.max(0, Number(fallbackAmount || 0));
+  }
+
+  const normalizedFallback = Math.max(0, Number(fallbackAmount || 0));
+  if (normalizedFallback > 0) {
+    return normalizedFallback;
+  }
+
+  const { data: debitTx, error } = await supabase
+    .from('credit_transactions')
+    .select('amount')
+    .eq('user_id', userId)
+    .eq('transaction_type', 'debit')
+    .or(`metadata->>job_id.eq.${generationId},metadata->>generation_id.eq.${generationId}`)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    console.error('[KIE STATUS] Failed to resolve credit amount from debit transaction:', error);
+  }
+
+  return Math.max(0, Number(debitTx?.amount || 0));
+}
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const requestId = `status_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
   try {
     if (!KIE_API_KEY) {
       return NextResponse.json({ error: 'Kie API key not configured' }, { status: 500 });
@@ -33,11 +214,12 @@ export async function GET(
     }
 
     const { id } = await params;
+
     if (!id) {
       return NextResponse.json({ error: 'Missing job id' }, { status: 400 });
     }
 
-    // Authenticate user via Bearer token (same pattern as /api/kie/generate)
+    // Authenticate user via Bearer token
     const authHeader = request.headers.get('authorization');
     if (!authHeader) {
       return NextResponse.json({ error: 'Authorization header required' }, { status: 401 });
@@ -48,16 +230,358 @@ export async function GET(
       return NextResponse.json({ error: 'Invalid authentication' }, { status: 401 });
     }
 
-    // Query Kie API for status
-    const url = `${normalizeBaseUrl(KIE_API_BASE_URL)}/api/v1/jobs/recordInfo?taskId=${encodeURIComponent(id)}`;
-    console.log('🌐 Calling KIE API:', url);
-    
+    // Check if this is a veo3.1 job or apimart job or evolink job by querying the database
+    let isVeo3Job = false;
+    let isApimartJob = false;
+    let isEvolinkJob = false;
+    let jobRecord: any = null;
+    let fallbackTaskId: string | undefined;
+    try {
+      const { data: job } = await supabase
+        .from('video_jobs')
+        .select('params, api_version, fallback_used, attempt_count, prompt, image_url, aspect_ratio, duration, status, cost_credits, credit_cost')
+        .eq('job_id', id)
+        .eq('user_id', user.id)
+        .single();
+
+      if (job) {
+        jobRecord = job;
+        const apiVersion = job.api_version as string | undefined;
+
+        // Check if this is an apimart job
+        isApimartJob = apiVersion === 'apimart';
+
+        // Check if this is an evolink job
+        isEvolinkJob = apiVersion === 'evolink';
+
+        if (job.params) {
+          const params = job.params as any;
+          fallbackTaskId = typeof params?.fallback_task_id === 'string' ? params.fallback_task_id : undefined;
+          isVeo3Job =
+            isVeo3Model(params.model) ||
+            isVeo3Model(params.veo3Params?.model) ||
+            params.veo3Params !== undefined ||
+            id.startsWith('veo_task_') ||
+            id.startsWith('veo_');
+        } else {
+          // Fallback: check if taskId starts with known veo3 prefixes
+          isVeo3Job = id.startsWith('veo_task_') || id.startsWith('veo_');
+        }
+      }
+    } catch (error) {
+      console.warn('[KIE STATUS] Could not determine job type, defaulting to standard endpoint:', error);
+    }
+
+    const taskIdForStatus = fallbackTaskId || id;
+
+    // Handle apimart jobs differently
+    if (isApimartJob) {
+      if (!APIMART_API_KEY) {
+        console.error('[KIE STATUS] APIMART_API_KEY is missing for apimart job:', { jobId: id });
+        return NextResponse.json(
+          { error: 'apimart status service not configured' },
+          { status: 503 }
+        );
+      }
+
+      const finalizeApimartFailure = async (errorMessage: string, responseStatus: number, details?: unknown) => {
+        try {
+          const { error: updateError } = await supabase
+            .from('video_jobs')
+            .update({
+              status: 'failed',
+              error_message: errorMessage,
+              updated_at: new Date().toISOString()
+            })
+            .eq('job_id', id);
+
+          if (updateError) {
+            console.error('[KIE STATUS] Failed to mark apimart job as failed:', updateError);
+          }
+        } catch (dbError) {
+          console.error('[KIE STATUS] Database error while marking apimart failure:', dbError);
+        }
+
+        try {
+          const refundAmount = await resolveGenerationCreditAmount(
+            user.id,
+            id,
+            Number(jobRecord?.cost_credits ?? jobRecord?.credit_cost ?? 0)
+          );
+          await refundGenerationFailureOnce({
+            userId: user.id,
+            generationId: id,
+            amount: refundAmount,
+            source: 'kie_status_apimart',
+            errorMessage,
+          });
+        } catch (refundError) {
+          console.error('[KIE STATUS] Failed to refund apimart failed job:', refundError);
+        }
+
+        return NextResponse.json(
+          {
+            generation_id: id,
+            status: 'failed',
+            result_url: null,
+            thumbnail_url: null,
+            progress: 0,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            error_message: errorMessage,
+            details: details ?? null,
+          },
+          { status: responseStatus }
+        );
+      };
+
+      console.log('🌐 Calling apimart API for task:', taskIdForStatus);
+
+      const apimartUrl = `https://api.apimart.ai/v1/tasks/${encodeURIComponent(taskIdForStatus)}`;
+      const apimartResp = await fetch(apimartUrl, {
+        headers: {
+          Authorization: `Bearer ${APIMART_API_KEY}`,
+        },
+        cache: 'no-store',
+      });
+
+      console.log('📡 apimart API response status:', apimartResp.status, apimartResp.statusText);
+
+      if (!apimartResp.ok) {
+        const text = await apimartResp.text();
+        console.error('❌ apimart API error:', text);
+
+        // Only finalize for terminal upstream errors to avoid premature refunds.
+        if ([404, 410, 422].includes(apimartResp.status)) {
+          return finalizeApimartFailure(`apimart status fetch failed: ${text}`, apimartResp.status, text);
+        }
+
+        return NextResponse.json(
+          { error: 'apimart status fetch failed', details: text },
+          { status: apimartResp.status }
+        );
+      }
+
+      const apimartData = await apimartResp.json();
+      console.log('🔍 apimart API Response:', JSON.stringify(apimartData, null, 2));
+
+      // apimart response format: { code: 200, data: { id, status, progress, result: { videos: [{ url: [...] }] } } }
+      if (apimartData?.code !== 200) {
+        const message = apimartData.error?.message || 'apimart status fetch failed';
+
+        const upstreamCode = Number(apimartData?.error?.code ?? apimartData?.code ?? 0);
+        if ([404, 410, 422].includes(upstreamCode)) {
+          return finalizeApimartFailure(message, 422, apimartData);
+        }
+
+        return NextResponse.json(
+          { error: message, details: apimartData },
+          { status: 422 }
+        );
+      }
+
+      const apimartTaskData = apimartData.data;
+      const apimartStatus = apimartTaskData.status; // pending, processing, completed, failed, cancelled
+      const apimartProgress = apimartTaskData.progress || 0;
+      const apimartResult = apimartTaskData.result;
+
+      // Extract video URL from apimart response
+      let videoUrl: string | undefined;
+      if (apimartResult?.videos && Array.isArray(apimartResult.videos) && apimartResult.videos.length > 0) {
+        const video = apimartResult.videos[0];
+        if (video.url && Array.isArray(video.url) && video.url.length > 0) {
+          videoUrl = video.url[0];
+        }
+      }
+
+      // Map apimart status to our status
+      let statusForClient: string;
+      let calculatedProgress: number;
+      let errorMessage: string | undefined;
+
+      if (apimartStatus === 'completed') {
+        statusForClient = 'completed';
+        calculatedProgress = 100;
+      } else if (apimartStatus === 'failed' || apimartStatus === 'cancelled') {
+        statusForClient = 'failed';
+        calculatedProgress = 0;
+        errorMessage = apimartTaskData.error?.message || 'Video generation failed';
+      } else {
+        statusForClient = 'processing';
+        calculatedProgress = apimartProgress;
+      }
+
+      // Update database
+      const shouldUpdateDb = statusForClient === 'completed' || statusForClient === 'failed' || videoUrl;
+      if (shouldUpdateDb) {
+        try {
+          const dbStatus = (statusForClient === 'completed' || videoUrl) ? 'completed' : 'failed';
+          const { error: updateError } = await supabase
+            .from('video_jobs')
+            .update({
+              status: dbStatus,
+              result_url: videoUrl || null,
+              error_message: errorMessage || null,
+              updated_at: new Date().toISOString()
+            })
+            .eq('job_id', id);
+
+          if (updateError) {
+            console.error('❌ Failed to update job status in database:', updateError);
+          }
+        } catch (dbError) {
+          console.error('❌ Database update error:', dbError);
+        }
+      }
+
+      if (statusForClient === 'failed') {
+        try {
+          const refundAmount = await resolveGenerationCreditAmount(
+            user.id,
+            id,
+            Number(jobRecord?.cost_credits ?? jobRecord?.credit_cost ?? 0)
+          );
+          await refundGenerationFailureOnce({
+            userId: user.id,
+            generationId: id,
+            amount: refundAmount,
+            source: 'kie_status_apimart',
+            errorMessage,
+          });
+        } catch (refundError) {
+          console.error('[KIE STATUS] Failed to refund apimart failed job:', refundError);
+        }
+      }
+
+      const response = {
+        generation_id: id,
+        status: statusForClient,
+        result_url: videoUrl,
+        thumbnail_url: videoUrl,
+        progress: calculatedProgress,
+        created_at: apimartTaskData.created ? new Date(apimartTaskData.created * 1000).toISOString() : new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        error_message: errorMessage,
+      };
+
+      console.log('📤 Final apimart response:', response);
+      return NextResponse.json(response);
+    }
+
+    // Handle evolink jobs
+    if (isEvolinkJob) {
+      console.log('[KIE STATUS] Querying evolink status for job:', id);
+
+      const evolinkResult = await getEvolinkTaskStatus(id);
+
+      if (!evolinkResult.success || !evolinkResult.data) {
+        console.error('[KIE STATUS] Evolink status query failed:', evolinkResult.error);
+        return NextResponse.json(
+          { error: evolinkResult.error || 'Failed to query evolink status' },
+          { status: 503 }
+        );
+      }
+
+      const evolinkData = evolinkResult.data;
+      const evolinkStatus = evolinkData.status;
+      const evolinkProgress = evolinkData.progress || 0;
+      const evolinkResults = evolinkData.results;
+
+      // Extract video URL from evolink response
+      let videoUrl: string | undefined;
+      if (evolinkResults && Array.isArray(evolinkResults) && evolinkResults.length > 0) {
+        videoUrl = evolinkResults[0];
+      }
+
+      // Map evolink status to our status
+      let statusForClient: string;
+      let calculatedProgress: number;
+      let errorMessage: string | undefined;
+
+      if (evolinkStatus === 'completed') {
+        statusForClient = 'completed';
+        calculatedProgress = 100;
+      } else if (evolinkStatus === 'failed') {
+        statusForClient = 'failed';
+        calculatedProgress = 0;
+        errorMessage = 'Video generation failed';
+      } else if (evolinkStatus === 'processing') {
+        statusForClient = 'processing';
+        calculatedProgress = evolinkProgress;
+      } else {
+        // pending
+        statusForClient = 'processing';
+        calculatedProgress = evolinkProgress;
+      }
+
+      // Update database
+      const shouldUpdateDb = statusForClient === 'completed' || statusForClient === 'failed' || videoUrl;
+      if (shouldUpdateDb) {
+        try {
+          const dbStatus = (statusForClient === 'completed' || videoUrl) ? 'completed' : 'failed';
+          const { error: updateError } = await supabase
+            .from('video_jobs')
+            .update({
+              status: dbStatus,
+              result_url: videoUrl || null,
+              error_message: errorMessage || null,
+              updated_at: new Date().toISOString()
+            })
+            .eq('job_id', id);
+
+          if (updateError) {
+            console.error('❌ Failed to update job status in database:', updateError);
+          }
+        } catch (dbError) {
+          console.error('❌ Database update error:', dbError);
+        }
+      }
+
+      if (statusForClient === 'failed') {
+        try {
+          const refundAmount = await resolveGenerationCreditAmount(
+            user.id,
+            id,
+            Number(jobRecord?.cost_credits ?? jobRecord?.credit_cost ?? 0)
+          );
+          await refundGenerationFailureOnce({
+            userId: user.id,
+            generationId: id,
+            amount: refundAmount,
+            source: 'kie_status_standard',
+            errorMessage,
+          });
+        } catch (refundError) {
+          console.error('[KIE STATUS] Failed to refund evolink failed job:', refundError);
+        }
+      }
+
+      const response = {
+        generation_id: id,
+        status: statusForClient,
+        result_url: videoUrl,
+        thumbnail_url: videoUrl,
+        progress: calculatedProgress,
+        created_at: evolinkData.created ? new Date(evolinkData.created * 1000).toISOString() : new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        error_message: errorMessage,
+      };
+
+      console.log('📤 Final evolink response:', response);
+      return NextResponse.json(response);
+    }
+
+    // Use different endpoints for veo3.1 vs standard jobs
+    const url = isVeo3Job
+      ? `${normalizeBaseUrl(KIE_API_BASE_URL)}/api/v1/veo/record-info?taskId=${encodeURIComponent(taskIdForStatus)}`
+      : `${normalizeBaseUrl(KIE_API_BASE_URL)}/api/v1/jobs/recordInfo?taskId=${encodeURIComponent(taskIdForStatus)}`;
+
+    console.log('🌐 Calling KIE API:', url, `(isVeo3: ${isVeo3Job})`, `(taskIdForStatus: ${taskIdForStatus})`);
+
     const resp = await fetch(url, {
       headers: {
         Authorization: `Bearer ${KIE_API_KEY}`,
-        'X-API-Key': KIE_API_KEY,
       },
-      // Avoid Next caching
       cache: 'no-store',
     });
 
@@ -73,10 +597,51 @@ export async function GET(
     }
 
     const data = await resp.json();
-    
+
     console.log('🔍 KIE API Response:', JSON.stringify(data, null, 2));
 
-    const payload = data?.data ?? {};
+    if (data?.code && data.code !== 200) {
+      const message = typeof data.msg === 'string' ? data.msg : 'Kie status fetch failed';
+      const status = message === 'recordInfo is null' ? 404 : 422;
+      return NextResponse.json(
+        { error: message, details: data },
+        { status }
+      );
+    }
+
+    // Handle veo3.1 response format differently
+    let payload: Record<string, unknown> = {};
+    let successFlag: number | undefined;
+    let veoMsg: string | undefined;
+    let veoResultUrlsRaw: unknown;
+
+    if (isVeo3Job && data?.data) {
+      const veoData = data.data as Record<string, unknown>;
+      successFlag = veoData.successFlag as number | undefined;
+      veoMsg = data.msg as string | undefined;
+      const responseData = (veoData.response ?? {}) as Record<string, unknown>;
+      const resultUrlsRaw = responseData.resultUrls as unknown;
+      veoResultUrlsRaw = resultUrlsRaw;
+      const originUrlsRaw = responseData.originUrls as unknown;
+      const resolution = responseData.resolution as string | undefined;
+      const fallbackFlag = veoData.fallbackFlag as boolean | undefined;
+      const errorMessage = veoData.errorMessage as string | undefined;
+
+      payload = {
+        state: successFlag === 1 ? 'success' : successFlag === 2 || successFlag === 3 ? 'fail' : 'processing',
+        resultJson: resultUrlsRaw || originUrlsRaw || resolution ? JSON.stringify({
+          resultUrls: resultUrlsRaw,
+          originUrls: originUrlsRaw,
+          resolution,
+          fallbackFlag
+        }) : undefined,
+        msg: veoMsg,
+        failMsg: successFlag === 2 || successFlag === 3 ? (errorMessage || veoMsg || 'Video generation failed') : undefined,
+      };
+    } else {
+      payload = data?.data ?? {};
+    }
+
     const {
       state,
       status: statusField,
@@ -93,68 +658,43 @@ export async function GET(
       errorMsg,
       message,
       msg,
-      failMsg,       // ← 添加 KIE API 的失败消息字段
-      failCode,      // ← 添加 KIE API 的失败代码字段
+      failMsg,
+      failCode,
       createTime,
     } = payload as Record<string, unknown>;
 
-    console.log('📊 Extracted fields:', {
-      state,
-      statusField,
-      taskStatus,
-      taskState,
-      resultJson,
-      result,
-      resultUrl,
-      mediaUrl,
-      resourceUrl,
-      progress,
-      error,
-      errorMessage,
-      errorMsg,
-      message,
-      msg,
-      failMsg,      // ← 显示 KIE API 失败消息
-      failCode      // ← 显示 KIE API 失败代码
-    });
-
     const resolvedState = (state ?? statusField ?? taskStatus ?? taskState) as string | undefined;
     const mapped = mapKieStateToJobStatus(resolvedState);
-    
-    // 详细记录 resultJson 的原始值和类型
-    console.log('📦 Raw resultJson:', {
-      resultJson,
-      resultJsonType: typeof resultJson,
-      resultJsonIsString: typeof resultJson === 'string',
-      resultJsonLength: typeof resultJson === 'string' ? resultJson.length : 'N/A',
-      resultJsonPreview: typeof resultJson === 'string' ? resultJson.substring(0, 200) : resultJson
-    });
-    
-    const resultPayload = parseResultJson((resultJson ?? result) as string | Record<string, unknown> | undefined);
-    
-    // 提取错误信息 - 优先使用 KIE API 的 failMsg
-    const extractedErrorMessage = typeof failMsg === 'string' ? failMsg
+
+    // For veo3.1, parse resultUrls directly
+    let resultPayload: { resultUrls?: string[]; resultUrl?: string; [key: string]: any } = {};
+    if (isVeo3Job && veoResultUrlsRaw) {
+      const parsedUrls = Array.isArray(veoResultUrlsRaw)
+        ? veoResultUrlsRaw
+        : [veoResultUrlsRaw].filter(Boolean);
+      resultPayload.resultUrls = parsedUrls as string[];
+      if (resultPayload.resultUrls.length > 0) {
+        resultPayload.resultUrl = resultPayload.resultUrls[0];
+      }
+    } else {
+      const inputForParsing = (resultJson ?? result ?? payload) as string | Record<string, unknown> | undefined;
+      resultPayload = parseResultJson(inputForParsing);
+    }
+
+    // Extract error message - prioritize KIE API's failMsg
+    let extractedErrorMessage = typeof failMsg === 'string' ? failMsg
       : typeof error === 'string' ? error
       : typeof errorMessage === 'string' ? errorMessage
       : typeof errorMsg === 'string' ? errorMsg
       : typeof message === 'string' ? message
       : typeof msg === 'string' ? msg
+      : typeof veoMsg === 'string' && (successFlag === 2 || successFlag === 3) ? veoMsg
       : undefined;
-    
-    console.log('🔄 Processing results:', {
-      resolvedState,
-      mapped,
-      resultPayload,
-      resultPayloadResultUrls: resultPayload.resultUrls,
-      resultPayloadResultUrlsLength: resultPayload.resultUrls?.length,
-      rawResultJson: resultJson,
-      rawResult: result
-    });
 
-    // 尝试多种方式提取视频URL - 增强版
-    // 关键：优先使用 resultUrls（无水印版本），如果没有则使用 resultWaterMarkUrls（带水印版本）
-    let primaryUrl = resultPayload.resultUrls?.[0]  // 最优先：无水印版本
-      ?? resultPayload.resultWaterMarkUrls?.[0]     // 备选：带水印版本
+    // Extract video URL - enhanced version
+    // Priority: resultUrls (no watermark) > resultWaterMarkUrls (with watermark)
+    let primaryUrl = resultPayload.resultUrls?.[0]
+      ?? resultPayload.resultWaterMarkUrls?.[0]
       ?? resultPayload.resultUrl
       ?? resultPayload.mediaUrl
       ?? resultPayload.resourceUrl
@@ -166,119 +706,60 @@ export async function GET(
       ?? (typeof resultUrl === 'string' ? resultUrl : undefined)
       ?? (typeof mediaUrl === 'string' ? mediaUrl : undefined)
       ?? (typeof resourceUrl === 'string' ? resourceUrl : undefined);
-    
-    console.log('🎯 Primary URL selection:', {
-      fromResultUrls: resultPayload.resultUrls?.[0] ? resultPayload.resultUrls[0].substring(0, 80) + '...' : 'N/A',
-      fromWatermarkUrls: resultPayload.resultWaterMarkUrls?.[0] ? resultPayload.resultWaterMarkUrls[0].substring(0, 80) + '...' : 'N/A',
-      finalPrimaryUrl: primaryUrl ? primaryUrl.substring(0, 80) + '...' : 'N/A',
-      isUsingWatermark: !!resultPayload.resultWaterMarkUrls?.[0] && !resultPayload.resultUrls?.[0]
-    });
-    
-    // 如果还没有找到 URL，尝试直接解析 resultJson 字符串（增强版）
+
+    // If no URL found yet, try re-parsing resultJson
     if (!primaryUrl && resultJson) {
       try {
-        let parsed = resultJson;
-        
-        // 如果是字符串，先解析
         if (typeof resultJson === 'string' && resultJson.trim().length > 0) {
-          // 过滤掉可能的空字符串或只包含空白的字符串
           if (resultJson.trim() !== '{}' && resultJson.trim() !== '[]') {
-            parsed = JSON.parse(resultJson);
-          } else {
-            console.log('⚠️ resultJson is empty object or array');
-            parsed = null;
+            const reparsedPayload = parseResultJson(resultJson);
+            primaryUrl = reparsedPayload.resultUrls?.[0]
+              ?? reparsedPayload.resultWaterMarkUrls?.[0]
+              ?? reparsedPayload.resultUrl
+              ?? reparsedPayload.mediaUrl
+              ?? reparsedPayload.videoUrl
+              ?? reparsedPayload.url
+              ?? reparsedPayload.outputUrl
+              ?? reparsedPayload.downloadUrl
+              ?? reparsedPayload.fileUrl
+              ?? reparsedPayload.resourceUrl;
           }
-        }
-        
-        console.log('🔍 Parsed resultJson:', {
-          parsed,
-          parsedType: typeof parsed,
-          isArray: Array.isArray(parsed),
-          hasResultUrls: parsed && typeof parsed === 'object' && 'resultUrls' in parsed,
-          resultUrls: parsed?.resultUrls
-        });
-        
-        if (!parsed) {
-          // resultJson 是空的，跳过
-        }
-        // 如果解析结果是对象且包含 resultUrls 数组
-        else if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-          // 最优先：检查 resultUrls 字段（无水印版本）
-          if ('resultUrls' in parsed) {
-            const urls = parsed.resultUrls;
-            if (Array.isArray(urls) && urls.length > 0 && typeof urls[0] === 'string' && urls[0].trim().length > 0) {
-              primaryUrl = urls[0].trim();
-              console.log('🎯 Found URL in resultUrls (no watermark):', primaryUrl.substring(0, 80) + '...');
+        } else if (typeof resultJson === 'object' && !Array.isArray(resultJson)) {
+          const obj = resultJson as Record<string, unknown>;
+          if ('resultUrls' in obj && Array.isArray(obj.resultUrls) && obj.resultUrls.length > 0) {
+            const url = obj.resultUrls[0];
+            if (typeof url === 'string' && url.trim().length > 0) {
+              primaryUrl = url.trim();
             }
-          }
-          // 备选：检查 resultWaterMarkUrls 字段（带水印版本）
-          else if ('resultWaterMarkUrls' in parsed) {
-            const watermarkUrls = parsed.resultWaterMarkUrls;
-            if (Array.isArray(watermarkUrls) && watermarkUrls.length > 0 && typeof watermarkUrls[0] === 'string' && watermarkUrls[0].trim().length > 0) {
-              primaryUrl = watermarkUrls[0].trim();
-              console.log('⚠️ Using URL from resultWaterMarkUrls (with watermark):', primaryUrl.substring(0, 80) + '...');
+          } else if ('resultWaterMarkUrls' in obj && Array.isArray(obj.resultWaterMarkUrls) && obj.resultWaterMarkUrls.length > 0) {
+            const url = obj.resultWaterMarkUrls[0];
+            if (typeof url === 'string' && url.trim().length > 0) {
+              primaryUrl = url.trim();
             }
+          } else if ('resultUrl' in obj && typeof obj.resultUrl === 'string' && obj.resultUrl.trim().length > 0) {
+            primaryUrl = obj.resultUrl.trim();
+          } else if ('url' in obj && typeof obj.url === 'string' && obj.url.trim().length > 0) {
+            primaryUrl = obj.url.trim();
+          } else if ('mediaUrl' in obj && typeof obj.mediaUrl === 'string' && obj.mediaUrl.trim().length > 0) {
+            primaryUrl = obj.mediaUrl.trim();
           }
-          // 也检查其他可能的字段名
-          else if ('resultUrl' in parsed && typeof parsed.resultUrl === 'string' && parsed.resultUrl.trim().length > 0) {
-            primaryUrl = parsed.resultUrl.trim();
-            console.log('🎯 Found URL in resultUrl field:', primaryUrl.substring(0, 80) + '...');
-          }
-          else if ('url' in parsed && typeof parsed.url === 'string' && parsed.url.trim().length > 0) {
-            primaryUrl = parsed.url.trim();
-            console.log('🎯 Found URL in url field:', primaryUrl.substring(0, 80) + '...');
-          }
-          else if ('mediaUrl' in parsed && typeof parsed.mediaUrl === 'string' && parsed.mediaUrl.trim().length > 0) {
-            primaryUrl = parsed.mediaUrl.trim();
-            console.log('🎯 Found URL in mediaUrl field:', primaryUrl.substring(0, 80) + '...');
-          }
-        }
-        // 如果解析结果是数组格式
-        else if (Array.isArray(parsed) && parsed.length > 0 && typeof parsed[0] === 'string' && parsed[0].trim().length > 0) {
-          primaryUrl = parsed[0].trim();
-          console.log('🎯 Found URL in array format:', primaryUrl);
+        } else if (Array.isArray(resultJson) && resultJson.length > 0 && typeof resultJson[0] === 'string' && resultJson[0].trim().length > 0) {
+          primaryUrl = resultJson[0].trim();
         }
       } catch (e) {
-        console.error('❌ Failed to parse resultJson:', e, 'Raw value:', typeof resultJson === 'string' ? resultJson.substring(0, 200) : resultJson);
+        console.error('❌ Failed to parse resultJson:', e);
       }
     }
-    
-    console.log('🎯 URL extraction:', {
-      primaryUrl,
-      resultPayloadResultUrls: resultPayload.resultUrls,
-      resultPayloadResultUrl: resultPayload.resultUrl,
-      resultPayloadMediaUrl: resultPayload.mediaUrl,
-      resultPayloadResourceUrl: resultPayload.resourceUrl,
-      resultPayloadVideoUrl: resultPayload.videoUrl,
-      resultPayloadOutputUrl: resultPayload.outputUrl,
-      resultPayloadDownloadUrl: resultPayload.downloadUrl,
-      resultPayloadFileUrl: resultPayload.fileUrl,
-      resultPayloadUrl: resultPayload.url,
-      directResultUrl: resultUrl,
-      directMediaUrl: mediaUrl,
-      directResourceUrl: resourceUrl
-    });
 
-    // Conform to frontend expectations in src/services/videoApi.ts
-    // It checks for status === 'completed' | 'success' or presence of video_url
-    // 根据 KIE API 文档：当 state 是 'success' 时，resultJson 包含结果
-    // 如果有视频URL，无论状态如何，都应该视为已完成
+    // Determine status for client
     let statusForClient: string;
     let calculatedProgress: number | undefined = typeof progress === 'number' ? progress : undefined;
-    
-    // 根据 KIE API 文档，state 为 'success' 时表示任务完成
+
     const isKieSuccess = resolvedState === 'success';
-    
+
     if (primaryUrl || isKieSuccess) {
-      // 如果有视频URL或 KIE API 返回 success 状态，强制设置为 completed 和 100%
       statusForClient = 'completed';
       calculatedProgress = 100;
-      console.log('✅ Video URL found or KIE state is success, forcing status to completed and progress to 100%:', {
-        primaryUrl: primaryUrl ? primaryUrl.substring(0, 50) + '...' : 'N/A',
-        isKieSuccess: isKieSuccess,
-        resolvedState: resolvedState,
-        originalMappedStatus: mapped
-      });
     } else if (mapped === 'completed') {
       statusForClient = 'completed';
       calculatedProgress = 100;
@@ -287,9 +768,7 @@ export async function GET(
       calculatedProgress = 0;
     } else {
       statusForClient = 'processing';
-      // 如果没有视频URL且状态是processing，使用原始progress或计算progress
       if (calculatedProgress === undefined) {
-        // 根据创建时间计算进度
         const createdAt = typeof createTime === 'number' ? new Date(createTime) : new Date();
         const elapsedSeconds = Math.max(0, (Date.now() - createdAt.getTime()) / 1000);
         if (elapsedSeconds < 30) {
@@ -301,30 +780,178 @@ export async function GET(
         } else if (elapsedSeconds < 120) {
           calculatedProgress = 60 + ((elapsedSeconds - 90) / 30) * 20;
         } else if (elapsedSeconds < 150) {
-          calculatedProgress = 80 + ((elapsedSeconds - 120) / 30) * 15; // 改为到95%
+          calculatedProgress = 80 + ((elapsedSeconds - 120) / 30) * 15;
         } else if (elapsedSeconds < 180) {
-          calculatedProgress = 95; // 保持在95%
+          calculatedProgress = 95;
         } else if (elapsedSeconds < 240) {
-          // 超过180秒后，继续缓慢增长到98%
           calculatedProgress = 95 + ((elapsedSeconds - 180) / 60) * 3;
         } else {
-          calculatedProgress = 98; // 最多显示98%，避免用户觉得卡住
+          calculatedProgress = 98;
         }
       }
     }
-    
-    // 转换createTime为ISO字符串
-    const createdAt = typeof createTime === 'number' 
+
+    const createdAt = typeof createTime === 'number'
       ? new Date(createTime).toISOString()
       : new Date().toISOString();
 
-    // 更新数据库中的作业状态
-    // 根据 KIE API 文档：当 state 是 'success' 时，任务已完成
-    // 如果有视频URL或 KIE API 返回 success 状态，即使原始状态不是completed，也应该更新为completed
+    // Handle retryable failures with fallback to stable model
+    if (statusForClient === 'failed' && !isVeo3Job) {
+      const retryable = isRetryableFailure(failCode, extractedErrorMessage);
+      const apiVersion = jobRecord?.api_version as string | undefined;
+      const fallbackUsed = Boolean(jobRecord?.fallback_used);
+      const attemptCount = typeof jobRecord?.attempt_count === 'number' ? jobRecord.attempt_count : 1;
+      const canFallback = retryable &&
+        !fallbackUsed &&
+        attemptCount < 2 &&
+        (apiVersion === undefined || apiVersion === 'regular') &&
+        !fallbackTaskId;
+
+      if (canFallback && jobRecord?.prompt) {
+        const stableModel = jobRecord?.image_url
+          ? 'wan/2-5-image-to-video'
+          : 'wan/2-5-text-to-video';
+        const duration = '10';
+        const aspectRatio = jobRecord?.aspect_ratio === 'landscape' ? '16:9' :
+                           jobRecord?.aspect_ratio === 'portrait' ? '9:16' :
+                           jobRecord?.aspect_ratio || '16:9';
+        const requestBody = {
+          model: stableModel,
+          input: {
+            prompt: jobRecord.prompt,
+            aspect_ratio: aspectRatio,
+            duration: duration,
+            resolution: '1080p',
+            ...(jobRecord?.image_url ? { image_url: jobRecord.image_url } : {})
+          }
+        };
+
+        try {
+          const existingParams = (jobRecord?.params && typeof jobRecord.params === 'object') ? jobRecord.params : {};
+          const lockParams = {
+            ...existingParams,
+            fallback_lock: requestId,
+            fallback_lock_at: new Date().toISOString(),
+          };
+
+          // Acquire a lock to prevent duplicate fallback under concurrent polling
+          const { data: lockRow, error: lockError } = await supabase
+            .from('video_jobs')
+            .update({
+              fallback_used: true,
+              attempt_count: attemptCount + 1,
+              params: lockParams,
+              updated_at: new Date().toISOString(),
+            })
+            .eq('job_id', id)
+            .eq('fallback_used', false)
+            .eq('attempt_count', attemptCount)
+            .select('job_id')
+            .maybeSingle();
+
+          if (lockError) {
+            console.error(`[${requestId}] ❌ Failed to acquire fallback lock:`, lockError);
+          }
+
+          if (lockRow?.job_id) {
+            const createUrl = `${normalizeBaseUrl(KIE_API_BASE_URL)}/api/v1/jobs/createTask`;
+            console.log(`[${requestId}] ⚠️ Retryable failure detected, creating stable task:`, {
+              original_task_id: id,
+              stableModel,
+              createUrl
+            });
+            const createResp = await fetch(createUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${KIE_API_KEY}`,
+                'X-API-Key': KIE_API_KEY
+              },
+              body: JSON.stringify(requestBody)
+            });
+
+            const createData = await createResp.json().catch(() => ({}));
+            if (createResp.ok && isKieSuccessResponse(createData)) {
+              const newTaskId = extractTaskIdFromResponse(createData);
+              if (newTaskId) {
+                const updatedParams = {
+                  ...lockParams,
+                  fallback_task_id: newTaskId,
+                  original_task_id: id,
+                  fallback_started_at: new Date().toISOString(),
+                  fallback_reason: extractedErrorMessage || 'retryable_failure'
+                };
+
+                await supabase
+                  .from('video_jobs')
+                  .update({
+                    status: 'processing',
+                    api_version: 'wan2.5',
+                    fallback_used: true,
+                    params: updatedParams,
+                    updated_at: new Date().toISOString(),
+                    error_message: null
+                  })
+                  .eq('job_id', id);
+
+                console.log(`[${requestId}] ✅ Fallback task created:`, { newTaskId, originalTaskId: id });
+
+                statusForClient = 'processing';
+                calculatedProgress = 0;
+                primaryUrl = undefined;
+                extractedErrorMessage = undefined;
+              } else {
+                console.error(`[${requestId}] ❌ Fallback createTask succeeded but taskId missing:`, createData);
+              }
+            } else {
+              console.error(`[${requestId}] ❌ Fallback createTask failed:`, {
+                status: createResp.status,
+                response: createData
+              });
+
+              // Release lock if creation failed
+              const releaseParams = { ...lockParams };
+              delete releaseParams.fallback_lock;
+              delete releaseParams.fallback_lock_at;
+              await supabase
+                .from('video_jobs')
+                .update({
+                  fallback_used: false,
+                  attempt_count: attemptCount,
+                  params: releaseParams,
+                  updated_at: new Date().toISOString(),
+                })
+                .eq('job_id', id)
+                .eq('fallback_used', true)
+                .eq('attempt_count', attemptCount + 1);
+            }
+          }
+        } catch (fallbackError) {
+          console.error(`[${requestId}] ❌ Fallback createTask error:`, fallbackError);
+
+          // Release lock if creation threw
+          const existingParams = (jobRecord?.params && typeof jobRecord.params === 'object') ? jobRecord.params : {};
+          const releaseParams = { ...existingParams };
+          delete releaseParams.fallback_lock;
+          delete releaseParams.fallback_lock_at;
+          await supabase
+            .from('video_jobs')
+            .update({
+              fallback_used: false,
+              attempt_count: attemptCount,
+              params: releaseParams,
+              updated_at: new Date().toISOString(),
+            })
+            .eq('job_id', id)
+            .eq('fallback_used', true)
+            .eq('attempt_count', attemptCount + 1);
+        }
+      }
+    }
+
     const shouldUpdateDb = statusForClient === 'completed' || statusForClient === 'failed' || primaryUrl || isKieSuccess;
     if (shouldUpdateDb) {
       try {
-        // 如果 KIE API 返回 success 状态或有视频URL，更新为 completed
         const dbStatus = (statusForClient === 'completed' || primaryUrl || isKieSuccess) ? 'completed' : 'failed';
         const { error: updateError } = await supabase
           .from('video_jobs')
@@ -338,19 +965,28 @@ export async function GET(
 
         if (updateError) {
           console.error('❌ Failed to update job status in database:', updateError);
-        } else {
-          console.log('✅ Updated job status in database:', {
-            job_id: id,
-            status: dbStatus,
-            result_url: primaryUrl,
-            had_video_url: !!primaryUrl,
-            is_kie_success: isKieSuccess,
-            resolved_state: resolvedState,
-            original_mapped_status: mapped
-          });
         }
       } catch (dbError) {
         console.error('❌ Database update error:', dbError);
+      }
+    }
+
+    if (statusForClient === 'failed') {
+      try {
+        const refundAmount = await resolveGenerationCreditAmount(
+          user.id,
+          id,
+          Number(jobRecord?.cost_credits ?? jobRecord?.credit_cost ?? 0)
+        );
+        await refundGenerationFailureOnce({
+          userId: user.id,
+          generationId: id,
+          amount: refundAmount,
+          source: 'kie_status_standard',
+          errorMessage: extractedErrorMessage,
+        });
+      } catch (refundError) {
+        console.error('[KIE STATUS] Failed to refund KIE failed job:', refundError);
       }
     }
 
@@ -360,22 +996,10 @@ export async function GET(
       result_url: primaryUrl,
       thumbnail_url: primaryUrl,
       progress: calculatedProgress,
-      created_at: createdAt, // 使用KIE API的实际创建时间
+      created_at: createdAt,
       updated_at: new Date().toISOString(),
       error_message: extractedErrorMessage,
     };
-    
-    console.log('📤 Final response:', {
-      generation_id: response.generation_id,
-      status: response.status,
-      result_url: response.result_url,
-      result_url_type: typeof response.result_url,
-      result_url_length: response.result_url?.length,
-      result_url_preview: response.result_url ? response.result_url.substring(0, 100) : 'N/A',
-      has_result_url: !!response.result_url,
-      progress: response.progress,
-      full_response: response
-    });
 
     return NextResponse.json(response);
   } catch (error) {
@@ -383,4 +1007,3 @@ export async function GET(
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
-

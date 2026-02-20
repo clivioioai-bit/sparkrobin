@@ -2,27 +2,34 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { refundCredits, debitCredits } from '@/lib/credits';
 import { mapModelToKie } from '@/lib/kie';
+import { callKieWithFallback, type KieRequestBody } from '@/lib/kie-fallback';
+import { callSora2ProWithFallback, type Sora2ProRequestBody } from '@/lib/sora2pro-fallback';
+import {
+  createEvolinkVideoTask,
+  mapAspectRatioToEvolink,
+  mapQualityToEvolink,
+  mapDurationToEvolink,
+  type EvolinkTextToVideoRequest,
+  type EvolinkImageToVideoRequest
+} from '@/lib/evolink';
 
 export const runtime = 'nodejs';
 
-// 服务器端环境变量
 const KIE_API_KEY = process.env.KIE_API_KEY;
 const KIE_API_BASE_URL = (process.env.KIE_API_BASE_URL || 'https://api.kie.ai').trim();
+const APIMART_API_KEY = process.env.APIMART_API_KEY;
 
-// Supabase 配置
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-// 验证必需的环境变量
 if (!supabaseUrl || !supabaseServiceKey) {
   console.error('Missing required Supabase environment variables');
 }
 
-const supabase = supabaseUrl && supabaseServiceKey 
+const supabase = supabaseUrl && supabaseServiceKey
   ? createClient(supabaseUrl, supabaseServiceKey)
   : null;
 
-// 验证 API Key
 if (!KIE_API_KEY) {
   console.error('KIE_API_KEY is not configured in server environment');
 }
@@ -30,9 +37,9 @@ if (!KIE_API_KEY) {
 export async function POST(request: NextRequest) {
   const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   const startTime = Date.now();
-  
+
   console.log(`[${requestId}] ========== KIE Generate Request Started ==========`);
-  
+
   let creditsDeducted = false;
   let deductedAmount = 0;
   let userId = '';
@@ -40,101 +47,58 @@ export async function POST(request: NextRequest) {
   let duration: number | undefined;
   let resolution: string | undefined;
   let model: string | undefined;
-  
+
   try {
-    // 1. 验证环境变量
-    console.log(`[${requestId}] Checking environment variables...`);
+    // 1. Validate environment
     if (!KIE_API_KEY) {
-      console.error(`[${requestId}] ❌ KIE_API_KEY not configured`);
-      return NextResponse.json(
-        { error: 'Kie API key not configured' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Kie API key not configured' }, { status: 500 });
     }
-
     if (!supabase) {
-      console.error(`[${requestId}] ❌ Supabase not configured`);
-      return NextResponse.json(
-        { error: 'Supabase not configured' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Supabase not configured' }, { status: 500 });
     }
-    console.log(`[${requestId}] ✅ Environment variables validated`);
 
-    // 2. 获取请求数据
-    console.log(`[${requestId}] Parsing request body...`);
+    // 2. Parse request body
     let body: any;
     try {
       body = await request.json();
     } catch (parseError) {
-      console.error(`[${requestId}] ❌ Failed to parse request body:`, {
-        error: parseError instanceof Error ? parseError.message : 'Unknown error',
-        content_type: request.headers.get('content-type')
-      });
       return NextResponse.json(
         { error: 'Invalid request body', details: 'Request body must be valid JSON' },
         { status: 400 }
       );
     }
     ({ prompt, duration, resolution, model } = body);
-    const { negative_prompt, aspect_ratio, style, image_url, n_frames, quality } = body;
-    
+    const { negative_prompt, aspect_ratio, style, image_url, n_frames, quality, wan26Duration, wan26Resolution, wan26MultiShots, wan26AspectRatio, imageUrls } = body;
+
     console.log(`[${requestId}] Request params:`, {
       has_prompt: !!prompt,
-      prompt_length: prompt?.length || 0,
-      duration,
-      resolution,
-      model,
-      aspect_ratio,
-      has_image_url: !!image_url,
-      image_url: image_url ? `${image_url.substring(0, 50)}...` : null
+      duration, resolution, model, aspect_ratio,
+      has_image_url: !!image_url
     });
 
-    // 3. 验证必需参数
-    console.log(`[${requestId}] Validating required parameters...`);
+    // 3. Validate required params
     if (!prompt || !duration || !resolution || !model) {
-      console.error(`[${requestId}] ❌ Missing required parameters:`, {
-        has_prompt: !!prompt,
-        has_duration: !!duration,
-        has_resolution: !!resolution,
-        has_model: !!model
-      });
       return NextResponse.json(
         { error: 'Missing required parameters: prompt, duration, resolution, model' },
         { status: 400 }
       );
     }
-    console.log(`[${requestId}] ✅ Required parameters validated`);
 
-    // 4. 获取用户信息（从 Authorization header）
-    console.log(`[${requestId}] Checking authorization header...`);
+    // 4. Auth check
     const authHeader = request.headers.get('authorization');
     if (!authHeader) {
-      console.error(`[${requestId}] ❌ Authorization header missing`);
-      return NextResponse.json(
-        { error: 'Authorization header required' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Authorization header required' }, { status: 401 });
     }
 
-    // 5. 验证用户身份
-    console.log(`[${requestId}] Authenticating user...`);
+    // 5. Verify user
     const token = authHeader.replace('Bearer ', '');
     const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-    
     if (authError || !user) {
-      console.error(`[${requestId}] ❌ Authentication failed:`, authError?.message || 'User not found');
-      return NextResponse.json(
-        { error: 'Invalid authentication' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Invalid authentication' }, { status: 401 });
     }
-
     userId = user.id;
-    console.log(`[${requestId}] ✅ User authenticated: ${userId}`);
 
-    // 6. 统一的订阅和积分校验
-    console.log(`[${requestId}] Fetching user data from database...`);
+    // 6. Credits check
     const { data: userData, error: userError } = await supabase
       .from('users')
       .select('credits_balance, credits_total, credits_spent, subscription_plan, subscription_status')
@@ -142,48 +106,28 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (userError || !userData) {
-      console.error(`[${requestId}] ❌ User not found in database:`, userError?.message);
-      return NextResponse.json(
-        { error: 'User not found' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    // 确定 n_frames（如果用户提供了，使用它；否则根据 duration 计算）
-    const final_n_frames_for_credits = n_frames && (n_frames === '10' || n_frames === '15') 
-      ? n_frames 
+    const final_n_frames_for_credits = n_frames && (n_frames === '10' || n_frames === '15')
+      ? n_frames
       : (duration <= 10 ? '10' : '15');
-    
-    // 检查积分余额
-    const requiredCredits = calculateCredits(duration, resolution, model, final_n_frames_for_credits, quality);
-    console.log(`[${requestId}] Credit calculation:`, {
-      duration,
-      resolution,
-      model,
-      n_frames: final_n_frames_for_credits,
-      required_credits: requiredCredits,
-      user_balance: userData.credits_balance
-    });
-    
+
+    const requiredCredits = calculateCredits(duration, resolution, model, final_n_frames_for_credits, quality, wan26Duration, wan26Resolution);
+
     if (userData.credits_balance < requiredCredits) {
-      console.warn(`[${requestId}] ⚠️ Insufficient credits:`, {
-        required: requiredCredits,
-        available: userData.credits_balance,
-        deficit: requiredCredits - userData.credits_balance
-      });
       return NextResponse.json(
-        { 
-          error: 'Insufficient credits', 
-          required: requiredCredits, 
+        {
+          error: 'Insufficient credits',
+          required: requiredCredits,
           available: userData.credits_balance,
           details: 'Please purchase credits or subscribe to a plan'
         },
         { status: 402 }
       );
     }
-    console.log(`[${requestId}] ✅ Credits sufficient`);
 
-    // 检查订阅状态（作为额外验证，但不是强制要求）
+    // Subscription check (warning only, non-blocking)
     const { data: subscription } = await supabase
       .from('user_subscriptions')
       .select('status')
@@ -192,366 +136,286 @@ export async function POST(request: NextRequest) {
       .limit(1)
       .maybeSingle();
 
-    // 如果用户有积分但订阅状态异常，记录警告但不阻止
     if (userData.credits_balance >= requiredCredits) {
       if (!subscription || subscription.status !== 'active') {
-        console.warn(`[${requestId}] ⚠️ User ${user.id} has credits but subscription status is inactive:`, {
-          subscription_plan: userData.subscription_plan,
-          subscription_status: userData.subscription_status,
-          subscription_record: subscription
-        });
+        console.warn(`[${requestId}] User ${user.id} has credits but subscription status is inactive`);
       }
     }
 
-    // 7. 使用事务安全的积分扣除
-    console.log(`[${requestId}] Attempting to deduct credits...`);
+    // 7. Debit credits
     try {
       const debitResult = await debitCredits(
         userId,
         requiredCredits,
         'video_generation',
-        {
-          prompt,
-          duration,
-          resolution,
-          model,
-          status: 'processing',
-          request_id: requestId
-        }
+        { prompt, duration, resolution, model, status: 'processing', request_id: requestId }
       );
-
       creditsDeducted = true;
       deductedAmount = requiredCredits;
-      
-      console.log(`[${requestId}] ✅ Successfully deducted ${requiredCredits} credits from user ${userId}`, {
-        new_balance: debitResult.balance,
-        new_total: debitResult.total,
-        new_spent: debitResult.spent
-      });
+      console.log(`[${requestId}] Deducted ${requiredCredits} credits, new balance: ${debitResult.balance}`);
     } catch (error) {
-      console.error(`[${requestId}] ❌ Credit deduction exception:`, {
-        error: error instanceof Error ? error.message : 'Unknown error',
-        stack: error instanceof Error ? error.stack : undefined,
-        user_id: userId,
-        amount: requiredCredits
-      });
-      
       if (error instanceof Error && error.message === 'INSUFFICIENT_BALANCE') {
-        return NextResponse.json(
-          { error: 'Insufficient credits' },
-          { status: 402 }
-        );
+        return NextResponse.json({ error: 'Insufficient credits' }, { status: 402 });
       }
-      
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       return NextResponse.json(
-        { 
-          error: 'Failed to deduct credits',
-          details: errorMessage,
-          hint: 'This may be due to a database connection issue. Please try again.'
-        },
+        { error: 'Failed to deduct credits', details: error instanceof Error ? error.message : 'Unknown error', hint: 'Please try again.' },
         { status: 500 }
       );
     }
 
-    // 8. 调用 Kie API
-    console.log(`[${requestId}] Preparing Kie API request...`);
-    // 确定模型类型：使用 mapModelToKie 函数映射前端模型名称到 KIE API 模型名称
-    // 判断是否为 image-to-video 模式
-    const isImageToVideo = model === 'image-to-video' || model === 'sora3-pro-image-to-video';
-    
+    // 8. Determine KIE model
+    const isImageToVideo = model === 'image-to-video' || model === 'sora2-pro-image-to-video' || model === 'sora2-image-to-video';
+
     let kieModel: string;
-    // 明确处理四种模型情况：
-    // 1. sora-2-pro-image-to-video
-    // 2. sora-2-image-to-video  
-    // 3. sora-2-pro-text-to-video
-    // 4. sora-2-text-to-video
-    if (model === 'sora3-pro-image-to-video') {
+    if (model === 'sora2-pro-image-to-video') {
       kieModel = 'sora-2-pro-image-to-video';
     } else if (model === 'image-to-video') {
-      kieModel = 'sora-2-image-to-video';
-    } else if (model === 'sora3-pro') {
+      kieModel = 'sora-2-image-to-video-stable';
+    } else if (model === 'sora2-pro') {
       kieModel = 'sora-2-pro-text-to-video';
+    } else if (model === 'sora-2-pro') {
+      kieModel = 'sora-2-pro-text-to-video';
+    } else if (model === 'sora-2-image-to-video-stable' || model === 'sora-2-stable-image-to-video') {
+      kieModel = 'sora-2-image-to-video-stable';
+    } else if (model === 'sora-2-text-to-video-stable' || model === 'sora-2-stable-text-to-video') {
+      kieModel = 'sora-2-text-to-video-stable';
+    } else if (model === 'wan2.6') {
+      const hasWan26ImageInput = !!image_url || (Array.isArray(imageUrls) && imageUrls.length > 0);
+      kieModel = hasWan26ImageInput ? 'wan/2-6-image-to-video' : 'wan/2-6-text-to-video';
+    } else if (model === 'sora2-text-to-video' || model === 'sora2') {
+      kieModel = isImageToVideo ? 'sora-2-image-to-video' : 'sora-2-text-to-video';
+    } else if (model === 'sora2-image-to-video') {
+      kieModel = 'sora-2-image-to-video';
     } else if (model === 'text-to-video' || model === 'sora3' || !model) {
-      kieModel = 'sora-2-text-to-video';
+      kieModel = 'sora-2-text-to-video-stable';
     } else {
-      // 使用 mapModelToKie 处理其他情况（向后兼容）
-      kieModel = mapModelToKie(model as 'sora3' | 'sora3-pro' | undefined, isImageToVideo);
+      kieModel = mapModelToKie(model as 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | undefined, isImageToVideo);
     }
-    
-    // 确定 n_frames：如果用户直接传入了 n_frames，使用它；否则根据 duration 计算
-    // duration 8-10 秒 -> "10", duration 11-15 秒 -> "15"
-    // 确保 n_frames 是字符串类型，符合 API 文档要求
-    const final_n_frames: string = n_frames && (n_frames === '10' || n_frames === '15') 
-      ? String(n_frames) 
+
+    const final_n_frames: string = n_frames && (n_frames === '10' || n_frames === '15')
+      ? String(n_frames)
       : (duration <= 10 ? '10' : '15');
-    
-    // 构建请求体
+
+    // Build request body
     const requestBody: any = {
       model: kieModel,
-      input: {
-        prompt,
-        aspect_ratio: aspect_ratio === '16:9' || aspect_ratio === '9:16' 
-          ? (aspect_ratio === '16:9' ? 'landscape' : 'portrait')
-          : 'landscape', // 默认 landscape
-        n_frames: final_n_frames,
-        remove_watermark: true, // 默认移除水印
-      },
+      input: {} as any,
     };
 
-    // 如果是 sora3-pro，添加 size 参数（从 quality 映射）
-    // 根据 API 文档：
-    // - text-to-video 默认值为 "high"
-    // - image-to-video 默认值为 "standard"
+    // Wan2.6 model has different parameter structure
+    if (kieModel === 'wan/2-6-text-to-video' || kieModel === 'wan/2-6-image-to-video') {
+      requestBody.input = {
+        prompt,
+        duration: wan26Duration || '5',
+        resolution: wan26Resolution || '1080p',
+        multi_shots: wan26MultiShots !== undefined ? wan26MultiShots : false,
+      };
+    } else {
+      requestBody.input = {
+        prompt,
+        aspect_ratio: aspect_ratio === '16:9' || aspect_ratio === '9:16'
+          ? (aspect_ratio === '16:9' ? 'landscape' : 'portrait')
+          : 'landscape',
+        n_frames: final_n_frames,
+        remove_watermark: true,
+      };
+    }
+
+    // Add size param for sora2-pro
     if (kieModel === 'sora-2-pro-text-to-video' || kieModel === 'sora-2-pro-image-to-video') {
       if (quality === 'standard') {
         requestBody.input.size = 'standard';
       } else if (quality === 'high') {
         requestBody.input.size = 'high';
       } else {
-        // 未指定 quality 时，根据模型类型设置默认值
-        if (kieModel === 'sora-2-pro-text-to-video') {
-          requestBody.input.size = 'high'; // text-to-video 默认 high
-        } else {
-          requestBody.input.size = 'standard'; // image-to-video 默认 standard
-        }
+        requestBody.input.size = kieModel === 'sora-2-pro-text-to-video' ? 'high' : 'standard';
       }
     }
 
-    // 如果是image-to-video模式，添加图片URL
-    // 检查是否为 image-to-video 模型（包括 sora-2-image-to-video 和 sora-2-pro-image-to-video）
-    if ((kieModel === 'sora-2-image-to-video' || kieModel === 'sora-2-pro-image-to-video')) {
-      if (!image_url) {
-        console.error(`[${requestId}] ❌ Image-to-video mode requires image_url but it's missing`, {
-          kieModel,
-          has_image_url: !!image_url,
-          request_body_keys: Object.keys(body)
-        });
-        // 退还积分
+    // Add image URLs for image-to-video modes
+    if ((kieModel === 'sora-2-stable-image-to-video' || kieModel === 'sora-2-image-to-video-stable' || kieModel === 'sora-2-image-to-video' || kieModel === 'sora-2-pro-image-to-video' || kieModel === 'wan/2-6-image-to-video')) {
+      const hasWan26ImageInput = !!image_url || (Array.isArray(imageUrls) && imageUrls.length > 0);
+      const missingImageInput = kieModel === 'wan/2-6-image-to-video' ? !hasWan26ImageInput : !image_url;
+      if (missingImageInput) {
         if (creditsDeducted) {
           try {
-            await refundCredits(userId, deductedAmount, 'missing_image_url', {
-              kieModel,
-              request_id: requestId
-            });
+            await refundCredits(userId, deductedAmount, 'missing_image_url', { kieModel, request_id: requestId });
           } catch (refundError) {
-            console.error(`[${requestId}] ❌ Failed to refund credits:`, refundError);
+            console.error(`[${requestId}] Failed to refund credits:`, refundError);
           }
         }
         return NextResponse.json(
-          { 
-            error: 'Reference image URL is required for image to video mode',
-            details: 'Please upload an image before generating the video'
-          },
+          { error: 'Reference image URL is required for image to video mode', details: 'Please upload an image before generating the video' },
           { status: 400 }
         );
       }
-      requestBody.input.image_urls = [image_url];
-      console.log(`[${requestId}] ✅ Added image_urls to request:`, {
-        kieModel,
-        image_url_preview: image_url.substring(0, 50) + '...'
-      });
+      if (image_url) {
+        requestBody.input.image_urls = [image_url];
+      }
     }
 
-    const kieApiUrl = `${normalizeBaseUrl(KIE_API_BASE_URL)}/api/v1/jobs/createTask`;
-    
-    // 验证参数类型符合 API 文档要求
-    console.log(`[${requestId}] Calling Kie API:`, {
-      url: kieApiUrl,
-      model: kieModel,
-      has_prompt: !!prompt,
-      aspect_ratio: requestBody.input.aspect_ratio,
-      aspect_ratio_type: typeof requestBody.input.aspect_ratio,
-      n_frames: requestBody.input.n_frames,
-      n_frames_type: typeof requestBody.input.n_frames,
-      n_frames_source: n_frames ? 'user_provided' : 'calculated_from_duration',
-      remove_watermark: requestBody.input.remove_watermark,
-      remove_watermark_type: typeof requestBody.input.remove_watermark,
-      has_image_urls: !!requestBody.input.image_urls,
-      image_urls_count: requestBody.input.image_urls?.length || 0,
-      image_urls_type: Array.isArray(requestBody.input.image_urls) ? 'array' : typeof requestBody.input.image_urls,
-      image_urls_preview: requestBody.input.image_urls?.map((url: string) => url.substring(0, 50) + '...') || [],
-      size: requestBody.input.size,
-      size_type: requestBody.input.size ? typeof requestBody.input.size : 'undefined'
-    });
-    
-    // 验证关键参数类型
-    if (typeof requestBody.input.n_frames !== 'string') {
-      console.error(`[${requestId}] ❌ n_frames must be string, got:`, typeof requestBody.input.n_frames, requestBody.input.n_frames);
+    // Validate param types
+    if (requestBody.input.n_frames && typeof requestBody.input.n_frames !== 'string') {
       requestBody.input.n_frames = String(requestBody.input.n_frames);
     }
-    if (typeof requestBody.input.aspect_ratio !== 'string') {
-      console.error(`[${requestId}] ❌ aspect_ratio must be string, got:`, typeof requestBody.input.aspect_ratio);
+    if (requestBody.input.aspect_ratio && typeof requestBody.input.aspect_ratio !== 'string') {
       requestBody.input.aspect_ratio = 'landscape';
     }
-    if (typeof requestBody.input.remove_watermark !== 'boolean') {
-      console.error(`[${requestId}] ❌ remove_watermark must be boolean, got:`, typeof requestBody.input.remove_watermark);
-      requestBody.input.remove_watermark = true;
-    }
     if (requestBody.input.image_urls && !Array.isArray(requestBody.input.image_urls)) {
-      console.error(`[${requestId}] ❌ image_urls must be array, got:`, typeof requestBody.input.image_urls);
       requestBody.input.image_urls = [requestBody.input.image_urls];
     }
 
-    const kieResponse = await fetch(kieApiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${KIE_API_KEY}`,
-        'X-API-Key': KIE_API_KEY,
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const kieApiUrl = `${normalizeBaseUrl(KIE_API_BASE_URL)}/api/v1/jobs/createTask`;
 
-    const kieResponseStatus = kieResponse.status;
-    const kieResponseStatusText = kieResponse.statusText;
-    
-    console.log(`[${requestId}] Kie API response status: ${kieResponseStatus} ${kieResponseStatusText}`);
-    
-    if (!kieResponse.ok) {
-      const errorData = await kieResponse.json().catch(() => ({}));
-      console.error(`[${requestId}] ❌ Kie API error:`, {
-        status: kieResponseStatus,
-        status_text: kieResponseStatusText,
-        error_data: errorData,
-        url: kieApiUrl
-      });
-      
-      // Kie API失败，退还积分
-      if (creditsDeducted) {
-        console.log(`[${requestId}] Attempting to refund credits due to Kie API failure...`);
+    // 9. Call API with fallback
+    const isWan26Model = kieModel === 'wan/2-6-text-to-video' || kieModel === 'wan/2-6-image-to-video';
+    const isSora2ProModel = kieModel === 'sora-2-pro-text-to-video' || kieModel === 'sora-2-pro-image-to-video';
+
+    let apiResult: any;
+    let taskId: string;
+    let apiProvider: string;
+    let fallbackUsed: boolean;
+    let attemptCount: number;
+
+    if (isWan26Model) {
+      // Use Evolink API for Wan2.6
+      console.log(`[${requestId}] Using Evolink API for Wan2.6`);
+
+      const isI2V = kieModel === 'wan/2-6-image-to-video';
+      const evolinkDuration = mapDurationToEvolink(wan26Duration);
+      const evolinkQuality = mapQualityToEvolink(wan26Resolution);
+      const evolinkAspectRatio = mapAspectRatioToEvolink(wan26AspectRatio || aspect_ratio || '16:9');
+
+      if (isI2V) {
+        const imageUrlsArray = imageUrls || (image_url ? [image_url] : []);
+        if (!imageUrlsArray || imageUrlsArray.length === 0) {
+          if (creditsDeducted) {
+            try { await refundCredits(userId, deductedAmount, 'missing_image_url', { model: kieModel, request_id: requestId }); } catch {}
+          }
+          return NextResponse.json(
+            { error: 'Reference image URL is required for image to video mode' },
+            { status: 400 }
+          );
+        }
+        const evolinkRequest: EvolinkImageToVideoRequest = {
+          model: 'wan2.6-image-to-video',
+          prompt: prompt!,
+          image_urls: imageUrlsArray,
+          aspect_ratio: evolinkAspectRatio,
+          quality: evolinkQuality,
+          duration: evolinkDuration,
+          prompt_extend: true,
+          model_params: { shot_type: wan26MultiShots ? 'multi' : 'single' }
+        };
+        const evolinkResult = await createEvolinkVideoTask(evolinkRequest);
+        apiResult = { success: evolinkResult.success, error: evolinkResult.error, errorStatusCode: evolinkResult.statusCode };
+        taskId = evolinkResult.taskId || '';
+        apiProvider = 'evolink';
+        fallbackUsed = false;
+        attemptCount = 1;
+      } else {
+        const evolinkRequest: EvolinkTextToVideoRequest = {
+          model: 'wan2.6-text-to-video',
+          prompt: prompt!,
+          aspect_ratio: evolinkAspectRatio,
+          quality: evolinkQuality,
+          duration: evolinkDuration,
+          prompt_extend: true,
+          model_params: { shot_type: wan26MultiShots ? 'multi' : 'single' }
+        };
+        const evolinkResult = await createEvolinkVideoTask(evolinkRequest);
+        apiResult = { success: evolinkResult.success, error: evolinkResult.error, errorStatusCode: evolinkResult.statusCode };
+        taskId = evolinkResult.taskId || '';
+        apiProvider = 'evolink';
+        fallbackUsed = false;
+        attemptCount = 1;
+      }
+    } else if (isSora2ProModel && APIMART_API_KEY) {
+      // Use sora2pro fallback (KIE -> apimart)
+      console.log(`[${requestId}] Using sora2pro fallback (KIE -> apimart)`);
+      const sora2ProResult = await callSora2ProWithFallback(kieApiUrl, KIE_API_KEY!, APIMART_API_KEY, requestBody as Sora2ProRequestBody);
+      apiResult = sora2ProResult;
+      taskId = sora2ProResult.taskId || '';
+      apiProvider = sora2ProResult.provider;
+      fallbackUsed = sora2ProResult.fallbackUsed;
+      attemptCount = sora2ProResult.attemptCount;
+    } else {
+      // Use regular KIE fallback (sora2 -> wan2.5)
+      console.log(`[${requestId}] Using regular KIE fallback (sora2 -> wan2.5)`);
+      const kieResult = await callKieWithFallback(kieApiUrl, KIE_API_KEY!, requestBody as KieRequestBody);
+      apiResult = kieResult;
+      taskId = kieResult.taskId || '';
+      apiProvider = kieResult.apiVersion || 'kie';
+      fallbackUsed = kieResult.fallbackUsed;
+      attemptCount = kieResult.attemptCount;
+    }
+
+    if (!apiResult.success || !taskId) {
+      console.error(`[${requestId}] API failed (including fallback):`, apiResult.error);
+      const isClientError = apiResult.errorStatusCode && apiResult.errorStatusCode >= 400 && apiResult.errorStatusCode < 500;
+
+      if (creditsDeducted && !isClientError) {
         try {
-          await refundCredits(userId, deductedAmount, 'kie_api_failed', {
-            kie_status: kieResponse.status,
-            kie_error: errorData,
-            original_metadata: { prompt, duration, resolution, model },
+          await refundCredits(userId, deductedAmount, 'api_failed', {
+            api_error: apiResult.error, api_provider: apiProvider,
+            fallback_used: fallbackUsed, attempt_count: attemptCount,
             request_id: requestId
           });
-          
-          console.log(`[${requestId}] ✅ Refunded ${deductedAmount} credits to user ${userId} due to Kie API failure`);
+          console.log(`[${requestId}] Refunded ${deductedAmount} credits due to API failure`);
         } catch (refundError) {
-          console.error(`[${requestId}] ❌ Failed to refund credits:`, {
-            error: refundError instanceof Error ? refundError.message : 'Unknown error',
-            user_id: userId,
-            amount: deductedAmount
-          });
-          // 记录到失败表，等待手动处理
+          console.error(`[${requestId}] Failed to refund credits:`, refundError);
           try {
             await supabase.from('failed_generations').insert({
-              user_id: userId,
-              prompt,
-              duration,
-              resolution,
-              model,
+              user_id: userId, prompt, duration, resolution, model,
               credits_deducted: deductedAmount,
-              error_message: `Kie API failed (${kieResponse.status}): ${JSON.stringify(errorData)}`,
+              error_message: `API failed: ${apiResult.error}`,
               status: 'pending'
             });
-            console.log(`[${requestId}] Recorded failed generation to database`);
-          } catch (insertError) {
-            console.error(`[${requestId}] ❌ Failed to record failed generation:`, insertError);
-          }
+          } catch {}
         }
       }
-      
-      return NextResponse.json(
-        { 
-          error: 'Video generation service temporarily unavailable', 
-          details: errorData,
-          credits_refunded: creditsDeducted ? deductedAmount : 0
-        },
-        { status: 503 }
-      );
-    }
 
-    const kieData = await kieResponse.json();
-    console.log(`[${requestId}] ✅ Kie API response received:`, {
-      has_data: !!kieData,
-      response_keys: Object.keys(kieData || {}),
-      status_code: extractStatusCode(kieData),
-      task_id: extractTaskId(kieData)
-    });
-
-    const taskId = extractTaskId(kieData);
-    const kieStatusCode = extractStatusCode(kieData);
-    const kieStatusText = extractStatusText(kieData);
-    const kieSuccessFlag = isKieSuccess(kieData);
-
-    if (!kieSuccessFlag && !taskId) {
-      console.error(`[${requestId}] ❌ Unexpected Kie API response shape:`, {
-        response: kieData,
-        status_code: kieStatusCode,
-        status_text: kieStatusText,
-        success_flag: kieSuccessFlag
-      });
-      const status = inferErrorStatus(kieStatusCode);
       return NextResponse.json(
         {
-          error: 'Kie API error',
-          details: kieStatusText || 'Unexpected response from Kie API',
-          response: kieData,
+          error: isClientError ? 'Invalid request parameters' : 'Video generation service temporarily unavailable',
+          details: apiResult.error,
+          credits_refunded: (creditsDeducted && !isClientError) ? deductedAmount : 0
         },
-        { status }
+        { status: apiResult.errorStatusCode || 503 }
       );
     }
 
-    if (!taskId) {
-      console.error(`[${requestId}] ❌ Missing taskId in Kie API response:`, {
-        response: kieData,
-        status_code: kieStatusCode,
-        status_text: kieStatusText
-      });
-      const status = inferErrorStatus(kieStatusCode);
-      return NextResponse.json(
-        {
-          error: 'Invalid Kie API response',
-          details: kieStatusText || 'Missing task identifier',
-          response: kieData,
-        },
-        { status }
-      );
-    }
+    console.log(`[${requestId}] Got taskId: ${taskId}, Provider: ${apiProvider}, Fallback: ${fallbackUsed}`);
 
-    console.log(`[${requestId}] ✅ Successfully got taskId from Kie API: ${taskId}`);
-
-    // 12. 保存作业到数据库
-    console.log(`[${requestId}] Saving job to database...`);
+    // 10. Save job to database
     const { error: jobError } = await supabase
       .from('video_jobs')
       .insert({
-        job_id: taskId,  // 使用job_id而不是id
+        job_id: taskId,
         user_id: user.id,
         prompt: prompt,
-        image_url: image_url || null,  // 使用image_url而不是reference_image_url
+        image_url: image_url || null,
         aspect_ratio: aspect_ratio,
-        duration: duration,  // 使用duration而不是duration_sec
+        duration: duration,
         status: 'processing',
         result_url: null,
         preview_url: null,
         error_message: null,
         cost_credits: requiredCredits,
+        api_version: apiProvider,
+        fallback_used: fallbackUsed,
+        attempt_count: attemptCount,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
       });
 
     if (jobError) {
-      console.error(`[${requestId}] ❌ Failed to save job to database:`, {
-        error: jobError.message,
-        error_code: jobError.code,
-        error_details: jobError.details,
-        task_id: taskId,
-        user_id: userId
-      });
-      // 注意：KIE API已成功，但数据库保存失败
-      // 在生产环境中应该实现补偿机制
-    } else {
-      console.log(`[${requestId}] ✅ Job saved to database: ${taskId}`);
+      console.error(`[${requestId}] Failed to save job:`, jobError.message);
     }
 
-    // 13. 更新交易记录（将生成 ID 写入最近一次扣款交易）
-    console.log(`[${requestId}] Updating credit transaction with generation ID...`);
+    // 11. Update credit transaction
     try {
-      const { data: tx, error: txSelectError } = await supabase
+      const { data: tx } = await supabase
         .from('credit_transactions')
         .select('id')
         .eq('user_id', user.id)
@@ -561,49 +425,23 @@ export async function POST(request: NextRequest) {
         .limit(1)
         .maybeSingle();
 
-      if (txSelectError) {
-        console.error(`[${requestId}] ❌ Failed to locate last debit transaction:`, txSelectError);
-      } else if (tx?.id) {
-        const { error: updateError } = await supabase
-          .from('credit_transactions')
-          .update({
-            metadata: {
-              generation_id: taskId,
-              prompt,
-              duration,
-              resolution,
-              model,
-              kie_api_response: kieData,
-              status: 'processing',
-              request_id: requestId
-            }
-          })
-          .eq('id', tx.id);
-
-        if (updateError) {
-          console.error(`[${requestId}] ❌ Failed to update transaction:`, updateError);
-        } else {
-          console.log(`[${requestId}] ✅ Updated credit transaction ${tx.id} with generation_id ${taskId}`);
-        }
-      } else {
-        console.warn(`[${requestId}] ⚠️ No debit transaction found to update`);
+      if (tx?.id) {
+        await supabase.from('credit_transactions').update({
+          metadata: {
+            generation_id: taskId, prompt, duration, resolution, model,
+            api_provider: apiProvider, fallback_used: fallbackUsed,
+            attempt_count: attemptCount, status: 'processing', request_id: requestId
+          }
+        }).eq('id', tx.id);
       }
     } catch (e) {
-      console.error(`[${requestId}] ❌ Unexpected error updating last debit transaction:`, {
-        error: e instanceof Error ? e.message : 'Unknown error',
-        stack: e instanceof Error ? e.stack : undefined
-      });
+      console.error(`[${requestId}] Error updating transaction:`, e);
     }
 
-    // 14. 返回结果
+    // 12. Return result
     const durationMs = Date.now() - startTime;
-    console.log(`[${requestId}] ========== Request Completed Successfully ==========`, {
-      task_id: taskId,
-      user_id: userId,
-      credits_deducted: deductedAmount,
-      duration_ms: durationMs
-    });
-    
+    console.log(`[${requestId}] Request completed in ${durationMs}ms`);
+
     return NextResponse.json({
       success: true,
       generation_id: taskId,
@@ -616,68 +454,38 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     const durationMs = Date.now() - startTime;
-    console.error(`[${requestId}] ========== Request Failed ==========`, {
-      error: error instanceof Error ? error.message : 'Unknown error',
-      error_stack: error instanceof Error ? error.stack : undefined,
-      user_id: userId,
-      credits_deducted: creditsDeducted,
-      deducted_amount: deductedAmount,
-      duration_ms: durationMs
-    });
-    
-    // 如果积分已扣除但出现其他错误，退还积分
+    console.error(`[${requestId}] Request failed in ${durationMs}ms:`, error instanceof Error ? error.message : error);
+
     if (creditsDeducted && userId) {
-      console.log(`[${requestId}] Attempting to refund credits due to generation error...`);
       try {
         await refundCredits(userId, deductedAmount, 'generation_error', {
           error: error instanceof Error ? error.message : 'Unknown error',
-          original_metadata: { prompt, duration, resolution, model },
           request_id: requestId
         });
-        
-        console.log(`[${requestId}] ✅ Refunded ${deductedAmount} credits to user ${userId} due to generation error`);
       } catch (refundError) {
-        console.error(`[${requestId}] ❌ Failed to refund credits:`, {
-          refund_error: refundError instanceof Error ? refundError.message : 'Unknown error',
-          user_id: userId,
-          amount: deductedAmount
-        });
-        // 记录到失败表，等待手动处理
+        console.error(`[${requestId}] Failed to refund:`, refundError);
         try {
           await supabase?.from('failed_generations').insert({
-            user_id: userId,
-            prompt: 'Unknown',
-            duration: 0,
-            resolution: 'Unknown',
-            model: 'Unknown',
+            user_id: userId, prompt: 'Unknown', duration: 0, resolution: 'Unknown', model: 'Unknown',
             credits_deducted: deductedAmount,
-            error_message: `Generation error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+            error_message: `Generation error: ${error instanceof Error ? error.message : 'Unknown'}`,
             status: 'pending'
           });
-          console.log(`[${requestId}] Recorded failed generation to database`);
-        } catch (insertError) {
-          console.error(`[${requestId}] ❌ Failed to record failed generation:`, insertError);
-        }
+        } catch {}
       }
     }
-    
-    // 提供更详细的错误信息，但不在生产环境暴露敏感信息
+
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    const errorStack = error instanceof Error ? error.stack : undefined;
-    
-    // 根据错误类型提供更具体的错误信息
     let userFriendlyError = 'Internal server error';
     if (errorMessage.includes('JSON') || errorMessage.includes('parse')) {
       userFriendlyError = 'Invalid request format';
     } else if (errorMessage.includes('network') || errorMessage.includes('fetch')) {
       userFriendlyError = 'Network error occurred';
-    } else if (errorMessage.includes('database') || errorMessage.includes('supabase')) {
-      userFriendlyError = 'Database connection error';
     }
-    
+
     return NextResponse.json(
-      { 
-        error: userFriendlyError, 
+      {
+        error: userFriendlyError,
         details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
         credits_refunded: creditsDeducted ? deductedAmount : 0,
         request_id: requestId
@@ -687,47 +495,43 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// 计算所需积分的函数
-function calculateCredits(duration: number, resolution: string, model: string, n_frames?: '10' | '15', quality?: 'standard' | 'high'): number {
+// Credit calculation - keeps sora3 base pricing, adds Wan2.6
+function calculateCredits(
+  duration: number, resolution: string, model: string,
+  n_frames?: '10' | '15', quality?: 'standard' | 'high',
+  wan26Duration?: '5' | '10' | '15', wan26Resolution?: '720p' | '1080p'
+): number {
+  // Wan2.6 pricing
+  if (model === 'wan2.6') {
+    const durationKey = wan26Duration || '5';
+    const resolutionKey = wan26Resolution || '1080p';
+    const pricingTable: Record<'720p' | '1080p', Record<'5' | '10' | '15', number>> = {
+      '720p': { '5': 80, '10': 160, '15': 220 },
+      '1080p': { '5': 120, '10': 220, '15': 320 }
+    };
+    return pricingTable[resolutionKey][durationKey];
+  }
+
   // Sora3 Pro pricing
-  if (model === 'sora3-pro') {
+  if (model === 'sora2-pro' || model === 'sora3-pro') {
     if (quality === 'high') {
       return n_frames === '15' ? 325 : 175;
     } else if (quality === 'standard') {
       return n_frames === '15' ? 135 : 75;
     }
-    // Default to standard if quality not specified
     return n_frames === '15' ? 135 : 75;
   }
-  
-  // Sora3 (default) pricing: 10s = 15 credits, 15s = 20 credits
-  let baseCredits = 15;
+
+  // Sora2 pricing: 10s=20, 15s=25
+  if (model === 'sora2' || model === 'sora2-text-to-video' || model === 'sora2-image-to-video') {
+    return n_frames === '15' ? 25 : 20;
+  }
+
+  // Sora3 base pricing: 10s=15, 15s=20
   if (n_frames === '15') {
-    baseCredits = 20;
-  } else if (n_frames === '10') {
-    baseCredits = 15;
-  } else {
-    // 如果没有提供 n_frames，根据 duration 计算（向后兼容）
-    if (duration > 10) {
-      baseCredits += (duration - 10) * 1;
-    }
+    return 20;
   }
-  
-  // 根据分辨率调整
-  if (resolution === '1080p') {
-    baseCredits = Math.round(baseCredits * 1.5);
-  } else if (resolution === '4K') {
-    baseCredits = Math.round(baseCredits * 2);
-  }
-  
-  // 根据模型调整
-  if (model.includes('fast')) {
-    baseCredits = Math.round(baseCredits * 0.8);
-  } else if (model.includes('standard')) {
-    baseCredits = Math.round(baseCredits * 1.2);
-  }
-  
-  return baseCredits;
+  return 15;
 }
 
 function normalizeBaseUrl(baseUrl: string) {
@@ -736,91 +540,4 @@ function normalizeBaseUrl(baseUrl: string) {
     return trimmed.slice(0, -7);
   }
   return trimmed;
-}
-
-function isKieSuccess(response: unknown) {
-  const code = extractStatusCode(response);
-  if (typeof code === 'number') {
-    if (code === 200 || code === 0) return true;
-    if (code >= 200 && code < 300) return true;
-  }
-
-  if (!response || typeof response !== 'object') return false;
-  const payload = response as Record<string, unknown>;
-  if (payload.success === true) return true;
-  if (typeof payload.msg === 'string' && payload.msg.trim().toLowerCase() === 'success') return true;
-
-  return false;
-}
-
-function extractStatusText(response: unknown) {
-  if (!response || typeof response !== 'object') return undefined;
-  const payload = response as Record<string, unknown>;
-  const msg = payload.msg ?? payload.message ?? payload.error;
-  return typeof msg === 'string' ? msg : undefined;
-}
-
-function extractTaskId(response: unknown) {
-  if (!response || typeof response !== 'object') return undefined;
-  const payload = response as Record<string, unknown>;
-  const data = payload.data;
-
-  if (data && typeof data === 'object') {
-    const taskPayload = data as Record<string, unknown>;
-    const candidate =
-      taskPayload.taskId ??
-      taskPayload.task_id ??
-      taskPayload.id ??
-      taskPayload.jobId ??
-      taskPayload.job_id;
-    if (typeof candidate === 'string' && candidate.trim().length > 0) {
-      return candidate.trim();
-    }
-  }
-
-  const rootCandidate =
-    payload.taskId ??
-    payload.task_id ??
-    payload.id ??
-    payload.jobId ??
-    payload.job_id;
-
-  if (typeof rootCandidate === 'string' && rootCandidate.trim().length > 0) {
-    return rootCandidate.trim();
-  }
-
-  return undefined;
-}
-
-function inferErrorStatus(code: number | null) {
-  if (typeof code === 'number') {
-    if (code >= 100 && code <= 599) return code;
-    const parsed = Number.parseInt(String(code), 10);
-    if (!Number.isNaN(parsed) && parsed >= 100 && parsed <= 599) return parsed;
-  }
-  return 502;
-}
-
-function extractStatusCode(response: unknown): number | null {
-  if (!response || typeof response !== 'object') return null;
-  const payload = response as Record<string, unknown>;
-  const raw =
-    payload.code ??
-    payload.statusCode ??
-    payload.status_code ??
-    payload.status ??
-    payload.state;
-
-  if (typeof raw === 'number') {
-    return raw;
-  }
-
-  if (typeof raw === 'string') {
-    const parsed = Number.parseInt(raw.trim(), 10);
-    if (!Number.isNaN(parsed)) {
-      return parsed;
-    }
-  }
-
-  return null;
 }

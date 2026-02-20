@@ -601,7 +601,13 @@
       "quality": "Quality",
       "qualityTooltip": "Standard: Lower cost, good quality. High: Premium quality with higher cost.",
       "standard": "Standard",
-      "high": "High"
+      "high": "High",
+      "sora2": "Sora 2",
+      "sora2Description": "Non-stable variant, potentially higher quality",
+      "sora2Pro": "Sora 2 Pro",
+      "sora2ProDescription": "Premium non-stable video generation",
+      "storyboard": "Storyboard",
+      "storyboardDescription": "Multi-scene video generation with shot control"
     },
     "veo3ImageMode": {
       "image": "Image *",

@@ -3,6 +3,9 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { createServerClient } from '@supabase/ssr';
 
 export const runtime = 'nodejs';
+// Increase body size limit to 100MB for file uploads
+export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
 
 export async function POST(request: NextRequest) {
@@ -49,16 +52,32 @@ export async function POST(request: NextRequest) {
 
     // Validate file type (support both images and videos)
     if (!file.type.startsWith('video/') && !file.type.startsWith('image/')) {
+      const fileExtension = file.name.split('.').pop() || 'unknown';
       return NextResponse.json(
-        { error: 'Only video and image files are allowed' },
+        {
+          error: 'Unsupported file type',
+          details: `Only video and image files are allowed. Your file type is: ${file.type || 'unknown'} (${fileExtension})`,
+          hint: 'Please upload a JPG, PNG, WebP image or a video file.'
+        },
         { status: 400 }
       );
     }
 
-    // Validate file size (max 100MB)
-    if (file.size > 100 * 1024 * 1024) {
+    // Validate file size (max 100MB for videos, 2MB for images)
+    const isImage = file.type.startsWith('image/');
+    const maxSize = isImage ? 2 * 1024 * 1024 : 100 * 1024 * 1024;
+    const maxSizeMB = isImage ? 2 : 100;
+
+    if (file.size > maxSize) {
+      const fileSizeMB = (file.size / 1024 / 1024).toFixed(2);
       return NextResponse.json(
-        { error: 'File size must be less than 100MB' },
+        {
+          error: 'File size is too large',
+          details: `Your ${isImage ? 'image' : 'video'} file is ${fileSizeMB}MB, but the maximum allowed size is ${maxSizeMB}MB.`,
+          hint: isImage
+            ? 'Please compress your image or use a smaller file. You can use online tools to reduce image size.'
+            : 'Please use a smaller video file or compress it before uploading.'
+        },
         { status: 400 }
       );
     }
@@ -85,22 +104,23 @@ export async function POST(request: NextRequest) {
       
       // 提供更详细的错误信息
       let errorMessage = 'Failed to upload file';
-      let errorDetails = uploadError.message || uploadError.error || 'Unknown upload error';
-      let errorCode = uploadError.statusCode || uploadError.error || 'UPLOAD_ERROR';
+      const storageError = uploadError as { message?: string; statusCode?: string | number; error?: string };
+      let errorDetails = storageError.message || storageError.error || 'Unknown upload error';
+      let errorCode = storageError.statusCode || storageError.error || 'UPLOAD_ERROR';
       
       // 检查是否是 bucket 不存在的错误
       if (errorDetails.includes('Bucket not found') || errorDetails.includes('bucket') || errorCode === '404') {
         errorMessage = 'Storage bucket not found';
         errorDetails = `The 'videos' bucket does not exist in Supabase Storage. Please create it in the Supabase Dashboard: Storage → New bucket → Name: 'videos' → Public bucket → Create bucket.`;
         errorCode = 'BUCKET_NOT_FOUND';
-      } else if (uploadError.statusCode === '409') {
+      } else if (storageError.statusCode === '409') {
         errorMessage = 'File already exists. Please try again.';
-      } else if (uploadError.statusCode === '413') {
+      } else if (storageError.statusCode === '413') {
         errorMessage = 'File is too large. Maximum size is 100MB.';
-      } else if (uploadError.statusCode === '403') {
+      } else if (storageError.statusCode === '403') {
         errorMessage = 'Permission denied. Please check your storage permissions.';
-      } else if (uploadError.message) {
-        errorMessage = uploadError.message;
+      } else if (storageError.message) {
+        errorMessage = storageError.message;
       }
       
       return NextResponse.json(
@@ -112,7 +132,7 @@ export async function POST(request: NextRequest) {
             ? 'Go to Supabase Dashboard → Storage → Create a new bucket named "videos" and make it public.'
             : undefined
         },
-        { status: uploadError.statusCode === '409' ? 409 : uploadError.statusCode === '413' ? 413 : 500 }
+        { status: storageError.statusCode === '409' ? 409 : storageError.statusCode === '413' ? 413 : 500 }
       );
     }
 
@@ -173,9 +193,27 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('[API ERROR] Upload error:', error);
+
+    // Check if it's a 413 Payload Too Large error
+    if (error instanceof Error && (
+      error.message.includes('413') ||
+      error.message.includes('Payload Too Large') ||
+      error.message.includes('request entity too large')
+    )) {
+      return NextResponse.json(
+        {
+          error: 'File is too large',
+          details: 'The uploaded file exceeds the maximum allowed size of 4.5MB. Please compress your image or use a smaller file.',
+          code: 'PAYLOAD_TOO_LARGE',
+          hint: 'Try compressing your image using an online tool or reducing the image dimensions.'
+        },
+        { status: 413 }
+      );
+    }
+
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return NextResponse.json(
-      { 
+      {
         error: 'Internal server error',
         details: errorMessage
       },

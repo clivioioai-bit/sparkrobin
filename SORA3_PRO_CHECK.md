@@ -119,3 +119,6 @@ if ((kieModel === 'sora-2-image-to-video' || kieModel === 'sora-2-pro-image-to-v
    - 验证公开 URL 是否正确传递给 KIE API
    - 验证视频结果 URL 是否正确存储
 
+
+
+1111

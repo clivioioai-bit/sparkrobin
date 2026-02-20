@@ -24,11 +24,16 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith('/robots.txt') ||
       pathname.startsWith('/sitemap.xml') ||
       pathname.startsWith('/videos/') ||
-      pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|woff|woff2|ttf|eot|mp4|webm|mov|avi|mkv)$/)
+      pathname.startsWith('/images/') ||
+      pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|avif|woff|woff2|ttf|eot|mp4|webm|mov|avi|mkv)$/)
     ) {
       return NextResponse.next();
     }
 
+    // 跳过 PostHog ingest 路由，让 rewrites 处理
+    if (pathname.startsWith('/ingest/')) {
+      return NextResponse.next();
+    }
 
     // 跳过 API 路由，让它们直接处理（避免 next-intl 中间件干扰）
     if (pathname.startsWith('/api/')) {

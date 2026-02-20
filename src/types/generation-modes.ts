@@ -1,6 +1,6 @@
 // Generation Mode Types
 
-export type GenerationMode = 'sora3' | 'reframe';
+export type GenerationMode = 'sora3' | 'reframe' | 'veo3';
 
 // Fast Mode
 export interface FastModeParams {
@@ -14,11 +14,20 @@ export interface Sora3Params {
   prompt: string;
   negative_prompt?: string;
   duration?: number;
-  aspectRatio: '16:9' | '9:16' | '1:1';
+  aspectRatio: '16:9' | '9:16' | '1:1' | 'Auto';
   style?: string;
   n_frames?: '10' | '15'; // Video duration: 10s or 15s
-  model?: 'sora3' | 'sora3-pro'; // Model selection
-  quality?: 'standard' | 'high'; // Quality for sora3-pro (maps to size in API)
+  model?: 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'storyboard' | 'veo3.1' | 'wan2.6'; // Model selection
+  quality?: 'standard' | 'high'; // Quality for sora3-pro/sora2-pro (maps to size in API)
+  veo3SubModel?: 'veo3_fast' | 'veo3'; // For Veo3.1: sub-model selection (Fast or Quality)
+  seeds?: number; // For Veo3.1: Optional seed (10000-99999)
+  // Wan2.6 specific parameters
+  wan26Duration?: '5' | '10' | '15'; // Wan2.6 duration in seconds
+  wan26Resolution?: '720p' | '1080p'; // Wan2.6 resolution
+  wan26MultiShots?: boolean; // Wan2.6 multi shots parameter
+  wan26AspectRatio?: '16:9' | '9:16' | '1:1' | '4:3' | '3:4'; // Wan2.6 aspect ratio
+  // Storyboard parameters (when model === 'storyboard')
+  storyboardParams?: import('@/types/storyboard').StoryboardParams;
 }
 
 // Reframe Mode (Image-to-Video)
@@ -30,11 +39,17 @@ export interface ReframeParams {
   targetAspectRatio: '16:9' | '9:16' | 'Auto';
   style: 'zoom' | 'pan' | 'crop';
   speed: 'normal' | 'slow' | 'fast';
-  model?: 'sora3' | 'sora3-pro' | 'veo3.1';
+  model?: 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'veo3.1' | 'wan2.6';
   veo3SubModel?: 'veo3_fast' | 'veo3'; // For Veo3.1: sub-model selection
   seeds?: number; // For Veo3.1: Optional seed (10000-99999)
   n_frames?: '10' | '15'; // Video duration: 10s or 15s
-  quality?: 'standard' | 'high'; // Quality for sora3-pro (maps to size in API)
+  quality?: 'standard' | 'high'; // Quality for sora3-pro/sora2-pro (maps to size in API)
+  // Wan2.6 specific parameters
+  wan26Duration?: '5' | '10' | '15'; // Wan2.6 duration in seconds
+  wan26Resolution?: '720p' | '1080p'; // Wan2.6 resolution
+  wan26MultiShots?: boolean; // Wan2.6 multi shots parameter
+  wan26AspectRatio?: '16:9' | '9:16' | '1:1' | '4:3' | '3:4'; // Wan2.6 aspect ratio
+  imageUrls?: string[]; // For Wan2.6: Image URLs array
 }
 
 // TikTok Mode
@@ -53,10 +68,20 @@ export interface NormalParams {
   style: 'standard' | 'creative' | 'abstract';
 }
 
-export type ModeParams = 
+// Veo3 Mode
+export interface Veo3Params {
+  prompt: string;
+  model?: 'veo3' | 'veo3_fast';
+  imageUrls?: string[];
+  generationType?: 'TEXT_2_VIDEO' | 'FIRST_AND_LAST_FRAMES_2_VIDEO' | 'REFERENCE_2_VIDEO';
+  aspectRatio: '16:9' | '9:16' | 'Auto';
+  targetAspectRatio?: '16:9' | '9:16' | 'Auto';
+  seeds?: number;
+  enableTranslation?: boolean;
+  watermark?: string;
+}
+
+export type ModeParams =
   | { mode: 'sora3'; params: Sora3Params }
-  | { mode: 'reframe'; params: ReframeParams };
-
-
-
-
+  | { mode: 'reframe'; params: ReframeParams }
+  | { mode: 'veo3'; params: Veo3Params };

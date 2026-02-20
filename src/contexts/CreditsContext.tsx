@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { useAuth } from './AuthContext';
 import { supabase } from '../lib/supabase';
-import { safeJsonParse } from '@/lib/utils';
 
 // Helper functions for Supabase operations
 type SupabaseUserRecord = {
@@ -228,7 +227,7 @@ const getUserGenerations = async (userId: string) => {
     
     let json: any;
     try {
-      json = await safeJsonParse(res);
+      json = await res.json();
     } catch (parseError) {
       console.error('Failed to parse jobs API response:', parseError);
       return [];
@@ -347,10 +346,20 @@ interface CreditsContextType {
     duration: number;
     resolution: string;
     model: string;
+    wan26Duration?: '5' | '10' | '15';
+    wan26Resolution?: '720p' | '1080p';
   }) => Promise<{ success: boolean; generationId?: string; error?: string }>;
-  
+
   // Utilities
-  calculateCredits: (duration: number, resolution: string, model: string, n_frames?: '10' | '15', quality?: 'standard' | 'high') => number;
+  calculateCredits: (
+    duration: number,
+    resolution: string,
+    model: string,
+    n_frames?: '10' | '15',
+    quality?: 'standard' | 'high',
+    wan26Duration?: '5' | '10' | '15',
+    wan26Resolution?: '720p' | '1080p'
+  ) => number;
   canGenerate: (requiredCredits: number) => boolean;
 }
 
@@ -377,9 +386,28 @@ export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) =>
   const { user, isAuthenticated } = useAuth();
 
   // Calculate credits required for generation
-  const calculateCredits = (_duration: number, _resolution: string, model: string, n_frames?: '10' | '15', quality?: 'standard' | 'high'): number => {
-    // Sora3 Pro pricing
-    if (model === 'sora3-pro') {
+  const calculateCredits = (
+    _duration: number,
+    _resolution: string,
+    model: string,
+    n_frames?: '10' | '15',
+    quality?: 'standard' | 'high',
+    wan26Duration?: '5' | '10' | '15',
+    wan26Resolution?: '720p' | '1080p'
+  ): number => {
+    // Wan2.6 pricing
+    if (model === 'wan2.6') {
+      const durationKey = wan26Duration || '5';
+      const resolutionKey = wan26Resolution || '1080p';
+      const pricingTable: Record<'720p' | '1080p', Record<'5' | '10' | '15', number>> = {
+        '720p': { '5': 80, '10': 160, '15': 220 },
+        '1080p': { '5': 120, '10': 220, '15': 320 }
+      };
+      return pricingTable[resolutionKey][durationKey];
+    }
+
+    // Sora3 Pro / Sora2 Pro pricing (same pricing)
+    if (model === 'sora3-pro' || model === 'sora2-pro') {
       if (quality === 'high') {
         return n_frames === '15' ? 325 : 175;
       } else if (quality === 'standard') {
@@ -388,7 +416,17 @@ export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) =>
       // Default to standard if quality not specified
       return n_frames === '15' ? 135 : 75;
     }
-    
+
+    // Sora2 pricing: 10s = 20 credits, 15s = 25 credits
+    if (model === 'sora2') {
+      return n_frames === '15' ? 25 : 20;
+    }
+
+    // Storyboard pricing: 10s = 125, 15s/25s = 225
+    if (model === 'storyboard') {
+      return n_frames === '10' ? 125 : 225;
+    }
+
     // Sora3 (default) pricing: 10s = 15 credits, 15s = 20 credits
     if (n_frames === '15') {
       return 20;
@@ -462,12 +500,22 @@ export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) =>
     duration: number;
     resolution: string;
     model: string;
+    wan26Duration?: '5' | '10' | '15';
+    wan26Resolution?: '720p' | '1080p';
   }): Promise<{ success: boolean; generationId?: string; error?: string }> => {
     if (!isAuthenticated || !user) {
       return { success: false, error: 'User not authenticated' };
     }
 
-    const requiredCredits = calculateCredits(params.duration, params.resolution, params.model);
+    const requiredCredits = calculateCredits(
+      params.duration,
+      params.resolution,
+      params.model,
+      undefined,
+      undefined,
+      params.wan26Duration,
+      params.wan26Resolution
+    );
     
     if (!canGenerate(requiredCredits)) {
       return { success: false, error: 'Insufficient credits' };

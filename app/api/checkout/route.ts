@@ -14,6 +14,26 @@ const normalizeBaseUrl = (value?: string | null) => {
   return value.endsWith('/') ? value.slice(0, -1) : value;
 };
 
+const sanitizeReturnPath = (value: string | undefined, baseUrl: string): string | null => {
+  if (!value || value.length === 0) {
+    return null;
+  }
+  try {
+    const base = new URL(baseUrl);
+    const resolved = new URL(value, base);
+    if (resolved.origin !== base.origin) {
+      return null;
+    }
+    const path = `${resolved.pathname}${resolved.search}`;
+    if (!path.startsWith('/') || path.startsWith('//')) {
+      return null;
+    }
+    return path;
+  } catch {
+    return null;
+  }
+};
+
 export async function POST(request: NextRequest) {
   const debug: Record<string, unknown> = { stage: 'init' };
   const debugParam = request.nextUrl.searchParams.get('debug');
@@ -28,7 +48,9 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json().catch(() => ({}));
     const planId = body?.planId as string | undefined;
+    const returnUrl = body?.returnUrl as string | undefined;
     debug.planId = planId;
+    debug.returnUrl = returnUrl;
 
     if (!planId) {
       return NextResponse.json({ error: 'Missing planId' }, { status: 400 });
@@ -110,8 +132,20 @@ export async function POST(request: NextRequest) {
 
     // Prefer creating checkout via productId to attach success/cancel + metadata
     if (plan.productId) {
-      const successUrl = `${baseUrl}/api/pay/callback/creem?plan=${plan.id}`;
-      const cancelUrl = `${baseUrl}/plans?checkout=cancelled&plan=${plan.id}`;
+      const returnPath = sanitizeReturnPath(returnUrl, baseUrl);
+      debug.returnPath = returnPath;
+
+      const callbackParams = new URLSearchParams({ plan: plan.id });
+      if (returnPath) {
+        callbackParams.set('return_to', returnPath);
+      }
+      const successUrl = `${baseUrl}/api/pay/callback/creem?${callbackParams.toString()}`;
+
+      const cancelParams = new URLSearchParams({ checkout: 'cancelled', plan: plan.id });
+      if (returnPath) {
+        cancelParams.set('return_to', returnPath);
+      }
+      const cancelUrl = `${baseUrl}/plans?${cancelParams.toString()}`;
 
       debug.successUrl = successUrl;
       debug.cancelUrl = cancelUrl;

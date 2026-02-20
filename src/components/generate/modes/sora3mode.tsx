@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,7 +7,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Sora3Params } from '@/types/generation-modes';
-import { Wand2, Video, LayoutPanelTop, Sparkles, Clock, Maximize2, Settings2, Lightbulb, Play, Info, Check, ChevronUp } from 'lucide-react';
+import { StoryboardParams } from '@/types/storyboard';
+import { StoryboardManager } from '@/components/storyboard/StoryboardManager';
+import { Wand2, Video, LayoutPanelTop, Sparkles, Clock, Maximize2, Settings2, Lightbulb, Play, Info, Check, ChevronUp, Film } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { promptExamples, promptCategories, getExamplesByCategory } from '@/data/promptExamples';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -21,6 +23,16 @@ interface Sora3ModeProps {
   isGenerating: boolean;
 }
 
+const DEFAULT_STORYBOARD_PARAMS: StoryboardParams = {
+  shots: [
+    { prompt: '', duration: 5 },
+    { prompt: '', duration: 5 },
+    { prompt: '', duration: 5 },
+  ],
+  n_frames: '25',
+  aspect_ratio: 'landscape',
+};
+
 export const Sora3Mode: React.FC<Sora3ModeProps> = ({
   params,
   onChange,
@@ -29,10 +41,12 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
 }) => {
   const t = useTranslations('generate');
   const [isExamplesOpen, setIsExamplesOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => { setIsMounted(true); }, []);
 
   const handleSelectExample = (prompt: string, aspectRatio?: '9:16' | '16:9') => {
-    onChange({ 
-      ...params, 
+    onChange({
+      ...params,
       prompt,
       ...(aspectRatio && { aspectRatio })
     });
@@ -40,22 +54,88 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
   };
 
   const currentModel = params.model || 'sora3';
-  const isSora3Pro = currentModel === 'sora3-pro';
-  
+  const isProModel = currentModel === 'sora3-pro' || currentModel === 'sora2-pro';
+  const isStoryboard = currentModel === 'storyboard';
+
   // Calculate credits based on model, quality, and n_frames
   const calculateCredits = (): number => {
-    if (isSora3Pro) {
+    if (isStoryboard) {
+      const n = params.storyboardParams?.n_frames || '25';
+      return n === '10' ? 125 : 225;
+    }
+    if (currentModel === 'sora2-pro') {
       const quality = params.quality || 'standard';
       if (quality === 'high') {
         return params.n_frames === '15' ? 325 : 175;
-      } else {
-        return params.n_frames === '15' ? 135 : 75;
       }
+      return params.n_frames === '15' ? 135 : 75;
+    }
+    if (currentModel === 'sora3-pro') {
+      const quality = params.quality || 'standard';
+      if (quality === 'high') {
+        return params.n_frames === '15' ? 325 : 175;
+      }
+      return params.n_frames === '15' ? 135 : 75;
+    }
+    if (currentModel === 'sora2') {
+      return params.n_frames === '15' ? 25 : 20;
     }
     return params.n_frames === '15' ? 20 : 15;
   };
-  
+
   const creditCost = calculateCredits();
+
+  // Get display label for the selected model in the trigger
+  const getModelLabel = (): string => {
+    switch (currentModel) {
+      case 'sora3-pro': return t('reframeMode.sora3Pro');
+      case 'sora2': return t('reframeMode.sora2');
+      case 'sora2-pro': return t('reframeMode.sora2Pro');
+      case 'storyboard': return t('reframeMode.storyboard');
+      default: return t('reframeMode.sora3');
+    }
+  };
+
+  const handleModelChange = (value: string) => {
+    const model = value as Sora3Params['model'];
+    if (model === 'sora2') {
+      onChange({
+        ...params,
+        model,
+        quality: undefined,
+        storyboardParams: undefined,
+      });
+    } else if (model === 'sora2-pro') {
+      onChange({
+        ...params,
+        model,
+        quality: params.quality || 'standard',
+        storyboardParams: undefined,
+      });
+    } else if (model === 'storyboard') {
+      onChange({
+        ...params,
+        model,
+        quality: undefined,
+        storyboardParams: params.storyboardParams || DEFAULT_STORYBOARD_PARAMS,
+      });
+    } else if (model === 'sora3-pro') {
+      onChange({
+        ...params,
+        model,
+        quality: params.quality || 'standard',
+        storyboardParams: undefined,
+      });
+    } else {
+      // sora3 or other
+      onChange({
+        ...params,
+        model,
+        quality: undefined,
+        storyboardParams: undefined,
+      });
+    }
+  };
 
   return (
     <TooltipProvider delayDuration={120}>
@@ -63,30 +143,37 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
       {/* Model Selection */}
       <div className="space-y-3">
         <Label className="text-sm font-medium text-foreground">{t('reframeMode.model')}</Label>
+        {!isMounted ? (
+          /* SSR placeholder — avoids Radix Select hydration mismatch */
+          <div className="w-full h-auto min-h-[50px] px-4 py-3 border-2 border-border rounded-md flex items-center gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
+              <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
+            </div>
+            <span className="font-semibold text-foreground">{getModelLabel()}</span>
+          </div>
+        ) : (
         <Select
           value={currentModel}
-          onValueChange={(value: 'sora3' | 'sora3-pro') => {
-            onChange({
-              ...params,
-              model: value,
-              quality: value === 'sora3-pro' ? (params.quality || 'standard') : undefined
-            });
-          }}
+          onValueChange={handleModelChange}
         >
           <SelectTrigger className="w-full h-auto min-h-[50px] px-4 py-3 border-2 border-border hover:border-primary/50 transition-colors">
             <div className="flex items-center gap-3 w-full">
               <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
-                <img 
-                  src="/sora favicon.png" 
-                  alt="Model icon" 
-                  width={32} 
-                  height={32}
-                  className="w-full h-full object-contain"
-                />
+                {isStoryboard ? (
+                  <Film className="w-6 h-6 text-primary" />
+                ) : (
+                  <img
+                    src="/sora favicon.png"
+                    alt="Model icon"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-contain"
+                  />
+                )}
               </div>
               <div className="flex-1 text-left">
                 <span className="font-semibold text-foreground">
-                  {currentModel === 'sora3-pro' ? t('reframeMode.sora3Pro') : t('reframeMode.sora3')}
+                  {getModelLabel()}
                 </span>
               </div>
               <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
@@ -96,10 +183,10 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             <SelectItem value="sora3" className="py-3">
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img 
-                    src="/sora favicon.png" 
-                    alt="Model icon" 
-                    width={32} 
+                  <img
+                    src="/sora favicon.png"
+                    alt="Model icon"
+                    width={32}
                     height={32}
                     className="w-full h-full object-contain"
                   />
@@ -117,10 +204,10 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             <SelectItem value="sora3-pro" className="py-3">
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img 
-                    src="/sora favicon.png" 
-                    alt="Model icon" 
-                    width={32} 
+                  <img
+                    src="/sora favicon.png"
+                    alt="Model icon"
+                    width={32}
                     height={32}
                     className="w-full h-full object-contain"
                   />
@@ -133,312 +220,384 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                     {t('reframeMode.sora3ProDescription')}
                   </p>
                 </div>
-                {currentModel === 'sora3-pro' && (
-                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
-                )}
+              </div>
+            </SelectItem>
+            <SelectItem value="sora2" className="py-3">
+              <div className="flex items-start gap-3 w-full">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
+                  <img
+                    src="/sora favicon.png"
+                    alt="Model icon"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-semibold text-foreground">{t('reframeMode.sora2')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t('reframeMode.sora2Description')}
+                  </p>
+                </div>
+              </div>
+            </SelectItem>
+            <SelectItem value="sora2-pro" className="py-3">
+              <div className="flex items-start gap-3 w-full">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
+                  <img
+                    src="/sora favicon.png"
+                    alt="Model icon"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-semibold text-foreground">{t('reframeMode.sora2Pro')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t('reframeMode.sora2ProDescription')}
+                  </p>
+                </div>
+              </div>
+            </SelectItem>
+            <SelectItem value="storyboard" className="py-3">
+              <div className="flex items-start gap-3 w-full">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
+                  <Film className="w-6 h-6 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-semibold text-foreground">{t('reframeMode.storyboard')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t('reframeMode.storyboardDescription')}
+                  </p>
+                </div>
               </div>
             </SelectItem>
           </SelectContent>
         </Select>
+        )}
       </div>
 
-      {/* Prompt */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Label className="text-sm font-medium text-foreground">{t('reframeMode.prompt')}</Label>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button
-                  type="button"
-                  aria-label="Prompt info"
-                  className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <Info className="h-4 w-4" />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent className="max-w-xs text-xs leading-relaxed">
-                The text prompt describing the desired video motion
-              </TooltipContent>
-            </Tooltip>
-          </div>
-          <div className="flex items-center gap-2">
-            <Dialog open={isExamplesOpen} onOpenChange={setIsExamplesOpen}>
-              <DialogTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="flex items-center gap-2 border-amber-300 text-amber-700 hover:bg-amber-50"
-                >
-                  <Lightbulb className="w-4 h-4" />
-                  {t('reframeMode.aiExamples')}
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle className="flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-amber-500" />
-                    {t('reframeMode.promptExamplesTitle')}
-                  </DialogTitle>
-                  <DialogDescription>
-                    {t('reframeMode.promptExamplesDescription')}
-                  </DialogDescription>
-                </DialogHeader>
-                
-                <Tabs defaultValue={promptCategories[0]} className="w-full">
-                  <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-muted/70">
-                    {promptCategories.map(category => (
-                      <TabsTrigger 
-                        key={category} 
-                        value={category}
-                        className="text-xs px-3 py-2 !whitespace-normal leading-snug text-center rounded-md min-h-[2.75rem] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-                      >
-                        {category}
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
-                  
-                  {promptCategories.map(category => (
-                    <TabsContent key={category} value={category} className="mt-4">
-                      <div className="grid gap-3">
-                        {getExamplesByCategory(category).map(example => (
-                          <Card 
-                            key={example.id}
-                            className="p-4 hover:shadow-md transition-shadow cursor-pointer border-border hover:border-primary"
-                            onClick={() => handleSelectExample(example.prompt, example.aspectRatio)}
+      {/* Storyboard Mode — show StoryboardManager instead of standard controls */}
+      {isStoryboard ? (
+        <StoryboardManager
+          params={params.storyboardParams || DEFAULT_STORYBOARD_PARAMS}
+          onParamsChange={(newStoryboardParams) =>
+            onChange({ ...params, storyboardParams: newStoryboardParams })
+          }
+          onGenerate={onGenerate}
+          isGenerating={isGenerating}
+          creditCost={creditCost}
+        />
+      ) : (
+        <>
+          {/* Prompt */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Label className="text-sm font-medium text-foreground">{t('reframeMode.prompt')}</Label>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      aria-label="Prompt info"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <Info className="h-4 w-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                    The text prompt describing the desired video motion
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="flex items-center gap-2">
+                {isMounted && (
+                <Dialog open={isExamplesOpen} onOpenChange={setIsExamplesOpen}>
+                  <DialogTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2 border-amber-300 text-amber-700 hover:bg-amber-50"
+                    >
+                      <Lightbulb className="w-4 h-4" />
+                      {t('reframeMode.aiExamples')}
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="flex items-center gap-2">
+                        <Sparkles className="w-5 h-5 text-amber-500" />
+                        {t('reframeMode.promptExamplesTitle')}
+                      </DialogTitle>
+                      <DialogDescription>
+                        {t('reframeMode.promptExamplesDescription')}
+                      </DialogDescription>
+                    </DialogHeader>
+
+                    <Tabs defaultValue={promptCategories[0]} className="w-full">
+                      <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-muted/70">
+                        {promptCategories.map(category => (
+                          <TabsTrigger
+                            key={category}
+                            value={category}
+                            className="text-xs px-3 py-2 !whitespace-normal leading-snug text-center rounded-md min-h-[2.75rem] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                           >
-                            <div className="flex items-start justify-between gap-3">
-                              <div className="flex-1">
-                                <h4 className="font-semibold text-sm text-foreground mb-2 flex items-center gap-2">
-                                  {example.title}
-                                  {example.aspectRatio && (
-                                    <span className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded">
-                                      {example.aspectRatio}
-                                    </span>
-                                  )}
-                                </h4>
-                                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
-                                  {example.prompt}
-                                </p>
-                              </div>
-                              <Button 
-                                size="sm" 
-                                variant="ghost"
-                                className="shrink-0 text-primary hover:text-primary/90 hover:bg-primary/10"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleSelectExample(example.prompt, example.aspectRatio);
-                                }}
-                              >
-                                {t('reframeMode.useThisPrompt')}
-                              </Button>
-                            </div>
-                          </Card>
+                            {category}
+                          </TabsTrigger>
                         ))}
-                      </div>
-                    </TabsContent>
-                  ))}
-                </Tabs>
-              </DialogContent>
-            </Dialog>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
-                  aria-label="Open Prompt GPT"
-                  onClick={() =>
-                    window.open(
-                      "https://chatgpt.com/g/g-690c3e49fb308191aa623c67543a766a-sarogpt-ai-video-prompt-script-assistant",
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
+                      </TabsList>
+
+                      {promptCategories.map(category => (
+                        <TabsContent key={category} value={category} className="mt-4">
+                          <div className="grid gap-3">
+                            {getExamplesByCategory(category).map(example => (
+                              <Card
+                                key={example.id}
+                                className="p-4 hover:shadow-md transition-shadow cursor-pointer border-border hover:border-primary"
+                                onClick={() => handleSelectExample(example.prompt, example.aspectRatio)}
+                              >
+                                <div className="flex items-start justify-between gap-3">
+                                  <div className="flex-1">
+                                    <h4 className="font-semibold text-sm text-foreground mb-2 flex items-center gap-2">
+                                      {example.title}
+                                      {example.aspectRatio && (
+                                        <span className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded">
+                                          {example.aspectRatio}
+                                        </span>
+                                      )}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                                      {example.prompt}
+                                    </p>
+                                  </div>
+                                  <Button
+                                    size="sm"
+                                    variant="ghost"
+                                    className="shrink-0 text-primary hover:text-primary/90 hover:bg-primary/10"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleSelectExample(example.prompt, example.aspectRatio);
+                                    }}
+                                  >
+                                    {t('reframeMode.useThisPrompt')}
+                                  </Button>
+                                </div>
+                              </Card>
+                            ))}
+                          </div>
+                        </TabsContent>
+                      ))}
+                    </Tabs>
+                  </DialogContent>
+                </Dialog>
+                )}
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+                      aria-label="Open Prompt GPT"
+                      onClick={() =>
+                        window.open(
+                          "https://chatgpt.com/g/g-690c3e49fb308191aa623c67543a766a-sarogpt-ai-video-prompt-script-assistant",
+                          "_blank",
+                          "noopener,noreferrer"
+                        )
+                      }
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      {t('reframeMode.promptGpt')}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                    {t('reframeMode.promptGptTooltip')}
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </div>
+            <div className="relative">
+              <Textarea
+                placeholder={t('reframeMode.promptPlaceholder')}
+                value={params.prompt || ''}
+                onChange={(e) => onChange({ ...params, prompt: e.target.value })}
+                className="min-h-[120px] resize-none border-input focus:border-primary focus:ring-primary relative z-10 bg-transparent"
+              />
+            </div>
+          </div>
+
+          {/* Aspect Ratio */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Label className="text-sm font-medium text-foreground">{t('reframeMode.aspectRatio')}</Label>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label="Aspect Ratio info"
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Info className="h-4 w-4" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                  This parameter defines the aspect ratio of the image.
+                </TooltipContent>
+              </Tooltip>
+            </div>
+            <div className="flex space-x-2">
+              <Button
+                variant={params.aspectRatio === '9:16' ? 'default' : 'outline'}
+                onClick={() => onChange({ ...params, aspectRatio: '9:16' })}
+                className={`flex-1 h-9 text-sm font-medium ${
+                  params.aspectRatio === '9:16'
+                    ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                    : 'border-input text-foreground hover:bg-muted'
+                }`}
                 >
-                  <Sparkles className="w-4 h-4" />
-                  {t('reframeMode.promptGpt')}
+                  {t('reframeMode.portrait')}
                 </Button>
-              </TooltipTrigger>
-              <TooltipContent className="max-w-xs text-xs leading-relaxed">
-                {t('reframeMode.promptGptTooltip')}
-              </TooltipContent>
-            </Tooltip>
+                <Button
+                  variant={params.aspectRatio === '16:9' ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, aspectRatio: '16:9' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    params.aspectRatio === '16:9'
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  {t('reframeMode.landscape')}
+                </Button>
+            </div>
           </div>
-        </div>
-        <div className="relative">
-          <Textarea
-            placeholder={t('reframeMode.promptPlaceholder')}
-            value={params.prompt || ''}
-            onChange={(e) => onChange({ ...params, prompt: e.target.value })}
-            className="min-h-[120px] resize-none border-input focus:border-primary focus:ring-primary relative z-10 bg-transparent"
-          />
-        </div>
-      </div>
 
-      {/* Aspect Ratio */}
-      <div className="space-y-3">
-        <div className="flex items-center gap-2">
-          <Label className="text-sm font-medium text-foreground">{t('reframeMode.aspectRatio')}</Label>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                aria-label="Aspect Ratio info"
-                className="text-muted-foreground transition-colors hover:text-foreground"
+          {/* Duration (n_frames) */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Label className="text-sm font-medium text-foreground">{t('reframeMode.duration')}</Label>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label="Duration info"
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Info className="h-4 w-4" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                  {t('reframeMode.durationTooltip')}
+                </TooltipContent>
+              </Tooltip>
+            </div>
+            <div className="flex space-x-2">
+              <Button
+                variant={params.n_frames === '10' ? 'default' : 'outline'}
+                onClick={() => onChange({ ...params, n_frames: '10' })}
+                className={`flex-1 h-9 text-sm font-medium ${
+                  params.n_frames === '10'
+                    ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                    : 'border-input text-foreground hover:bg-muted'
+                }`}
               >
-                <Info className="h-4 w-4" />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent className="max-w-xs text-xs leading-relaxed">
-              This parameter defines the aspect ratio of the image.
-            </TooltipContent>
-          </Tooltip>
-        </div>
-        <div className="flex space-x-2">
-          <Button
-            variant={params.aspectRatio === '9:16' ? 'default' : 'outline'}
-            onClick={() => onChange({ ...params, aspectRatio: '9:16' })}
-            className={`flex-1 h-9 text-sm font-medium ${
-              params.aspectRatio === '9:16' 
-                ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                : 'border-input text-foreground hover:bg-muted'
-            }`}
-            >
-              {t('reframeMode.portrait')}
-            </Button>
-            <Button
-              variant={params.aspectRatio === '16:9' ? 'default' : 'outline'}
-              onClick={() => onChange({ ...params, aspectRatio: '16:9' })}
-              className={`flex-1 h-9 text-sm font-medium ${
-                params.aspectRatio === '16:9' 
-                  ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                  : 'border-input text-foreground hover:bg-muted'
-              }`}
-            >
-              {t('reframeMode.landscape')}
-            </Button>
-        </div>
-      </div>
-
-      {/* Duration (n_frames) */}
-      <div className="space-y-3">
-        <div className="flex items-center gap-2">
-          <Label className="text-sm font-medium text-foreground">{t('reframeMode.duration')}</Label>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                aria-label="Duration info"
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                10s
+              </Button>
+              <Button
+                variant={params.n_frames === '15' ? 'default' : 'outline'}
+                onClick={() => onChange({ ...params, n_frames: '15' })}
+                className={`flex-1 h-9 text-sm font-medium ${
+                  params.n_frames === '15'
+                    ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                    : 'border-input text-foreground hover:bg-muted'
+                }`}
               >
-                <Info className="h-4 w-4" />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent className="max-w-xs text-xs leading-relaxed">
-              {t('reframeMode.durationTooltip')}
-            </TooltipContent>
-          </Tooltip>
-        </div>
-        <div className="flex space-x-2">
-          <Button
-            variant={params.n_frames === '10' ? 'default' : 'outline'}
-            onClick={() => onChange({ ...params, n_frames: '10' })}
-            className={`flex-1 h-9 text-sm font-medium ${
-              params.n_frames === '10' 
-                ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                : 'border-input text-foreground hover:bg-muted'
-            }`}
-          >
-            10s
-          </Button>
-          <Button
-            variant={params.n_frames === '15' ? 'default' : 'outline'}
-            onClick={() => onChange({ ...params, n_frames: '15' })}
-            className={`flex-1 h-9 text-sm font-medium ${
-              params.n_frames === '15' 
-                ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                : 'border-input text-foreground hover:bg-muted'
-            }`}
-          >
-            15s
-          </Button>
-        </div>
-      </div>
-
-      {/* Quality Selector (only for Sora3 Pro) */}
-      {isSora3Pro && (
-        <div className="space-y-3">
-        <div className="flex items-center gap-2">
-          <Label className="text-sm font-medium text-foreground">{t('reframeMode.quality')}</Label>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                aria-label="Quality info"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Info className="h-4 w-4" />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent className="max-w-xs text-xs leading-relaxed">
-              {t('reframeMode.qualityTooltip')}
-            </TooltipContent>
-          </Tooltip>
-        </div>
-          <div className="flex space-x-2">
-            <Button
-              variant={params.quality === 'standard' || !params.quality ? 'default' : 'outline'}
-              onClick={() => onChange({ ...params, quality: 'standard' })}
-              className={`flex-1 h-9 text-sm font-medium ${
-                params.quality === 'standard' || !params.quality
-                  ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                  : 'border-input text-foreground hover:bg-muted'
-              }`}
-            >
-              {t('reframeMode.standard')}
-            </Button>
-            <Button
-              variant={params.quality === 'high' ? 'default' : 'outline'}
-              onClick={() => onChange({ ...params, quality: 'high' })}
-              className={`flex-1 h-9 text-sm font-medium ${
-                params.quality === 'high'
-                  ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                  : 'border-input text-foreground hover:bg-muted'
-              }`}
-            >
-              {t('reframeMode.high')}
-            </Button>
+                15s
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
 
-      {/* Action Buttons */}
-      <div className="flex space-x-3 pt-4">
-        <Button 
-          variant="outline" 
-          className="flex-1 h-11 border-input text-foreground hover:bg-muted font-medium"
-        >
-          {t('reset')}
-        </Button>
-        <Button 
-          className="flex-[2] h-11 bg-black hover:bg-black/90 text-white font-bold shadow-lg hover:shadow-xl transition-shadow duration-200 hover:scale-[1.02]"
-          onClick={onGenerate}
-          disabled={isGenerating}
-        >
-          {isGenerating ? (
-            <>
-              <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2" />
-              {t('generating')}
-            </>
-          ) : (
-            <>
-              <Play className="w-4 h-4 mr-2" />
-              {t('generateWithCredits', { creditCost })}
-            </>
+          {/* Quality Selector (for Sora3 Pro and Sora2 Pro) */}
+          {isProModel && (
+            <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Label className="text-sm font-medium text-foreground">{t('reframeMode.quality')}</Label>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label="Quality info"
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Info className="h-4 w-4" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                  {t('reframeMode.qualityTooltip')}
+                </TooltipContent>
+              </Tooltip>
+            </div>
+              <div className="flex space-x-2">
+                <Button
+                  variant={params.quality === 'standard' || !params.quality ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, quality: 'standard' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    params.quality === 'standard' || !params.quality
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  {t('reframeMode.standard')}
+                </Button>
+                <Button
+                  variant={params.quality === 'high' ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, quality: 'high' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    params.quality === 'high'
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  {t('reframeMode.high')}
+                </Button>
+              </div>
+            </div>
           )}
-        </Button>
-      </div>
+
+          {/* Action Buttons */}
+          <div className="flex space-x-3 pt-4">
+            <Button
+              variant="outline"
+              className="flex-1 h-11 border-input text-foreground hover:bg-muted font-medium"
+            >
+              {t('reset')}
+            </Button>
+            <Button
+              className="flex-[2] h-11 bg-black hover:bg-black/90 text-white font-bold shadow-lg hover:shadow-xl transition-shadow duration-200 hover:scale-[1.02]"
+              onClick={onGenerate}
+              disabled={isGenerating}
+            >
+              {isGenerating ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2" />
+                  {t('generating')}
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4 mr-2" />
+                  {t('generateWithCredits', { creditCost })}
+                </>
+              )}
+            </Button>
+          </div>
+        </>
+      )}
     </div>
     </TooltipProvider>
   );

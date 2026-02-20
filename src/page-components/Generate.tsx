@@ -26,6 +26,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import AuthModal from "@/components/AuthModal";
 import { getRandomSampleVideo, type SampleVideo } from "@/data/sampleVideos";
 import { safeJsonParse } from '@/lib/utils';
+import { supabase } from '@/lib/supabase';
 import { getVideoUrl, DEMO_VIDEO_PATHS } from "@/config/demoVideos";
 import SubscriptionRequiredModal from "@/components/SubscriptionRequiredModal";
 import { Button } from "@/components/ui/button";
@@ -537,12 +538,22 @@ const Generate = () => {
       
       case 'sora3': {
         const params = modeParams.params;
+        // Storyboard mode: validate shots instead of prompt
+        if (params.model === 'storyboard') {
+          const sbParams = params.storyboardParams;
+          if (!sbParams || sbParams.shots.length === 0) {
+            newErrors.prompt = "Please add at least one shot";
+          } else if (sbParams.shots.some(s => !s.prompt.trim())) {
+            newErrors.prompt = "Please add prompts to all shots";
+          }
+          break;
+        }
         if (!params.prompt?.trim()) {
           newErrors.prompt = tGenerate('pleaseEnterPrompt');
         } else if (params.prompt.length > 1000) {
           newErrors.prompt = "Prompt cannot exceed 1000 characters";
         }
-        
+
         if (params.negative_prompt && params.negative_prompt.length > 300) {
           newErrors.negative_prompt = "Negative prompt cannot exceed 300 characters";
         }
@@ -595,15 +606,18 @@ const Generate = () => {
     }
     
     // Check credits balance using unified credit calculator
-    const n_frames = modeParams.mode === 'sora3'
-      ? (modeParams.params as Sora3Params).n_frames
-      : (modeParams.params as ReframeParams).n_frames;
-    
     const sora3Params = modeParams.mode === 'sora3' ? (modeParams.params as Sora3Params) : null;
     const reframeParams = modeParams.mode === 'reframe' ? (modeParams.params as ReframeParams) : null;
     const model = sora3Params?.model || reframeParams?.model || 'sora3';
     const quality = sora3Params?.quality || reframeParams?.quality;
-    
+
+    // For storyboard, use n_frames from storyboardParams; otherwise from params
+    const n_frames = model === 'storyboard'
+      ? (sora3Params?.storyboardParams?.n_frames as '10' | '15' | undefined)
+      : modeParams.mode === 'sora3'
+        ? (modeParams.params as Sora3Params).n_frames
+        : (modeParams.params as ReframeParams).n_frames;
+
     const estimatedCost = calculateCredits(
       (modeParams.mode === 'sora3'
         ? (modeParams.params.duration || 8)
@@ -648,6 +662,63 @@ const Generate = () => {
             watermark: params.watermark
           }
         };
+      } else if (modeParams.mode === 'sora3' && (modeParams.params as Sora3Params).model === 'storyboard') {
+        // Storyboard generation — uses separate /api/storyboard/generate endpoint
+        const params = modeParams.params as Sora3Params;
+        const sbParams = params.storyboardParams;
+        if (!sbParams || sbParams.shots.length === 0) {
+          throw new Error('Storyboard requires at least one shot');
+        }
+
+        const formData = new FormData();
+        formData.append('shots', JSON.stringify(sbParams.shots));
+        formData.append('n_frames', sbParams.n_frames);
+        formData.append('aspect_ratio', sbParams.aspect_ratio);
+        if (sbParams.image_file) {
+          formData.append('image_file', sbParams.image_file);
+        }
+
+        const { data: { session: sbSession } } = await supabase.auth.getSession();
+        const token = sbSession?.access_token;
+        if (!token) throw new Error('Authentication required');
+
+        const sbResponse = await fetch('/api/storyboard/generate', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}` },
+          body: formData,
+        });
+
+        if (!sbResponse.ok) {
+          const errData = await sbResponse.json().catch(() => ({ error: `HTTP ${sbResponse.status}` }));
+          throw new Error(errData.error || errData.details || `Storyboard generation failed: ${sbResponse.status}`);
+        }
+
+        const sbData = await sbResponse.json();
+        const taskId = sbData.taskId || sbData.data?.taskId;
+        if (!taskId) throw new Error('Missing taskId in storyboard response');
+
+        // Create job for polling
+        const newJob: Job = {
+          jobId: taskId,
+          status: 'PENDING',
+          progress: 0,
+          params: {
+            prompt: sbParams.shots.map(s => s.prompt).join(' | '),
+            duration_sec: parseInt(sbParams.n_frames) as Duration,
+            aspect_ratio: sbParams.aspect_ratio === 'landscape' ? '16:9' : '9:16',
+            cfg_scale: 7,
+          },
+          created_at: new Date().toISOString(),
+          visibility: 'private',
+          creditCost: estimatedCost
+        };
+
+        setJobs(prevJobs => [newJob, ...prevJobs]);
+        setCurrentJob(newJob);
+        try { startPolling(taskId); } catch {}
+
+        setIsGenerating(false);
+        return;
       } else if (modeParams.mode === 'sora3') {
         const params = modeParams.params;
         request = {
