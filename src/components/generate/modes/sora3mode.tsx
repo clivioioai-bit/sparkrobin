@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Sora3Params } from '@/types/generation-modes';
 import { StoryboardParams } from '@/types/storyboard';
 import { StoryboardManager } from '@/components/storyboard/StoryboardManager';
-import { Wand2, Video, LayoutPanelTop, Sparkles, Clock, Maximize2, Settings2, Lightbulb, Play, Info, Check, ChevronUp, Film } from 'lucide-react';
+import { Wand2, Video, LayoutPanelTop, Sparkles, Clock, Maximize2, Settings2, Lightbulb, Play, Info, Check, ChevronUp, Film, Square } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { promptExamples, promptCategories, getExamplesByCategory } from '@/data/promptExamples';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -56,12 +56,26 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
   const currentModel = params.model || 'sora3';
   const isProModel = currentModel === 'sora3-pro' || currentModel === 'sora2-pro';
   const isStoryboard = currentModel === 'storyboard';
+  const isVeo31 = currentModel === 'veo3.1';
+  const isWan26 = currentModel === 'wan2.6';
 
   // Calculate credits based on model, quality, and n_frames
   const calculateCredits = (): number => {
     if (isStoryboard) {
       const n = params.storyboardParams?.n_frames || '25';
       return n === '10' ? 125 : 225;
+    }
+    if (isWan26) {
+      const durationKey = params.wan26Duration || '5';
+      const resolutionKey = params.wan26Resolution || '1080p';
+      const pricingTable: Record<'720p' | '1080p', Record<'5' | '10' | '15', number>> = {
+        '720p': { '5': 80, '10': 160, '15': 220 },
+        '1080p': { '5': 120, '10': 220, '15': 320 }
+      };
+      return pricingTable[resolutionKey][durationKey];
+    }
+    if (isVeo31) {
+      return params.veo3SubModel === 'veo3' ? 250 : 60;
     }
     if (currentModel === 'sora2-pro') {
       const quality = params.quality || 'standard';
@@ -87,6 +101,10 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
 
   // Get display label for the selected model in the trigger
   const getModelLabel = (): string => {
+    if (isVeo31) {
+      return params.veo3SubModel === 'veo3_fast' ? t('veo3Mode.fast') : t('veo3Mode.quality');
+    }
+    if (isWan26) return 'Wan 2.6';
     switch (currentModel) {
       case 'sora3-pro': return t('reframeMode.sora3Pro');
       case 'sora2': return t('reframeMode.sora2');
@@ -96,7 +114,54 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
     }
   };
 
+  // Get the icon for the selected model trigger
+  const getTriggerIcon = () => {
+    if (isStoryboard) {
+      return <Film className="w-6 h-6 text-primary" />;
+    }
+    if (isVeo31) {
+      return <img src="/images/google_veo_logo.jpeg" alt="Veo3.1" width={32} height={32} className="w-full h-full object-contain" />;
+    }
+    if (isWan26) {
+      return <img src="/images/qwen-color.webp" alt="Wan2.6" width={32} height={32} className="w-full h-full object-contain" />;
+    }
+    return <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />;
+  };
+
+  // Compute the Select value — Veo3.1 uses compound values
+  const selectValue = isVeo31 ? `veo3.1-${params.veo3SubModel || 'veo3_fast'}` : currentModel;
+
   const handleModelChange = (value: string) => {
+    // Veo3.1 compound values
+    if (value === 'veo3.1-veo3_fast' || value === 'veo3.1-veo3') {
+      const subModel = value === 'veo3.1-veo3_fast' ? 'veo3_fast' : 'veo3';
+      onChange({
+        ...params,
+        model: 'veo3.1',
+        veo3SubModel: subModel,
+        quality: undefined,
+        storyboardParams: undefined,
+        wan26Duration: undefined,
+        wan26Resolution: undefined,
+        wan26MultiShots: undefined,
+      });
+      return;
+    }
+    if (value === 'wan2.6') {
+      onChange({
+        ...params,
+        model: 'wan2.6',
+        quality: undefined,
+        veo3SubModel: undefined,
+        seeds: undefined,
+        storyboardParams: undefined,
+        wan26Duration: params.wan26Duration || '5',
+        wan26Resolution: params.wan26Resolution || '1080p',
+        wan26MultiShots: params.wan26MultiShots !== undefined ? params.wan26MultiShots : false,
+      });
+      return;
+    }
+
     const model = value as Sora3Params['model'];
     if (model === 'sora2') {
       onChange({
@@ -104,6 +169,11 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
         model,
         quality: undefined,
         storyboardParams: undefined,
+        veo3SubModel: undefined,
+        seeds: undefined,
+        wan26Duration: undefined,
+        wan26Resolution: undefined,
+        wan26MultiShots: undefined,
       });
     } else if (model === 'sora2-pro') {
       onChange({
@@ -111,6 +181,11 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
         model,
         quality: params.quality || 'standard',
         storyboardParams: undefined,
+        veo3SubModel: undefined,
+        seeds: undefined,
+        wan26Duration: undefined,
+        wan26Resolution: undefined,
+        wan26MultiShots: undefined,
       });
     } else if (model === 'storyboard') {
       onChange({
@@ -118,6 +193,11 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
         model,
         quality: undefined,
         storyboardParams: params.storyboardParams || DEFAULT_STORYBOARD_PARAMS,
+        veo3SubModel: undefined,
+        seeds: undefined,
+        wan26Duration: undefined,
+        wan26Resolution: undefined,
+        wan26MultiShots: undefined,
       });
     } else if (model === 'sora3-pro') {
       onChange({
@@ -125,6 +205,11 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
         model,
         quality: params.quality || 'standard',
         storyboardParams: undefined,
+        veo3SubModel: undefined,
+        seeds: undefined,
+        wan26Duration: undefined,
+        wan26Resolution: undefined,
+        wan26MultiShots: undefined,
       });
     } else {
       // sora3 or other
@@ -133,6 +218,11 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
         model,
         quality: undefined,
         storyboardParams: undefined,
+        veo3SubModel: undefined,
+        seeds: undefined,
+        wan26Duration: undefined,
+        wan26Resolution: undefined,
+        wan26MultiShots: undefined,
       });
     }
   };
@@ -147,29 +237,19 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
           /* SSR placeholder — avoids Radix Select hydration mismatch */
           <div className="w-full h-auto min-h-[50px] px-4 py-3 border-2 border-border rounded-md flex items-center gap-3">
             <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
-              <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
+              {getTriggerIcon()}
             </div>
             <span className="font-semibold text-foreground">{getModelLabel()}</span>
           </div>
         ) : (
         <Select
-          value={currentModel}
+          value={selectValue}
           onValueChange={handleModelChange}
         >
           <SelectTrigger className="w-full h-auto min-h-[50px] px-4 py-3 border-2 border-border hover:border-primary/50 transition-colors">
             <div className="flex items-center gap-3 w-full">
               <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
-                {isStoryboard ? (
-                  <Film className="w-6 h-6 text-primary" />
-                ) : (
-                  <img
-                    src="/sora favicon.png"
-                    alt="Model icon"
-                    width={32}
-                    height={32}
-                    className="w-full h-full object-contain"
-                  />
-                )}
+                {getTriggerIcon()}
               </div>
               <div className="flex-1 text-left">
                 <span className="font-semibold text-foreground">
@@ -180,90 +260,108 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             </div>
           </SelectTrigger>
           <SelectContent>
+            {/* Sora3 */}
             <SelectItem value="sora3" className="py-3">
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img
-                    src="/sora favicon.png"
-                    alt="Model icon"
-                    width={32}
-                    height={32}
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-semibold text-foreground">{t('reframeMode.sora3')}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {t('reframeMode.sora3Description')}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{t('reframeMode.sora3Description')}</p>
                 </div>
               </div>
             </SelectItem>
+            {/* Sora3 Pro */}
             <SelectItem value="sora3-pro" className="py-3">
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img
-                    src="/sora favicon.png"
-                    alt="Model icon"
-                    width={32}
-                    height={32}
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-semibold text-foreground">{t('reframeMode.sora3Pro')}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {t('reframeMode.sora3ProDescription')}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{t('reframeMode.sora3ProDescription')}</p>
                 </div>
               </div>
             </SelectItem>
+            {/* Sora2 */}
             <SelectItem value="sora2" className="py-3">
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img
-                    src="/sora favicon.png"
-                    alt="Model icon"
-                    width={32}
-                    height={32}
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-semibold text-foreground">{t('reframeMode.sora2')}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {t('reframeMode.sora2Description')}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{t('reframeMode.sora2Description')}</p>
                 </div>
               </div>
             </SelectItem>
+            {/* Sora2 Pro */}
             <SelectItem value="sora2-pro" className="py-3">
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img
-                    src="/sora favicon.png"
-                    alt="Model icon"
-                    width={32}
-                    height={32}
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-semibold text-foreground">{t('reframeMode.sora2Pro')}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {t('reframeMode.sora2ProDescription')}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{t('reframeMode.sora2ProDescription')}</p>
                 </div>
               </div>
             </SelectItem>
+            {/* Veo3.1 Fast */}
+            <SelectItem value="veo3.1-veo3_fast" className="py-3">
+              <div className="flex items-start gap-3 w-full">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
+                  <img src="/images/google_veo_logo.jpeg" alt="Veo3.1 model icon" width={32} height={32} className="w-full h-full object-contain" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-semibold text-foreground">{t('veo3Mode.fast')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Faster generation with good quality</p>
+                </div>
+              </div>
+            </SelectItem>
+            {/* Veo3.1 Quality */}
+            <SelectItem value="veo3.1-veo3" className="py-3">
+              <div className="flex items-start gap-3 w-full">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
+                  <img src="/images/google_veo_logo.jpeg" alt="Veo3.1 model icon" width={32} height={32} className="w-full h-full object-contain" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-semibold text-foreground">{t('veo3Mode.quality')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Higher quality with longer generation time</p>
+                </div>
+              </div>
+            </SelectItem>
+            {/* Wan 2.6 */}
+            <SelectItem value="wan2.6" className="py-3">
+              <div className="flex items-start gap-3 w-full">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
+                  <img src="/images/qwen-color.webp" alt="Wan2.6 model icon" width={32} height={32} className="w-full h-full object-contain" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-semibold text-foreground">Wan 2.6</span>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                      NEW
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Fast and efficient text-to-video and image-to-video generation</p>
+                </div>
+              </div>
+            </SelectItem>
+            {/* Storyboard */}
             <SelectItem value="storyboard" className="py-3">
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
@@ -273,9 +371,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-semibold text-foreground">{t('reframeMode.storyboard')}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {t('reframeMode.storyboardDescription')}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{t('reframeMode.storyboardDescription')}</p>
                 </div>
               </div>
             </SelectItem>
@@ -436,7 +532,26 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
           {/* Aspect Ratio */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Label className="text-sm font-medium text-foreground">{t('reframeMode.aspectRatio')}</Label>
+              <Label className="text-sm font-medium text-foreground">
+                {isVeo31 ? 'Ratio' : t('reframeMode.aspectRatio')}
+                {isVeo31 && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        aria-label="Ratio info"
+                        className="text-muted-foreground transition-colors hover:text-foreground ml-1"
+                      >
+                        <Info className="h-3 w-3 inline" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                      Video aspect ratio
+                    </TooltipContent>
+                  </Tooltip>
+                )}
+              </Label>
+              {!isVeo31 && !isWan26 && (
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button
@@ -451,8 +566,23 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                   This parameter defines the aspect ratio of the image.
                 </TooltipContent>
               </Tooltip>
+              )}
             </div>
             <div className="flex space-x-2">
+              {isVeo31 && (
+                <Button
+                  variant={params.aspectRatio === 'Auto' ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, aspectRatio: 'Auto' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    params.aspectRatio === 'Auto'
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  <Wand2 className="w-4 h-4 mr-2" />
+                  Auto
+                </Button>
+              )}
               <Button
                 variant={params.aspectRatio === '9:16' ? 'default' : 'outline'}
                 onClick={() => onChange({ ...params, aspectRatio: '9:16' })}
@@ -461,24 +591,39 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                     ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
                     : 'border-input text-foreground hover:bg-muted'
                 }`}
-                >
-                  {t('reframeMode.portrait')}
-                </Button>
-                <Button
-                  variant={params.aspectRatio === '16:9' ? 'default' : 'outline'}
-                  onClick={() => onChange({ ...params, aspectRatio: '16:9' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    params.aspectRatio === '16:9'
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
-                >
-                  {t('reframeMode.landscape')}
-                </Button>
+              >
+                {isVeo31 ? (
+                  <>
+                    <Square className="w-4 h-4 mr-2" />
+                    9:16
+                  </>
+                ) : (
+                  t('reframeMode.portrait')
+                )}
+              </Button>
+              <Button
+                variant={params.aspectRatio === '16:9' ? 'default' : 'outline'}
+                onClick={() => onChange({ ...params, aspectRatio: '16:9' })}
+                className={`flex-1 h-9 text-sm font-medium ${
+                  params.aspectRatio === '16:9'
+                    ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                    : 'border-input text-foreground hover:bg-muted'
+                }`}
+              >
+                {isVeo31 ? (
+                  <>
+                    <Maximize2 className="w-4 h-4 mr-2" />
+                    16:9
+                  </>
+                ) : (
+                  t('reframeMode.landscape')
+                )}
+              </Button>
             </div>
           </div>
 
-          {/* Duration (n_frames) */}
+          {/* Duration (n_frames) — Only for Sora models */}
+          {!isVeo31 && !isWan26 && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <Label className="text-sm font-medium text-foreground">{t('reframeMode.duration')}</Label>
@@ -522,6 +667,198 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               </Button>
             </div>
           </div>
+          )}
+
+          {/* Seed (Optional) — Only for Veo3.1 */}
+          {isVeo31 && (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Label className="text-sm font-medium text-foreground">
+                  Seed (Optional)
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        aria-label="Seed info"
+                        className="text-muted-foreground transition-colors hover:text-foreground ml-1"
+                      >
+                        <Info className="h-3 w-3 inline" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                      Random seed parameter to control the randomness of the generated content (10000-99999)
+                    </TooltipContent>
+                  </Tooltip>
+                </Label>
+              </div>
+              <Input
+                type="number"
+                value={params.seeds || ''}
+                onChange={(e) => {
+                  const value = e.target.value ? parseInt(e.target.value, 10) : undefined;
+                  if (value === undefined || (value >= 10000 && value <= 99999)) {
+                    onChange({ ...params, seeds: value });
+                  }
+                }}
+                placeholder="please input seed"
+                min={10000}
+                max={99999}
+                className="w-full"
+              />
+            </div>
+          )}
+
+          {/* Wan2.6 Duration */}
+          {isWan26 && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <Label className="text-sm font-medium text-foreground">Duration</Label>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      aria-label="Duration info"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <Info className="h-4 w-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                    The duration of the generated video in seconds
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="flex space-x-2">
+                <Button
+                  variant={(params.wan26Duration || '5') === '5' ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, wan26Duration: '5' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    (params.wan26Duration || '5') === '5'
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  5 seconds
+                </Button>
+                <Button
+                  variant={params.wan26Duration === '10' ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, wan26Duration: '10' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    params.wan26Duration === '10'
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  10 seconds
+                </Button>
+                <Button
+                  variant={params.wan26Duration === '15' ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, wan26Duration: '15' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    params.wan26Duration === '15'
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  15 seconds
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Wan2.6 Resolution */}
+          {isWan26 && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <Label className="text-sm font-medium text-foreground">Resolution</Label>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      aria-label="Resolution info"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <Info className="h-4 w-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                    Video resolution tier
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="flex space-x-2">
+                <Button
+                  variant={params.wan26Resolution === '720p' ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, wan26Resolution: '720p' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    params.wan26Resolution === '720p'
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  720p
+                </Button>
+                <Button
+                  variant={(params.wan26Resolution || '1080p') === '1080p' ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, wan26Resolution: '1080p' })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    (params.wan26Resolution || '1080p') === '1080p'
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  1080p
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Wan2.6 Multi Shots */}
+          {isWan26 && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <Label className="text-sm font-medium text-foreground">Multi Shots</Label>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      aria-label="Multi shots info"
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <Info className="h-4 w-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs text-xs leading-relaxed">
+                    The multi shots parameter controls the shot composition style during AI video generation, determining whether the generated video is a single continuous shot or multiple shots with transitions.
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="flex space-x-2">
+                <Button
+                  variant={(params.wan26MultiShots === false || params.wan26MultiShots === undefined) ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, wan26MultiShots: false })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    (params.wan26MultiShots === false || params.wan26MultiShots === undefined)
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  Single Shot
+                </Button>
+                <Button
+                  variant={params.wan26MultiShots === true ? 'default' : 'outline'}
+                  onClick={() => onChange({ ...params, wan26MultiShots: true })}
+                  className={`flex-1 h-9 text-sm font-medium ${
+                    params.wan26MultiShots === true
+                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
+                      : 'border-input text-foreground hover:bg-muted'
+                  }`}
+                >
+                  Multi Shots
+                </Button>
+              </div>
+            </div>
+          )}
 
           {/* Quality Selector (for Sora3 Pro and Sora2 Pro) */}
           {isProModel && (

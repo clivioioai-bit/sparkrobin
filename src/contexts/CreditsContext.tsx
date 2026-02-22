@@ -406,6 +406,11 @@ export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) =>
       return pricingTable[resolutionKey][durationKey];
     }
 
+    // Veo3.1 pricing: handled via quality param — 'veo3_fast' = 60, 'veo3' (quality) = 250
+    if (model === 'veo3.1') {
+      return quality === 'high' ? 250 : 60; // high maps to veo3 quality, else veo3_fast
+    }
+
     // Sora3 Pro / Sora2 Pro pricing (same pricing)
     if (model === 'sora3-pro' || model === 'sora2-pro') {
       if (quality === 'high') {

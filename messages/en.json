@@ -655,6 +655,8 @@
     "brandStatement": "Brand Statement",
     "brandStatementDescription": "This service has no affiliation or official relationship with Google, Vertex AI, or Flow.",
     "veo3Mode": {
+      "fast": "Veo 3.1 Fast",
+      "quality": "Veo 3.1 Quality",
       "generationPrompt": "Generation prompt",
       "promptPlaceholder": "A keyboard whose keys are made of different types of candy. Typing makes sweet, crunchy sounds. Audio: Crunchy, sugary typing sounds, delighted giggles.",
       "enterImageUrl": "Enter image URL:",
