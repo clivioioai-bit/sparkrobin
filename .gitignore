@@ -31,3 +31,7 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vercel
+
+# Local backups / mirrored repos
+temp.sora/
+src/saro2ai.ai/

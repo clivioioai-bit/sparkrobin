@@ -41,6 +41,22 @@ export const DEMO_VIDEO_PATHS = {
   sushi: 'demo-videos/sushi.mp4',
   runningCar: 'demo-videos/running car.mp4',
   storyboardExample: 'demo-videos/storyboardexample.mp4',
+  cyberpunkCity: 'demo-videos/cyberpunk city.mp4',
+  flyingBird: 'demo-videos/flying bird.mp4',
+  video_3: 'demo-videos/3_d40976e7f1.mp4',
+  sora2: 'demo-videos/sora2.mp4',
+  sora3: 'demo-videos/sora3.mp4',
+  dec30: 'demo-videos/12月30日.mov',
+} as const;
+
+// Capability videos (local paths, used by Sora3Capabilities)
+export const CAPABILITY_VIDEO_PATHS = {
+  cinematic: '/videos/capability-cinematic.mp4',
+  camera: '/videos/capability-camera.mp4',
+  characters: '/videos/capability-characters.mp4',
+  longform: '/videos/capability-longform.mp4',
+  scene: '/videos/capability-scene.mp4',
+  audio: '/videos/capability-audio.mp4',
 } as const;
 
 /**
@@ -58,19 +74,28 @@ export function getVideoUrl(path: string): string {
 
 /**
  * 获取所有演示视频的 URL 数组（用于 DemoGallery）
- * 按照原始顺序返回
+ * 使用本地路径，加载更快
  */
 export function getDemoVideoUrls(): string[] {
   return [
-    getVideoUrl(DEMO_VIDEO_PATHS.annimate),
-    getVideoUrl(DEMO_VIDEO_PATHS.bride),
-    getVideoUrl(DEMO_VIDEO_PATHS.eyes),
-    getVideoUrl(DEMO_VIDEO_PATHS.grandama_sing),
-    getVideoUrl(DEMO_VIDEO_PATHS.girl),
-    getVideoUrl(DEMO_VIDEO_PATHS.advertise),
-    getVideoUrl(DEMO_VIDEO_PATHS.celebrate),
-    getVideoUrl(DEMO_VIDEO_PATHS.neuralMane),
-    getVideoUrl(DEMO_VIDEO_PATHS.video_4),
+    '/videos/sora3.mp4',
+    '/videos/girl.mp4',
+    '/videos/advertise.mp4',
+    '/videos/12月30日.mov',
+    '/videos/eyes.mp4',
+    '/videos/celebrate.mp4',
+    '/videos/neuralMane.mp4',
+    '/videos/bride.mp4',
+    '/videos/sushi.mp4',
+    '/videos/annimate.mp4',
+    '/videos/running car.mp4',
+    '/videos/4_2ec5d6ac08.mp4',
+    '/videos/cyberpunk city.mp4',
+    '/videos/grandama sing.mp4',
+    '/videos/flying bird.mp4',
+    '/videos/storyboardexample.mp4',
+    '/videos/3_d40976e7f1.mp4',
+    '/videos/sora2.mp4',
   ];
 }
 

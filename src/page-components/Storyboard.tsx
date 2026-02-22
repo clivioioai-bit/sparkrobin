@@ -31,7 +31,7 @@ import { Card } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import Link from "next/link";
 import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import ThemeToggle from "@/components/ThemeToggle";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -394,7 +394,6 @@ const Storyboard = () => {
       <div className="flex-1 transition-all duration-300 pb-16 bg-background" style={{ marginLeft: 'var(--sidebar-width, 240px)' }}>
         {/* Top Right: Theme Toggle, Login and Start for Free */}
         <div className="flex justify-end items-center gap-3 px-6 py-4 border-b border-border">
-          <ThemeToggle />
           {isAuthenticated ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -632,7 +631,7 @@ const Storyboard = () => {
             <div className="mb-12">
               <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-4 text-center backdrop-blur-sm">
                 <p className="text-sm text-amber-900 dark:text-amber-100 leading-relaxed font-medium">
-                  <span className="font-bold inline-block">{tGenerate('storyboard.pricing')}:</span> <Link href="/plans" className="inline-block text-amber-900 dark:text-amber-100 hover:text-amber-700 dark:hover:text-amber-300 underline decoration-amber-300 dark:decoration-amber-500 hover:decoration-amber-500 dark:hover:decoration-amber-300 transition-colors">{tGenerate('storyboard.pricingDescription')}</Link>
+                  <span className="font-bold inline-block">{tGenerate('storyboard.pricing')}:</span> <Link href="/pricing" className="inline-block text-amber-900 dark:text-amber-100 hover:text-amber-700 dark:hover:text-amber-300 underline decoration-amber-300 dark:decoration-amber-500 hover:decoration-amber-500 dark:hover:decoration-amber-300 transition-colors">{tGenerate('storyboard.pricingDescription')}</Link>
                 </p>
               </div>
             </div>
@@ -835,7 +834,7 @@ const Storyboard = () => {
               <div className="mt-8 text-center">
                 <Card className="p-6 bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20">
                   <p className="text-muted-foreground">
-                    {tGenerate('storyboard.perfectFor')} <Link href="/plans" className="text-primary hover:underline">{tGenerate('storyboard.pricingPlans')}</Link>.
+                    {tGenerate('storyboard.perfectFor')} <Link href="/pricing" className="text-primary hover:underline">{tGenerate('storyboard.pricingPlans')}</Link>.
                   </p>
                 </Card>
               </div>

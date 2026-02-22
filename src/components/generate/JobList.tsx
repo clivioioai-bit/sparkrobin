@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import JobCard from './JobCard';
 import { Job } from '@/types/jobs';
 import { Clock, Play } from 'lucide-react';
+import { workspaceSectionClass } from '@/components/generate/styles';
 
 interface JobListProps {
   jobs: Job[];
@@ -49,9 +50,9 @@ const JobList: React.FC<JobListProps> = ({
 
   if (jobs.length === 0) {
     return (
-      <Card className="p-8 text-center">
-        <Play className="w-16 h-16 text-foreground/70 dark:text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-medium mb-2">No jobs yet</h3>
+      <Card className={`${workspaceSectionClass} p-8 text-center`}>
+        <Play className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+        <h3 className="text-lg font-semibold mb-2">No jobs yet</h3>
         <p className="text-foreground/70 dark:text-muted-foreground">
           Start by writing a prompt.
         </p>
@@ -62,9 +63,9 @@ const JobList: React.FC<JobListProps> = ({
   return (
     <div className="space-y-6">
       {/* Status Summary */}
-      <Card className="p-4">
+      <Card className={`${workspaceSectionClass} p-4`}>
         <div className="flex items-center justify-between">
-          <h3 className="font-medium">Job status</h3>
+          <h3 className="font-semibold">Job status</h3>
           <div className="flex items-center space-x-4">
             {running > 0 && (
               <Badge variant="secondary" className="text-xs">

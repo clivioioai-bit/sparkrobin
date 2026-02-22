@@ -240,7 +240,7 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
             },
             {
               nameKey: "pricing",
-              href: "/plans",
+              href: "/pricing",
               icon: DollarSign,
             },
             {
@@ -282,7 +282,7 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
         {!isCollapsed && isMounted && (
           <p className="text-xs text-muted-foreground font-medium mb-2">{t('aiTools')}</p>
         )}
-        <Link href="/plans" className="block">
+        <Link href="/pricing" className="block">
           <Button
             variant="default"
             className={`w-full ${isCollapsed ? 'px-2 py-2' : 'py-2.5'} bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]`}

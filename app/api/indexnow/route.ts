@@ -17,7 +17,7 @@ const ALL_URLS: string[] = [
   'multi-scene',
   'sora-3-video-generator',
   'watermark-remover',
-  'plans',
+  'pricing',
   'faq',
   'privacy',
   'terms',
@@ -39,7 +39,7 @@ function buildUrlList(): string[] {
     'multi-scene',
     'sora-3-video-generator',
     'watermark-remover',
-    'plans',
+    'pricing',
     'faq',
     'blog',
   ];

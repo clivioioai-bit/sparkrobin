@@ -763,7 +763,7 @@ const ToolsSection = () => {
                 <div className="space-y-3 sm:space-y-4">
                   <div className="bg-accent/10 border-2 border-accent/20 rounded-lg sm:rounded-xl p-3 sm:p-4">
                     <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
-                      <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
+                      <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
                       <span className="font-bold text-accent-foreground/80 text-sm sm:text-base">{tGenerate('exampleVideo')}</span>
                     </div>
                     <p className="text-xs sm:text-sm text-accent-foreground/80 leading-relaxed">

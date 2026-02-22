@@ -132,7 +132,7 @@ const InsufficientCreditsDialog: FC<InsufficientCreditsDialogProps> = ({
             Maybe Later
           </Button>
           <Button asChild variant="cyber" className="group">
-            <Link href="/plans" className="flex items-center">
+            <Link href="/pricing" className="flex items-center">
               <CreditCard className="h-4 w-4 mr-2" />
               View All Plans
               <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-0.5" />

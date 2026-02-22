@@ -156,7 +156,7 @@ export default async function FAQPage({
         Get answers about Sora 3 video generation, campaign use, and platform capabilities. For more details, explore our 
         <a href={`${prefix}/`} className="text-primary hover:underline"> homepage</a>, 
         <a href={`${prefix}/sora3-text-to-video`} className="text-primary hover:underline"> Sora 3 Text to Video</a>, 
-        <a href={`${prefix}/plans`} className="text-primary hover:underline"> Sora 3 Pricing</a>, or review our 
+        <a href={`${prefix}/pricing`} className="text-primary hover:underline"> Sora 3 Pricing</a>, or review our 
         <a href={`${prefix}/terms`} className="text-primary hover:underline"> Terms of Service</a> and 
         <a href={`${prefix}/privacy`} className="text-primary hover:underline"> Privacy Policy</a>.
       </p>

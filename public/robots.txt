@@ -39,7 +39,7 @@ Allow: /multi-scene
 Allow: /sora3-image-to-video
 Allow: /sora-3-video-generator
 Allow: /watermark-remover
-Allow: /plans
+Allow: /pricing
 Allow: /blog
 Allow: /faq
 Allow: /privacy

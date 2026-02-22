@@ -10,11 +10,20 @@ import { Sora3Params } from '@/types/generation-modes';
 import { StoryboardParams } from '@/types/storyboard';
 import { StoryboardManager } from '@/components/storyboard/StoryboardManager';
 import { Wand2, Video, LayoutPanelTop, Sparkles, Clock, Maximize2, Settings2, Lightbulb, Play, Info, Check, ChevronUp, Film, Square } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { promptExamples, promptCategories, getExamplesByCategory } from '@/data/promptExamples';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { useTranslations } from 'next-intl';
+import {
+  fieldLabelClass,
+  primaryActionButtonClass,
+  segmentedButtonClass,
+  selectTriggerClass,
+  subtleButtonClass,
+  textAreaClass,
+  textInputClass,
+  workspaceSectionClass,
+} from '@/components/generate/styles';
 
 interface Sora3ModeProps {
   params: Sora3Params;
@@ -231,11 +240,11 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
     <TooltipProvider delayDuration={120}>
       <div className="space-y-6">
       {/* Model Selection */}
-      <div className="space-y-3">
-        <Label className="text-sm font-medium text-foreground">{t('reframeMode.model')}</Label>
+      <div className={workspaceSectionClass}>
+        <Label className={fieldLabelClass}>{t('reframeMode.model')}</Label>
         {!isMounted ? (
           /* SSR placeholder — avoids Radix Select hydration mismatch */
-          <div className="w-full h-auto min-h-[50px] px-4 py-3 border-2 border-border rounded-md flex items-center gap-3">
+          <div className="w-full h-auto min-h-[50px] px-4 py-3 rounded-xl border border-border bg-background/80 shadow-sm flex items-center gap-3">
             <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
               {getTriggerIcon()}
             </div>
@@ -246,7 +255,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
           value={selectValue}
           onValueChange={handleModelChange}
         >
-          <SelectTrigger className="w-full h-auto min-h-[50px] px-4 py-3 border-2 border-border hover:border-primary/50 transition-colors">
+          <SelectTrigger className={selectTriggerClass}>
             <div className="flex items-center gap-3 w-full">
               <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
                 {getTriggerIcon()}
@@ -394,10 +403,10 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
       ) : (
         <>
           {/* Prompt */}
-          <div className="space-y-3">
+          <div className={workspaceSectionClass}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Label className="text-sm font-medium text-foreground">{t('reframeMode.prompt')}</Label>
+                <Label className={fieldLabelClass}>{t('reframeMode.prompt')}</Label>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <button
@@ -420,7 +429,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex items-center gap-2 border-amber-300 text-amber-700 hover:bg-amber-50"
+                      className={subtleButtonClass}
                     >
                       <Lightbulb className="w-4 h-4" />
                       {t('reframeMode.aiExamples')}
@@ -499,7 +508,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+                      className={subtleButtonClass}
                       aria-label="Open Prompt GPT"
                       onClick={() =>
                         window.open(
@@ -524,15 +533,15 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 placeholder={t('reframeMode.promptPlaceholder')}
                 value={params.prompt || ''}
                 onChange={(e) => onChange({ ...params, prompt: e.target.value })}
-                className="min-h-[120px] resize-none border-input focus:border-primary focus:ring-primary relative z-10 bg-transparent"
+                className={`${textAreaClass} relative z-10 bg-transparent`}
               />
             </div>
           </div>
 
           {/* Aspect Ratio */}
-          <div className="space-y-3">
+          <div className={workspaceSectionClass}>
             <div className="flex items-center gap-2">
-              <Label className="text-sm font-medium text-foreground">
+              <Label className={fieldLabelClass}>
                 {isVeo31 ? 'Ratio' : t('reframeMode.aspectRatio')}
                 {isVeo31 && (
                   <Tooltip>
@@ -573,11 +582,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 <Button
                   variant={params.aspectRatio === 'Auto' ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, aspectRatio: 'Auto' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    params.aspectRatio === 'Auto'
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass(params.aspectRatio === 'Auto')}
                 >
                   <Wand2 className="w-4 h-4 mr-2" />
                   Auto
@@ -586,11 +591,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               <Button
                 variant={params.aspectRatio === '9:16' ? 'default' : 'outline'}
                 onClick={() => onChange({ ...params, aspectRatio: '9:16' })}
-                className={`flex-1 h-9 text-sm font-medium ${
-                  params.aspectRatio === '9:16'
-                    ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                    : 'border-input text-foreground hover:bg-muted'
-                }`}
+                className={segmentedButtonClass(params.aspectRatio === '9:16')}
               >
                 {isVeo31 ? (
                   <>
@@ -604,11 +605,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               <Button
                 variant={params.aspectRatio === '16:9' ? 'default' : 'outline'}
                 onClick={() => onChange({ ...params, aspectRatio: '16:9' })}
-                className={`flex-1 h-9 text-sm font-medium ${
-                  params.aspectRatio === '16:9'
-                    ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                    : 'border-input text-foreground hover:bg-muted'
-                }`}
+                className={segmentedButtonClass(params.aspectRatio === '16:9')}
               >
                 {isVeo31 ? (
                   <>
@@ -624,9 +621,9 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
 
           {/* Duration (n_frames) — Only for Sora models */}
           {!isVeo31 && !isWan26 && (
-          <div className="space-y-3">
+          <div className={workspaceSectionClass}>
             <div className="flex items-center gap-2">
-              <Label className="text-sm font-medium text-foreground">{t('reframeMode.duration')}</Label>
+              <Label className={fieldLabelClass}>{t('reframeMode.duration')}</Label>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button
@@ -646,22 +643,14 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               <Button
                 variant={params.n_frames === '10' ? 'default' : 'outline'}
                 onClick={() => onChange({ ...params, n_frames: '10' })}
-                className={`flex-1 h-9 text-sm font-medium ${
-                  params.n_frames === '10'
-                    ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                    : 'border-input text-foreground hover:bg-muted'
-                }`}
+                className={segmentedButtonClass(params.n_frames === '10')}
               >
                 10s
               </Button>
               <Button
                 variant={params.n_frames === '15' ? 'default' : 'outline'}
                 onClick={() => onChange({ ...params, n_frames: '15' })}
-                className={`flex-1 h-9 text-sm font-medium ${
-                  params.n_frames === '15'
-                    ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                    : 'border-input text-foreground hover:bg-muted'
-                }`}
+                className={segmentedButtonClass(params.n_frames === '15')}
               >
                 15s
               </Button>
@@ -673,7 +662,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
           {isVeo31 && (
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Label className="text-sm font-medium text-foreground">
+                <Label className={fieldLabelClass}>
                   Seed (Optional)
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -703,16 +692,16 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 placeholder="please input seed"
                 min={10000}
                 max={99999}
-                className="w-full"
+                className={`w-full ${textInputClass}`}
               />
             </div>
           )}
 
           {/* Wan2.6 Duration */}
           {isWan26 && (
-            <div className="space-y-3">
+            <div className={workspaceSectionClass}>
               <div className="flex items-center gap-2">
-                <Label className="text-sm font-medium text-foreground">Duration</Label>
+                <Label className={fieldLabelClass}>Duration</Label>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <button
@@ -732,33 +721,21 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 <Button
                   variant={(params.wan26Duration || '5') === '5' ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, wan26Duration: '5' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    (params.wan26Duration || '5') === '5'
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass((params.wan26Duration || '5') === '5')}
                 >
                   5 seconds
                 </Button>
                 <Button
                   variant={params.wan26Duration === '10' ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, wan26Duration: '10' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    params.wan26Duration === '10'
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass(params.wan26Duration === '10')}
                 >
                   10 seconds
                 </Button>
                 <Button
                   variant={params.wan26Duration === '15' ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, wan26Duration: '15' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    params.wan26Duration === '15'
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass(params.wan26Duration === '15')}
                 >
                   15 seconds
                 </Button>
@@ -768,9 +745,9 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
 
           {/* Wan2.6 Resolution */}
           {isWan26 && (
-            <div className="space-y-3">
+            <div className={workspaceSectionClass}>
               <div className="flex items-center gap-2">
-                <Label className="text-sm font-medium text-foreground">Resolution</Label>
+                <Label className={fieldLabelClass}>Resolution</Label>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <button
@@ -790,22 +767,14 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 <Button
                   variant={params.wan26Resolution === '720p' ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, wan26Resolution: '720p' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    params.wan26Resolution === '720p'
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass(params.wan26Resolution === '720p')}
                 >
                   720p
                 </Button>
                 <Button
                   variant={(params.wan26Resolution || '1080p') === '1080p' ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, wan26Resolution: '1080p' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    (params.wan26Resolution || '1080p') === '1080p'
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass((params.wan26Resolution || '1080p') === '1080p')}
                 >
                   1080p
                 </Button>
@@ -815,9 +784,9 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
 
           {/* Wan2.6 Multi Shots */}
           {isWan26 && (
-            <div className="space-y-3">
+            <div className={workspaceSectionClass}>
               <div className="flex items-center gap-2">
-                <Label className="text-sm font-medium text-foreground">Multi Shots</Label>
+                <Label className={fieldLabelClass}>Multi Shots</Label>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <button
@@ -837,22 +806,14 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 <Button
                   variant={(params.wan26MultiShots === false || params.wan26MultiShots === undefined) ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, wan26MultiShots: false })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    (params.wan26MultiShots === false || params.wan26MultiShots === undefined)
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass(params.wan26MultiShots === false || params.wan26MultiShots === undefined)}
                 >
                   Single Shot
                 </Button>
                 <Button
                   variant={params.wan26MultiShots === true ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, wan26MultiShots: true })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    params.wan26MultiShots === true
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass(params.wan26MultiShots === true)}
                 >
                   Multi Shots
                 </Button>
@@ -862,9 +823,9 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
 
           {/* Quality Selector (for Sora3 Pro and Sora2 Pro) */}
           {isProModel && (
-            <div className="space-y-3">
+            <div className={workspaceSectionClass}>
             <div className="flex items-center gap-2">
-              <Label className="text-sm font-medium text-foreground">{t('reframeMode.quality')}</Label>
+              <Label className={fieldLabelClass}>{t('reframeMode.quality')}</Label>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button
@@ -884,22 +845,14 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 <Button
                   variant={params.quality === 'standard' || !params.quality ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, quality: 'standard' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    params.quality === 'standard' || !params.quality
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass(params.quality === 'standard' || !params.quality)}
                 >
                   {t('reframeMode.standard')}
                 </Button>
                 <Button
                   variant={params.quality === 'high' ? 'default' : 'outline'}
                   onClick={() => onChange({ ...params, quality: 'high' })}
-                  className={`flex-1 h-9 text-sm font-medium ${
-                    params.quality === 'high'
-                      ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600'
-                      : 'border-input text-foreground hover:bg-muted'
-                  }`}
+                  className={segmentedButtonClass(params.quality === 'high')}
                 >
                   {t('reframeMode.high')}
                 </Button>
@@ -911,12 +864,12 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
           <div className="flex space-x-3 pt-4">
             <Button
               variant="outline"
-              className="flex-1 h-11 border-input text-foreground hover:bg-muted font-medium"
+              className={`flex-1 h-11 ${subtleButtonClass}`}
             >
               {t('reset')}
             </Button>
             <Button
-              className="flex-[2] h-11 bg-black hover:bg-black/90 text-white font-bold shadow-lg hover:shadow-xl transition-shadow duration-200 hover:scale-[1.02]"
+              className={`flex-[2] h-11 ${primaryActionButtonClass}`}
               onClick={onGenerate}
               disabled={isGenerating}
             >

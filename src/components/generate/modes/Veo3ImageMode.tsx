@@ -7,6 +7,16 @@ import { ReframeParams } from '@/types/generation-modes';
 import { Sparkles, Wand2, Maximize2, Square, Info, X, Upload as UploadIcon } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useTranslations } from 'next-intl';
+import {
+  dropzoneClass,
+  fieldLabelClass,
+  helperTextClass,
+  primaryActionButtonClass,
+  segmentedButtonClass,
+  textAreaClass,
+  textInputClass,
+  workspaceSectionClass,
+} from '@/components/generate/styles';
 
 interface Veo3ImageModeProps {
   params: ReframeParams;
@@ -20,8 +30,7 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
   params,
   onChange,
   onGenerate,
-  isGenerating,
-  onModelChange
+  isGenerating
 }) => {
   const t = useTranslations('generate');
   const handleStartFrameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,16 +59,16 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
     <TooltipProvider delayDuration={120}>
       <div className="space-y-6">
         {/* Image Upload Section - Start Frame and End Frame */}
-        <div className="space-y-3">
-          <Label className="text-sm font-medium text-foreground">
+        <div className={workspaceSectionClass}>
+          <Label className={fieldLabelClass}>
             {t('veo3ImageMode.image')}
           </Label>
           
           <div className="grid grid-cols-2 gap-4">
             {/* Start Frame */}
             <div className="space-y-2">
-              <Label className="text-xs text-muted-foreground">{t('veo3ImageMode.startFrame')}</Label>
-              <div className="border-2 border-dashed border-primary/30 rounded-xl p-4 text-center hover:border-primary transition-colors relative">
+              <Label className={helperTextClass}>{t('veo3ImageMode.startFrame')}</Label>
+              <div className={`${dropzoneClass} relative`}>
                 {params.startFrame ? (
                   <div className="space-y-2">
                     <div className="relative mx-auto h-24 w-full overflow-hidden rounded-lg border border-border">
@@ -97,8 +106,8 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
 
             {/* End Frame */}
             <div className="space-y-2">
-              <Label className="text-xs text-muted-foreground">{t('veo3ImageMode.endFrame')}</Label>
-              <div className="border-2 border-dashed border-primary/30 rounded-xl p-4 text-center hover:border-primary transition-colors relative">
+              <Label className={helperTextClass}>{t('veo3ImageMode.endFrame')}</Label>
+              <div className={`${dropzoneClass} relative`}>
                 {params.endFrame ? (
                   <div className="space-y-2">
                     <div className="relative mx-auto h-24 w-full overflow-hidden rounded-lg border border-border">
@@ -135,31 +144,31 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
             </div>
           </div>
 
-          <p className="text-xs text-muted-foreground">
+          <p className={helperTextClass}>
             {t('veo3ImageMode.dragDropImage')}
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className={helperTextClass}>
             {t('veo3ImageMode.supportedFormats')}
           </p>
         </div>
 
         {/* Generation Prompt */}
-        <div className="space-y-3">
-          <Label className="text-sm font-medium text-foreground">
+        <div className={workspaceSectionClass}>
+          <Label className={fieldLabelClass}>
             {t('veo3ImageMode.generationPrompt')}
           </Label>
           <Textarea
             placeholder={t('veo3ImageMode.promptPlaceholder')}
             value={params.prompt || ''}
             onChange={(e) => onChange({ ...params, prompt: e.target.value })}
-            className="min-h-[120px] resize-none border-input focus:border-primary focus:ring-primary"
+            className={textAreaClass}
           />
         </div>
 
         {/* Aspect Ratio */}
-        <div className="space-y-3">
+        <div className={workspaceSectionClass}>
           <div className="flex items-center gap-2">
-            <Label className="text-sm font-medium text-foreground">{t('veo3ImageMode.ratio')}</Label>
+            <Label className={fieldLabelClass}>{t('veo3ImageMode.ratio')}</Label>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
@@ -179,11 +188,7 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
             <Button
               variant={params.targetAspectRatio === 'Auto' ? 'default' : 'outline'}
               onClick={() => onChange({ ...params, targetAspectRatio: 'Auto' })}
-              className={`flex-1 h-10 text-sm font-medium ${
-                params.targetAspectRatio === 'Auto' 
-                  ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90' 
-                  : 'border-input text-foreground hover:bg-muted'
-              }`}
+              className={segmentedButtonClass(params.targetAspectRatio === 'Auto')}
             >
               <Wand2 className="w-4 h-4 mr-2" />
               {t('veo3ImageMode.auto')}
@@ -191,11 +196,7 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
             <Button
               variant={params.targetAspectRatio === '16:9' ? 'default' : 'outline'}
               onClick={() => onChange({ ...params, targetAspectRatio: '16:9' })}
-              className={`flex-1 h-10 text-sm font-medium ${
-                params.targetAspectRatio === '16:9' 
-                  ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90' 
-                  : 'border-input text-foreground hover:bg-muted'
-              }`}
+              className={segmentedButtonClass(params.targetAspectRatio === '16:9')}
             >
               <Maximize2 className="w-4 h-4 mr-2" />
               16:9
@@ -203,11 +204,7 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
             <Button
               variant={params.targetAspectRatio === '9:16' ? 'default' : 'outline'}
               onClick={() => onChange({ ...params, targetAspectRatio: '9:16' })}
-              className={`flex-1 h-10 text-sm font-medium ${
-                params.targetAspectRatio === '9:16' 
-                  ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90' 
-                  : 'border-input text-foreground hover:bg-muted'
-              }`}
+              className={segmentedButtonClass(params.targetAspectRatio === '9:16')}
             >
               <Square className="w-4 h-4 mr-2" />
               9:16
@@ -216,9 +213,9 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
         </div>
 
         {/* Seed (Optional) */}
-        <div className="space-y-2">
+        <div className={workspaceSectionClass}>
           <div className="flex items-center gap-2">
-            <Label className="text-xs text-muted-foreground">{t('veo3ImageMode.seed')}</Label>
+            <Label className={helperTextClass}>{t('veo3ImageMode.seed')}</Label>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
@@ -234,8 +231,8 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
               </TooltipContent>
             </Tooltip>
           </div>
-          <Input
-            type="number"
+            <Input
+              type="number"
             value={params.seeds || ''}
             onChange={(e) => {
               const value = e.target.value ? parseInt(e.target.value, 10) : undefined;
@@ -243,17 +240,17 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
                 onChange({ ...params, seeds: value });
               }
             }}
-            placeholder={t('veo3ImageMode.seedPlaceholder')}
-            min={10000}
-            max={99999}
-            className="w-full"
-          />
+              placeholder={t('veo3ImageMode.seedPlaceholder')}
+              min={10000}
+              max={99999}
+              className={`w-full ${textInputClass}`}
+            />
         </div>
 
         {/* Generate Button */}
         <div className="space-y-3 pt-4">
           <Button 
-            className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl transition-shadow duration-200"
+            className={`w-full ${primaryActionButtonClass}`}
             onClick={onGenerate}
             disabled={isGenerating || !params.prompt || (!params.startFrame && !params.endFrame)}
           >

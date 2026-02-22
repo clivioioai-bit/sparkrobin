@@ -32,7 +32,7 @@ import SubscriptionRequiredModal from "@/components/SubscriptionRequiredModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
-import ThemeToggle from "@/components/ThemeToggle";
+
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import {
   DropdownMenu,
@@ -815,7 +815,13 @@ const Generate = () => {
             reference_image_url: videoUrl,
             model: params.model || 'sora3',
             n_frames: params.n_frames,
-            quality: params.quality // Add quality field for sora3-pro
+            quality: params.quality,
+            // Wan2.6 specific params
+            wan26Duration: params.wan26Duration,
+            wan26Resolution: params.wan26Resolution,
+            wan26MultiShots: params.wan26MultiShots,
+            wan26AspectRatio: params.wan26AspectRatio,
+            imageUrls: videoUrl ? [videoUrl] : undefined,
           };
         }
       } else {
@@ -1419,7 +1425,6 @@ const Generate = () => {
         {/* Top Right: Language Switcher, Theme Toggle, Login and Start for Free */}
         <div className={`flex justify-end items-center gap-3 px-6 py-4 border-b border-border ${isMobile ? 'pt-16' : ''}`}>
           <LanguageSwitcher />
-          <ThemeToggle />
           {isAuthenticated ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -1784,7 +1789,7 @@ const Generate = () => {
               <div className="grid lg:grid-cols-2 gap-8">
               {/* Left Panel: Input */}
               <div className="space-y-6 order-1 lg:order-1">
-                <div className="relative bg-card border-2 border-border rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+                <div className="relative bg-card/95 border border-border/70 rounded-2xl p-6 shadow-lg transition-all duration-200">
                   <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-lg shadow-green-500/50"></div>
@@ -1844,7 +1849,7 @@ const Generate = () => {
 
               {/* Right Panel: Output */}
               <div className="space-y-6 order-2 lg:order-2">
-                <div className="bg-card border-2 border-border rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+                <div className="bg-card/95 border border-border/70 rounded-2xl p-6 shadow-lg transition-all duration-200">
                   <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <div className={`w-2 h-2 rounded-full ${isGenerating ? 'bg-orange-500 animate-pulse shadow-lg shadow-orange-500/50' : 'bg-gray-400'}`}></div>
@@ -2387,7 +2392,7 @@ const Generate = () => {
             <div className="mt-8 mb-8">
               <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-4 text-center backdrop-blur-sm">
                 <p className="text-sm text-amber-900 dark:text-amber-100 leading-relaxed font-medium">
-                  <Link href="/plans" className="inline-block text-amber-900 dark:text-amber-100 hover:text-amber-700 dark:hover:text-amber-300 underline decoration-amber-300 dark:decoration-amber-500 hover:decoration-amber-500 dark:hover:decoration-amber-300 transition-colors">{tGenerate('pricingBanner')}</Link>
+                  <Link href="/pricing" className="inline-block text-amber-900 dark:text-amber-100 hover:text-amber-700 dark:hover:text-amber-300 underline decoration-amber-300 dark:decoration-amber-500 hover:decoration-amber-500 dark:hover:decoration-amber-300 transition-colors">{tGenerate('pricingBanner')}</Link>
                 </p>
               </div>
             </div>
@@ -2613,7 +2618,7 @@ const Generate = () => {
                       ? "Ready to take your videos to the next level? Upgrade to access faster rendering, longer video durations, advanced customization, and premium styles. Whether you're creating for business, education, or content marketing, our Pro plan gives you everything you need to turn scripts into stunning, high-quality videos - effortlessly."
                       : tGenerate('getStartedImageToVideo.description')}
                   </p>
-                  <Link href="/plans">
+                  <Link href="/pricing">
                     <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
                       {routeFromMode(generationMode) === '/sora3-image-to-video' 
                         ? tGenerate('getStartedImageToVideo.button')

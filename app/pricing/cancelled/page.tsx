@@ -29,13 +29,13 @@ export default function PaymentCancelledPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             {plan && (
               <Button asChild className="w-full sm:w-auto">
-                <Link href={`/plans?plan=${encodeURIComponent(plan)}`}>
+                <Link href={`/pricing?plan=${encodeURIComponent(plan)}`}>
                   Try Again
                 </Link>
               </Button>
             )}
             <Button asChild variant="outline" className="w-full sm:w-auto">
-              <Link href="/plans">
+              <Link href="/pricing">
                 View All Plans
               </Link>
             </Button>

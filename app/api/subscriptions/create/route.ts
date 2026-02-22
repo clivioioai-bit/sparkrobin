@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
     }
 
     const successUrl = `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?success=true`;
-    const cancelUrl = `${process.env.NEXT_PUBLIC_APP_URL}/plans?canceled=true`;
+    const cancelUrl = `${process.env.NEXT_PUBLIC_APP_URL}/pricing?canceled=true`;
 
     console.log(`[SUBSCRIPTION:${requestId}] Plan details:`, {
       plan_id: planId,

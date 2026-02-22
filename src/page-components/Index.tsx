@@ -3,6 +3,7 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/home/Hero";
 import DemoGallery from "@/components/home/DemoGallery";
+import Sora3Capabilities from "@/components/home/Sora3Capabilities";
 import HowItWorks from "@/components/home/HowItWorks";
 import PricingSection from "@/components/home/PricingSection";
 import FaqTeaser from "@/components/home/FaqTeaser";

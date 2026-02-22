@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import {
   Accordion,
@@ -16,7 +15,7 @@ import { Link } from '@/i18n/routing';
 const FaqTeaser = () => {
   const t = useTranslations('faq');
   const tCommon = useTranslations('common');
-  
+
   const faqs = [
     {
       id: 'item-1',
@@ -66,59 +65,64 @@ const FaqTeaser = () => {
   ];
 
   return (
-    <section className="py-24 bg-muted/30">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+    <section className="py-20 sm:py-28 bg-[#030712]">
+      {/* Subtle top gradient line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12 sm:mb-14">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
             {t('title')}
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-lg text-white/40 leading-relaxed">
             {t('subtitle')}
           </p>
         </div>
 
         {/* FAQ Accordion */}
-        <Card className="p-8">
-          <div suppressHydrationWarning>
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {faqs.map((faq) => (
-                <AccordionItem 
-                  key={faq.id} 
-                  value={faq.id}
-                  className="border border-border/50 rounded-lg px-6 py-2 data-[state=open]:bg-muted/50"
-                >
-                  <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary rtl:text-right">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pt-2 pb-4">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </Card>
+        <div suppressHydrationWarning>
+          <Accordion type="single" collapsible className="w-full space-y-1.5">
+            {faqs.map((faq) => (
+              <AccordionItem
+                key={faq.id}
+                value={faq.id}
+                className="border border-white/[0.06] rounded-xl px-5 sm:px-6 py-0.5 data-[state=open]:bg-white/[0.02] transition-colors"
+              >
+                <AccordionTrigger className="text-left text-sm sm:text-base font-medium text-white/80 hover:text-white hover:no-underline rtl:text-right py-4">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-white/35 pb-4 leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-6">
+        <div className="text-center mt-10 sm:mt-12">
+          <p className="text-sm text-white/30 mb-5">
             {tCommon('haveMoreQuestions')}
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button
               variant="outline"
+              size="sm"
+              className="border-white/[0.1] text-white/60 hover:text-white hover:bg-white/[0.06] hover:border-white/[0.15]"
               asChild
             >
               <Link href="/faq">
                 {t('viewAllFaqs')}
-                <ExternalLink className="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2" />
+                <ExternalLink className="w-3.5 h-3.5 ml-1.5 rtl:ml-0 rtl:mr-1.5" />
               </Link>
             </Button>
-            
-            <Button 
+
+            <Button
               variant="ghost"
+              size="sm"
+              className="text-white/40 hover:text-white/60 hover:bg-white/[0.04]"
               asChild
             >
               <a href="mailto:support@sora3ai.io">

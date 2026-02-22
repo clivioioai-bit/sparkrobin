@@ -19,6 +19,7 @@ import {
   EyeOff
 } from 'lucide-react';
 import { Job } from '@/types/jobs';
+import { primaryActionButtonClass, subtleButtonClass, workspaceSectionClass } from '@/components/generate/styles';
 
 interface JobCardProps {
   job: Job;
@@ -100,7 +101,7 @@ const JobCard: React.FC<JobCardProps> = ({
 
   if (compact) {
     return (
-      <Card className="p-4">
+      <Card className={`${workspaceSectionClass} p-4`}>
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0">
             <p className="font-medium text-sm truncate">
@@ -127,7 +128,7 @@ const JobCard: React.FC<JobCardProps> = ({
   }
 
   return (
-    <Card className="p-6">
+    <Card className={`${workspaceSectionClass} p-6`}>
       <div className="space-y-4">
         {/* Header */}
         <div className="flex items-start justify-between">
@@ -203,16 +204,16 @@ const JobCard: React.FC<JobCardProps> = ({
             </div>
             
             <div className="flex space-x-2">
-              <Button onClick={handleDownload} className="flex-1">
+              <Button onClick={handleDownload} className={`flex-1 ${primaryActionButtonClass}`}>
                 <Download className="w-4 h-4 mr-2" />
                 Download
               </Button>
-              <Button variant="outline" onClick={handleCopyLink}>
+              <Button variant="outline" onClick={handleCopyLink} className={subtleButtonClass}>
                 <Share2 className="w-4 h-4 mr-2" />
                 Copy Link
               </Button>
               {onCopyParams && (
-                <Button variant="outline" onClick={() => onCopyParams(job)}>
+                <Button variant="outline" onClick={() => onCopyParams(job)} className={subtleButtonClass}>
                   <Copy className="w-4 h-4 mr-2" />
                   Copy Params
                 </Button>
@@ -243,13 +244,13 @@ const JobCard: React.FC<JobCardProps> = ({
             
             <div className="flex space-x-2">
               {onRetry && (
-                <Button onClick={() => onRetry(job)} variant="outline" className="flex-1">
+                <Button onClick={() => onRetry(job)} variant="outline" className={`flex-1 ${subtleButtonClass}`}>
                   <RotateCcw className="w-4 h-4 mr-2" />
                   Retry
                 </Button>
               )}
               {onCopyParams && (
-                <Button variant="outline" onClick={() => onCopyParams(job)}>
+                <Button variant="outline" onClick={() => onCopyParams(job)} className={subtleButtonClass}>
                   <Copy className="w-4 h-4 mr-2" />
                   Copy Params
                 </Button>
@@ -265,6 +266,7 @@ const JobCard: React.FC<JobCardProps> = ({
               variant="outline" 
               size="sm" 
               onClick={() => onCancel(job.jobId)}
+              className={subtleButtonClass}
             >
               <X className="w-4 h-4 mr-2" />
               Cancel

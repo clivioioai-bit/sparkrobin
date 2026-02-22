@@ -73,6 +73,21 @@ const SubscriptionPlans = ({
     if (feature.toLowerCase().includes('api access')) {
       return t('features.apiAccess');
     }
+    if (feature.toLowerCase().includes('priority queue') && !feature.toLowerCase().includes('no priority')) {
+      return t('features.priorityQueue');
+    }
+    if (feature.toLowerCase().includes('4k at 1x credits')) {
+      return t('features.4kAt1xCredits');
+    }
+    if (feature.toLowerCase().includes('fastest queue')) {
+      return t('features.fastestQueue');
+    }
+    if (feature.toLowerCase().includes('highest concurrency')) {
+      return t('features.highestConcurrency');
+    }
+    if (feature.toLowerCase().includes('api early access')) {
+      return t('features.apiEarlyAccess');
+    }
     if (feature.toLowerCase().includes('generation history')) {
       return t('features.generationHistory');
     }
@@ -90,6 +105,7 @@ const SubscriptionPlans = ({
   // Function to translate CTA button text
   const translateCta = (cta: string): string => {
     const ctaLower = cta.toLowerCase();
+    if (ctaLower.includes('buy now')) return t('cta.buyNow');
     if (ctaLower.includes('get annual deal')) return t('cta.getAnnualDeal');
     if (ctaLower.includes('best value')) return t('cta.bestValue');
     if (ctaLower.includes('unlock pro')) return t('cta.unlockPro');

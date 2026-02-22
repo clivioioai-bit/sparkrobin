@@ -6,10 +6,15 @@ export interface CreemPlanDefinition {
   category: CreemPlanCategory;
   name: string;
   priceCents: number;
+  originalPriceCents?: number;
+  discountPercent?: number;
   currency: 'USD';
   billingInterval?: BillingInterval;
   groupId?: string;
   credits: number;
+  baseCredits?: number;
+  bonusCredits?: number;
+  highlight?: boolean;
   badge?: string;
   popular?: boolean;
   cta?: string;
@@ -23,13 +28,13 @@ export interface CreemPlanDefinition {
 const toUsdCents = (value: number) => Math.round(value * 100);
 
 const readEnv = (key: string) => process.env[key];
-const formatNumber = (value: number) => value.toLocaleString('en-US');
 
 const resolvePlanConfig = (
   baseId: string,
-  billing: 'MONTHLY' | 'YEARLY'
+  billing: 'MONTHLY' | 'YEARLY',
+  envSuffix?: string
 ) => {
-  const envKeyRoot = `NEXT_PUBLIC_CREEM_PLAN_${baseId}_${billing}`;
+  const envKeyRoot = `NEXT_PUBLIC_CREEM_PLAN_${baseId}_${billing}${envSuffix ?? ''}`;
 
   const checkoutUrl = readEnv(`${envKeyRoot}_URL`);
   const productId = readEnv(`${envKeyRoot}_ID`);
@@ -42,14 +47,17 @@ const buildSubscriptionPlans = () => {
     {
       baseId: 'basic',
       name: 'Basic',
-      monthlyPrice: 19,
-      yearlyPrice: 114,  // $19 × 12 × 0.5 = $114
-      monthlyCredits: 600,  // 20个视频 × 30积分
-      yearlyCredits: 7200,  // 240个视频 × 30积分
+      monthlyPrice: 29.9,
+      yearlyPrice: 179,  // $29.9 × 12 × 0.5 = $179
+      baseCredits: 935,
+      bonusCredits: 0,
+      monthlyCredits: 935,
+      yearlyCredits: 11220,  // 935 × 12
+      yearlyBonusCredits: 0,
       monthlyBadge: 'Perfect for Beginners',
       yearlyBadge: 'Save 50%',
-      monthlyCta: 'Start Creating',
-      yearlyCta: 'Get Annual Deal',
+      monthlyCta: 'Buy Now',
+      yearlyCta: 'Buy Now',
       description: 'Perfect for testing and personal projects',
       baseFeatures: [
         'HD & 4K quality options',
@@ -63,20 +71,23 @@ const buildSubscriptionPlans = () => {
     {
       baseId: 'creator',
       name: 'Creator',
-      monthlyPrice: 49,
-      yearlyPrice: 294,  // $49 × 12 × 0.5 = $294
-      monthlyCredits: 1500,  // 50个视频 × 30积分
-      yearlyCredits: 18000,  // 600个视频 × 30积分
+      monthlyPrice: 69.9,
+      yearlyPrice: 419,  // $69.9 × 12 × 0.5 ≈ $419
+      baseCredits: 1560,
+      bonusCredits: 180,
+      monthlyCredits: 1740,  // 1560 + 180 (10% discount)
+      yearlyCredits: 19320,  // 1560 × 12 + 600
+      yearlyBonusCredits: 600,
       monthlyBadge: 'Most Popular',
       yearlyBadge: 'Save 50%',
-      monthlyCta: 'Get Creator',
-      yearlyCta: 'Best Value',
+      monthlyCta: 'Buy Now',
+      yearlyCta: 'Buy Now',
       description: 'For content creators and small teams',
       baseFeatures: [
         'HD & 4K quality options',
-        'Commercial usage rights',
+        'Priority queue',
+        '4K at 1x credits (Basic uses 2x)',
         'Priority email support',
-        'API access (coming soon)',
         'Generation history'
       ],
       iconKey: 'crown' as const,
@@ -87,18 +98,22 @@ const buildSubscriptionPlans = () => {
       name: 'Pro',
       monthlyPrice: 149,
       yearlyPrice: 894,  // $149 × 12 × 0.5 = $894
-      monthlyCredits: 4500,  // 150个视频 × 30积分
-      yearlyCredits: 54000,  // 1800个视频 × 30积分
+      baseCredits: 4650,
+      bonusCredits: 450,
+      monthlyCredits: 5100,  // 4650 + 450
+      yearlyCredits: 57000,  // 4650 × 12 + 1200
+      yearlyBonusCredits: 1200,
       monthlyBadge: 'For Professionals',
       yearlyBadge: 'Save 50%',
-      monthlyCta: 'Go Pro',
-      yearlyCta: 'Unlock Pro',
+      monthlyCta: 'Buy Now',
+      yearlyCta: 'Buy Now',
       description: 'For agencies, studios & power users',
       baseFeatures: [
         'HD & 4K quality options',
-        'Commercial usage rights',
-        'Fastest processing',
+        'Fastest queue',
+        'Highest concurrency / batch-friendly',
         '1-on-1 professional consultation support',
+        'API early access + priority onboarding',
         'Generation history'
       ],
       iconKey: 'building' as const,
@@ -112,8 +127,16 @@ const buildSubscriptionPlans = () => {
     const baseName = tier.name;
     const envPrefix = tier.baseId.toUpperCase();
 
-    const monthlyPlanConfig = resolvePlanConfig(envPrefix, 'MONTHLY');
-    const yearlyPlanConfig = resolvePlanConfig(envPrefix, 'YEARLY');
+    const monthlyPlanConfig = resolvePlanConfig(
+      envPrefix,
+      'MONTHLY',
+      tier.baseId === 'creator' ? '_V2' : undefined
+    );
+    const yearlyPlanConfig = resolvePlanConfig(
+      envPrefix,
+      'YEARLY',
+      tier.baseId === 'creator' ? '_V2' : undefined
+    );
 
     return [
       {
@@ -125,15 +148,14 @@ const buildSubscriptionPlans = () => {
         billingInterval: 'month' as BillingInterval,
         groupId: tier.baseId,
         credits: tier.monthlyCredits,
+        baseCredits: tier.baseCredits,
+        bonusCredits: tier.bonusCredits,
         badge: tier.monthlyBadge,
         popular: tier.popular,
         cta: tier.monthlyCta ?? 'Start Creating',
         checkoutUrl: monthlyPlanConfig.checkoutUrl,
         productId: monthlyPlanConfig.productId,
-        features: [
-          `${formatNumber(tier.monthlyCredits)} credits included`,
-          ...tier.baseFeatures,
-        ],
+        features: [...tier.baseFeatures],
         iconKey: tier.iconKey,
       },
       {
@@ -145,16 +167,14 @@ const buildSubscriptionPlans = () => {
         billingInterval: 'year' as BillingInterval,
         groupId: tier.baseId,
         credits: tier.yearlyCredits,
+        baseCredits: (tier.baseCredits ?? tier.monthlyCredits) * 12,
+        bonusCredits: tier.yearlyBonusCredits ?? (tier.bonusCredits ?? 0) * 12,
         badge: tier.yearlyBadge ?? yearlyBadgeFallback,
         popular: tier.popular,
         cta: tier.yearlyCta ?? 'Save with Annual',
         checkoutUrl: yearlyPlanConfig.checkoutUrl,
         productId: yearlyPlanConfig.productId,
-        features: [
-          `${formatNumber(tier.yearlyCredits)} credits included`,
-          'HD & 4K quality options',
-          ...tier.baseFeatures.slice(1), // 跳过第一个（HD选项），保留其他功能
-        ],
+        features: [...tier.baseFeatures],
         iconKey: tier.iconKey,
       }
     ];
@@ -168,9 +188,12 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     id: 'starter',
     category: 'pack',
     name: 'Starter Pack',
-    priceCents: toUsdCents(9.9),
+    priceCents: toUsdCents(39),
+    originalPriceCents: undefined,
+    discountPercent: undefined,
     currency: 'USD',
-    credits: 300,  // 10个视频 × 30积分
+    credits: 800,
+    bonusCredits: 0,
     description: 'Pay once, use anytime — credits never expire',
     checkoutUrl: process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_URL,
     productId: process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_ID,
@@ -180,9 +203,15 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     id: 'creator_pack',
     category: 'pack',
     name: 'Creator Pack',
-    priceCents: toUsdCents(49),
+    priceCents: toUsdCents(99),
+    originalPriceCents: 11000,
+    discountPercent: 10,
     currency: 'USD',
-    credits: 1500,  // 50个视频 × 30积分
+    credits: 2400,
+    bonusCredits: 140,
+    badge: 'Most Popular',
+    popular: true,
+    highlight: true,
     description: 'Pay once, use anytime — credits never expire',
     checkoutUrl: process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_URL,
     productId: process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_ID,
@@ -193,13 +222,18 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     category: 'pack',
     name: 'Professional Pack',
     priceCents: toUsdCents(199),
+    originalPriceCents: 24875,
+    discountPercent: 20,
     currency: 'USD',
-    credits: 6000,  // 200个视频 × 30积分
+    credits: 5400,
+    bonusCredits: 300,
+    badge: 'Best Value',
     description: 'Pay once, use anytime — credits never expire',
     checkoutUrl: process.env.NEXT_PUBLIC_CREEM_PACK_DEV_URL,
     productId: process.env.NEXT_PUBLIC_CREEM_PACK_DEV_ID,
     iconKey: 'building' as const,
-  }
+    features: ['1-on-1 24/7 customer support'],
+  },
 ];
 
 export const creemPlansById = Object.fromEntries(

@@ -43,9 +43,28 @@ const iconMap = {
   building: Building,
 } as const;
 
+export type CreditsDisplay = {
+  base: number;
+  bonus: number;
+  total: number;
+  period: 'month' | 'year';
+  monthlyAvg?: number;
+};
+
 // Shared pricing configuration to ensure consistency across the app
 export const subscriptionPlans = creemSubscriptionPlans.map((plan) => {
   const Icon = plan.iconKey ? iconMap[plan.iconKey] : Zap;
+  const base = plan.baseCredits ?? plan.credits;
+  const bonus = plan.bonusCredits ?? 0;
+  const total = plan.credits;
+  const period = plan.billingInterval === 'year' ? ('year' as const) : ('month' as const);
+  const creditsDisplay: CreditsDisplay = {
+    base,
+    bonus,
+    total,
+    period,
+    ...(period === 'year' ? { monthlyAvg: Math.round(total / 12) } : {}),
+  };
 
   return {
     id: plan.id,
@@ -57,6 +76,7 @@ export const subscriptionPlans = creemSubscriptionPlans.map((plan) => {
     priceCents: plan.priceCents,
     credits: `${plan.credits} Credits`,
     creditValue: formatCreditValue(plan),
+    creditsDisplay,
     pricePerCredit: plan.credits > 0 ? plan.priceCents / 100 / plan.credits : undefined,
     badge: plan.badge,
     icon: Icon,
@@ -72,12 +92,19 @@ export const oneTimePacks = creemCreditPacks.map((plan) => ({
   id: plan.id,
   name: plan.name,
   price: formatPriceLabel(plan),
+  originalPrice: plan.originalPriceCents ? currencyFormatter.format(plan.originalPriceCents / 100) : undefined,
+  discountPercent: plan.discountPercent,
   credits: `${plan.credits} Credits`,
   creditValue: formatCreditValue(plan),
+  bonusCredits: plan.bonusCredits ?? 0,
+  highlight: plan.highlight ?? false,
+  badge: plan.badge,
+  popular: plan.popular ?? false,
   limitations: "No API access, No priority queue",
   checkoutUrl: plan.checkoutUrl,
   productId: plan.productId,
   iconKey: plan.iconKey,
+  features: plan.features ?? [],
 }));
 
 // For homepage teaser, we'll show simplified versions of the main subscription plans

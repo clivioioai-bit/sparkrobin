@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
       if (returnPath) {
         cancelParams.set('return_to', returnPath);
       }
-      const cancelUrl = `${baseUrl}/plans?${cancelParams.toString()}`;
+      const cancelUrl = `${baseUrl}/pricing?${cancelParams.toString()}`;
 
       debug.successUrl = successUrl;
       debug.cancelUrl = cancelUrl;

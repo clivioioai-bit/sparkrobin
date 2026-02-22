@@ -69,7 +69,7 @@ const NotFound = () => {
               </Link>
               <span className="text-muted-foreground">•</span>
               <Link
-                href="/plans"
+                href="/pricing"
                 className="text-sm text-primary hover:underline"
               >
                 Pricing Plans

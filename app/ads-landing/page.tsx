@@ -75,7 +75,7 @@ export default function AdsLandingPage() {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <Link href="/plans">
+            <Link href="/pricing">
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
                 View Sora 3 Pricing
               </Button>

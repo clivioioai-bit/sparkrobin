@@ -66,7 +66,7 @@ const PricingPage = () => {
       <SEOHead 
         title="Pricing Plans - Choose Your AI Video Generation Plan | Sora3"
         description="View Sora3 pricing plans. Choose from Basic, Creator, or Pro plans with monthly and annual options. Create professional videos with Sora3 technology."
-        canonical="https://sora3ai.io/plans"
+        canonical="https://sora3ai.io/pricing"
       />
       <Navigation />
       

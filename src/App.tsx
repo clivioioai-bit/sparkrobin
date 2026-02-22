@@ -20,7 +20,8 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider
       attribute="class"
-      defaultTheme="light"
+      defaultTheme="dark"
+      forcedTheme="dark"
       enableSystem={false}
       disableTransitionOnChange
     >
@@ -35,7 +36,7 @@ const App = () => (
                 {/* /generate route removed; use /text-video or /image-to-video */}
                 <Route path="/dashboard" element={<Account />} />
                 <Route path="/blog" element={<Blog />} />
-                <Route path="/plans" element={<Pricing />} />
+                <Route path="/pricing" element={<Pricing />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

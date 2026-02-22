@@ -6,12 +6,12 @@ export const metadata = {
   title: 'Sora3 Pricing Plans | Choose Your Sora3 Plan',
   description: 'View Sora3 pricing plans. Choose from Basic, Creator, or Pro plans with monthly and annual options. Create professional videos with Sora3 technology.',
   alternates: {
-    canonical: 'https://sora3ai.io/plans',
+    canonical: 'https://sora3ai.io/pricing',
   },
   openGraph: {
     title: 'Sora3 Pricing Plans | Choose Your Sora3 Plan',
     description: 'View Sora3 pricing plans. Choose from Basic, Creator, or Pro plans with monthly and annual options. Start creating with Sora3 today!',
-    url: 'https://sora3ai.io/plans',
+    url: 'https://sora3ai.io/pricing',
     siteName: 'Saro 2',
     images: [
       {
@@ -36,7 +36,7 @@ export const metadata = {
   },
 }
 
-export default function PlansPage() {
+export default function PricingPage() {
   return <Pricing />
 }
 

@@ -11,7 +11,7 @@ const Footer = () => {
     product: [
       { name: t('sora3TextToVideo'), href: `${localePrefix}/text-to-video`, external: false },
       { name: t('sora3ImageToVideo'), href: `${localePrefix}/image-to-video`, external: false },
-      { name: t('sora3Pricing'), href: `${localePrefix}/plans`, external: false },
+      { name: t('sora3Pricing'), href: `${localePrefix}/pricing`, external: false },
       { name: t('sora3Faq'), href: `${localePrefix}/faq`, external: false },
     ],
     company: [
@@ -32,7 +32,7 @@ const Footer = () => {
   } as const;
 
   return (
-    <footer className="gradient-bg dark:gradient-bg-dark border-t border-border/50">
+    <footer className="bg-[#030712] border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-8">
@@ -48,11 +48,11 @@ const Footer = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-2xl font-extrabold gradient-text dark:gradient-text-dark">
+              <span className="text-2xl font-extrabold text-white">
                 {tCommon('brand')}
               </span>
             </div>
-            <p className="text-sm text-muted-foreground mb-6 max-w-sm leading-relaxed">
+            <p className="text-sm text-white/40 mb-6 max-w-sm leading-relaxed">
               {t('description')}
             </p>
             {/* Social Links */}
@@ -61,7 +61,7 @@ const Footer = () => {
                 href="https://x.com/sora3aiteam" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 p-2.5 rounded-lg hover:bg-muted hover:scale-110"
+                className="text-white/40 hover:text-white transition-all duration-300 p-2.5 rounded-lg hover:bg-white/[0.06] hover:scale-110"
                 aria-label={t('socialLabels.twitter')}
               >
                 <Twitter className="w-5 h-5" aria-hidden="true" />
@@ -70,21 +70,21 @@ const Footer = () => {
                 href="https://discord.com/invite/D48J2Fksm" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-[#5865F2] transition-all duration-300 p-2.5 rounded-lg hover:bg-muted hover:scale-110"
+                className="text-white/40 hover:text-[#5865F2] transition-all duration-300 p-2.5 rounded-lg hover:bg-white/[0.06] hover:scale-110"
                 aria-label={t('socialLabels.discord')}
               >
                 <MessageCircle className="w-5 h-5" aria-hidden="true" />
               </a>
               <a 
                 href="#" 
-                className="text-muted-foreground hover:text-primary transition-all duration-300 p-2.5 rounded-lg hover:bg-muted hover:scale-110"
+                className="text-white/40 hover:text-white transition-all duration-300 p-2.5 rounded-lg hover:bg-white/[0.06] hover:scale-110"
                 aria-label={t('socialLabels.github')}
               >
                 <Github className="w-5 h-5" aria-hidden="true" />
               </a>
               <a 
                 href="mailto:support@sora3ai.io" 
-                className="text-muted-foreground hover:text-primary transition-all duration-300 p-2.5 rounded-lg hover:bg-muted hover:scale-110"
+                className="text-white/40 hover:text-white transition-all duration-300 p-2.5 rounded-lg hover:bg-white/[0.06] hover:scale-110"
                 aria-label={t('socialLabels.email')}
               >
                 <Mail className="w-5 h-5" aria-hidden="true" />
@@ -94,13 +94,13 @@ const Footer = () => {
 
           {/* Product Links */}
           <div>
-            <h4 className="font-bold text-foreground mb-5 text-base">{t('product')}</h4>
+            <h4 className="font-bold text-white mb-5 text-base">{t('product')}</h4>
             <ul className="space-y-3">
               {navigation.product.map((item) => (
                 <li key={item.name}>
                   <a 
                     href={item.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 inline-block hover:translate-x-1"
+                    className="text-sm text-white/40 hover:text-white transition-all duration-300 inline-block hover:translate-x-1"
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
                     aria-label={item.name}
@@ -114,12 +114,12 @@ const Footer = () => {
 
           {/* Company Info */}
           <div>
-            <h4 className="font-bold text-foreground mb-5 text-base">{t('company')}</h4>
+            <h4 className="font-bold text-white mb-5 text-base">{t('company')}</h4>
             <div className="space-y-3">
-              <div className="text-sm text-muted-foreground font-semibold">
+              <div className="text-sm text-white/50 font-semibold">
                 Aivido LLC
               </div>
-              <div className="text-sm text-muted-foreground leading-relaxed">
+              <div className="text-sm text-white/40 leading-relaxed">
                 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM
               </div>
             </div>
@@ -127,13 +127,13 @@ const Footer = () => {
 
           {/* Resources Links */}
           <div>
-            <h4 className="font-bold text-foreground mb-5 text-base">{t('resources')}</h4>
+            <h4 className="font-bold text-white mb-5 text-base">{t('resources')}</h4>
             <ul className="space-y-3">
               {navigation.resources.map((item) => (
                 <li key={item.name}>
                   <a 
                     href={item.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 inline-block hover:translate-x-1"
+                    className="text-sm text-white/40 hover:text-white transition-all duration-300 inline-block hover:translate-x-1"
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
                     aria-label={item.name}
@@ -147,13 +147,13 @@ const Footer = () => {
 
           {/* Support Links */}
           <div>
-            <h4 className="font-bold text-foreground mb-5 text-base">{t('support')}</h4>
+            <h4 className="font-bold text-white mb-5 text-base">{t('support')}</h4>
             <ul className="space-y-3">
               {navigation.support.map((item) => (
                 <li key={item.name}>
                   <a 
                     href={item.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 inline-block hover:translate-x-1"
+                    className="text-sm text-white/40 hover:text-white transition-all duration-300 inline-block hover:translate-x-1"
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
                     aria-label={item.name}
@@ -167,11 +167,11 @@ const Footer = () => {
         </div>
 
         {/* Disclaimer Section */}
-        <div className="pt-10 border-t border-border/50 space-y-3 mb-10">
-          <p className="text-xs text-muted-foreground leading-relaxed max-w-4xl">
+        <div className="pt-10 border-t border-white/[0.06] space-y-3 mb-10">
+          <p className="text-xs text-white/30 leading-relaxed max-w-4xl">
             {t('disclaimer')}
           </p>
-          <p className="text-xs text-muted-foreground leading-relaxed max-w-4xl">
+          <p className="text-xs text-white/30 leading-relaxed max-w-4xl">
             {t('poweredBy')}
           </p>
         </div>

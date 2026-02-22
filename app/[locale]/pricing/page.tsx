@@ -33,11 +33,11 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: generateHreflangAlternates('/plans', locale),
+    alternates: generateHreflangAlternates('/pricing', locale),
     openGraph: {
       title,
       description,
-      url: `${baseUrl}${prefix}/plans`,
+      url: `${baseUrl}${prefix}/pricing`,
       siteName: 'Sora3',
       images: [
         {
@@ -63,7 +63,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function PlansPage({
+export default async function PricingPage({
   params
 }: {
   params: Promise<{ locale: string }>

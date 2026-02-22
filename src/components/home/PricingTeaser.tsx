@@ -7,29 +7,25 @@ import { useTranslations } from 'next-intl';
 
 const PricingTeaser = () => {
   const t = useTranslations('pricing');
-  // Use built-in toggle inside SubscriptionPlans; remove local billing toggle
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-      
+    <section className="py-20 sm:py-28 bg-[#0a0f1a]/50 relative overflow-hidden">
+      {/* Subtle top gradient line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-display">
+        {/* Header */}
+        <div className="text-center mb-14 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
             {t('chooseYourPlan')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-white/40 max-w-2xl mx-auto leading-relaxed">
             {t('teaserSubtitle')}
           </p>
-
-          {/* Billing Toggle removed to avoid duplication */}
         </div>
 
-        {/* Pricing Cards via shared component */}
+        {/* Pricing Cards */}
         <SubscriptionPlans
           variant="teaser"
           defaultInterval="year"
@@ -37,10 +33,9 @@ const PricingTeaser = () => {
         />
       </div>
 
-      {/* Auth Modal */}
-      <AuthModal 
-        isOpen={showAuthModal} 
-        onClose={() => setShowAuthModal(false)} 
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
       />
     </section>
   );

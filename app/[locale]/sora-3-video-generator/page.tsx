@@ -162,7 +162,7 @@ export default async function Sora3VideoGeneratorPage({
                   className="text-lg px-8 py-6"
                   asChild
                 >
-                  <Link href="/ru/plans">
+                  <Link href="/ru/pricing">
                     Посмотреть Тарифы
                   </Link>
                 </Button>
@@ -398,7 +398,7 @@ export default async function Sora3VideoGeneratorPage({
               <p>• Лучшее предложение для СНГ рынка</p>
             </div>
             <Button size="lg" className="mt-8" asChild>
-              <Link href="/ru/plans">Посмотреть Тарифы</Link>
+              <Link href="/ru/pricing">Посмотреть Тарифы</Link>
             </Button>
           </div>
         </section>

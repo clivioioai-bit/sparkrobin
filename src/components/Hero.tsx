@@ -55,7 +55,7 @@ const Hero = () => {
                 <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                 Generate Video
               </Button>
-              <Button variant="outline" size="lg" onClick={() => (window.location.pathname = '/plans')}>
+              <Button variant="outline" size="lg" onClick={() => (window.location.pathname = '/pricing')}>
                 <Code className="w-5 h-5 mr-2" />
                 View Pricing
               </Button>

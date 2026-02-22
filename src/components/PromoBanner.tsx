@@ -54,7 +54,7 @@ const PromoBanner = () => {
           {/* Right side - Get Offer button and Close button */}
           <div className="flex items-center space-x-3">
             <Link
-              href="/plans"
+              href="/pricing"
               className="bg-yellow-300 text-gray-900 dark:text-gray-900 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-yellow-200 transition-colors duration-200 shadow-sm"
             >
               Start Creating Sora 3

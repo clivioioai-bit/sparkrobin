@@ -108,7 +108,7 @@ export default function Sora3VideoGeneratorPage() {
                   className="text-lg px-8 py-6"
                   asChild
                 >
-                  <Link href="/plans">
+                  <Link href="/pricing">
                     View Pricing
                   </Link>
                 </Button>
