@@ -91,15 +91,42 @@ export async function POST(request: NextRequest) {
       return userRateLimitResponse;
     }
 
-    const { data: userData, error: userError } = await getSupabaseAdmin()
+    const adminClient = getSupabaseAdmin();
+    const { data: userData, error: userError } = await adminClient
       .from('users')
       .select('id, email')
       .eq('id', user.id)
       .single();
 
+    let ensuredUserData = userData;
     if (userError || !userData) {
-      console.error('[API] checkout user lookup error', userError);
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      console.warn('[API] checkout user lookup missing, trying to provision user record', {
+        userId: user.id,
+        code: (userError as any)?.code,
+        message: (userError as any)?.message,
+      });
+
+      const { data: createdUser, error: createUserError } = await adminClient
+        .from('users')
+        .insert({
+          id: user.id,
+          email: user.email || '',
+          full_name: user.user_metadata?.full_name || user.email || '',
+          subscription_plan: 'free',
+          subscription_status: 'active',
+          credits_balance: 0,
+          credits_total: 0,
+          credits_spent: 0,
+        })
+        .select('id, email')
+        .single();
+
+      if (createUserError || !createdUser) {
+        console.error('[API] checkout user auto-provision failed', createUserError);
+        return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      }
+
+      ensuredUserData = createdUser;
     }
 
     const baseUrl = normalizeBaseUrl(process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin);
@@ -150,16 +177,16 @@ export async function POST(request: NextRequest) {
       debug.successUrl = successUrl;
       debug.cancelUrl = cancelUrl;
       debug.productId = plan.productId;
-      debug.customerId = userData.id;
+      debug.customerId = ensuredUserData.id;
 
       try {
         // 生成唯一的 request_id 用于跟踪支付
-        const requestId = `checkout_${userData.id}_${plan.id}_${Date.now()}`;
+        const requestId = `checkout_${ensuredUserData.id}_${plan.id}_${Date.now()}`;
         
         const checkout = await createCheckoutForProduct({
           productId: plan.productId,
-          customerId: userData.id,
-          customerEmail: userData.email,
+          customerId: ensuredUserData.id,
+          customerEmail: ensuredUserData.email,
           successUrl,
           cancelUrl,
           requestId, // 添加 request_id 用于跟踪
@@ -167,8 +194,8 @@ export async function POST(request: NextRequest) {
             planId: plan.id,
             planCategory: plan.category,
             credits: plan.credits,
-            customerId: userData.id,
-            customerEmail: userData.email,
+            customerId: ensuredUserData.id,
+            customerEmail: ensuredUserData.email,
             requestId, // 也在 metadata 中包含
           },
         });
@@ -304,5 +331,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
 
