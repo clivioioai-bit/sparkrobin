@@ -19,21 +19,6 @@ export default function AnalyticsScripts() {
         `}
       </Script>
       
-      {/* Crisp Chat */}
-      <Script id="crisp-chat" strategy="afterInteractive">
-        {`
-          window.$crisp=[];
-          window.CRISP_WEBSITE_ID="bf1ad54e-3b19-40ea-abe6-e885ff50e719";
-          (function(){
-            d=document;
-            s=d.createElement("script");
-            s.src="https://client.crisp.chat/l.js";
-            s.async=1;
-            d.getElementsByTagName("head")[0].appendChild(s);
-          })();
-        `}
-      </Script>
-      
       {/* Umami Analytics */}
       <Script
         src="https://cloud.umami.is/script.js"
@@ -43,4 +28,3 @@ export default function AnalyticsScripts() {
     </>
   )
 }
-

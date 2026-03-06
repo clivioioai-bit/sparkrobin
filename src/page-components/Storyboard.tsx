@@ -13,7 +13,8 @@ declare global {
 
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import Script from "next/script";
-import { Play, FileText, Sparkles, AlertTriangle, Layers, Smartphone, Download, Film, Target, Star, Quote, CheckCircle, Zap, Users, Clock, ImageIcon, User, Settings, LogOut, ChevronDown } from "lucide-react";
+import { Play, FileText, Sparkles, AlertTriangle, Layers, Smartphone, Download, Film, Target, Star, Quote, CheckCircle, Zap, Users, Clock, ImageIcon, Menu } from "lucide-react";
+import Link from "next/link";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import GenerateSidebar from "@/components/generate/GenerateSidebar";
@@ -29,38 +30,25 @@ import SubscriptionRequiredModal from "@/components/SubscriptionRequiredModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import Link from "next/link";
 import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from 'next-intl';
 import { safeJsonParse } from '@/lib/utils';
 import { getVideoUrl, DEMO_VIDEO_PATHS } from "@/config/demoVideos";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Storyboard = () => {
   const locale = useLocale();
   const t = useTranslations('navigation');
   const tGenerate = useTranslations('generate');
-  const { user, isAuthenticated, signOut } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const { subscription, calculateCredits } = useCredits();
-  const router = useRouter();
-  
-  // Get user display name and initials
-  const getUserDisplayName = useCallback(() => {
-    return user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User';
-  }, [user]);
-  
-  const getUserInitials = useCallback(() => {
-    const name = getUserDisplayName();
-    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
-  }, [getUserDisplayName]);
+  const isMobile = useIsMobile();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   // Storyboard state
   const [storyboardParams, setStoryboardParams] = useState<StoryboardParams>({
@@ -389,104 +377,23 @@ const Storyboard = () => {
           })
         }}
       />
-      <GenerateSidebar />
+      <GenerateSidebar open={isSidebarOpen} onOpenChange={setIsSidebarOpen} />
       
-      <div className="flex-1 transition-all duration-300 pb-16 bg-background" style={{ marginLeft: 'var(--sidebar-width, 240px)' }}>
-        {/* Top Right: Theme Toggle, Login and Start for Free */}
-        <div className="flex justify-end items-center gap-3 px-6 py-4 border-b border-border">
-          {isAuthenticated ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="flex items-center space-x-2 hover:bg-muted/50 transition-colors rounded-full px-2 py-1"
-                >
-                  {/* User Avatar */}
-                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
-                    {getUserInitials()}
-                  </div>
-                  {/* User Name */}
-                  <span className="text-sm font-medium text-foreground hidden sm:block">
-                    {getUserDisplayName()}
-                  </span>
-                  {/* Dropdown Arrow */}
-                  <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <div className="flex items-center space-x-2 p-2">
-                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
-                    {getUserInitials()}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium">{getUserDisplayName()}</span>
-                    <span className="text-xs text-muted-foreground">{user?.email}</span>
-                  </div>
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => router.push('/dashboard')}>
-                  <User className="w-4 h-4 mr-2" />
-                  {t('dashboard')}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => router.push('/dashboard')}>
-                  <Settings className="w-4 h-4 mr-2" />
-                  {t('preferences')}
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => signOut()} className="text-red-600 focus:text-red-600">
-                  <LogOut className="w-4 h-4 mr-2" />
-                  {t('signOut')}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowAuthModal(true)}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                {t('login')}
-              </Button>
-              <Button
-                variant="default"
-                size="sm"
-                onClick={() => setShowAuthModal(true)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                {t('startForFree')}
-              </Button>
-            </>
-          )}
-        </div>
-        
-        {/* Breadcrumb Navigation */}
-        <nav className="pt-8 pb-4 bg-background" aria-label="Breadcrumb">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <li>
-              <Link href="/" className="hover:text-foreground transition-colors">
-                {t('home')}
-              </Link>
-            </li>
-            <li className="flex items-center">
-              <span className="mx-2">/</span>
-              <span className="text-foreground font-medium">{t('storyboard')}</span>
-            </li>
-          </ol>
-        </div>
-      </nav>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Page Title */}
-          <h1 className="text-4xl font-bold text-foreground mb-4 text-center">
-            {t('storyboard')}
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-center">
-            {t('storyboardDescription')}
-          </p>
-          
+      <div
+        className="flex-1 transition-all duration-300 pb-16 bg-background"
+        style={{ marginLeft: !mounted || isMobile ? '0' : 'var(--sidebar-width, 220px)' }}
+      >
+      {mounted && isMobile && (
+        <button
+          onClick={() => setIsSidebarOpen(true)}
+          className="fixed top-[4.25rem] left-3 z-40 p-2 rounded-lg bg-background/80 backdrop-blur-sm border border-border shadow-lg hover:bg-muted transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+          aria-label="Open menu"
+          style={{ touchAction: 'manipulation' }}
+        >
+          <Menu className="w-5 h-5 text-foreground" />
+        </button>
+      )}
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-[5.25rem] md:pt-24">
           {/* Error Display */}
           {Object.keys(errors).length > 0 && (
             <div className="mb-6">
@@ -502,17 +409,32 @@ const Storyboard = () => {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Left Panel: Storyboard Configuration */}
             <div className="space-y-6">
-              <div className="relative bg-card border-2 border-border rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
-                <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
+              <div className="relative bg-card/80 border-2 border-border rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-xl">
+                <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-lg shadow-green-500/50"></div>
-                    <span className="text-sm font-bold text-foreground uppercase tracking-wide">{t('storyboard')}</span>
+                    <Film className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm font-semibold text-foreground">Video Generator</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs">
                     <span className="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded-full font-semibold whitespace-nowrap border border-primary/20">
                       <span>{tGenerate('credits')}: {userCredits}</span>
                     </span>
                   </div>
+                </div>
+
+                {/* Tab switcher */}
+                <div className="flex items-center bg-muted/60 border border-border rounded-xl p-1 mb-5 gap-1">
+                  <Link
+                    href="/sora3-text-to-video"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center text-muted-foreground hover:text-foreground hover:bg-muted"
+                  >
+                    <FileText className="w-4 h-4" />
+                    Single Shot
+                  </Link>
+                  <span className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center bg-background shadow-sm text-primary border border-border/50">
+                    <Layers className="w-4 h-4" />
+                    Storyboard
+                  </span>
                 </div>
 
                 <StoryboardManager
@@ -527,11 +449,11 @@ const Storyboard = () => {
 
             {/* Right Panel: Output */}
             <div className="space-y-6">
-              <div className="bg-card border-2 border-border rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+              <div className="bg-card/80 border-2 border-border rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-xl">
                 <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    <div className={`w-2 h-2 rounded-full ${isGenerating ? 'bg-orange-500 animate-pulse shadow-lg shadow-orange-500/50' : 'bg-gray-400'}`}></div>
-                    <span className="text-sm font-bold text-foreground uppercase tracking-wide">{tGenerate('output')}</span>
+                    <Film className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm font-semibold text-foreground">Video Preview</span>
                   </div>
                   <span className="text-xs font-semibold text-muted-foreground bg-muted px-3 py-1.5 rounded-full border border-border whitespace-nowrap">
                     {t('storyboard')} {tGenerate('video')}
@@ -542,14 +464,14 @@ const Storyboard = () => {
                   <>
                     {/* Generation time info */}
                     {currentJob.status === 'processing' && (
-                      <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                      <div className="mb-4 p-4 bg-primary/10 border border-primary/20 rounded-lg">
                         <div className="flex items-center gap-2">
-                          <div className="animate-spin rounded-full h-4 w-4 border-2 border-blue-600 border-t-transparent"></div>
-                          <span className="text-sm font-medium text-blue-800 dark:text-blue-200">
+                          <div className="animate-spin rounded-full h-4 w-4 border-2 border-primary border-t-transparent"></div>
+                          <span className="text-sm font-medium text-primary">
                             {tGenerate('storyboard.generatingStoryboard')}
                           </span>
                         </div>
-                        <p className="text-xs text-blue-600 dark:text-blue-300 mt-1">
+                        <p className="text-xs text-primary mt-1">
                           {tGenerate('storyboard.generationTimeNote')}
                         </p>
                       </div>
@@ -625,13 +547,23 @@ const Storyboard = () => {
             </div>
           </div>
 
+          {/* Page Title - below the functional area */}
+          <header className="text-center mt-10 mb-8">
+            <h1 className="text-4xl font-bold text-foreground mb-4">
+              {t('storyboard')}
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              {t('storyboardDescription')}
+            </p>
+          </header>
+
           {/* Feature Description */}
           <section className="mt-16 mb-8">
             {/* Pricing Banner */}
             <div className="mb-12">
               <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-4 text-center backdrop-blur-sm">
-                <p className="text-sm text-amber-900 dark:text-amber-100 leading-relaxed font-medium">
-                  <span className="font-bold inline-block">{tGenerate('storyboard.pricing')}:</span> <Link href="/pricing" className="inline-block text-amber-900 dark:text-amber-100 hover:text-amber-700 dark:hover:text-amber-300 underline decoration-amber-300 dark:decoration-amber-500 hover:decoration-amber-500 dark:hover:decoration-amber-300 transition-colors">{tGenerate('storyboard.pricingDescription')}</Link>
+                <p className="text-sm text-foreground leading-relaxed font-medium">
+                  <span className="font-bold inline-block">{tGenerate('storyboard.pricing')}:</span> <Link href="/pricing" className="inline-block text-foreground hover:text-primary underline decoration-primary/30 hover:decoration-primary transition-colors">{tGenerate('storyboard.pricingDescription')}</Link>
                 </p>
               </div>
             </div>
@@ -641,7 +573,7 @@ const Storyboard = () => {
               <h2 className="text-3xl font-bold text-foreground mb-4 text-center">
                 {tGenerate('storyboard.whatIsSora3ProStoryboard')}
               </h2>
-              <Card className="p-8 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-8 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="max-w-4xl mx-auto text-center">
                   <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                     {tGenerate('storyboard.sora3ProStoryboardDescription')}
@@ -672,7 +604,7 @@ const Storyboard = () => {
               <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Sora3 Updates Tweet */}
-                  <Card className="p-4 bg-card hover:shadow-xl transition-shadow duration-300">
+                  <Card className="p-4 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="twitter-tweet">
                       <p lang="en" dir="ltr">
                         2 Sora3 updates:<br/><br/>
@@ -685,7 +617,7 @@ const Storyboard = () => {
                   </Card>
 
                   {/* Dustin Hollywood Tweet */}
-                  <Card className="p-4 bg-card hover:shadow-xl transition-shadow duration-300">
+                  <Card className="p-4 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="twitter-tweet">
                       <p lang="en" dir="ltr">
                         SORA Update!!! IT'S HUGE!! THE STORYBOARD!!!<br/><br/>
@@ -705,7 +637,7 @@ const Storyboard = () => {
                   </Card>
 
                   {/* Cody Baker Tweet */}
-                  <Card className="p-4 bg-card hover:shadow-xl transition-shadow duration-300">
+                  <Card className="p-4 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="twitter-tweet">
                       <p lang="en" dir="ltr">
                         Here's an example of a 25s video I made in Sora3 using the new storyboard feature.<br/><br/>
@@ -726,7 +658,7 @@ const Storyboard = () => {
                 {tGenerate('storyboard.keyFeatures')}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Layers className="w-6 h-6 text-primary" />
@@ -740,7 +672,7 @@ const Storyboard = () => {
                   </div>
                 </Card>
 
-                <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Sparkles className="w-6 h-6 text-primary" />
@@ -754,7 +686,7 @@ const Storyboard = () => {
                   </div>
                 </Card>
 
-                <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Clock className="w-6 h-6 text-primary" />
@@ -768,7 +700,7 @@ const Storyboard = () => {
                   </div>
                 </Card>
 
-                <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <ImageIcon className="w-6 h-6 text-primary" />
@@ -790,7 +722,7 @@ const Storyboard = () => {
                 {tGenerate('storyboard.howToUse')}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl font-bold text-primary">1</span>
                   </div>
@@ -800,7 +732,7 @@ const Storyboard = () => {
                   </p>
                 </Card>
 
-                <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl font-bold text-primary">2</span>
                   </div>
@@ -810,7 +742,7 @@ const Storyboard = () => {
                   </p>
                 </Card>
 
-                <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl font-bold text-primary">3</span>
                   </div>
@@ -820,7 +752,7 @@ const Storyboard = () => {
                   </p>
                 </Card>
 
-                <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl font-bold text-primary">4</span>
                   </div>
@@ -847,17 +779,17 @@ const Storyboard = () => {
               {tGenerate('storyboard.powerfulStoryboardFeatures')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <Layers className="w-10 h-10 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-2">{tGenerate('storyboard.sceneBySceneControl')}</h3>
                 <p className="text-muted-foreground">{tGenerate('storyboard.sceneBySceneControlDescription')}</p>
               </Card>
-              <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <Smartphone className="w-10 h-10 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-2">{tGenerate('storyboard.socialMediaFormats')}</h3>
                 <p className="text-muted-foreground">{tGenerate('storyboard.socialMediaFormatsDescription')}</p>
               </Card>
-              <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <Download className="w-10 h-10 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-2">{tGenerate('storyboard.fastExportShare')}</h3>
                 <p className="text-muted-foreground">{tGenerate('storyboard.fastExportShareDescription')}</p>
@@ -871,7 +803,7 @@ const Storyboard = () => {
               <span suppressHydrationWarning>Sora3 Pro Storyboard Application</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Film className="w-6 h-6 text-primary" />
@@ -887,7 +819,7 @@ const Storyboard = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Target className="w-6 h-6 text-primary" />
@@ -903,7 +835,7 @@ const Storyboard = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Star className="w-6 h-6 text-primary" />
@@ -919,7 +851,7 @@ const Storyboard = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Users className="w-6 h-6 text-primary" />
@@ -943,23 +875,23 @@ const Storyboard = () => {
               What Creators Are Saying
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <Quote className="w-8 h-8 text-primary mb-4" />
                 <p className="text-muted-foreground italic mb-4">"Sora3 Pro Storyboard transformed my content creation. My engagement has skyrocketed!"</p>
                 <p className="font-semibold text-foreground">- Sarah Chen <span className="text-sm text-muted-foreground">(@sarahcreates)</span></p>
-                <p className="text-sm text-green-500 mt-2 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> +300% Engagement</p>
+                <p className="text-sm text-primary mt-2 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> +300% Engagement</p>
               </Card>
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <Quote className="w-8 h-8 text-primary mb-4" />
                 <p className="text-muted-foreground italic mb-4">"The scene-by-scene control is a game-changer. I can now tell complex stories with ease."</p>
                 <p className="font-semibold text-foreground">- Marcus Johnson <span className="text-sm text-muted-foreground">(@marcusvlogs)</span></p>
-                <p className="text-sm text-green-500 mt-2 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> +150% Watch Time</p>
+                <p className="text-sm text-primary mt-2 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> +150% Watch Time</p>
               </Card>
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <Quote className="w-8 h-8 text-primary mb-4" />
                 <p className="text-muted-foreground italic mb-4">"Finally, an AI tool that understands visual consistency across multiple shots. My clients love it!"</p>
                 <p className="font-semibold text-foreground">- Elena Rodriguez <span className="text-sm text-muted-foreground">(@elenabrand)</span></p>
-                <p className="text-sm text-green-500 mt-2 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> 100% Client Satisfaction</p>
+                <p className="text-sm text-primary mt-2 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> 100% Client Satisfaction</p>
               </Card>
             </div>
           </section>
@@ -970,7 +902,7 @@ const Storyboard = () => {
               Frequently Asked Questions
             </h2>
             <div className="max-w-4xl mx-auto space-y-4">
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-sm font-bold text-primary">Q</span>
@@ -988,7 +920,7 @@ const Storyboard = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-sm font-bold text-primary">Q</span>
@@ -1006,7 +938,7 @@ const Storyboard = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-sm font-bold text-primary">Q</span>
@@ -1024,7 +956,7 @@ const Storyboard = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-sm font-bold text-primary">Q</span>
@@ -1042,7 +974,7 @@ const Storyboard = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-sm font-bold text-primary">Q</span>
@@ -1059,7 +991,7 @@ const Storyboard = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-sm font-bold text-primary">Q</span>

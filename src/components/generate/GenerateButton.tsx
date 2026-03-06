@@ -89,7 +89,7 @@ const GenerateButton: React.FC<GenerateButtonProps> = ({
             {t('availableCredits', { count: userCredits })}
           </span>
           {canAfford ? (
-            <span className="text-green-600">{t('sufficientBalance')}</span>
+            <span className="text-primary">{t('sufficientBalance')}</span>
           ) : (
             <span className="text-destructive">{t('insufficientCredits')}</span>
           )}

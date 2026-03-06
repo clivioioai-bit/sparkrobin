@@ -104,7 +104,7 @@ const Sora3Capabilities = () => {
   };
 
   return (
-    <section className="py-24 sm:py-32 lg:py-40 bg-[#030712] relative overflow-hidden">
+    <section className="py-24 sm:py-32 lg:py-40 bg-background relative overflow-hidden">
       {/* Ambient glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
 
@@ -123,7 +123,7 @@ const Sora3Capabilities = () => {
         {/* iOS-style segmented control */}
         <div className="flex justify-center mb-10 sm:mb-12">
           <div className="overflow-x-auto no-scrollbar">
-            <div className="flex gap-1 p-1 rounded-2xl bg-white/[0.04] border border-white/[0.06] backdrop-blur-xl w-max mx-auto">
+            <div className="flex gap-1 p-1 rounded-2xl bg-white/[0.04] border border-border backdrop-blur-xl w-max mx-auto">
               {capabilities.map((cap, i) => (
                 <button
                   key={i}
@@ -143,7 +143,7 @@ const Sora3Capabilities = () => {
         </div>
 
         {/* Main showcase card */}
-        <div className="rounded-3xl overflow-hidden bg-[#0a0f1a] border border-white/[0.06] shadow-[0_32px_80px_rgba(0,0,0,0.6)] max-w-5xl mx-auto">
+        <div className="rounded-3xl overflow-hidden bg-card/80 backdrop-blur-xl border border-border/50 shadow-[0_32px_80px_rgba(0,0,0,0.6)] max-w-5xl mx-auto">
 
           {/* Video */}
           <div
@@ -205,7 +205,7 @@ const Sora3Capabilities = () => {
           </div>
 
           {/* Description panel */}
-          <div className="px-7 sm:px-10 py-7 sm:py-9 bg-[#0a0f1a] border-t border-white/[0.06]">
+          <div className="px-7 sm:px-10 py-7 sm:py-9 bg-card/60 backdrop-blur-xl border-t border-border/50">
             <h3
               className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight"
               style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}

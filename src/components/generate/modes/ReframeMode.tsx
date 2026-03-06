@@ -146,15 +146,15 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
     if (currentModel === 'sora3-pro' || currentModel === 'sora2-pro') {
       const quality = params.quality || 'standard';
       if (quality === 'high') {
-        return params.n_frames === '15' ? 325 : 175;
+        return params.n_frames === '15' ? 650 : 350;
       }
-      return params.n_frames === '15' ? 135 : 75;
+      return params.n_frames === '15' ? 270 : 150;
     }
     if (currentModel === 'sora2') {
-      return params.n_frames === '15' ? 25 : 20;
+      return params.n_frames === '15' ? 50 : 40;
     }
     // Sora3 default
-    return params.n_frames === '15' ? 20 : 15;
+    return params.n_frames === '15' ? 40 : 30;
   };
 
   const creditCost = calculateCredits();
@@ -349,7 +349,7 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-semibold text-foreground">Wan 2.6</span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">NEW</span>
+                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary">NEW</span>
                     </div>
                     <p className="text-xs text-muted-foreground">Fast and efficient image-to-video generation</p>
                   </div>
@@ -361,7 +361,7 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
         </div>
 
         {/* Prompt Section */}
-        <div className="space-y-2 rounded-xl border border-border/70 bg-background/80 p-4 shadow-sm">
+        <div className="space-y-2 rounded-xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-4 shadow-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Label className={fieldLabelClass}>{t('reframeMode.prompt')}</Label>
@@ -385,13 +385,13 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
                 <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-amber-500" />
+                      <Sparkles className="w-5 h-5 text-primary" />
                       {t('reframeMode.promptExamplesTitle')}
                     </DialogTitle>
                     <DialogDescription>{t('reframeMode.promptExamplesDescription')}</DialogDescription>
                   </DialogHeader>
                   <Tabs defaultValue={imagePromptCategories[0]} className="w-full">
-                    <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-muted/70">
+                    <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-white/[0.04] backdrop-blur-sm">
                       {imagePromptCategories.map(category => (
                         <TabsTrigger key={category} value={category} className="text-xs px-3 py-2 !whitespace-normal leading-snug text-center rounded-md min-h-[2.75rem] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                           {getTranslatedCategory(category)}
@@ -418,22 +418,13 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
                   </Tabs>
                 </DialogContent>
               </Dialog>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline" size="sm" className={subtleButtonClass} aria-label="Open Prompt GPT" onClick={() => window.open("https://chatgpt.com/g/g-690c3e49fb308191aa623c67543a766a-sarogpt-ai-video-prompt-script-assistant", "_blank", "noopener,noreferrer")}>
-                    <Sparkles className="w-4 h-4" />
-                    {t('reframeMode.promptGpt')}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent className="max-w-xs text-xs leading-relaxed">{t('reframeMode.promptGptTooltip')}</TooltipContent>
-              </Tooltip>
             </div>
           </div>
           <textarea
             placeholder={t('reframeMode.promptPlaceholder')}
             value={params.prompt || ''}
             onChange={(e) => onChange({ ...params, prompt: e.target.value })}
-            className={`w-full min-h-[80px] p-3 leading-relaxed ${textAreaClass} bg-background`}
+            className={`${textAreaClass} relative z-10`}
           />
         </div>
 

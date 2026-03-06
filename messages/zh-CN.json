@@ -20,8 +20,10 @@
     "haveMoreQuestions": "还有更多问题？我们随时为您提供帮助。"
   },
   "hero": {
-    "badge": "Next-Gen Sora 3 Platform",
+    "badge": "2026 Best Model",
     "discord": "加入 Discord 社区",
+    "brandName": "SORA 3",
+    "tagline": "AI 视频生成器",
     "title": "Sora 3 — 重新定义 AI 视频的可能性",
     "subtitle": "全新的 Sora 3 带来超真实动感、更长场景和电影级细节 — 让创作者在数秒内将纯想象转化为工作室级别的视频。",
     "placeholder": "描述您想要创建的视频...",
@@ -664,6 +666,9 @@
     "brandStatement": "品牌声明",
     "brandStatementDescription": "此服务与 Google、Vertex AI 或 Flow 没有关联或官方关系。",
     "veo3Mode": {
+      "auto": "自动",
+      "fast": "Veo 3.1 快速",
+      "quality": "Veo 3.1 质量",
       "generationPrompt": "生成提示",
       "promptPlaceholder": "一个键盘，其按键由不同类型的糖果制成。打字时发出甜美、清脆的声音。音频：清脆、含糖的打字声，愉快的笑声。",
       "enterImageUrl": "输入图片 URL：",

@@ -44,9 +44,9 @@ const PromoBanner = () => {
           {/* Left side - Gift icon and text */}
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
-              <Gift className="w-5 h-5 text-yellow-300" />
+              <Gift className="w-5 h-5 text-primary-foreground" />
               <span className="font-semibold text-sm sm:text-base">
-                Create Sora 3 Videos Now — <span className="text-yellow-300 font-bold">50% OFF Credits!</span>
+                Create Sora 3 Videos Now — <span className="text-primary-foreground font-bold">50% OFF Credits!</span>
               </span>
             </div>
           </div>
@@ -55,7 +55,7 @@ const PromoBanner = () => {
           <div className="flex items-center space-x-3">
             <Link
               href="/pricing"
-              className="bg-yellow-300 text-gray-900 dark:text-gray-900 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-yellow-200 transition-colors duration-200 shadow-sm"
+              className="bg-primary-foreground text-primary px-4 py-2 rounded-lg font-semibold text-sm hover:bg-primary-foreground/90 transition-colors duration-200 shadow-sm"
             >
               Start Creating Sora 3
             </Link>

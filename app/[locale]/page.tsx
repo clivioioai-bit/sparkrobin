@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import Hero from '@/components/home/Hero'
 import ToolsSection from '@/components/home/ToolsSection'
-import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 // 动态导入非关键组件，延迟加载以提升首屏性能
@@ -288,7 +287,6 @@ export default function HomePage() {
       <Suspense fallback={null}>
         <ErrorHandler />
       </Suspense>
-      <Navigation />
       <main>
         <Hero />
         <ToolsSection />
@@ -312,4 +310,3 @@ export default function HomePage() {
     </>
   )
 }
-

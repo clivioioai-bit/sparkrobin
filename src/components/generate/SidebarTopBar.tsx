@@ -68,7 +68,7 @@ const SidebarTopBar = ({
               <ChevronDown className="w-4 h-4 text-white/40" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56 bg-[#0a0f1a] border-white/[0.08]">
+          <DropdownMenuContent align="end" className="w-56 bg-card border-border">
             <div className="flex items-center space-x-2 p-2">
               <div className="w-8 h-8 rounded-full bg-white/[0.12] flex items-center justify-center text-white text-sm font-medium">
                 {getUserInitials()}
@@ -88,7 +88,7 @@ const SidebarTopBar = ({
               {labels.preferences}
             </DropdownMenuItem>
             <DropdownMenuSeparator className="bg-white/[0.06]" />
-            <DropdownMenuItem onClick={onSignOut} className="text-red-400 focus:text-red-400 hover:bg-white/[0.06] focus:bg-white/[0.06]">
+            <DropdownMenuItem onClick={onSignOut} className="text-destructive focus:text-destructive hover:bg-white/[0.06] focus:bg-white/[0.06]">
               <LogOut className="w-4 h-4 mr-2" />
               {labels.signOut}
             </DropdownMenuItem>
@@ -108,7 +108,7 @@ const SidebarTopBar = ({
             variant="default"
             size="sm"
             onClick={onStart}
-            className="bg-white text-[#030712] hover:bg-white/90 font-medium"
+            className="bg-white text-foreground hover:bg-white/90 font-medium"
           >
             {labels.startForFree}
           </Button>

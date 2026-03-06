@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-import { Menu, X, ImageIcon, FileText, Clapperboard, ArrowUpRight, Home, LayoutDashboard, DollarSign, BookOpen, Eraser } from "lucide-react";
+import { Link, usePathname } from "@/i18n/routing";
+import { Menu, ImageIcon, FileText, Clapperboard, LayoutDashboard, DollarSign, Eraser, Zap, Palette, Wand2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -36,6 +34,16 @@ const navItems: NavItem[] = [
     nameKey: "watermarkRemover",
     href: "/watermark-remover",
     icon: Eraser,
+  },
+  {
+    nameKey: "textToImage",
+    href: "/text-to-image",
+    icon: Palette,
+  },
+  {
+    nameKey: "imageEditor",
+    href: "/image-editor",
+    icon: Wand2,
   },
 ];
 
@@ -103,7 +111,7 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
     if (isMounted && typeof document !== 'undefined' && !isMobile) {
       try {
         const root = document.documentElement;
-        root.style.setProperty('--sidebar-width', isCollapsed ? '60px' : '240px');
+        root.style.setProperty('--sidebar-width', isCollapsed ? '60px' : '220px');
       } catch (error) {
         console.warn("Failed to set sidebar width CSS variable:", error);
       }
@@ -121,85 +129,9 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
   // Sidebar content component (reusable for both mobile and desktop)
   const SidebarContent = () => (
     <>
-      {/* Top Section: Logo and Toggle */}
-      <div className="flex items-center justify-between p-4 border-b border-border">
-        {!isCollapsed && isMounted && (
-          <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg overflow-hidden">
-              <Image
-                src="/logo.jpg"
-                alt="Sora3 Logo"
-                width={32}
-                height={32}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <span className="text-xl font-bold text-primary">Sora3</span>
-          </Link>
-        )}
-        {isCollapsed && !isMobile && (
-          <div className="w-8 h-8 rounded-lg overflow-hidden mx-auto">
-            <Image
-              src="/favicon.jpg"
-              alt="Sora3 Logo"
-              width={32}
-              height={32}
-              className="w-full h-full object-contain"
-            />
-          </div>
-        )}
-        {!isMobile && (
-          <button
-            onClick={toggleCollapse}
-            className={`ml-auto p-2 rounded-lg hover:bg-muted transition-colors ${
-              isCollapsed ? "mx-auto" : ""
-            }`}
-            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          >
-            {isCollapsed ? (
-              <Menu className="w-5 h-5 text-foreground" />
-            ) : (
-              <X className="w-5 h-5 text-foreground" />
-            )}
-          </button>
-        )}
-        {isMobile && onOpenChange && (
-          <button
-            onClick={() => onOpenChange(false)}
-            className="ml-auto p-2 rounded-lg hover:bg-muted transition-colors"
-            aria-label="Close menu"
-          >
-            <X className="w-5 h-5 text-foreground" />
-          </button>
-        )}
-      </div>
       {/* Navigation Items */}
-      <nav className="flex-1 py-4 overflow-y-auto">
-        <div className="space-y-1 px-2">
-          {/* Home Link */}
-          <Link
-            href="/"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${
-              isMounted && currentPath === "/"
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
-            title={isCollapsed ? t('home') : undefined}
-          >
-            <Home
-              className={`flex-shrink-0 ${
-                isCollapsed ? "w-5 h-5 mx-auto" : "w-5 h-5"
-              }`}
-            />
-            {!isCollapsed && isMounted && (
-              <span className="text-sm font-medium">{t('home')}</span>
-            )}
-          </Link>
-
-          {/* Separator */}
-          <div className="my-2 border-t border-border" />
-
-          {/* Other Navigation Items */}
+      <nav className="flex-1 py-3 overflow-y-auto">
+        <div className="space-y-0.5 px-2">
           {navItems.map((item, index) => {
             const Icon = item.icon;
             const isActive = isMounted && currentPath === item.href;
@@ -209,45 +141,27 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
               <Link
                 key={`nav-${index}-${href}`}
                 href={href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${
+                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-150 ${
                   isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
                 title={isCollapsed ? t(item.nameKey) : undefined}
               >
-                <Icon
-                  className={`flex-shrink-0 ${
-                    isCollapsed ? "w-5 h-5 mx-auto" : "w-5 h-5"
-                  }`}
-                />
+                <Icon className={`flex-shrink-0 w-[18px] h-[18px] ${isCollapsed ? 'mx-auto' : ''}`} />
                 {!isCollapsed && isMounted && (
-                  <span className="text-sm font-medium">{t(item.nameKey)}</span>
+                  <span className="text-[13px] font-medium">{t(item.nameKey)}</span>
                 )}
               </Link>
             );
           })}
 
           {/* Separator */}
-          <div className="my-2 border-t border-border" />
+          <div className="my-2 mx-1 border-t border-border/50" />
 
           {/* Additional Navigation Items */}
           {[
-            {
-              nameKey: "dashboard",
-              href: "/dashboard",
-              icon: LayoutDashboard,
-            },
-            {
-              nameKey: "pricing",
-              href: "/pricing",
-              icon: DollarSign,
-            },
-            {
-              nameKey: "blog",
-              href: "/blog",
-              icon: BookOpen,
-            },
+            { nameKey: "dashboard", href: "/dashboard", icon: LayoutDashboard },
           ].map((item) => {
             const Icon = item.icon;
             const isActive = isMounted && currentPath === item.href;
@@ -256,20 +170,16 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${
+                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-150 ${
                   isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
                 title={isCollapsed ? t(item.nameKey) : undefined}
               >
-                <Icon
-                  className={`flex-shrink-0 ${
-                    isCollapsed ? "w-5 h-5 mx-auto" : "w-5 h-5"
-                  }`}
-                />
+                <Icon className={`flex-shrink-0 w-[18px] h-[18px] ${isCollapsed ? 'mx-auto' : ''}`} />
                 {!isCollapsed && isMounted && (
-                  <span className="text-sm font-medium">{t(item.nameKey)}</span>
+                  <span className="text-[13px] font-medium">{t(item.nameKey)}</span>
                 )}
               </Link>
             );
@@ -277,23 +187,20 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
         </div>
       </nav>
 
-      {/* Bottom Section: AI Tools Label and Upgrade Button */}
-      <div className="border-t border-border p-4 space-y-3">
-        {!isCollapsed && isMounted && (
-          <p className="text-xs text-muted-foreground font-medium mb-2">{t('aiTools')}</p>
-        )}
+      {/* Bottom: Pricing Button */}
+      <div className="p-3">
         <Link href="/pricing" className="block">
           <Button
             variant="default"
-            className={`w-full ${isCollapsed ? 'px-2 py-2' : 'py-2.5'} bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]`}
-            title={isCollapsed ? t('upgradeNow') : undefined}
+            className={`w-full ${isCollapsed ? 'px-2' : ''} h-10 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-200`}
+            title={isCollapsed ? t('pricing') : undefined}
           >
             {isCollapsed || !isMounted ? (
-              <ArrowUpRight className="w-5 h-5" />
+              <DollarSign className="w-4 h-4" />
             ) : (
               <>
-                <span className="text-sm font-semibold">{t('upgradeNow')}</span>
-                <ArrowUpRight className="w-4 h-4 ml-2" />
+                <Zap className="w-4 h-4 mr-1.5" />
+                <span className="text-sm">{t('pricing')}</span>
               </>
             )}
           </Button>
@@ -306,7 +213,7 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
   if (isMobile) {
     return (
       <Sheet open={open} onOpenChange={onOpenChange}>
-        <SheetContent side="left" className="w-[280px] sm:w-[320px] p-0 [&>button]:hidden">
+        <SheetContent side="left" className="top-14 h-[calc(100vh-3.5rem)] w-[280px] sm:w-[320px] p-0 [&>button]:hidden">
           <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
           <div className="flex flex-col h-full">
             <SidebarContent />
@@ -319,8 +226,8 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
   // Desktop: Render as fixed sidebar
   return (
     <aside
-      className={`fixed left-0 top-0 h-screen bg-background border-r border-border transition-all duration-300 z-50 flex flex-col ${
-        isCollapsed ? "w-[60px]" : "w-[240px]"
+      className={`fixed left-0 top-14 h-[calc(100vh-3.5rem)] bg-white/[0.03] backdrop-blur-xl border-r border-white/[0.08] transition-all duration-300 z-40 flex flex-col ${
+        isCollapsed ? "w-[60px]" : "w-[220px]"
       }`}
     >
       <SidebarContent />

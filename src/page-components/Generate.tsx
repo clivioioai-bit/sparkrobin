@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useEffect, useRef, useMemo } from "react";
-import { Play, AlertTriangle, Sparkles, Film, Wand2, Music2, Eye, Users, Zap, GraduationCap, Rocket, Palette, Quote, ImageIcon, Upload, History } from "lucide-react";
+import { Play, AlertTriangle, Sparkles, Film, Wand2, Music2, Eye, Users, Zap, GraduationCap, Rocket, Palette, Quote, ImageIcon, Upload, History, FileText } from "lucide-react";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import GenerateSidebar from "@/components/generate/GenerateSidebar";
@@ -32,16 +32,7 @@ import SubscriptionRequiredModal from "@/components/SubscriptionRequiredModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
-
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { User, Settings, LogOut, ChevronDown, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
@@ -78,7 +69,7 @@ const Generate = () => {
   const t = useTranslations('navigation');
   const tGenerate = useTranslations('generate');
   const tPricing = useTranslations('pricing.plans');
-  const { user, isAuthenticated, signOut } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const { subscription, calculateCredits } = useCredits();
   const { hasActiveSubscription } = useSubscription();
   const isMobile = useIsMobile();
@@ -138,16 +129,6 @@ const Generate = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Get user display name and initials
-  const getUserDisplayName = useCallback(() => {
-    return user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User';
-  }, [user]);
-
-  const getUserInitials = useCallback(() => {
-    const name = getUserDisplayName();
-    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
-  }, [getUserDisplayName]);
 
   const routeFromMode = useCallback((mode: GenerationMode) => (
     mode === 'reframe' ? '/sora3-image-to-video' : '/sora3-text-to-video'
@@ -233,12 +214,15 @@ const Generate = () => {
   
   // Handle model change from Veo3Mode or Veo3ImageMode
   const handleModelChange = useCallback(
-    (model: 'sora3' | 'veo3.1') => {
+    (model: 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'storyboard' | 'veo3.1' | 'wan2.6') => {
       if (model === 'veo3.1') {
         // Already in veo3 mode, do nothing
         return;
-      } else if (model === 'sora3') {
-        // Switch to sora3 mode
+      } else {
+        // Switch to sora3 mode with selected model
+        const isProModel = model === 'sora3-pro' || model === 'sora2-pro';
+        const isStoryboard = model === 'storyboard';
+        const isWan26 = model === 'wan2.6';
         const sora3Params: Sora3Params = {
           prompt: modeParams.mode === 'veo3' 
             ? (modeParams.params as Veo3Params).prompt 
@@ -251,7 +235,22 @@ const Generate = () => {
             ? (modeParams.params as ReframeParams).targetAspectRatio === 'Auto' ? '16:9' : (modeParams.params as ReframeParams).targetAspectRatio
             : '16:9',
           duration: 8,
-          model: 'sora3'
+          model,
+          quality: isProModel ? 'standard' : undefined,
+          storyboardParams: isStoryboard
+            ? {
+                shots: [
+                  { prompt: '', duration: 5 },
+                  { prompt: '', duration: 5 },
+                  { prompt: '', duration: 5 },
+                ],
+                n_frames: '25',
+                aspect_ratio: 'landscape',
+              }
+            : undefined,
+          wan26Duration: isWan26 ? '5' : undefined,
+          wan26Resolution: isWan26 ? '1080p' : undefined,
+          wan26MultiShots: isWan26 ? false : undefined,
         };
         sora3ParamsCache.current = sora3Params;
         setModeParams({ mode: 'sora3', params: sora3Params });
@@ -1408,13 +1407,13 @@ const Generate = () => {
       
       <div 
         className="flex-1 transition-all duration-300 pb-16 bg-background" 
-        style={{ marginLeft: isMobile ? '0' : 'var(--sidebar-width, 240px)' }}
+        style={{ marginLeft: !mounted || isMobile ? '0' : 'var(--sidebar-width, 220px)' }}
       >
         {/* Mobile Menu Button */}
         {isMobile && (
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="fixed top-4 left-4 z-40 p-2 rounded-lg bg-background/80 backdrop-blur-sm border border-border shadow-lg hover:bg-muted transition-colors touch-action: manipulation min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="fixed top-[4.25rem] left-3 z-40 p-2 rounded-lg bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] shadow-md hover:bg-white/[0.1] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Open menu"
             style={{ touchAction: 'manipulation' }}
           >
@@ -1422,77 +1421,7 @@ const Generate = () => {
           </button>
         )}
         
-        {/* Top Right: Language Switcher, Theme Toggle, Login and Start for Free */}
-        <div className={`flex justify-end items-center gap-3 px-6 py-4 border-b border-border ${isMobile ? 'pt-16' : ''}`}>
-          <LanguageSwitcher />
-          {isAuthenticated ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="flex items-center space-x-2 hover:bg-muted/50 transition-colors rounded-full px-2 py-1"
-                >
-                  {/* User Avatar */}
-                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
-                    {getUserInitials()}
-                  </div>
-                  {/* User Name */}
-                  <span className="text-sm font-medium text-foreground hidden sm:block">
-                    {getUserDisplayName()}
-                  </span>
-                  {/* Dropdown Arrow */}
-                  <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <div className="flex items-center space-x-2 p-2">
-                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
-                    {getUserInitials()}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium">{getUserDisplayName()}</span>
-                    <span className="text-xs text-muted-foreground">{user?.email}</span>
-                  </div>
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => router.push('/dashboard')}>
-                  <User className="w-4 h-4 mr-2" />
-                  {t('dashboard')}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => router.push('/dashboard')}>
-                  <Settings className="w-4 h-4 mr-2" />
-                  {t('preferences')}
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => signOut()} className="text-red-600 focus:text-red-600">
-                  <LogOut className="w-4 h-4 mr-2" />
-                  {t('signOut')}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowAuthModal(true)}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                {t('login')}
-              </Button>
-              <Button
-                variant="default"
-                size="sm"
-                onClick={() => setShowAuthModal(true)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                {t('startForFree')}
-              </Button>
-            </>
-          )}
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-[5.25rem] md:pt-20">
           {isWatermarkRemover ? (
             <>
               <header className="text-center mb-12">
@@ -1511,9 +1440,12 @@ const Generate = () => {
 
               <div className="grid lg:grid-cols-2 gap-8">
                 <div className="space-y-6">
-                  <div className="bg-card border-2 border-border rounded-2xl p-6 shadow-xl">
+                  <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 shadow-lg shadow-black/5 [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.05)]">
                     <div className="flex items-center justify-between mb-6">
-                      <span className="text-sm font-bold text-foreground uppercase tracking-wide">{tGenerate('watermarkRemover.input')}</span>
+                      <div className="flex items-center gap-2">
+                        <Film className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm font-semibold text-foreground">Video Generator</span>
+                      </div>
                       <span className="text-xs font-semibold text-muted-foreground bg-muted px-3 py-1.5 rounded-full border border-border">{tPricing('credits')}: {userCredits}</span>
                     </div>
 
@@ -1522,14 +1454,14 @@ const Generate = () => {
                       value={videoUrl}
                       onChange={(e) => setVideoUrl(e.target.value)}
                       placeholder={tGenerate('watermarkRemover.videoUrlPlaceholder')}
-                      className={`w-full px-4 py-3 rounded-xl border bg-background ${isValid ? 'border-border' : 'border-red-500'}`}
+                      className={`w-full px-4 py-3 rounded-xl border bg-background ${isValid ? 'border-border' : 'border-destructive'}`}
                     />
                     <p className="text-xs text-muted-foreground mt-2">{tGenerate('watermarkRemover.videoUrlHint')}</p>
 
                     <div className="mt-4 flex gap-3">
                       <button
                         onClick={() => { setVideoUrl(''); setOutputUrl(undefined); setWatermarkError(undefined); }}
-                        className="px-4 py-2 rounded-xl border border-border bg-card hover:bg-muted"
+                        className="px-4 py-2 rounded-xl border border-border bg-card/80 backdrop-blur-xl hover:bg-muted"
                       >{tGenerate('watermarkRemover.reset')}</button>
                       <button
                         onClick={handleWatermarkRun}
@@ -1547,9 +1479,12 @@ const Generate = () => {
                 </div>
 
                 <div className="space-y-6">
-                  <div className="bg-card border-2 border-border rounded-2xl p-6 shadow-xl">
+                  <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 shadow-lg shadow-black/5 [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.05)]">
                     <div className="flex items-center justify-between mb-6">
-                      <span className="text-sm font-bold text-foreground uppercase tracking-wide">{tGenerate('watermarkRemover.output')}</span>
+                      <div className="flex items-center gap-2">
+                        <Film className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm font-semibold text-foreground">Video Preview</span>
+                      </div>
                       <span className="text-xs font-semibold text-muted-foreground bg-muted px-3 py-1.5 rounded-full border border-border">video</span>
                     </div>
 
@@ -1623,13 +1558,13 @@ const Generate = () => {
                       The <strong>sora3 watermark remover</strong> detects and tracks static or moving overlays with AI. It pinpoints logos, text and stickers, then reconstructs pixels so colors, motion, and structure stay true to the original.
                     </p>
                   </div>
-                  <figure className="bg-card border border-border rounded-xl overflow-hidden">
+                  <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden">
                     <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/4.webp" alt="sora3 watermark remover intelligent detection" className="w-full h-auto" loading="lazy" />
                   </figure>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
-                  <figure className="bg-card border border-border rounded-xl overflow-hidden order-2 md:order-1">
+                  <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden order-2 md:order-1">
                     <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/2.webp" alt="sora3 watermark remover frame consistent output" className="w-full h-auto" loading="lazy" />
                   </figure>
                   <div className="order-1 md:order-2">
@@ -1647,7 +1582,7 @@ const Generate = () => {
                       Using AI reconstruction, the <strong>sora3 watermark remover</strong> fills removed regions naturally, restoring textures and color while keeping audio perfectly in sync for clean, high‑quality Sora videos.
                     </p>
                   </div>
-                  <figure className="bg-card border border-border rounded-xl overflow-hidden">
+                  <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden">
                     <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/3.webp" alt="sora3 watermark remover seamless restoration" className="w-full h-auto" loading="lazy" />
                   </figure>
                 </div>
@@ -1656,12 +1591,12 @@ const Generate = () => {
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">What You Can Remove Using Sora3 Watermark Remover</h3>
                 <p className="text-xl text-muted-foreground text-center mb-10">Capabilities of the <strong>sora3 watermark remover</strong></p>
                 <div className="grid md:grid-cols-2 gap-8 mb-14">
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all">
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Sora3</div>
                     <h4 className="text-xl font-semibold mb-2">Remove Watermark from Sora3 Video</h4>
                     <p className="text-muted-foreground">AI tracking clears moving or static overlays while the <strong>sora3 watermark remover</strong> keeps motion smooth and natural.</p>
                   </div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all">
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Sora3 Pro</div>
                     <h4 className="text-xl font-semibold mb-2">Remove Watermark from Sora3 Pro Video</h4>
                     <p className="text-muted-foreground">Optimized for 1080p/cinematic outputs, the <strong>sora3 watermark remover</strong> handles embedded or semi‑transparent overlays.</p>
@@ -1672,17 +1607,17 @@ const Generate = () => {
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">Why remove watermarks</h3>
                 <p className="text-xl text-muted-foreground text-center mb-10">Benefits of using the <strong>sora3 watermark remover</strong></p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all">
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Professional</div>
                     <h4 className="text-xl font-semibold mb-2">Create Clean, Professional Videos</h4>
                     <p className="text-muted-foreground">The <strong>sora3 watermark remover</strong> removes visual noise so clips look polished for marketing, social, and presentations.</p>
                   </div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all">
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Editing</div>
                     <h4 className="text-xl font-semibold mb-2">Prepare Clips for Editing & Reuse</h4>
                     <p className="text-muted-foreground">Start with a clean base—transitions, grading, and effects work better after the <strong>sora3 watermark remover</strong> pass.</p>
                   </div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all">
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Workflow</div>
                     <h4 className="text-xl font-semibold mb-2">Integrate with AI Workflows</h4>
                     <p className="text-muted-foreground">Consistent, watermark‑free outputs make it easy to chain the <strong>sora3 watermark remover</strong> with other AI tools.</p>
@@ -1693,17 +1628,17 @@ const Generate = () => {
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">How to remove for free</h3>
                 <p className="text-xl text-muted-foreground text-center mb-10">Three easy steps with the <strong>sora3 watermark remover</strong></p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all">
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">1</div>
                     <h4 className="text-xl font-semibold mb-2">Paste your Sora URL</h4>
                     <p className="text-muted-foreground">Open the playground and paste your video link; the <strong>sora3 watermark remover</strong> prepares it for AI detection.</p>
                   </div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all">
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">2</div>
                     <h4 className="text-xl font-semibold mb-2">Generate</h4>
                     <p className="text-muted-foreground">Click once— the <strong>sora3 watermark remover</strong> detects and removes logos/text across frames.</p>
                   </div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all">
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">3</div>
                     <h4 className="text-xl font-semibold mb-2">Download & integrate</h4>
                     <p className="text-muted-foreground">Preview and save the clean clip; integrate the <strong>sora3 watermark remover</strong> into your workflow.</p>
@@ -1714,9 +1649,9 @@ const Generate = () => {
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">Use cases</h3>
                 <p className="text-xl text-muted-foreground text-center mb-10">Where the <strong>sora3 watermark remover</strong> fits</p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Publish clean AI videos</h4><p className="text-muted-foreground">Use the <strong>sora3 watermark remover</strong> before posting to social, YouTube, or portfolios.</p></div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Editing & remix</h4><p className="text-muted-foreground">A clean base from the <strong>sora3 watermark remover</strong> avoids artifacts in transitions and effects.</p></div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Automated pipelines</h4><p className="text-muted-foreground">Developers can batch clips through the <strong>sora3 watermark remover</strong> for consistent results.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Publish clean AI videos</h4><p className="text-muted-foreground">Use the <strong>sora3 watermark remover</strong> before posting to social, YouTube, or portfolios.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Editing & remix</h4><p className="text-muted-foreground">A clean base from the <strong>sora3 watermark remover</strong> avoids artifacts in transitions and effects.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Automated pipelines</h4><p className="text-muted-foreground">Developers can batch clips through the <strong>sora3 watermark remover</strong> for consistent results.</p></div>
                 </div>
               </section>
 
@@ -1727,7 +1662,7 @@ const Generate = () => {
                     <h2 className="text-3xl sm:text-4xl font-bold mb-3">Frequently asked <span className="text-primary">questions</span></h2>
                     <p className="text-xl text-muted-foreground">Quick answers about the <strong>sora3 watermark remover</strong></p>
                   </div>
-                  <div className="bg-card border border-border rounded-xl p-6">
+                  <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6">
                     <div className="divide-y divide-border">
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">How do I remove the watermark from a Sora video?</summary>
@@ -1760,20 +1695,6 @@ const Generate = () => {
             </>
           ) : (
             <>
-              {/* Page Header with H1 */}
-              <header className="text-center mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                  {routeFromMode(generationMode) === '/sora3-image-to-video' 
-                    ? tGenerate('imageToVideoPageTitle')
-                    : tGenerate('textToVideoTitle')}
-                </h1>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  {routeFromMode(generationMode) === '/sora3-image-to-video'
-                    ? tGenerate('imageToVideoPageSubtitle')
-                    : tGenerate('textToVideoSubtitle')}
-                </p>
-              </header>
-
               {/* Error Display */}
               {Object.keys(errors).length > 0 && (
                 <div className="mb-6">
@@ -1789,19 +1710,43 @@ const Generate = () => {
               <div className="grid lg:grid-cols-2 gap-8">
               {/* Left Panel: Input */}
               <div className="space-y-6 order-1 lg:order-1">
-                <div className="relative bg-card/95 border border-border/70 rounded-2xl p-6 shadow-lg transition-all duration-200">
+                <div className="relative bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 shadow-lg shadow-black/5 transition-all duration-200 [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.05)]">
                   <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-lg shadow-green-500/50"></div>
-                      <span className="text-sm font-bold text-foreground uppercase tracking-wide">
-                        {mounted ? tGenerate('input') : 'Input'}
-                      </span>
+                      <Film className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-sm font-semibold text-foreground">Video Generator</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
                       <span className="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded-full font-semibold whitespace-nowrap border border-primary/20">
                         <span>{mounted ? `${tGenerate('credits')}: ${userCredits}` : `Credits: ${userCredits}`}</span>
                       </span>
                     </div>
+                  </div>
+
+                  {/* Tab switcher */}
+                  <div className="flex items-center bg-muted/60 border border-border rounded-xl p-1 mb-5 gap-1">
+                    <button
+                      onClick={() => handleModeChange('sora3')}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
+                        modeParams.mode !== 'reframe'
+                          ? 'bg-background shadow-sm text-primary border border-border/50'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                      }`}
+                    >
+                      <FileText className="w-4 h-4" />
+                      Text to Video
+                    </button>
+                    <button
+                      onClick={() => handleModeChange('reframe')}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
+                        modeParams.mode === 'reframe'
+                          ? 'bg-background shadow-sm text-primary border border-border/50'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                      }`}
+                    >
+                      <ImageIcon className="w-4 h-4" />
+                      Image to Video
+                    </button>
                   </div>
 
                   {/* Mode-specific UI */}
@@ -1849,12 +1794,12 @@ const Generate = () => {
 
               {/* Right Panel: Output */}
               <div className="space-y-6 order-2 lg:order-2">
-                <div className="bg-card/95 border border-border/70 rounded-2xl p-6 shadow-lg transition-all duration-200">
+                <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 shadow-lg shadow-black/5 transition-all duration-200 [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.05)]">
                   <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <div className={`w-2 h-2 rounded-full ${isGenerating ? 'bg-orange-500 animate-pulse shadow-lg shadow-orange-500/50' : 'bg-gray-400'}`}></div>
-                      <span className="text-sm font-bold text-foreground uppercase tracking-wide">
-                        {mounted ? tGenerate('output') : 'Output'}
+                      <Film className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-sm font-semibold text-foreground">
+                        Video Preview
                       </span>
                     </div>
                     <span className="text-xs font-semibold text-muted-foreground bg-muted px-3 py-1.5 rounded-full border border-border whitespace-nowrap">
@@ -1936,6 +1881,20 @@ const Generate = () => {
               </div>
             </div>
 
+            {/* Page Header with H1 - below the functional area */}
+            <header className="text-center mt-10 mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                {routeFromMode(generationMode) === '/sora3-image-to-video'
+                  ? tGenerate('imageToVideoPageTitle')
+                  : tGenerate('textToVideoTitle')}
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                {routeFromMode(generationMode) === '/sora3-image-to-video'
+                  ? tGenerate('imageToVideoPageSubtitle')
+                  : tGenerate('textToVideoSubtitle')}
+              </p>
+            </header>
+
             {/* Marketing Content - Only for text-to-video */}
             {routeFromMode(generationMode) === '/sora3-text-to-video' && (
               <>
@@ -1957,7 +1916,7 @@ const Generate = () => {
                     {tGenerate('textToVideoFeaturesTitle')}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Wand2 className="w-6 h-6 text-primary" />
@@ -1971,7 +1930,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Film className="w-6 h-6 text-primary" />
@@ -1985,7 +1944,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Music2 className="w-6 h-6 text-primary" />
@@ -1999,7 +1958,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Eye className="w-6 h-6 text-primary" />
@@ -2021,7 +1980,7 @@ const Generate = () => {
                     {tGenerate('howToUseTitle')}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <span className="text-xl font-bold text-primary">1</span>
                       </div>
@@ -2031,7 +1990,7 @@ const Generate = () => {
                       </p>
                     </Card>
 
-                    <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <span className="text-xl font-bold text-primary">2</span>
                       </div>
@@ -2041,7 +2000,7 @@ const Generate = () => {
                       </p>
                     </Card>
 
-                    <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <span className="text-xl font-bold text-primary">3</span>
                       </div>
@@ -2051,7 +2010,7 @@ const Generate = () => {
                       </p>
                     </Card>
 
-                    <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <span className="text-xl font-bold text-primary">4</span>
                       </div>
@@ -2069,7 +2028,7 @@ const Generate = () => {
                     Who Uses Sora3?
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <Users className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2078,7 +2037,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <Zap className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2087,7 +2046,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <GraduationCap className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2096,7 +2055,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <Rocket className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2105,7 +2064,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <Palette className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2122,37 +2081,37 @@ const Generate = () => {
                     What About the Text to Video with AI Video Generator
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"Sora3 AI Text to Video tool helped me turn my blog posts into engaging videos in minutes. A total game-changer for my content strategy!"</p>
                       <p className="font-semibold text-foreground">- Sophia M., Content Creator</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"As a marketer, I'm amazed by how quickly I can generate ad videos just by typing a few lines. It's fast, smart, and saves me hours."</p>
                       <p className="font-semibold text-foreground">- David K., Digital Marketer</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"I've tried many AI tools, but this one nails the visuals and pacing like a pro. Perfect for my social media campaigns!"</p>
                       <p className="font-semibold text-foreground">- Lena T., Social Media Manager</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"I used Sora3 AI to create a product explainer video. The results looked like I hired a professional team!"</p>
                       <p className="font-semibold text-foreground">- Jason P., Startup Founder</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"Perfect for creating training materials. I simply typed the key points and the AI handled the rest. Super efficient."</p>
                       <p className="font-semibold text-foreground">- Ravi D., HR Specialist</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"From script to video in one step—this tool has transformed how I pitch my creative ideas to clients."</p>
                       <p className="font-semibold text-foreground">- Nina V., Creative Director</p>
@@ -2183,7 +2142,7 @@ const Generate = () => {
                     {tGenerate('imageToVideoFeaturesTitle')}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Upload className="w-6 h-6 text-primary" />
@@ -2197,7 +2156,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Film className="w-6 h-6 text-primary" />
@@ -2211,7 +2170,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Music2 className="w-6 h-6 text-primary" />
@@ -2225,7 +2184,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Eye className="w-6 h-6 text-primary" />
@@ -2247,7 +2206,7 @@ const Generate = () => {
                     {tGenerate('imageToVideoHowToUseTitle')}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <span className="text-xl font-bold text-primary">1</span>
                       </div>
@@ -2257,7 +2216,7 @@ const Generate = () => {
                       </p>
                     </Card>
 
-                    <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <span className="text-xl font-bold text-primary">2</span>
                       </div>
@@ -2267,7 +2226,7 @@ const Generate = () => {
                       </p>
                     </Card>
 
-                    <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <span className="text-xl font-bold text-primary">3</span>
                       </div>
@@ -2277,7 +2236,7 @@ const Generate = () => {
                       </p>
                     </Card>
 
-                    <Card className="p-6 text-center bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 text-center bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <span className="text-xl font-bold text-primary">4</span>
                       </div>
@@ -2295,7 +2254,7 @@ const Generate = () => {
                     {tGenerate('whoUsesTitle')}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <Users className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2304,7 +2263,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <Zap className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2313,7 +2272,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <GraduationCap className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2322,7 +2281,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <Rocket className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2331,7 +2290,7 @@ const Generate = () => {
                       </div>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <div className="flex items-start gap-4">
                         <Palette className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                         <div>
@@ -2348,37 +2307,37 @@ const Generate = () => {
                     {tGenerate('imageToVideoTestimonialsTitle')}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"{tGenerate('imageToVideoTestimonial1.quote')}"</p>
                       <p className="font-semibold text-foreground">- {tGenerate('imageToVideoTestimonial1.author')}</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"{tGenerate('imageToVideoTestimonial2.quote')}"</p>
                       <p className="font-semibold text-foreground">- {tGenerate('imageToVideoTestimonial2.author')}</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"{tGenerate('imageToVideoTestimonial3.quote')}"</p>
                       <p className="font-semibold text-foreground">- {tGenerate('imageToVideoTestimonial3.author')}</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"{tGenerate('imageToVideoTestimonial4.quote')}"</p>
                       <p className="font-semibold text-foreground">- {tGenerate('imageToVideoTestimonial4.author')}</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"{tGenerate('imageToVideoTestimonial5.quote')}"</p>
                       <p className="font-semibold text-foreground">- {tGenerate('imageToVideoTestimonial5.author')}</p>
                     </Card>
 
-                    <Card className="p-6 bg-card hover:shadow-xl transition-shadow duration-300">
+                    <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
                       <p className="text-muted-foreground italic mb-4">"{tGenerate('imageToVideoTestimonial6.quote')}"</p>
                       <p className="font-semibold text-foreground">- {tGenerate('imageToVideoTestimonial6.author')}</p>
@@ -2391,8 +2350,8 @@ const Generate = () => {
             {/* Pricing Banner */}
             <div className="mt-8 mb-8">
               <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-4 text-center backdrop-blur-sm">
-                <p className="text-sm text-amber-900 dark:text-amber-100 leading-relaxed font-medium">
-                  <Link href="/pricing" className="inline-block text-amber-900 dark:text-amber-100 hover:text-amber-700 dark:hover:text-amber-300 underline decoration-amber-300 dark:decoration-amber-500 hover:decoration-amber-500 dark:hover:decoration-amber-300 transition-colors">{tGenerate('pricingBanner')}</Link>
+                <p className="text-sm text-foreground leading-relaxed font-medium">
+                  <Link href="/pricing" className="inline-block text-primary hover:text-primary/80 underline decoration-primary/30 hover:decoration-primary/50 transition-colors">{tGenerate('pricingBanner')}</Link>
                 </p>
               </div>
             </div>
@@ -2409,7 +2368,7 @@ const Generate = () => {
               <div className="max-w-4xl mx-auto space-y-6">
                 {routeFromMode(generationMode) === '/sora3-text-to-video' ? (
                   <>
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         What is the Text to Video tool?
                       </h3>
@@ -2420,7 +2379,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         Do I need any video editing or design experience to use the Text to Video tool?
                       </h3>
@@ -2431,7 +2390,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         Can I customize the video style or theme with the Text to Video tool?
                       </h3>
@@ -2442,7 +2401,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         How long does it take to generate a video using Text to Video?
                       </h3>
@@ -2453,7 +2412,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         What kind of videos can I create with the Text to Video tool?
                       </h3>
@@ -2464,7 +2423,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         Can I use Text to Video generated videos for commercial purposes?
                       </h3>
@@ -2477,7 +2436,7 @@ const Generate = () => {
                   </>
                 ) : routeFromMode(generationMode) === '/sora3-image-to-video' ? (
                   <>
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         {tGenerate('faqImageToVideo.whatIsTool.question')}
                       </h3>
@@ -2488,7 +2447,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         {tGenerate('faqImageToVideo.needExperience.question')}
                       </h3>
@@ -2499,7 +2458,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         {tGenerate('faqImageToVideo.imageTypes.question')}
                       </h3>
@@ -2510,7 +2469,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         {tGenerate('faqImageToVideo.howLong.question')}
                       </h3>
@@ -2521,7 +2480,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         {tGenerate('faqImageToVideo.motionType.question')}
                       </h3>
@@ -2532,7 +2491,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         {tGenerate('faqImageToVideo.commercialUse.question')}
                       </h3>
@@ -2545,7 +2504,7 @@ const Generate = () => {
                   </>
                 ) : (
                   <>
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         What is Sora3 AI Video Generator?
                       </h3>
@@ -2556,7 +2515,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         Is Sora3 video generator free to use?
                       </h3>
@@ -2567,7 +2526,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         How long does it take to generate a video with Sora3?
                       </h3>
@@ -2578,7 +2537,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         What video formats and resolutions does Sora3 support?
                       </h3>
@@ -2589,7 +2548,7 @@ const Generate = () => {
                       </div>
                     </div>
 
-                    <div className="bg-card border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
                         Can I use Sora3 videos for commercial purposes?
                       </h3>

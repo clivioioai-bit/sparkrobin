@@ -170,16 +170,16 @@ const PromptForm: React.FC<PromptFormProps> = ({
               </p>
               
               {/* Warning about photorealistic people */}
-              <div className="mt-3 p-2 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded text-left">
-                <p className="text-xs text-amber-800 dark:text-amber-200 font-medium">
+              <div className="mt-3 p-2 bg-primary/5 border border-primary/20 rounded text-left">
+                <p className="text-xs text-primary font-medium">
                   ⚠️ Important: Do not upload images containing:
                 </p>
-                <ul className="text-xs text-amber-700 dark:text-amber-300 mt-1 ml-4 list-disc space-y-0.5">
+                <ul className="text-xs text-primary/80 mt-1 ml-4 list-disc space-y-0.5">
                   <li>Photorealistic people or selfies</li>
                   <li>Human portraits or faces</li>
                   <li>Real photographs of individuals</li>
                 </ul>
-                <p className="text-xs text-amber-700 dark:text-amber-300 mt-1.5">
+                <p className="text-xs text-primary/80 mt-1.5">
                   ✅ Safe to use: Cartoons, landscapes, animals, 3D renders, abstract art
                 </p>
               </div>

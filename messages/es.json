@@ -20,8 +20,10 @@
     "haveMoreQuestions": "¿Tienes más preguntas? Estamos aquí para ayudar."
   },
   "hero": {
-    "badge": "Next-Gen Sora 3 Platform",
+    "badge": "2026 Best Model",
     "discord": "Únete a la comunidad Discord",
+    "brandName": "SORA 3",
+    "tagline": "Generador de Video IA",
     "title": "Sora 3 — Redefiniendo lo que el video por IA puede ser",
     "subtitle": "El nuevo Sora 3 ofrece movimiento ultrarealista, escenas más largas y detalles cinematográficos — finalmente permitiendo a los creadores convertir la pura imaginación en video de calidad de estudio en segundos.",
     "placeholder": "Describe el video que quieres crear...",
@@ -664,6 +666,9 @@
     "brandStatement": "Brand Statement",
     "brandStatementDescription": "This service has no affiliation or official relationship with Google, Vertex AI, or Flow.",
     "veo3Mode": {
+      "auto": "Auto",
+      "fast": "Veo 3.1 Fast",
+      "quality": "Veo 3.1 Quality",
       "generationPrompt": "Generation prompt",
       "promptPlaceholder": "A keyboard whose keys are made of different types of candy. Typing makes sweet, crunchy sounds. Audio: Crunchy, sugary typing sounds, delighted giggles.",
       "enterImageUrl": "Enter image URL:",

@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import GenerationHistory from "@/components/GenerationHistory";
@@ -66,8 +65,6 @@ const Account = () => {
   return (
     <ProtectedRoute>
       <div className="min-h-screen bg-background">
-        <Navigation />
-        
         <div className="pt-20 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -108,8 +105,8 @@ const Account = () => {
             
             <Card className="p-6">
               <div className="flex items-center space-x-3">
-                <div className="p-2 bg-green-500/10 rounded-lg">
-                  <Crown className="w-5 h-5 text-green-500" />
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Crown className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-lg font-semibold">{userData.plan}</p>
@@ -157,7 +154,7 @@ const Account = () => {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm">Status</span>
-                      <Badge variant="outline" className="text-green-500 border-green-500">
+                      <Badge variant="outline" className="text-primary border-primary">
                         {userData.subscriptionStatus === 'active' ? 'Active' : userData.subscriptionStatus}
                       </Badge>
                     </div>

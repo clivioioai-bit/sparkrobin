@@ -11,6 +11,32 @@ export class CheckoutError extends Error {
   }
 }
 
+async function parseErrorPayload(response: Response): Promise<{
+  payload: any;
+  rawText: string;
+  parseError?: string;
+}> {
+  const contentType = response.headers.get('content-type') || '';
+  const rawText = await response.text();
+
+  if (!rawText) {
+    return { payload: {}, rawText };
+  }
+
+  try {
+    if (contentType.includes('application/json') || rawText.trim().startsWith('{') || rawText.trim().startsWith('[')) {
+      return { payload: JSON.parse(rawText), rawText };
+    }
+    return { payload: {}, rawText, parseError: `Non-JSON response: ${contentType || 'unknown content-type'}` };
+  } catch (error) {
+    return {
+      payload: {},
+      rawText,
+      parseError: error instanceof Error ? error.message : String(error),
+    };
+  }
+}
+
 export async function createCheckoutSession(planId: string): Promise<CheckoutResult> {
   const response = await fetch('/api/checkout', {
     method: 'POST',
@@ -24,12 +50,7 @@ export async function createCheckoutSession(planId: string): Promise<CheckoutRes
   }
 
   if (response.status === 429) {
-    let payload: any = {};
-    try {
-      payload = await safeJsonParse(response);
-    } catch {
-      // If parsing fails, use defaults
-    }
+    const { payload } = await parseErrorPayload(response);
     const retryAfter = payload.retryAfter || 60;
     throw new CheckoutError(
       `Too many requests. Please wait ${retryAfter} seconds before trying again.`,
@@ -39,23 +60,23 @@ export async function createCheckoutSession(planId: string): Promise<CheckoutRes
   }
 
   if (!response.ok) {
-    let payload: any = {};
-    try {
-      payload = await safeJsonParse(response);
-    } catch {
-      // If parsing fails, use defaults
-    }
+    const { payload, rawText, parseError } = await parseErrorPayload(response);
     const message = (payload && (payload.error || payload.message)) || 'Failed to create checkout session';
-    
-    // 在控制台输出详细错误信息，方便调试
-    console.error('[Checkout Error]', {
+
+    // Always print structured fields + raw body preview for diagnosis
+    const errorDebug = {
       status: response.status,
       planId,
       error: payload.error,
       message: payload.message,
+      code: payload.code,
       debug: payload.debug,
-    });
-    
+      parseError,
+      contentType: response.headers.get('content-type'),
+      rawBodyPreview: rawText?.slice(0, 500),
+    };
+    console.error('[Checkout Error]', errorDebug);
+
     const error = new CheckoutError(message, 'CHECKOUT_FAILED', payload);
     
     // 提供用户友好的错误消息
@@ -63,7 +84,7 @@ export async function createCheckoutSession(planId: string): Promise<CheckoutRes
       error.message = 'Payment service is temporarily unavailable. Please contact support@sora3ai.io for assistance.';
     } else if (message.includes('安全错误') || message.includes('Security')) {
       error.message = 'Payment service configuration error. Please contact support@sora3ai.io.';
-    } else if (message.includes('Plan not found') || message.includes('Plan is not configured')) {
+    } else if (message.includes('Plan not found') || message.includes('Plan is not configured') || message.includes('productId')) {
       error.message = 'This plan is not available. Please select a different plan or contact support.';
     } else if (message.includes('Too Many Requests') || message.includes('rate limit')) {
       error.message = 'Too many requests. Please wait a moment and try again.';

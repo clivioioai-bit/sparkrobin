@@ -20,8 +20,10 @@
     "haveMoreQuestions": "Have more questions? We're here to help."
   },
   "hero": {
-    "badge": "Next-Gen Sora 3 Platform",
+    "badge": "2026 Best Model",
     "discord": "Join Discord Community",
+    "brandName": "SORA 3",
+    "tagline": "AI Video Generator",
     "title": "Sora 3 — Redefining What AI Video Can Be",
     "subtitle": "The new Sora 3 delivers ultra-realistic motion, longer scenes, and cinematic detail — finally letting creators turn pure imagination into studio-grade video in seconds.",
     "placeholder": "Describe the video you want to create...",
@@ -676,6 +678,7 @@
     "brandStatement": "Brand Statement",
     "brandStatementDescription": "This service has no affiliation or official relationship with Google, Vertex AI, or Flow.",
     "veo3Mode": {
+      "auto": "Auto",
       "fast": "Veo 3.1 Fast",
       "quality": "Veo 3.1 Quality",
       "generationPrompt": "Generation prompt",

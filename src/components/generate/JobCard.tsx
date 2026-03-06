@@ -48,7 +48,7 @@ const JobCard: React.FC<JobCardProps> = ({
       case 'RUNNING':
         return <Clock className="w-4 h-4 text-primary animate-spin" />;
       case 'SUCCEEDED':
-        return <CheckCircle className="w-4 h-4 text-green-600" />;
+        return <CheckCircle className="w-4 h-4 text-primary" />;
       case 'FAILED':
         return <AlertCircle className="w-4 h-4 text-destructive" />;
       case 'CANCELED':

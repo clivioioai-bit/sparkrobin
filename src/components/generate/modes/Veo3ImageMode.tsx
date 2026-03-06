@@ -4,8 +4,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { ReframeParams } from '@/types/generation-modes';
-import { Sparkles, Wand2, Maximize2, Square, Info, X, Upload as UploadIcon } from 'lucide-react';
+import { Sparkles, Wand2, Maximize2, Square, Info, X, Upload as UploadIcon, ChevronUp } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { useTranslations } from 'next-intl';
 import {
   dropzoneClass,
@@ -13,6 +14,7 @@ import {
   helperTextClass,
   primaryActionButtonClass,
   segmentedButtonClass,
+  selectTriggerClass,
   textAreaClass,
   textInputClass,
   workspaceSectionClass,
@@ -33,6 +35,27 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
   isGenerating
 }) => {
   const t = useTranslations('generate');
+  const selectValue = `veo3.1-${params.veo3SubModel || 'veo3_fast'}`;
+
+  const handleModelChange = (value: string) => {
+    if (value === 'veo3.1-veo3_fast' || value === 'veo3.1-veo3') {
+      onChange({
+        ...params,
+        model: 'veo3.1',
+        veo3SubModel: value === 'veo3.1-veo3' ? 'veo3' : 'veo3_fast',
+      });
+      return;
+    }
+    onChange({
+      ...params,
+      model: value as ReframeParams['model'],
+      veo3SubModel: undefined,
+      seeds: undefined,
+      startFrame: undefined,
+      endFrame: undefined,
+    });
+  };
+
   const handleStartFrameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -58,6 +81,35 @@ const Veo3ImageMode: React.FC<Veo3ImageModeProps> = ({
   return (
     <TooltipProvider delayDuration={120}>
       <div className="space-y-6">
+        {/* Model */}
+        <div className={workspaceSectionClass}>
+          <Label className={fieldLabelClass}>{t('reframeMode.model')}</Label>
+          <Select value={selectValue} onValueChange={handleModelChange}>
+            <SelectTrigger className={selectTriggerClass}>
+              <div className="flex items-center gap-3 w-full">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
+                  <img src="/images/google_veo_logo.jpeg" alt="Veo model icon" width={32} height={32} className="w-full h-full object-contain" />
+                </div>
+                <div className="flex-1 text-left">
+                  <span className="font-semibold text-foreground">
+                    {(params.veo3SubModel || 'veo3_fast') === 'veo3' ? t('veo3Mode.quality') : t('veo3Mode.fast')}
+                  </span>
+                </div>
+                <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+              </div>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="sora3">{t('reframeMode.sora3')}</SelectItem>
+              <SelectItem value="sora3-pro">{t('reframeMode.sora3Pro')}</SelectItem>
+              <SelectItem value="sora2">{t('reframeMode.sora2')}</SelectItem>
+              <SelectItem value="sora2-pro">{t('reframeMode.sora2Pro')}</SelectItem>
+              <SelectItem value="veo3.1-veo3_fast">{t('veo3Mode.fast')}</SelectItem>
+              <SelectItem value="veo3.1-veo3">{t('veo3Mode.quality')}</SelectItem>
+              <SelectItem value="wan2.6">Wan 2.6</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
         {/* Image Upload Section - Start Frame and End Frame */}
         <div className={workspaceSectionClass}>
           <Label className={fieldLabelClass}>

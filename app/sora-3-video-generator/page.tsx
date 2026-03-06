@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Play, Sparkles, Film, Image as ImageIcon, Clapperboard } from 'lucide-react'
-import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import SEOHead from '@/components/SEOHead'
 
@@ -60,7 +59,6 @@ export default function Sora3VideoGeneratorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {typeof window !== 'undefined' && <Navigation />}
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative py-24 sm:py-32 bg-gradient-to-b from-background via-background to-muted/20">
@@ -209,5 +207,4 @@ export default function Sora3VideoGeneratorPage() {
     </>
   )
 }
-
 

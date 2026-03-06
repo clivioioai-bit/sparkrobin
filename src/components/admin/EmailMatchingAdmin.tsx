@@ -254,12 +254,12 @@ export default function EmailMatchingAdmin() {
                         <div className="flex justify-between items-start">
                           <div className="space-y-2">
                             <div className="font-medium">{email.email}</div>
-                            <div className="text-sm text-gray-600">
+                            <div className="text-sm text-muted-foreground">
                               金额: {email.amount} {email.currency} | 
                               时间: {new Date(email.created_at).toLocaleString()}
                             </div>
                             {email.payment_id && (
-                              <div className="text-sm text-gray-500">
+                              <div className="text-sm text-muted-foreground">
                                 支付ID: {email.payment_id}
                               </div>
                             )}
@@ -358,11 +358,11 @@ export default function EmailMatchingAdmin() {
                       <div className="flex justify-between items-start">
                         <div className="space-y-2">
                           <div className="font-medium">{alias.alias_email}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="text-sm text-muted-foreground">
                             用户: {alias.users.full_name} ({alias.users.email})
                           </div>
                           {alias.notes && (
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm text-muted-foreground">
                               备注: {alias.notes}
                             </div>
                           )}
@@ -410,12 +410,12 @@ export default function EmailMatchingAdmin() {
                       <div className="flex justify-between items-start">
                         <div className="space-y-2">
                           <div className="font-medium">{log.searched_email}</div>
-                          <div className="text-sm text-gray-600">
+                          <div className="text-sm text-muted-foreground">
                             事件: {log.webhook_event_type} | 
                             时间: {new Date(log.created_at).toLocaleString()}
                           </div>
                           {log.matched_email && (
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm text-muted-foreground">
                               匹配到: {log.matched_email}
                             </div>
                           )}

@@ -65,7 +65,7 @@ const FaqTeaser = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#030712]">
+    <section className="py-20 sm:py-28 bg-background">
       {/* Subtle top gradient line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 

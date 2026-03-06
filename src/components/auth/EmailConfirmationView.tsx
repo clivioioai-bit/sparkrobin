@@ -14,7 +14,7 @@ export function EmailConfirmationView({ mode, email, onBack }: EmailConfirmation
   return (
     <div className="space-y-6 text-center">
       <div className="flex justify-center">
-        <CheckCircle className="w-16 h-16 text-green-500" />
+        <CheckCircle className="w-16 h-16 text-primary" />
       </div>
       <div className="space-y-2">
         <p className="text-lg font-medium">

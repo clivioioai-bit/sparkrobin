@@ -29,6 +29,36 @@ const toUsdCents = (value: number) => Math.round(value * 100);
 
 const readEnv = (key: string) => process.env[key];
 
+const normalizeEnvValue = (value?: string) => {
+  if (!value) return undefined;
+  const trimmed = value.trim();
+  if (!trimmed) return undefined;
+  return trimmed;
+};
+
+// Guard against placeholder values copied from templates
+const normalizeProductId = (value?: string) => {
+  const normalized = normalizeEnvValue(value);
+  if (!normalized) return undefined;
+
+  if (
+    normalized.startsWith('prod_public_') ||
+    normalized.includes('your_') ||
+    normalized.includes('placeholder')
+  ) {
+    return undefined;
+  }
+
+  return normalized;
+};
+
+const normalizeCheckoutUrl = (value?: string) => {
+  const normalized = normalizeEnvValue(value);
+  if (!normalized) return undefined;
+  if (!/^https?:\/\//i.test(normalized)) return undefined;
+  return normalized;
+};
+
 const resolvePlanConfig = (
   baseId: string,
   billing: 'MONTHLY' | 'YEARLY',
@@ -36,8 +66,8 @@ const resolvePlanConfig = (
 ) => {
   const envKeyRoot = `NEXT_PUBLIC_CREEM_PLAN_${baseId}_${billing}${envSuffix ?? ''}`;
 
-  const checkoutUrl = readEnv(`${envKeyRoot}_URL`);
-  const productId = readEnv(`${envKeyRoot}_ID`);
+  const checkoutUrl = normalizeCheckoutUrl(readEnv(`${envKeyRoot}_URL`));
+  const productId = normalizeProductId(readEnv(`${envKeyRoot}_ID`));
 
   return { checkoutUrl, productId };
 };
@@ -195,8 +225,8 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     credits: 800,
     bonusCredits: 0,
     description: 'Pay once, use anytime — credits never expire',
-    checkoutUrl: process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_URL,
-    productId: process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_ID,
+    checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_URL),
+    productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_ID),
     iconKey: 'zap' as const,
   },
   {
@@ -213,8 +243,8 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     popular: true,
     highlight: true,
     description: 'Pay once, use anytime — credits never expire',
-    checkoutUrl: process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_URL,
-    productId: process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_ID,
+    checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_URL),
+    productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_ID),
     iconKey: 'crown' as const,
   },
   {
@@ -229,8 +259,8 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     bonusCredits: 300,
     badge: 'Best Value',
     description: 'Pay once, use anytime — credits never expire',
-    checkoutUrl: process.env.NEXT_PUBLIC_CREEM_PACK_DEV_URL,
-    productId: process.env.NEXT_PUBLIC_CREEM_PACK_DEV_ID,
+    checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_DEV_URL),
+    productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_DEV_ID),
     iconKey: 'building' as const,
     features: ['1-on-1 24/7 customer support'],
   },

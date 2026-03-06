@@ -74,8 +74,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 根据 n_frames 计算积分：10s = 15 credits, 15s = 20 credits
-    const creditCost = n_frames === '15' ? 20 : 15;
+    // 根据 n_frames 计算积分：10s = 30 credits, 15s = 40 credits
+    const creditCost = n_frames === '15' ? 40 : 30;
 
     try {
       await debitCredits(userId, creditCost, 'video_generation', {

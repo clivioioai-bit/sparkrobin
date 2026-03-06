@@ -5,7 +5,6 @@ import { generateHreflangAlternates } from '@/utils/hreflang'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Play, Sparkles, Film, Image as ImageIcon, Clapperboard, Check } from 'lucide-react'
-import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const dynamic = 'force-dynamic'
@@ -119,7 +118,6 @@ export default async function Sora3VideoGeneratorPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {typeof window !== 'undefined' && <Navigation />}
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative py-24 sm:py-32 bg-gradient-to-b from-background via-background to-muted/20">
@@ -440,4 +438,3 @@ export default async function Sora3VideoGeneratorPage({
     </>
   )
 }
-

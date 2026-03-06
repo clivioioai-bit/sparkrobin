@@ -238,12 +238,12 @@ const OptimizedVideo: React.FC<OptimizedVideoProps> = ({
   if (hasError) {
     return (
       <div 
-        className={`flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg ${className}`}
+        className={`flex items-center justify-center bg-muted rounded-lg ${className}`}
         style={style}
       >
         <div className="text-center space-y-2 p-4">
-          <AlertCircle className="w-8 h-8 text-red-500 mx-auto" />
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <AlertCircle className="w-8 h-8 text-destructive mx-auto" />
+          <p className="text-sm text-muted-foreground">
             Failed to load video
           </p>
           <button
@@ -254,7 +254,7 @@ const OptimizedVideo: React.FC<OptimizedVideoProps> = ({
                 videoRef.current.load();
               }
             }}
-            className="text-xs text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+            className="text-xs text-primary hover:text-primary/80"
           >
             Try again
           </button>
@@ -293,10 +293,10 @@ const OptimizedVideo: React.FC<OptimizedVideoProps> = ({
       
       {/* Loading overlay */}
       {isLoading && !hasError && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <div className="absolute inset-0 flex items-center justify-center bg-muted rounded-lg">
           <div className="text-center space-y-2">
-            <div className="animate-spin rounded-full h-8 w-8 border-2 border-blue-500 border-t-transparent mx-auto" />
-            <p className="text-sm text-gray-600 dark:text-gray-400">Loading video...</p>
+            <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent mx-auto" />
+            <p className="text-sm text-muted-foreground">Loading video...</p>
           </div>
         </div>
       )}

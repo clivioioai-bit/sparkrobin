@@ -20,8 +20,10 @@
     "haveMoreQuestions": "他にご質問がありますか？お手伝いします。"
   },
   "hero": {
-    "badge": "Next-Gen Sora 3 Platform",
+    "badge": "2026 Best Model",
     "discord": "Discordコミュニティに参加",
+    "brandName": "SORA 3",
+    "tagline": "AI動画ジェネレーター",
     "title": "Sora 3 — AI動画の可能性を再定義",
     "subtitle": "新しい Sora 3 は、超リアルな動き、より長いシーン、映画的な細部を実現 — ついにクリエイターが純粋な想像力を数秒でスタジオ品質の動画に変えることができます。",
     "placeholder": "作成したい動画を説明してください...",
@@ -665,6 +667,9 @@
     "brandStatement": "ブランド声明",
     "brandStatementDescription": "このサービスは、Google、Vertex AI、またはFlowとの提携や公式関係はありません。",
     "veo3Mode": {
+      "auto": "自動",
+      "fast": "Veo 3.1 Fast",
+      "quality": "Veo 3.1 Quality",
       "generationPrompt": "生成プロンプト",
       "promptPlaceholder": "キーがさまざまな種類のキャンディで作られたキーボード。タイピングすると甘く、カリカリした音がします。オーディオ: カリカリした、砂糖のようなタイピング音、嬉しそうな笑い声。",
       "enterImageUrl": "画像URLを入力:",

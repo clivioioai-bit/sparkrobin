@@ -18,7 +18,6 @@ import { toast } from 'sonner';
 import { generateImage, uploadImage, getImageStatus, type GenerateImageRequest, type ImageJobStatus } from '@/services/imageApi';
 import { useCredits } from '@/contexts/CreditsContext';
 import { useIsMobile } from '@/hooks/use-mobile';
-import SidebarTopBar from '@/components/generate/SidebarTopBar';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import AuthModal from '@/components/AuthModal';
@@ -52,9 +51,8 @@ const MAX_FILES = 10;
 
 const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 'text-to-image' }) => {
   const t = useTranslations('nanoBanana');
-  const tNav = useTranslations('navigation');
   const { subscription } = useCredits();
-  const { user, isAuthenticated, signOut } = useAuth();
+  const { isAuthenticated } = useAuth();
   const isMobile = useIsMobile();
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -65,16 +63,6 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
     setMounted(true);
   }, []);
 
-  // Get user display name and initials
-  const getUserDisplayName = useCallback(() => {
-    return user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User';
-  }, [user]);
-
-  const getUserInitials = useCallback(() => {
-    const name = getUserDisplayName();
-    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
-  }, [getUserDisplayName]);
-  
   // Initialize feature and model types from defaultTab
   const getInitialState = (): { featureType: FeatureType; modelType: ModelType } => {
     if (defaultTab === 'image-editor') {
@@ -361,13 +349,13 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
       
       <div 
         className="flex-1 transition-all duration-300 bg-background flex flex-col" 
-        style={{ marginLeft: mounted && isMobile ? '0' : (mounted ? 'var(--sidebar-width, 240px)' : '240px') }}
+        style={{ marginLeft: !mounted || isMobile ? '0' : 'var(--sidebar-width, 220px)' }}
       >
         {/* Mobile Menu Button */}
         {mounted && isMobile && (
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="fixed top-4 left-4 z-40 p-2 rounded-lg bg-background/80 backdrop-blur-sm border border-border shadow-lg hover:bg-muted transition-colors touch-action: manipulation min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="fixed top-[4.25rem] left-3 z-40 p-2 rounded-lg bg-background/80 backdrop-blur-sm border border-border shadow-lg hover:bg-muted transition-colors touch-action: manipulation min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Open menu"
             style={{ touchAction: 'manipulation' }}
           >
@@ -375,27 +363,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
           </button>
         )}
         
-        <SidebarTopBar
-          isMobile={mounted && isMobile}
-          isAuthenticated={isAuthenticated}
-          userEmail={user?.email}
-          getUserInitials={getUserInitials}
-          getUserDisplayName={getUserDisplayName}
-          onLogin={() => setShowAuthModal(true)}
-          onStart={() => setShowAuthModal(true)}
-          onDashboard={() => router.push('/dashboard')}
-          onPreferences={() => router.push('/dashboard')}
-          onSignOut={() => signOut()}
-          labels={{
-            login: tNav('login'),
-            startForFree: tNav('startForFree'),
-            dashboard: tNav('dashboard'),
-            preferences: tNav('preferences'),
-            signOut: tNav('signOut'),
-          }}
-        />
-
-        <div className="flex-1 container mx-auto px-4 py-8 max-w-7xl">
+        <div className="flex-1 container mx-auto px-3 sm:px-4 pt-[5.25rem] md:pt-24 pb-8 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-6">
         {/* Left Panel - Input */}
         <div className="space-y-6">
@@ -425,14 +393,14 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                   <div className="flex items-center space-x-2 flex-1 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
                     <RadioGroupItem value="nano-banana" id="nano-banana" />
                     <Label htmlFor="nano-banana" className="flex items-center gap-2 cursor-pointer flex-1">
-                      <Image src="/images/banana.png" alt="Nano Banana" width={16} height={16} className="w-4 h-4" />
+                      <Image src="/logo.jpg" alt="Nano Banana" width={16} height={16} className="w-4 h-4 rounded-sm object-cover" />
                       <span>Nano Banana</span>
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2 flex-1 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
                     <RadioGroupItem value="nano-banana-pro" id="nano-banana-pro" />
                     <Label htmlFor="nano-banana-pro" className="flex items-center gap-2 cursor-pointer flex-1">
-                      <Image src="/images/banana.png" alt="Nano Banana Pro" width={16} height={16} className="w-4 h-4" />
+                      <Image src="/logo.jpg" alt="Nano Banana Pro" width={16} height={16} className="w-4 h-4 rounded-sm object-cover" />
                       <span>Nano Banana Pro</span>
                     </Label>
                   </div>
@@ -904,7 +872,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
               <div className="space-y-4">
                 <div className="relative w-full aspect-square bg-muted rounded-lg overflow-hidden">
                   <Image
-                    src="/images/example_副本.png"
+                    src="/images/google_veo_logo.jpeg"
                     alt="Example output"
                     fill
                     className="object-contain"
@@ -921,7 +889,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
       </div>
       
       {/* Footer */}
-      <div style={{ marginLeft: mounted && isMobile ? '0' : (mounted ? 'var(--sidebar-width, 240px)' : '240px') }}>
+      <div style={{ marginLeft: !mounted || isMobile ? '0' : 'var(--sidebar-width, 220px)' }}>
         <Footer />
       </div>
       

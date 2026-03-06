@@ -414,17 +414,17 @@ export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) =>
     // Sora3 Pro / Sora2 Pro pricing (same pricing)
     if (model === 'sora3-pro' || model === 'sora2-pro') {
       if (quality === 'high') {
-        return n_frames === '15' ? 325 : 175;
+        return n_frames === '15' ? 650 : 350;
       } else if (quality === 'standard') {
-        return n_frames === '15' ? 135 : 75;
+        return n_frames === '15' ? 270 : 150;
       }
       // Default to standard if quality not specified
-      return n_frames === '15' ? 135 : 75;
+      return n_frames === '15' ? 270 : 150;
     }
 
-    // Sora2 pricing: 10s = 20 credits, 15s = 25 credits
+    // Sora2 pricing: 10s = 40 credits, 15s = 50 credits
     if (model === 'sora2') {
-      return n_frames === '15' ? 25 : 20;
+      return n_frames === '15' ? 50 : 40;
     }
 
     // Storyboard pricing: 10s = 125, 15s/25s = 225
@@ -432,12 +432,12 @@ export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) =>
       return n_frames === '10' ? 125 : 225;
     }
 
-    // Sora3 (default) pricing: 10s = 15 credits, 15s = 20 credits
+    // Sora3 (default) pricing: 10s = 30 credits, 15s = 40 credits
     if (n_frames === '15') {
-      return 20;
+      return 40;
     }
-    // 默认 10s 或未指定时返回 15 credits
-    return 15;
+    // 默认 10s 或未指定时返回 30 credits
+    return 30;
   };
 
   // Check if user can generate with current credits

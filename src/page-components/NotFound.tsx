@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Home, ArrowLeft } from "lucide-react";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const NotFound = () => {
@@ -18,7 +17,6 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Navigation />
       <main className="flex-1 flex items-center justify-center p-4">
         <div className="text-center max-w-md w-full space-y-6">
           <div className="space-y-2">

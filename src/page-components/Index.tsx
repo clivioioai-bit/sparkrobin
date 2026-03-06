@@ -1,6 +1,5 @@
 "use client";
 
-import Navigation from "@/components/Navigation";
 import Hero from "@/components/home/Hero";
 import DemoGallery from "@/components/home/DemoGallery";
 import Sora3Capabilities from "@/components/home/Sora3Capabilities";
@@ -24,7 +23,6 @@ const Index = () => {
         keywords="AI video ads, Sora3 Storyboard, sora3 storyboard, multi-scene storyboard, consistent characters, 25 second AI video, vertical ad templates, TikTok ad generator, Shopify product video, AI storyboard builder"
       />
       <ScrollProgress />
-      <Navigation />
       
       {/* Hero Section */}
       <Hero />

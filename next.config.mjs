@@ -14,7 +14,6 @@ const nextConfig = {
   experimental: {
     optimizeCss: true, // Enable CSS optimization for better performance
     optimizePackageImports: [
-      'lucide-react', 
       '@radix-ui/react-icons',
       '@radix-ui/react-dialog',
       '@radix-ui/react-dropdown-menu',

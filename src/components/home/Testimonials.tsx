@@ -99,10 +99,10 @@ const Testimonials = () => {
         key={i}
         className={`w-4 h-4 ${
           i < Math.floor(rating)
-            ? 'text-yellow-400 fill-yellow-400'
+            ? 'text-primary fill-primary'
             : i < rating
-            ? 'text-yellow-400 fill-yellow-400/50'
-            : 'text-gray-300'
+            ? 'text-primary fill-primary/50'
+            : 'text-muted-foreground/30'
         }`}
       />
     ));

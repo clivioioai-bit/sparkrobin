@@ -4,8 +4,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Veo3Params } from '@/types/generation-modes';
-import { Play, Info, Upload, X, Sparkles, Wand2, Maximize2, Square } from 'lucide-react';
+import { Play, Info, Upload, X, Sparkles, Wand2, Maximize2, Square, ChevronUp } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { useTranslations } from 'next-intl';
 import {
   fieldLabelClass,
@@ -13,6 +14,7 @@ import {
   textInputClass,
   primaryActionButtonClass,
   segmentedButtonClass,
+  selectTriggerClass,
   workspaceSectionClass,
   subtleButtonClass,
 } from '@/components/generate/styles';
@@ -22,14 +24,15 @@ interface Veo3ModeProps {
   onChange: (params: Veo3Params) => void;
   onGenerate: () => void;
   isGenerating: boolean;
-  onModelChange?: (model: 'sora3' | 'veo3.1') => void;
+  onModelChange?: (model: 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'storyboard' | 'veo3.1' | 'wan2.6') => void;
 }
 
 export const Veo3Mode: React.FC<Veo3ModeProps> = ({
   params,
   onChange,
   onGenerate,
-  isGenerating
+  isGenerating,
+  onModelChange
 }) => {
   const t = useTranslations('generate');
   const [imageUrls, setImageUrls] = useState<string[]>(params.imageUrls || []);
@@ -89,9 +92,49 @@ export const Veo3Mode: React.FC<Veo3ModeProps> = ({
     }
   }, [imageUrls.length]);
 
+  const selectValue = (params.model || 'veo3_fast') === 'veo3' ? 'veo3.1-veo3' : 'veo3.1-veo3_fast';
+
+  const handleModelChange = (value: string) => {
+    if (value === 'veo3.1-veo3_fast' || value === 'veo3.1-veo3') {
+      onChange({ ...params, model: value === 'veo3.1-veo3' ? 'veo3' : 'veo3_fast' });
+      return;
+    }
+    onModelChange?.(value as 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'storyboard' | 'wan2.6');
+  };
+
   return (
     <TooltipProvider delayDuration={120}>
       <div className="space-y-6">
+        {/* Model */}
+        <div className={workspaceSectionClass}>
+          <Label className={fieldLabelClass}>{t('reframeMode.model')}</Label>
+          <Select value={selectValue} onValueChange={handleModelChange}>
+            <SelectTrigger className={selectTriggerClass}>
+              <div className="flex items-center gap-3 w-full">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
+                  <img src="/images/google_veo_logo.jpeg" alt="Veo model icon" width={32} height={32} className="w-full h-full object-contain" />
+                </div>
+                <div className="flex-1 text-left">
+                  <span className="font-semibold text-foreground">
+                    {(params.model || 'veo3_fast') === 'veo3' ? t('veo3Mode.quality') : t('veo3Mode.fast')}
+                  </span>
+                </div>
+                <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+              </div>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="sora3">{t('reframeMode.sora3')}</SelectItem>
+              <SelectItem value="sora3-pro">{t('reframeMode.sora3Pro')}</SelectItem>
+              <SelectItem value="sora2">{t('reframeMode.sora2')}</SelectItem>
+              <SelectItem value="sora2-pro">{t('reframeMode.sora2Pro')}</SelectItem>
+              <SelectItem value="storyboard">{t('reframeMode.storyboard')}</SelectItem>
+              <SelectItem value="veo3.1-veo3_fast">{t('veo3Mode.fast')}</SelectItem>
+              <SelectItem value="veo3.1-veo3">{t('veo3Mode.quality')}</SelectItem>
+              <SelectItem value="wan2.6">Wan 2.6</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
         {/* Prompt */}
         <div className={workspaceSectionClass}>
           <Label className={fieldLabelClass}>

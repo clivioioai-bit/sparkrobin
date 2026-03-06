@@ -47,12 +47,12 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
     if (isSora3Pro) {
       const quality = params.quality || 'standard';
       if (quality === 'high') {
-        return params.n_frames === '15' ? 325 : 175;
+        return params.n_frames === '15' ? 650 : 350;
       } else {
-        return params.n_frames === '15' ? 135 : 75;
+        return params.n_frames === '15' ? 270 : 150;
       }
     }
-    return params.n_frames === '15' ? 20 : 15;
+    return params.n_frames === '15' ? 40 : 30;
   };
   
   const creditCost = calculateCredits();
@@ -168,7 +168,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 <Button 
                   variant="outline" 
                   size="sm"
-                  className="flex items-center gap-2 border-amber-300 text-amber-700 hover:bg-amber-50"
+                  className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
                 >
                   <Lightbulb className="w-4 h-4" />
                   {t('reframeMode.aiExamples')}
@@ -177,7 +177,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-amber-500" />
+                    <Sparkles className="w-5 h-5 text-primary" />
                     {t('reframeMode.promptExamplesTitle')}
                   </DialogTitle>
                   <DialogDescription>
@@ -186,7 +186,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 </DialogHeader>
                 
                 <Tabs defaultValue={promptCategories[0]} className="w-full">
-                  <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-muted/70">
+                  <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-white/[0.04] backdrop-blur-sm">
                     {promptCategories.map(category => (
                       <TabsTrigger 
                         key={category} 
@@ -241,29 +241,6 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 </Tabs>
               </DialogContent>
             </Dialog>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
-                  aria-label="Open Prompt GPT"
-                  onClick={() =>
-                    window.open(
-                      "https://chatgpt.com/g/g-690c3e49fb308191aa623c67543a766a-sarogpt-ai-video-prompt-script-assistant",
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
-                >
-                  <Sparkles className="w-4 h-4" />
-                  {t('reframeMode.promptGpt')}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent className="max-w-xs text-xs leading-relaxed">
-                {t('reframeMode.promptGptTooltip')}
-              </TooltipContent>
-            </Tooltip>
           </div>
         </div>
         <div className="relative">
@@ -271,7 +248,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             placeholder={t('reframeMode.promptPlaceholder')}
             value={params.prompt || ''}
             onChange={(e) => onChange({ ...params, prompt: e.target.value })}
-            className="min-h-[120px] resize-none border-input focus:border-primary focus:ring-primary relative z-10 bg-transparent"
+            className="min-h-[120px] resize-none border-white/[0.08] bg-white/[0.04] backdrop-blur-sm focus:border-primary focus:ring-primary relative z-10"
           />
         </div>
       </div>
@@ -301,8 +278,8 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             onClick={() => onChange({ ...params, aspectRatio: '9:16' })}
             className={`flex-1 h-9 text-sm font-medium ${
               params.aspectRatio === '9:16' 
-                ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                : 'border-input text-foreground hover:bg-muted'
+                ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90 shadow-md shadow-primary/20' 
+                : 'border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08]'
             }`}
             >
               {t('reframeMode.portrait')}
@@ -312,8 +289,8 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               onClick={() => onChange({ ...params, aspectRatio: '16:9' })}
               className={`flex-1 h-9 text-sm font-medium ${
                 params.aspectRatio === '16:9' 
-                  ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                  : 'border-input text-foreground hover:bg-muted'
+                  ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90 shadow-md shadow-primary/20' 
+                  : 'border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08]'
               }`}
             >
               {t('reframeMode.landscape')}
@@ -346,8 +323,8 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             onClick={() => onChange({ ...params, n_frames: '10' })}
             className={`flex-1 h-9 text-sm font-medium ${
               params.n_frames === '10' 
-                ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                : 'border-input text-foreground hover:bg-muted'
+                ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90 shadow-md shadow-primary/20' 
+                : 'border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08]'
             }`}
           >
             10s
@@ -357,8 +334,8 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             onClick={() => onChange({ ...params, n_frames: '15' })}
             className={`flex-1 h-9 text-sm font-medium ${
               params.n_frames === '15' 
-                ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                : 'border-input text-foreground hover:bg-muted'
+                ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90 shadow-md shadow-primary/20' 
+                : 'border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08]'
             }`}
           >
             15s
@@ -392,8 +369,8 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               onClick={() => onChange({ ...params, quality: 'standard' })}
               className={`flex-1 h-9 text-sm font-medium ${
                 params.quality === 'standard' || !params.quality
-                  ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                  : 'border-input text-foreground hover:bg-muted'
+                  ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90 shadow-md shadow-primary/20' 
+                  : 'border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08]'
               }`}
             >
               {t('reframeMode.standard')}
@@ -403,8 +380,8 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               onClick={() => onChange({ ...params, quality: 'high' })}
               className={`flex-1 h-9 text-sm font-medium ${
                 params.quality === 'high'
-                  ? 'bg-gray-700 text-white border-gray-700 hover:bg-gray-600' 
-                  : 'border-input text-foreground hover:bg-muted'
+                  ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90 shadow-md shadow-primary/20' 
+                  : 'border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08]'
               }`}
             >
               {t('reframeMode.high')}
@@ -417,12 +394,12 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
       <div className="flex space-x-3 pt-4">
         <Button 
           variant="outline" 
-          className="flex-1 h-11 border-input text-foreground hover:bg-muted font-medium"
+          className="flex-1 h-11 border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08] font-medium"
         >
           {t('reset')}
         </Button>
         <Button 
-          className="flex-[2] h-11 bg-black hover:bg-black/90 text-white font-bold shadow-lg hover:shadow-xl transition-shadow duration-200 hover:scale-[1.02]"
+          className="flex-[2] h-11 bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl transition-shadow duration-200 hover:scale-[1.02]"
           onClick={onGenerate}
           disabled={isGenerating}
         >

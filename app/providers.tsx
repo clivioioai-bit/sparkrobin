@@ -4,8 +4,40 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from '@/contexts/AuthContext';
 import { CreditsProvider } from '@/contexts/CreditsContext';
 import { ThemeProvider } from "@/components/ThemeProvider";
-import ErrorBoundary from '@/components/ErrorBoundary';
-import { useState } from "react";
+import React, { Component, ErrorInfo, ReactNode, useState } from "react";
+
+type ProviderErrorBoundaryProps = {
+  children: ReactNode;
+};
+
+type ProviderErrorBoundaryState = {
+  hasError: boolean;
+};
+
+class ProviderErrorBoundary extends Component<
+  ProviderErrorBoundaryProps,
+  ProviderErrorBoundaryState
+> {
+  constructor(props: ProviderErrorBoundaryProps) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(): ProviderErrorBoundaryState {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('[Providers] Error boundary caught:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return null;
+    }
+    return this.props.children;
+  }
+}
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient({
@@ -27,7 +59,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }));
 
   return (
-    <ErrorBoundary>
+    <ProviderErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider
           attribute="class"
@@ -43,6 +75,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
           </AuthProvider>
         </ThemeProvider>
       </QueryClientProvider>
-    </ErrorBoundary>
+    </ProviderErrorBoundary>
   );
 }

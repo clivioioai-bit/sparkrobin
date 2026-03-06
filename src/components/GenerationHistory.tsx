@@ -72,13 +72,13 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
       case 'completed':
         return <CheckCircle className="w-4 h-4 text-green-500" />;
       case 'processing':
-        return <Loader2 className="w-4 h-4 text-blue-500 animate-spin" />;
+        return <Loader2 className="w-4 h-4 text-primary animate-spin" />;
       case 'queued':
-        return <Clock className="w-4 h-4 text-yellow-500" />;
+        return <Clock className="w-4 h-4 text-amber-500" />;
       case 'failed':
-        return <AlertCircle className="w-4 h-4 text-red-500" />;
+        return <AlertCircle className="w-4 h-4 text-destructive" />;
       default:
-        return <Clock className="w-4 h-4 text-gray-500" />;
+        return <Clock className="w-4 h-4 text-muted-foreground" />;
     }
   };
 
@@ -128,8 +128,8 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
     return (
       <Card className={`p-6 ${className}`}>
         <div className="text-center py-8">
-          <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-2" />
-          <p className="text-red-500 mb-4">{error}</p>
+          <AlertCircle className="w-8 h-8 text-destructive mx-auto mb-2" />
+          <p className="text-destructive mb-4">{error}</p>
           <Button onClick={loadHistory} variant="outline">
             Try Again
           </Button>
@@ -142,7 +142,7 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
     return (
       <Card className={`p-6 ${className}`}>
         <div className="text-center py-8">
-          <Clock className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+          <Clock className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
           <h3 className="text-lg font-semibold mb-2">No Generation History</h3>
           <p className="text-muted-foreground">
             You haven't generated any videos yet. Start creating amazing videos!
@@ -186,7 +186,7 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
                 </div>
                 
                 {job.errorMessage && (
-                  <div className="mt-2 p-2 bg-red-50 border border-red-200 rounded text-xs text-red-600">
+                  <div className="mt-2 p-2 bg-destructive/10 border border-destructive/20 rounded text-xs text-destructive">
                     {job.errorMessage}
                   </div>
                 )}

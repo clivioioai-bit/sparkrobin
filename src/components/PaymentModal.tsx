@@ -264,8 +264,8 @@ const PaymentModal = ({ isOpen, onClose, selectedPlan = null, onSuccess }: Payme
         {/* Success Step */}
         {currentStep === 'success' && (
           <div className="text-center py-12">
-            <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Check className="w-8 h-8 text-gray-800 dark:text-white" />
+            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+              <Check className="w-8 h-8 text-foreground" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Payment Successful!</h3>
             <p className="text-muted-foreground">

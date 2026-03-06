@@ -229,8 +229,8 @@ export const StoryboardManager: React.FC<StoryboardManagerProps> = ({
 
           {/* Warning Message */}
           {remainingDuration > 0 && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-md p-3">
-              <p className="text-sm text-yellow-800">
+            <div className="bg-primary/5 border border-primary/20 rounded-md p-3">
+              <p className="text-sm text-primary">
                 {t('storyboard.allocateRemainingDuration', { duration: remainingDurationDisplay })}
               </p>
             </div>

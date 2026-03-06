@@ -9,8 +9,8 @@ const Footer = () => {
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const navigation = {
     product: [
-      { name: t('sora3TextToVideo'), href: `${localePrefix}/text-to-video`, external: false },
-      { name: t('sora3ImageToVideo'), href: `${localePrefix}/image-to-video`, external: false },
+      { name: t('sora3TextToVideo'), href: `${localePrefix}/sora3-text-to-video`, external: false },
+      { name: t('sora3ImageToVideo'), href: `${localePrefix}/sora3-image-to-video`, external: false },
       { name: t('sora3Pricing'), href: `${localePrefix}/pricing`, external: false },
       { name: t('sora3Faq'), href: `${localePrefix}/faq`, external: false },
     ],
@@ -32,7 +32,7 @@ const Footer = () => {
   } as const;
 
   return (
-    <footer className="bg-[#030712] border-t border-white/[0.06]">
+    <footer className="bg-background/80 backdrop-blur-xl border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-8">
@@ -70,7 +70,7 @@ const Footer = () => {
                 href="https://discord.com/invite/D48J2Fksm" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/40 hover:text-[#5865F2] transition-all duration-300 p-2.5 rounded-lg hover:bg-white/[0.06] hover:scale-110"
+                className="text-white/40 hover:text-primary transition-all duration-300 p-2.5 rounded-lg hover:bg-white/[0.06] hover:scale-110"
                 aria-label={t('socialLabels.discord')}
               >
                 <MessageCircle className="w-5 h-5" aria-hidden="true" />
@@ -167,7 +167,7 @@ const Footer = () => {
         </div>
 
         {/* Disclaimer Section */}
-        <div className="pt-10 border-t border-white/[0.06] space-y-3 mb-10">
+        <div className="pt-10 border-t border-border space-y-3 mb-10">
           <p className="text-xs text-white/30 leading-relaxed max-w-4xl">
             {t('disclaimer')}
           </p>

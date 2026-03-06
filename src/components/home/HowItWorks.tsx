@@ -29,7 +29,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#030712]">
+    <section className="py-20 sm:py-28 bg-background">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14 sm:mb-16">
@@ -54,7 +54,7 @@ const HowItWorks = () => {
                   </div>
 
                   {/* Icon badge */}
-                  <div className="absolute -bottom-2 -right-2 sm:right-[calc(50%-2.5rem-0.5rem)] w-9 h-9 sm:w-10 sm:h-10 bg-[#030712] border border-white/[0.1] rounded-xl flex items-center justify-center">
+                  <div className="absolute -bottom-2 -right-2 sm:right-[calc(50%-2.5rem-0.5rem)] w-9 h-9 sm:w-10 sm:h-10 bg-background border border-white/[0.1] rounded-xl flex items-center justify-center">
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/60" />
                   </div>
 

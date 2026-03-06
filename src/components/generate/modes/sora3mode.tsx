@@ -89,21 +89,21 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
     if (currentModel === 'sora2-pro') {
       const quality = params.quality || 'standard';
       if (quality === 'high') {
-        return params.n_frames === '15' ? 325 : 175;
+        return params.n_frames === '15' ? 650 : 350;
       }
-      return params.n_frames === '15' ? 135 : 75;
+      return params.n_frames === '15' ? 270 : 150;
     }
     if (currentModel === 'sora3-pro') {
       const quality = params.quality || 'standard';
       if (quality === 'high') {
-        return params.n_frames === '15' ? 325 : 175;
+        return params.n_frames === '15' ? 650 : 350;
       }
-      return params.n_frames === '15' ? 135 : 75;
+      return params.n_frames === '15' ? 270 : 150;
     }
     if (currentModel === 'sora2') {
-      return params.n_frames === '15' ? 25 : 20;
+      return params.n_frames === '15' ? 50 : 40;
     }
-    return params.n_frames === '15' ? 20 : 15;
+    return params.n_frames === '15' ? 40 : 30;
   };
 
   const creditCost = calculateCredits();
@@ -244,7 +244,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
         <Label className={fieldLabelClass}>{t('reframeMode.model')}</Label>
         {!isMounted ? (
           /* SSR placeholder — avoids Radix Select hydration mismatch */
-          <div className="w-full h-auto min-h-[50px] px-4 py-3 rounded-xl border border-border bg-background/80 shadow-sm flex items-center gap-3">
+          <div className="w-full h-auto min-h-[50px] px-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm shadow-sm flex items-center gap-3">
             <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
               {getTriggerIcon()}
             </div>
@@ -362,7 +362,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-semibold text-foreground">Wan 2.6</span>
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary">
                       NEW
                     </span>
                   </div>
@@ -438,7 +438,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                   <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle className="flex items-center gap-2">
-                        <Sparkles className="w-5 h-5 text-amber-500" />
+                        <Sparkles className="w-5 h-5 text-primary" />
                         {t('reframeMode.promptExamplesTitle')}
                       </DialogTitle>
                       <DialogDescription>
@@ -447,7 +447,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                     </DialogHeader>
 
                     <Tabs defaultValue={promptCategories[0]} className="w-full">
-                      <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-muted/70">
+                      <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-white/[0.04] backdrop-blur-sm">
                         {promptCategories.map(category => (
                           <TabsTrigger
                             key={category}
@@ -503,29 +503,6 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                   </DialogContent>
                 </Dialog>
                 )}
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className={subtleButtonClass}
-                      aria-label="Open Prompt GPT"
-                      onClick={() =>
-                        window.open(
-                          "https://chatgpt.com/g/g-690c3e49fb308191aa623c67543a766a-sarogpt-ai-video-prompt-script-assistant",
-                          "_blank",
-                          "noopener,noreferrer"
-                        )
-                      }
-                    >
-                      <Sparkles className="w-4 h-4" />
-                      {t('reframeMode.promptGpt')}
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="max-w-xs text-xs leading-relaxed">
-                    {t('reframeMode.promptGptTooltip')}
-                  </TooltipContent>
-                </Tooltip>
               </div>
             </div>
             <div className="relative">
@@ -533,7 +510,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 placeholder={t('reframeMode.promptPlaceholder')}
                 value={params.prompt || ''}
                 onChange={(e) => onChange({ ...params, prompt: e.target.value })}
-                className={`${textAreaClass} relative z-10 bg-transparent`}
+                className={`${textAreaClass} relative z-10`}
               />
             </div>
           </div>

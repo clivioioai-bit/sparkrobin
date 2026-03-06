@@ -121,7 +121,7 @@ const InsufficientCreditsDialog: FC<InsufficientCreditsDialogProps> = ({
             ))}
           </div>
 
-          <div className="rounded-lg border border-border/60 bg-muted/40 p-4 space-y-2">
+          <div className="rounded-lg border border-border/60 bg-muted/30 backdrop-blur-sm p-4 space-y-2">
             <div className="flex items-center gap-2 text-foreground">
               <SafeWallet className="h-4 w-4" />
               <span className="font-medium">Benefits of upgrading</span>

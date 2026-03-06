@@ -81,7 +81,7 @@ const SubscriptionRequiredModal: React.FC<SubscriptionRequiredModalProps> = ({
               {feature === "generate videos" ? (
                 <AlertCircle className="w-6 h-6 text-orange-500" />
               ) : (
-                <Crown className="w-6 h-6 text-yellow-500" />
+                <Crown className="w-6 h-6 text-primary" />
               )}
               {feature === "generate videos" ? t('modal.insufficientCredits') : 
                feature === "upgrade your plan" ? t('modal.upgradeYourPlan') : 
@@ -116,8 +116,8 @@ const SubscriptionRequiredModal: React.FC<SubscriptionRequiredModalProps> = ({
             {/* One-time packs removed as requested */}
 
             {/* Footer */}
-            <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
-              <p className="text-sm text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t.raw('proTip') }} />
+            <div className="text-center pt-4 border-t border-border">
+              <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: t.raw('proTip') }} />
             </div>
           </div>
         </DialogContent>

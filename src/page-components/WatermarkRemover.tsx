@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useCallback, useMemo, useState, useEffect } from 'react';
-import Navigation from '@/components/Navigation';
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCredits } from '@/contexts/CreditsContext';
 import { useSubscription } from '@/hooks/useSubscription';
 import watermarkApi from '@/services/watermarkApi';
-import { AlertTriangle, Play } from 'lucide-react';
+import { AlertTriangle, Play, Film, FileText, Eraser } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import AuthModal from '@/components/AuthModal';
 import SubscriptionRequiredModal from '@/components/SubscriptionRequiredModal';
@@ -124,15 +124,8 @@ const WatermarkRemover: React.FC = () => {
         canonical="https://sora3ai.io/watermark-remover"
         keywords="sora3 watermark remover,Sora watermark remover,remove watermark sora,watermark removal Sora3"
       />
-      <Navigation />
-
       <div className="pt-20 pb-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <header className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Sora3 Watermark Remover</h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.</p>
-          </header>
-
           {error && (
             <div className="mb-6">
               <Alert variant="destructive">
@@ -145,9 +138,27 @@ const WatermarkRemover: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="bg-card border-2 border-border rounded-2xl p-6 shadow-xl">
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-sm font-bold text-foreground uppercase tracking-wide">Input</span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <Film className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm font-semibold text-foreground">Video Generator</span>
+                  </div>
                   <span className="text-xs font-semibold text-muted-foreground bg-muted px-3 py-1.5 rounded-full border border-border">Credits: {credits}</span>
+                </div>
+
+                {/* Tab switcher */}
+                <div className="flex items-center bg-muted/60 border border-border rounded-xl p-1 mb-5 gap-1">
+                  <Link
+                    href="/sora3-text-to-video"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center text-muted-foreground hover:text-foreground hover:bg-muted"
+                  >
+                    <FileText className="w-4 h-4" />
+                    Video Generator
+                  </Link>
+                  <span className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center bg-background shadow-sm text-primary border border-border/50">
+                    <Eraser className="w-4 h-4" />
+                    Watermark
+                  </span>
                 </div>
 
                 <label className="block text-sm font-medium text-foreground mb-2">video_url</label>
@@ -155,7 +166,7 @@ const WatermarkRemover: React.FC = () => {
                   value={videoUrl}
                   onChange={(e) => setVideoUrl(e.target.value)}
                   placeholder="https://sora.chatgpt.com/p/..."
-                  className={`w-full px-4 py-3 rounded-xl border bg-background ${isValid ? 'border-border' : 'border-red-500'}`}
+                  className={`w-full px-4 py-3 rounded-xl border bg-background ${isValid ? 'border-border' : 'border-destructive'}`}
                 />
                 <p className="text-xs text-muted-foreground mt-2">Must be publicly accessible and start with `https://sora.chatgpt.com/`.</p>
 
@@ -182,7 +193,10 @@ const WatermarkRemover: React.FC = () => {
             <div className="space-y-6">
               <div className="bg-card border-2 border-border rounded-2xl p-6 shadow-xl">
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-sm font-bold text-foreground uppercase tracking-wide">Output</span>
+                  <div className="flex items-center gap-2">
+                    <Film className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm font-semibold text-foreground">Video Preview</span>
+                  </div>
                   <span className="text-xs font-semibold text-muted-foreground bg-muted px-3 py-1.5 rounded-full border border-border">video</span>
                 </div>
 
@@ -243,6 +257,12 @@ const WatermarkRemover: React.FC = () => {
               <p className="text-sm">This tool consumes 10 credits per run. Keep your Sora3 videos clean and brand-ready.</p>
             </div>
           </div>
+
+          {/* Page Title - below the functional area */}
+          <header className="text-center mt-10 mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Sora3 Watermark Remover</h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Remove the Sora watermark from your Sora-hosted videos. Paste a public sora.chatgpt.com URL and run. Typical processing takes 1–3 seconds on the API.</p>
+          </header>
 
           {/* Documentation block (paraphrased, keyword‑focused) */}
           <section className="mt-10 mb-16">
@@ -415,5 +435,4 @@ const WatermarkRemover: React.FC = () => {
 };
 
 export default WatermarkRemover;
-
 

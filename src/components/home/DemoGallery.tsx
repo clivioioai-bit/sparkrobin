@@ -100,7 +100,7 @@ function VideoCard({ src }: { src: string }) {
   return (
     <div
       ref={containerRef}
-      className="flex-shrink-0 w-[220px] sm:w-[260px] rounded-2xl sm:rounded-3xl overflow-hidden relative group cursor-pointer bg-[#0a0f1a] shadow-[0_4px_24px_rgba(0,0,0,0.18)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.28)] transition-all duration-500 snap-start"
+      className="flex-shrink-0 w-[220px] sm:w-[260px] rounded-2xl sm:rounded-3xl overflow-hidden relative group cursor-pointer bg-card/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.18)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.28)] transition-all duration-500 snap-start"
       style={{ aspectRatio: '9/16' }}
     >
       {shouldLoad ? (
@@ -125,7 +125,7 @@ function VideoCard({ src }: { src: string }) {
           />
         </video>
       ) : (
-        <div className="absolute inset-0 bg-[#0a0f1a] flex items-center justify-center">
+        <div className="absolute inset-0 bg-card flex items-center justify-center">
           <div className="w-6 h-6 rounded-full border-[1.5px] border-white/20 border-t-white/80 animate-spin" />
         </div>
       )}
@@ -212,7 +212,7 @@ const DemoGallery = () => {
 
   if (!mounted || videos.length === 0) {
     return (
-      <section id="examples" className="py-24 sm:py-32 bg-[#030712] overflow-hidden">
+      <section id="examples" className="py-24 sm:py-32 bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {headerSection}
           <div className="flex justify-center items-center min-h-[340px]">
@@ -224,7 +224,7 @@ const DemoGallery = () => {
   }
 
   return (
-    <section id="examples" className="py-24 sm:py-32 bg-[#030712] overflow-hidden">
+    <section id="examples" className="py-24 sm:py-32 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {headerSection}
       </div>
@@ -233,13 +233,13 @@ const DemoGallery = () => {
       <div className="relative">
         {/* Left fade */}
         <div
-          className={`absolute left-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none bg-gradient-to-r from-[#030712] to-transparent transition-opacity duration-300 ${
+          className={`absolute left-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none bg-gradient-to-r from-background to-transparent transition-opacity duration-300 ${
             canScrollLeft ? 'opacity-100' : 'opacity-0'
           }`}
         />
         {/* Right fade */}
         <div
-          className={`absolute right-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none bg-gradient-to-l from-[#030712] to-transparent transition-opacity duration-300 ${
+          className={`absolute right-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none bg-gradient-to-l from-background to-transparent transition-opacity duration-300 ${
             canScrollRight ? 'opacity-100' : 'opacity-0'
           }`}
         />

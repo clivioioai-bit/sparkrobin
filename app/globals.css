@@ -6,7 +6,7 @@
 @layer base {
   /* Critical styles for immediate rendering */
   html {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
   }
   
@@ -244,117 +244,106 @@
   }
 }
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Design system based on seedancev2.ai style.
+   Fonts: Inter (sans), Merriweather (serif), JetBrains Mono (mono)
+   Primary accent: #6466F1 (indigo)
 */
 
 @layer base {
   :root {
-    --background: oklch(1.0000 0 0);
-    --foreground: oklch(0.1884 0.0128 248.5103);
-    --card: oklch(0.9784 0.0011 197.1387);
-    --card-foreground: oklch(0.1884 0.0128 248.5103);
-    --popover: oklch(1.0000 0 0);
-    --popover-foreground: oklch(0.1884 0.0128 248.5103);
-    --primary: oklch(0.6723 0.1606 244.9955);
-    --primary-foreground: oklch(1.0000 0 0);
-    --secondary: oklch(0.1884 0.0128 248.5103);
-    --secondary-foreground: oklch(1.0000 0 0);
-    --muted: oklch(0.9222 0.0013 286.3737);
-    --muted-foreground: oklch(0.5556 0.0100 248.5103);
-    --accent: oklch(0.9392 0.0166 250.8453);
-    --accent-foreground: oklch(0.6723 0.1606 244.9955);
-    --destructive: oklch(0.6188 0.2376 25.7658);
-    --destructive-foreground: oklch(1.0000 0 0);
-    --border: oklch(0.9317 0.0118 231.6594);
-    --input: oklch(0.9809 0.0025 228.7836);
-    --ring: oklch(0.6818 0.1584 243.3540);
-    --chart-1: oklch(0.6723 0.1606 244.9955);
-    --chart-2: oklch(0.6907 0.1554 160.3454);
-    --chart-3: oklch(0.8214 0.1600 82.5337);
-    --chart-4: oklch(0.7064 0.1822 151.7125);
-    --chart-5: oklch(0.5919 0.2186 10.5826);
-    --sidebar: oklch(0.9784 0.0011 197.1387);
-    --sidebar-foreground: oklch(0.1884 0.0128 248.5103);
-    --sidebar-primary: oklch(0.6723 0.1606 244.9955);
-    --sidebar-primary-foreground: oklch(1.0000 0 0);
-    --sidebar-accent: oklch(0.9392 0.0166 250.8453);
-    --sidebar-accent-foreground: oklch(0.6723 0.1606 244.9955);
-    --sidebar-border: oklch(0.9271 0.0101 238.5177);
-    --sidebar-ring: oklch(0.6818 0.1584 243.3540);
-    --font-sans: Open Sans, sans-serif;
-    --font-serif: Georgia, serif;
-    --font-mono: Menlo, monospace;
-    --radius: 1.3rem;
-    --shadow-x: 0px;
-    --shadow-y: 2px;
-    --shadow-blur: 0px;
-    --shadow-spread: 0px;
-    --shadow-opacity: 0;
-    --shadow-color: rgba(29,161,242,0.15);
-    --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-sm: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-md: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-lg: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00);
+    --background: #ffffff;
+    --foreground: #0f172a;
+    --card: #f8fafc;
+    --card-foreground: #0f172a;
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+    --primary: #6466F1;
+    --primary-foreground: #ffffff;
+    --secondary: #f1f5f9;
+    --secondary-foreground: #0f172a;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --accent: #f1f5f9;
+    --accent-foreground: #0f172a;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #6466F1;
+    --chart-1: #6466F1;
+    --chart-2: #34d399;
+    --chart-3: #fbbf24;
+    --chart-4: #a78bfa;
+    --chart-5: #f87171;
+    --sidebar: #f8fafc;
+    --sidebar-foreground: #0f172a;
+    --sidebar-primary: #6466F1;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #f1f5f9;
+    --sidebar-accent-foreground: #0f172a;
+    --sidebar-border: #e2e8f0;
+    --sidebar-ring: #6466F1;
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-serif: "Merriweather", ui-serif, Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --radius: 0.5rem;
+    --shadow-2xs: 0 1px 2px 0 rgba(0,0,0,0.03);
+    --shadow-xs: 0 1px 2px 0 rgba(0,0,0,0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.05);
+    --shadow: 0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.05);
+    --shadow-2xl: 0 25px 50px -12px rgba(0,0,0,0.15);
     --tracking-normal: 0em;
     --spacing: 0.25rem;
   }
 
   .dark {
     --background: #030712;
-    --foreground: #f9fafb;
-    --card: #0a0f1a;
-    --card-foreground: #e5e7eb;
-    --popover: #030712;
-    --popover-foreground: #f9fafb;
-    --primary: #f9fafb;
-    --primary-foreground: #030712;
-    --secondary: #1f2937;
-    --secondary-foreground: #f9fafb;
-    --muted: #111827;
-    --muted-foreground: #9ca3af;
-    --accent: #1f2937;
-    --accent-foreground: #f9fafb;
+    --foreground: #f8fafc;
+    --card: #0f1729;
+    --card-foreground: #e2e8f0;
+    --popover: #0f1729;
+    --popover-foreground: #f8fafc;
+    --primary: #6466F1;
+    --primary-foreground: #ffffff;
+    --secondary: #1e293b;
+    --secondary-foreground: #f8fafc;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --accent: #1e293b;
+    --accent-foreground: #f8fafc;
     --destructive: #ef4444;
     --destructive-foreground: #ffffff;
-    --border: #1f2937;
-    --input: #1f2937;
-    --ring: #6b7280;
-    --chart-1: #60a5fa;
+    --border: #1e293b;
+    --input: #1e293b;
+    --ring: #6466F1;
+    --chart-1: #818cf8;
     --chart-2: #34d399;
     --chart-3: #fbbf24;
-    --chart-4: #a78bfa;
+    --chart-4: #c4b5fd;
     --chart-5: #f87171;
-    --sidebar: #0a0f1a;
-    --sidebar-foreground: #e5e7eb;
-    --sidebar-primary: #f9fafb;
-    --sidebar-primary-foreground: #030712;
-    --sidebar-accent: #1f2937;
-    --sidebar-accent-foreground: #f9fafb;
-    --sidebar-border: #1f2937;
-    --sidebar-ring: #6b7280;
-    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-    --font-serif: Georgia, serif;
-    --font-mono: "SF Mono", Menlo, monospace;
-    --radius: 1.3rem;
-    --shadow-x: 0px;
-    --shadow-y: 2px;
-    --shadow-blur: 0px;
-    --shadow-spread: 0px;
-    --shadow-opacity: 0;
-    --shadow-color: rgba(29,161,242,0.25);
-    --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-sm: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-md: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-lg: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
-    --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00);
+    --sidebar: #0f1729;
+    --sidebar-foreground: #e2e8f0;
+    --sidebar-primary: #6466F1;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #1e293b;
+    --sidebar-accent-foreground: #f8fafc;
+    --sidebar-border: #1e293b;
+    --sidebar-ring: #6466F1;
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-serif: "Merriweather", ui-serif, Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --radius: 0.5rem;
+    --shadow-2xs: 0 1px 2px 0 rgba(0,0,0,0.2);
+    --shadow-xs: 0 1px 2px 0 rgba(0,0,0,0.3);
+    --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.3), 0 1px 2px -1px rgba(0,0,0,0.2);
+    --shadow: 0 1px 3px 0 rgba(0,0,0,0.3), 0 1px 2px -1px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.3), 0 4px 6px -4px rgba(0,0,0,0.2);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.4), 0 8px 10px -6px rgba(0,0,0,0.3);
+    --shadow-2xl: 0 25px 50px -12px rgba(0,0,0,0.5);
   }
 }
 
@@ -418,15 +407,16 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   }
-  
+
   .font-display {
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-weight: 700;
   }
-  
+
   .font-code {
-    font-family: 'JetBrains Mono', 'Fira Code', Consolas, 'Monaco', monospace;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   }
 }
 
@@ -485,61 +475,155 @@ All colors MUST be HSL.
     }
   }
   
+  /* --- Glass Button Styles (seedancev2.ai style) --- */
+
+  /* Primary button: indigo glass with glow */
+  .btn-glass-primary {
+    box-shadow: 0 0 16px rgba(100, 102, 241, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .btn-glass-primary:hover {
+    box-shadow: 0 0 28px rgba(100, 102, 241, 0.4), 0 4px 20px rgba(100, 102, 241, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Outline button: frosted glass */
+  .btn-glass-outline {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  .btn-glass-outline:hover {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(100, 102, 241, 0.4);
+    box-shadow: 0 0 16px rgba(100, 102, 241, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+  }
+  .dark .btn-glass-outline {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .dark .btn-glass-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(100, 102, 241, 0.5);
+    box-shadow: 0 0 20px rgba(100, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Hero button: prominent glass with strong glow */
+  .btn-glass-hero {
+    box-shadow: 0 0 24px rgba(100, 102, 241, 0.35), 0 4px 16px rgba(100, 102, 241, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .btn-glass-hero:hover {
+    box-shadow: 0 0 40px rgba(100, 102, 241, 0.5), 0 8px 30px rgba(100, 102, 241, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  /* Gradient button: indigo-to-violet glass */
+  .btn-glass-gradient {
+    background: linear-gradient(135deg, #6466F1, #8b5cf6);
+    box-shadow: 0 0 20px rgba(100, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .btn-glass-gradient:hover {
+    background: linear-gradient(135deg, #7577f5, #9b6ff8);
+    box-shadow: 0 0 32px rgba(100, 102, 241, 0.45), 0 4px 20px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Cyber button: glass with edge glow */
+  .btn-glass-cyber {
+    box-shadow: 0 0 16px rgba(100, 102, 241, 0.25), 0 0 0 1px rgba(100, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .btn-glass-cyber:hover {
+    box-shadow: 0 0 28px rgba(100, 102, 241, 0.45), 0 0 0 1px rgba(100, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Secondary button: subtle glass */
+  .btn-glass-secondary:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+  .dark .btn-glass-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .dark .btn-glass-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* --- Gradient Text --- */
+
   .gradient-text {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: linear-gradient(135deg, #6466F1, #8b5cf6);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   .gradient-text-dark {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: linear-gradient(135deg, #818cf8, #a78bfa);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   .gradient-bg {
     background: linear-gradient(135deg, var(--background), var(--muted));
   }
-  
+
   .gradient-bg-dark {
     background: linear-gradient(135deg, var(--background), var(--card));
   }
-  
+
+  /* --- Glass Card --- */
+
   .glass-card {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .dark .glass-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* --- Glow Shadows --- */
+
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(100, 102, 241, 0.15), 0 0 40px rgba(100, 102, 241, 0.08);
+  }
+
+  .dark .shadow-glow {
+    box-shadow: 0 0 25px rgba(100, 102, 241, 0.25), 0 0 50px rgba(100, 102, 241, 0.12);
+  }
+
+  /* --- Glass Effect --- */
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
   }
-  
-  .dark .glass-card {
-    background: rgba(20, 20, 30, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .shadow-glow {
-    box-shadow: 0 0 20px color-mix(in oklch, var(--primary) 30%, transparent), 0 0 40px color-mix(in oklch, var(--primary) 10%, transparent);
-  }
-  
-  .dark .shadow-glow {
-    box-shadow: 0 0 20px color-mix(in oklch, var(--primary) 30%, transparent), 0 0 40px color-mix(in oklch, var(--primary) 10%, transparent);
-  }
-  
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Backdrop blur 性能优化 - 仅在支持时使用 */
-  @supports (backdrop-filter: blur(10px)) {
-    .glass-effect {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      will-change: transform;
-      transform: translateZ(0);
-    }
+
+  .dark .glass-effect {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -549,8 +633,8 @@ All colors MUST be HSL.
 }
 
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 20px color-mix(in oklch, var(--primary) 30%, transparent); }
-  50% { box-shadow: 0 0 40px color-mix(in oklch, var(--primary) 60%, transparent), 0 0 60px color-mix(in oklch, var(--accent) 30%, transparent); }
+  0%, 100% { box-shadow: 0 0 20px rgba(100, 102, 241, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(100, 102, 241, 0.35), 0 0 60px rgba(139, 92, 246, 0.15); }
 }
 
 @keyframes gradient-shift {

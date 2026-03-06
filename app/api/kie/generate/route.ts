@@ -515,23 +515,23 @@ function calculateCredits(
   // Sora3 Pro pricing
   if (model === 'sora2-pro' || model === 'sora3-pro') {
     if (quality === 'high') {
-      return n_frames === '15' ? 325 : 175;
+      return n_frames === '15' ? 650 : 350;
     } else if (quality === 'standard') {
-      return n_frames === '15' ? 135 : 75;
+      return n_frames === '15' ? 270 : 150;
     }
-    return n_frames === '15' ? 135 : 75;
+    return n_frames === '15' ? 270 : 150;
   }
 
-  // Sora2 pricing: 10s=20, 15s=25
+  // Sora2 pricing: 10s=40, 15s=50
   if (model === 'sora2' || model === 'sora2-text-to-video' || model === 'sora2-image-to-video') {
-    return n_frames === '15' ? 25 : 20;
+    return n_frames === '15' ? 50 : 40;
   }
 
-  // Sora3 base pricing: 10s=15, 15s=20
+  // Sora3 base pricing: 10s=30, 15s=40
   if (n_frames === '15') {
-    return 20;
+    return 40;
   }
-  return 15;
+  return 30;
 }
 
 function normalizeBaseUrl(baseUrl: string) {

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, JetBrains_Mono, Merriweather } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -12,12 +12,28 @@ import { Providers } from '../providers'
 import CriticalCSSWrapper from '@/components/CriticalCSSWrapper'
 import TooltipProviderWrapper from '@/components/TooltipProviderWrapper'
 import AnalyticsScripts from '@/components/AnalyticsScripts'
+import ClientOnlyNavigation from '@/components/ClientOnlyNavigation'
 import '../globals.css'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter'
+  variable: '--font-inter',
+  weight: ['300', '400', '500', '600', '700', '800'],
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono',
+  weight: ['400', '500', '600', '700'],
+})
+
+const merriweather = Merriweather({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-merriweather',
+  weight: ['400', '700'],
 })
 
 // Arabic font
@@ -162,7 +178,9 @@ export default async function LocaleLayout({
 
   const messages = await getMessages({ locale })
   const isRTL = false // Disable RTL layout for all locales
-  const fontClass = locale === 'ar' ? tajawal.variable : inter.variable
+  const fontClass = locale === 'ar'
+    ? `${tajawal.variable} ${jetbrainsMono.variable} ${merriweather.variable}`
+    : `${inter.variable} ${jetbrainsMono.variable} ${merriweather.variable}`
 
   return (
     <>
@@ -182,9 +200,10 @@ export default async function LocaleLayout({
         <Providers>
           <TooltipProviderWrapper>
             <CriticalCSSWrapper />
+            <ClientOnlyNavigation />
             <Toaster />
             <Sonner />
-            <div className={`min-h-screen bg-background font-sans antialiased ${fontClass}`}>
+            <div className={`min-h-screen bg-background font-sans antialiased pt-14 ${fontClass}`}>
               <AnalyticsScripts />
               
               {/* JSON-LD */}

@@ -143,9 +143,9 @@ export const StoryboardSceneComponent: React.FC<StoryboardSceneComponentProps> =
                       setLocalDuration(shot.duration.toString());
                     }
                   }}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 text-sm border border-input rounded-md bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                 />
-                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">s</span>
+                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground">s</span>
               </div>
             </div>
           </div>

@@ -9,18 +9,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300",
+        default: "btn-glass-primary bg-primary text-primary-foreground",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-border bg-card/50 backdrop-blur-sm hover:bg-accent/20 hover:border-accent transition-all duration-300",
+          "btn-glass-outline border border-border/60 text-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all duration-300",
+          "btn-glass-secondary bg-secondary/80 text-secondary-foreground backdrop-blur-sm hover:bg-secondary/60",
         ghost: "text-foreground hover:bg-accent/20 hover:text-accent-foreground transition-all duration-300",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary text-primary-foreground shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-base font-semibold",
-        gradient: "bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300",
-        cyber: "bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold",
+        hero: "btn-glass-hero bg-primary text-primary-foreground text-base font-semibold",
+        gradient: "btn-glass-gradient text-white",
+        cyber: "btn-glass-cyber bg-primary text-primary-foreground font-semibold",
       },
       size: {
         default: "h-10 px-4 py-2",

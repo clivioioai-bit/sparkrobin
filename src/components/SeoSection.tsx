@@ -43,8 +43,8 @@ const SeoSection = () => {
 
             <Card className="p-6 bg-card/50 backdrop-blur-sm">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="p-2 bg-green-500/10 rounded-lg">
-                  <Globe className="w-5 h-5 text-green-500" />
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Globe className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold">全球分发与存储</h3>
               </div>

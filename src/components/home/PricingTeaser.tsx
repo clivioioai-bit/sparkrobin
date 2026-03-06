@@ -10,7 +10,7 @@ const PricingTeaser = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   return (
-    <section className="py-20 sm:py-28 bg-[#0a0f1a]/50 relative overflow-hidden">
+    <section className="py-20 sm:py-28 bg-card/30 backdrop-blur-xl relative overflow-hidden">
       {/* Subtle top gradient line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 

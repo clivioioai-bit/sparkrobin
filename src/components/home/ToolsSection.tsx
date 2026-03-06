@@ -776,7 +776,7 @@ const ToolsSection = () => {
                     </p>
                   </div>
                   
-                  <div className="aspect-video bg-muted rounded-lg sm:rounded-xl overflow-hidden">
+                  <div className="aspect-video bg-muted/50 backdrop-blur-sm rounded-lg sm:rounded-xl overflow-hidden">
                     <video 
                       className="w-full h-full object-cover"
                       controls
@@ -814,7 +814,7 @@ const ToolsSection = () => {
                       {sampleVideo.tags.map((tag) => (
                         <span 
                           key={tag}
-                          className="text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-muted text-muted-foreground rounded-full"
+                          className="text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-muted/50 backdrop-blur-sm text-muted-foreground rounded-full"
                         >
                           #{tag}
                         </span>

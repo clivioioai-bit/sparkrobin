@@ -500,8 +500,8 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
               // 视频加载错误时的友好提示
               <div className="w-full h-full flex items-center justify-center bg-muted/50">
                 <div className="text-center space-y-4 p-8 max-w-md">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-yellow-100 dark:bg-yellow-900/20 flex items-center justify-center">
-                    <AlertCircle className="w-8 h-8 text-yellow-600 dark:text-yellow-400" />
+                  <div className="w-16 h-16 mx-auto rounded-full bg-amber-500/10 flex items-center justify-center">
+                    <AlertCircle className="w-8 h-8 text-amber-500" />
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-lg font-semibold text-foreground">
@@ -557,8 +557,8 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-muted">
                 <div className="text-center space-y-4 p-8">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center">
-                    <CheckCircle className="w-8 h-8 text-green-600" />
+                  <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+                    <CheckCircle className="w-8 h-8 text-primary" />
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-lg font-semibold text-foreground">
@@ -578,7 +578,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
             <Button 
               variant="outline" 
               size="sm"
-              className="border-input text-foreground hover:bg-muted"
+              className="border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08]"
               onClick={handleDownload}
               disabled={!currentJob.result_url}
             >
@@ -588,7 +588,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="flex-1 border-input text-foreground hover:bg-muted"
+                className="flex-1 border-white/[0.08] bg-white/[0.04] backdrop-blur-sm text-foreground hover:bg-white/[0.08]"
               >
                 View full history
               </Button>
@@ -625,7 +625,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
                 Error Code: {currentJob.error.code}
               </p>
             )}
-            <div className="text-xs text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">
+            <div className="text-xs text-primary bg-primary/5 px-2 py-1 rounded">
               ✓ Credits have been refunded to your account
             </div>
           </div>

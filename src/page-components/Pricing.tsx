@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useMemo, useState, useEffect } from "react";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { subscriptionPlans } from "@/config/pricing";
@@ -68,7 +67,6 @@ const PricingPage = () => {
         description="View Sora3 pricing plans. Choose from Basic, Creator, or Pro plans with monthly and annual options. Create professional videos with Sora3 technology."
         canonical="https://sora3ai.io/pricing"
       />
-      <Navigation />
       
       <div className="pt-20 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,21 +77,21 @@ const PricingPage = () => {
             </h1>
             {/* Trust Badges */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-4">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border/50">
-                <Lock className="w-4 h-4 text-yellow-400" />
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-xl border border-border/50">
+                <Lock className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground">{t('secureCheckout')}</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border/50">
-                <div className="w-4 h-4 rounded bg-green-500 flex items-center justify-center">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-xl border border-border/50">
+                <div className="w-4 h-4 rounded bg-primary flex items-center justify-center">
                   <Check className="w-3 h-3 text-white" />
                 </div>
                 <span className="text-sm text-muted-foreground">{t('cancelAnytime')}</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border/50">
-                <CreditCard className="w-4 h-4 text-yellow-400" />
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-xl border border-border/50">
+                <CreditCard className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground">{t('noSurpriseCharges')}</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border/50">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-xl border border-border/50">
                 <MessageCircle className="w-4 h-4 text-white" />
                 <span className="text-sm text-muted-foreground">{t('fastSupport')}</span>
               </div>

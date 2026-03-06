@@ -20,8 +20,10 @@
     "haveMoreQuestions": "Haben Sie weitere Fragen? Wir helfen Ihnen gerne."
   },
   "hero": {
-    "badge": "Next-Gen Sora 3 Plattform",
+    "badge": "2026 Best Model",
     "discord": "Discord-Community beitreten",
+    "brandName": "SORA 3",
+    "tagline": "KI-Videogenerator",
     "title": "Sora 3 — Neudefinition dessen, was KI-Video sein kann",
     "subtitle": "Das neue Sora 3 liefert ultrarealistische Bewegungen, längere Szenen und kinematografische Details — endlich können Creator reine Vorstellungskraft in Sekunden in Studioqualitäts-Videos verwandeln.",
     "placeholder": "Beschreiben Sie das Video, das Sie erstellen möchten...",

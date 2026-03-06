@@ -274,7 +274,7 @@ const SubscriptionPlans = ({
               <span className="hidden sm:inline">{t('annual')}</span>
               <span className="sm:hidden">{t('annual')}</span>
               <Badge
-                className="text-[9px] sm:text-[10px] uppercase tracking-wide bg-red-500 text-white shadow-lg border-0 hover:bg-red-600"
+                className="text-[9px] sm:text-[10px] uppercase tracking-wide bg-destructive text-white shadow-lg border-0 hover:bg-destructive/90"
               >
                 {t('save50Percent')}
               </Badge>
@@ -393,7 +393,7 @@ const SubscriptionPlans = ({
                         {/* Save percentage badge */}
                         {yearlySavings && yearlySavings > 0 && (
                           <div className="flex justify-center">
-                            <span className="inline-flex items-center rounded-lg bg-red-500 px-3 py-1 text-xs font-semibold text-white shadow-lg">
+                            <span className="inline-flex items-center rounded-lg bg-destructive px-3 py-1 text-xs font-semibold text-white shadow-lg">
                               {t('save50Percent')}
                             </span>
                           </div>
@@ -409,7 +409,7 @@ const SubscriptionPlans = ({
                           {t('payOnce')}
                         </div>
                         <div className="flex justify-center">
-                          <span className="inline-flex items-center rounded-lg bg-yellow-100 dark:bg-yellow-900/30 px-3 py-1 text-xs font-semibold text-yellow-700 dark:text-yellow-400 border border-yellow-500">
+                          <span className="inline-flex items-center rounded-lg bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-400 border border-amber-500">
                             {plan.credits.replace(/Credits/gi, t('credits'))}
                           </span>
                         </div>
@@ -430,7 +430,7 @@ const SubscriptionPlans = ({
                         <p className="text-sm text-muted-foreground">{billingCopy}</p>
                         {savingsInfo && (
                           <div className="flex justify-center">
-                            <span className="inline-flex items-center rounded-lg bg-green-100 dark:bg-green-900/30 px-3 py-1 text-xs font-semibold text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800">
+                            <span className="inline-flex items-center rounded-lg bg-primary/10 px-3 py-1 text-xs font-semibold text-primary border border-primary/20">
                               {savingsInfo}
                             </span>
                           </div>
