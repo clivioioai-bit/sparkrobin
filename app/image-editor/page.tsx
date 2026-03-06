@@ -1,7 +1,7 @@
-import NanoBananaGenerator from '@/page-components/NanoBananaGenerator';
+import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-export default function ImageEditorPage() {
-  return <NanoBananaGenerator defaultTab="image-editor" />;
+export default function LegacyImageEditorPage() {
+  redirect('/en/image-editor');
 }

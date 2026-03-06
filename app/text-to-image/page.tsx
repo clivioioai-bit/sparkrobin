@@ -1,7 +1,7 @@
-import NanoBananaGenerator from '@/page-components/NanoBananaGenerator';
+import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-export default function TextToImagePage() {
-  return <NanoBananaGenerator defaultTab="text-to-image" />;
+export default function LegacyTextToImagePage() {
+  redirect('/en/text-to-image');
 }

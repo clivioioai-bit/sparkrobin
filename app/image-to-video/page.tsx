@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
 export default function LegacyImageToVideoPage() {
-  redirect('/sora3-image-to-video');
+  redirect('/en/sora3-image-to-video');
 }

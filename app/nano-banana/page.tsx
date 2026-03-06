@@ -1,5 +1,7 @@
 import { redirect } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 export default function LegacyNanoBananaPage() {
-  redirect('/sora3-image-to-video');
+  redirect('/en/nano-banana');
 }
