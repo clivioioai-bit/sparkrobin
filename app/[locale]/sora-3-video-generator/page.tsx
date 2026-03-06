@@ -39,7 +39,7 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/sora-3-video-generator`,
-      siteName: 'Saro 2',
+      siteName: 'Sora3',
       locale: 'ru_RU',
       type: 'website',
       images: [

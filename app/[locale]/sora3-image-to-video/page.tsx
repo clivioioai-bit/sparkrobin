@@ -28,6 +28,12 @@ export async function generateMetadata({
   } else if (locale === 'ja') {
     title = 'Sora 3 画像から動画 | 広告向け写真アニメーション'
     description = '静止画をキャンペーン向けのプロフェッショナルなSora 3動画コンテンツに変換。Sora 3画像から動画ツールは自然な動きで画像をアニメーション化。ウォーターマークなしのSora 3動画をエクスポート。'
+  } else if (locale === 'ru') {
+    title = 'Sora 3 Изображение в Видео | Анимация Фото для Рекламы'
+    description = 'Превращайте статичные фотографии в профессиональный видеоконтент Sora 3 для кампаний. Инструмент Sora 3 анимирует изображения с естественным движением. Экспортируйте видео Sora 3 без водяных знаков.'
+  } else if (locale === 'es') {
+    title = 'Sora 3 Imagen a Video | Animar Fotos para Anuncios'
+    description = 'Transforma fotos estaticas en contenido de video Sora 3 profesional para campanas. Nuestra herramienta Sora 3 anima imagenes con movimiento natural. Exporta videos Sora 3 sin marcas de agua.'
   }
 
   return {
@@ -47,7 +53,7 @@ export async function generateMetadata({
           alt: title,
         }
       ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       type: 'website',
     },
     twitter: {

@@ -44,13 +44,33 @@ export async function GET(request: NextRequest) {
     // Log request
     console.log(`[API] Get generation history - userId: ${userId}, limit: ${limit}, offset: ${offset}`);
 
-    // Query video jobs from database
-    const { data: jobs, error: jobsError } = await getSupabaseAdmin()
-      .from('video_jobs')
-      .select('*')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false })
-      .range(offset, offset + limit - 1);
+    // Query video jobs from database.
+    // Prefer admin client (bypasses RLS), but gracefully fallback to session client
+    // when service-role env is missing/misconfigured in production.
+    let jobs: any[] | null = null;
+    let jobsError: any = null;
+
+    try {
+      const adminClient = getSupabaseAdmin();
+      const adminResp = await adminClient
+        .from('video_jobs')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .range(offset, offset + limit - 1);
+      jobs = adminResp.data;
+      jobsError = adminResp.error;
+    } catch (adminError) {
+      console.warn('[API] getSupabaseAdmin failed in /api/videos/history, fallback to session client:', adminError);
+      const sessionResp = await supabase
+        .from('video_jobs')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .range(offset, offset + limit - 1);
+      jobs = sessionResp.data;
+      jobsError = sessionResp.error;
+    }
 
     if (jobsError) {
       console.error(`[API ERROR] Get generation history failed - userId: ${userId}:`, jobsError);
@@ -99,11 +119,28 @@ export async function GET(request: NextRequest) {
       };
     });
 
-    // Get total count for pagination
-    const { count, error: countError } = await getSupabaseAdmin()
-      .from('video_jobs')
-      .select('*', { count: 'exact', head: true })
-      .eq('user_id', userId);
+    // Get total count for pagination (same fallback strategy)
+    let count: number | null = 0;
+    let countError: any = null;
+    try {
+      const adminClient = getSupabaseAdmin();
+      const countResp = await adminClient
+        .from('video_jobs')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId);
+      count = countResp.count;
+      countError = countResp.error;
+    } catch (adminError) {
+      const sessionCountResp = await supabase
+        .from('video_jobs')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId);
+      count = sessionCountResp.count;
+      countError = sessionCountResp.error;
+      if (adminError) {
+        console.warn('[API] count fallback to session client in /api/videos/history');
+      }
+    }
 
     if (countError) {
       console.error(`[API ERROR] Get count failed - userId: ${userId}:`, countError);

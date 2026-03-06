@@ -1,15 +1,15 @@
 import { MetadataRoute } from 'next'
 
 /**
- * English sitemap - contains all English pages
+ * German sitemap - contains all German pages
  */
-export default async function sitemapEn(): Promise<MetadataRoute.Sitemap> {
+export default async function sitemapDe(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://sora3ai.io'
-  const prefix = '' // English has no prefix
-  
-  // Base pages
+  const locale = 'de'
+  const prefix = `/${locale}`
+
   const pages = [
-    '', // home
+    '',
     'sora3-text-to-video',
     'sora-3-storyboard',
     'multi-scene',
@@ -22,11 +22,11 @@ export default async function sitemapEn(): Promise<MetadataRoute.Sitemap> {
     'terms',
     'refund',
   ]
-  
+
   const basePages: MetadataRoute.Sitemap = []
-  
+
   pages.forEach((page) => {
-    const url = page ? `${baseUrl}/${page}` : baseUrl
+    const url = page ? `${baseUrl}${prefix}/${page}` : `${baseUrl}${prefix}/`
     basePages.push({
       url,
       lastModified: new Date(),
@@ -40,6 +40,6 @@ export default async function sitemapEn(): Promise<MetadataRoute.Sitemap> {
         : 0.3,
     })
   })
-  
+
   return basePages
 }

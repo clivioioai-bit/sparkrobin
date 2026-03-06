@@ -28,6 +28,12 @@ export async function generateMetadata({
   } else if (locale === 'ja') {
     title = 'Sora 3 料金 | 動画キャンペーン向けプラン'
     description = 'プロフェッショナルな動画生成のためのSora 3プランを選択。Basic、Creator、Proプランから選択。月額・年額請求オプションあり。今すぐSora 3コンテンツを作成開始。'
+  } else if (locale === 'ru') {
+    title = 'Sora 3 Тарифы | Планы для Видео Кампаний'
+    description = 'Выберите план Sora 3 для профессиональной генерации видео. Basic, Creator или Pro с ежемесячной и годовой оплатой. Начните создавать контент Sora 3 для ваших кампаний.'
+  } else if (locale === 'es') {
+    title = 'Sora 3 Precios | Planes para Campanas de Video'
+    description = 'Selecciona tu plan Sora 3 para generacion profesional de video. Elige entre planes Basic, Creator o Pro con facturacion mensual y anual. Comienza a crear contenido Sora 3 hoy.'
   }
 
   return {
@@ -47,7 +53,7 @@ export async function generateMetadata({
           alt: title,
         }
       ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       type: 'website',
     },
     twitter: {

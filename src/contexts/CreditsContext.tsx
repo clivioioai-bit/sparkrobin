@@ -20,260 +20,67 @@ type SupabaseUserRecord = {
   [key: string]: any;
 };
 
-const getUserSubscription = async (userId: string): Promise<(SupabaseUserRecord & { subscription: any }) | null> => {
-  // First get user data from users table
-  const { data: userData, error: userError } = await supabase
-    .from('users')
-    .select('id, email, full_name, subscription_plan, subscription_status, subscription_end_date, credits_balance, credits_total, credits_spent, created_at, updated_at')
-    .eq('id', userId)
-    .single();
-  
-  let finalUserData = userData as SupabaseUserRecord | null;
-  
-  if (userError) {
-    if (userError.code === 'PGRST116') {
-      // User doesn't exist in users table, create them
-      console.log('User not found in users table, creating...');
-      const { data: authUser } = await supabase.auth.getUser();
-      
-      if (authUser.user) {
-        try {
-          const { data: newUser, error: createError } = await supabase
-            .from('users')
-            .insert({
-              id: userId,
-              email: authUser.user.email,
-              full_name: authUser.user.user_metadata?.full_name || '',
-              subscription_plan: 'free',
-              subscription_status: 'active',
-              credits_balance: 0,
-              credits_total: 0,
-              credits_spent: 0,
-            })
-            .select()
-            .single();
-          
-          if (createError) {
-            console.error('Error creating user:', createError);
-            // Return a default user object instead of null
-            return {
-              id: userId,
-              email: authUser.user.email,
-              full_name: authUser.user.user_metadata?.full_name || '',
-              subscription_plan: 'free',
-              subscription_status: 'active',
-              subscription_end_date: null,
-              credits_balance: 0,
-              credits_total: 0,
-              credits_spent: 0,
-              created_at: new Date().toISOString(),
-              updated_at: new Date().toISOString(),
-              subscription: null
-            };
-          }
-          
-          // Use the newly created user data
-          finalUserData = newUser as SupabaseUserRecord;
-        } catch (error) {
-          console.error('Exception creating user:', error);
-          // Return a default user object instead of null - FIXED: Use same credits as normal case
-          return {
-            id: userId,
-            email: authUser.user.email,
-            full_name: authUser.user.user_metadata?.full_name || '',
-            subscription_plan: 'free',
-            subscription_status: 'active',
-            subscription_end_date: null,
-            credits_balance: 0,
-            credits_total: 0,
-            credits_spent: 0,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-            subscription: null
-          };
-        }
-      } else {
-        console.error('No auth user found');
-        return null;
-      }
-    } else {
-      // Check if error is empty object first
-      const isEmptyError = userError && typeof userError === 'object' && Object.keys(userError).length === 0;
-      
-      // Log a safer representation to avoid empty object confusion
-      if (isEmptyError) {
-        console.warn('Error fetching user: empty error object received; attempting fallback');
-      } else {
-        // Log structured error details for visibility
-        console.error('Error fetching user:', {
-          code: (userError as any)?.code,
-          message: (userError as any)?.message,
-          details: (userError as any)?.details,
-          hint: (userError as any)?.hint
-        }, userError);
-      }
+const getUserSubscription = async (_userId: string): Promise<(SupabaseUserRecord & { subscription: any; generation_count?: number }) | null> => {
+  try {
+    const response = await fetch('/api/account/summary', {
+      method: 'GET',
+      credentials: 'include',
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-      // 如果是权限问题或返回了空错误对象，返回基于 auth 用户的默认数据，而不是 null
-      if (
-        isEmptyError ||
-        userError.code === '42501' ||
-        userError.message?.includes('406') ||
-        userError.message?.includes('403')
-      ) {
-        const { data: authUser } = await supabase.auth.getUser();
-        if (authUser.user) {
-          finalUserData = {
-            id: userId,
-            email: authUser.user.email,
-            full_name: authUser.user.user_metadata?.full_name || '',
-            subscription_plan: 'free',
-            subscription_status: 'active',
-            subscription_end_date: null,
-            credits_balance: 0,
-            credits_total: 0,
-            credits_spent: 0,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-          } as SupabaseUserRecord;
-        } else {
-          return null;
-        }
-      } else {
-        return null;
-      }
-    }
-  }
-
-  // Then get subscription data from user_subscriptions table
-  const { data: subscriptionData, error: subscriptionError } = await supabase
-    .from('user_subscriptions')
-    .select('*')
-    .eq('user_id', userId)
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  
-  if (subscriptionError && subscriptionError.code !== 'PGRST116') {
-    console.error('Error fetching subscription:', subscriptionError);
-    // 如果是权限问题，继续使用用户数据但订阅数据设为 null
-    if (!(subscriptionError.code === '42501' || subscriptionError.message?.includes('406') || subscriptionError.message?.includes('403'))) {
+    if (!response.ok) {
+      console.warn('Account summary request failed with status:', response.status);
       return null;
     }
-  }
 
-  // Return combined data
-  if (!finalUserData) {
+    const payload = await response.json();
+    return payload?.summary || null;
+  } catch (error) {
+    console.warn('Account summary request failed:', error);
     return null;
   }
-
-  return {
-    ...finalUserData,
-    subscription: subscriptionData
-  };
 };
 
-const getUserGenerations = async (userId: string) => {
-  const { data, error } = await supabase
-    .from('video_jobs')
-    .select('*')
-    .eq('user_id', userId)
-    .order('created_at', { ascending: false });
-
-  if (!error) return data || [];
-
-  const isEmptyError = typeof error === 'object' && error !== null && Object.keys(error).length === 0;
-  if (isEmptyError) {
-    console.warn('Error fetching generations: empty error object received; attempting API fallback');
-  } else {
-    // Log both structured and raw error for visibility
-    console.error('Error fetching generations (Supabase):', {
-      code: (error as any).code,
-      message: (error as any).message,
-      details: (error as any).details,
-      hint: (error as any).hint
-    }, error);
-  }
-
-  // Fallback: call server API using access token (bypasses RLS via service role on server)
+const getUserGenerations = async (_userId: string) => {
   try {
-    const session = await supabase.auth.getSession();
-    const token = session.data.session?.access_token;
-    if (!token) return [];
-
-    let res: Response;
-    try {
-      res = await fetch('/api/jobs?limit=20', {
-        headers: { Authorization: `Bearer ${token}` },
-        cache: 'no-store'
-      });
-    } catch (fetchError) {
-      // Handle network errors (CORS, connection refused, etc.)
-      const errorMessage = fetchError instanceof Error 
-        ? fetchError.message 
-        : (typeof fetchError === 'string' ? fetchError : 'Network error occurred');
-      
-      console.error('Jobs API fallback fetch failed:', {
-        error: errorMessage,
-        url: '/api/jobs?limit=20',
-        isNetworkError: errorMessage.includes('fetch') || errorMessage.includes('network')
-      });
-      return [];
-    }
+    const res = await fetch('/api/videos/history?limit=20&offset=0', {
+      credentials: 'include',
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (!res.ok) {
-      console.error('Jobs API fallback failed with status:', res.status);
+      console.warn('Generation history request failed with status:', res.status);
       return [];
     }
-    
-    let json: any;
-    try {
-      json = await res.json();
-    } catch (parseError) {
-      console.error('Failed to parse jobs API response:', parseError);
-      return [];
-    }
-    
+
+    const json = await res.json();
     const jobs = Array.isArray(json?.jobs) ? json.jobs : [];
 
-    // Map API job format to local expected generation format
-    const statusMap: Record<string, 'processing' | 'completed' | 'failed'> = {
-      QUEUED: 'processing',
-      RUNNING: 'processing',
-      SUCCEEDED: 'completed',
-      FAILED: 'failed',
-      CANCELED: 'failed',
-      PENDING: 'processing'
-    };
-
-    const mapped = jobs.map((job: any) => ({
-      // keep raw fields; caller will remap again later
+    return jobs.map((job: any) => ({
       id: job.job_id || job.id || '',
       prompt: job.prompt,
-      negative_prompt: job.negative_prompt,
+      negative_prompt: job.negativePrompt,
       duration: job.duration ?? 0,
-      resolution: job.aspect_ratio || job.resolution || '1280x720',
+      resolution: job.aspectRatio || job.aspect_ratio || job.resolution || '1280x720',
       model: job.model || 'sora3',
-      status: statusMap[job.status] || 'processing',
-      credits_used: job.cost_credits ?? 0,
-      video_url: job.result_url,
-      thumbnail_url: job.preview_url,
-      created_at: job.created_at,
-      completed_at: job.updated_at
+      status: job.status || 'processing',
+      credits_used: job.creditsUsed ?? job.cost_credits ?? 0,
+      video_url: job.videoUrl || job.result_url,
+      thumbnail_url: job.thumbnailUrl || job.preview_url,
+      created_at: job.createdAt || job.created_at,
+      completed_at: job.completedAt || job.updatedAt || job.updated_at
     }));
-
-    return mapped;
   } catch (fallbackError) {
-    // Provide detailed error information
     const errorMessage = fallbackError instanceof Error 
       ? fallbackError.message 
       : (typeof fallbackError === 'string' ? fallbackError : 'Unknown error');
-    
-    console.error('Error fetching generations (API fallback):', {
-      error: errorMessage,
-      errorType: typeof fallbackError,
-      isError: fallbackError instanceof Error,
-      stack: fallbackError instanceof Error ? fallbackError.stack : undefined
-    });
+    console.warn('Generation history request failed:', errorMessage);
     return [];
   }
 };

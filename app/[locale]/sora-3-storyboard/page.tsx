@@ -31,6 +31,9 @@ export async function generateMetadata({
   } else if (locale === 'ru') {
     title = 'Sora 3 Storyboard | Создание Брендовых Историй'
     description = 'Создавайте расширенные Sora 3 видео-нарративы до 25 секунд для брендовых кампаний и социального контента. Sora 3 Storyboard поддерживает согласованность персонажей между сценами. Экспортируйте Sora 3 видео без водяных знаков.'
+  } else if (locale === 'es') {
+    title = 'Sora 3 Storyboard | Crea Narrativas de Marca de 25s'
+    description = 'Crea narrativas de video Sora 3 extendidas de hasta 25 segundos para campanas de marca y contenido social. Sora 3 Storyboard mantiene la consistencia de personajes entre escenas. Exporta videos Sora 3 sin marcas de agua.'
   }
 
   return {
@@ -50,7 +53,7 @@ export async function generateMetadata({
           alt: title,
         }
       ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       type: 'website',
     },
     twitter: {

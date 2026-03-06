@@ -23,6 +23,9 @@ Sitemap: https://sora3ai.io/sitemap-en.xml
 Sitemap: https://sora3ai.io/sitemap-ar.xml
 Sitemap: https://sora3ai.io/sitemap-ja.xml
 Sitemap: https://sora3ai.io/sitemap-ru.xml
+Sitemap: https://sora3ai.io/sitemap-es.xml
+Sitemap: https://sora3ai.io/sitemap-zh-CN.xml
+Sitemap: https://sora3ai.io/sitemap-de.xml
 
 # Disallow admin and API routes
 Disallow: /api/
@@ -32,7 +35,6 @@ Disallow: /dashboard/
 Disallow: /auth/
 
 # Allow important pages (explicitly allow for better indexing)
-Allow: /
 Allow: /sora3-text-to-video
 Allow: /sora-3-storyboard
 Allow: /multi-scene
@@ -52,3 +54,5 @@ Allow: /ar/
 Allow: /ja/
 Allow: /ru/
 Allow: /es/
+Allow: /zh-CN/
+Allow: /de/

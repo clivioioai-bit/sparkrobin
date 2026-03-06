@@ -1898,18 +1898,6 @@ const Generate = () => {
             {/* Marketing Content - Only for text-to-video */}
             {routeFromMode(generationMode) === '/sora3-text-to-video' && (
               <>
-                {/* Hero Section */}
-                <section className="mt-16 mb-12">
-                  <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                      {tGenerate('textToVideoTitle')}
-                    </h2>
-                    <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                      {tGenerate('textToVideoSubtitle')}
-                    </p>
-                  </div>
-                </section>
-
                 {/* Features Section */}
                 <section className="mt-16 mb-12">
                   <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
@@ -2124,18 +2112,6 @@ const Generate = () => {
             {/* Marketing Content - Only for image-to-video */}
             {routeFromMode(generationMode) === '/sora3-image-to-video' && (
               <>
-                {/* Hero Section */}
-                <section className="mt-16 mb-12">
-                  <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                      {tGenerate('imageToVideoTitle')}
-                    </h2>
-                    <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                      {tGenerate('imageToVideoSubtitle')}
-                    </p>
-                  </div>
-                </section>
-
                 {/* Features Section */}
                 <section className="mt-16 mb-12">
                   <h2 className="text-3xl font-bold text-foreground mb-8 text-center">

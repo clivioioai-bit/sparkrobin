@@ -28,6 +28,12 @@ export async function generateMetadata({
   } else if (locale === 'ja') {
     title = 'Sora 3 マルチシーン | 拡張動画ストーリー'
     description = '最大25秒のSora 3マルチシーン動画で完全なブランドストーリーを構築。Sora 3はシーン間で視覚的一貫性を維持。ウォーターマークなしのSora 3コンテンツをエクスポート。'
+  } else if (locale === 'ru') {
+    title = 'Sora 3 Мульти-сцена | Расширенные Видео Истории'
+    description = 'Создавайте полные истории бренда с многосценовыми видео Sora 3 до 25 секунд. Sora 3 поддерживает визуальную согласованность между сценами. Экспортируйте контент Sora 3 без водяных знаков.'
+  } else if (locale === 'es') {
+    title = 'Sora 3 Multi-Escena | Narrativas de Video Extendidas'
+    description = 'Construye historias de marca completas con videos multi-escena Sora 3 de hasta 25 segundos. Sora 3 mantiene la consistencia visual entre escenas. Exporta contenido Sora 3 sin marcas de agua.'
   }
 
   return {
@@ -47,7 +53,7 @@ export async function generateMetadata({
           alt: title,
       }
     ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
     type: 'website',
   },
   twitter: {

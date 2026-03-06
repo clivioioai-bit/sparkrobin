@@ -86,6 +86,16 @@ export async function generateMetadata({
     description = 'Sora 3 es el nuevo generador de video por IA con escenas más largas, realismo mejorado y control avanzado. Únete a la lista de acceso temprano. Mientras tanto, prueba Sora 2 para crear videos profesionales sin marca de agua.'
     ogTitle = 'Sora 3 Generador de Video con IA — Próxima generación | Coming Soon'
     ogDescription = 'Sora 3 es el nuevo generador de video por IA con escenas más largas, realismo mejorado y control avanzado. Únete a la lista de acceso temprano. Mientras tanto, prueba Sora 2 para crear videos profesionales sin marca de agua.'
+  } else if (locale === 'zh-CN') {
+    title = 'Sora 3 AI 视频生成器 — 下一代模型 | 即将推出'
+    description = '探索 Sora 3，专为创作者、品牌和广告商设计的下一代 AI 视频生成器。制作更长、更清晰、更逼真的视频，具有先进的物理效果和场景控制。'
+    ogTitle = 'Sora 3 AI 视频生成器 — 下一代模型 | 即将推出'
+    ogDescription = '探索 Sora 3，专为创作者、品牌和广告商设计的下一代 AI 视频生成器。制作更长、更清晰、更逼真的视频，具有先进的物理效果和场景控制。'
+  } else if (locale === 'de') {
+    title = 'Sora 3 AI Video Generator — Naechste Generation | Bald verfuegbar'
+    description = 'Entdecken Sie Sora 3, den AI-Videogenerator der naechsten Generation fuer Kreative, Marken und Werbetreibende. Erstellen Sie laengere, schaerfere und realistischere Videos mit fortschrittlicher Physik und Szenenkontrolle.'
+    ogTitle = 'Sora 3 AI Video Generator — Naechste Generation | Bald verfuegbar'
+    ogDescription = 'Entdecken Sie Sora 3, den AI-Videogenerator der naechsten Generation fuer Kreative, Marken und Werbetreibende. Erstellen Sie laengere, schaerfere und realistischere Videos mit fortschrittlicher Physik und Szenenkontrolle.'
   }
 
   // Generate hreflang alternates for homepage using utility function
@@ -110,7 +120,7 @@ export async function generateMetadata({
     category: 'AI Video Generation',
     openGraph: {
       type: 'website',
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       url: locale === 'en' ? baseUrl : `${baseUrl}/${locale}/`,
       siteName: 'Sora3',
       title: ogTitle,

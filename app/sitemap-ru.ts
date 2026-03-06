@@ -19,6 +19,7 @@ export default async function sitemapRu(): Promise<MetadataRoute.Sitemap> {
     'sora-3-video-generator',
     'pricing',
     'faq',
+    'blog',
     'privacy',
     'terms',
     'refund',
@@ -32,12 +33,12 @@ export default async function sitemapRu(): Promise<MetadataRoute.Sitemap> {
       url,
       lastModified: new Date(),
       changeFrequency: page === '' || page === 'sora3-text-to-video' || page === 'sora-3-storyboard' || page === 'sora3-image-to-video' || page === 'sora-3-video-generator' ? 'daily' as const
-        : page === 'pricing' || page === 'faq' ? 'weekly' as const
+        : page === 'pricing' || page === 'faq' || page === 'blog' ? 'weekly' as const
         : 'yearly' as const,
       priority: page === '' ? 1
         : page === 'sora3-text-to-video' || page === 'sora-3-storyboard' || page === 'sora3-image-to-video' || page === 'sora-3-video-generator' ? 0.95
         : page === 'multi-scene' || page === 'watermark-remover' ? 0.9
-        : page === 'pricing' || page === 'faq' ? 0.8
+        : page === 'pricing' || page === 'faq' || page === 'blog' ? 0.8
         : 0.3,
     })
   })

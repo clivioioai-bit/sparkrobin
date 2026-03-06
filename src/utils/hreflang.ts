@@ -32,7 +32,7 @@ export function generateHreflangAlternates(
   
   // Create alternates object
   const alternates: Metadata['alternates'] = {
-    canonical: locale === 'en' 
+    canonical: locale === 'en'
       ? (normalizedPath ? `${baseUrl}/${normalizedPath}` : baseUrl)
       : (normalizedPath ? `${baseUrl}/${locale}/${normalizedPath}` : `${baseUrl}/${locale}/`),
     languages: {
@@ -45,6 +45,10 @@ export function generateHreflangAlternates(
       'ru-RU': urls['ru'], // Russia variant
       'es': urls['es'],
       'es-ES': urls['es'], // Spain variant
+      'zh-CN': urls['zh-CN'],
+      'zh-Hans': urls['zh-CN'], // Simplified Chinese variant
+      'de': urls['de'],
+      'de-DE': urls['de'], // Germany variant
       'x-default': urls['en'], // Default fallback
     }
   }

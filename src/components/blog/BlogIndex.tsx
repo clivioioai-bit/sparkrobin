@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { getAllPosts, getFeaturedPost } from '@/lib/blog';
 import { Badge } from '@/components/ui/badge';
@@ -86,6 +87,7 @@ const BlogIndex = async ({ locale = 'en' }: Props) => {
 
   return (
     <div className="min-h-screen bg-background" suppressHydrationWarning>
+      <Navigation />
       <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background pt-24 pb-10">
         <div className="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.25),_transparent_40%)] pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">

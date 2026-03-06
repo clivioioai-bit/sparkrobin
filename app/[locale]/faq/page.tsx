@@ -26,6 +26,12 @@ export async function generateMetadata({
   } else if (locale === 'ja') {
     title = 'Sora 3 よくある質問 | Sora 3動画に関する回答'
     description = 'Sora 3動画生成、キャンペーンでの使用、プラットフォーム機能に関する回答を取得。Sora 3の動作方法と、マーケティングチームがSora 3を選択する理由を理解。'
+  } else if (locale === 'ru') {
+    title = 'Sora 3 FAQ | Ответы о Видео Sora 3'
+    description = 'Получите ответы о генерации видео Sora 3, использовании в кампаниях и возможностях платформы. Узнайте, как работает Sora 3 и почему маркетинговые команды выбирают Sora 3.'
+  } else if (locale === 'es') {
+    title = 'Sora 3 FAQ | Respuestas Sobre Videos Sora 3'
+    description = 'Obtiene respuestas sobre la generacion de video Sora 3, uso en campanas y capacidades de la plataforma. Comprende como funciona Sora 3 y por que los equipos de marketing eligen Sora 3.'
   }
 
   return {
@@ -45,7 +51,7 @@ export async function generateMetadata({
           alt: title,
         }
       ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       type: 'website',
     },
     twitter: {

@@ -29,6 +29,12 @@ export async function generateMetadata({
   } else if (locale === 'ja') {
     title = 'Sora 3 テキストから動画 | 広告向け動画作成'
     description = 'テキストを広告向けのSora 3動画クリップに変換。Sora 3テキストから動画生成ツールは、ウォーターマークなしのプロフェッショナルなコンテンツを生成。今すぐSora 3動画を作成開始。'
+  } else if (locale === 'ru') {
+    title = 'Sora 3 Текст в Видео | Создание Рекламных Клипов'
+    description = 'Превращайте текст в профессиональные видеоклипы Sora 3, готовые для рекламы и кампаний. Генератор Sora 3 создает контент без водяных знаков. Начните создавать видео Sora 3 уже сегодня.'
+  } else if (locale === 'es') {
+    title = 'Sora 3 Texto a Video | Crear Clips para Anuncios'
+    description = 'Transforma texto en clips de video Sora 3 listos para anuncios y campanas. Nuestro generador Sora 3 produce contenido profesional sin marcas de agua. Comienza a crear videos Sora 3 hoy.'
   }
 
   return {
@@ -48,7 +54,7 @@ export async function generateMetadata({
           alt: title,
         }
       ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       type: 'website',
     },
     twitter: {

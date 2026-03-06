@@ -1,6 +1,5 @@
 import React from 'react';
 import { Metadata } from 'next';
-import SEOHead from '@/components/SEOHead';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import { generateHreflangAlternates } from '@/utils/hreflang';
@@ -33,13 +32,12 @@ export async function generateMetadata({
   return {
     title,
     description,
-    keywords: 'terms of service, terms and conditions, AI video generation service, user agreement, legal terms',
     alternates: generateHreflangAlternates('/terms', locale),
     openGraph: {
       title,
       description,
       url: `${baseUrl}${prefix}/terms`,
-      siteName: 'Saro 2',
+      siteName: 'Sora3',
       images: [
         {
           url: 'https://sora3ai.io/logo.jpg',
@@ -48,7 +46,7 @@ export async function generateMetadata({
           alt: title,
         }
       ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       type: 'website',
     },
     twitter: {
@@ -64,15 +62,7 @@ const TermsOfService: React.FC<{ locale: string }> = ({ locale }) => {
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   return (
-    <>
-      <SEOHead
-        title="Terms of Service | AI video generation service"
-        description="Terms of Service for AI video generation service - Read our terms and conditions for using our AI video generation service."
-        keywords="terms of service, terms and conditions, AI video generation service, user agreement, legal terms"
-        canonical={`https://sora3ai.io${prefix}/terms`}
-      />
-      
-      <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
@@ -309,7 +299,6 @@ const TermsOfService: React.FC<{ locale: string }> = ({ locale }) => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

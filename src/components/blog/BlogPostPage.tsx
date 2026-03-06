@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { BlogPost } from '@/lib/blog';
 import ReactMarkdown from 'react-markdown';
@@ -36,6 +37,7 @@ const BlogPostPage = async ({ post, locale = 'en' }: Props) => {
 
   return (
     <div className="min-h-screen bg-background" suppressHydrationWarning>
+      <Navigation />
       <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
           {blogTexts('title')}

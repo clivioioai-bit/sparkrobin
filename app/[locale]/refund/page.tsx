@@ -32,13 +32,12 @@ export async function generateMetadata({
   return {
     title,
     description,
-    keywords: 'refund policy, money back guarantee, AI video generation service refund, unused credits refund, customer service',
     alternates: generateHreflangAlternates('/refund', locale),
     openGraph: {
       title,
       description,
       url: `${baseUrl}${prefix}/refund`,
-      siteName: 'Saro 2',
+      siteName: 'Sora3',
       images: [
         {
           url: 'https://sora3ai.io/logo.jpg',
@@ -47,7 +46,7 @@ export async function generateMetadata({
           alt: title,
         }
       ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       type: 'website',
     },
     twitter: {

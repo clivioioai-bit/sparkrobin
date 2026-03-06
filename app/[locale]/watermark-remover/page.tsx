@@ -28,6 +28,12 @@ export async function generateMetadata({
   } else if (locale === 'ja') {
     title = 'Sora 3 ウォーターマークなし | クリーンエクスポートツール'
     description = 'キャンペーン展開のためにSora 3動画からウォーターマークを即座に削除。Sora 3ウォーターマーク除去ツールはSora 3コンテンツを迅速に処理。商用利用可能なクリーンなSora 3動画をエクスポート。'
+  } else if (locale === 'ru') {
+    title = 'Sora 3 Без Водяных Знаков | Инструмент Чистого Экспорта'
+    description = 'Мгновенно удаляйте водяные знаки из видео Sora 3 для развертывания кампаний. Инструмент Sora 3 обрабатывает контент быстро. Экспортируйте чистые видео Sora 3, готовые к коммерческому использованию.'
+  } else if (locale === 'es') {
+    title = 'Sora 3 Sin Marca de Agua | Herramienta de Exportacion Limpia'
+    description = 'Elimina marcas de agua de videos Sora 3 al instante para campanas. Nuestra herramienta Sora 3 procesa contenido rapidamente. Exporta videos Sora 3 limpios listos para uso comercial.'
   }
 
   return {
@@ -47,7 +53,7 @@ export async function generateMetadata({
           alt: title,
         }
       ],
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       type: 'website',
     },
     twitter: {
