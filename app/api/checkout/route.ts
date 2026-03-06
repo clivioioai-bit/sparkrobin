@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
 
       const { data: createdUser, error: createUserError } = await adminClient
         .from('users')
-        .insert({
+        .upsert({
           id: user.id,
           email: user.email || '',
           full_name: user.user_metadata?.full_name || user.email || '',
@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
           credits_balance: 0,
           credits_total: 0,
           credits_spent: 0,
-        })
+        }, { onConflict: 'id' })
         .select('id, email')
         .single();
 
@@ -331,4 +331,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
