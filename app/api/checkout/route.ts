@@ -91,42 +91,57 @@ export async function POST(request: NextRequest) {
       return userRateLimitResponse;
     }
 
-    const adminClient = getSupabaseAdmin();
-    const { data: userData, error: userError } = await adminClient
-      .from('users')
-      .select('id, email')
-      .eq('id', user.id)
-      .single();
+    let checkoutUser = {
+      id: user.id,
+      email: user.email || '',
+    };
 
-    let ensuredUserData = userData;
-    if (userError || !userData) {
-      console.warn('[API] checkout user lookup missing, trying to provision user record', {
-        userId: user.id,
-        code: (userError as any)?.code,
-        message: (userError as any)?.message,
-      });
-
-      const { data: createdUser, error: createUserError } = await adminClient
+    try {
+      const adminClient = getSupabaseAdmin();
+      const { data: userData, error: userError } = await adminClient
         .from('users')
-        .upsert({
-          id: user.id,
-          email: user.email || '',
-          full_name: user.user_metadata?.full_name || user.email || '',
-          subscription_plan: 'free',
-          subscription_status: 'active',
-          credits_balance: 0,
-          credits_total: 0,
-          credits_spent: 0,
-        }, { onConflict: 'id' })
         .select('id, email')
+        .eq('id', user.id)
         .single();
 
-      if (createUserError || !createdUser) {
-        console.error('[API] checkout user auto-provision failed', createUserError);
-        return NextResponse.json({ error: 'User not found' }, { status: 404 });
-      }
+      if (userData?.id) {
+        checkoutUser = {
+          id: userData.id,
+          email: userData.email || checkoutUser.email,
+        };
+      } else {
+        console.warn('[API] checkout user lookup missing, trying to provision user record', {
+          userId: user.id,
+          code: (userError as any)?.code,
+          message: (userError as any)?.message,
+        });
 
-      ensuredUserData = createdUser;
+        const { data: createdUser, error: createUserError } = await adminClient
+          .from('users')
+          .upsert({
+            id: user.id,
+            email: user.email || '',
+            full_name: user.user_metadata?.full_name || user.email || '',
+            subscription_plan: 'free',
+            subscription_status: 'active',
+            credits_balance: 0,
+            credits_total: 0,
+            credits_spent: 0,
+          }, { onConflict: 'id' })
+          .select('id, email')
+          .single();
+
+        if (createUserError || !createdUser) {
+          console.error('[API] checkout user auto-provision failed, fallback to auth user', createUserError);
+        } else {
+          checkoutUser = {
+            id: createdUser.id,
+            email: createdUser.email || checkoutUser.email,
+          };
+        }
+      }
+    } catch (userSyncError) {
+      console.error('[API] checkout user sync failed, fallback to auth user', userSyncError);
     }
 
     const baseUrl = normalizeBaseUrl(process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin);
@@ -177,16 +192,16 @@ export async function POST(request: NextRequest) {
       debug.successUrl = successUrl;
       debug.cancelUrl = cancelUrl;
       debug.productId = plan.productId;
-      debug.customerId = ensuredUserData.id;
+      debug.customerId = checkoutUser.id;
 
       try {
         // 生成唯一的 request_id 用于跟踪支付
-        const requestId = `checkout_${ensuredUserData.id}_${plan.id}_${Date.now()}`;
+        const requestId = `checkout_${checkoutUser.id}_${plan.id}_${Date.now()}`;
         
         const checkout = await createCheckoutForProduct({
           productId: plan.productId,
-          customerId: ensuredUserData.id,
-          customerEmail: ensuredUserData.email,
+          customerId: checkoutUser.id,
+          customerEmail: checkoutUser.email,
           successUrl,
           cancelUrl,
           requestId, // 添加 request_id 用于跟踪
@@ -194,8 +209,8 @@ export async function POST(request: NextRequest) {
             planId: plan.id,
             planCategory: plan.category,
             credits: plan.credits,
-            customerId: ensuredUserData.id,
-            customerEmail: ensuredUserData.email,
+            customerId: checkoutUser.id,
+            customerEmail: checkoutUser.email,
             requestId, // 也在 metadata 中包含
           },
         });
