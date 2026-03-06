@@ -43,7 +43,7 @@ const products = [
     name: 'Creator - Monthly',
     price: 4900, // $49/月
     interval: 'month' as const,
-    envKey: 'NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_ID',
+    envKey: 'NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_V2_ID',
     description: 'Ideal for content creators',
     billingType: 'recurring' as const,
   },
@@ -51,7 +51,7 @@ const products = [
     name: 'Creator - Yearly',
     price: 49920, // $499.20/年
     interval: 'year' as const,
-    envKey: 'NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_ID',
+    envKey: 'NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_V2_ID',
     description: 'Save $88.80 annually',
     billingType: 'recurring' as const,
   },
@@ -189,4 +189,3 @@ async function createProducts() {
 }
 
 createProducts().catch(console.error);
-

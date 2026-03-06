@@ -38,8 +38,8 @@
 # 订阅计划
 NEXT_PUBLIC_CREEM_PLAN_BASIC_MONTHLY_ID=prod_xxxxx
 NEXT_PUBLIC_CREEM_PLAN_BASIC_YEARLY_ID=prod_xxxxx
-NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_ID=prod_xxxxx
-NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_ID=prod_xxxxx
+NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_V2_ID=prod_xxxxx
+NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_V2_ID=prod_xxxxx
 NEXT_PUBLIC_CREEM_PLAN_PRO_MONTHLY_ID=prod_xxxxx
 NEXT_PUBLIC_CREEM_PLAN_PRO_YEARLY_ID=prod_xxxxx
 
@@ -100,8 +100,8 @@ const result = await creem.createProduct({
 |---------|------|------|-----------|
 | Basic - Monthly | $19 | Monthly | `NEXT_PUBLIC_CREEM_PLAN_BASIC_MONTHLY_ID` |
 | Basic - Yearly | $192 | Yearly | `NEXT_PUBLIC_CREEM_PLAN_BASIC_YEARLY_ID` |
-| Creator - Monthly | $49 | Monthly | `NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_ID` |
-| Creator - Yearly | $499.20 | Yearly | `NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_ID` |
+| Creator - Monthly | $49 | Monthly | `NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_V2_ID` |
+| Creator - Yearly | $499.20 | Yearly | `NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_V2_ID` |
 | Pro - Monthly | $149 | Monthly | `NEXT_PUBLIC_CREEM_PLAN_PRO_MONTHLY_ID` |
 | Pro - Yearly | $1,520.64 | Yearly | `NEXT_PUBLIC_CREEM_PLAN_PRO_YEARLY_ID` |
 

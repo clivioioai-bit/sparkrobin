@@ -581,12 +581,12 @@ export const subscriptionPlans: Record<string, SubscriptionPlan> = {
     monthly: { 
       price: 4900, // $49/月, 300 credits ($0.16/credit)
       interval: 'month',
-      productId: process.env.NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_ID || 'prod_creator_monthly'
+      productId: process.env.NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_V2_ID || 'prod_creator_monthly'
     },
     yearly: { 
       price: 49920, // $499.20/年 (相当于 $41.60/月)
       interval: 'year',
-      productId: process.env.NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_ID || 'prod_creator_yearly'
+      productId: process.env.NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_V2_ID || 'prod_creator_yearly'
     }
   },
   pro: {
