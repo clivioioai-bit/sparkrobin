@@ -8,9 +8,9 @@ export default function AnalyticsScripts() {
       {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-1YBVQCR6CT"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -18,12 +18,12 @@ export default function AnalyticsScripts() {
           gtag('config', 'G-1YBVQCR6CT');
         `}
       </Script>
-      
+
       {/* Umami Analytics */}
       <Script
         src="https://cloud.umami.is/script.js"
         data-website-id="aaf401ff-051f-402f-aec7-bf97bba4a833"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
     </>
   )

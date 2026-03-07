@@ -70,9 +70,9 @@ const HowItWorks = () => {
 
                 {/* Content */}
                 <div className="space-y-2 sm:space-y-3">
-                  <h4 className="text-lg sm:text-xl font-semibold text-white group-hover:text-white/80 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-white/80 transition-colors">
                     {step.title}
-                  </h4>
+                  </h3>
                   <p className="text-sm sm:text-base text-white/35 leading-relaxed">
                     {step.description}
                   </p>

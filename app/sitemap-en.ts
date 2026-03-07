@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next'
+import { getPostSlugs } from '@/lib/blog'
 
 /**
- * English sitemap - contains all English pages
+ * English sitemap - contains all English pages including dynamic blog posts
  */
 export default async function sitemapEn(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://sora3ai.io'
-  const prefix = '' // English has no prefix
-  
+
   // Base pages
   const pages = [
     '', // home
@@ -22,9 +22,9 @@ export default async function sitemapEn(): Promise<MetadataRoute.Sitemap> {
     'terms',
     'refund',
   ]
-  
+
   const basePages: MetadataRoute.Sitemap = []
-  
+
   pages.forEach((page) => {
     const url = page ? `${baseUrl}/${page}` : baseUrl
     basePages.push({
@@ -40,6 +40,21 @@ export default async function sitemapEn(): Promise<MetadataRoute.Sitemap> {
         : 0.3,
     })
   })
-  
+
+  // Dynamic blog posts
+  try {
+    const slugs = getPostSlugs()
+    slugs.forEach((slug) => {
+      basePages.push({
+        url: `${baseUrl}/blog/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      })
+    })
+  } catch {
+    // Blog posts unavailable, skip
+  }
+
   return basePages
 }

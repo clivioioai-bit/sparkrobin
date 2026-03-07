@@ -1,16 +1,16 @@
 import { MetadataRoute } from 'next'
+import { getPostSlugs } from '@/lib/blog'
 
 /**
- * Japanese sitemap - contains all Japanese pages
+ * Japanese sitemap - contains all Japanese pages including dynamic blog posts
  */
 export default async function sitemapJa(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://sora3ai.io'
   const locale = 'ja'
   const prefix = `/${locale}`
-  
-  // Base pages
+
   const pages = [
-    '', // home
+    '',
     'sora3-text-to-video',
     'sora-3-storyboard',
     'multi-scene',
@@ -23,9 +23,9 @@ export default async function sitemapJa(): Promise<MetadataRoute.Sitemap> {
     'terms',
     'refund',
   ]
-  
+
   const basePages: MetadataRoute.Sitemap = []
-  
+
   pages.forEach((page) => {
     const url = page ? `${baseUrl}${prefix}/${page}` : `${baseUrl}${prefix}/`
     basePages.push({
@@ -41,7 +41,20 @@ export default async function sitemapJa(): Promise<MetadataRoute.Sitemap> {
         : 0.3,
     })
   })
-  
+
+  try {
+    const slugs = getPostSlugs()
+    slugs.forEach((slug) => {
+      basePages.push({
+        url: `${baseUrl}${prefix}/blog/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      })
+    })
+  } catch {
+    // Blog posts unavailable, skip
+  }
+
   return basePages
 }
-

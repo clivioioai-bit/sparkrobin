@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { getPostSlugs } from '@/lib/blog'
 
 /**
  * Chinese (Simplified) sitemap - contains all zh-CN pages
@@ -40,6 +41,20 @@ export default async function sitemapZhCN(): Promise<MetadataRoute.Sitemap> {
         : 0.3,
     })
   })
+
+  try {
+    const slugs = getPostSlugs()
+    slugs.forEach((slug) => {
+      basePages.push({
+        url: `${baseUrl}${prefix}/blog/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      })
+    })
+  } catch {
+    // Blog posts unavailable, skip
+  }
 
   return basePages
 }

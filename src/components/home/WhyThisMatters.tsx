@@ -77,9 +77,9 @@ const WhyThisMatters = () => {
                   >
                     <Icon className="w-7 h-7" style={{ color: feature.color }} />
                   </div>
-                  <h4 className="text-xl font-bold mb-3 text-foreground">
+                  <h3 className="text-xl font-bold mb-3 text-foreground">
                     {feature.title}
-                  </h4>
+                  </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>

@@ -35,8 +35,44 @@ const BlogPostPage = async ({ post, locale = 'en' }: Props) => {
   const t = await getTranslations('blogPage');
   const blogTexts = await getTranslations('blogShowcase');
 
+  const blogPostJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.meta.title,
+    description: post.meta.description || '',
+    image: post.meta.coverImage || 'https://sora3ai.io/logo.jpg',
+    datePublished: post.meta.date || undefined,
+    dateModified: post.meta.date || undefined,
+    author: {
+      '@type': post.meta.author ? 'Person' : 'Organization',
+      name: post.meta.author || 'Sora3 Team',
+      url: 'https://sora3ai.io',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Sora3',
+      url: 'https://sora3ai.io',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://sora3ai.io/logo.jpg',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': locale === 'en'
+        ? `https://sora3ai.io/blog/${post.slug}`
+        : `https://sora3ai.io/${locale}/blog/${post.slug}`,
+    },
+    wordCount: post.content.trim().split(/\s+/).length,
+    keywords: post.meta.tags?.join(', ') || undefined,
+  };
+
   return (
     <div className="min-h-screen bg-background" suppressHydrationWarning>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostJsonLd) }}
+      />
       <Navigation />
       <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
