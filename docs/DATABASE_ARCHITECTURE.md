@@ -116,7 +116,7 @@ video_jobs 表
 ├── image_url (输入图片，如果是图片生成视频)
 ├── result_url (生成的视频URL)
 ├── cost_credits (消耗的积分)
-└── model (使用的模型: veo3/sora3等)
+└── model (使用的模型: veo3/veo4等)
 ```
 
 **数据流**：

@@ -58,44 +58,44 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sora3ai.io'
+  const baseUrl = 'https://veo4video.io'
   
-  // Get locale-specific metadata - Sora 3 focused, keyword density >3%
-  let title = 'Sora 3 AI Video Generator — Next-Gen Model | Coming Soon'
-  let description = 'Explore Sora 3, the next-generation AI video generator designed for creators, brands, and advertisers. Produce longer, sharper, and more realistic videos with advanced physics and scene control.'
-  let ogTitle = 'Sora 3 AI Video Generator — Next-Gen Model | Coming Soon'
-  let ogDescription = 'Explore Sora 3, the next-generation AI video generator designed for creators, brands, and advertisers. Produce longer, sharper, and more realistic videos with advanced physics and scene control.'
+  // Get locale-specific metadata - Veo 4 focused, keyword density >3%
+  let title = 'Veo 4 AI Video Generator — Next-Gen Model'
+  let description = 'Explore Veo 4, a next-gen AI video generator for creators and brands. Create realistic videos with stronger motion, detail, and scene control.'
+  let ogTitle = 'Veo 4 AI Video Generator — Next-Gen Model'
+  let ogDescription = 'Explore Veo 4, a next-gen AI video generator for creators and brands. Create realistic videos with stronger motion, detail, and scene control.'
   
   if (locale === 'ar') {
-    title = 'مولّد فيديو Sora 3 بالذكاء الاصطناعي | قريبًا'
-    description = 'اكتشف Sora 3، الجيل المتقدم من مولدات الفيديو بالذكاء الاصطناعي. جودة أعلى، لقطات أطول، وتحكم أفضل في الحركة والمشهد. سجّل في الوصول المبكر. ويمكنك تجربة Sora 2 الآن أثناء انتظار الإطلاق.'
-    ogTitle = 'مولّد فيديو Sora 3 بالذكاء الاصطناعي | قريبًا'
-    ogDescription = 'اكتشف Sora 3، الجيل المتقدم من مولدات الفيديو بالذكاء الاصطناعي. جودة أعلى، لقطات أطول، وتحكم أفضل في الحركة والمشهد. سجّل في الوصول المبكر. ويمكنك تجربة Sora 2 الآن أثناء انتظار الإطلاق.'
+    title = 'مولّد فيديو Veo 4 بالذكاء الاصطناعي'
+    description = 'اكتشف Veo 4، الجيل المتقدم من مولدات الفيديو بالذكاء الاصطناعي. جودة أعلى، لقطات أطول، وتحكم أفضل في الحركة والمشهد. سجّل في الوصول المبكر. ويمكنك تجربة Sora 2 الآن أثناء انتظار الإطلاق.'
+    ogTitle = 'مولّد فيديو Veo 4 بالذكاء الاصطناعي'
+    ogDescription = 'اكتشف Veo 4، الجيل المتقدم من مولدات الفيديو بالذكاء الاصطناعي. جودة أعلى، لقطات أطول، وتحكم أفضل في الحركة والمشهد. سجّل في الوصول المبكر. ويمكنك تجربة Sora 2 الآن أثناء انتظار الإطلاق.'
   } else if (locale === 'ja') {
-    title = 'Sora 3 AI 動画ジェネレーター | 次世代モデル・近日公開'
-    description = 'Sora 3 は、より長いシーン、高精細なビジュアル、自然な物理表現を実現する次世代AI動画モデルです。先行アクセスに登録して最新情報をチェック。公開までの間は Sora 2 をご利用いただけます。'
-    ogTitle = 'Sora 3 AI 動画ジェネレーター | 次世代モデル・近日公開'
-    ogDescription = 'Sora 3 は、より長いシーン、高精細なビジュアル、自然な物理表現を実現する次世代AI動画モデルです。先行アクセスに登録して最新情報をチェック。公開までの間は Sora 2 をご利用いただけます。'
+    title = 'Veo 4 AI 動画ジェネレーター | 次世代モデル'
+    description = 'Veo 4 は、より長いシーン、高精細なビジュアル、自然な物理表現を実現する次世代AI動画モデルです。先行アクセスに登録して最新情報をチェック。公開までの間は Sora 2 をご利用いただけます。'
+    ogTitle = 'Veo 4 AI 動画ジェネレーター | 次世代モデル'
+    ogDescription = 'Veo 4 は、より長いシーン、高精細なビジュアル、自然な物理表現を実現する次世代AI動画モデルです。先行アクセスに登録して最新情報をチェック。公開までの間は Sora 2 をご利用いただけます。'
   } else if (locale === 'ru') {
-    title = 'Sora 3 AI видео генератор — новое поколение | Скоро'
-    description = 'Sora 3 — мощный AI-видео генератор для маркетинга, брендов и создателей контента. Более длинные сцены, улучшенная физика и кинематографическое качество. Подпишитесь на ранний доступ. Пока ждёте — попробуйте Sora 2.'
-    ogTitle = 'Sora 3 AI видео генератор — новое поколение | Скоро'
-    ogDescription = 'Sora 3 — мощный AI-видео генератор для маркетинга, брендов и создателей контента. Более длинные сцены, улучшенная физика и кинематографическое качество. Подпишитесь на ранний доступ. Пока ждёте — попробуйте Sora 2.'
+    title = 'Veo 4 AI видео генератор — новое поколение'
+    description = 'Veo 4 — мощный AI-видео генератор для маркетинга, брендов и создателей контента. Более длинные сцены, улучшенная физика и кинематографическое качество. Подпишитесь на ранний доступ. Пока ждёте — попробуйте Sora 2.'
+    ogTitle = 'Veo 4 AI видео генератор — новое поколение'
+    ogDescription = 'Veo 4 — мощный AI-видео генератор для маркетинга, брендов и создателей контента. Более длинные сцены, улучшенная физика и кинематографическое качество. Подпишитесь на ранний доступ. Пока ждёте — попробуйте Sora 2.'
   } else if (locale === 'es') {
-    title = 'Sora 3 Generador de Video con IA — Próxima generación | Coming Soon'
-    description = 'Sora 3 es el nuevo generador de video por IA con escenas más largas, realismo mejorado y control avanzado. Únete a la lista de acceso temprano. Mientras tanto, prueba Sora 2 para crear videos profesionales sin marca de agua.'
-    ogTitle = 'Sora 3 Generador de Video con IA — Próxima generación | Coming Soon'
-    ogDescription = 'Sora 3 es el nuevo generador de video por IA con escenas más largas, realismo mejorado y control avanzado. Únete a la lista de acceso temprano. Mientras tanto, prueba Sora 2 para crear videos profesionales sin marca de agua.'
+    title = 'Veo 4 Generador de Video con IA — Próxima generación'
+    description = 'Veo 4 es el nuevo generador de video por IA con escenas más largas, realismo mejorado y control avanzado. Únete a la lista de acceso temprano. Mientras tanto, prueba Sora 2 para crear videos profesionales sin marca de agua.'
+    ogTitle = 'Veo 4 Generador de Video con IA — Próxima generación'
+    ogDescription = 'Veo 4 es el nuevo generador de video por IA con escenas más largas, realismo mejorado y control avanzado. Únete a la lista de acceso temprano. Mientras tanto, prueba Sora 2 para crear videos profesionales sin marca de agua.'
   } else if (locale === 'zh-CN') {
-    title = 'Sora 3 AI 视频生成器 — 下一代模型 | 即将推出'
-    description = '探索 Sora 3，专为创作者、品牌和广告商设计的下一代 AI 视频生成器。制作更长、更清晰、更逼真的视频，具有先进的物理效果和场景控制。'
-    ogTitle = 'Sora 3 AI 视频生成器 — 下一代模型 | 即将推出'
-    ogDescription = '探索 Sora 3，专为创作者、品牌和广告商设计的下一代 AI 视频生成器。制作更长、更清晰、更逼真的视频，具有先进的物理效果和场景控制。'
+    title = 'Veo 4 AI 视频生成器 — 下一代模型'
+    description = '探索 Veo 4，专为创作者、品牌和广告商设计的下一代 AI 视频生成器。制作更长、更清晰、更逼真的视频，具有先进的物理效果和场景控制。'
+    ogTitle = 'Veo 4 AI 视频生成器 — 下一代模型'
+    ogDescription = '探索 Veo 4，专为创作者、品牌和广告商设计的下一代 AI 视频生成器。制作更长、更清晰、更逼真的视频，具有先进的物理效果和场景控制。'
   } else if (locale === 'de') {
-    title = 'Sora 3 AI Video Generator — Naechste Generation | Bald verfuegbar'
-    description = 'Entdecken Sie Sora 3, den AI-Videogenerator der naechsten Generation fuer Kreative, Marken und Werbetreibende. Erstellen Sie laengere, schaerfere und realistischere Videos mit fortschrittlicher Physik und Szenenkontrolle.'
-    ogTitle = 'Sora 3 AI Video Generator — Naechste Generation | Bald verfuegbar'
-    ogDescription = 'Entdecken Sie Sora 3, den AI-Videogenerator der naechsten Generation fuer Kreative, Marken und Werbetreibende. Erstellen Sie laengere, schaerfere und realistischere Videos mit fortschrittlicher Physik und Szenenkontrolle.'
+    title = 'Veo 4 AI Video Generator — Naechste Generation'
+    description = 'Entdecken Sie Veo 4, den AI-Videogenerator der naechsten Generation fuer Kreative, Marken und Werbetreibende. Erstellen Sie laengere, schaerfere und realistischere Videos mit fortschrittlicher Physik und Szenenkontrolle.'
+    ogTitle = 'Veo 4 AI Video Generator — Naechste Generation'
+    ogDescription = 'Entdecken Sie Veo 4, den AI-Videogenerator der naechsten Generation fuer Kreative, Marken und Werbetreibende. Erstellen Sie laengere, schaerfere und realistischere Videos mit fortschrittlicher Physik und Szenenkontrolle.'
   }
 
   // Generate hreflang alternates for homepage using utility function
@@ -103,13 +103,13 @@ export async function generateMetadata({
 
   return {
     title: {
-      template: '%s | Sora3',
+      template: '%s | Veo4',
       default: title
     },
     description,
-    authors: [{ name: 'Sora3 Team' }],
-    creator: 'Sora3',
-    publisher: 'Sora3',
+    authors: [{ name: 'Veo4 Team' }],
+    creator: 'Veo4',
+    publisher: 'Veo4',
     formatDetection: {
       email: false,
       address: false,
@@ -122,12 +122,12 @@ export async function generateMetadata({
       type: 'website',
       locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       url: locale === 'en' ? baseUrl : `${baseUrl}/${locale}/`,
-      siteName: 'Sora3',
+      siteName: 'Veo4',
       title: ogTitle,
       description: ogDescription,
       images: [
         {
-          url: 'https://sora3ai.io/logo.jpg',
+          url: 'https://veo4video.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -138,7 +138,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: ogTitle,
       description: ogDescription,
-      images: ['https://sora3ai.io/logo.jpg'],
+      images: ['https://veo4video.io/logo-v2.png'],
       creator: '@sora3aiteam',
     },
     robots: {
@@ -159,9 +159,9 @@ export async function generateMetadata({
       },
     },
     icons: {
-      icon: '/favicon.jpg',
-      shortcut: '/favicon.jpg',
-      apple: '/favicon.jpg'
+      icon: '/logo-v2.png',
+      shortcut: '/logo-v2.png',
+      apple: '/logo-v2.png'
     },
   }
 }
@@ -224,16 +224,16 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Sora3",
-              "url": "https://sora3ai.io",
-              "logo": "https://sora3ai.io/logo.jpg",
+              "name": "Veo4",
+              "url": "https://veo4video.io",
+              "logo": "https://veo4video.io/logo-v2.png",
               "description": locale === 'ar' 
-                ? "Sora3ai.io هي منصة مستقلة لإنشاء فيديوهات Sora 3 الاحترافية. نستخدم تقنيات Sora 3 المتقدمة لإنشاء فيديوهات إعلانية جاهزة للاستخدام بدون علامة مائية. منصة Sora 3 مثالية لفرق التسويق والمنشئين."
+                ? "Veo4Video.io هي منصة مستقلة لإنشاء فيديوهات Veo 4 الاحترافية. نستخدم تقنيات Veo 4 المتقدمة لإنشاء فيديوهات إعلانية جاهزة للاستخدام بدون علامة مائية. منصة Veo 4 مثالية لفرق التسويق والمنشئين."
                 : locale === 'ja'
-                ? "Sora3ai.ioは独立したSora 3動画生成プラットフォームです。Sora 3の高度な技術を使用して、ウォーターマークなしの広告向けプロフェッショナルな動画を作成します。Sora 3プラットフォームはマーケティングチームやクリエイターに最適です。"
+                ? "Veo4Video.ioは独立したVeo 4動画生成プラットフォームです。Veo 4の高度な技術を使用して、ウォーターマークなしの広告向けプロフェッショナルな動画を作成します。Veo 4プラットフォームはマーケティングチームやクリエイターに最適です。"
                 : locale === 'ru'
-                ? "Sora3ai.io — это независимая платформа для создания профессиональных видео Sora 3. Мы используем передовые технологии Sora 3 для создания рекламных видео без водяных знаков. Платформа Sora 3 идеально подходит для маркетинговых команд и создателей контента."
-                : "Sora3ai.io is an independent platform specializing in Sora 3 video generation. We leverage advanced Sora 3 technology to produce ad-ready professional videos without watermarks. Our Sora 3 platform is designed for marketing teams and creators who need high-quality video content. Sora3ai.io is not affiliated with OpenAI, Google or any official Sora products.",
+                ? "Veo4Video.io — это независимая платформа для создания профессиональных видео Veo 4. Мы используем передовые технологии Veo 4 для создания рекламных видео без водяных знаков. Платформа Veo 4 идеально подходит для маркетинговых команд и создателей контента."
+                : "Veo4Video.io is an independent platform specializing in Veo 4 video generation. We leverage advanced Veo 4 technology to produce ad-ready professional videos without watermarks. Our Veo 4 platform is designed for marketing teams and creators who need high-quality video content. Veo4Video.io is not affiliated with OpenAI, Google or any official Sora products.",
               "sameAs": [
                 "https://x.com/sora3aiteam"
               ]
@@ -247,10 +247,10 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "url": "https://sora3ai.io",
+              "url": "https://veo4video.io",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://sora3ai.io/search?q={search_term_string}",
+                "target": "https://veo4video.io/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

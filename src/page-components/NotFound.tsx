@@ -60,7 +60,7 @@ const NotFound = () => {
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
               <Link
-                href="/sora3-text-to-video"
+                href="/veo4-text-to-video"
                 className="text-sm text-primary hover:underline"
               >
                 Text to Video

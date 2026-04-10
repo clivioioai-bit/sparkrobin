@@ -188,7 +188,7 @@ const SubscriptionPlans = ({
               description: t('contactSupport'),
               action: (
                 <a 
-                  href="mailto:support@sora3ai.io?subject=Payment Issue" 
+                  href="mailto:support@veo4video.io?subject=Payment Issue" 
                   className="text-primary hover:underline"
                 >
                   {t('contactSupportLink')}
@@ -336,7 +336,7 @@ const SubscriptionPlans = ({
             ? (plan.priceCents * 12) / 100 - matchingAnnual.priceCents / 100
             : null;
           const periodText = plan.period ? plan.period.replace("/", "") : "";
-          const headlineValue = isAnnualPlan && equivalentMonthly ? `$${equivalentMonthly.toFixed(2)}` : plan.price;
+          const headlineValue = isAnnualPlan && equivalentMonthly ? `$${Math.round(equivalentMonthly)}` : plan.price;
           const headlineSuffix = isAnnualPlan ? t('perMonth') : periodText ? `per ${periodText}` : "";
           const billingCopy = isAnnualPlan ? `${plan.price}${t('perYear')}` : t('billedMonthly');
           const savingsInfo = isAnnualPlan && yearlySavings && yearlySavings > 0 ? t('savePerYear', { amount: yearlySavings.toFixed(0) }) : null;
@@ -364,7 +364,7 @@ const SubscriptionPlans = ({
                     <Icon className="h-6 w-6" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="text-lg font-bold">{planTitle.trim()}</h4>
+                    <h3 className="text-lg font-bold">{planTitle.trim()}</h3>
                   </div>
                   <div className="space-y-3">
                     {isAnnualPlan ? (
@@ -373,21 +373,21 @@ const SubscriptionPlans = ({
                         {/* Monthly original price with strikethrough */}
                         <div className="flex items-center justify-center gap-2">
                           <span className="text-lg sm:text-xl font-medium text-muted-foreground line-through">
-                            ${matchingMonthly ? (matchingMonthly.priceCents / 100).toFixed(2) : '0.00'} {t('perMonth')}
+                            ${matchingMonthly ? Math.round(matchingMonthly.priceCents / 100) : '0'} {t('perMonth')}
                           </span>
                         </div>
                         
                         {/* Equivalent monthly price (annual/12) */}
                         <div className="flex items-baseline justify-center gap-2 font-display">
                           <span className="font-bold text-3xl sm:text-4xl md:text-5xl text-foreground">
-                            ${equivalentMonthly ? equivalentMonthly.toFixed(2) : '0.00'}
+                            ${equivalentMonthly ? Math.round(equivalentMonthly) : '0'}
                           </span>
                           <span className="text-xs sm:text-sm font-medium text-muted-foreground">{t('perMonth')}</span>
                         </div>
                         
                         {/* Billed annually note */}
                         <p className="text-sm text-muted-foreground text-center">
-                          ${(plan.priceCents / 100).toFixed(1)} {t('billedAnnually')}
+                          ${Math.round(plan.priceCents / 100)} {t('billedAnnually')}
                         </p>
                         
                         {/* Save percentage badge */}
@@ -468,5 +468,3 @@ const SubscriptionPlans = ({
 };
 
 export default SubscriptionPlans;
-
-

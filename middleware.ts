@@ -12,6 +12,14 @@ const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(request: NextRequest) {
   try {
+    const host = (request.headers.get('host') || '').split(':')[0].toLowerCase();
+    if (host === 'sora3ai.io' || host === 'www.sora3ai.io') {
+      const redirectUrl = new URL(request.url);
+      redirectUrl.protocol = 'https:';
+      redirectUrl.host = 'veo4video.io';
+      return NextResponse.redirect(redirectUrl, { status: 301 });
+    }
+
     const pathname = request.nextUrl.pathname;
     
     // 跳过静态资源和 Next.js 内部文件

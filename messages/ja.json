@@ -1,10 +1,11 @@
 {
   "common": {
-    "brand": "Sora3",
+    "brand": "Veo4",
     "new": "新着",
     "generate": "生成",
     "home": "ホーム",
     "pricing": "料金",
+    "myCreations": "My Creations",
     "blog": "ブログ",
     "faq": "よくある質問",
     "signIn": "ログイン",
@@ -22,28 +23,28 @@
   "hero": {
     "badge": "2026 Best Model",
     "discord": "Discordコミュニティに参加",
-    "brandName": "SORA 3",
-    "tagline": "AI動画ジェネレーター",
-    "title": "Sora 3 — AI動画の可能性を再定義",
-    "subtitle": "新しい Sora 3 は、超リアルな動き、より長いシーン、映画的な細部を実現 — ついにクリエイターが純粋な想像力を数秒でスタジオ品質の動画に変えることができます。",
+    "brandName": "VEO 4",
+    "tagline": "テキストと画像から動画を生成するAI動画ジェネレーター",
+    "title": "Veo4 — AI動画の可能性を再定義",
+    "subtitle": "新しい Veo4 は、超リアルな動き、より長いシーン、映画的な細部を実現 — ついにクリエイターが純粋な想像力を数秒でスタジオ品質の動画に変えることができます。",
     "placeholder": "作成したい動画を説明してください...",
     "cta": "今すぐ作る",
     "trySora3": "🚀 まもなく公開 — 先行アクセスに登録",
     "trySora2": "画像を生成",
     "sora2Description": "Sora 2 なら、今日から透かしなしの動画を生成できます。広告・TikTok 向けに最適。",
     "storyboard25s": "25秒ストーリーボード",
-    "disclaimer": "Sora互換およびマルチモデルエンジンを使用する独立したサードパーティプラットフォーム。OpenAIまたはSora3とは提携していません。",
+    "disclaimer": "Sora互換およびマルチモデルエンジンを使用する独立したサードパーティプラットフォーム。OpenAIまたはVeo4とは提携していません。",
     "features": {
       "noWatermark": {
-        "title": "Sora 3 ウォーターマークなし",
+        "title": "Veo4 ウォーターマークなし",
         "description": "商用利用に最適なクリーンでプロフェッショナルな動画"
       },
       "noRegionalLimits": {
-        "title": "グローバル Sora 3 アクセス",
+        "title": "グローバル Veo4 アクセス",
         "description": "世界中のどこからでもアクセス可能"
       },
       "noInviteCode": {
-        "title": "即座に Sora 3 アクセス",
+        "title": "即座に Veo4 アクセス",
         "description": "待機なしで即座に作成を開始"
       }
     }
@@ -53,9 +54,10 @@
     "generate": "Video AI",
     "textToVideo": "テキストから動画",
     "imageToVideo": "画像から動画",
-    "storyboard": "Sora3ストーリーボード",
+    "storyboard": "Veo4ストーリーボード",
     "watermarkRemover": "ウォーターマーク除去",
     "pricing": "料金",
+    "myCreations": "My Creations",
     "blog": "ブログ",
     "dashboard": "ダッシュボード",
     "user": "ユーザー",
@@ -81,12 +83,14 @@
     "models": "モデル",
     "nanoBanana": "Nano Banana",
     "nanoBananaPro": "Nano Banana Pro",
-    "sora3": "Sora 3",
-    "sora3Pro": "Sora 3 Pro",
+    "sora3": "Veo4",
+    "sora3Pro": "Veo4 Pro",
     "sora2": "Sora 2",
     "sora2Pro": "Sora 2 Pro",
     "veo3": "Veo 3",
     "wan26": "Wan 2.6",
+    "veo4Model": "Veo 4",
+    "veo31Model": "Veo 3.1",
     "whoThisIsFor": {
       "ecommerce": {
         "title": "TikTok・Reels 広告を運用している方"
@@ -100,30 +104,30 @@
     }
   },
   "footer": {
-    "description": "Sora3 AI動画生成ツール。Sora3テキストから動画、画像から動画、Sora3ストーリーボード（マルチシーンストーリーボード）で映画のような動画を作成。ウォーターマークなしでSora3にアクセス。",
+    "description": "Veo4 AI動画生成ツール。Veo4テキストから動画、画像から動画、Veo4ストーリーボード（マルチシーンストーリーボード）で映画のような動画を作成。ウォーターマークなしでVeo4にアクセス。",
     "product": "製品",
     "company": "会社",
     "resources": "リソース",
     "support": "サポート",
-    "sora3TextToVideo": "Sora3テキストから動画",
-    "sora3ImageToVideo": "Sora3画像から動画",
-    "sora3Pricing": "Sora3料金",
-    "sora3Faq": "Sora3よくある質問",
-    "sora3Blog": "Sora3ブログ",
+    "sora3TextToVideo": "Veo4テキストから動画",
+    "sora3ImageToVideo": "Veo4画像から動画",
+    "sora3Pricing": "Veo4料金",
+    "sora3Faq": "Veo4よくある質問",
+    "sora3Blog": "Veo4ブログ",
     "aiVideoPromptGpt": "AI動画プロンプトGPT",
     "privacyPolicy": "プライバシーポリシー",
     "termsOfService": "利用規約",
     "refundPolicy": "返金ポリシー",
     "support247": "24時間サポート",
     "contactUs": "お問い合わせ / パートナーシップ",
-    "disclaimer": "sora3ai.ioは独立したAI動画生成プラットフォームです。OpenAIまたは公式「Sora」製品とは提携、承認、または後援されていません。すべての商標はそれぞれの所有者に帰属します。",
+    "disclaimer": "veo4video.ioは独立したAI動画生成プラットフォームです。OpenAIまたは公式「Sora」製品とは提携、承認、または後援されていません。すべての商標はそれぞれの所有者に帰属します。",
     "poweredBy": "独自の動画合成ワークフローによって提供されています。公式ベンダーとは提携していません。",
-    "copyright": "© 2024 Sora3. 全著作権所有。",
+    "copyright": "© 2024 Veo4. 全著作権所有。",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24時間サポート: support@sora3ai.io",
-    "businessEmail": "ビジネス・パートナーシップ: team@sora3ai.io",
-    "logoAlt": "Sora3 AI動画生成ツールのロゴ",
+    "supportEmail": "24時間サポート: support@veo4video.io",
+    "businessEmail": "ビジネス・パートナーシップ: support@veo4video.io",
+    "logoAlt": "Veo4 AI動画生成ツールのロゴ",
     "socialLabels": {
       "twitter": "Twitterでフォロー",
       "discord": "Discordコミュニティに参加",
@@ -134,7 +138,7 @@
     }
   },
   "whyThisMatters": {
-    "title": "sora3ai.io が選ばれる理由",
+    "title": "veo4video.io が選ばれる理由",
     "subtitle": "プロ向けの広告動画を、編集経験なしで簡単に作成できます。すべての動画はウォーターマークなし。TikTok、Instagram、Shopify の広告に最適です。",
     "challenges": "課題",
     "solutions": "機能一覧",
@@ -148,7 +152,7 @@
     },
     "storyboarding": {
       "title": "複雑なストーリーボード",
-      "description": "Sora3ストーリーボード動画には技術的な専門知識が必要です。"
+      "description": "Veo4ストーリーボード動画には技術的な専門知識が必要です。"
     },
     "speed": {
       "title": "生成が遅い",
@@ -156,7 +160,7 @@
     },
     "noWatermark": {
       "title": "わずか10秒で高品質なAI動画を自動生成",
-      "description": "最新のSora3モデルを利用し、テキストや画像からリアルな動画を生成します。"
+      "description": "最新のVeo4モデルを利用し、テキストや画像からリアルな動画を生成します。"
     },
     "costPerformance": {
       "title": "ウォーターマークなしで安心利用",
@@ -170,7 +174,7 @@
       "title": "25秒のストーリーボードにも対応",
       "description": "ストーリー性のある25秒動画を自動作成。プロモーション動画としてそのまま利用できます。"
     },
-    "solution": "Sora3スタイルの生成でそれらすべてを解決します"
+    "solution": "Veo4スタイルの生成でそれらすべてを解決します"
   },
   "whoThisIsFor": {
     "title": "こんな方におすすめ",
@@ -201,7 +205,7 @@
     }
   },
   "blogShowcase": {
-    "title": "クリエイターとブランドのためのSora3プレイブック",
+    "title": "クリエイターとブランドのためのVeo4プレイブック",
     "subtitle": "より多くの視聴回数と売上を獲得するための実践的なガイド。",
     "viewAll": "すべてのブログ投稿を表示",
     "readMore": "続きを読む",
@@ -233,22 +237,22 @@
   },
   "faq": {
     "title": "よくある質問",
-    "subtitle": "Sora3 AI動画広告に関するよくある質問への回答。Sora3の仕組みと、クリエイターがSora3を選ぶ理由を学びます。",
+    "subtitle": "Veo4 AI動画広告に関するよくある質問への回答。Veo4の仕組みと、クリエイターがVeo4を選ぶ理由を学びます。",
     "viewAllFaqs": "すべてのFAQを表示",
     "contactSupport": "サポートに連絡",
     "haveMoreQuestions": "他にご質問がありますか？お手伝いします。",
     "questions": {
       "whatMakesDifferent": {
-        "question": "Sora3は他のAI動画生成ツールとどう違いますか？",
-        "answer": "Sora3は一貫したキャラクターを持つSora3ストーリーボード動画広告に特化しています。他のツールが10秒の単一ショットを生成するのに対し、TikTok、Shopify、商品プロモーションに最適な25秒以上のストーリーを作成します。"
+        "question": "Veo4は他のAI動画生成ツールとどう違いますか？",
+        "answer": "Veo4は一貫したキャラクターを持つVeo4ストーリーボード動画広告に特化しています。他のツールが10秒の単一ショットを生成するのに対し、TikTok、Shopify、商品プロモーションに最適な25秒以上のストーリーを作成します。"
       },
       "characterConsistency": {
         "question": "複数のシーンでキャラクターの一貫性はどのように機能しますか？",
-        "answer": "Sora3ストーリーボード機能は、動画内のすべてのシーンで外見、服装、髪型の一貫性を維持します。"
+        "answer": "Veo4ストーリーボード機能は、動画内のすべてのシーンで外見、服装、髪型の一貫性を維持します。"
       },
       "videosLongerThan10s": {
         "question": "10秒より長い動画を作成できますか？",
-        "answer": "はい。Sora3スタイルの生成は、ストーリーボードモードを通じて25-30秒の動画生成をサポートしています。"
+        "answer": "はい。Veo4スタイルの生成は、ストーリーボードモードを通じて25-30秒の動画生成をサポートしています。"
       },
       "commercialUse": {
         "question": "生成された動画を商用広告に使用できますか？",
@@ -256,15 +260,11 @@
       },
       "watermarks": {
         "question": "動画にウォーターマークはありますか？",
-        "answer": "いいえ — すべてのSora3スタイルの動画はウォーターマークなしです。"
-      },
-      "officialModel": {
-        "question": "Saroは公式のSora3モデルを使用していますか？",
-        "answer": "Saro.aiは本物のSoraモデルを使用しています。これにより、クリエイターは公式アクセスを必要とせずに、すぐにSora3の結果を生成できます。"
+        "answer": "いいえ — すべてのVeo4スタイルの動画はウォーターマークなしです。"
       },
       "25SecondVideos": {
-        "question": "Sora3スタイルの25秒動画を作成できますか？",
-        "answer": "はい — Sora3ストーリーボード機能は25秒のSora3スタイルのマルチシーン生成をサポートしています。"
+        "question": "Veo4スタイルの25秒動画を作成できますか？",
+        "answer": "はい — Veo4ストーリーボード機能は25秒のVeo4スタイルのマルチシーン生成をサポートしています。"
       },
       "paymentSafe": {
         "question": "支払いを行う場合、支払い情報は安全ですか？",
@@ -298,7 +298,7 @@
       "monthly": "月額",
       "annual": "年額",
       "oneTime": "ワンタイム",
-      "save50Percent": "50%節約",
+      "save50Percent": "17%節約",
       "mostPopular": "最も人気",
       "billedAnnually": "年額請求",
       "billedMonthly": "月額請求 · いつでもキャンセル可能",
@@ -321,7 +321,7 @@
       "tryAgainLater": "後でもう一度お試しください。",
       "failedToCreatePaymentLink": "支払いリンクの作成に失敗しました",
       "needHelp": "ヘルプが必要ですか？",
-      "contactSupport": "サポートについては support@sora3ai.io にお問い合わせください。",
+      "contactSupport": "サポートについては support@veo4video.io にお問い合わせください。",
       "contactSupportLink": "サポートに連絡",
       "features": {
         "creditsIncluded": "{count} クレジット付き",
@@ -401,10 +401,10 @@
       "pleaseEnterPrompt": "プロンプトを入力してください",
       "pleaseUploadImage": "動画を生成するための画像をアップロードしてください",
       "watermarkRemover": {
-        "title": "Sora3 ウォーターマーク除去",
+        "title": "Veo4 ウォーターマーク除去",
         "description": "Sora でホストされている動画から Sora のウォーターマークを削除します。公開されている `sora.chatgpt.com` URL を貼り付けて実行してください。通常、API での処理には 1〜3 秒かかります。",
-        "seoTitle": "Sora3 ウォーターマーク除去 | ウォーターマーク削除ツール",
-        "seoDescription": "Sora3 ウォーターマーク除去: Sora でホストされている動画から Sora のウォーターマークを数秒で削除。商用利用可能、API対応、公開 sora.chatgpt.com リンクで動作します。",
+        "seoTitle": "Veo4 ウォーターマーク除去 | ウォーターマーク削除ツール",
+        "seoDescription": "Veo4 ウォーターマーク除去: Sora でホストされている動画から Sora のウォーターマークを数秒で削除。商用利用可能、API対応、公開 sora.chatgpt.com リンクで動作します。",
         "input": "入力",
         "output": "出力",
         "videoUrl": "video_url",
@@ -417,8 +417,8 @@
         "waitingForResult": "結果を待機中…",
         "noOutputYet": "まだ出力がありません",
         "exampleVideo": "サンプル動画",
-        "exampleVideoDescription": "これは Sora3 AI によって生成されたサンプル動画です。独自の Sora 動画をアップロードしてウォーターマークを削除してください！",
-        "creditsInfo": "このツールは実行ごとに 10 クレジットを消費します。Sora3 動画をクリーンでブランド対応の状態に保ちます。",
+        "exampleVideoDescription": "これは Veo4 AI によって生成されたサンプル動画です。独自の Sora 動画をアップロードしてウォーターマークを削除してください！",
+        "creditsInfo": "このツールは実行ごとに 10 クレジットを消費します。Veo4 動画をクリーンでブランド対応の状態に保ちます。",
         "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。"
       }
     }
@@ -449,12 +449,12 @@
     "video": "動画",
     "credits": "クレジット",
     "exampleVideo": "サンプル動画",
-    "sampleVideoDescription": "これは Sora3 AI によって生成されたサンプル動画です。入力パネルを使用して独自の動画を作成してください！",
-    "sampleVideoDescriptionUnauthenticated": "これは Sora3 AI によって生成されたサンプル動画です。登録して独自の動画を作成してください！",
+    "sampleVideoDescription": "これは Veo4 AI によって生成されたサンプル動画です。入力パネルを使用して独自の動画を作成してください！",
+    "sampleVideoDescriptionUnauthenticated": "これは Veo4 AI によって生成されたサンプル動画です。登録して独自の動画を作成してください！",
     "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。",
     "signUpToCreate": "登録して独自の動画を作成",
-    "textToVideoTitle": "テキストから動画 AI動画生成ツール",
-    "textToVideoSubtitle": "アイデアを映画のような動画に変換 - タイピングするだけ。",
+    "textToVideoTitle": "Veo 4 テキストから動画 | AI動画を作成",
+    "textToVideoSubtitle": "プロンプトを動きのあるVeo 4動画に変換し、広告やSNS向けのクリップをすばやく作成できます。",
     "textToVideoFeaturesTitle": "テキストから動画 AI動画生成ツールの機能",
     "featureAIPowered": {
       "title": "AI パワード スクリプトからスクリーンへの魔法",
@@ -474,7 +474,7 @@
     },
     "howToUseTitle": "テキストから動画 AI動画生成ツールの使い方",
     "howToUseStep1": {
-      "title": "sora3ai.io に登録またはログイン",
+      "title": "veo4video.io に登録またはログイン",
       "description": "アカウントを作成して、テキストから動画インターフェースの全機能を解除します。"
     },
     "howToUseStep2": {
@@ -489,58 +489,58 @@
       "title": "クリックして生成",
       "description": "「生成」ボタンをクリックします。AIがスクリプトを処理し、マッチするビジュアル、動き、音楽で動画を作成します。わずか数分で、動画をプレビューしてダウンロードできるようになります。"
     },
-    "whoUsesTitle": "Sora3 を使用する人",
+    "whoUsesTitle": "Veo4 を使用する人",
     "whoUsesContentCreators": "コンテンツクリエイター",
     "whoUsesTikTokMarketers": "TikTokマーケター",
-    "imageToVideoTitle": "Sora3 画像から動画生成ツール - 写真を映画のような動画に変換",
-    "imageToVideoSubtitle": "Sora3 AIを使用して、静止画像を映画のような動きで生き生きとさせます。Sora3画像から動画技術は、自然な動きとリアルな効果で写真からプロフェッショナルな動画を作成します。画像をアップロードするだけで、残りはSora3が処理します。",
-    "imageToVideoFeaturesTitle": "Sora3画像から動画機能 - 高度なAI動画生成",
+    "imageToVideoTitle": "Veo 4 画像から動画 | 写真をアニメーション化",
+    "imageToVideoSubtitle": "写真を自然な動きと高い再現性を持つVeo 4動画に変換し、広告向けクリップを数分で作成できます。",
+    "imageToVideoFeaturesTitle": "Veo4画像から動画機能 - 高度なAI動画生成",
     "imageToVideoFeature1": {
-      "title": "Sora3 シンプルな画像から動きへの変換",
-      "description": "Sora3画像から動画では、写真をアップロードするだけで、それが生き生きとします。Sora3 AIエンジンが画像を分析し、シーンを強化する自然で映画のような動きを生成します。Sora3は製品紹介、芸術作品、静止した瞬間を動的なストーリーに変えるのに最適です。"
+      "title": "Veo4 シンプルな画像から動きへの変換",
+      "description": "Veo4画像から動画では、写真をアップロードするだけで、それが生き生きとします。Veo4 AIエンジンが画像を分析し、シーンを強化する自然で映画のような動きを生成します。Veo4は製品紹介、芸術作品、静止した瞬間を動的なストーリーに変えるのに最適です。"
     },
     "imageToVideoFeature2": {
-      "title": "アニメーションスキル不要のSora3プロフェッショナル動き",
-      "description": "Sora3高度なAIは深度、照明、構図を理解します。Sora3は、アニメーションや動画編集の専門知識を必要とせずに、スムーズなカメラの動き、自然なオブジェクトの動き、リアルな環境効果を生成します。Sora3でポートフォリオ写真をプロフェッショナルな動画コンテンツに変換します。"
+      "title": "アニメーションスキル不要のVeo4プロフェッショナル動き",
+      "description": "Veo4高度なAIは深度、照明、構図を理解します。Veo4は、アニメーションや動画編集の専門知識を必要とせずに、スムーズなカメラの動き、自然なオブジェクトの動き、リアルな環境効果を生成します。Veo4でポートフォリオ写真をプロフェッショナルな動画コンテンツに変換します。"
     },
     "imageToVideoFeature3": {
-      "title": "Sora3自動オーディオ生成",
-      "description": "すべてのSora3動画には、完璧にマッチした背景音楽と環境音が付属しています。Sora3 AIが画像のムードと雰囲気を分析し、視覚的なストーリーを補完するオーディオを作成します。1つの画像からの完全なSora3動画作成体験です。"
+      "title": "Veo4自動オーディオ生成",
+      "description": "すべてのVeo4動画には、完璧にマッチした背景音楽と環境音が付属しています。Veo4 AIが画像のムードと雰囲気を分析し、視覚的なストーリーを補完するオーディオを作成します。1つの画像からの完全なVeo4動画作成体験です。"
     },
     "imageToVideoFeature4": {
-      "title": "Sora3インテリジェントシーン理解",
-      "description": "Sora3 AIは画像内のオブジェクト、人物、風景、シーンを認識します。Sora3は、文脈的に意味のある動きを生成します - 木々を通るそよ風、3D空間で回転する製品、微妙な動きのあるポートレートなど。すべてのSora3アニメーションは自然で目的のあるものに感じられます。"
+      "title": "Veo4インテリジェントシーン理解",
+      "description": "Veo4 AIは画像内のオブジェクト、人物、風景、シーンを認識します。Veo4は、文脈的に意味のある動きを生成します - 木々を通るそよ風、3D空間で回転する製品、微妙な動きのあるポートレートなど。すべてのVeo4アニメーションは自然で目的のあるものに感じられます。"
     },
-    "imageToVideoHowToUseTitle": "Sora3画像から動画生成ツールの使い方",
+    "imageToVideoHowToUseTitle": "Veo4画像から動画生成ツールの使い方",
     "imageToVideoHowToUseStep1": {
-      "title": "sora3ai.io に登録またはログイン",
-      "description": "アカウントを作成して、Sora3画像から動画の全機能を解除し、Sora3 AI技術の使用を開始します。"
+      "title": "veo4video.io に登録またはログイン",
+      "description": "アカウントを作成して、Veo4画像から動画の全機能を解除し、Veo4 AI技術の使用を開始します。"
     },
     "imageToVideoHowToUseStep2": {
-      "title": "Sora3画像から動画パネルにアクセス",
-      "description": "ダッシュボードでSora3画像から動画ツールに移動します。Sora3インターフェースは、簡単な画像から動画への変換のために設計されています。"
+      "title": "Veo4画像から動画パネルにアクセス",
+      "description": "ダッシュボードでVeo4画像から動画ツールに移動します。Veo4インターフェースは、簡単な画像から動画への変換のために設計されています。"
     },
     "imageToVideoHowToUseStep3": {
-      "title": "画像をSora3にアップロード",
-      "description": "Sora3処理のために画像ファイルをドラッグアンドドロップまたは選択します。Sora3は写真、イラスト、製品画像、またはSora3でアニメーション化したい任意の静止画像をサポートします。"
+      "title": "画像をVeo4にアップロード",
+      "description": "Veo4処理のために画像ファイルをドラッグアンドドロップまたは選択します。Veo4は写真、イラスト、製品画像、またはVeo4でアニメーション化したい任意の静止画像をサポートします。"
     },
     "imageToVideoHowToUseStep4": {
-      "title": "Sora3で生成",
-      "description": "「生成」ボタンをクリックして、Sora3 AIに画像を分析させます。Sora3は自然な動き、カメラの動き、同期されたオーディオで動画を作成します。Sora3アニメーション動画は数分で準備できます。"
+      "title": "Veo4で生成",
+      "description": "「生成」ボタンをクリックして、Veo4 AIに画像を分析させます。Veo4は自然な動き、カメラの動き、同期されたオーディオで動画を作成します。Veo4アニメーション動画は数分で準備できます。"
     },
-    "imageToVideoPageTitle": "Sora3 画像から動画生成ツール",
-    "imageToVideoPageSubtitle": "Sora3 AI技術を使用して画像を映画のような動画に変換 — ウォーターマークなし",
-    "imageToVideoTestimonialsTitle": "Sora3画像から動画生成ツールを選ぶ理由",
+    "imageToVideoPageTitle": "Veo 4 画像から動画",
+    "imageToVideoPageSubtitle": "Veo4 AI技術を使用して画像を映画のような動画に変換 — ウォーターマークなし",
+    "imageToVideoTestimonialsTitle": "Veo4画像から動画生成ツールを選ぶ理由",
     "imageToVideoTestimonial1": {
-      "quote": "商品写真をアップロードしたところ、Sora3が数分でプロフェッショナルな動画広告を生成しました。Sora3はオンラインストアのコンテンツ作成方法を完全に変えました！",
+      "quote": "商品写真をアップロードしたところ、Veo4が数分でプロフェッショナルな動画広告を生成しました。Veo4はオンラインストアのコンテンツ作成方法を完全に変えました！",
       "author": "Emma L., Eコマースオーナー"
     },
     "imageToVideoTestimonial2": {
-      "quote": "写真家として、Sora3が静止画像を生き生きとさせる方法が大好きです。Sora3の動きは自然で、ポートフォリオに深みを加えます。",
+      "quote": "写真家として、Veo4が静止画像を生き生きとさせる方法が大好きです。Veo4の動きは自然で、ポートフォリオに深みを加えます。",
       "author": "Michael R., プロフェッショナル写真家"
     },
     "imageToVideoTestimonial3": {
-      "quote": "Sora3画像から動画機能により、何時間ものアニメーション作業を節約できました。既存の写真からSora3で即座に魅力的なソーシャルメディアコンテンツを作成できます。",
+      "quote": "Veo4画像から動画機能により、何時間ものアニメーション作業を節約できました。既存の写真からVeo4で即座に魅力的なソーシャルメディアコンテンツを作成できます。",
       "author": "Jessica T., ソーシャルメディアマネージャー"
     },
     "imageToVideoTestimonial4": {
@@ -590,8 +590,8 @@
     },
     "reframeMode": {
       "model": "モデル",
-      "sora3": "Sora3",
-      "sora3Pro": "Sora3 pro",
+      "sora3": "Veo4",
+      "sora3Pro": "Veo4 pro",
       "sora3Description": "高品質な出力と精密な制御を備えたOpenAIの高度な動画生成モデル。",
       "sora3ProDescription": "強化された品質、優れたリアリズム、高度な制御機能を備えたOpenAIのプレミアム動画生成モデル。",
       "prompt": "プロンプト *",
@@ -723,31 +723,31 @@
       "generationTimeNote": "⏱️ 通常5-15分かかります。このページを開いたままにしてください。",
       "exampleDescription": "25秒のマルチシーンストーリーボード動画の例です。シーンを設定して生成をクリックして独自の動画を作成してください。",
       "exampleNote": "例: 3シーンのストーリーボード（8秒 + 8秒 + 9秒 = 合計25秒）",
-      "whatIsSora3ProStoryboard": "Sora3 Proストーリーボードとは？",
-      "sora3ProStoryboardDescription": "Sora3 Proストーリーボードは、シーケンシャルコンテンツ制作向けに設計された最先端のAI動画生成システムです。YouTube Shorts、TikTok、Reels用に最大25秒のマルチシーンAI動画を構築します。この堅牢なプラットフォームは、マルチシーンの調整を可能にし、視覚的な一貫性と一貫性を維持し、最大25秒の長さの出力を正確に制御し、オーディオ付きのHD品質動画をエクスポートします。",
+      "whatIsSora3ProStoryboard": "Veo4 Proストーリーボードとは？",
+      "sora3ProStoryboardDescription": "Veo4 Proストーリーボードは、シーケンシャルコンテンツ制作向けに設計された最先端のAI動画生成システムです。YouTube Shorts、TikTok、Reels用に最大25秒のマルチシーンAI動画を構築します。この堅牢なプラットフォームは、マルチシーンの調整を可能にし、視覚的な一貫性と一貫性を維持し、最大25秒の長さの出力を正確に制御し、オーディオ付きのHD品質動画をエクスポートします。",
       "upTo25sDuration": "最大25秒",
       "multiSceneControl": "マルチシーン制御（ストーリーボード）",
       "socialMediaReady": "ソーシャルメディア対応",
       "hdQualityAudio": "HD品質 + オーディオ",
-      "whatPeopleAreSaying": "Sora3 Proストーリーボードについて人々が言っていること",
-      "keyFeatures": "Sora3 Proストーリーボードの主な機能",
+      "whatPeopleAreSaying": "Veo4 Proストーリーボードについて人々が言っていること",
+      "keyFeatures": "Veo4 Proストーリーボードの主な機能",
       "multiSceneSequencing": "マルチシーンシーケンシング",
-      "multiSceneSequencingDescription": "Sora3 Proストーリーボードを使用して、一貫したストーリーラインを作成するために複数のシーンを定義します。Sora3 Proストーリーボードエンジンは、シームレスなマルチシーン動画のためにシーン間のスムーズなトランジションを保証します。",
+      "multiSceneSequencingDescription": "Veo4 Proストーリーボードを使用して、一貫したストーリーラインを作成するために複数のシーンを定義します。Veo4 Proストーリーボードエンジンは、シームレスなマルチシーン動画のためにシーン間のスムーズなトランジションを保証します。",
       "visualConsistency": "視覚的一貫性",
-      "visualConsistencyDescription": "Sora3 Proストーリーボードは、すべてのシーンにわたって一貫した視覚スタイルと要素を維持し、視聴者がSora3 Proストーリーボードから期待するプロフェッショナル品質の動画出力を提供します。",
+      "visualConsistencyDescription": "Veo4 Proストーリーボードは、すべてのシーンにわたって一貫した視覚スタイルと要素を維持し、視聴者がVeo4 Proストーリーボードから期待するプロフェッショナル品質の動画出力を提供します。",
       "flexibleOutputControl": "柔軟な出力制御",
-      "flexibleOutputControlDescription": "Sora3 Proストーリーボードで最大25秒の動画を生成します。Sora3 Proストーリーボードを使用して、コンテンツのニーズに合わせて10秒、15秒、または25秒の時間オプションを選択します。",
+      "flexibleOutputControlDescription": "Veo4 Proストーリーボードで最大25秒の動画を生成します。Veo4 Proストーリーボードを使用して、コンテンツのニーズに合わせて10秒、15秒、または25秒の時間オプションを選択します。",
       "referenceImageSupport": "参照画像サポート",
-      "referenceImageSupportDescription": "参照画像をアップロードしてSora3 Proストーリーボード生成プロセスをガイドし、Sora3ストーリーボード動画全体で視覚的一貫性を確保します。",
-      "howToUse": "Sora3 Proストーリーボードの使い方",
+      "referenceImageSupportDescription": "参照画像をアップロードしてVeo4 Proストーリーボード生成プロセスをガイドし、Veo4ストーリーボード動画全体で視覚的一貫性を確保します。",
+      "howToUse": "Veo4 Proストーリーボードの使い方",
       "step1DefineScenes": "シーンを定義",
-      "step1Description": "Sora3 Proストーリーボードの各シーンを詳細に説明",
+      "step1Description": "Veo4 Proストーリーボードの各シーンを詳細に説明",
       "step2SetParameters": "パラメータを設定",
       "step2Description": "時間（10秒/15秒/25秒）とアスペクト比を選択",
       "step3UploadReference": "参照をアップロード",
-      "step3Description": "Sora3 Proストーリーボードをガイドする画像を追加（オプション）",
+      "step3Description": "Veo4 Proストーリーボードをガイドする画像を追加（オプション）",
       "step4Generate": "生成",
-      "step4Description": "生成をクリックしてSora3 Proストーリーボードに動画を作成させます",
+      "step4Description": "生成をクリックしてVeo4 Proストーリーボードに動画を作成させます",
       "perfectFor": "TikTok、Instagram Reels、YouTube Shorts、ブランドコンテンツ制作に最適です。詳細については",
       "pricingPlans": "料金プラン",
       "pricing": "💎 料金",
@@ -758,7 +758,7 @@
       "socialMediaFormats": "ソーシャルメディアフォーマット",
       "socialMediaFormatsDescription": "TikTok、Instagram Reels、YouTube Shorts用の組み込みテンプレート。",
       "fastExportShare": "高速エクスポートと共有",
-      "fastExportShareDescription": "Sora3ストーリーボード動画を数分で生成、プレビュー、ダウンロード。"
+      "fastExportShareDescription": "Veo4ストーリーボード動画を数分で生成、プレビュー、ダウンロード。"
     },
     "promptExamples": {
       "categories": {
@@ -771,10 +771,10 @@
       }
     },
     "watermarkRemover": {
-      "title": "Sora3 ウォーターマーク除去",
+      "title": "Veo4 ウォーターマーク除去",
       "description": "Sora でホストされている動画から Sora のウォーターマークを削除します。公開されている `sora.chatgpt.com` URL を貼り付けて実行してください。通常、API での処理には 1〜3 秒かかります。",
-      "seoTitle": "Sora3 ウォーターマーク除去 | ウォーターマーク削除ツール",
-      "seoDescription": "Sora3 ウォーターマーク除去: Sora でホストされている動画から Sora のウォーターマークを数秒で削除。商用利用可能、API対応、公開 sora.chatgpt.com リンクで動作します。",
+      "seoTitle": "Veo4 ウォーターマーク除去 | ウォーターマーク削除ツール",
+      "seoDescription": "Veo4 ウォーターマーク除去: Sora でホストされている動画から Sora のウォーターマークを数秒で削除。商用利用可能、API対応、公開 sora.chatgpt.com リンクで動作します。",
       "input": "入力",
       "output": "出力",
       "videoUrl": "video_url",
@@ -787,19 +787,19 @@
       "waitingForResult": "結果を待機中…",
       "noOutputYet": "まだ出力がありません",
       "exampleVideo": "サンプル動画",
-      "exampleVideoDescription": "これは Sora3 AI によって生成されたサンプル動画です。独自の Sora 動画をアップロードしてウォーターマークを削除してください！",
-      "creditsInfo": "このツールは実行ごとに 10 クレジットを消費します。Sora3 動画をクリーンでブランド対応の状態に保ちます。",
+      "exampleVideoDescription": "これは Veo4 AI によって生成されたサンプル動画です。独自の Sora 動画をアップロードしてウォーターマークを削除してください！",
+      "creditsInfo": "このツールは実行ごとに 10 クレジットを消費します。Veo4 動画をクリーンでブランド対応の状態に保ちます。",
       "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。"
     }
   },
   "demoGallery": {
-    "title": "Sora3で作成できる動画を見る",
-    "description": "Saroのマルチモデルエンジンで生成された本物の映画のような動画。Sora3スタイルのプロンプトとストーリーボード出力を含みます。",
+    "title": "Veo4で作成できる動画を見る",
+    "description": "Saroのマルチモデルエンジンで生成された本物の映画のような動画。Veo4スタイルのプロンプトとストーリーボード出力を含みます。",
     "seeMoreExamples": "もっと見る",
     "tapToUnmute": "タップして音声をオン"
   },
   "keyFeatures": {
-    "title": "Sora3 AIの特徴",
+    "title": "Veo4 AIの特徴",
     "noWatermark": {
       "title": "ウォーターマークなし",
       "description": "動画はクリーンで、ブランディング可能で、商用利用に最適です。"
@@ -813,8 +813,8 @@
       "description": "数分で10秒のクリップを生成 — ブラウザで直接。"
     },
     "sora3ProStoryboard": {
-      "title": "Sora3 プロストーリーボード（25秒）",
-      "description": "広告、トレーラー、商品紹介、映画のような短編動画のためのSora3ストーリーボードストーリーテリング。"
+      "title": "Veo4 プロストーリーボード（25秒）",
+      "description": "広告、トレーラー、商品紹介、映画のような短編動画のためのVeo4ストーリーボードストーリーテリング。"
     },
     "textToVideoImageToVideo": {
       "title": "テキストから動画＆画像から動画",
@@ -825,14 +825,14 @@
       "description": "TikTok、Reels、Shorts、有料広告に最適です。"
     },
     "trySora3Free": {
-      "title": "Sora3を無料でお試し — 編集不要",
-      "description": "Sora3 AI搭載ツールで映画のような動画の作成を始めましょう。Sora3は動画作成を簡単にします - 経験は不要です。Sora3がプロジェクトで何ができるか発見してください。Sora3を無料でお試し、クリエイターがAI動画生成にSora3を選ぶ理由をご覧ください。",
+      "title": "Veo4を無料でお試し — 編集不要",
+      "description": "Veo4 AI搭載ツールで映画のような動画の作成を始めましょう。Veo4は動画作成を簡単にします - 経験は不要です。Veo4がプロジェクトで何ができるか発見してください。Veo4を無料でお試し、クリエイターがAI動画生成にVeo4を選ぶ理由をご覧ください。",
       "startGenerating": "生成を開始"
     }
   },
   "testimonials": {
     "title": "世界中のクリエイターに愛されています",
-    "subtitle": "AI動画生成にSora3を使用している世界中のクリエイターに参加してください。プラットフォームのウォーターマークなしの動画とレンダリング機能について、ユーザーが何と言っているかご覧ください。Sora3テクノロジーを使用するクリエイターがSora3を信頼する理由を発見してください。",
+    "subtitle": "AI動画生成にVeo4を使用している世界中のクリエイターに参加してください。プラットフォームのウォーターマークなしの動画とレンダリング機能について、ユーザーが何と言っているかご覧ください。Veo4テクノロジーを使用するクリエイターがVeo4を信頼する理由を発見してください。",
     "ctaTitle": "AIで動画を作成するクリエイターに参加",
     "ctaDescription": "ウォーターマークなしの動画、音声機能、効率的なレンダリングを備えたAI動画生成を体験してください。今すぐ動画の作成を始めましょう。",
     "ctaButton": "今すぐ作成を開始"
@@ -843,7 +843,7 @@
   },
   "auth": {
     "signIn": "ログイン",
-    "signInToSora3": "Sora3にログイン",
+    "signInToSora3": "Veo4にログイン",
     "createAccount": "アカウントを作成",
     "checkEmail": "メールを確認",
     "backToSignUp": "サインアップに戻る",
@@ -866,10 +866,11 @@
     "redirectingToGoogle": "Googleにリダイレクト中..."
   },
   "sora3Capabilities": {
-    "title": "Sora3 — 6つの核心機能",
+    "title": "Veo4 — 6つの核心機能",
+    "subtitle": "Veo4 は、より滑らかな動き、より整ったシーン、実際のマーケティング制作に使いやすい出力で、チームの動画制作を高速化します。",
     "cinematicRealism": {
       "title": "シネマ級のリアリズム",
-      "description": "Sora3 は映画のような質感・光・カメラワークを再現します。\n\n安定した、高品質で自然な映像。AIっぽさを感じさせません。\n\n商品紹介やストーリー動画に最適。"
+      "description": "Veo4 は映画のような質感・光・カメラワークを再現します。\n\n安定した、高品質で自然な映像。AIっぽさを感じさせません。\n\n商品紹介やストーリー動画に最適。"
     },
     "naturalCameraMotion": {
       "title": "自然なカメラモーション",
@@ -900,5 +901,98 @@
     "goToStudio": "スタジオへ",
     "viewDashboard": "ダッシュボードを表示",
     "autoRedirect": "数秒後に自動的にリダイレクトされます..."
+  },
+  "account": {
+    "dashboardMetaTitle": "ダッシュボード | VEO 4 アカウント管理",
+    "dashboardMetaDescription": "VEO 4 アカウント、クレジット、サブスクリプション、支払い、生成履歴を一か所で管理できます。",
+    "myCreationsMetaTitle": "My Creations | VEO 4 生成履歴",
+    "myCreationsMetaDescription": "VEO 4 の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
+    "dashboardPageTitle": "アカウントダッシュボード",
+    "dashboardPageDescription": "サブスクリプション、クレジット、支払い、動画履歴をまとめて管理できます。",
+    "myCreationsPageTitle": "My Creations",
+    "myCreationsPageDescription": "VEO 4 の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
+    "stats": {
+      "creditsAvailable": "利用可能クレジット",
+      "videosGenerated": "生成済み動画",
+      "currentPlan": "現在のプラン"
+    },
+    "tabs": {
+      "overview": "概要",
+      "generations": "生成履歴",
+      "subscriptions": "サブスクリプション",
+      "payments": "支払い"
+    },
+    "sections": {
+      "accountInformation": "アカウント情報",
+      "subscriptionStatus": "サブスクリプション状態"
+    },
+    "fields": {
+      "name": "名前",
+      "email": "メール",
+      "currentPlan": "現在のプラン",
+      "status": "状態",
+      "nextBilling": "次回請求"
+    },
+    "actions": {
+      "updateProfile": "プロフィールを更新",
+      "upgradePlan": "プランをアップグレード"
+    },
+    "statuses": {
+      "active": "有効"
+    },
+    "generationHistory": {
+      "title": "生成履歴",
+      "loading": "生成履歴を読み込み中...",
+      "tryAgain": "再試行",
+      "emptyTitle": "生成履歴はありません",
+      "emptyDescription": "まだ動画が生成されていません。作成するとここに表示されます。",
+      "refresh": "更新",
+      "videoPlayer": "動画プレーヤー",
+      "statuses": {
+        "completed": "完了",
+        "processing": "処理中",
+        "queued": "待機中",
+        "failed": "失敗"
+      }
+    },
+    "paymentHistory": {
+      "title": "支払い履歴",
+      "description": "すべての支払い記録を確認できます。",
+      "emptyTitle": "支払い履歴はありません",
+      "emptyDescription": "支払い履歴はここに表示されます。",
+      "labels": {
+        "type": "種類",
+        "subscription": "サブスクリプション",
+        "oneTimePurchase": "単発購入",
+        "plan": "プラン",
+        "method": "方法",
+        "unknown": "不明"
+      },
+      "statuses": {
+        "succeeded": "成功",
+        "failed": "失敗",
+        "pending": "保留中",
+        "refunded": "返金済み",
+        "partiallyRefunded": "一部返金"
+      }
+    },
+    "subscriptionHistory": {
+      "title": "サブスクリプション履歴",
+      "description": "すべてのサブスクリプション記録を確認できます。",
+      "emptyTitle": "サブスクリプション履歴はありません",
+      "emptyDescription": "サブスクリプション履歴はここに表示されます。",
+      "labels": {
+        "period": "期間",
+        "created": "作成日"
+      },
+      "statuses": {
+        "active": "有効",
+        "canceled": "解約済み",
+        "pastDue": "支払い遅延",
+        "trialing": "試用中",
+        "expired": "期限切れ",
+        "inactive": "無効"
+      }
+    }
   }
 }

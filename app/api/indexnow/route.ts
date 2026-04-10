@@ -3,26 +3,22 @@ import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'nodejs';
 
 const INDEXNOW_KEY = 'f4226aa28d5202485960101e1ad8874b';
-const SITE_HOST = 'sora3ai.io';
+const SITE_HOST = 'veo4video.io';
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
 
 // All site URLs to push
 const ALL_URLS: string[] = [
   // English (no prefix)
   '',
-  'sora3-text-to-video',
-  'sora3-image-to-video',
-  'sora-3-storyboard',
-  'sora-pro-storyboard',
+  'veo4-text-to-video',
+  'veo4-image-to-video',
   'multi-scene',
-  'sora-3-video-generator',
-  'watermark-remover',
+  'veo-4-video-generator',
   'pricing',
   'faq',
   'privacy',
   'terms',
   'refund',
-  'blog',
   // Localized prefixes
   'ar', 'ja', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'it', 'ko', 'nl', 'pl', 'pt', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW',
 ];
@@ -32,16 +28,12 @@ function buildUrlList(): string[] {
   const locales = ['ar', 'ja', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'it', 'ko', 'nl', 'pl', 'pt', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW'];
   const pages = [
     '',
-    'sora3-text-to-video',
-    'sora3-image-to-video',
-    'sora-3-storyboard',
-    'sora-pro-storyboard',
+    'veo4-text-to-video',
+    'veo4-image-to-video',
     'multi-scene',
-    'sora-3-video-generator',
-    'watermark-remover',
+    'veo-4-video-generator',
     'pricing',
     'faq',
-    'blog',
   ];
 
   const urls: string[] = [];

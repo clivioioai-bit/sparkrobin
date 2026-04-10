@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabase";
 export default function SignInPage() {
   const isProduction = process.env.NODE_ENV === 'production';
   const baseUrl = isProduction
-    ? (process.env.NEXT_PUBLIC_APP_URL || 'https://sora3ai.io')
+    ? (process.env.NEXT_PUBLIC_APP_URL || 'https://veo4video.io')
     : (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
 
   return (

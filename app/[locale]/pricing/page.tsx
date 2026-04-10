@@ -16,24 +16,24 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sora3ai.io'
+  const baseUrl = 'https://veo4video.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
-  let title = 'Sora 3 Pricing | Plans for Video Campaigns'
-  let description = 'Select your Sora 3 plan for professional video generation. Choose from Basic, Creator, or Pro plans with monthly and annual billing. Start creating Sora 3 content for your campaigns today.'
+  let title = 'Veo 4 Pricing | Basic, Standard, and Pro'
+  let description = 'Compare Veo 4 pricing plans for text to video, image to video, and campaign-ready creation. Choose the plan that fits your output needs.'
   
   if (locale === 'ar') {
-    title = 'أسعار Sora 3 | خطط فيديوهات الحملات'
-    description = 'اختر خطتك Sora 3 لإنشاء فيديوهات احترافية. اختر من بين خطط Basic أو Creator أو Pro مع الفوترة الشهرية والسنوية. ابدأ في إنشاء محتوى Sora 3 اليوم.'
+    title = 'أسعار Veo 4 | Basic وStandard وPro'
+    description = 'قارن بين خطط أسعار Veo 4 للنص إلى فيديو والصورة إلى فيديو وإنشاء المحتوى الجاهز للحملات. اختر الخطة المناسبة لاحتياجك.'
   } else if (locale === 'ja') {
-    title = 'Sora 3 料金 | 動画キャンペーン向けプラン'
-    description = 'プロフェッショナルな動画生成のためのSora 3プランを選択。Basic、Creator、Proプランから選択。月額・年額請求オプションあり。今すぐSora 3コンテンツを作成開始。'
+    title = 'Veo 4 料金 | Basic・Standard・Pro'
+    description = 'テキストから動画、画像から動画、キャンペーン向け制作に対応するVeo 4の料金プランを比較できます。'
   } else if (locale === 'ru') {
-    title = 'Sora 3 Тарифы | Планы для Видео Кампаний'
-    description = 'Выберите план Sora 3 для профессиональной генерации видео. Basic, Creator или Pro с ежемесячной и годовой оплатой. Начните создавать контент Sora 3 для ваших кампаний.'
+    title = 'Veo 4 Тарифы | Basic, Standard и Pro'
+    description = 'Сравните тарифы Veo 4 для текст-в-видео, изображение-в-видео и создания контента для кампаний. Выберите план под ваш объём.'
   } else if (locale === 'es') {
-    title = 'Sora 3 Precios | Planes para Campanas de Video'
-    description = 'Selecciona tu plan Sora 3 para generacion profesional de video. Elige entre planes Basic, Creator o Pro con facturacion mensual y anual. Comienza a crear contenido Sora 3 hoy.'
+    title = 'Veo 4 Precios | Basic, Standard y Pro'
+    description = 'Compara los planes de Veo 4 para texto a video, imagen a video y creacion lista para campanas. Elige el plan adecuado para tu volumen.'
   }
 
   return {
@@ -44,10 +44,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/pricing`,
-      siteName: 'Sora3',
+      siteName: 'Veo4',
       images: [
         {
-          url: 'https://sora3ai.io/logo.jpg',
+          url: 'https://veo4video.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -60,7 +60,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sora3ai.io/logo.jpg']
+      images: ['https://veo4video.io/logo-v2.png']
     },
     robots: {
       index: true,
@@ -82,5 +82,3 @@ export default async function PricingPage({
 
   return <Pricing />
 }
-
-

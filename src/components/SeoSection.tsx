@@ -9,11 +9,11 @@ const SeoSection = () => {
         {/* Main SEO Content */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
-            The Best <span className="text-primary">Sora3 Platform</span> for AI Video Generation in 2025
+            The Best <span className="text-primary">Veo4 Platform</span> for AI Video Generation in 2025
           </h2>
           <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-            Sora3 Studio 提供 <strong>原生音频的 AI 视频生成</strong>，支持文字与图片双模式输入，
-            通过安全的 REST API 或可视化控制台在 45 秒内交付高清成片。无需复杂配置，即可把 Sora3 接入到任何产品或创作流程。
+            Veo4 Studio 提供 <strong>原生音频的 AI 视频生成</strong>，支持文字与图片双模式输入，
+            通过安全的 REST API 或可视化控制台在 45 秒内交付高清成片。无需复杂配置，即可把 Veo4 接入到任何产品或创作流程。
           </p>
           
           <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -22,10 +22,10 @@ const SeoSection = () => {
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <Zap className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold">Sora3 Fast 渲染</h3>
+                <h3 className="text-lg font-semibold">Veo4 Fast 渲染</h3>
               </div>
                 <p className="text-muted-foreground text-sm">
-                  采用优化后的 <strong>Sora3 Fast</strong> 编排流程，平均 30-45 秒即可输出及 8-16 秒、1080p 的视频，并同步生成环境音与对白。
+                  采用优化后的 <strong>Veo4 Fast</strong> 编排流程，平均 30-45 秒即可输出及 8-16 秒、1080p 的视频，并同步生成环境音与对白。
                 </p>
             </Card>
 
@@ -59,7 +59,7 @@ const SeoSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h3 className="text-2xl font-bold mb-6">
-              为什么团队选择 <span className="text-primary">Sora3</span>？
+              为什么团队选择 <span className="text-primary">Veo4</span>？
             </h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
@@ -69,7 +69,7 @@ const SeoSection = () => {
                 <div>
                   <h4 className="font-semibold mb-1">面向开发者与工作室</h4>
                   <p className="text-sm text-muted-foreground">
-                    提供直接的 Sora3 API 访问，无需额外的租户即可开通，多环境密钥、组织权限与请求日志一应俱全。
+                    提供直接的 Veo4 API 访问，无需额外的租户即可开通，多环境密钥、组织权限与请求日志一应俱全。
                   </p>
                 </div>
               </div>
@@ -125,11 +125,11 @@ const SeoSection = () => {
               <h4 className="text-lg font-semibold mb-4">Trending Keywords:</h4>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "sora3",
-                  "sora3 ai",
+                  "veo4",
+                  "veo4 ai",
                   "sora video generator",
-                  "sora3 text to video",
-                  "sora3 api",
+                  "veo4 text to video",
+                  "veo4 api",
                   "ai video generator",
                   "text to video",
                   "image to video"
@@ -144,7 +144,7 @@ const SeoSection = () => {
             <div className="bg-card/30 rounded-lg p-4 border border-primary/20">
               <h4 className="font-semibold mb-2 text-primary">🚀 2025 行业领先</h4>
               <p className="text-sm text-muted-foreground">
-                被评为 <strong>最具创意的 Sora3 视频平台</strong>。超过 2,500 家企业与创作者已经在使用 Sora3 Studio 批量生成内容。
+                被评为 <strong>最具创意的 Veo4 视频平台</strong>。超过 2,500 家企业与创作者已经在使用 Veo4 Studio 批量生成内容。
               </p>
             </div>
           </div>
@@ -154,23 +154,23 @@ const SeoSection = () => {
         <div className="mt-16 max-w-4xl mx-auto">
           <div className="bg-muted/30 rounded-lg p-8">
             <h3 className="text-xl font-bold mb-4 text-center">
-              如何使用 Sora3 生成 AI 视频
+              如何使用 Veo4 生成 AI 视频
             </h3>
             <div className="grid md:grid-cols-2 gap-6 text-sm text-muted-foreground">
               <div>
-                <h4 className="font-semibold text-foreground mb-2">快速接入 Sora3 API</h4>
+                <h4 className="font-semibold text-foreground mb-2">快速接入 Veo4 API</h4>
                 <p className="mb-3">
-                  使用我们封装的 Sora3 API，仅需一个 POST 请求即可提交文本或图片提示词，后端自动完成渲染、上传与结果轮询。
+                  使用我们封装的 Veo4 API，仅需一个 POST 请求即可提交文本或图片提示词，后端自动完成渲染、上传与结果轮询。
                 </p>
                 <p>
                   无需自行处理复杂的鉴权、队列或存储，我们提供鉴权、扩缩容、CDN、Webhook 全流程托管，让你把精力放在产品体验上。
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-2">Sora3 Fast vs Sora3 High Fidelity</h4>
+                <h4 className="font-semibold text-foreground mb-2">Veo4 Fast vs Veo4 High Fidelity</h4>
                 <p className="mb-3">
-                  选择 <strong>Sora3 Fast</strong> 获取最快的生成速度，适合社媒与批量内容；
-                  而 <strong>Sora3 High Fidelity</strong> 专注于电影级细节和物理一致性，适合广告、品牌影片与长线项目。
+                  选择 <strong>Veo4 Fast</strong> 获取最快的生成速度，适合社媒与批量内容；
+                  而 <strong>Veo4 High Fidelity</strong> 专注于电影级细节和物理一致性，适合广告、品牌影片与长线项目。
                 </p>
                 <p>
                   两种模型都支持 16:9、9:16、1:1 等主流比例，并可输出 1080p 原生音频，完美适配社媒、营销、教育等多种场景。

@@ -218,7 +218,7 @@ export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) =>
       return quality === 'high' ? 250 : 60; // high maps to veo3 quality, else veo3_fast
     }
 
-    // Sora3 Pro / Sora2 Pro pricing (same pricing)
+    // Veo4 Pro / Sora2 Pro pricing (same pricing)
     if (model === 'sora3-pro' || model === 'sora2-pro') {
       if (quality === 'high') {
         return n_frames === '15' ? 650 : 350;

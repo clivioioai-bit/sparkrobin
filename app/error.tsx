@@ -57,10 +57,10 @@ export default function Error({
           <p className="text-sm text-muted-foreground">
             Need help? Contact{" "}
             <a
-              href="mailto:support@sora3ai.io?subject=Application Error"
+              href="mailto:support@veo4video.io?subject=Application Error"
               className="text-primary hover:underline"
             >
-              support@sora3ai.io
+              support@veo4video.io
             </a>
           </p>
         </div>

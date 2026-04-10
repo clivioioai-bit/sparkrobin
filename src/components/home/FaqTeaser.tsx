@@ -18,11 +18,6 @@ const FaqTeaser = () => {
 
   const faqs = [
     {
-      id: 'item-1',
-      question: t('questions.whatMakesDifferent.question'),
-      answer: t('questions.whatMakesDifferent.answer')
-    },
-    {
       id: 'item-2',
       question: t('questions.characterConsistency.question'),
       answer: t('questions.characterConsistency.answer')
@@ -43,14 +38,9 @@ const FaqTeaser = () => {
       answer: t('questions.watermarks.answer')
     },
     {
-      id: 'item-10',
-      question: t('questions.officialModel.question'),
-      answer: t('questions.officialModel.answer')
-    },
-    {
-      id: 'item-11',
-      question: t('questions.25SecondVideos.question'),
-      answer: t('questions.25SecondVideos.answer')
+      id: 'item-1',
+      question: t('questions.whatMakesDifferent.question'),
+      answer: t('questions.whatMakesDifferent.answer')
     },
     {
       id: 'item-7',
@@ -125,7 +115,7 @@ const FaqTeaser = () => {
               className="text-white/40 hover:text-white/60 hover:bg-white/[0.04]"
               asChild
             >
-              <a href="mailto:support@sora3ai.io">
+              <a href="mailto:support@veo4video.io">
                 {t('contactSupport')}
               </a>
             </Button>

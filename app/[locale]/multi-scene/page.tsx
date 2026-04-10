@@ -16,24 +16,24 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sora3ai.io'
+  const baseUrl = 'https://veo4video.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
-  let title = 'Sora 3 Multi-Scene | Extended Video Narratives'
-  let description = 'Build complete brand stories with Sora 3 multi-scene videos up to 25 seconds. Sora 3 maintains visual consistency across scenes for professional campaigns. Export Sora 3 content without watermarks.'
+  let title = 'Veo 4 Multi-Scene | Build Story Videos'
+  let description = 'Create Veo 4 multi-scene videos with stronger continuity, cleaner pacing, and scenes built for ads, brand stories, and product narratives.'
   
   if (locale === 'ar') {
-    title = 'Sora 3 متعدد المشاهد | قصص فيديو ممتدة'
-    description = 'أنشئ قصص علامة تجارية كاملة مع فيديوهات Sora 3 متعددة المشاهد حتى 25 ثانية. Sora 3 يحافظ على الاتساق البصري عبر المشاهد. تصدير محتوى Sora 3 بدون علامة مائية.'
+    title = 'Veo 4 متعدد المشاهد | إنشاء فيديوهات قصصية'
+    description = 'أنشئ فيديوهات Veo 4 متعددة المشاهد باتساق أفضل وإيقاع أنظف ومشاهد مناسبة للإعلانات وقصص العلامة التجارية وعرض المنتجات.'
   } else if (locale === 'ja') {
-    title = 'Sora 3 マルチシーン | 拡張動画ストーリー'
-    description = '最大25秒のSora 3マルチシーン動画で完全なブランドストーリーを構築。Sora 3はシーン間で視覚的一貫性を維持。ウォーターマークなしのSora 3コンテンツをエクスポート。'
+    title = 'Veo 4 マルチシーン | ストーリー動画を作成'
+    description = '広告、ブランドストーリー、商品紹介向けに、流れと一貫性に優れたVeo 4マルチシーン動画を作成できます。'
   } else if (locale === 'ru') {
-    title = 'Sora 3 Мульти-сцена | Расширенные Видео Истории'
-    description = 'Создавайте полные истории бренда с многосценовыми видео Sora 3 до 25 секунд. Sora 3 поддерживает визуальную согласованность между сценами. Экспортируйте контент Sora 3 без водяных знаков.'
+    title = 'Veo 4 Мульти-сцена | Сюжетные Видео'
+    description = 'Создавайте многосценовые видео Veo 4 с лучшей связностью, ритмом и сценами для рекламы, бренда и продуктовых историй.'
   } else if (locale === 'es') {
-    title = 'Sora 3 Multi-Escena | Narrativas de Video Extendidas'
-    description = 'Construye historias de marca completas con videos multi-escena Sora 3 de hasta 25 segundos. Sora 3 mantiene la consistencia visual entre escenas. Exporta contenido Sora 3 sin marcas de agua.'
+    title = 'Veo 4 Multi-Escena | Videos con Historia'
+    description = 'Crea videos multi-escena de Veo 4 con mejor continuidad, ritmo más limpio y escenas pensadas para anuncios, marca y productos.'
   }
 
   return {
@@ -44,10 +44,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/multi-scene`,
-    siteName: 'Sora3',
+    siteName: 'Veo4',
     images: [
       {
-        url: 'https://sora3ai.io/logo.jpg',
+        url: 'https://veo4video.io/logo-v2.png',
         width: 1200,
         height: 630,
           alt: title,
@@ -60,7 +60,7 @@ export async function generateMetadata({
     card: 'summary_large_image',
       title,
       description,
-    images: ['https://sora3ai.io/logo.jpg']
+    images: ['https://veo4video.io/logo-v2.png']
   },
 }
 }
@@ -80,4 +80,3 @@ export default async function Page({
 }
 
 export const revalidate = 300
-

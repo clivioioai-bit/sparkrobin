@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { createCheckoutForProduct } from '@/lib/creem-payment';
-import { creemPlansById } from '@/config/creemPlans';
+import { createDodoCheckoutSession } from '@/lib/dodo-payments';
+import { creemPlansById, getPlanProductId } from '@/config/creemPlans';
+import { getPaymentProviderLabel, resolvePaymentProvider } from '@/lib/payment-provider';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
 
 export const runtime = 'nodejs';
@@ -49,8 +51,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json().catch(() => ({}));
     const planId = body?.planId as string | undefined;
     const returnUrl = body?.returnUrl as string | undefined;
+    const provider = resolvePaymentProvider(body?.provider);
     debug.planId = planId;
     debug.returnUrl = returnUrl;
+    debug.provider = provider;
 
     if (!planId) {
       return NextResponse.json({ error: 'Missing planId' }, { status: 400 });
@@ -59,7 +63,7 @@ export async function POST(request: NextRequest) {
     const plan = creemPlansById[planId];
     debug.hasPlan = !!plan;
     debug.usingCheckoutUrl = !!plan?.checkoutUrl;
-    debug.hasProductId = !!plan?.productId;
+    debug.hasProductId = !!getPlanProductId(plan, provider);
 
     if (!plan) {
       return NextResponse.json({ error: 'Plan not found' }, { status: 404 });
@@ -149,10 +153,10 @@ export async function POST(request: NextRequest) {
     debug.vercelEnv = process.env.VERCEL_ENV || process.env.NODE_ENV || 'unknown';
     debug.hasCreemApiKey = !!process.env.CREEM_API_KEY;
     debug.creemApiKeyPrefix = process.env.CREEM_API_KEY?.substring(0, 20) || 'not set';
-    debug.productId = plan.productId;
+    const providerProductId = getPlanProductId(plan, provider);
+    debug.productId = providerProductId;
 
-    // 检查必需的配置
-    if (!process.env.CREEM_API_KEY) {
+    if (provider === 'creem' && !process.env.CREEM_API_KEY) {
       console.error('[API] CREEM_API_KEY not configured');
       return NextResponse.json(
         debugMode
@@ -162,18 +166,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!plan.productId) {
-      console.error('[API] Plan missing productId', { planId: plan.id });
+    if (provider === 'dodo' && !process.env.DODO_PAYMENTS_API_KEY) {
+      console.error('[API] DODO_PAYMENTS_API_KEY not configured');
       return NextResponse.json(
         debugMode
-          ? { error: 'Plan productId not configured', debug }
+          ? { error: 'Dodo Payments API key not configured', debug }
+          : { error: 'Payment service not configured' },
+        { status: 500 }
+      );
+    }
+
+    if (!providerProductId) {
+      console.error('[API] Plan missing provider productId', { planId: plan.id, provider });
+      return NextResponse.json(
+        debugMode
+          ? { error: `${getPaymentProviderLabel(provider)} productId not configured`, debug }
           : { error: 'Plan not configured for checkout' },
         { status: 500 }
       );
     }
 
-    // Prefer creating checkout via productId to attach success/cancel + metadata
-    if (plan.productId) {
+    if (providerProductId) {
       const returnPath = sanitizeReturnPath(returnUrl, baseUrl);
       debug.returnPath = returnPath;
 
@@ -181,7 +194,8 @@ export async function POST(request: NextRequest) {
       if (returnPath) {
         callbackParams.set('return_to', returnPath);
       }
-      const successUrl = `${baseUrl}/api/pay/callback/creem?${callbackParams.toString()}`;
+      const callbackProvider = provider === 'dodo' ? 'dodo' : 'creem';
+      const successUrl = `${baseUrl}/api/pay/callback/${callbackProvider}?${callbackParams.toString()}`;
 
       const cancelParams = new URLSearchParams({ checkout: 'cancelled', plan: plan.id });
       if (returnPath) {
@@ -191,52 +205,62 @@ export async function POST(request: NextRequest) {
 
       debug.successUrl = successUrl;
       debug.cancelUrl = cancelUrl;
-      debug.productId = plan.productId;
+      debug.productId = providerProductId;
       debug.customerId = checkoutUser.id;
 
       try {
-        // 生成唯一的 request_id 用于跟踪支付
         const requestId = `checkout_${checkoutUser.id}_${plan.id}_${Date.now()}`;
-        
-        const checkout = await createCheckoutForProduct({
-          productId: plan.productId,
+        const metadata = {
+          planId: plan.id,
+          planCategory: plan.category,
+          credits: plan.credits,
           customerId: checkoutUser.id,
           customerEmail: checkoutUser.email,
-          successUrl,
-          cancelUrl,
-          requestId, // 添加 request_id 用于跟踪
-          metadata: {
-            planId: plan.id,
-            planCategory: plan.category,
-            credits: plan.credits,
-            customerId: checkoutUser.id,
-            customerEmail: checkoutUser.email,
-            requestId, // 也在 metadata 中包含
-          },
-        });
+          requestId,
+          provider,
+        };
+
+        const checkout =
+          provider === 'dodo'
+            ? await createDodoCheckoutSession({
+                productId: providerProductId,
+                customerId: checkoutUser.id,
+                customerEmail: checkoutUser.email,
+                customerName: user.user_metadata?.full_name || null,
+                returnUrl: successUrl,
+                allowedPaymentMethodTypes: plan.allowedPaymentMethodTypes,
+                metadata,
+              })
+            : await createCheckoutForProduct({
+                productId: providerProductId,
+                customerId: checkoutUser.id,
+                customerEmail: checkoutUser.email,
+                successUrl,
+                cancelUrl,
+                requestId,
+                metadata,
+              });
 
         debug.checkoutResult = checkout;
 
         if (!checkout.checkoutUrl) {
-          throw new Error('Creem checkout URL not returned');
+          throw new Error(`${getPaymentProviderLabel(provider)} checkout URL not returned`);
         }
-        return NextResponse.json({ checkoutUrl: checkout.checkoutUrl });
-      } catch (creemError) {
-        const errorMessage = creemError instanceof Error ? creemError.message : String(creemError);
-        const errorName = creemError instanceof Error ? creemError.name : 'UnknownError';
+        return NextResponse.json({ checkoutUrl: checkout.checkoutUrl, provider });
+      } catch (providerError) {
+        const errorMessage = providerError instanceof Error ? providerError.message : String(providerError);
+        const errorName = providerError instanceof Error ? providerError.name : 'UnknownError';
         
-        debug.creemError = {
+        debug.providerError = {
           message: errorMessage,
           name: errorName,
-          stack: creemError instanceof Error ? creemError.stack : undefined
+          stack: providerError instanceof Error ? providerError.stack : undefined
         };
         
-        // 记录详细错误日志
-        console.error('[API] Creem checkout failed:', {
+        console.error(`[API] ${getPaymentProviderLabel(provider)} checkout failed:`, {
           planId: plan.id,
-          productId: plan.productId,
-          hasApiKey: !!process.env.CREEM_API_KEY,
-          apiKeyPrefix: process.env.CREEM_API_KEY?.substring(0, 20),
+          provider,
+          productId: providerProductId,
           error: errorMessage,
           errorName,
           debug
@@ -245,29 +269,27 @@ export async function POST(request: NextRequest) {
         // In debug mode, also return the raw error for inspection
         if (debugMode) {
           return NextResponse.json({
-            error: 'Creem checkout failed',
+            error: `${getPaymentProviderLabel(provider)} checkout failed`,
             debug: {
               ...debug,
-              rawError: creemError
+              rawError: providerError
             }
           }, { status: 500 });
         }
         
-        // 返回错误信息而不是抛出，避免被外层 catch 捕获
-        // Always include debug info in development
         const isDevelopment = process.env.NODE_ENV === 'development';
         return NextResponse.json(
           (debugMode || isDevelopment)
             ? {
-                error: 'Creem checkout failed',
+                error: `${getPaymentProviderLabel(provider)} checkout failed`,
                 message: errorMessage,
                 debug: {
                   ...debug,
-                  rawError: creemError instanceof Error ? {
-                    message: creemError.message,
-                    name: creemError.name,
-                    stack: creemError.stack
-                  } : String(creemError)
+                  rawError: providerError instanceof Error ? {
+                    message: providerError.message,
+                    name: providerError.name,
+                    stack: providerError.stack
+                  } : String(providerError)
                 }
               }
             : {

@@ -113,7 +113,7 @@ const Hero = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto pt-2">
-            <Link href="/sora3-text-to-video" className="w-full sm:w-auto">
+            <Link href="/veo4-text-to-video" className="w-full sm:w-auto">
               <Button
                 variant="hero"
                 size="lg"
@@ -124,7 +124,7 @@ const Hero = () => {
               </Button>
             </Link>
 
-            <Link href="/sora3-image-to-video" className="w-full sm:w-auto">
+            <Link href="/veo4-image-to-video" className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="lg"

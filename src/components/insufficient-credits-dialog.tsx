@@ -61,7 +61,7 @@ const InsufficientCreditsDialog: FC<InsufficientCreditsDialogProps> = ({
         toast({
           variant: 'destructive',
           title: 'Session expired, please log in again',
-          description: 'After authentication, you will be redirected to Creem payment page.',
+          description: 'After authentication, you will be redirected to Dodo Payments checkout.',
         });
       } else {
         toast({
@@ -89,7 +89,7 @@ const InsufficientCreditsDialog: FC<InsufficientCreditsDialogProps> = ({
         </DialogHeader>
 
         <div className="space-y-4 text-sm text-muted-foreground">
-          <p>Choose any Creem plan below to instantly top up credits. The entire process will redirect to Creem payment page.</p>
+          <p>Choose any plan below to instantly top up credits. The entire process will redirect to Dodo Payments checkout.</p>
 
           <div className="space-y-3">
             {subscriptionPlans.map((plan) => (

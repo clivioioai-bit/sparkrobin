@@ -13,17 +13,38 @@ import SubscriptionHistory from "@/components/SubscriptionHistory";
 import PaymentHistory from "@/components/PaymentHistory";
 import { Zap, History, Download, Crown } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import SubscriptionRequiredModal from '@/components/SubscriptionRequiredModal'
 import { useAuth } from "@/contexts/AuthContext";
 import { useCredits } from "@/contexts/CreditsContext";
+import { useTranslations } from "next-intl";
 
-const Account = () => {
-  const { user, isAuthenticated } = useAuth();
+type AccountTab = "overview" | "generations" | "subscriptions" | "payments";
+
+interface AccountProps {
+  defaultTab?: AccountTab;
+  pageTitle?: string;
+  pageDescription?: string;
+}
+
+const VALID_TABS: AccountTab[] = ["overview", "generations", "subscriptions", "payments"];
+
+const Account = ({
+  defaultTab = "overview",
+  pageTitle,
+  pageDescription,
+}: AccountProps) => {
+  const t = useTranslations("account");
+  const { user } = useAuth();
   const { subscription, generations, refreshCredits } = useCredits();
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const searchTab = searchParams?.get("tab");
+  const initialTab = VALID_TABS.includes(searchTab as AccountTab)
+    ? (searchTab as AccountTab)
+    : defaultTab;
 
   // User data from context and Supabase
   const userData = {
@@ -41,8 +62,14 @@ const Account = () => {
     nextBilling: subscription?.resetDate || "N/A"
   };
 
-  const recentGenerations = generations.slice(0, 10);
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
+  const [activeTab, setActiveTab] = useState<AccountTab>(initialTab);
+  const resolvedPageTitle = pageTitle || t("dashboardPageTitle");
+  const resolvedPageDescription = pageDescription || t("dashboardPageDescription");
+
+  useEffect(() => {
+    setActiveTab(initialTab);
+  }, [initialTab]);
 
   // Handle payment success callback: refresh credits then clean URL
   useEffect(() => {
@@ -53,7 +80,7 @@ const Account = () => {
         toast.success(`Payment successful${planName ? `: ${planName.replace(/_/g, " ")}` : ""}`);
         refreshCredits().catch(() => {});
         // Clean query params to avoid re-triggering on back/refresh
-        router.replace("/dashboard");
+        router.replace(pathname || "/dashboard");
       }
     } catch (_e) {
       // no-op
@@ -70,10 +97,10 @@ const Account = () => {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold mb-2">
-              <span className="text-primary">Account Dashboard</span>
+              <span className="text-primary">{resolvedPageTitle}</span>
             </h1>
             <p className="text-muted-foreground">
-              Manage your subscription, credits, and API access
+              {resolvedPageDescription}
             </p>
           </div>
 
@@ -86,7 +113,7 @@ const Account = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold">{userData.credits}</p>
-                  <p className="text-sm text-muted-foreground">Credits Available</p>
+                  <p className="text-sm text-muted-foreground">{t("stats.creditsAvailable")}</p>
                 </div>
               </div>
             </Card>
@@ -98,7 +125,7 @@ const Account = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold">{userData.totalGenerated}</p>
-                  <p className="text-sm text-muted-foreground">Videos Generated</p>
+                  <p className="text-sm text-muted-foreground">{t("stats.videosGenerated")}</p>
                 </div>
               </div>
             </Card>
@@ -110,63 +137,63 @@ const Account = () => {
                 </div>
                 <div>
                   <p className="text-lg font-semibold">{userData.plan}</p>
-                  <p className="text-sm text-muted-foreground">Current Plan</p>
+                  <p className="text-sm text-muted-foreground">{t("stats.currentPlan")}</p>
                 </div>
               </div>
             </Card>
           </div>
 
           {/* Main Content */}
-          <Tabs defaultValue="overview" className="space-y-6">
+          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as AccountTab)} className="space-y-6">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="generations">Generations</TabsTrigger>
-              <TabsTrigger value="subscriptions">Subscriptions</TabsTrigger>
-              <TabsTrigger value="payments">Payments</TabsTrigger>
+              <TabsTrigger value="overview">{t("tabs.overview")}</TabsTrigger>
+              <TabsTrigger value="generations">{t("tabs.generations")}</TabsTrigger>
+              <TabsTrigger value="subscriptions">{t("tabs.subscriptions")}</TabsTrigger>
+              <TabsTrigger value="payments">{t("tabs.payments")}</TabsTrigger>
             </TabsList>
 
             {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-6">
               <div className="grid lg:grid-cols-2 gap-6">
                 <Card className="p-6">
-                  <h3 className="text-lg font-semibold mb-4">Account Information</h3>
+                  <h3 className="text-lg font-semibold mb-4">{t("sections.accountInformation")}</h3>
                   <div className="space-y-4">
                     <div>
-                      <Label className="text-sm font-medium">Name</Label>
+                      <Label className="text-sm font-medium">{t("fields.name")}</Label>
                       <Input defaultValue={userData.name} className="mt-1" readOnly />
                     </div>
                     <div>
-                      <Label className="text-sm font-medium">Email</Label>
+                      <Label className="text-sm font-medium">{t("fields.email")}</Label>
                       <Input defaultValue={userData.email} className="mt-1" readOnly />
                     </div>
                     <Button variant="outline" className="w-full">
-                      Update Profile
+                      {t("actions.updateProfile")}
                     </Button>
                   </div>
                 </Card>
 
                 <Card className="p-6">
-                  <h3 className="text-lg font-semibold mb-4">Subscription Status</h3>
+                  <h3 className="text-lg font-semibold mb-4">{t("sections.subscriptionStatus")}</h3>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm">Current Plan</span>
+                      <span className="text-sm">{t("fields.currentPlan")}</span>
                       <Badge variant="default">{userData.plan}</Badge>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm">Status</span>
+                      <span className="text-sm">{t("fields.status")}</span>
                       <Badge variant="outline" className="text-primary border-primary">
-                        {userData.subscriptionStatus === 'active' ? 'Active' : userData.subscriptionStatus}
+                        {userData.subscriptionStatus === 'active' ? t("statuses.active") : userData.subscriptionStatus}
                       </Badge>
                     </div>
                     {userData.nextBilling !== "N/A" && (
                       <div className="flex items-center justify-between">
-                        <span className="text-sm">Next Billing</span>
+                        <span className="text-sm">{t("fields.nextBilling")}</span>
                         <span className="text-sm text-muted-foreground">{userData.nextBilling}</span>
                       </div>
                     )}
                     <div className="pt-2 space-y-2">
                       <Button variant="outline" className="w-full" onClick={() => setShowSubscriptionModal(true)}>
-                        Upgrade Plan
+                        {t("actions.upgradePlan")}
                       </Button>
                     </div>
                   </div>

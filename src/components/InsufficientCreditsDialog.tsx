@@ -14,6 +14,12 @@ import { subscriptionPlans } from '@/config/pricing';
 import { startCheckout, CheckoutError } from '@/services/payments';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/components/ui/use-toast';
+import {
+  getDefaultPaymentProvider,
+  getEnabledPaymentProviders,
+  getPaymentProviderLabel,
+  type PaymentProvider,
+} from '@/lib/payment-provider';
 
 interface InsufficientCreditsDialogProps {
   open: boolean;
@@ -32,6 +38,7 @@ const InsufficientCreditsDialog: FC<InsufficientCreditsDialogProps> = ({
 }) => {
   const { isAuthenticated } = useAuth();
   const [loadingPlanId, setLoadingPlanId] = useState<string | null>(null);
+  const [selectedProvider, setSelectedProvider] = useState<PaymentProvider>(getDefaultPaymentProvider());
 
   const handleCheckout = async (planId: string) => {
     if (!isAuthenticated) {
@@ -47,14 +54,14 @@ const InsufficientCreditsDialog: FC<InsufficientCreditsDialogProps> = ({
     setLoadingPlanId(planId);
 
     try {
-      await startCheckout(planId);
+      await startCheckout(planId, selectedProvider);
     } catch (error) {
       if (error instanceof CheckoutError && error.code === 'AUTH_REQUIRED') {
         onRequestAuth?.();
         toast({
           variant: 'destructive',
           title: 'Session expired',
-          description: 'After authentication you will be redirected to Creem checkout.',
+          description: `After authentication you will be redirected to ${getPaymentProviderLabel(selectedProvider)} checkout.`,
         });
       } else {
         toast({
@@ -82,7 +89,26 @@ const InsufficientCreditsDialog: FC<InsufficientCreditsDialogProps> = ({
         </DialogHeader>
 
         <div className="space-y-4 text-sm text-muted-foreground">
-          <p>Select any Creem plan below to instantly top up credits. You will be redirected to Creem checkout.</p>
+          <p>
+            Select any plan below to instantly top up credits. You will be redirected to{' '}
+            {getPaymentProviderLabel(selectedProvider)} checkout.
+          </p>
+
+          {getEnabledPaymentProviders().length > 1 && (
+            <div className="flex flex-wrap gap-2">
+              {getEnabledPaymentProviders().map((provider) => (
+                <Button
+                  key={provider}
+                  type="button"
+                  size="sm"
+                  variant={selectedProvider === provider ? 'default' : 'outline'}
+                  onClick={() => setSelectedProvider(provider)}
+                >
+                  {getPaymentProviderLabel(provider)}
+                </Button>
+              ))}
+            </div>
+          )}
 
           <div className="space-y-3">
             {subscriptionPlans.map((plan) => (

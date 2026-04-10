@@ -69,7 +69,7 @@
 ## 📁 新的文档结构
 
 ```
-sora3ai.ai/
+veo4ai.ai/
 ├── README.md                    # 主README（已完善）
 ├── docs/                        # 文档目录
 │   ├── README.md               # 文档索引

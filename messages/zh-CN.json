@@ -1,10 +1,11 @@
 {
   "common": {
-    "brand": "Sora3",
+    "brand": "Veo4",
     "new": "新",
     "generate": "生成",
     "home": "首页",
     "pricing": "定价",
+    "myCreations": "我的作品",
     "blog": "博客",
     "faq": "常见问题",
     "signIn": "登录",
@@ -22,29 +23,29 @@
   "hero": {
     "badge": "2026 Best Model",
     "discord": "加入 Discord 社区",
-    "brandName": "SORA 3",
-    "tagline": "AI 视频生成器",
-    "title": "Sora 3 — 重新定义 AI 视频的可能性",
-    "subtitle": "全新的 Sora 3 带来超真实动感、更长场景和电影级细节 — 让创作者在数秒内将纯想象转化为工作室级别的视频。",
+    "brandName": "VEO 4",
+    "tagline": "AI 文生视频与图生视频生成器",
+    "title": "Veo4 — 重新定义 AI 视频的可能性",
+    "subtitle": "全新的 Veo4 带来超真实动感、更长场景和电影级细节 — 让创作者在数秒内将纯想象转化为工作室级别的视频。",
     "placeholder": "描述您想要创建的视频...",
     "cta": "生成",
     "trySora3": "🚀 即将推出 — 加入抢先体验",
     "trySora2": "生成图片",
     "sora2Description": "使用我们的 Sora 2 引擎立即生成视频 — 无水印，适用于 TikTok 和广告。",
-    "storyboard25s": "构建 25 秒 Sora 3 故事",
-    "disclaimer": "专注于 Sora 3 视频生成的独立平台。我们利用先进的 Sora 3 技术生产专业内容。与 OpenAI 或任何官方 Sora 产品无关。",
+    "storyboard25s": "构建 25 秒 Veo4 故事",
+    "disclaimer": "专注于 Veo4 视频生成的独立平台。我们利用先进的 Veo4 技术生产专业内容。与 OpenAI 或任何官方 Sora 产品无关。",
     "features": {
       "noWatermark": {
-        "title": "Sora 3 无水印",
-        "description": "导出干净整洁的 Sora 3 视频，适用于商业活动"
+        "title": "Veo4 无水印",
+        "description": "导出干净整洁的 Veo4 视频，适用于商业活动"
       },
       "noRegionalLimits": {
-        "title": "全球 Sora 3 访问",
-        "description": "从世界任何地方创建 Sora 3 内容"
+        "title": "全球 Veo4 访问",
+        "description": "从世界任何地方创建 Veo4 内容"
       },
       "noInviteCode": {
-        "title": "即时 Sora 3 访问",
-        "description": "立即开始生成 Sora 3 视频，无需等待名单"
+        "title": "即时 Veo4 访问",
+        "description": "立即开始生成 Veo4 视频，无需等待名单"
       }
     }
   },
@@ -53,9 +54,10 @@
     "generate": "Video AI",
     "textToVideo": "文本转视频",
     "imageToVideo": "图片转视频",
-    "storyboard": "Sora3 故事板",
+    "storyboard": "Veo4 故事板",
     "watermarkRemover": "水印移除",
     "pricing": "定价",
+    "myCreations": "我的作品",
     "blog": "博客",
     "dashboard": "仪表板",
     "user": "用户",
@@ -68,10 +70,10 @@
     "startForFree": "立即开始",
     "preferences": "偏好设置",
     "generationHistory": "生成历史",
-    "textToVideoDescription": "将想法转化为精美的 Sora 3 片段，适用于广告",
-    "imageToVideoDescription": "将照片动画化为专业的 Sora 3 视频内容",
-    "storyboardDescription": "构建最多 25 秒的多场景 Sora 3 叙事",
-    "watermarkRemoverDescription": "即时移除 Sora 3 视频中的水印",
+    "textToVideoDescription": "将想法转化为精美的 Veo4 片段，适用于广告",
+    "imageToVideoDescription": "将照片动画化为专业的 Veo4 视频内容",
+    "storyboardDescription": "构建最多 25 秒的多场景 Veo4 叙事",
+    "watermarkRemoverDescription": "即时移除 Veo4 视频中的水印",
     "imageAI": "AI 图像",
     "textToImage": "文字生成图片",
     "textToImageDescription": "通过文字提示生成图片",
@@ -81,12 +83,14 @@
     "models": "模型",
     "nanoBanana": "Nano Banana",
     "nanoBananaPro": "Nano Banana Pro",
-    "sora3": "Sora 3",
-    "sora3Pro": "Sora 3 Pro",
+    "sora3": "Veo4",
+    "sora3Pro": "Veo4 Pro",
     "sora2": "Sora 2",
     "sora2Pro": "Sora 2 Pro",
     "veo3": "Veo 3",
     "wan26": "Wan 2.6",
+    "veo4Model": "Veo 4",
+    "veo31Model": "Veo 3.1",
     "whoThisIsFor": {
       "ecommerce": {
         "title": "Shopify 和电商卖家"
@@ -100,30 +104,30 @@
     }
   },
   "footer": {
-    "description": "sora3ai.io 将想法转化为精美的 Sora 3 视频片段，完美适用于广告和品牌活动。我们的 Sora 3 平台生成无水印的专业视频，非常适合营销团队和创作者。立即开始创建 Sora 3 内容。",
+    "description": "veo4video.io 将想法转化为精美的 Veo4 视频片段，完美适用于广告和品牌活动。我们的 Veo4 平台生成无水印的专业视频，非常适合营销团队和创作者。立即开始创建 Veo4 内容。",
     "product": "产品",
     "company": "公司",
     "resources": "资源",
     "support": "支持",
-    "sora3TextToVideo": "Sora3 文本转视频",
-    "sora3ImageToVideo": "Sora3 图片转视频",
-    "sora3Pricing": "Sora3 定价",
-    "sora3Faq": "Sora3 常见问题",
-    "sora3Blog": "Sora3 博客",
+    "sora3TextToVideo": "Veo4 文本转视频",
+    "sora3ImageToVideo": "Veo4 图片转视频",
+    "sora3Pricing": "Veo4 定价",
+    "sora3Faq": "Veo4 常见问题",
+    "sora3Blog": "Veo4 博客",
     "aiVideoPromptGpt": "AI 视频提示 GPT",
     "privacyPolicy": "隐私政策",
     "termsOfService": "服务条款",
     "refundPolicy": "退款政策",
     "support247": "24/7 支持",
     "contactUs": "联系我们 / 合作",
-    "disclaimer": "sora3ai.io 是专注于 Sora 3 视频生成的独立平台。我们利用先进的 Sora 3 技术生产广告就绪的专业视频。sora3ai.io 与 OpenAI、Google 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
-    "poweredBy": "由专有的 Sora 3 视频合成技术提供支持。与任何官方供应商无关。",
-    "copyright": "© 2024 Sora3. 保留所有权利。",
+    "disclaimer": "veo4video.io 是专注于 Veo4 视频生成的独立平台。我们利用先进的 Veo4 技术生产广告就绪的专业视频。veo4video.io 与 OpenAI、Google 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
+    "poweredBy": "由专有的 Veo4 视频合成技术提供支持。与任何官方供应商无关。",
+    "copyright": "© 2024 Veo4. 保留所有权利。",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24/7 支持: support@sora3ai.io",
-    "businessEmail": "商务与合作: team@sora3ai.io",
-    "logoAlt": "Sora3 AI 视频生成器标志",
+    "supportEmail": "24/7 支持: support@veo4video.io",
+    "businessEmail": "商务与合作: support@veo4video.io",
+    "logoAlt": "Veo4 AI 视频生成器标志",
     "socialLabels": {
       "twitter": "在 Twitter 上关注我们",
       "discord": "加入我们的 Discord 社区",
@@ -134,10 +138,10 @@
     }
   },
   "whyThisMatters": {
-    "title": "为什么营销团队选择 Sora 3",
-    "subtitle": "广告活动需要高质量的视频内容 — Sora 3 无阻碍交付。我们的 Sora 3 平台能够为品牌和代理商即时创建专业视频。",
+    "title": "为什么营销团队选择 Veo4",
+    "subtitle": "广告活动需要高质量的视频内容 — Veo4 无阻碍交付。我们的 Veo4 平台能够为品牌和代理商即时创建专业视频。",
     "challenges": "常见障碍",
-    "solutions": "Sora 3 如何解决",
+    "solutions": "Veo4 如何解决",
     "watermarks": {
       "title": "导出时的平台品牌标识",
       "description": "水印会削弱客户工作的专业呈现。"
@@ -148,61 +152,61 @@
     },
     "storyboarding": {
       "title": "技术复杂性",
-      "description": "多场景 Sora 3 故事板创建需要专业知识。"
+      "description": "多场景 Veo4 故事板创建需要专业知识。"
     },
     "speed": {
       "title": "冗长的处理时间",
       "description": "生成速度慢会打乱活动时间表和创作动力。"
     },
     "noWatermark": {
-      "title": "Sora 3 无任何品牌标识",
-      "description": "导出干净整洁的 Sora 3 视频，完美适用于客户交付。"
+      "title": "Veo4 无任何品牌标识",
+      "description": "导出干净整洁的 Veo4 视频，完美适用于客户交付。"
     },
     "costPerformance": {
-      "title": "Sora 3 具有竞争力的价格",
-      "description": "Sora 3 生成成本显著低于同类平台。"
+      "title": "Veo4 具有竞争力的价格",
+      "description": "Veo4 生成成本显著低于同类平台。"
     },
     "multiModel": {
-      "title": "Sora 3 多模型方法",
-      "description": "Sora 3 利用多个引擎实现可靠、一致的输出。"
+      "title": "Veo4 多模型方法",
+      "description": "Veo4 利用多个引擎实现可靠、一致的输出。"
     },
     "storyboard": {
-      "title": "Sora 3 扩展叙事",
-      "description": "Sora 3 故事板构建最多 25 秒的完整品牌故事。"
+      "title": "Veo4 扩展叙事",
+      "description": "Veo4 故事板构建最多 25 秒的完整品牌故事。"
     },
-    "solution": "Sora 3 解决了所有这些挑战"
+    "solution": "Veo4 解决了所有这些挑战"
   },
   "whoThisIsFor": {
-    "title": "谁使用 Sora 3 构建活动",
-    "subtitle": "从内容创作者到营销总监，Sora 3 赋能团队制作推动结果的专业视频内容。",
+    "title": "谁使用 Veo4 构建活动",
+    "subtitle": "从内容创作者到营销总监，Veo4 赋能团队制作推动结果的专业视频内容。",
     "creators": {
       "title": "内容创作者和影响者",
-      "description": "为社交平台制作 Sora 3 视频，无水印或制作开销。"
+      "description": "为社交平台制作 Veo4 视频，无水印或制作开销。"
     },
     "ecommerce": {
       "title": "电商和市场卖家",
-      "description": "生成转化率高的 Sora 3 产品视频和促销内容，无需工作室成本。"
+      "description": "生成转化率高的 Veo4 产品视频和促销内容，无需工作室成本。"
     },
     "businesses": {
       "title": "成长中的企业",
-      "description": "以代理商定价的一小部分获得 Sora 3 质量的视频制作。"
+      "description": "以代理商定价的一小部分获得 Veo4 质量的视频制作。"
     },
     "marketers": {
       "title": "测试创意的营销团队",
-      "description": "快速制作 Sora 3 视频变体，用于 A/B 测试和活动优化。"
+      "description": "快速制作 Veo4 视频变体，用于 A/B 测试和活动优化。"
     },
     "shortFilmStudios": {
       "title": "制作工作室",
-      "description": "利用 Sora 3 技术以电影级质量增强项目。"
+      "description": "利用 Veo4 技术以电影级质量增强项目。"
     },
     "advertisers": {
       "title": "广告代理商",
-      "description": "交付满足客户期望和活动目标的 Sora 3 视频内容。"
+      "description": "交付满足客户期望和活动目标的 Veo4 视频内容。"
     }
   },
   "blogShowcase": {
-    "title": "Sora 3 创作者和品牌策略",
-    "subtitle": "可操作的见解，最大化您的 Sora 3 视频表现和活动结果。",
+    "title": "Veo4 创作者和品牌策略",
+    "subtitle": "可操作的见解，最大化您的 Veo4 视频表现和活动结果。",
     "viewAll": "查看所有博客文章",
     "readMore": "阅读更多",
     "featured": "精选"
@@ -216,55 +220,51 @@
     "emptyDescription": "将 Markdown 文件添加到 content/blog，它们将显示在这里。"
   },
   "howItWorks": {
-    "title": "如何在几分钟内创建 Sora 3 视频",
-    "subtitle": "通过三个简单的步骤将您的概念转化为精美的 Sora 3 内容。",
+    "title": "如何在几分钟内创建 Veo4 视频",
+    "subtitle": "通过三个简单的步骤将您的概念转化为精美的 Veo4 内容。",
     "step1": {
       "title": "分享您的愿景或上传图片",
-      "description": "描述您想在 Sora 3 视频中看到的内容，或提供起始图片供 Sora 3 动画化。"
+      "description": "描述您想在 Veo4 视频中看到的内容，或提供起始图片供 Veo4 动画化。"
     },
     "step2": {
-      "title": "配置您的 Sora 3 输出设置",
-      "description": "选择宽高比和时长，或设置 Sora 3 故事板场景以扩展叙事。"
+      "title": "配置您的 Veo4 输出设置",
+      "description": "选择宽高比和时长，或设置 Veo4 故事板场景以扩展叙事。"
     },
     "step3": {
-      "title": "导出您的 Sora 3 视频，准备用于活动",
-      "description": "以 HD 或 4K 下载您的 Sora 3 创作，可立即部署用于广告和品牌内容。"
+      "title": "导出您的 Veo4 视频，准备用于活动",
+      "description": "以 HD 或 4K 下载您的 Veo4 创作，可立即部署用于广告和品牌内容。"
     }
   },
   "faq": {
-    "title": "关于 Sora 3 的常见问题",
-    "subtitle": "查找关于 Sora 3 视频生成、活动使用和平台功能的答案。了解 Sora 3 的工作原理以及为什么营销团队选择 Sora 3 来满足他们的视频内容需求。",
+    "title": "关于 Veo4 的常见问题",
+    "subtitle": "查找关于 Veo4 视频生成、活动使用和平台功能的答案。了解 Veo4 的工作原理以及为什么营销团队选择 Veo4 来满足他们的视频内容需求。",
     "viewAllFaqs": "查看所有常见问题",
     "contactSupport": "联系支持",
     "haveMoreQuestions": "还有更多问题？我们随时为您提供帮助。",
     "questions": {
       "whatMakesDifferent": {
-        "question": "Sora 3 与其他视频生成平台有何不同？",
-        "answer": "Sora 3 擅长通过 Sora 3 故事板构建扩展叙事，在整个过程中保持角色一致性。虽然竞争对手将输出限制为简短片段，但 Sora 3 可生成 25 秒以上的故事，非常适合品牌活动、产品发布和社交内容。Sora 3 故事板提供逐场景控制，保留角色身份，并交付活动就绪的 Sora 3 视频。"
+        "question": "Veo4 与其他视频生成平台有何不同？",
+        "answer": "Veo4 擅长通过 Veo4 故事板构建扩展叙事，在整个过程中保持角色一致性。虽然竞争对手将输出限制为简短片段，但 Veo4 可生成 25 秒以上的故事，非常适合品牌活动、产品发布和社交内容。Veo4 故事板提供逐场景控制，保留角色身份，并交付活动就绪的 Veo4 视频。"
       },
       "characterConsistency": {
-        "question": "Sora 3 如何在多个场景中保持角色一致性？",
-        "answer": "Sora 3 故事板在您的 Sora 3 视频的每个场景中保留角色外观、服装和造型。这一 Sora 3 功能对于品牌叙事、角色驱动的活动和产品演示至关重要，在这些场景中一致的身份很重要。"
+        "question": "Veo4 如何在多个场景中保持角色一致性？",
+        "answer": "Veo4 故事板在您的 Veo4 视频的每个场景中保留角色外观、服装和造型。这一 Veo4 功能对于品牌叙事、角色驱动的活动和产品演示至关重要，在这些场景中一致的身份很重要。"
       },
       "videosLongerThan10s": {
-        "question": "Sora 3 能否生成超过 10 秒的视频？",
-        "answer": "是的。Sora 3 通过 Sora 3 故事板模式支持最多 25-30 秒的扩展时长。这一 Sora 3 功能解决了关键限制，能够实现完整的品牌故事而不是碎片化的片段。Sora 3 扩展视频在活动中表现更好。"
+        "question": "Veo4 能否生成超过 10 秒的视频？",
+        "answer": "是的。Veo4 通过 Veo4 故事板模式支持最多 25-30 秒的扩展时长。这一 Veo4 功能解决了关键限制，能够实现完整的品牌故事而不是碎片化的片段。Veo4 扩展视频在活动中表现更好。"
       },
       "commercialUse": {
-        "question": "Sora 3 视频是否适用于商业广告？",
-        "answer": "绝对可以。Sora 3 生成的内容完全授权用于商业用途，包括付费广告、电商视频和社交活动。您保留对创建的 Sora 3 视频的完全权利，但需遵守我们的使用指南。"
+        "question": "Veo4 视频是否适用于商业广告？",
+        "answer": "绝对可以。Veo4 生成的内容完全授权用于商业用途，包括付费广告、电商视频和社交活动。您保留对创建的 Veo4 视频的完全权利，但需遵守我们的使用指南。"
       },
       "watermarks": {
-        "question": "Sora 3 视频是否包含水印？",
-        "answer": "不 — 所有 Sora 3 导出完全无水印。高级 Sora 3 计划确保下载时不会出现平台品牌标识。您的 Sora 3 视频导出干净整洁，可立即部署用于活动。注意：这仅适用于我们平台添加的水印，不适用于第三方内容。"
-      },
-      "officialModel": {
-        "question": "此平台是否使用官方 Sora 3 技术？",
-        "answer": "我们利用先进的 Sora 3 兼容技术来交付专业结果。这使您能够立即创建 Sora 3 视频，而无需等待官方访问。"
+        "question": "Veo4 视频是否包含水印？",
+        "answer": "不 — 所有 Veo4 导出完全无水印。高级 Veo4 计划确保下载时不会出现平台品牌标识。您的 Veo4 视频导出干净整洁，可立即部署用于活动。注意：这仅适用于我们平台添加的水印，不适用于第三方内容。"
       },
       "25SecondVideos": {
-        "question": "我可以构建 25 秒的 Sora 3 视频吗？",
-        "answer": "是的 — Sora 3 故事板支持 25 秒的 Sora 3 多场景生成，用于完整的品牌叙事。"
+        "question": "我可以构建 25 秒的 Veo4 视频吗？",
+        "answer": "是的 — Veo4 故事板支持 25 秒的 Veo4 多场景生成，用于完整的品牌叙事。"
       },
       "paymentSafe": {
         "question": "如果我付款，我的付款信息是否安全？",
@@ -291,14 +291,14 @@
     "ourPriceValue": "$0.05/秒",
     "fiftyPercentCheaper": "便宜 50%",
     "thanMarket": "比市场",
-    "chooseYourPlan": "选择您的 Sora 3 计划",
-    "teaserSubtitle": "专业的 Sora 3 视频生成，适用于活动。随时取消。年度计划节省 50%。",
+    "chooseYourPlan": "选择您的 Veo4 计划",
+    "teaserSubtitle": "专业的 Veo4 视频生成，适用于活动。随时取消。年度计划节省 50%。",
     "proTip": "💡 <strong>专业提示：</strong> 订阅计划包括 API 访问、webhooks 和优先支持",
     "plans": {
       "monthly": "月度",
       "annual": "年度",
       "oneTime": "一次性",
-      "save50Percent": "节省 50%",
+      "save50Percent": "节省 17%",
       "mostPopular": "最受欢迎",
       "billedAnnually": "按年计费",
       "billedMonthly": "按月计费 · 随时取消",
@@ -321,7 +321,7 @@
       "tryAgainLater": "请稍后再试。",
       "failedToCreatePaymentLink": "创建支付链接失败",
       "needHelp": "需要帮助？",
-      "contactSupport": "联系 support@sora3ai.io 获取帮助。",
+      "contactSupport": "联系 support@veo4video.io 获取帮助。",
       "contactSupportLink": "联系支持",
       "features": {
         "creditsIncluded": "包含 {count} 积分",
@@ -362,10 +362,10 @@
       "pleaseEnterPrompt": "请输入您的提示",
       "pleaseUploadImage": "请上传图片以生成视频",
       "watermarkRemover": {
-        "title": "Sora3 水印移除器",
+        "title": "Veo4 水印移除器",
         "description": "从您托管的 Sora 视频中移除 Sora 水印。粘贴公开的 `sora.chatgpt.com` URL 并运行。API 上的典型处理时间为 1-3 秒。",
-        "seoTitle": "Sora3 水印移除器 | 移除 Sora 水印",
-        "seoDescription": "Sora3 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
+        "seoTitle": "Veo4 水印移除器 | 移除 Sora 水印",
+        "seoDescription": "Veo4 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
         "input": "输入",
         "output": "输出",
         "videoUrl": "video_url",
@@ -378,8 +378,8 @@
         "waitingForResult": "等待结果…",
         "noOutputYet": "暂无输出",
         "exampleVideo": "示例视频",
-        "exampleVideoDescription": "这是由 Sora3 AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
-        "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Sora3 视频干净整洁，适合品牌使用。",
+        "exampleVideoDescription": "这是由 Veo4 AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
+        "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Veo4 视频干净整洁，适合品牌使用。",
         "browserNotSupportVideo": "您的浏览器不支持视频标签。"
       }
     },
@@ -407,8 +407,8 @@
       "answer": "订阅存储桶在每个计费期重置，不会结转。一次性附加积分转到灵活存储桶，不会被订阅重置清除。"
     },
     "faqRefundPolicy": {
-      "question": "sora3ai.io 的退款政策是什么？",
-      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@sora3ai.io 退款。一般咨询和合作，请联系 team@sora3ai.io。退款在 5-7 个工作日内处理。"
+      "question": "veo4video.io 的退款政策是什么？",
+      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@veo4video.io 退款。退款在 5-7 个工作日内处理。"
     },
     "faqContentRestrictions": {
       "question": "是否有视频内容限制？",
@@ -449,12 +449,12 @@
     "video": "视频",
     "credits": "积分",
     "exampleVideo": "示例视频",
-    "sampleVideoDescription": "这是由 Sora3 AI 生成的示例视频。使用输入面板创建您自己的视频！",
-    "sampleVideoDescriptionUnauthenticated": "这是由 Sora3 AI 生成的示例视频。注册以创建您自己的视频！",
+    "sampleVideoDescription": "这是由 Veo4 AI 生成的示例视频。使用输入面板创建您自己的视频！",
+    "sampleVideoDescriptionUnauthenticated": "这是由 Veo4 AI 生成的示例视频。注册以创建您自己的视频！",
     "browserNotSupportVideo": "您的浏览器不支持视频标签。",
     "signUpToCreate": "注册以创建您自己的视频",
-    "textToVideoTitle": "AI 视频生成器文本转视频",
-    "textToVideoSubtitle": "将您的想法转化为电影级视频 - 只需输入文字。",
+    "textToVideoTitle": "Veo 4 文本转视频 | 创建 AI 视频",
+    "textToVideoSubtitle": "将提示词转换为具有强动态、干净场景和广告级输出的 Veo 4 视频。",
     "textToVideoFeaturesTitle": "AI 视频生成器文本转视频功能",
     "featureAIPowered": {
       "title": "AI 驱动的脚本到屏幕魔法",
@@ -474,7 +474,7 @@
     },
     "howToUseTitle": "如何使用 AI 视频生成器进行文本转视频",
     "howToUseStep1": {
-      "title": "注册或登录 sora3ai.io",
+      "title": "注册或登录 veo4video.io",
       "description": "创建账户以解锁我们文本转视频界面的全部功能。"
     },
     "howToUseStep2": {
@@ -489,58 +489,58 @@
       "title": "点击生成",
       "description": "点击\"生成\"按钮。AI 将处理您的脚本并创建带有匹配视觉效果、运动和音乐的视频。只需几分钟，您的视频就可以预览和下载了。"
     },
-    "whoUsesTitle": "谁使用 Sora3？",
+    "whoUsesTitle": "谁使用 Veo4？",
     "whoUsesContentCreators": "内容创作者",
     "whoUsesTikTokMarketers": "TikTok 营销人员",
-    "imageToVideoTitle": "Sora3 图片转视频生成器 - 将照片转化为电影级视频",
-    "imageToVideoSubtitle": "使用 Sora3 AI 通过电影级动感让您的静态图片栩栩如生。Sora3 图片转视频技术从照片创建专业视频，具有自然运动和逼真效果。只需上传您的图片，剩下的交给 Sora3。",
-    "imageToVideoFeaturesTitle": "Sora3 图片转视频功能 - 高级 AI 视频生成",
+    "imageToVideoTitle": "Veo 4 图片转视频 | 照片动起来",
+    "imageToVideoSubtitle": "将照片转换为具有自然运动、清晰细节和广告级输出的 Veo 4 视频，上传图片即可快速生成。",
+    "imageToVideoFeaturesTitle": "Veo4 图片转视频功能 - 高级 AI 视频生成",
     "imageToVideoFeature1": {
-      "title": "Sora3 简单的图片到动感转换",
-      "description": "使用 Sora3 图片转视频，只需上传您的照片，看着它变得生动。Sora3 AI 引擎分析您的图片并生成自然的电影级动感，增强场景效果。Sora3 非常适合产品展示、艺术创作以及将静态时刻转化为动态故事。"
+      "title": "Veo4 简单的图片到动感转换",
+      "description": "使用 Veo4 图片转视频，只需上传您的照片，看着它变得生动。Veo4 AI 引擎分析您的图片并生成自然的电影级动感，增强场景效果。Veo4 非常适合产品展示、艺术创作以及将静态时刻转化为动态故事。"
     },
     "imageToVideoFeature2": {
-      "title": "Sora3 专业动感，零动画技能",
-      "description": "Sora3 先进的 AI 理解深度、照明和构图。Sora3 生成流畅的相机运动、自然的物体运动和逼真的环境效果 - 所有这些都无需任何动画或视频编辑专业知识。使用 Sora3 将您的作品集照片转化为专业视频内容。"
+      "title": "Veo4 专业动感，零动画技能",
+      "description": "Veo4 先进的 AI 理解深度、照明和构图。Veo4 生成流畅的相机运动、自然的物体运动和逼真的环境效果 - 所有这些都无需任何动画或视频编辑专业知识。使用 Veo4 将您的作品集照片转化为专业视频内容。"
     },
     "imageToVideoFeature3": {
-      "title": "Sora3 自动音频生成",
-      "description": "每个 Sora3 视频都配有完美匹配的背景音乐和环境声音。Sora3 AI 分析您图片的情绪和氛围，创建与视觉故事互补的音频。这是从单张图片开始的完整 Sora3 视频创建体验。"
+      "title": "Veo4 自动音频生成",
+      "description": "每个 Veo4 视频都配有完美匹配的背景音乐和环境声音。Veo4 AI 分析您图片的情绪和氛围，创建与视觉故事互补的音频。这是从单张图片开始的完整 Veo4 视频创建体验。"
     },
     "imageToVideoFeature4": {
-      "title": "Sora3 智能场景理解",
-      "description": "Sora3 AI 识别您图片中的物体、人物、风景和场景。Sora3 生成在上下文中有意义的动感 - 无论是穿过树木的微风、在 3D 空间中旋转的产品，还是带有微妙动作的肖像。每个 Sora3 动画都感觉自然且有目的。"
+      "title": "Veo4 智能场景理解",
+      "description": "Veo4 AI 识别您图片中的物体、人物、风景和场景。Veo4 生成在上下文中有意义的动感 - 无论是穿过树木的微风、在 3D 空间中旋转的产品，还是带有微妙动作的肖像。每个 Veo4 动画都感觉自然且有目的。"
     },
-    "imageToVideoHowToUseTitle": "如何使用 Sora3 图片转视频生成器",
+    "imageToVideoHowToUseTitle": "如何使用 Veo4 图片转视频生成器",
     "imageToVideoHowToUseStep1": {
-      "title": "注册或登录 sora3ai.io",
-      "description": "创建账户以解锁 Sora3 图片转视频的全部功能并开始使用 Sora3 AI 技术。"
+      "title": "注册或登录 veo4video.io",
+      "description": "创建账户以解锁 Veo4 图片转视频的全部功能并开始使用 Veo4 AI 技术。"
     },
     "imageToVideoHowToUseStep2": {
-      "title": "访问 Sora3 图片转视频面板",
-      "description": "导航到您仪表板上的 Sora3 图片转视频工具。Sora3 界面专为简单的图片到视频转换而设计。"
+      "title": "访问 Veo4 图片转视频面板",
+      "description": "导航到您仪表板上的 Veo4 图片转视频工具。Veo4 界面专为简单的图片到视频转换而设计。"
     },
     "imageToVideoHowToUseStep3": {
-      "title": "将您的图片上传到 Sora3",
-      "description": "拖放或选择您的图片文件进行 Sora3 处理。Sora3 支持照片、插图、产品图片或您想要使用 Sora3 动画化的任何静态视觉。"
+      "title": "将您的图片上传到 Veo4",
+      "description": "拖放或选择您的图片文件进行 Veo4 处理。Veo4 支持照片、插图、产品图片或您想要使用 Veo4 动画化的任何静态视觉。"
     },
     "imageToVideoHowToUseStep4": {
-      "title": "使用 Sora3 生成",
-      "description": "点击\"生成\"按钮，让 Sora3 AI 分析您的图片。Sora3 创建具有自然运动、相机运动和同步音频的视频。您的 Sora3 动画视频将在几分钟内准备就绪。"
+      "title": "使用 Veo4 生成",
+      "description": "点击\"生成\"按钮，让 Veo4 AI 分析您的图片。Veo4 创建具有自然运动、相机运动和同步音频的视频。您的 Veo4 动画视频将在几分钟内准备就绪。"
     },
-    "imageToVideoPageTitle": "Sora3 图片转视频生成器",
-    "imageToVideoPageSubtitle": "使用 Sora3 AI 技术将您的图片转化为电影级视频 — 无水印",
-    "imageToVideoTestimonialsTitle": "为什么选择 Sora3 图片转视频生成器",
+    "imageToVideoPageTitle": "Veo 4 图片转视频",
+    "imageToVideoPageSubtitle": "使用 Veo4 AI 技术将您的图片转化为电影级视频 — 无水印",
+    "imageToVideoTestimonialsTitle": "为什么选择 Veo4 图片转视频生成器",
     "imageToVideoTestimonial1": {
-      "quote": "我上传了一张产品照片，Sora3 在几分钟内生成了专业的视频广告。Sora3 完全改变了我为在线商店创建内容的方式！",
+      "quote": "我上传了一张产品照片，Veo4 在几分钟内生成了专业的视频广告。Veo4 完全改变了我为在线商店创建内容的方式！",
       "author": "Emma L.，电商店主"
     },
     "imageToVideoTestimonial2": {
-      "quote": "作为摄影师，我喜欢 Sora3 如何让我的静态图片变得生动。Sora3 的运动感觉自然，为我的作品集增加了深度。",
+      "quote": "作为摄影师，我喜欢 Veo4 如何让我的静态图片变得生动。Veo4 的运动感觉自然，为我的作品集增加了深度。",
       "author": "Michael R.，专业摄影师"
     },
     "imageToVideoTestimonial3": {
-      "quote": "Sora3 图片转视频功能为我节省了数小时的动画工作。我现在可以使用 Sora3 从现有照片即时创建引人入胜的社交媒体内容。",
+      "quote": "Veo4 图片转视频功能为我节省了数小时的动画工作。我现在可以使用 Veo4 从现有照片即时创建引人入胜的社交媒体内容。",
       "author": "Jessica T.，社交媒体经理"
     },
     "imageToVideoTestimonial4": {
@@ -590,8 +590,8 @@
     },
     "reframeMode": {
       "model": "模型",
-      "sora3": "Sora3",
-      "sora3Pro": "Sora3 pro",
+      "sora3": "Veo4",
+      "sora3Pro": "Veo4 pro",
       "sora3Description": "OpenAI 的高级视频生成模型，具有高质量输出和精确控制。",
       "sora3ProDescription": "OpenAI 的高级视频生成模型，具有增强的质量、卓越的逼真度和高级控制功能。",
       "prompt": "提示 *",
@@ -722,31 +722,31 @@
       "generationTimeNote": "⏱️ 这通常需要 5-15 分钟。请保持此页面打开。",
       "exampleDescription": "这是一个 25 秒多场景故事板视频的示例。配置您的场景并点击生成以创建您自己的视频。",
       "exampleNote": "示例：3 场景故事板（8秒 + 8秒 + 9秒 = 总计 25秒）",
-      "whatIsSora3ProStoryboard": "什么是 Sora3 Pro 故事板？",
-      "sora3ProStoryboardDescription": "Sora3 Pro 故事板是为顺序内容制作而设计的尖端 AI 视频生成系统。为 YouTube Shorts、TikTok 和 Reels 构建最多 25 秒的多场景 AI 视频。这个强大的平台支持多场景协调，保持视觉一致性和连贯性，提供对最多 25 秒长度的输出的精确控制，并导出带音频的 HD 质量视频。",
+      "whatIsSora3ProStoryboard": "什么是 Veo4 Pro 故事板？",
+      "sora3ProStoryboardDescription": "Veo4 Pro 故事板是为顺序内容制作而设计的尖端 AI 视频生成系统。为 YouTube Shorts、TikTok 和 Reels 构建最多 25 秒的多场景 AI 视频。这个强大的平台支持多场景协调，保持视觉一致性和连贯性，提供对最多 25 秒长度的输出的精确控制，并导出带音频的 HD 质量视频。",
       "upTo25sDuration": "最多 25 秒时长",
       "multiSceneControl": "多场景控制（故事板）",
       "socialMediaReady": "社交媒体就绪",
       "hdQualityAudio": "HD 质量 + 音频",
-      "whatPeopleAreSaying": "人们对 Sora3 Pro 故事板的评价",
-      "keyFeatures": "Sora3 Pro 故事板的主要功能",
+      "whatPeopleAreSaying": "人们对 Veo4 Pro 故事板的评价",
+      "keyFeatures": "Veo4 Pro 故事板的主要功能",
       "multiSceneSequencing": "多场景排序",
-      "multiSceneSequencingDescription": "使用 Sora3 Pro 故事板，定义多个场景以创建连贯的故事线。Sora3 Pro 故事板引擎确保场景之间的流畅过渡，实现无缝的多场景视频。",
+      "multiSceneSequencingDescription": "使用 Veo4 Pro 故事板，定义多个场景以创建连贯的故事线。Veo4 Pro 故事板引擎确保场景之间的流畅过渡，实现无缝的多场景视频。",
       "visualConsistency": "视觉一致性",
-      "visualConsistencyDescription": "Sora3 Pro 故事板在所有场景中保持一致的视觉样式和元素，提供观众期望从 Sora3 Pro 故事板获得的专业质量视频输出。",
+      "visualConsistencyDescription": "Veo4 Pro 故事板在所有场景中保持一致的视觉样式和元素，提供观众期望从 Veo4 Pro 故事板获得的专业质量视频输出。",
       "flexibleOutputControl": "灵活的输出控制",
-      "flexibleOutputControlDescription": "使用 Sora3 Pro 故事板生成最多 25 秒的视频。使用 Sora3 Pro 故事板选择 10 秒、15 秒或 25 秒时长选项以适应您的内容需求。",
+      "flexibleOutputControlDescription": "使用 Veo4 Pro 故事板生成最多 25 秒的视频。使用 Veo4 Pro 故事板选择 10 秒、15 秒或 25 秒时长选项以适应您的内容需求。",
       "referenceImageSupport": "参考图片支持",
-      "referenceImageSupportDescription": "上传参考图片以指导 Sora3 Pro 故事板生成过程，确保整个 Sora3 故事板视频的视觉一致性。",
-      "howToUse": "如何使用 Sora3 Pro 故事板",
+      "referenceImageSupportDescription": "上传参考图片以指导 Veo4 Pro 故事板生成过程，确保整个 Veo4 故事板视频的视觉一致性。",
+      "howToUse": "如何使用 Veo4 Pro 故事板",
       "step1DefineScenes": "定义场景",
-      "step1Description": "为 Sora3 Pro 故事板详细描述每个场景",
+      "step1Description": "为 Veo4 Pro 故事板详细描述每个场景",
       "step2SetParameters": "设置参数",
       "step2Description": "选择时长（10秒/15秒/25秒）和宽高比",
       "step3UploadReference": "上传参考",
-      "step3Description": "添加图片以指导 Sora3 Pro 故事板（可选）",
+      "step3Description": "添加图片以指导 Veo4 Pro 故事板（可选）",
       "step4Generate": "生成",
-      "step4Description": "点击生成，让 Sora3 Pro 故事板创建您的视频",
+      "step4Description": "点击生成，让 Veo4 Pro 故事板创建您的视频",
       "perfectFor": "非常适合 TikTok、Instagram Reels、YouTube Shorts 和品牌内容制作。了解更多关于我们的",
       "pricingPlans": "定价计划",
       "pricing": "💎 定价",
@@ -757,13 +757,13 @@
       "socialMediaFormats": "社交媒体格式",
       "socialMediaFormatsDescription": "TikTok、Instagram Reels、YouTube Shorts 的内置模板。",
       "fastExportShare": "快速导出和分享",
-      "fastExportShareDescription": "在几分钟内生成、预览和下载您的 Sora3 故事板视频。"
+      "fastExportShareDescription": "在几分钟内生成、预览和下载您的 Veo4 故事板视频。"
     },
     "watermarkRemover": {
-      "title": "Sora3 水印移除器",
+      "title": "Veo4 水印移除器",
       "description": "从您托管的 Sora 视频中移除 Sora 水印。粘贴公开的 `sora.chatgpt.com` URL 并运行。API 上的典型处理时间为 1-3 秒。",
-      "seoTitle": "Sora3 水印移除器 | 移除 Sora 水印",
-      "seoDescription": "Sora3 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
+      "seoTitle": "Veo4 水印移除器 | 移除 Sora 水印",
+      "seoDescription": "Veo4 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
       "input": "输入",
       "output": "输出",
       "videoUrl": "video_url",
@@ -776,8 +776,8 @@
       "waitingForResult": "等待结果…",
       "noOutputYet": "暂无输出",
       "exampleVideo": "示例视频",
-      "exampleVideoDescription": "这是由 Sora3 AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
-      "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Sora3 视频干净整洁，适合品牌使用。",
+      "exampleVideoDescription": "这是由 Veo4 AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
+      "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Veo4 视频干净整洁，适合品牌使用。",
       "browserNotSupportVideo": "您的浏览器不支持视频标签。"
     },
     "promptExamples": {
@@ -792,13 +792,13 @@
     }
   },
   "demoGallery": {
-    "title": "探索 Sora 3 视频示例",
-    "description": "由我们平台创建的真实 Sora 3 视频，展示 Sora 3 在广告和品牌内容方面的能力。",
+    "title": "探索 Veo4 视频示例",
+    "description": "由我们平台创建的真实 Veo4 视频，展示 Veo4 在广告和品牌内容方面的能力。",
     "seeMoreExamples": "查看更多示例",
     "tapToUnmute": "点击取消静音"
   },
   "keyFeatures": {
-    "title": "Sora3 AI 的独特之处",
+    "title": "Veo4 AI 的独特之处",
     "noWatermark": {
       "title": "无水印",
       "description": "您的视频干净、可品牌化，随时可用于商业用途。"
@@ -812,8 +812,8 @@
       "description": "在几分钟内在浏览器中生成 10 秒片段。"
     },
     "sora3ProStoryboard": {
-      "title": "Sora3 Pro 故事板（25 秒）",
-      "description": "Sora3 故事板叙事，适用于广告、预告片、产品展示和电影级短片。"
+      "title": "Veo4 Pro 故事板（25 秒）",
+      "description": "Veo4 故事板叙事，适用于广告、预告片、产品展示和电影级短片。"
     },
     "textToVideoImageToVideo": {
       "title": "文本转视频和图片转视频",
@@ -824,14 +824,14 @@
       "description": "非常适合 TikTok、Reels、Shorts 和付费广告。"
     },
     "trySora3Free": {
-      "title": "免费试用 Sora3 — 无需编辑",
-      "description": "开始使用 Sora3 AI 驱动的工具创建电影级视频。Sora3 使视频创建变得简单 - 无需经验。发现 Sora3 能为您的项目做什么。免费试用 Sora3，了解为什么创作者选择 Sora3 进行 AI 视频生成。",
+      "title": "免费试用 Veo4 — 无需编辑",
+      "description": "开始使用 Veo4 AI 驱动的工具创建电影级视频。Veo4 使视频创建变得简单 - 无需经验。发现 Veo4 能为您的项目做什么。免费试用 Veo4，了解为什么创作者选择 Veo4 进行 AI 视频生成。",
       "startGenerating": "开始生成"
     }
   },
   "testimonials": {
     "title": "受到全球创作者喜爱",
-    "subtitle": "加入全球使用 Sora3 进行 AI 视频生成的创作者。查看用户对我们平台无水印视频和渲染功能的评价。发现为什么使用 Sora3 技术的创作者信任 Sora3。",
+    "subtitle": "加入全球使用 Veo4 进行 AI 视频生成的创作者。查看用户对我们平台无水印视频和渲染功能的评价。发现为什么使用 Veo4 技术的创作者信任 Veo4。",
     "ctaTitle": "加入使用 AI 制作视频的创作者",
     "ctaDescription": "体验 AI 视频生成，具有无水印视频、音频功能和高效渲染。立即开始创建视频。",
     "ctaButton": "立即开始创建"
@@ -842,7 +842,7 @@
   },
   "auth": {
     "signIn": "登录",
-    "signInToSora3": "登录 Sora3",
+    "signInToSora3": "登录 Veo4",
     "createAccount": "创建账户",
     "checkEmail": "检查您的电子邮件",
     "backToSignUp": "返回注册",
@@ -865,30 +865,31 @@
     "redirectingToGoogle": "正在重定向到 Google..."
   },
   "sora3Capabilities": {
-    "title": "为什么 Sora 3 在广告活动中表现出色",
+    "title": "为什么 Veo4 在广告活动中表现出色",
+    "subtitle": "Veo4 帮助团队更快做出更强的视频内容，拥有更顺滑的动态、更干净的场景表现，以及更适合真实营销流程的输出。",
     "cinematicRealism": {
-      "title": "Sora 3 电影级质量",
-      "description": "Sora 3 产生工作室级别的视觉效果，提升品牌信息传递。\n\n每个 Sora 3 视频保持一致的质量，无伪影。\n\nSora 3 输出无缝适用于产品发布、品牌故事和营销活动。"
+      "title": "Veo4 电影级质量",
+      "description": "Veo4 产生工作室级别的视觉效果，提升品牌信息传递。\n\n每个 Veo4 视频保持一致的质量，无伪影。\n\nVeo4 输出无缝适用于产品发布、品牌故事和营销活动。"
     },
     "naturalCameraMotion": {
-      "title": "Sora 3 智能相机控制",
-      "description": "Sora 3 自动处理专业的相机运动和角度。\n\nSora 3 生成流畅、自然的运动，感觉是有意的。\n\nSora 3 相机工作立即增强您广告的制作价值。"
+      "title": "Veo4 智能相机控制",
+      "description": "Veo4 自动处理专业的相机运动和角度。\n\nVeo4 生成流畅、自然的运动，感觉是有意的。\n\nVeo4 相机工作立即增强您广告的制作价值。"
     },
     "consistentCharacters": {
-      "title": "Sora 3 角色一致性",
-      "description": "Sora 3 在多个场景中保持角色外观。\n\nSora 3 处理复杂的角色动作，同时保留身份。\n\nSora 3 专为多场景品牌叙事和广告故事讲述而构建。"
+      "title": "Veo4 角色一致性",
+      "description": "Veo4 在多个场景中保持角色外观。\n\nVeo4 处理复杂的角色动作，同时保留身份。\n\nVeo4 专为多场景品牌叙事和广告故事讲述而构建。"
     },
     "longFormPlatformReady": {
-      "title": "Sora 3 扩展时长",
-      "description": "Sora 3 支持最多 25 秒的视频，用于完整的品牌故事。\n\nSora 3 内容针对社交平台和广告投放进行了优化。\n\nSora 3 视频导出干净整洁，可立即用于活动。"
+      "title": "Veo4 扩展时长",
+      "description": "Veo4 支持最多 25 秒的视频，用于完整的品牌故事。\n\nVeo4 内容针对社交平台和广告投放进行了优化。\n\nVeo4 视频导出干净整洁，可立即用于活动。"
     },
     "advancedSceneIntelligence": {
-      "title": "Sora 3 场景理解",
-      "description": "Sora 3 理解空间关系和环境上下文。\n\nSora 3 生成具有逼真物理和自然交互的场景。\n\nSora 3 在产品展示、生活方式内容和品牌世界构建方面表现出色。"
+      "title": "Veo4 场景理解",
+      "description": "Veo4 理解空间关系和环境上下文。\n\nVeo4 生成具有逼真物理和自然交互的场景。\n\nVeo4 在产品展示、生活方式内容和品牌世界构建方面表现出色。"
     },
     "audioSoundGeneration": {
-      "title": "Sora 3 集成音频",
-      "description": "Sora 3 生成与您的视觉效果匹配的同步音效。\n\nSora 3 自动添加对话、环境声音和效果。\n\nSora 3 交付完整的视频，无需额外编辑即可部署。"
+      "title": "Veo4 集成音频",
+      "description": "Veo4 生成与您的视觉效果匹配的同步音效。\n\nVeo4 自动添加对话、环境声音和效果。\n\nVeo4 交付完整的视频，无需额外编辑即可部署。"
     }
   },
   "paymentSuccess": {
@@ -899,5 +900,98 @@
     "goToStudio": "前往工作室",
     "viewDashboard": "查看仪表板",
     "autoRedirect": "您将在几秒钟内自动重定向..."
+  },
+  "account": {
+    "dashboardMetaTitle": "控制台 | 管理您的 VEO 4 账户",
+    "dashboardMetaDescription": "在一个地方管理您的 VEO 4 账户、积分、订阅、付款和生成历史。",
+    "myCreationsMetaTitle": "我的作品 | VEO 4 生成历史",
+    "myCreationsMetaDescription": "查看您的 VEO 4 生成历史，回放已完成的视频，并下载需要保留的作品。",
+    "dashboardPageTitle": "账户控制台",
+    "dashboardPageDescription": "在一个页面中管理订阅、积分、付款记录和视频历史。",
+    "myCreationsPageTitle": "我的作品",
+    "myCreationsPageDescription": "查看您的 VEO 4 生成历史，回放完成的视频，并下载想保留的片段。",
+    "stats": {
+      "creditsAvailable": "可用积分",
+      "videosGenerated": "已生成视频",
+      "currentPlan": "当前套餐"
+    },
+    "tabs": {
+      "overview": "概览",
+      "generations": "生成记录",
+      "subscriptions": "订阅",
+      "payments": "付款"
+    },
+    "sections": {
+      "accountInformation": "账户信息",
+      "subscriptionStatus": "订阅状态"
+    },
+    "fields": {
+      "name": "姓名",
+      "email": "邮箱",
+      "currentPlan": "当前套餐",
+      "status": "状态",
+      "nextBilling": "下次扣费"
+    },
+    "actions": {
+      "updateProfile": "更新资料",
+      "upgradePlan": "升级套餐"
+    },
+    "statuses": {
+      "active": "已启用"
+    },
+    "generationHistory": {
+      "title": "生成历史",
+      "loading": "正在加载生成历史...",
+      "tryAgain": "重试",
+      "emptyTitle": "暂无生成记录",
+      "emptyDescription": "您还没有生成任何视频。开始创作后，作品会显示在这里。",
+      "refresh": "刷新",
+      "videoPlayer": "视频播放器",
+      "statuses": {
+        "completed": "已完成",
+        "processing": "处理中",
+        "queued": "排队中",
+        "failed": "失败"
+      }
+    },
+    "paymentHistory": {
+      "title": "付款记录",
+      "description": "查看您的所有付款记录。",
+      "emptyTitle": "暂无付款记录",
+      "emptyDescription": "您的付款记录将显示在这里。",
+      "labels": {
+        "type": "类型",
+        "subscription": "订阅",
+        "oneTimePurchase": "一次性购买",
+        "plan": "套餐",
+        "method": "支付方式",
+        "unknown": "未知"
+      },
+      "statuses": {
+        "succeeded": "成功",
+        "failed": "失败",
+        "pending": "待处理",
+        "refunded": "已退款",
+        "partiallyRefunded": "部分退款"
+      }
+    },
+    "subscriptionHistory": {
+      "title": "订阅记录",
+      "description": "查看您的所有订阅记录。",
+      "emptyTitle": "暂无订阅记录",
+      "emptyDescription": "您的订阅记录将显示在这里。",
+      "labels": {
+        "period": "周期",
+        "created": "创建时间"
+      },
+      "statuses": {
+        "active": "有效",
+        "canceled": "已取消",
+        "pastDue": "已逾期",
+        "trialing": "试用中",
+        "expired": "已过期",
+        "inactive": "未启用"
+      }
+    }
   }
 }

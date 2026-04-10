@@ -5,8 +5,8 @@ import { Check, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Sora 3 Video Generator | Ad-Ready Content Platform',
-  description: 'Transform ideas into polished Sora 3 video clips perfect for ads and brand campaigns. Our Sora 3 platform generates professional videos without watermarks. Start creating Sora 3 content for your campaigns today.',
+  title: 'Veo 4 Video Generator | Ad-Ready Content Platform',
+  description: 'Transform ideas into polished Veo 4 video clips perfect for ads and brand campaigns. Our Veo 4 platform generates professional videos without watermarks. Start creating Veo 4 content for your campaigns today.',
   robots: {
     index: false,
     follow: false,
@@ -14,16 +14,16 @@ export const metadata: Metadata = {
     // so search engines are aware of its existence
   },
   openGraph: {
-    title: 'Sora 3 Video Generator | Ad-Ready Content Platform',
-    description: 'Transform ideas into polished Sora 3 video clips perfect for ads and brand campaigns. Our Sora 3 platform generates professional videos without watermarks.',
-    url: 'https://sora3ai.io/ads-landing',
-    siteName: 'Sora3',
+    title: 'Veo 4 Video Generator | Ad-Ready Content Platform',
+    description: 'Transform ideas into polished Veo 4 video clips perfect for ads and brand campaigns. Our Veo 4 platform generates professional videos without watermarks.',
+    url: 'https://veo4video.io/ads-landing',
+    siteName: 'Veo4',
     images: [
       {
-        url: 'https://sora3ai.io/logo.jpg',
+        url: 'https://veo4video.io/logo-v2.png',
         width: 1200,
         height: 630,
-        alt: 'Sora 3 Video Generator',
+        alt: 'Veo 4 Video Generator',
       },
     ],
     locale: 'en_US',
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sora 3 Video Generator | Ad-Ready Content Platform',
-    description: 'Transform ideas into polished Sora 3 video clips perfect for ads and brand campaigns.',
-    images: ['https://sora3ai.io/logo.jpg'],
+    title: 'Veo 4 Video Generator | Ad-Ready Content Platform',
+    description: 'Transform ideas into polished Veo 4 video clips perfect for ads and brand campaigns.',
+    images: ['https://veo4video.io/logo-v2.png'],
   },
   alternates: {
-    canonical: 'https://sora3ai.io/ads-landing',
+    canonical: 'https://veo4video.io/ads-landing',
   },
 }
 
@@ -48,9 +48,9 @@ export default function AdsLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-primary">sora3ai.io</span>
+              <span className="text-xl font-bold text-primary">veo4video.io</span>
             </div>
-            <Link href="/sora3-text-to-video">
+            <Link href="/veo4-text-to-video">
               <Button variant="outline" size="sm">
                 Start Creating
               </Button>
@@ -63,21 +63,21 @@ export default function AdsLandingPage() {
       <section className="py-20 sm:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Turn Ideas Into Polished Sora 3 Clips Ready for Ads
+            Turn Ideas Into Polished Veo 4 Clips Ready for Ads
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Transform concepts into professional Sora 3 video content without any branding on top. Our Sora 3 platform generates ad-ready clips perfect for marketing campaigns, brand storytelling, and social media. Start creating Sora 3 videos today.
+            Transform concepts into professional Veo 4 video content without any branding on top. Our Veo 4 platform generates ad-ready clips perfect for marketing campaigns, brand storytelling, and social media. Start creating Veo 4 videos today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/sora3-text-to-video">
+            <Link href="/veo4-text-to-video">
               <Button size="lg" className="w-full sm:w-auto">
-                Create Sora 3 Videos
+                Create Veo 4 Videos
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
             <Link href="/pricing">
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                View Sora 3 Pricing
+                View Veo 4 Pricing
               </Button>
             </Link>
           </div>
@@ -88,25 +88,25 @@ export default function AdsLandingPage() {
       <section className="py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Why Marketing Teams Choose Sora 3
+            Why Marketing Teams Choose Veo 4
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-3">Sora 3 Text-to-Video</h3>
+              <h3 className="text-xl font-semibold mb-3">Veo 4 Text-to-Video</h3>
               <p className="text-muted-foreground">
-                Transform ideas into polished Sora 3 clips ready for ads. Our Sora 3 text-to-video generator produces professional content without watermarks, perfect for campaigns.
+                Transform ideas into polished Veo 4 clips ready for ads. Our Veo 4 text-to-video generator produces professional content without watermarks, perfect for campaigns.
               </p>
             </Card>
             <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-3">Sora 3 Image-to-Video</h3>
+              <h3 className="text-xl font-semibold mb-3">Veo 4 Image-to-Video</h3>
               <p className="text-muted-foreground">
-                Animate photos into professional Sora 3 video content. Sora 3 image-to-video tool creates dynamic sequences ideal for product launches and brand content.
+                Animate photos into professional Veo 4 video content. Veo 4 image-to-video tool creates dynamic sequences ideal for product launches and brand content.
               </p>
             </Card>
             <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-3">Sora 3 Storyboard</h3>
+              <h3 className="text-xl font-semibold mb-3">Veo 4 Fast Production</h3>
               <p className="text-muted-foreground">
-                Build multi-scene Sora 3 narratives up to 25 seconds. Sora 3 Storyboard maintains character consistency across scenes for complete brand stories.
+                Generate polished Veo 4 campaign clips quickly with flexible prompt control, strong visual consistency, and export-ready output for ads and brand content.
               </p>
             </Card>
           </div>
@@ -117,17 +117,17 @@ export default function AdsLandingPage() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">
-            What Sora 3 Delivers
+            What Veo 4 Delivers
           </h2>
           <div className="space-y-4">
             {[
-              'Sora 3 videos with full commercial licensing',
-              'Sora 3 exports without any platform watermarks',
-              'Sora 3 fast generation for campaign timelines',
-              'Sora 3 HD and 4K quality output options',
-              'Sora 3 character consistency across scenes',
-              'Sora 3 extended 25-30 second video support',
-              'Sora 3 integrated audio synchronization',
+              'Veo 4 videos with full commercial licensing',
+              'Veo 4 exports without any platform watermarks',
+              'Veo 4 fast generation for campaign timelines',
+              'Veo 4 HD and 4K quality output options',
+              'Veo 4 character consistency across scenes',
+              'Veo 4 extended 25-30 second video support',
+              'Veo 4 integrated audio synchronization',
             ].map((feature, index) => (
               <div key={index} className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -142,14 +142,14 @@ export default function AdsLandingPage() {
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready to Build Campaigns with Sora 3?
+            Ready to Build Campaigns with Veo 4?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Start creating Sora 3 videos with free credits. Upgrade your Sora 3 plan when you need more capacity for campaigns.
+            Start creating Veo 4 videos with free credits. Upgrade your Veo 4 plan when you need more capacity for campaigns.
           </p>
-          <Link href="/sora3-text-to-video">
+          <Link href="/veo4-text-to-video">
             <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Start Creating Sora 3
+              Start Creating Veo 4
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
@@ -160,16 +160,13 @@ export default function AdsLandingPage() {
       <section className="py-8 border-t border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-muted-foreground text-center">
-            sora3ai.io is an independent platform specializing in Sora 3 video generation. We leverage advanced Sora 3 technology to produce professional content. sora3ai.io is not affiliated with OpenAI, Google or any official Sora products. All trademarks belong to their respective owners.
+            veo4video.io is an independent platform specializing in Veo 4 video generation. We leverage advanced Veo 4 technology to produce professional content. veo4video.io is not affiliated with OpenAI, Google or any official Sora products. All trademarks belong to their respective owners.
           </p>
         </div>
       </section>
     </main>
   )
 }
-
-
-
 
 
 

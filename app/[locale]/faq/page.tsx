@@ -14,24 +14,24 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sora3ai.io'
+  const baseUrl = 'https://veo4video.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
-  let title = 'Sora 3 FAQ | Answers About Sora 3 Videos'
-  let description = 'Get answers about Sora 3 video generation, campaign use, and platform capabilities. Understand how Sora 3 works and why marketing teams choose Sora 3 for video content needs.'
+  let title = 'Veo 4 FAQ | Pricing, Use, and Video Limits'
+  let description = 'Find answers about Veo 4 pricing, commercial use, video length, watermarks, and how the platform works before you start.'
   
   if (locale === 'ar') {
-    title = 'أسئلة Sora 3 الشائعة | إجابات عن فيديوهات Sora 3'
-    description = 'احصل على إجابات حول إنشاء فيديوهات Sora 3 والاستخدام في الحملات وإمكانيات المنصة. افهم كيف يعمل Sora 3 ولماذا تختار فرق التسويق Sora 3.'
+    title = 'أسئلة Veo 4 الشائعة | الأسعار والاستخدام والمدة'
+    description = 'اعثر على إجابات حول أسعار Veo 4 والاستخدام التجاري ومدة الفيديو والعلامات المائية وكيف تعمل المنصة قبل البدء.'
   } else if (locale === 'ja') {
-    title = 'Sora 3 よくある質問 | Sora 3動画に関する回答'
-    description = 'Sora 3動画生成、キャンペーンでの使用、プラットフォーム機能に関する回答を取得。Sora 3の動作方法と、マーケティングチームがSora 3を選択する理由を理解。'
+    title = 'Veo 4 よくある質問 | 料金・用途・動画尺'
+    description = 'Veo 4の料金、商用利用、動画の長さ、ウォーターマーク、プラットフォームの使い方に関する回答を確認できます。'
   } else if (locale === 'ru') {
-    title = 'Sora 3 FAQ | Ответы о Видео Sora 3'
-    description = 'Получите ответы о генерации видео Sora 3, использовании в кампаниях и возможностях платформы. Узнайте, как работает Sora 3 и почему маркетинговые команды выбирают Sora 3.'
+    title = 'Veo 4 FAQ | Тарифы, Использование и Лимиты'
+    description = 'Найдите ответы о тарифах Veo 4, коммерческом использовании, длине видео, водяных знаках и работе платформы до начала генерации.'
   } else if (locale === 'es') {
-    title = 'Sora 3 FAQ | Respuestas Sobre Videos Sora 3'
-    description = 'Obtiene respuestas sobre la generacion de video Sora 3, uso en campanas y capacidades de la plataforma. Comprende como funciona Sora 3 y por que los equipos de marketing eligen Sora 3.'
+    title = 'Veo 4 FAQ | Precios, Uso y Duracion'
+    description = 'Encuentra respuestas sobre precios de Veo 4, uso comercial, duracion del video, marcas de agua y funcionamiento de la plataforma.'
   }
 
   return {
@@ -42,10 +42,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/faq`,
-      siteName: 'Sora3',
+      siteName: 'Veo4',
       images: [
         {
-          url: 'https://sora3ai.io/logo.jpg',
+          url: 'https://veo4video.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -58,77 +58,55 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sora3ai.io/logo.jpg']
+      images: ['https://veo4video.io/logo-v2.png']
     },
   }
 }
 
 const faqs = [
-  { 
-    q: 'What is Sora 3?', 
-    a: 'Sora 3 represents the next generation of video generation technology, delivering enhanced realism, improved physics understanding, and synchronized audio. Sora 3 produces professional content ideal for advertising and brand campaigns.' 
-  },
-  { 
-    q: 'What makes Sora 3 ideal for marketing campaigns?', 
-    a: 'Sora 3 excels at creating ad-ready content with consistent character identity, extended durations up to 25 seconds, and watermark-free exports. Sora 3 is designed for marketing teams who need professional video output quickly.' 
-  },
-  { 
-    q: 'Does Sora 3 include audio generation?', 
-    a: 'Yes. Sora 3 generates synchronized audio including dialogue, ambient sounds, and effects that match your visuals. Sora 3 audio enhances the overall production value of your content.' 
-  },
-  { 
-    q: 'How does Sora 3 maintain character consistency?', 
-    a: 'Sora 3 Storyboard preserves character appearance, wardrobe, and styling across multiple scenes. This Sora 3 capability ensures your brand narratives maintain visual coherence throughout extended videos.' 
-  },
-  
-  { 
-    q: 'Can I customize Sora 3 output style?', 
-    a: 'Yes. Sora 3 supports various visual styles and can maintain consistent tone across scenes. Sora 3 adapts to your creative direction for brand-aligned content.' 
-  },
-  { 
-    q: 'Is Sora 3 output perfect?', 
-    a: 'Sora 3 produces high-quality results, though occasional imperfections may occur. Sora 3 technology continues evolving to deliver increasingly realistic output.' 
-  },
-  { 
-    q: 'Where can I access Sora 3?', 
-    a: 'Sora 3 is available through our platform at sora3ai.io. We provide immediate Sora 3 access without waitlists, enabling you to start creating Sora 3 content right away.' 
-  },
-  
   {
-    q: 'Can I use Sora 3 videos for paid advertising?',
-    a: 'Absolutely. Sora 3 generated content is fully licensed for commercial use including paid ads, e-commerce videos, and social campaigns. You retain full rights to Sora 3 videos you create.'
+    q: 'What is a VEO 4 AI video platform?',
+    a: 'A VEO 4 AI video platform helps you create videos from text prompts or images through a faster web workflow. On veo4video.io, that includes VEO 4 text to video, VEO 4 image to video, and campaign-ready exports for ads, product videos, and social content.'
   },
   {
-    q: 'Do Sora 3 videos include watermarks?',
-    a: 'No — all Sora 3 exports are completely watermark-free. Premium Sora 3 plans ensure no platform branding appears on your downloads. Sora 3 videos export clean and ready for immediate campaign use.'
+    q: 'Can I create VEO 4 videos from text prompts?',
+    a: 'Yes. VEO 4 text to video lets you turn prompts into polished clips for ads, social posts, product storytelling, and landing-page media. This workflow is useful when you want to move from idea to first draft quickly.'
   },
   {
-    q: 'Does this platform use official Sora 3 technology?',
-    a: 'We leverage advanced Sora 3 compatible technology within our generation pipeline. This enables immediate Sora 3 video creation without waiting for official access. sora3ai.io is not affiliated with OpenAI or any official Sora products.'
+    q: 'Can I turn images into VEO 4 videos?',
+    a: 'Yes. VEO 4 image to video helps you animate a still image into a more dynamic clip with motion, cleaner framing, and export-ready output. This is useful for product shots, creator assets, and ad variations.'
   },
   {
-    q: 'Can I build 25-second Sora 3 videos?',
-    a: 'Yes — Sora 3 Storyboard enables 25-second Sora 3 multi-scene generation for complete brand narratives. Sora 3 extended videos are perfect for campaigns requiring full story presentation.'
+    q: 'How does Veo4 maintain character consistency across scenes?',
+    a: 'Veo4 maintains stronger character consistency by keeping the same subject appearance, wardrobe, and visual direction across related shots. This is useful for brand storytelling, product explainers, and ad campaigns where the same character must stay recognizable.'
   },
   {
-    q: 'Is payment information secure?',
-    a: 'Absolutely. We use secure, trusted payment platforms. Your payment data is fully protected, and personal information remains confidential.'
+    q: 'Can Veo4 generate videos longer than 10 seconds?',
+    a: 'Yes. Veo4 supports longer video workflows beyond short clips, including multi-scene generation for more complete brand stories and campaign concepts. Available duration depends on the workflow you choose on the platform.'
   },
   {
-    q: 'Are there hidden fees?',
-    a: 'No, the displayed price is the total amount. There are no additional hidden charges. Annual Sora 3 plans offer significant savings.'
+    q: 'Are VEO 4 videos suitable for commercial use?',
+    a: 'Yes. VEO 4 videos can be used for commercial work such as paid ads, e-commerce content, landing pages, and social campaigns, subject to the platform terms and the rules that apply to your source assets and prompts.'
   },
   {
-    q: 'Do I need video editing skills?',
-    a: 'No. Simply describe your vision and Sora 3 generates professional content. Sora 3 handles the technical aspects automatically.'
+    q: 'Do Veo4 videos include watermarks?',
+    a: 'No. Veo4 exports from our platform are watermark-free, so the final video is cleaner for ads, product demos, and social publishing.'
   },
   {
-    q: 'How do I start creating Sora 3 videos?',
-    a: 'Begin immediately by signing up. Sora 3 credits are available through our pricing plans. Choose a Sora 3 plan that matches your content production needs.'
+    q: 'What payment methods do you accept?',
+    a: 'We accept the payment methods shown at checkout through secure payment providers. Pricing is shown before purchase so you can review the plan and billing terms before you pay.'
   },
   {
-    q: 'What is the relationship between sora3ai.io and OpenAI\'s Sora 3?',
-    a: 'sora3ai.io is an independent platform specializing in Sora 3 video generation. We leverage advanced Sora 3 technology but have no affiliation, partnership, or authorization relationship with OpenAI. We use "Sora 3" for descriptive purposes to help users understand our service. "Sora 3" is a registered trademark of OpenAI, and all trademarks belong to their respective owners.'
+    q: 'Are there any hidden charges?',
+    a: 'No. The displayed price is the amount you pay for the selected plan. There are no hidden charges added later outside the stated billing terms.'
+  },
+  {
+    q: 'Who is VEO 4 best for?',
+    a: 'VEO 4 is a strong fit for marketers, creators, e-commerce teams, agencies, and product teams that need faster video production for ads, social content, explainers, and campaign testing.'
+  },
+  {
+    q: 'How do I get started with VEO 4?',
+    a: 'Choose a plan, open the text-to-video or image-to-video workflow, enter your prompt or upload your image, then generate and export your clip. Most teams can move from concept to usable output in a few minutes.'
   }
 ]
 
@@ -157,12 +135,13 @@ export default async function FAQPage({
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <h1 className="text-3xl font-bold mb-6">Sora 3 Video Generation — Frequently Asked Questions</h1>
+      <h1 className="text-3xl font-bold mb-6">VEO 4 FAQ</h1>
       <p className="text-muted-foreground mb-8">
-        Get answers about Sora 3 video generation, campaign use, and platform capabilities. For more details, explore our 
+        Find answers about VEO 4 pricing, text to video, image to video, commercial use, video length, watermarks, and platform setup. For more details, explore our 
         <a href={`${prefix}/`} className="text-primary hover:underline"> homepage</a>, 
-        <a href={`${prefix}/sora3-text-to-video`} className="text-primary hover:underline"> Sora 3 Text to Video</a>, 
-        <a href={`${prefix}/pricing`} className="text-primary hover:underline"> Sora 3 Pricing</a>, or review our 
+        <a href={`${prefix}/veo4-text-to-video`} className="text-primary hover:underline"> Veo 4 Text to Video</a>, 
+        <a href={`${prefix}/veo4-image-to-video`} className="text-primary hover:underline"> Veo 4 Image to Video</a>, 
+        <a href={`${prefix}/pricing`} className="text-primary hover:underline"> Veo 4 Pricing</a>, or review our 
         <a href={`${prefix}/terms`} className="text-primary hover:underline"> Terms of Service</a> and 
         <a href={`${prefix}/privacy`} className="text-primary hover:underline"> Privacy Policy</a>.
       </p>

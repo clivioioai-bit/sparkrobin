@@ -37,8 +37,8 @@ const WhyThisMatters = () => {
     },
     {
       icon: Share2,
-      title: t('storyboard.title'),
-      description: t('storyboard.description'),
+      title: t('multiModel.title'),
+      description: t('multiModel.description'),
       color: "#F1746C"
     }
   ];

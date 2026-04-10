@@ -5,7 +5,7 @@ import { MetadataRoute } from 'next'
  * This is the main sitemap.xml that both Google Search Console and Bing Webmaster Tools will read
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://sora3ai.io'
+  const baseUrl = 'https://veo4video.io'
 
   return [
     {

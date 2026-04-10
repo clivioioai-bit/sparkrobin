@@ -7,9 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Sora3Params } from '@/types/generation-modes';
-import { StoryboardParams } from '@/types/storyboard';
-import { StoryboardManager } from '@/components/storyboard/StoryboardManager';
-import { Wand2, Video, LayoutPanelTop, Sparkles, Clock, Maximize2, Settings2, Lightbulb, Play, Info, Check, ChevronUp, Film, Square } from 'lucide-react';
+import { Wand2, Video, LayoutPanelTop, Sparkles, Clock, Maximize2, Settings2, Lightbulb, Play, Info, Check, ChevronUp, Square } from 'lucide-react';
 import { promptExamples, promptCategories, getExamplesByCategory } from '@/data/promptExamples';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
@@ -32,16 +30,6 @@ interface Sora3ModeProps {
   isGenerating: boolean;
 }
 
-const DEFAULT_STORYBOARD_PARAMS: StoryboardParams = {
-  shots: [
-    { prompt: '', duration: 5 },
-    { prompt: '', duration: 5 },
-    { prompt: '', duration: 5 },
-  ],
-  n_frames: '25',
-  aspect_ratio: 'landscape',
-};
-
 export const Sora3Mode: React.FC<Sora3ModeProps> = ({
   params,
   onChange,
@@ -62,18 +50,14 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
     setIsExamplesOpen(false);
   };
 
-  const currentModel = params.model || 'sora3';
-  const isProModel = currentModel === 'sora3-pro' || currentModel === 'sora2-pro';
-  const isStoryboard = currentModel === 'storyboard';
+  const currentModel = params.model === 'wan2.6' ? 'wan2.6' : 'veo3.1';
   const isVeo31 = currentModel === 'veo3.1';
   const isWan26 = currentModel === 'wan2.6';
+  const veoDisplayModel = params.veoDisplayModel || 'veo4';
+  const veoModelVariant = params.veoDisplayModel === 'veo4' ? 'veo3_fast' : (params.veo3SubModel || 'veo3_fast');
 
   // Calculate credits based on model, quality, and n_frames
   const calculateCredits = (): number => {
-    if (isStoryboard) {
-      const n = params.storyboardParams?.n_frames || '25';
-      return n === '10' ? 125 : 225;
-    }
     if (isWan26) {
       const durationKey = params.wan26Duration || '5';
       const resolutionKey = params.wan26Resolution || '1080p';
@@ -86,23 +70,6 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
     if (isVeo31) {
       return params.veo3SubModel === 'veo3' ? 250 : 60;
     }
-    if (currentModel === 'sora2-pro') {
-      const quality = params.quality || 'standard';
-      if (quality === 'high') {
-        return params.n_frames === '15' ? 650 : 350;
-      }
-      return params.n_frames === '15' ? 270 : 150;
-    }
-    if (currentModel === 'sora3-pro') {
-      const quality = params.quality || 'standard';
-      if (quality === 'high') {
-        return params.n_frames === '15' ? 650 : 350;
-      }
-      return params.n_frames === '15' ? 270 : 150;
-    }
-    if (currentModel === 'sora2') {
-      return params.n_frames === '15' ? 50 : 40;
-    }
     return params.n_frames === '15' ? 40 : 30;
   };
 
@@ -111,43 +78,45 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
   // Get display label for the selected model in the trigger
   const getModelLabel = (): string => {
     if (isVeo31) {
-      return params.veo3SubModel === 'veo3_fast' ? t('veo3Mode.fast') : t('veo3Mode.quality');
+      if (veoDisplayModel === 'veo4') {
+        return 'Veo4';
+      }
+      return veoModelVariant === 'veo3_fast' ? 'Veo3.1 Fast' : 'Veo3.1 Quality';
     }
     if (isWan26) return 'Wan 2.6';
-    switch (currentModel) {
-      case 'sora3-pro': return t('reframeMode.sora3Pro');
-      case 'sora2': return t('reframeMode.sora2');
-      case 'sora2-pro': return t('reframeMode.sora2Pro');
-      case 'storyboard': return t('reframeMode.storyboard');
-      default: return t('reframeMode.sora3');
-    }
+    return 'Veo4 Fast';
   };
 
   // Get the icon for the selected model trigger
   const getTriggerIcon = () => {
-    if (isStoryboard) {
-      return <Film className="w-6 h-6 text-primary" />;
-    }
     if (isVeo31) {
       return <img src="/images/google_veo_logo.jpeg" alt="Veo3.1" width={32} height={32} className="w-full h-full object-contain" />;
     }
     if (isWan26) {
       return <img src="/images/qwen-color.webp" alt="Wan2.6" width={32} height={32} className="w-full h-full object-contain" />;
     }
-    return <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />;
+    return <img src="/logo-v2.png" alt="Veo4 model icon" width={32} height={32} className="w-full h-full object-contain" />;
   };
 
   // Compute the Select value — Veo3.1 uses compound values
-  const selectValue = isVeo31 ? `veo3.1-${params.veo3SubModel || 'veo3_fast'}` : currentModel;
+  const selectValue = isVeo31
+    ? (veoDisplayModel === 'veo4' ? 'veo4-veo3_fast' : `veo3.1-${veoModelVariant}`)
+    : currentModel;
 
   const handleModelChange = (value: string) => {
-    // Veo3.1 compound values
-    if (value === 'veo3.1-veo3_fast' || value === 'veo3.1-veo3') {
-      const subModel = value === 'veo3.1-veo3_fast' ? 'veo3_fast' : 'veo3';
+    // Veo4 is a frontend alias; both Veo4 and Veo3.1 selections map to the same backend model.
+    if (
+      value === 'veo4-veo3_fast' ||
+      value === 'veo3.1-veo3_fast' ||
+      value === 'veo3.1-veo3'
+    ) {
+      const subModel = value.startsWith('veo4-') ? 'veo3_fast' : value.endsWith('-veo3_fast') ? 'veo3_fast' : 'veo3';
+      const displayModel = value.startsWith('veo4-') ? 'veo4' : 'veo3.1';
       onChange({
         ...params,
         model: 'veo3.1',
         veo3SubModel: subModel,
+        veoDisplayModel: displayModel,
         quality: undefined,
         storyboardParams: undefined,
         wan26Duration: undefined,
@@ -162,6 +131,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
         model: 'wan2.6',
         quality: undefined,
         veo3SubModel: undefined,
+        veoDisplayModel: undefined,
         seeds: undefined,
         storyboardParams: undefined,
         wan26Duration: params.wan26Duration || '5',
@@ -171,69 +141,18 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
       return;
     }
 
-    const model = value as Sora3Params['model'];
-    if (model === 'sora2') {
-      onChange({
-        ...params,
-        model,
-        quality: undefined,
-        storyboardParams: undefined,
-        veo3SubModel: undefined,
-        seeds: undefined,
-        wan26Duration: undefined,
-        wan26Resolution: undefined,
-        wan26MultiShots: undefined,
-      });
-    } else if (model === 'sora2-pro') {
-      onChange({
-        ...params,
-        model,
-        quality: params.quality || 'standard',
-        storyboardParams: undefined,
-        veo3SubModel: undefined,
-        seeds: undefined,
-        wan26Duration: undefined,
-        wan26Resolution: undefined,
-        wan26MultiShots: undefined,
-      });
-    } else if (model === 'storyboard') {
-      onChange({
-        ...params,
-        model,
-        quality: undefined,
-        storyboardParams: params.storyboardParams || DEFAULT_STORYBOARD_PARAMS,
-        veo3SubModel: undefined,
-        seeds: undefined,
-        wan26Duration: undefined,
-        wan26Resolution: undefined,
-        wan26MultiShots: undefined,
-      });
-    } else if (model === 'sora3-pro') {
-      onChange({
-        ...params,
-        model,
-        quality: params.quality || 'standard',
-        storyboardParams: undefined,
-        veo3SubModel: undefined,
-        seeds: undefined,
-        wan26Duration: undefined,
-        wan26Resolution: undefined,
-        wan26MultiShots: undefined,
-      });
-    } else {
-      // sora3 or other
-      onChange({
-        ...params,
-        model,
-        quality: undefined,
-        storyboardParams: undefined,
-        veo3SubModel: undefined,
-        seeds: undefined,
-        wan26Duration: undefined,
-        wan26Resolution: undefined,
-        wan26MultiShots: undefined,
-      });
-    }
+    onChange({
+      ...params,
+      model: 'veo3.1',
+      quality: undefined,
+      storyboardParams: undefined,
+      veo3SubModel: 'veo3_fast',
+      veoDisplayModel: 'veo4',
+      seeds: undefined,
+      wan26Duration: undefined,
+      wan26Resolution: undefined,
+      wan26MultiShots: undefined,
+    });
   };
 
   return (
@@ -269,59 +188,17 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             </div>
           </SelectTrigger>
           <SelectContent>
-            {/* Sora3 */}
-            <SelectItem value="sora3" className="py-3">
+            {/* Veo4 Fast */}
+            <SelectItem value="veo4-veo3_fast" className="py-3">
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
+                  <img src="/images/google_veo_logo.jpeg" alt="Veo4 model icon" width={32} height={32} className="w-full h-full object-contain" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-foreground">{t('reframeMode.sora3')}</span>
+                    <span className="font-semibold text-foreground">Veo4 Fast</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">{t('reframeMode.sora3Description')}</p>
-                </div>
-              </div>
-            </SelectItem>
-            {/* Sora3 Pro */}
-            <SelectItem value="sora3-pro" className="py-3">
-              <div className="flex items-start gap-3 w-full">
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-foreground">{t('reframeMode.sora3Pro')}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">{t('reframeMode.sora3ProDescription')}</p>
-                </div>
-              </div>
-            </SelectItem>
-            {/* Sora2 */}
-            <SelectItem value="sora2" className="py-3">
-              <div className="flex items-start gap-3 w-full">
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-foreground">{t('reframeMode.sora2')}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">{t('reframeMode.sora2Description')}</p>
-                </div>
-              </div>
-            </SelectItem>
-            {/* Sora2 Pro */}
-            <SelectItem value="sora2-pro" className="py-3">
-              <div className="flex items-start gap-3 w-full">
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-foreground">{t('reframeMode.sora2Pro')}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">{t('reframeMode.sora2ProDescription')}</p>
+                  <p className="text-xs text-muted-foreground">Veo4 branding on the frontend, powered by the Veo3.1 fast backend.</p>
                 </div>
               </div>
             </SelectItem>
@@ -333,7 +210,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-foreground">{t('veo3Mode.fast')}</span>
+                    <span className="font-semibold text-foreground">Veo3.1 Fast</span>
                   </div>
                   <p className="text-xs text-muted-foreground">Faster generation with good quality</p>
                 </div>
@@ -347,7 +224,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-foreground">{t('veo3Mode.quality')}</span>
+                    <span className="font-semibold text-foreground">Veo3.1 Quality</span>
                   </div>
                   <p className="text-xs text-muted-foreground">Higher quality with longer generation time</p>
                 </div>
@@ -370,38 +247,12 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
                 </div>
               </div>
             </SelectItem>
-            {/* Storyboard */}
-            <SelectItem value="storyboard" className="py-3">
-              <div className="flex items-start gap-3 w-full">
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                  <Film className="w-6 h-6 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-foreground">{t('reframeMode.storyboard')}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">{t('reframeMode.storyboardDescription')}</p>
-                </div>
-              </div>
-            </SelectItem>
           </SelectContent>
         </Select>
         )}
       </div>
 
-      {/* Storyboard Mode — show StoryboardManager instead of standard controls */}
-      {isStoryboard ? (
-        <StoryboardManager
-          params={params.storyboardParams || DEFAULT_STORYBOARD_PARAMS}
-          onParamsChange={(newStoryboardParams) =>
-            onChange({ ...params, storyboardParams: newStoryboardParams })
-          }
-          onGenerate={onGenerate}
-          isGenerating={isGenerating}
-          creditCost={creditCost}
-        />
-      ) : (
-        <>
+      <>
           {/* Prompt */}
           <div className={workspaceSectionClass}>
             <div className="flex items-center justify-between">
@@ -596,7 +447,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             </div>
           </div>
 
-          {/* Duration (n_frames) — Only for Sora models */}
+          {/* Duration (n_frames) — Only for legacy models */}
           {!isVeo31 && !isWan26 && (
           <div className={workspaceSectionClass}>
             <div className="flex items-center gap-2">
@@ -798,45 +649,6 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             </div>
           )}
 
-          {/* Quality Selector (for Sora3 Pro and Sora2 Pro) */}
-          {isProModel && (
-            <div className={workspaceSectionClass}>
-            <div className="flex items-center gap-2">
-              <Label className={fieldLabelClass}>{t('reframeMode.quality')}</Label>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    type="button"
-                    aria-label="Quality info"
-                    className="text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    <Info className="h-4 w-4" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent className="max-w-xs text-xs leading-relaxed">
-                  {t('reframeMode.qualityTooltip')}
-                </TooltipContent>
-              </Tooltip>
-            </div>
-              <div className="flex space-x-2">
-                <Button
-                  variant={params.quality === 'standard' || !params.quality ? 'default' : 'outline'}
-                  onClick={() => onChange({ ...params, quality: 'standard' })}
-                  className={segmentedButtonClass(params.quality === 'standard' || !params.quality)}
-                >
-                  {t('reframeMode.standard')}
-                </Button>
-                <Button
-                  variant={params.quality === 'high' ? 'default' : 'outline'}
-                  onClick={() => onChange({ ...params, quality: 'high' })}
-                  className={segmentedButtonClass(params.quality === 'high')}
-                >
-                  {t('reframeMode.high')}
-                </Button>
-              </div>
-            </div>
-          )}
-
           {/* Action Buttons */}
           <div className="flex space-x-3 pt-4">
             <Button
@@ -863,8 +675,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               )}
             </Button>
           </div>
-        </>
-      )}
+      </>
     </div>
     </TooltipProvider>
   );

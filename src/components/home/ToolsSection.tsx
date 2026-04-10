@@ -31,7 +31,9 @@ const createDefaultSora3Params = (): Sora3Params => ({
   aspectRatio: '16:9',
   style: 'realistic',
   n_frames: '10',
-  model: 'sora3'
+  model: 'veo3.1',
+  veo3SubModel: 'veo3_fast',
+  veoDisplayModel: 'veo4'
 });
 
 const createDefaultReframeParams = (): ReframeParams => ({
@@ -39,8 +41,9 @@ const createDefaultReframeParams = (): ReframeParams => ({
   targetAspectRatio: '16:9',
   style: 'zoom',
   speed: 'normal',
-  model: 'sora3',
+  model: 'veo3.1',
   veo3SubModel: 'veo3_fast',
+  veoDisplayModel: 'veo4',
   n_frames: '10'
 });
 
@@ -700,7 +703,7 @@ const ToolsSection = () => {
           <div className="space-y-4 sm:space-y-6 order-1 lg:order-1">
             <Card className="p-4 sm:p-6 lg:p-8">
               <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as typeof activeTab)} className="w-full">
-                <TabsList className="grid w-full grid-cols-3 mb-4 sm:mb-6 h-auto">
+                <TabsList className="grid w-full grid-cols-2 mb-4 sm:mb-6 h-auto">
                   <TabsTrigger value="text-to-video" className="flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm">
                     <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
                     <span className="hidden sm:inline">{t('textToVideo')}</span>
@@ -710,11 +713,6 @@ const ToolsSection = () => {
                     <ImageIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
                     <span className="hidden sm:inline">{t('imageToVideo')}</span>
                     <span className="sm:hidden">Image</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="storyboard" className="flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm">
-                    <Clapperboard className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
-                    <span className="hidden sm:inline">{t('storyboard')}</span>
-                    <span className="sm:hidden">Board</span>
                   </TabsTrigger>
                 </TabsList>
                 
@@ -736,15 +734,6 @@ const ToolsSection = () => {
                   />
                 </TabsContent>
                 
-                <TabsContent value="storyboard" className="mt-0">
-                  <StoryboardManager
-                    params={storyboardParams}
-                    onParamsChange={setStoryboardParams}
-                    onGenerate={handleStoryboardGenerate}
-                    isGenerating={isStoryboardGenerating}
-                    creditCost={getStoryboardCreditCost()}
-                  />
-                </TabsContent>
               </Tabs>
             </Card>
           </div>
@@ -753,9 +742,9 @@ const ToolsSection = () => {
           <div className="space-y-4 sm:space-y-6 order-2 lg:order-2">
             <Card className="p-4 sm:p-6 lg:p-8">
               <div className="flex items-center justify-between mb-4 sm:mb-6">
-                <h4 className="text-base sm:text-lg font-semibold text-foreground">
+                <div className="text-base sm:text-lg font-semibold text-foreground">
                   {tGenerate('output')}
-                </h4>
+                </div>
               </div>
               
               {/* Show sample video only when not generating and no current job */}
@@ -767,9 +756,7 @@ const ToolsSection = () => {
                       <span className="font-bold text-accent-foreground/80 text-sm sm:text-base">{tGenerate('exampleVideo')}</span>
                     </div>
                     <p className="text-xs sm:text-sm text-accent-foreground/80 leading-relaxed">
-                      {activeTab === 'storyboard' 
-                        ? tGenerate('storyboard.exampleDescription')
-                        : isAuthenticated 
+                      {isAuthenticated 
                         ? tGenerate('sampleVideoDescription')
                         : tGenerate('sampleVideoDescriptionUnauthenticated')
                       }
@@ -801,26 +788,16 @@ const ToolsSection = () => {
                     </video>
                   </div>
                   
-                  {activeTab === 'storyboard' && (
-                    <div className="text-center">
-                      <p className="text-xs sm:text-sm text-muted-foreground px-2">
-                        {tGenerate('storyboard.exampleNote')}
-                      </p>
-                    </div>
-                  )}
-                  
-                  {activeTab !== 'storyboard' && (
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {sampleVideo.tags.map((tag) => (
-                        <span 
-                          key={tag}
-                          className="text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-muted/50 backdrop-blur-sm text-muted-foreground rounded-full"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    {sampleVideo.tags.map((tag) => (
+                      <span 
+                        key={tag}
+                        className="text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-muted/50 backdrop-blur-sm text-muted-foreground rounded-full"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
                   
                   {/* Only show signup button for unauthenticated users */}
                   {!isAuthenticated && (
@@ -861,4 +838,3 @@ const ToolsSection = () => {
 };
 
 export default ToolsSection;
-

@@ -28,18 +28,18 @@ const KeyFeatures = () => {
     },
     {
       icon: Film,
-      title: t('sora3ProStoryboard.title'),
-      description: t('sora3ProStoryboard.description')
-    },
-    {
-      icon: Image,
       title: t('textToVideoImageToVideo.title'),
       description: t('textToVideoImageToVideo.description')
     },
     {
-      icon: Share2,
+      icon: Image,
       title: t('socialReady.title'),
       description: t('socialReady.description')
+    },
+    {
+      icon: Share2,
+      title: t('bestCostPerformance.title'),
+      description: t('bestCostPerformance.description')
     }
   ];
 
@@ -92,7 +92,7 @@ const KeyFeatures = () => {
               asChild
               className="text-lg px-14 py-7 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl shadow-glow hover:shadow-glow hover:scale-105 transition-all duration-300"
             >
-              <Link href="/sora3-text-to-video">
+              <Link href="/veo4-text-to-video">
                 {t('trySora3Free.startGenerating')}
               </Link>
             </Button>

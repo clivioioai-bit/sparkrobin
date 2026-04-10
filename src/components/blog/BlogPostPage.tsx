@@ -40,28 +40,28 @@ const BlogPostPage = async ({ post, locale = 'en' }: Props) => {
     '@type': 'BlogPosting',
     headline: post.meta.title,
     description: post.meta.description || '',
-    image: post.meta.coverImage || 'https://sora3ai.io/logo.jpg',
+    image: post.meta.coverImage || 'https://veo4video.io/logo-v2.png',
     datePublished: post.meta.date || undefined,
     dateModified: post.meta.date || undefined,
     author: {
       '@type': post.meta.author ? 'Person' : 'Organization',
-      name: post.meta.author || 'Sora3 Team',
-      url: 'https://sora3ai.io',
+      name: post.meta.author || 'Veo4 Team',
+      url: 'https://veo4video.io',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Sora3',
-      url: 'https://sora3ai.io',
+      name: 'Veo4',
+      url: 'https://veo4video.io',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://sora3ai.io/logo.jpg',
+        url: 'https://veo4video.io/logo-v2.png',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': locale === 'en'
-        ? `https://sora3ai.io/blog/${post.slug}`
-        : `https://sora3ai.io/${locale}/blog/${post.slug}`,
+        ? `https://veo4video.io/blog/${post.slug}`
+        : `https://veo4video.io/${locale}/blog/${post.slug}`,
     },
     wordCount: post.content.trim().split(/\s+/).length,
     keywords: post.meta.tags?.join(', ') || undefined,

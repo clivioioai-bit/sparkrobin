@@ -3,5 +3,5 @@ import { redirect } from 'next/navigation';
 export const dynamic = 'force-dynamic';
 
 export default function LegacySoraProStoryboardPage() {
-  redirect('/en/sora-3-storyboard');
+  redirect('/en/veo4-text-to-video');
 }

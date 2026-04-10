@@ -393,14 +393,14 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                   <div className="flex items-center space-x-2 flex-1 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
                     <RadioGroupItem value="nano-banana" id="nano-banana" />
                     <Label htmlFor="nano-banana" className="flex items-center gap-2 cursor-pointer flex-1">
-                      <Image src="/logo.jpg" alt="Nano Banana" width={16} height={16} className="w-4 h-4 rounded-sm object-cover" />
+                      <Image src="/logo-v2.png" alt="Nano Banana" width={16} height={16} className="w-4 h-4 rounded-sm object-cover" />
                       <span>Nano Banana</span>
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2 flex-1 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
                     <RadioGroupItem value="nano-banana-pro" id="nano-banana-pro" />
                     <Label htmlFor="nano-banana-pro" className="flex items-center gap-2 cursor-pointer flex-1">
-                      <Image src="/logo.jpg" alt="Nano Banana Pro" width={16} height={16} className="w-4 h-4 rounded-sm object-cover" />
+                      <Image src="/logo-v2.png" alt="Nano Banana Pro" width={16} height={16} className="w-4 h-4 rounded-sm object-cover" />
                       <span>Nano Banana Pro</span>
                     </Label>
                   </div>

@@ -20,6 +20,7 @@ export interface Sora3Params {
   model?: 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'storyboard' | 'veo3.1' | 'wan2.6'; // Model selection
   quality?: 'standard' | 'high'; // Quality for sora3-pro/sora2-pro (maps to size in API)
   veo3SubModel?: 'veo3_fast' | 'veo3'; // For Veo3.1: sub-model selection (Fast or Quality)
+  veoDisplayModel?: 'veo4' | 'veo3.1'; // Frontend-only label while backend continues using veo3.1
   seeds?: number; // For Veo3.1: Optional seed (10000-99999)
   // Wan2.6 specific parameters
   wan26Duration?: '5' | '10' | '15'; // Wan2.6 duration in seconds
@@ -41,6 +42,7 @@ export interface ReframeParams {
   speed: 'normal' | 'slow' | 'fast';
   model?: 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'veo3.1' | 'wan2.6';
   veo3SubModel?: 'veo3_fast' | 'veo3'; // For Veo3.1: sub-model selection
+  veoDisplayModel?: 'veo4' | 'veo3.1'; // Frontend-only label while backend continues using veo3.1
   seeds?: number; // For Veo3.1: Optional seed (10000-99999)
   n_frames?: '10' | '15'; // Video duration: 10s or 15s
   quality?: 'standard' | 'high'; // Quality for sora3-pro/sora2-pro (maps to size in API)
@@ -72,6 +74,7 @@ export interface NormalParams {
 export interface Veo3Params {
   prompt: string;
   model?: 'veo3' | 'veo3_fast';
+  veoDisplayModel?: 'veo4' | 'veo3.1'; // Frontend-only label while backend continues using veo3.1
   imageUrls?: string[];
   generationType?: 'TEXT_2_VIDEO' | 'FIRST_AND_LAST_FRAMES_2_VIDEO' | 'REFERENCE_2_VIDEO';
   aspectRatio: '16:9' | '9:16' | 'Auto';

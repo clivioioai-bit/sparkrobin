@@ -12,7 +12,7 @@
 ### 步骤 1: 添加网站
 1. 访问 [Google Search Console](https://search.google.com/search-console)
 2. 点击"添加属性"
-3. 选择"网址前缀"方式，输入：`https://sora3ai.io`
+3. 选择"网址前缀"方式，输入：`https://veo4video.io`
 
 ### 步骤 2: 验证网站所有权
 Google 提供多种验证方式，推荐使用 **HTML 标签验证**：
@@ -29,12 +29,12 @@ Google 提供多种验证方式，推荐使用 **HTML 标签验证**：
 ### 步骤 3: 提交 Sitemap
 1. 验证成功后，进入"索引" > "站点地图"
 2. 点击"添加新的站点地图"
-3. 输入：`https://sora3ai.io/sitemap.xml`
+3. 输入：`https://veo4video.io/sitemap.xml`
 4. 点击"提交"
 
 ### 步骤 4: 请求索引（可选）
 1. 进入"网址检查"工具
-2. 输入首页 URL：`https://sora3ai.io`
+2. 输入首页 URL：`https://veo4video.io`
 3. 点击"请求编入索引"
 
 ## 2. Bing Webmaster Tools 设置
@@ -43,7 +43,7 @@ Google 提供多种验证方式，推荐使用 **HTML 标签验证**：
 1. 访问 [Bing Webmaster Tools](https://www.bing.com/webmasters)
 2. 使用 Microsoft 账号登录
 3. 点击"添加网站"
-4. 输入：`https://sora3ai.io`
+4. 输入：`https://veo4video.io`
 
 ### 步骤 2: 验证网站所有权
 推荐使用 **Meta 标签验证**：
@@ -60,7 +60,7 @@ Google 提供多种验证方式，推荐使用 **HTML 标签验证**：
 ### 步骤 3: 提交 Sitemap
 1. 验证成功后，进入"站点地图"
 2. 点击"提交站点地图"
-3. 输入：`https://sora3ai.io/sitemap.xml`
+3. 输入：`https://veo4video.io/sitemap.xml`
 4. 点击"提交"
 
 ## 3. 环境变量配置
@@ -78,8 +78,8 @@ BING_VERIFICATION_CODE=your-bing-verification-code
 ## 4. 验证配置
 
 部署后，检查以下 URL 是否可访问：
-- ✅ `https://sora3ai.io/sitemap.xml` - 应返回 XML 格式的网站地图
-- ✅ `https://sora3ai.io/robots.txt` - 应包含 sitemap 链接
+- ✅ `https://veo4video.io/sitemap.xml` - 应返回 XML 格式的网站地图
+- ✅ `https://veo4video.io/robots.txt` - 应包含 sitemap 链接
 
 检查 HTML 源码中的验证标签：
 - Google: `<meta name="google-site-verification" content="...">`

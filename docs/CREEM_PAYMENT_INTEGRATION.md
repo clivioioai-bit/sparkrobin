@@ -191,7 +191,7 @@ https://[你的域名]/api/webhooks/creem
    ```
    > 从 Vercel 部署日志中获取 Preview URL
    
-   示例：`https://sora3-ai-git-dev-username.vercel.app/api/webhooks/creem`
+   示例：`https://veo4-ai-git-dev-username.vercel.app/api/webhooks/creem`
 
 2. **Production Mode（生产模式）**:
    ```

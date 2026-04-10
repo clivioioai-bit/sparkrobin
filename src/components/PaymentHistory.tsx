@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
+import { useTranslations } from 'next-intl';
 
 interface Payment {
   id: number;
@@ -22,6 +23,7 @@ interface Payment {
 }
 
 export default function PaymentHistory() {
+  const t = useTranslations('account.paymentHistory');
   const [payments, setPayments] = useState<Payment[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -62,11 +64,11 @@ export default function PaymentHistory() {
 
   const getStatusBadge = (status: string) => {
     const statusMap: Record<string, { label: string; variant: 'default' | 'secondary' | 'destructive' | 'outline' }> = {
-      succeeded: { label: 'Succeeded', variant: 'default' },
-      failed: { label: 'Failed', variant: 'destructive' },
-      pending: { label: 'Pending', variant: 'secondary' },
-      refunded: { label: 'Refunded', variant: 'outline' },
-      partially_refunded: { label: 'Partially Refunded', variant: 'outline' },
+      succeeded: { label: t('statuses.succeeded'), variant: 'default' },
+      failed: { label: t('statuses.failed'), variant: 'destructive' },
+      pending: { label: t('statuses.pending'), variant: 'secondary' },
+      refunded: { label: t('statuses.refunded'), variant: 'outline' },
+      partially_refunded: { label: t('statuses.partiallyRefunded'), variant: 'outline' },
     };
 
     const statusInfo = statusMap[status.toLowerCase()] || { label: status, variant: 'outline' as const };
@@ -74,7 +76,7 @@ export default function PaymentHistory() {
   };
 
   const formatPlanName = (planType: string | null) => {
-    if (!planType) return 'One-time Purchase';
+    if (!planType) return t('labels.oneTimePurchase');
     return planType
       .split('_')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -105,12 +107,12 @@ export default function PaymentHistory() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Payment History</CardTitle>
-          <CardDescription>Your payment history will appear here</CardDescription>
+          <CardTitle>{t('title')}</CardTitle>
+          <CardDescription>{t('emptyDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-center text-muted-foreground py-8">
-            No payments found
+            {t('emptyTitle')}
           </p>
         </CardContent>
       </Card>
@@ -119,9 +121,9 @@ export default function PaymentHistory() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Payment History</CardTitle>
-        <CardDescription>View all your payment records</CardDescription>
+        <CardHeader>
+        <CardTitle>{t('title')}</CardTitle>
+        <CardDescription>{t('description')}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -144,12 +146,12 @@ export default function PaymentHistory() {
 
               <div className="text-sm text-muted-foreground space-y-1">
                 <p>
-                  Type: {payment.subscription ? 'Subscription' : 'One-time Purchase'}
+                  {t('labels.type')}: {payment.subscription ? t('labels.subscription') : t('labels.oneTimePurchase')}
                 </p>
                 {payment.subscription && (
-                  <p>Plan: {formatPlanName(payment.subscription.planType)}</p>
+                  <p>{t('labels.plan')}: {formatPlanName(payment.subscription.planType)}</p>
                 )}
-                <p>Method: {payment.paymentMethod || 'Unknown'}</p>
+                <p>{t('labels.method')}: {payment.paymentMethod || t('labels.unknown')}</p>
               </div>
             </div>
           ))}
@@ -158,4 +160,3 @@ export default function PaymentHistory() {
     </Card>
   );
 }
-

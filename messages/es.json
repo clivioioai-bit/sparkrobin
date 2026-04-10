@@ -1,10 +1,11 @@
 {
   "common": {
-    "brand": "Sora3",
+    "brand": "Veo4",
     "new": "NUEVO",
     "generate": "Generar",
     "home": "Inicio",
     "pricing": "Precios",
+    "myCreations": "My Creations",
     "blog": "Blog",
     "faq": "FAQ",
     "signIn": "Iniciar sesión",
@@ -22,29 +23,29 @@
   "hero": {
     "badge": "2026 Best Model",
     "discord": "Únete a la comunidad Discord",
-    "brandName": "SORA 3",
-    "tagline": "Generador de Video IA",
-    "title": "Sora 3 — Redefiniendo lo que el video por IA puede ser",
-    "subtitle": "El nuevo Sora 3 ofrece movimiento ultrarealista, escenas más largas y detalles cinematográficos — finalmente permitiendo a los creadores convertir la pura imaginación en video de calidad de estudio en segundos.",
+    "brandName": "VEO 4",
+    "tagline": "Generador de video con IA para texto e imagen a video",
+    "title": "Veo4 — Redefiniendo lo que el video por IA puede ser",
+    "subtitle": "El nuevo Veo4 ofrece movimiento ultrarealista, escenas más largas y detalles cinematográficos — finalmente permitiendo a los creadores convertir la pura imaginación en video de calidad de estudio en segundos.",
     "placeholder": "Describe el video que quieres crear...",
     "cta": "Generar",
     "trySora3": "🚀 Próximamente — Únete a Early Access",
     "trySora2": "Generar imágenes",
     "sora2Description": "Genera videos hoy mismo sin marca de agua, perfectos para TikTok y anuncios.",
-    "storyboard25s": "Build 25s Sora 3 Stories",
-    "disclaimer": "Plataforma independiente especializada en generación de video Sora 3. Utilizamos tecnología avanzada Sora 3 para producir contenido profesional. No afiliado con OpenAI ni ningún producto oficial de Sora.",
+    "storyboard25s": "Build 25s Veo4 Stories",
+    "disclaimer": "Plataforma independiente especializada en generación de video Veo4. Utilizamos tecnología avanzada Veo4 para producir contenido profesional. No afiliado con OpenAI ni ningún producto oficial de Sora.",
     "features": {
       "noWatermark": {
-        "title": "Sora 3 sin marca de agua",
-        "description": "Exporta videos limpios de Sora 3 listos para campañas comerciales"
+        "title": "Veo4 sin marca de agua",
+        "description": "Exporta videos limpios de Veo4 listos para campañas comerciales"
       },
       "noRegionalLimits": {
-        "title": "Acceso global a Sora 3",
-        "description": "Crea contenido Sora 3 desde cualquier parte del mundo"
+        "title": "Acceso global a Veo4",
+        "description": "Crea contenido Veo4 desde cualquier parte del mundo"
       },
       "noInviteCode": {
-        "title": "Acceso instantáneo a Sora 3",
-        "description": "Comienza a generar videos Sora 3 inmediatamente, sin lista de espera"
+        "title": "Acceso instantáneo a Veo4",
+        "description": "Comienza a generar videos Veo4 inmediatamente, sin lista de espera"
       }
     }
   },
@@ -53,9 +54,10 @@
     "generate": "Video AI",
     "textToVideo": "Text to Video",
     "imageToVideo": "Image to Video",
-    "storyboard": "Sora3 Storyboard",
+    "storyboard": "Veo4 Storyboard",
     "watermarkRemover": "Watermark Remover",
     "pricing": "Pricing",
+    "myCreations": "My Creations",
     "blog": "Blog",
     "dashboard": "Dashboard",
     "user": "User",
@@ -68,10 +70,10 @@
     "startForFree": "Start Now",
     "preferences": "Preferences",
     "generationHistory": "Generation History",
-    "textToVideoDescription": "Transform ideas into polished Sora 3 clips ready for ads",
-    "imageToVideoDescription": "Animate photos into professional Sora 3 video content",
-    "storyboardDescription": "Build multi-scene Sora 3 narratives up to 25 seconds",
-    "watermarkRemoverDescription": "Remove watermarks from Sora 3 videos instantly",
+    "textToVideoDescription": "Transform ideas into polished Veo4 clips ready for ads",
+    "imageToVideoDescription": "Animate photos into professional Veo4 video content",
+    "storyboardDescription": "Build multi-scene Veo4 narratives up to 25 seconds",
+    "watermarkRemoverDescription": "Remove watermarks from Veo4 videos instantly",
     "imageAI": "Imagen AI",
     "textToImage": "Texto a imagen",
     "textToImageDescription": "Generar imágenes desde texto",
@@ -81,12 +83,14 @@
     "models": "Modelos",
     "nanoBanana": "Nano Banana",
     "nanoBananaPro": "Nano Banana Pro",
-    "sora3": "Sora 3",
-    "sora3Pro": "Sora 3 Pro",
+    "sora3": "Veo4",
+    "sora3Pro": "Veo4 Pro",
     "sora2": "Sora 2",
     "sora2Pro": "Sora 2 Pro",
     "veo3": "Veo 3",
     "wan26": "Wan 2.6",
+    "veo4Model": "Veo 4",
+    "veo31Model": "Veo 3.1",
     "whoThisIsFor": {
       "ecommerce": {
         "title": "Shopify & e-commerce sellers"
@@ -100,30 +104,30 @@
     }
   },
   "footer": {
-    "description": "sora3ai.io transforms ideas into polished Sora 3 video clips perfect for ads and brand campaigns. Our Sora 3 platform generates professional videos without watermarks, ideal for marketing teams and creators. Start creating Sora 3 content today.",
+    "description": "veo4video.io transforms ideas into polished Veo4 video clips perfect for ads and brand campaigns. Our Veo4 platform generates professional videos without watermarks, ideal for marketing teams and creators. Start creating Veo4 content today.",
     "product": "Product",
     "company": "Company",
     "resources": "Resources",
     "support": "Support",
-    "sora3TextToVideo": "Sora3 Text to Video",
-    "sora3ImageToVideo": "Sora3 Image to Video",
-    "sora3Pricing": "Sora3 Pricing",
-    "sora3Faq": "Sora3 FAQ",
-    "sora3Blog": "Sora3 Blog",
+    "sora3TextToVideo": "Veo4 Text to Video",
+    "sora3ImageToVideo": "Veo4 Image to Video",
+    "sora3Pricing": "Veo4 Pricing",
+    "sora3Faq": "Veo4 FAQ",
+    "sora3Blog": "Veo4 Blog",
     "aiVideoPromptGpt": "AI Video Prompt GPT",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "refundPolicy": "Refund Policy",
     "support247": "24/7 Support",
     "contactUs": "Contact Us / Partnership",
-    "disclaimer": "sora3ai.io is an independent platform specializing in Sora 3 video generation. We leverage advanced Sora 3 technology to produce ad-ready professional videos. sora3ai.io is not affiliated with OpenAI, Google or any official Sora products. All trademarks belong to their respective owners.",
-    "poweredBy": "Powered by proprietary Sora 3 video synthesis technology. Not affiliated with any official vendor.",
-    "copyright": "© 2024 Sora3. All rights reserved.",
+    "disclaimer": "veo4video.io is an independent platform specializing in Veo4 video generation. We leverage advanced Veo4 technology to produce ad-ready professional videos. veo4video.io is not affiliated with OpenAI, Google or any official Sora products. All trademarks belong to their respective owners.",
+    "poweredBy": "Powered by proprietary Veo4 video synthesis technology. Not affiliated with any official vendor.",
+    "copyright": "© 2024 Veo4. All rights reserved.",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24/7 Support: support@sora3ai.io",
-    "businessEmail": "Business & Partnership: team@sora3ai.io",
-    "logoAlt": "Sora3 AI Video Generator logo",
+    "supportEmail": "24/7 Support: support@veo4video.io",
+    "businessEmail": "Business & Partnership: support@veo4video.io",
+    "logoAlt": "Veo4 AI Video Generator logo",
     "socialLabels": {
       "twitter": "Follow us on Twitter",
       "discord": "Join our Discord community",
@@ -134,10 +138,10 @@
     }
   },
   "whyThisMatters": {
-    "title": "Why Marketing Teams Choose Sora 3",
-    "subtitle": "Ad campaigns demand quality video content — Sora 3 delivers without the barriers. Our Sora 3 platform enables instant creation of professional videos for brands and agencies.",
+    "title": "Why Marketing Teams Choose Veo4",
+    "subtitle": "Ad campaigns demand quality video content — Veo4 delivers without the barriers. Our Veo4 platform enables instant creation of professional videos for brands and agencies.",
     "challenges": "Common Roadblocks",
-    "solutions": "How Sora 3 Solves This",
+    "solutions": "How Veo4 Solves This",
     "watermarks": {
       "title": "Platform branding on exports",
       "description": "Watermarks undermine professional presentation for client work."
@@ -148,61 +152,61 @@
     },
     "storyboarding": {
       "title": "Technical complexity",
-      "description": "Multi-scene Sora 3 Storyboard creation requires specialized knowledge."
+      "description": "Multi-scene Veo4 Storyboard creation requires specialized knowledge."
     },
     "speed": {
       "title": "Lengthy processing times",
       "description": "Slow generation disrupts campaign timelines and creative momentum."
     },
     "noWatermark": {
-      "title": "Sora 3 without any branding",
-      "description": "Export clean Sora 3 videos perfect for client deliverables."
+      "title": "Veo4 without any branding",
+      "description": "Export clean Veo4 videos perfect for client deliverables."
     },
     "costPerformance": {
-      "title": "Sora 3 at competitive rates",
-      "description": "Sora 3 generation costs significantly less than comparable platforms."
+      "title": "Veo4 at competitive rates",
+      "description": "Veo4 generation costs significantly less than comparable platforms."
     },
     "multiModel": {
-      "title": "Sora 3 multi-model approach",
-      "description": "Sora 3 leverages multiple engines for reliable, consistent output."
+      "title": "Veo4 multi-model approach",
+      "description": "Veo4 leverages multiple engines for reliable, consistent output."
     },
     "storyboard": {
-      "title": "Sora 3 extended narratives",
-      "description": "Sora 3 Storyboard builds complete brand stories up to 25 seconds."
+      "title": "Veo4 extended narratives",
+      "description": "Veo4 Storyboard builds complete brand stories up to 25 seconds."
     },
-    "solution": "Sora 3 addresses all of these challenges"
+    "solution": "Veo4 addresses all of these challenges"
   },
   "whoThisIsFor": {
-    "title": "Who Builds Campaigns with Sora 3",
-    "subtitle": "From content creators to marketing directors, Sora 3 empowers teams to produce professional video content that drives results.",
+    "title": "Who Builds Campaigns with Veo4",
+    "subtitle": "From content creators to marketing directors, Veo4 empowers teams to produce professional video content that drives results.",
     "creators": {
       "title": "Content creators & influencers",
-      "description": "Produce Sora 3 videos for social platforms without watermarks or production overhead."
+      "description": "Produce Veo4 videos for social platforms without watermarks or production overhead."
     },
     "ecommerce": {
       "title": "E-commerce & marketplace sellers",
-      "description": "Generate Sora 3 product videos and promotional content that converts, without studio costs."
+      "description": "Generate Veo4 product videos and promotional content that converts, without studio costs."
     },
     "businesses": {
       "title": "Growing businesses",
-      "description": "Access Sora 3 quality video production at a fraction of agency pricing."
+      "description": "Access Veo4 quality video production at a fraction of agency pricing."
     },
     "marketers": {
       "title": "Marketing teams testing creatives",
-      "description": "Rapidly produce Sora 3 video variations for A/B testing and campaign optimization."
+      "description": "Rapidly produce Veo4 video variations for A/B testing and campaign optimization."
     },
     "shortFilmStudios": {
       "title": "Production studios",
-      "description": "Leverage Sora 3 technology to enhance projects with cinematic quality."
+      "description": "Leverage Veo4 technology to enhance projects with cinematic quality."
     },
     "advertisers": {
       "title": "Advertising agencies",
-      "description": "Deliver Sora 3 video content that meets client expectations and campaign objectives."
+      "description": "Deliver Veo4 video content that meets client expectations and campaign objectives."
     }
   },
   "blogShowcase": {
-    "title": "Sora 3 Strategies for Creators & Brands",
-    "subtitle": "Actionable insights to maximize your Sora 3 video performance and campaign results.",
+    "title": "Veo4 Strategies for Creators & Brands",
+    "subtitle": "Actionable insights to maximize your Veo4 video performance and campaign results.",
     "viewAll": "View all blog posts",
     "readMore": "Read More",
     "featured": "Featured"
@@ -216,55 +220,51 @@
     "emptyDescription": "Add Markdown files to content/blog and they will appear here."
   },
   "howItWorks": {
-    "title": "How to Create Sora 3 Videos in Minutes",
-    "subtitle": "Transform your concepts into polished Sora 3 content through three straightforward steps.",
+    "title": "How to Create Veo4 Videos in Minutes",
+    "subtitle": "Transform your concepts into polished Veo4 content through three straightforward steps.",
     "step1": {
       "title": "Share your vision or upload an image",
-      "description": "Describe what you want to see in your Sora 3 video, or provide a starting image for Sora 3 to animate."
+      "description": "Describe what you want to see in your Veo4 video, or provide a starting image for Veo4 to animate."
     },
     "step2": {
-      "title": "Configure your Sora 3 output settings",
-      "description": "Pick aspect ratio and duration, or set up Sora 3 Storyboard scenes for extended narratives."
+      "title": "Configure your Veo4 output settings",
+      "description": "Pick aspect ratio and duration, or set up Veo4 Storyboard scenes for extended narratives."
     },
     "step3": {
-      "title": "Export your Sora 3 video ready for campaigns",
-      "description": "Download your Sora 3 creation in HD or 4K, immediately deployable for ads and brand content."
+      "title": "Export your Veo4 video ready for campaigns",
+      "description": "Download your Veo4 creation in HD or 4K, immediately deployable for ads and brand content."
     }
   },
   "faq": {
-    "title": "Frequently Asked Questions About Sora 3",
-    "subtitle": "Find answers about Sora 3 video generation, campaign use, and platform capabilities. Understand how Sora 3 works and why marketing teams choose Sora 3 for their video content needs.",
+    "title": "Frequently Asked Questions About Veo4",
+    "subtitle": "Find answers about Veo4 video generation, campaign use, and platform capabilities. Understand how Veo4 works and why marketing teams choose Veo4 for their video content needs.",
     "viewAllFaqs": "View All FAQs",
     "contactSupport": "Contact Support",
     "haveMoreQuestions": "Have more questions? We're here to help.",
     "questions": {
       "whatMakesDifferent": {
-        "question": "What sets Sora 3 apart from other video generation platforms?",
-        "answer": "Sora 3 excels at building extended narratives through Sora 3 Storyboard, maintaining character consistency throughout. While competitors limit output to brief clips, Sora 3 produces 25+ second stories ideal for brand campaigns, product launches, and social content. Sora 3 Storyboard gives you scene-by-scene control, preserves character identity, and delivers campaign-ready Sora 3 videos."
+        "question": "What sets Veo4 apart from other video generation platforms?",
+        "answer": "Veo4 excels at building extended narratives through Veo4 Storyboard, maintaining character consistency throughout. While competitors limit output to brief clips, Veo4 produces 25+ second stories ideal for brand campaigns, product launches, and social content. Veo4 Storyboard gives you scene-by-scene control, preserves character identity, and delivers campaign-ready Veo4 videos."
       },
       "characterConsistency": {
-        "question": "How does Sora 3 maintain character consistency across scenes?",
-        "answer": "Sora 3 Storyboard preserves character appearance, wardrobe, and styling across every scene in your Sora 3 video. This Sora 3 capability is crucial for brand narratives, character-driven campaigns, and product demonstrations where consistent identity matters."
+        "question": "How does Veo4 maintain character consistency across scenes?",
+        "answer": "Veo4 Storyboard preserves character appearance, wardrobe, and styling across every scene in your Veo4 video. This Veo4 capability is crucial for brand narratives, character-driven campaigns, and product demonstrations where consistent identity matters."
       },
       "videosLongerThan10s": {
-        "question": "Can Sora 3 generate videos longer than 10 seconds?",
-        "answer": "Yes. Sora 3 supports extended durations up to 25-30 seconds via Sora 3 Storyboard mode. This Sora 3 feature solves a key limitation, enabling full brand stories rather than fragmented clips. Sora 3 extended videos perform better in campaigns."
+        "question": "Can Veo4 generate videos longer than 10 seconds?",
+        "answer": "Yes. Veo4 supports extended durations up to 25-30 seconds via Veo4 Storyboard mode. This Veo4 feature solves a key limitation, enabling full brand stories rather than fragmented clips. Veo4 extended videos perform better in campaigns."
       },
       "commercialUse": {
-        "question": "Are Sora 3 videos suitable for commercial advertising?",
-        "answer": "Absolutely. Sora 3 generated content is fully licensed for commercial use, including paid ads, e-commerce videos, and social campaigns. You retain full rights to Sora 3 videos you create, subject to our usage guidelines."
+        "question": "Are Veo4 videos suitable for commercial advertising?",
+        "answer": "Absolutely. Veo4 generated content is fully licensed for commercial use, including paid ads, e-commerce videos, and social campaigns. You retain full rights to Veo4 videos you create, subject to our usage guidelines."
       },
       "watermarks": {
-        "question": "Do Sora 3 videos include watermarks?",
-        "answer": "No — all Sora 3 exports are completely watermark-free. Premium Sora 3 plans ensure no platform branding appears on downloads. Your Sora 3 videos export clean and ready for immediate campaign deployment. Note: This applies only to watermarks added by our platform, not third-party content."
-      },
-      "officialModel": {
-        "question": "Does this platform use official Sora 3 technology?",
-        "answer": "We leverage advanced Sora 3 compatible technology to deliver professional results. This enables immediate Sora 3 video creation without waiting for official access."
+        "question": "Do Veo4 videos include watermarks?",
+        "answer": "No — all Veo4 exports are completely watermark-free. Premium Veo4 plans ensure no platform branding appears on downloads. Your Veo4 videos export clean and ready for immediate campaign deployment. Note: This applies only to watermarks added by our platform, not third-party content."
       },
       "25SecondVideos": {
-        "question": "Can I build 25-second Sora 3 videos?",
-        "answer": "Yes — Sora 3 Storyboard enables 25-second Sora 3 multi-scene generation for complete brand narratives."
+        "question": "Can I build 25-second Veo4 videos?",
+        "answer": "Yes — Veo4 Storyboard enables 25-second Veo4 multi-scene generation for complete brand narratives."
       },
       "paymentSafe": {
         "question": "If I make a payment, will my payment information be safe?",
@@ -291,14 +291,14 @@
     "ourPriceValue": "$0.05/s",
     "fiftyPercentCheaper": "50% CHEAPER",
     "thanMarket": "than market",
-    "chooseYourPlan": "Select Your Sora 3 Plan",
-    "teaserSubtitle": "Professional Sora 3 video generation for campaigns. Cancel anytime. Annual plans save 50%.",
+    "chooseYourPlan": "Select Your Veo4 Plan",
+    "teaserSubtitle": "Professional Veo4 video generation for campaigns. Cancel anytime. Annual plans save 50%.",
     "proTip": "💡 <strong>Pro tip:</strong> Subscription plans include API access, webhooks, and priority support",
     "plans": {
       "monthly": "Monthly",
       "annual": "Annual",
       "oneTime": "One-Time",
-      "save50Percent": "Save 50%",
+      "save50Percent": "Save 17%",
       "mostPopular": "Most Popular",
       "billedAnnually": "billed annually",
       "billedMonthly": "Billed monthly · cancel anytime",
@@ -321,7 +321,7 @@
       "tryAgainLater": "Please try again later.",
       "failedToCreatePaymentLink": "Failed to create payment link",
       "needHelp": "Need Help?",
-      "contactSupport": "Contact support@sora3ai.io for assistance.",
+      "contactSupport": "Contact support@veo4video.io for assistance.",
       "contactSupportLink": "Contact Support",
       "features": {
         "creditsIncluded": "{count} credits included",
@@ -362,10 +362,10 @@
       "pleaseEnterPrompt": "Please enter your prompt",
       "pleaseUploadImage": "Please upload an image to generate the video",
       "watermarkRemover": {
-        "title": "Sora3 Watermark Remover",
+        "title": "Veo4 Watermark Remover",
         "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
-        "seoTitle": "Sora3 Watermark Remover | Remove Sora Watermarks",
-        "seoDescription": "Sora3 watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+        "seoTitle": "Veo4 Watermark Remover | Remove Sora Watermarks",
+        "seoDescription": "Veo4 watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
         "input": "Input",
         "output": "Output",
         "videoUrl": "video_url",
@@ -378,8 +378,8 @@
         "waitingForResult": "Waiting for result…",
         "noOutputYet": "No output yet",
         "exampleVideo": "Example Video",
-        "exampleVideoDescription": "This is a sample video generated by Sora3 AI. Upload your own Sora video to remove watermarks!",
-        "creditsInfo": "This tool consumes 10 credits per run. Keep your Sora3 videos clean and brand-ready.",
+        "exampleVideoDescription": "This is a sample video generated by Veo4 AI. Upload your own Sora video to remove watermarks!",
+        "creditsInfo": "This tool consumes 10 credits per run. Keep your Veo4 videos clean and brand-ready.",
         "browserNotSupportVideo": "Your browser does not support the video tag."
       }
     },
@@ -407,8 +407,8 @@
       "answer": "Subscription bucket resets each billing period and does not roll over. One-time add-on credits go to the flexible bucket and are not cleared by subscription resets."
     },
     "faqRefundPolicy": {
-      "question": "What is sora3ai.io refund policy?",
-      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@sora3ai.io for refunds. For general inquiries and partnerships, contact team@sora3ai.io. Refunds are processed within 5-7 business days."
+      "question": "What is veo4video.io refund policy?",
+      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@veo4video.io for refunds. Refunds are processed within 5-7 business days."
     },
     "faqContentRestrictions": {
       "question": "Are there any video content restrictions?",
@@ -449,12 +449,12 @@
     "video": "Video",
     "credits": "Credits",
     "exampleVideo": "Example Video",
-    "sampleVideoDescription": "This is a sample video generated by Sora3 AI. Create your own videos using the input panel!",
-    "sampleVideoDescriptionUnauthenticated": "This is a sample video generated by Sora3 AI. Sign up to create your own!",
+    "sampleVideoDescription": "This is a sample video generated by Veo4 AI. Create your own videos using the input panel!",
+    "sampleVideoDescriptionUnauthenticated": "This is a sample video generated by Veo4 AI. Sign up to create your own!",
     "browserNotSupportVideo": "Your browser does not support the video tag.",
     "signUpToCreate": "Sign Up to Create Your Own",
-    "textToVideoTitle": "Text to Video of AI Video Generator",
-    "textToVideoSubtitle": "Transform your ideas into cinematic videos - just by typing.",
+    "textToVideoTitle": "Veo 4 Texto a Video | Crear Video AI",
+    "textToVideoSubtitle": "Convierte prompts en videos Veo 4 con buen movimiento, escenas limpias y salida lista para anuncios.",
     "textToVideoFeaturesTitle": "The Features of AI Video Generator for Text to Video",
     "featureAIPowered": {
       "title": "AI-Powered Script-to-Screen Magic",
@@ -474,7 +474,7 @@
     },
     "howToUseTitle": "How to Use the AI Video Generator for Text to Video",
     "howToUseStep1": {
-      "title": "Sign Up or Log In to sora3ai.io",
+      "title": "Sign Up or Log In to veo4video.io",
       "description": "Create an account to unlock the full features of our Text to Video interface."
     },
     "howToUseStep2": {
@@ -489,58 +489,58 @@
       "title": "Click to Generate",
       "description": "Click the \"Generate\" button. The AI will process your script and create a video with matching visuals, motion, and music. It only takes a few minutes, and your video will be ready to preview and download."
     },
-    "whoUsesTitle": "Who Uses Sora3?",
+    "whoUsesTitle": "Who Uses Veo4?",
     "whoUsesContentCreators": "Content creators",
     "whoUsesTikTokMarketers": "TikTok marketers",
-    "imageToVideoTitle": "Sora3 Image to Video Generator - Transform Photos into Cinematic Videos",
-    "imageToVideoSubtitle": "Use Sora3 AI to bring your static images to life with cinematic motion. Sora3 image-to-video technology creates professional videos from photos with natural movement and realistic effects. Just upload your image and let Sora3 handle the rest.",
-    "imageToVideoFeaturesTitle": "Sora3 Image to Video Features - Advanced AI Video Generation",
+    "imageToVideoTitle": "Veo 4 Imagen a Video | Animar Fotos",
+    "imageToVideoSubtitle": "Convierte fotos en videos Veo 4 con movimiento natural, buen detalle y salida lista para anuncios.",
+    "imageToVideoFeaturesTitle": "Veo4 Image to Video Features - Advanced AI Video Generation",
     "imageToVideoFeature1": {
-      "title": "Sora3 Simple Image-to-Motion Transformation",
-      "description": "With Sora3 Image to Video, just upload your photo and watch it come alive. Sora3 AI engine analyzes your image and generates natural, cinematic motion that enhances the scene. Sora3 is perfect for product showcases, artistic creations, and bringing still moments into dynamic stories."
+      "title": "Veo4 Simple Image-to-Motion Transformation",
+      "description": "With Veo4 Image to Video, just upload your photo and watch it come alive. Veo4 AI engine analyzes your image and generates natural, cinematic motion that enhances the scene. Veo4 is perfect for product showcases, artistic creations, and bringing still moments into dynamic stories."
     },
     "imageToVideoFeature2": {
-      "title": "Sora3 Professional Motion with Zero Animation Skills",
-      "description": "Sora3 advanced AI understands depth, lighting, and composition. Sora3 generates smooth camera movements, natural object motion, and realistic environmental effects - all without requiring any animation or video editing expertise. Transform your portfolio photos into professional video content with Sora3."
+      "title": "Veo4 Professional Motion with Zero Animation Skills",
+      "description": "Veo4 advanced AI understands depth, lighting, and composition. Veo4 generates smooth camera movements, natural object motion, and realistic environmental effects - all without requiring any animation or video editing expertise. Transform your portfolio photos into professional video content with Veo4."
     },
     "imageToVideoFeature3": {
-      "title": "Sora3 Automatic Audio Generation",
-      "description": "Every Sora3 video comes with perfectly matched background music and ambient sounds. Sora3 AI analyzes your image's mood and atmosphere to create audio that complements the visual story. It's a complete Sora3 video creation experience from a single image."
+      "title": "Veo4 Automatic Audio Generation",
+      "description": "Every Veo4 video comes with perfectly matched background music and ambient sounds. Veo4 AI analyzes your image's mood and atmosphere to create audio that complements the visual story. It's a complete Veo4 video creation experience from a single image."
     },
     "imageToVideoFeature4": {
-      "title": "Sora3 Intelligent Scene Understanding",
-      "description": "Sora3 AI recognizes objects, people, landscapes, and scenes in your image. Sora3 generates motion that makes sense contextually - whether it's a gentle breeze through trees, a product rotating in 3D space, or a portrait with subtle movement. Every Sora3 animation feels natural and purposeful."
+      "title": "Veo4 Intelligent Scene Understanding",
+      "description": "Veo4 AI recognizes objects, people, landscapes, and scenes in your image. Veo4 generates motion that makes sense contextually - whether it's a gentle breeze through trees, a product rotating in 3D space, or a portrait with subtle movement. Every Veo4 animation feels natural and purposeful."
     },
-    "imageToVideoHowToUseTitle": "How to Use Sora3 Image to Video Generator",
+    "imageToVideoHowToUseTitle": "How to Use Veo4 Image to Video Generator",
     "imageToVideoHowToUseStep1": {
-      "title": "Sign Up or Log In to sora3ai.io",
-      "description": "Create an account to unlock the full Sora3 Image to Video features and start using Sora3 AI technology."
+      "title": "Sign Up or Log In to veo4video.io",
+      "description": "Create an account to unlock the full Veo4 Image to Video features and start using Veo4 AI technology."
     },
     "imageToVideoHowToUseStep2": {
-      "title": "Access Sora3 Image to Video Panel",
-      "description": "Navigate to the Sora3 Image to Video tool on your dashboard. Sora3 interface is designed for easy image-to-video conversion."
+      "title": "Access Veo4 Image to Video Panel",
+      "description": "Navigate to the Veo4 Image to Video tool on your dashboard. Veo4 interface is designed for easy image-to-video conversion."
     },
     "imageToVideoHowToUseStep3": {
-      "title": "Upload Your Image to Sora3",
-      "description": "Drag and drop or select your image file for Sora3 processing. Sora3 supports photos, illustrations, product images, or any static visual you want to animate with Sora3."
+      "title": "Upload Your Image to Veo4",
+      "description": "Drag and drop or select your image file for Veo4 processing. Veo4 supports photos, illustrations, product images, or any static visual you want to animate with Veo4."
     },
     "imageToVideoHowToUseStep4": {
-      "title": "Generate with Sora3",
-      "description": "Click the \"Generate\" button and let Sora3 AI analyze your image. Sora3 creates videos with natural motion, camera movement, and synchronized audio. Your Sora3 animated video will be ready in minutes."
+      "title": "Generate with Veo4",
+      "description": "Click the \"Generate\" button and let Veo4 AI analyze your image. Veo4 creates videos with natural motion, camera movement, and synchronized audio. Your Veo4 animated video will be ready in minutes."
     },
-    "imageToVideoPageTitle": "Sora3 Image to Video Generator",
-    "imageToVideoPageSubtitle": "Transform your images into cinematic videos with Sora3 AI technology — no watermark",
-    "imageToVideoTestimonialsTitle": "Why Choose Sora3 Image to Video Generator",
+    "imageToVideoPageTitle": "Veo 4 Imagen a Video",
+    "imageToVideoPageSubtitle": "Transform your images into cinematic videos with Veo4 AI technology — no watermark",
+    "imageToVideoTestimonialsTitle": "Why Choose Veo4 Image to Video Generator",
     "imageToVideoTestimonial1": {
-      "quote": "I uploaded a product photo and Sora3 generated a professional video ad in minutes. Sora3 has completely changed how I create content for my online store!",
+      "quote": "I uploaded a product photo and Veo4 generated a professional video ad in minutes. Veo4 has completely changed how I create content for my online store!",
       "author": "Emma L., E-commerce Owner"
     },
     "imageToVideoTestimonial2": {
-      "quote": "As a photographer, I love how Sora3 brings my static images to life. Sora3 motion feels natural and adds so much depth to my portfolio.",
+      "quote": "As a photographer, I love how Veo4 brings my static images to life. Veo4 motion feels natural and adds so much depth to my portfolio.",
       "author": "Michael R., Professional Photographer"
     },
     "imageToVideoTestimonial3": {
-      "quote": "Sora3 Image to Video feature saved me hours of animation work. I can now create engaging social media content from my existing photos instantly with Sora3.",
+      "quote": "Veo4 Image to Video feature saved me hours of animation work. I can now create engaging social media content from my existing photos instantly with Veo4.",
       "author": "Jessica T., Social Media Manager"
     },
     "imageToVideoTestimonial4": {
@@ -590,8 +590,8 @@
     },
     "reframeMode": {
       "model": "Model",
-      "sora3": "Sora3",
-      "sora3Pro": "Sora3 pro",
+      "sora3": "Veo4",
+      "sora3Pro": "Veo4 pro",
       "sora3Description": "OpenAI's advanced video generation model with high-quality output and precise control.",
       "sora3ProDescription": "OpenAI's premium video generation model with enhanced quality, superior realism, and advanced control capabilities.",
       "prompt": "Prompt *",
@@ -722,31 +722,31 @@
       "generationTimeNote": "⏱️ This typically takes 5-15 minutes. Please keep this page open.",
       "exampleDescription": "Here's an example of a 25-second multi-scene storyboard video. Configure your scenes and click generate to create your own.",
       "exampleNote": "Example: 3-scene storyboard (8s + 8s + 9s = 25s total)",
-      "whatIsSora3ProStoryboard": "What is Sora3 Pro Storyboard?",
-      "sora3ProStoryboardDescription": "Sora3 Pro Storyboard is a cutting-edge AI video generation system designed for sequential content production. Build multi-scene AI videos up to 25s for Youtube Shorts, TikTok and Reels. This robust platform enables multi-scene coordination, maintains visual consistency and coherence, provides precise control over outputs up to 25 seconds in length, and exports HD quality videos with audio.",
+      "whatIsSora3ProStoryboard": "What is Veo4 Pro Storyboard?",
+      "sora3ProStoryboardDescription": "Veo4 Pro Storyboard is a cutting-edge AI video generation system designed for sequential content production. Build multi-scene AI videos up to 25s for Youtube Shorts, TikTok and Reels. This robust platform enables multi-scene coordination, maintains visual consistency and coherence, provides precise control over outputs up to 25 seconds in length, and exports HD quality videos with audio.",
       "upTo25sDuration": "Up to 25s Duration",
       "multiSceneControl": "Multi-Scene Control (Storyboard)",
       "socialMediaReady": "Social Media Ready",
       "hdQualityAudio": "HD Quality + Audio",
-      "whatPeopleAreSaying": "What People Are Saying About Sora3 Pro Storyboard",
-      "keyFeatures": "Key Features of Sora3 Pro Storyboard",
+      "whatPeopleAreSaying": "What People Are Saying About Veo4 Pro Storyboard",
+      "keyFeatures": "Key Features of Veo4 Pro Storyboard",
       "multiSceneSequencing": "Multi-Scene Sequencing",
-      "multiSceneSequencingDescription": "With Sora3 Pro Storyboard, define multiple scenes in order to create coherent storylines. The Sora3 Pro Storyboard engine ensures smooth transitions between scenes for seamless multi-scene videos.",
+      "multiSceneSequencingDescription": "With Veo4 Pro Storyboard, define multiple scenes in order to create coherent storylines. The Veo4 Pro Storyboard engine ensures smooth transitions between scenes for seamless multi-scene videos.",
       "visualConsistency": "Visual Consistency",
-      "visualConsistencyDescription": "Sora3 Pro Storyboard maintains consistent visual style and elements across all scenes, delivering professional-quality video output that viewers expect from Sora3 Pro Storyboard.",
+      "visualConsistencyDescription": "Veo4 Pro Storyboard maintains consistent visual style and elements across all scenes, delivering professional-quality video output that viewers expect from Veo4 Pro Storyboard.",
       "flexibleOutputControl": "Flexible Output Control",
-      "flexibleOutputControlDescription": "Generate videos up to 25 seconds with Sora3 Pro Storyboard. Choose 10s, 15s, or 25s duration options to fit your content needs using Sora3 Pro Storyboard.",
+      "flexibleOutputControlDescription": "Generate videos up to 25 seconds with Veo4 Pro Storyboard. Choose 10s, 15s, or 25s duration options to fit your content needs using Veo4 Pro Storyboard.",
       "referenceImageSupport": "Reference Image Support",
-      "referenceImageSupportDescription": "Upload a reference image to guide the Sora3 Pro Storyboard generation process, ensuring visual consistency throughout your Sora3 Storyboard video.",
-      "howToUse": "How to Use Sora3 Pro Storyboard",
+      "referenceImageSupportDescription": "Upload a reference image to guide the Veo4 Pro Storyboard generation process, ensuring visual consistency throughout your Veo4 Storyboard video.",
+      "howToUse": "How to Use Veo4 Pro Storyboard",
       "step1DefineScenes": "Define Scenes",
-      "step1Description": "Describe each scene in detail for Sora3 Pro Storyboard",
+      "step1Description": "Describe each scene in detail for Veo4 Pro Storyboard",
       "step2SetParameters": "Set Parameters",
       "step2Description": "Choose duration (10s/15s/25s) and aspect ratio",
       "step3UploadReference": "Upload Reference",
-      "step3Description": "Add an image to guide Sora3 Pro Storyboard (Optional)",
+      "step3Description": "Add an image to guide Veo4 Pro Storyboard (Optional)",
       "step4Generate": "Generate",
-      "step4Description": "Click generate and let Sora3 Pro Storyboard create your video",
+      "step4Description": "Click generate and let Veo4 Pro Storyboard create your video",
       "perfectFor": "Perfect for TikTok, Instagram Reels, YouTube Shorts, and brand content creation. Learn more about our",
       "pricingPlans": "pricing plans",
       "pricing": "💎 Pricing",
@@ -757,13 +757,13 @@
       "socialMediaFormats": "Social Media Formats",
       "socialMediaFormatsDescription": "Built-in templates for TikTok, Instagram Reels, YouTube Shorts.",
       "fastExportShare": "Fast Export & Share",
-      "fastExportShareDescription": "Generate, preview and download your Sora3 Storyboard videos in minutes."
+      "fastExportShareDescription": "Generate, preview and download your Veo4 Storyboard videos in minutes."
     },
     "watermarkRemover": {
-      "title": "Sora3 Watermark Remover",
+      "title": "Veo4 Watermark Remover",
       "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
-      "seoTitle": "Sora3 Watermark Remover | Remove Sora Watermarks",
-      "seoDescription": "Sora3 watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+      "seoTitle": "Veo4 Watermark Remover | Remove Sora Watermarks",
+      "seoDescription": "Veo4 watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
       "input": "Input",
       "output": "Output",
       "videoUrl": "video_url",
@@ -776,8 +776,8 @@
       "waitingForResult": "Waiting for result…",
       "noOutputYet": "No output yet",
       "exampleVideo": "Example Video",
-      "exampleVideoDescription": "This is a sample video generated by Sora3 AI. Upload your own Sora video to remove watermarks!",
-      "creditsInfo": "This tool consumes 10 credits per run. Keep your Sora3 videos clean and brand-ready.",
+      "exampleVideoDescription": "This is a sample video generated by Veo4 AI. Upload your own Sora video to remove watermarks!",
+      "creditsInfo": "This tool consumes 10 credits per run. Keep your Veo4 videos clean and brand-ready.",
       "browserNotSupportVideo": "Your browser does not support the video tag."
     },
     "promptExamples": {
@@ -792,13 +792,13 @@
     }
   },
   "demoGallery": {
-    "title": "Explore Sora 3 Video Examples",
-    "description": "Real Sora 3 videos created by our platform, showcasing Sora 3 capabilities for ads and brand content.",
+    "title": "Explore Veo4 Video Examples",
+    "description": "Real Veo4 videos created by our platform, showcasing Veo4 capabilities for ads and brand content.",
     "seeMoreExamples": "See more examples",
     "tapToUnmute": "Tap to unmute"
   },
   "keyFeatures": {
-    "title": "What makes Sora3 AI different",
+    "title": "What makes Veo4 AI different",
     "noWatermark": {
       "title": "No watermark",
       "description": "Your videos are clean, brandable, and ready for commercial use."
@@ -812,8 +812,8 @@
       "description": "Generate 10-second clips within minutes — right in the browser."
     },
     "sora3ProStoryboard": {
-      "title": "Sora3 Pro Storyboard (25 seconds)",
-      "description": "Sora3 Storyboard storytelling for ads, trailers, product showcases, and cinematic short films."
+      "title": "Veo4 Pro Storyboard (25 seconds)",
+      "description": "Veo4 Storyboard storytelling for ads, trailers, product showcases, and cinematic short films."
     },
     "textToVideoImageToVideo": {
       "title": "Text-to-video & image-to-video",
@@ -824,14 +824,14 @@
       "description": "Perfect for TikTok, Reels, Shorts, and paid ads."
     },
     "trySora3Free": {
-      "title": "Try Sora3 Free — No Editing Required",
-      "description": "Start creating cinematic videos with Sora3 AI-powered tools. Sora3 makes video creation easy - no experience needed. Discover what Sora3 can do for your projects. Try Sora3 free and see why creators choose Sora3 for AI video generation.",
+      "title": "Try Veo4 Free — No Editing Required",
+      "description": "Start creating cinematic videos with Veo4 AI-powered tools. Veo4 makes video creation easy - no experience needed. Discover what Veo4 can do for your projects. Try Veo4 free and see why creators choose Veo4 for AI video generation.",
       "startGenerating": "Start Generating"
     }
   },
   "testimonials": {
     "title": "Loved by creators worldwide",
-    "subtitle": "Join creators worldwide who use Sora3 for AI video generation. See what users say about our platform watermark-free videos and rendering features. Discover why Sora3 is trusted by creators using Sora3 technology.",
+    "subtitle": "Join creators worldwide who use Veo4 for AI video generation. See what users say about our platform watermark-free videos and rendering features. Discover why Veo4 is trusted by creators using Veo4 technology.",
     "ctaTitle": "Join creators making videos with AI",
     "ctaDescription": "Experience AI video generation with watermark-free videos, audio features, and efficient rendering. Start creating videos today.",
     "ctaButton": "Start Creating Now"
@@ -842,7 +842,7 @@
   },
   "auth": {
     "signIn": "Sign In",
-    "signInToSora3": "Sign In to Sora3",
+    "signInToSora3": "Sign In to Veo4",
     "createAccount": "Create Account",
     "checkEmail": "Check Your Email",
     "backToSignUp": "Back to Sign Up",
@@ -865,30 +865,31 @@
     "redirectingToGoogle": "Redirecting to Google..."
   },
   "sora3Capabilities": {
-    "title": "Why Sora 3 Excels for Ad Campaigns",
+    "title": "Why Veo4 Excels for Ad Campaigns",
+    "subtitle": "Veo4 ayuda a los equipos a crear mejor video más rápido, con movimiento más fluido, escenas más limpias y resultados útiles para flujos reales de marketing.",
     "cinematicRealism": {
-      "title": "Sora 3 Film-Grade Quality",
-      "description": "Sora 3 produces studio-level visuals that elevate brand messaging.\n\nEvery Sora 3 video maintains consistent quality without artifacts.\n\nSora 3 output works seamlessly for product launches, brand stories, and marketing campaigns."
+      "title": "Veo4 Film-Grade Quality",
+      "description": "Veo4 produces studio-level visuals that elevate brand messaging.\n\nEvery Veo4 video maintains consistent quality without artifacts.\n\nVeo4 output works seamlessly for product launches, brand stories, and marketing campaigns."
     },
     "naturalCameraMotion": {
-      "title": "Sora 3 Smart Camera Control",
-      "description": "Sora 3 automatically handles professional camera movements and angles.\n\nSora 3 generates smooth, natural motion that feels intentional.\n\nSora 3 camera work enhances your ad's production value instantly."
+      "title": "Veo4 Smart Camera Control",
+      "description": "Veo4 automatically handles professional camera movements and angles.\n\nVeo4 generates smooth, natural motion that feels intentional.\n\nVeo4 camera work enhances your ad's production value instantly."
     },
     "consistentCharacters": {
-      "title": "Sora 3 Character Consistency",
-      "description": "Sora 3 maintains character appearance across multiple scenes.\n\nSora 3 handles complex character actions while preserving identity.\n\nSora 3 is built for multi-scene brand narratives and ad storytelling."
+      "title": "Veo4 Character Consistency",
+      "description": "Veo4 maintains character appearance across multiple scenes.\n\nVeo4 handles complex character actions while preserving identity.\n\nVeo4 is built for multi-scene brand narratives and ad storytelling."
     },
     "longFormPlatformReady": {
-      "title": "Sora 3 Extended Duration",
-      "description": "Sora 3 supports up to 25-second videos for complete brand stories.\n\nSora 3 content is optimized for social platforms and ad placements.\n\nSora 3 videos export clean and ready for immediate campaign use."
+      "title": "Veo4 Extended Duration",
+      "description": "Veo4 supports up to 25-second videos for complete brand stories.\n\nVeo4 content is optimized for social platforms and ad placements.\n\nVeo4 videos export clean and ready for immediate campaign use."
     },
     "advancedSceneIntelligence": {
-      "title": "Sora 3 Scene Understanding",
-      "description": "Sora 3 comprehends spatial relationships and environmental context.\n\nSora 3 generates scenes with realistic physics and natural interactions.\n\nSora 3 excels at product showcases, lifestyle content, and brand world-building."
+      "title": "Veo4 Scene Understanding",
+      "description": "Veo4 comprehends spatial relationships and environmental context.\n\nVeo4 generates scenes with realistic physics and natural interactions.\n\nVeo4 excels at product showcases, lifestyle content, and brand world-building."
     },
     "audioSoundGeneration": {
-      "title": "Sora 3 Integrated Audio",
-      "description": "Sora 3 generates synchronized soundscapes that match your visuals.\n\nSora 3 automatically adds dialogue, ambient sounds, and effects.\n\nSora 3 delivers complete videos ready for deployment without extra editing."
+      "title": "Veo4 Integrated Audio",
+      "description": "Veo4 generates synchronized soundscapes that match your visuals.\n\nVeo4 automatically adds dialogue, ambient sounds, and effects.\n\nVeo4 delivers complete videos ready for deployment without extra editing."
     }
   },
   "paymentSuccess": {
@@ -899,5 +900,98 @@
     "goToStudio": "Go to Studio",
     "viewDashboard": "View Dashboard",
     "autoRedirect": "You will be automatically redirected in a few seconds..."
+  },
+  "account": {
+    "dashboardMetaTitle": "Panel | Administra tu cuenta de VEO 4",
+    "dashboardMetaDescription": "Administra tu cuenta de VEO 4, créditos, suscripciones, pagos e historial de generación en un solo lugar.",
+    "myCreationsMetaTitle": "Mis Creaciones | Historial de generación de VEO 4",
+    "myCreationsMetaDescription": "Revisa tu historial de generación de VEO 4, reproduce videos terminados y descarga los clips que quieras conservar.",
+    "dashboardPageTitle": "Panel de Cuenta",
+    "dashboardPageDescription": "Administra tu suscripción, créditos, pagos e historial de video desde un solo lugar.",
+    "myCreationsPageTitle": "Mis Creaciones",
+    "myCreationsPageDescription": "Revisa tu historial de generación de VEO 4, reproduce videos finalizados y descarga los clips que quieras conservar.",
+    "stats": {
+      "creditsAvailable": "Créditos disponibles",
+      "videosGenerated": "Videos generados",
+      "currentPlan": "Plan actual"
+    },
+    "tabs": {
+      "overview": "Resumen",
+      "generations": "Generaciones",
+      "subscriptions": "Suscripciones",
+      "payments": "Pagos"
+    },
+    "sections": {
+      "accountInformation": "Información de la cuenta",
+      "subscriptionStatus": "Estado de la suscripción"
+    },
+    "fields": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "currentPlan": "Plan actual",
+      "status": "Estado",
+      "nextBilling": "Próximo cobro"
+    },
+    "actions": {
+      "updateProfile": "Actualizar perfil",
+      "upgradePlan": "Mejorar plan"
+    },
+    "statuses": {
+      "active": "Activo"
+    },
+    "generationHistory": {
+      "title": "Historial de generación",
+      "loading": "Cargando historial de generación...",
+      "tryAgain": "Intentar de nuevo",
+      "emptyTitle": "No hay historial de generación",
+      "emptyDescription": "Todavía no has generado videos. Empieza a crear para verlos aquí.",
+      "refresh": "Actualizar",
+      "videoPlayer": "Reproductor de video",
+      "statuses": {
+        "completed": "Completado",
+        "processing": "Procesando",
+        "queued": "En cola",
+        "failed": "Fallido"
+      }
+    },
+    "paymentHistory": {
+      "title": "Historial de pagos",
+      "description": "Consulta todos tus registros de pago.",
+      "emptyTitle": "No se encontraron pagos",
+      "emptyDescription": "Tu historial de pagos aparecerá aquí.",
+      "labels": {
+        "type": "Tipo",
+        "subscription": "Suscripción",
+        "oneTimePurchase": "Compra única",
+        "plan": "Plan",
+        "method": "Método",
+        "unknown": "Desconocido"
+      },
+      "statuses": {
+        "succeeded": "Exitoso",
+        "failed": "Fallido",
+        "pending": "Pendiente",
+        "refunded": "Reembolsado",
+        "partiallyRefunded": "Reembolso parcial"
+      }
+    },
+    "subscriptionHistory": {
+      "title": "Historial de suscripciones",
+      "description": "Consulta todos tus registros de suscripción.",
+      "emptyTitle": "No se encontraron suscripciones",
+      "emptyDescription": "Tu historial de suscripciones aparecerá aquí.",
+      "labels": {
+        "period": "Periodo",
+        "created": "Creado"
+      },
+      "statuses": {
+        "active": "Activo",
+        "canceled": "Cancelado",
+        "pastDue": "Vencido",
+        "trialing": "En prueba",
+        "expired": "Expirado",
+        "inactive": "Inactivo"
+      }
+    }
   }
 }

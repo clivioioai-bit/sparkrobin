@@ -1,6 +1,7 @@
 import Account from '@/page-components/Account'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,20 +16,11 @@ export async function generateMetadata({
     notFound()
   }
 
-  let title = 'My Dashboard - Manage Your sora3 AI Account | sora3 AI'
-  let description = 'Manage your sora3 AI account settings, view usage, manage subscriptions and credits. Profile settings and account security management.'
-  
-  if (locale === 'ar') {
-    title = 'لوحة التحكم - إدارة حساب sora3 AI | sora3 AI'
-    description = 'إدارة إعدادات حساب sora3 AI، عرض الاستخدام، إدارة الاشتراكات والاعتمادات. إعدادات الملف الشخصي وإدارة أمان الحساب.'
-  } else if (locale === 'ja') {
-    title = 'ダッシュボード - sora3 AIアカウント管理 | sora3 AI'
-    description = 'sora3 AIアカウント設定の管理、使用状況の表示、サブスクリプションとクレジットの管理。プロフィール設定とアカウントセキュリティ管理。'
-  }
+  const t = await getTranslations({ locale, namespace: 'account' })
 
   return {
-    title,
-    description,
+    title: t('dashboardMetaTitle'),
+    description: t('dashboardMetaDescription'),
   }
 }
 
@@ -43,6 +35,12 @@ export default async function DashboardPage({
     notFound()
   }
 
-  return <Account />
-}
+  const t = await getTranslations({ locale, namespace: 'account' })
 
+  return (
+    <Account
+      pageTitle={t('dashboardPageTitle')}
+      pageDescription={t('dashboardPageDescription')}
+    />
+  )
+}

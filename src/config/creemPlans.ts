@@ -1,5 +1,8 @@
+import type { PaymentProvider } from '@/lib/payment-provider';
+
 export type CreemPlanCategory = 'subscription' | 'pack';
 export type BillingInterval = 'month' | 'year';
+export type PaymentMethodType = 'credit' | 'debit' | 'apple_pay' | 'google_pay' | 'paypal';
 
 export interface CreemPlanDefinition {
   id: string;
@@ -21,6 +24,8 @@ export interface CreemPlanDefinition {
   description?: string;
   checkoutUrl?: string;
   productId?: string;
+  dodoProductId?: string;
+  allowedPaymentMethodTypes?: PaymentMethodType[];
   features?: string[];
   iconKey?: 'zap' | 'crown' | 'building';
 }
@@ -59,6 +64,11 @@ const normalizeCheckoutUrl = (value?: string) => {
   return normalized;
 };
 
+const resolveProviderProductId = (envKeyRoot: string, provider: PaymentProvider) => {
+  const suffix = provider === 'dodo' ? '_DODO_ID' : '_ID';
+  return normalizeProductId(readEnv(`${envKeyRoot}${suffix}`));
+};
+
 const resolvePlanConfig = (
   baseId: string,
   billing: 'MONTHLY' | 'YEARLY',
@@ -67,9 +77,10 @@ const resolvePlanConfig = (
   const envKeyRoot = `NEXT_PUBLIC_CREEM_PLAN_${baseId}_${billing}${envSuffix ?? ''}`;
 
   const checkoutUrl = normalizeCheckoutUrl(readEnv(`${envKeyRoot}_URL`));
-  const productId = normalizeProductId(readEnv(`${envKeyRoot}_ID`));
+  const productId = resolveProviderProductId(envKeyRoot, 'creem');
+  const dodoProductId = resolveProviderProductId(envKeyRoot, 'dodo');
 
-  return { checkoutUrl, productId };
+  return { checkoutUrl, productId, dodoProductId };
 };
 
 const buildSubscriptionPlans = () => {
@@ -77,18 +88,18 @@ const buildSubscriptionPlans = () => {
     {
       baseId: 'basic',
       name: 'Basic',
-      monthlyPrice: 29.9,
-      yearlyPrice: 179,  // $29.9 × 12 × 0.5 = $179
-      baseCredits: 935,
+      monthlyPrice: 49,
+      yearlyPrice: 490,
+      baseCredits: 500,
       bonusCredits: 0,
-      monthlyCredits: 935,
-      yearlyCredits: 11220,  // 935 × 12
+      monthlyCredits: 500,
+      yearlyCredits: 6000,
       yearlyBonusCredits: 0,
       monthlyBadge: 'Perfect for Beginners',
-      yearlyBadge: 'Save 50%',
-      monthlyCta: 'Buy Now',
-      yearlyCta: 'Buy Now',
-      description: 'Perfect for testing and personal projects',
+      yearlyBadge: 'Save 17%',
+      monthlyCta: 'Get Started',
+      yearlyCta: 'Get Started',
+      description: 'Great for getting started with AI video creation',
       baseFeatures: [
         'HD & 4K quality options',
         'Commercial usage rights',
@@ -100,19 +111,19 @@ const buildSubscriptionPlans = () => {
     },
     {
       baseId: 'creator',
-      name: 'Creator',
-      monthlyPrice: 69.9,
-      yearlyPrice: 419,  // $69.9 × 12 × 0.5 ≈ $419
-      baseCredits: 1560,
-      bonusCredits: 180,
-      monthlyCredits: 1740,  // 1560 + 180 (10% discount)
-      yearlyCredits: 19320,  // 1560 × 12 + 600
-      yearlyBonusCredits: 600,
+      name: 'Standard',
+      monthlyPrice: 99,
+      yearlyPrice: 990,
+      baseCredits: 1100,
+      bonusCredits: 0,
+      monthlyCredits: 1100,
+      yearlyCredits: 13200,
+      yearlyBonusCredits: 0,
       monthlyBadge: 'Most Popular',
-      yearlyBadge: 'Save 50%',
-      monthlyCta: 'Buy Now',
-      yearlyCta: 'Buy Now',
-      description: 'For content creators and small teams',
+      yearlyBadge: 'Save 17%',
+      monthlyCta: 'Get Standard',
+      yearlyCta: 'Get Standard',
+      description: 'For professionals who need director-level control',
       baseFeatures: [
         'HD & 4K quality options',
         'Priority queue',
@@ -126,18 +137,18 @@ const buildSubscriptionPlans = () => {
     {
       baseId: 'pro',
       name: 'Pro',
-      monthlyPrice: 149,
-      yearlyPrice: 894,  // $149 × 12 × 0.5 = $894
-      baseCredits: 4650,
-      bonusCredits: 450,
-      monthlyCredits: 5100,  // 4650 + 450
-      yearlyCredits: 57000,  // 4650 × 12 + 1200
-      yearlyBonusCredits: 1200,
+      monthlyPrice: 200,
+      yearlyPrice: 2000,
+      baseCredits: 2400,
+      bonusCredits: 0,
+      monthlyCredits: 2400,
+      yearlyCredits: 28800,
+      yearlyBonusCredits: 0,
       monthlyBadge: 'For Professionals',
-      yearlyBadge: 'Save 50%',
-      monthlyCta: 'Buy Now',
-      yearlyCta: 'Buy Now',
-      description: 'For agencies, studios & power users',
+      yearlyBadge: 'Save 17%',
+      monthlyCta: 'Get Pro',
+      yearlyCta: 'Get Pro',
+      description: 'Maximum power for teams and production workflows',
       baseFeatures: [
         'HD & 4K quality options',
         'Fastest queue',
@@ -151,7 +162,7 @@ const buildSubscriptionPlans = () => {
     }
   ];
 
-  const yearlyBadgeFallback = 'Annual Savings';
+  const yearlyBadgeFallback = 'Save 17%';
 
   return tiers.flatMap((tier) => {
     const baseName = tier.name;
@@ -185,6 +196,8 @@ const buildSubscriptionPlans = () => {
         cta: tier.monthlyCta ?? 'Start Creating',
         checkoutUrl: monthlyPlanConfig.checkoutUrl,
         productId: monthlyPlanConfig.productId,
+        dodoProductId: monthlyPlanConfig.dodoProductId,
+        allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
         features: [...tier.baseFeatures],
         iconKey: tier.iconKey,
       },
@@ -204,6 +217,8 @@ const buildSubscriptionPlans = () => {
         cta: tier.yearlyCta ?? 'Save with Annual',
         checkoutUrl: yearlyPlanConfig.checkoutUrl,
         productId: yearlyPlanConfig.productId,
+        dodoProductId: yearlyPlanConfig.dodoProductId,
+        allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
         features: [...tier.baseFeatures],
         iconKey: tier.iconKey,
       }
@@ -218,49 +233,55 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     id: 'starter',
     category: 'pack',
     name: 'Starter Pack',
-    priceCents: toUsdCents(39),
+    priceCents: toUsdCents(50),
     originalPriceCents: undefined,
     discountPercent: undefined,
     currency: 'USD',
-    credits: 800,
+    credits: 500,
     bonusCredits: 0,
     description: 'Pay once, use anytime — credits never expire',
     checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_URL),
     productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_ID),
+    dodoProductId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_DODO_ID),
+    allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
     iconKey: 'zap' as const,
   },
   {
     id: 'creator_pack',
     category: 'pack',
     name: 'Creator Pack',
-    priceCents: toUsdCents(99),
-    originalPriceCents: 11000,
-    discountPercent: 10,
+    priceCents: toUsdCents(200),
+    originalPriceCents: undefined,
+    discountPercent: undefined,
     currency: 'USD',
-    credits: 2400,
-    bonusCredits: 140,
+    credits: 2100,
+    bonusCredits: 0,
     badge: 'Most Popular',
     popular: true,
     highlight: true,
     description: 'Pay once, use anytime — credits never expire',
     checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_URL),
     productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_ID),
+    dodoProductId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_DODO_ID),
+    allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
     iconKey: 'crown' as const,
   },
   {
     id: 'dev_team',
     category: 'pack',
     name: 'Professional Pack',
-    priceCents: toUsdCents(199),
-    originalPriceCents: 24875,
-    discountPercent: 20,
+    priceCents: toUsdCents(400),
+    originalPriceCents: undefined,
+    discountPercent: undefined,
     currency: 'USD',
-    credits: 5400,
-    bonusCredits: 300,
+    credits: 5000,
+    bonusCredits: 0,
     badge: 'Best Value',
     description: 'Pay once, use anytime — credits never expire',
     checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_DEV_URL),
     productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_DEV_ID),
+    dodoProductId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_DEV_DODO_ID),
+    allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
     iconKey: 'building' as const,
     features: ['1-on-1 24/7 customer support'],
   },
@@ -271,3 +292,14 @@ export const creemPlansById = Object.fromEntries(
 );
 
 export type CreemPlanId = keyof typeof creemPlansById;
+
+export function getPlanProductId(
+  plan: CreemPlanDefinition,
+  provider: PaymentProvider
+): string | undefined {
+  if (provider === 'dodo') {
+    return plan.dodoProductId;
+  }
+
+  return plan.productId;
+}

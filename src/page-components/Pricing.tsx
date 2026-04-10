@@ -1,71 +1,52 @@
 "use client";
 
-import Link from "next/link";
-import { useMemo, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
-import { subscriptionPlans } from "@/config/pricing";
 import AuthModal from "@/components/AuthModal";
-import SubscriptionPlans from "@/components/pricing/SubscriptionPlans";
 import { Lock, Check, CreditCard, MessageCircle } from "lucide-react";
 import { useTranslations } from 'next-intl';
+
+const SubscriptionPlans = dynamic(() => import("@/components/pricing/SubscriptionPlans"), {
+  ssr: false,
+  loading: () => (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      {Array.from({ length: 3 }).map((_, index) => (
+        <div key={index} className="rounded-2xl border border-border bg-card p-6">
+          <div className="space-y-4 animate-pulse">
+            <div className="space-y-3 text-center">
+              <div className="mx-auto h-12 w-12 rounded-xl bg-muted" />
+              <div className="space-y-2">
+                <div className="mx-auto h-5 w-24 rounded bg-muted" />
+                <div className="mx-auto h-10 w-32 rounded bg-muted" />
+                <div className="mx-auto h-4 w-28 rounded bg-muted" />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <div className="h-8 rounded-lg bg-muted" />
+              <div className="h-8 rounded-lg bg-muted" />
+              <div className="h-8 rounded-lg bg-muted" />
+            </div>
+            <div className="h-10 rounded-lg bg-muted" />
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+});
 
 const PricingPage = () => {
   const t = useTranslations('pricing');
   const [billingInterval, setBillingInterval] = useState<'month' | 'year'>('year');
   const [showAuthModal, setShowAuthModal] = useState(false);
 
-  const displayedPlans = useMemo(() => {
-    return subscriptionPlans.filter((plan) => plan.billingInterval === billingInterval);
-  }, [billingInterval]);
-
-  const marketPricePerCredit = 1.0;
-  const bestPricePerCredit = useMemo(() => {
-    const values = displayedPlans
-      .map((plan) => plan.pricePerCredit)
-      .filter((value): value is number => typeof value === 'number');
-    if (!values.length) return undefined;
-    return Math.min(...values);
-  }, [displayedPlans]);
-
-  const savingsPercent = bestPricePerCredit
-    ? Math.round(Math.max(0, 100 - (bestPricePerCredit / marketPricePerCredit) * 100))
-    : 0;
-
-  const intervalLabel = billingInterval === 'year' ? 'Annual' : 'Monthly';
-
-  const popularAnnualPlan = useMemo(() => {
-    if (billingInterval !== 'year') return null;
-    return displayedPlans.find((plan) => plan.popular) ?? displayedPlans[0] ?? null;
-  }, [billingInterval, displayedPlans]);
-
-  const monthlyCounterpart = useMemo(() => {
-    if (!popularAnnualPlan || !popularAnnualPlan.groupId) return null;
-    return subscriptionPlans.find(
-      (plan) => plan.groupId === popularAnnualPlan.groupId && plan.billingInterval === 'month'
-    ) ?? null;
-  }, [popularAnnualPlan]);
-
-  const annualVsMonthlyCopy = useMemo(() => {
-    if (!popularAnnualPlan || !monthlyCounterpart) return null;
-    const monthlyPrice = monthlyCounterpart.priceCents / 100;
-    const annualPrice = popularAnnualPlan.priceCents / 100;
-    const equivalentMonthly = annualPrice / 12;
-    const savings = monthlyPrice * 12 - annualPrice;
-    return {
-      planName: popularAnnualPlan.name.split('·')[0].trim(),
-      monthlyPrice,
-      equivalentMonthly,
-      savings,
-    };
-  }, [popularAnnualPlan, monthlyCounterpart]);
-
   return (
     <div className="min-h-screen bg-background" suppressHydrationWarning>
       <SEOHead 
-        title="Pricing Plans - Choose Your AI Video Generation Plan | Sora3"
-        description="View Sora3 pricing plans. Choose from Basic, Creator, or Pro plans with monthly and annual options. Create professional videos with Sora3 technology."
-        canonical="https://sora3ai.io/pricing"
+        title="Pricing Plans - Choose Your AI Video Generation Plan | Veo4"
+        description="View Veo4 pricing plans. Choose from Basic, Creator, or Pro plans with monthly and annual options. Create professional videos with Veo4 technology."
+        canonical="https://veo4video.io/pricing"
       />
       
       <div className="pt-20 pb-16">

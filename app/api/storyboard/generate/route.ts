@@ -186,21 +186,21 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Call Kie.ai Sora3 Pro Storyboard API
+    // Call Kie.ai Veo4 Pro Storyboard API
     try {
       const apiBase = process.env.KIE_API_BASE_URL;
       if (!apiBase) {
         throw new Error('KIE_API_BASE_URL not configured');
       }
       
-      // Use Sora3 Pro Storyboard endpoint
+      // Use Veo4 Pro Storyboard endpoint
       const kieApiUrl = `${apiBase}/api/v1/jobs/createTask`;
       
-      console.log(`[API] Calling Kie.ai Sora3 Pro Storyboard API: ${kieApiUrl}`);
+      console.log(`[API] Calling Kie.ai Veo4 Pro Storyboard API: ${kieApiUrl}`);
       console.log(`[API] API Base: ${apiBase}`);
       
-      // Build request body according to Sora3 Pro Storyboard API spec
-      const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://sora3ai.io'}/api/storyboard/callback`;
+      // Build request body according to Veo4 Pro Storyboard API spec
+      const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://veo4video.io'}/api/storyboard/callback`;
       
       const requestBody = {
         model: 'sora-2-pro-storyboard',
@@ -255,7 +255,7 @@ export async function POST(request: NextRequest) {
       const kieData: SoraStoryboardResponse = await kieResponse.json();
       console.log(`[API] Kie.ai response data:`, JSON.stringify(kieData, null, 2));
 
-      // Handle Kie.ai API response format according to Sora3 Pro Storyboard spec
+      // Handle Kie.ai API response format according to Veo4 Pro Storyboard spec
       if (kieData.code !== 200 || !kieData.data?.taskId) {
         console.error(`[API] Kie.ai API response error:`, kieData);
         
@@ -309,11 +309,11 @@ export async function POST(request: NextRequest) {
         jobId: kieData.data.taskId, // Return taskId as jobId for compatibility
         taskId: kieData.data.taskId, // Also return as taskId
         status: 'pending',
-        message: 'Sora3 Pro Storyboard generation started'
+        message: 'Veo4 Pro Storyboard generation started'
       });
 
     } catch (apiError) {
-      console.error(`[API ERROR] Kie.ai Sora3 Pro Storyboard API call failed - userId: ${userId}:`, apiError);
+      console.error(`[API ERROR] Kie.ai Veo4 Pro Storyboard API call failed - userId: ${userId}:`, apiError);
       
       // Refund credits on API failure
       try {
@@ -328,7 +328,7 @@ export async function POST(request: NextRequest) {
       
       // 检查是否是API限制错误
       const errorMessage = apiError instanceof Error ? apiError.message : 'Unknown error';
-      let userMessage = 'Sora3 Pro Storyboard generation failed';
+      let userMessage = 'Veo4 Pro Storyboard generation failed';
       
       if (errorMessage.includes('hourly limit')) {
         userMessage = 'API usage limit reached. Please try again in an hour.';

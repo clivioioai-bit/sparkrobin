@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import Hero from '@/components/home/Hero'
 import ToolsSection from '@/components/home/ToolsSection'
 import Footer from '@/components/Footer'
+import WhatIsVeo4Section from '@/components/home/WhatIsVeo4Section'
 
 const DemoGallery = dynamic(() => import('@/components/home/DemoGallery'), {
   loading: () => <div className="h-96" />,
@@ -16,6 +17,10 @@ const HowItWorks = dynamic(() => import('@/components/home/HowItWorks'), {
   ssr: true
 });
 const PricingTeaser = dynamic(() => import('@/components/home/PricingTeaser'), {
+  loading: () => <div className="h-96" />,
+  ssr: true
+});
+const Veo4KnowledgeSection = dynamic(() => import('@/components/home/Veo4KnowledgeSection'), {
   loading: () => <div className="h-96" />,
   ssr: true
 });
@@ -126,6 +131,7 @@ export default function HomePageClient() {
       <main>
         <Hero />
         <ToolsSection />
+        <WhatIsVeo4Section />
         <Suspense fallback={<div className="h-96" />}>
           <Sora3Capabilities />
         </Suspense>
@@ -134,6 +140,9 @@ export default function HomePageClient() {
         </Suspense>
         <Suspense fallback={<div className="h-96" />}>
           <HowItWorks />
+        </Suspense>
+        <Suspense fallback={<div className="h-96" />}>
+          <Veo4KnowledgeSection />
         </Suspense>
         <Suspense fallback={<div className="h-96" />}>
           <PricingTeaser />

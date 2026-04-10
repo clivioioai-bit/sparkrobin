@@ -512,7 +512,7 @@ function calculateCredits(
     return pricingTable[resolutionKey][durationKey];
   }
 
-  // Sora3 Pro pricing
+  // Veo4 Pro pricing
   if (model === 'sora2-pro' || model === 'sora3-pro') {
     if (quality === 'high') {
       return n_frames === '15' ? 650 : 350;
@@ -527,7 +527,7 @@ function calculateCredits(
     return n_frames === '15' ? 50 : 40;
   }
 
-  // Sora3 base pricing: 10s=30, 15s=40
+  // Veo4 base pricing: 10s=30, 15s=40
   if (n_frames === '15') {
     return 40;
   }

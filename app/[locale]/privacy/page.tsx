@@ -15,7 +15,7 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sora3ai.io'
+  const baseUrl = 'https://veo4video.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Privacy Policy | AI video generation service'
@@ -37,10 +37,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/privacy`,
-      siteName: 'Sora3',
+      siteName: 'Veo4',
       images: [
         {
-          url: 'https://sora3ai.io/logo.jpg',
+          url: 'https://veo4video.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sora3ai.io/logo.jpg']
+      images: ['https://veo4video.io/logo-v2.png']
     },
   };
 }
@@ -238,7 +238,7 @@ const PrivacyPolicy: React.FC<{ locale: string }> = ({ locale }) => {
                     Should you have any inquiries regarding this Privacy Policy or our data handling practices, please reach out to us at:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@sora3ai.io</p>
+                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@veo4video.io</p>
                     <p className="text-gray-700 mb-2"><strong>Company:</strong> AIVIDO LLC</p>
                     <p className="text-gray-700 mb-2"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
                     <p className="text-gray-700">We will respond to your inquiry within 30 days.</p>

@@ -20,7 +20,7 @@ const PaymentModal = ({ isOpen, onClose, selectedPlan = null, onSuccess }: Payme
   const [chosenPlan, setChosenPlan] = useState(selectedPlan);
   const [paymentMethod, setPaymentMethod] = useState<'subscription' | 'one-time'>('subscription');
 
-  // Creem payment integration IDs
+  // Legacy mock payment integration IDs
   const creemPlanIds = {
     basic: "plan_basic_monthly",
     creator: "plan_creator_monthly",
@@ -42,20 +42,20 @@ const PaymentModal = ({ isOpen, onClose, selectedPlan = null, onSuccess }: Payme
     setCurrentStep('processing');
     
     try {
-      // Mock Creem payment integration (delay only in development)
+      // Mock payment integration (delay only in development)
       const isDev = process.env.NEXT_PUBLIC_API_ENV === 'development';
       if (paymentMethod === 'subscription') {
         const planId = creemPlanIds[chosenPlan as keyof typeof creemPlanIds];
         if (planId) {
           if (isDev) {
-            await simulateCreemCheckout(planId, 'subscription');
+            await simulateMockCheckout(planId, 'subscription');
           }
         }
       } else {
         const productId = creemProductIds[chosenPlan as keyof typeof creemProductIds];
         if (productId) {
           if (isDev) {
-            await simulateCreemCheckout(productId, 'one-time');
+            await simulateMockCheckout(productId, 'one-time');
           }
         }
       }
@@ -78,9 +78,9 @@ const PaymentModal = ({ isOpen, onClose, selectedPlan = null, onSuccess }: Payme
     }
   };
 
-  const simulateCreemCheckout = async (productId: string, type: string): Promise<void> => {
+  const simulateMockCheckout = async (productId: string, type: string): Promise<void> => {
     return new Promise((resolve) => {
-      // Mock API call to Creem
+      // Mock API call to the active payment provider
       console.log(`Processing ${type} payment for ${productId}`);
       setTimeout(resolve, 2000);
     });
@@ -229,7 +229,7 @@ const PaymentModal = ({ isOpen, onClose, selectedPlan = null, onSuccess }: Payme
                 <div className="flex items-center space-x-4">
                   <CreditCard className="w-8 h-8 text-primary" />
                   <div>
-                    <p className="font-semibold">Credit Card via Creem</p>
+                    <p className="font-semibold">Secure checkout via Dodo Payments</p>
                     <p className="text-sm text-muted-foreground">
                       Secure payment processing with industry-standard encryption
                     </p>

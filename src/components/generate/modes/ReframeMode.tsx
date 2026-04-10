@@ -123,11 +123,12 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
     setIsExamplesOpen(false);
   };
 
-  const currentModel = params.model || 'sora3';
-  const isProModel = currentModel === 'sora3-pro' || currentModel === 'sora2-pro';
+  const currentModel = params.model === 'wan2.6' ? 'wan2.6' : 'veo3.1';
   const isVeo31 = currentModel === 'veo3.1';
   const isWan26 = currentModel === 'wan2.6';
-  const isSoraModel = currentModel === 'sora3' || currentModel === 'sora3-pro' || currentModel === 'sora2' || currentModel === 'sora2-pro';
+  const isLegacyModel = !isVeo31 && !isWan26;
+  const veoDisplayModel = params.veoDisplayModel || 'veo4';
+  const veoModelVariant = params.veoDisplayModel === 'veo4' ? 'veo3_fast' : (params.veo3SubModel || 'veo3_fast');
 
   // Calculate credits based on model, quality, and n_frames
   const calculateCredits = (): number => {
@@ -143,17 +144,6 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
     if (isVeo31) {
       return params.veo3SubModel === 'veo3' ? 250 : 60;
     }
-    if (currentModel === 'sora3-pro' || currentModel === 'sora2-pro') {
-      const quality = params.quality || 'standard';
-      if (quality === 'high') {
-        return params.n_frames === '15' ? 650 : 350;
-      }
-      return params.n_frames === '15' ? 270 : 150;
-    }
-    if (currentModel === 'sora2') {
-      return params.n_frames === '15' ? 50 : 40;
-    }
-    // Sora3 default
     return params.n_frames === '15' ? 40 : 30;
   };
 
@@ -162,35 +152,41 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
   // Get display label for the selected model in the trigger
   const getModelLabel = (): string => {
     if (isVeo31) {
-      return params.veo3SubModel === 'veo3_fast' ? t('veo3Mode.fast') : t('veo3Mode.quality');
+      if (veoDisplayModel === 'veo4') {
+        return 'Veo4';
+      }
+      return veoModelVariant === 'veo3_fast' ? 'Veo3.1 Fast' : 'Veo3.1 Quality';
     }
     if (isWan26) return 'Wan 2.6';
-    switch (currentModel) {
-      case 'sora3-pro': return t('reframeMode.sora3Pro');
-      case 'sora2': return t('reframeMode.sora2');
-      case 'sora2-pro': return t('reframeMode.sora2Pro');
-      default: return t('reframeMode.sora3');
-    }
+    return 'Veo4 Fast';
   };
 
   // Get trigger icon
   const getTriggerIcon = () => {
     if (isVeo31) return <img src="/images/google_veo_logo.jpeg" alt="Veo3.1" width={32} height={32} className="w-full h-full object-contain" />;
     if (isWan26) return <img src="/images/qwen-color.webp" alt="Wan2.6" width={32} height={32} className="w-full h-full object-contain" />;
-    return <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />;
+    return <img src="/logo-v2.png" alt="Veo4 model icon" width={32} height={32} className="w-full h-full object-contain" />;
   };
 
   // Compute the Select value — Veo3.1 uses compound values
-  const selectValue = isVeo31 ? `veo3.1-${params.veo3SubModel || 'veo3_fast'}` : currentModel;
+  const selectValue = isVeo31
+    ? (veoDisplayModel === 'veo4' ? 'veo4-veo3_fast' : `veo3.1-${veoModelVariant}`)
+    : currentModel;
 
   const handleModelChange = (value: string) => {
-    // Veo3.1 compound values
-    if (value === 'veo3.1-veo3_fast' || value === 'veo3.1-veo3') {
-      const subModel = value === 'veo3.1-veo3_fast' ? 'veo3_fast' : 'veo3';
+    // Veo4 is a frontend alias; both Veo4 and Veo3.1 selections map to the same backend model.
+    if (
+      value === 'veo4-veo3_fast' ||
+      value === 'veo3.1-veo3_fast' ||
+      value === 'veo3.1-veo3'
+    ) {
+      const subModel = value.startsWith('veo4-') ? 'veo3_fast' : value.endsWith('-veo3_fast') ? 'veo3_fast' : 'veo3';
+      const displayModel = value.startsWith('veo4-') ? 'veo4' : 'veo3.1';
       onChange({
         ...params,
         model: 'veo3.1',
         veo3SubModel: subModel,
+        veoDisplayModel: displayModel,
         quality: undefined,
         wan26Duration: undefined,
         wan26Resolution: undefined,
@@ -204,6 +200,7 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
         model: 'wan2.6',
         quality: undefined,
         veo3SubModel: undefined,
+        veoDisplayModel: undefined,
         seeds: undefined,
         startFrame: undefined,
         endFrame: undefined,
@@ -213,13 +210,12 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
       });
       return;
     }
-    const model = value as ReframeParams['model'];
-    const isPro = model === 'sora3-pro' || model === 'sora2-pro';
     onChange({
       ...params,
-      model,
-      quality: isPro ? (params.quality || 'standard') : undefined,
+      model: 'veo3.1',
+      quality: undefined,
       veo3SubModel: undefined,
+      veoDisplayModel: 'veo4',
       seeds: undefined,
       startFrame: undefined,
       endFrame: undefined,
@@ -256,59 +252,17 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
               </div>
             </SelectTrigger>
             <SelectContent>
-              {/* Sora3 */}
-              <SelectItem value="sora3" className="py-3">
+              {/* Veo4 Fast */}
+              <SelectItem value="veo4-veo3_fast" className="py-3">
                 <div className="flex items-start gap-3 w-full">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                    <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
+                    <img src="/images/google_veo_logo.jpeg" alt="Veo4 model icon" width={32} height={32} className="w-full h-full object-contain" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">{t('reframeMode.sora3')}</span>
+                      <span className="font-semibold text-foreground">Veo4 Fast</span>
                     </div>
-                    <p className="text-xs text-muted-foreground">{t('reframeMode.sora3Description')}</p>
-                  </div>
-                </div>
-              </SelectItem>
-              {/* Sora3 Pro */}
-              <SelectItem value="sora3-pro" className="py-3">
-                <div className="flex items-start gap-3 w-full">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                    <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">{t('reframeMode.sora3Pro')}</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{t('reframeMode.sora3ProDescription')}</p>
-                  </div>
-                </div>
-              </SelectItem>
-              {/* Sora2 */}
-              <SelectItem value="sora2" className="py-3">
-                <div className="flex items-start gap-3 w-full">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                    <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">{t('reframeMode.sora2')}</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{t('reframeMode.sora2Description')}</p>
-                  </div>
-                </div>
-              </SelectItem>
-              {/* Sora2 Pro */}
-              <SelectItem value="sora2-pro" className="py-3">
-                <div className="flex items-start gap-3 w-full">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                    <img src="/sora favicon.png" alt="Model icon" width={32} height={32} className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">{t('reframeMode.sora2Pro')}</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{t('reframeMode.sora2ProDescription')}</p>
+                    <p className="text-xs text-muted-foreground">Veo4 branding on the frontend, powered by the Veo3.1 fast backend.</p>
                   </div>
                 </div>
               </SelectItem>
@@ -320,7 +274,7 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">{t('veo3Mode.fast')}</span>
+                      <span className="font-semibold text-foreground">Veo3.1 Fast</span>
                     </div>
                     <p className="text-xs text-muted-foreground">Faster generation with good quality</p>
                   </div>
@@ -334,7 +288,7 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">{t('veo3Mode.quality')}</span>
+                      <span className="font-semibold text-foreground">Veo3.1 Quality</span>
                     </div>
                     <p className="text-xs text-muted-foreground">Higher quality with longer generation time</p>
                   </div>
@@ -588,8 +542,8 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
             </div>
           </div>
 
-          {/* Duration (n_frames) - Show for sora models */}
-          {isSoraModel && (
+          {/* Duration (n_frames) - Show for legacy models */}
+          {isLegacyModel && (
             <div className="space-y-3 md:col-span-2">
               <div className="flex items-center gap-2">
                 <Label className={fieldLabelClass}>{t('reframeMode.duration')}</Label>
@@ -640,8 +594,8 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
             </div>
           )}
 
-          {/* Quality Selector (for Pro models) */}
-          {isProModel && (
+          {/* Quality Selector (for legacy Pro models) */}
+          {isLegacyModel && (
             <div className="space-y-3 md:col-span-2">
               <div className="flex items-center gap-2">
                 <Label className={fieldLabelClass}>{t('reframeMode.quality')}</Label>

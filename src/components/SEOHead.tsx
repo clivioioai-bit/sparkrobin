@@ -15,17 +15,17 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({ 
-  title = "Sora3 AI Video Generator | Text-to-Video with Sora-Level Quality",
+  title = "Veo4 AI Video Generator | Text-to-Video with Sora-Level Quality",
   description = "Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use.",
-  ogTitle = "Sora3 AI Video Generator | Text-to-Video with Sora-Level Quality",
+  ogTitle = "Veo4 AI Video Generator | Text-to-Video with Sora-Level Quality",
   ogDescription = "Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use.",
   canonical,
   noindex = false,
-  keywords = "AI video ads, Sora3 Storyboard, sora3 storyboard, multi-scene storyboard, consistent characters, 25 second AI video, vertical ad templates, TikTok ad generator, Shopify product video, AI storyboard builder",
-  image = "https://sora3ai.io/logo.jpg"
+  keywords = "AI video ads, Veo4 video generator, text to video AI, image to video AI, consistent characters, 25 second AI video, vertical ad templates, TikTok ad generator, Shopify product video, AI video maker",
+  image = "https://veo4video.io/logo-v2.png"
 }: SEOHeadProps) => {
   const pathname = usePathname();
-  const baseUrl = "https://sora3ai.io"; // Replace with your actual domain
+  const baseUrl = "https://veo4video.io"; // Replace with your actual domain
   const currentUrl = canonical || `${baseUrl}${pathname}`;
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const SEOHead = ({
     if (!metaAuthor) {
       metaAuthor = document.createElement('meta');
       metaAuthor.setAttribute('name', 'author');
-      metaAuthor.setAttribute('content', 'Sora3');
+      metaAuthor.setAttribute('content', 'Veo4');
       document.head.appendChild(metaAuthor);
     }
 
@@ -115,7 +115,7 @@ const SEOHead = ({
     updateOGTag('og:image', image);
     updateOGTag('og:image:width', '1200');
     updateOGTag('og:image:height', '630');
-    updateOGTag('og:site_name', 'Sora3');
+    updateOGTag('og:site_name', 'Veo4');
     updateOGTag('og:locale', 'en_US');
 
     // Update Twitter Card tags
@@ -152,8 +152,8 @@ const SEOHead = ({
       const structuredData = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Sora3",
-        "alternateName": ["Sora3", "sora3ai.io", "AI Video Ads", "Sora3 Storyboard", "Multi-Scene Storyboard"],
+        "name": "Veo4",
+        "alternateName": ["Veo4", "veo4video.io", "AI Video Ads", "AI Video Generator"],
         "description": "Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use.",
         "url": baseUrl,
         "applicationCategory": "MultimediaApplication",
@@ -169,9 +169,9 @@ const SEOHead = ({
         },
         "creator": {
           "@type": "Organization",
-          "name": "Sora3",
+          "name": "Veo4",
           "url": baseUrl,
-          "logo": `${baseUrl}/logo.jpg`
+          "logo": `${baseUrl}/logo-v2.png`
         },
         "aggregateRating": {
           "@type": "AggregateRating",
@@ -181,7 +181,6 @@ const SEOHead = ({
           "worstRating": "1"
         },
         "featureList": [
-          "Sora3 Storyboard builder (multi-scene storyboard)",
           "Consistent character identity",
           "25-30 second video extension",
           "Ad-ready layouts and templates",
@@ -193,8 +192,8 @@ const SEOHead = ({
         "screenshot": `${baseUrl}/placeholder.svg`,
         "video": {
           "@type": "VideoObject",
-          "name": "Sora3 AI Video Ads Tutorial",
-          "description": "Learn how to create Sora3 Storyboard (multi-scene) video ads with consistent characters",
+          "name": "Veo4 AI Video Ads Tutorial",
+          "description": "Learn how to create Veo4 video ads with consistent characters and campaign-ready output",
           "thumbnailUrl": `${baseUrl}/placeholder.svg`,
           "uploadDate": "2025-01-01"
         },

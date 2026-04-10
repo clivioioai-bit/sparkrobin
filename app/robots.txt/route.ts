@@ -24,7 +24,7 @@ export async function GET() {
     const fallback = `User-agent: *
 Allow: /
 
-Sitemap: https://sora3ai.io/sitemap.xml
+Sitemap: https://veo4video.io/sitemap.xml
 `
     
     return new NextResponse(fallback, {

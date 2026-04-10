@@ -59,21 +59,21 @@ console.log('Job ID:', result.job_id);`
     {
       prompt: "A serene sunset over calm ocean waves",
       duration: "6s",
-      model: "Sora3 Fast",
+      model: "Veo4 Fast",
       status: "completed",
       credits: 1.0
     },
     {
       prompt: "Futuristic city with flying cars at night",
       duration: "10s", 
-      model: "Sora3 High Fidelity",
+      model: "Veo4 High Fidelity",
       status: "processing",
       credits: 1.8
     },
     {
       prompt: "Close-up of a blooming flower in timelapse",
       duration: "10s",
-      model: "Sora3 Fast", 
+      model: "Veo4 Fast", 
       status: "completed",
       credits: 1.6
     }
@@ -92,7 +92,7 @@ console.log('Job ID:', result.job_id);`
                 </span>
               </h2>
               <p className="text-xl text-muted-foreground">
-                Integrate Sora3 video generation in minutes with our developer-friendly API。
+                Integrate Veo4 video generation in minutes with our developer-friendly API。
               </p>
             </div>
 

@@ -4,8 +4,8 @@ import { creemSubscriptionPlans, creemCreditPacks, type CreemPlanDefinition } fr
 const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
 });
 
 const creditValueFormatter = new Intl.NumberFormat("en-US", {

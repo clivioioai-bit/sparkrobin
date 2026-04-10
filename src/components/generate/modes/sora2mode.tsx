@@ -77,7 +77,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
             <div className="flex items-center gap-3 w-full">
               <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
                 <img 
-                  src="/sora favicon.png" 
+                  src="/logo-v2.png" 
                   alt="Model icon" 
                   width={32} 
                   height={32}
@@ -97,7 +97,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
                   <img 
-                    src="/sora favicon.png" 
+                    src="/logo-v2.png" 
                     alt="Model icon" 
                     width={32} 
                     height={32}
@@ -118,7 +118,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
               <div className="flex items-start gap-3 w-full">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
                   <img 
-                    src="/sora favicon.png" 
+                    src="/logo-v2.png" 
                     alt="Model icon" 
                     width={32} 
                     height={32}
@@ -343,7 +343,7 @@ export const Sora3Mode: React.FC<Sora3ModeProps> = ({
         </div>
       </div>
 
-      {/* Quality Selector (only for Sora3 Pro) */}
+      {/* Quality Selector (only for Veo4 Pro) */}
       {isSora3Pro && (
         <div className="space-y-3">
         <div className="flex items-center gap-2">

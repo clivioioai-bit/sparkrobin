@@ -15,12 +15,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        title="Sora3 AI Video Generator | Text-to-Video with Sora-Level Quality"
+        title="Veo4 AI Video Generator | Text-to-Video with Sora-Level Quality"
         description="Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use."
-        ogTitle="Sora3 AI Video Generator | Text-to-Video with Sora-Level Quality"
+        ogTitle="Veo4 AI Video Generator | Text-to-Video with Sora-Level Quality"
         ogDescription="Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use."
-        canonical="https://sora3ai.io/"
-        keywords="AI video ads, Sora3 Storyboard, sora3 storyboard, multi-scene storyboard, consistent characters, 25 second AI video, vertical ad templates, TikTok ad generator, Shopify product video, AI storyboard builder"
+        canonical="https://veo4video.io/"
+        keywords="AI video ads, Veo4 Storyboard, veo4 storyboard, multi-scene storyboard, consistent characters, 25 second AI video, vertical ad templates, TikTok ad generator, Shopify product video, AI storyboard builder"
       />
       <ScrollProgress />
       

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, usePathname } from "@/i18n/routing";
-import { Menu, ImageIcon, FileText, Clapperboard, LayoutDashboard, DollarSign, Eraser, Zap, Palette, Wand2 } from "lucide-react";
+import { Menu, ImageIcon, FileText, LayoutDashboard, DollarSign, Zap, Palette, Wand2, History } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -17,23 +17,13 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     nameKey: "imageToVideo",
-    href: "/sora3-image-to-video",
+    href: "/veo4-image-to-video",
     icon: ImageIcon,
   },
   {
     nameKey: "textToVideo",
-    href: "/sora3-text-to-video",
+    href: "/veo4-text-to-video",
     icon: FileText,
-  },
-  {
-    nameKey: "storyboard",
-    href: "/sora-3-storyboard",
-    icon: Clapperboard,
-  },
-  {
-    nameKey: "watermarkRemover",
-    href: "/watermark-remover",
-    icon: Eraser,
   },
   {
     nameKey: "textToImage",
@@ -161,6 +151,7 @@ const GenerateSidebar = ({ open, onOpenChange }: GenerateSidebarProps) => {
 
           {/* Additional Navigation Items */}
           {[
+            { nameKey: "myCreations", href: "/mycreation", icon: History },
             { nameKey: "dashboard", href: "/dashboard", icon: LayoutDashboard },
           ].map((item) => {
             const Icon = item.icon;

@@ -6,5 +6,5 @@ export default async function LegacyLocalizedImageToVideoPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  redirect(`/${locale}/sora3-image-to-video`);
+  redirect(`/${locale}/veo4-image-to-video`);
 }

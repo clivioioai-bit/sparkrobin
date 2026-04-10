@@ -17,7 +17,6 @@ const PUBLIC_PAGES = [
   "/sora3-image-to-video",
   "/sora-3-storyboard",
   "/multi-scene",
-  "/watermark-remover",
   "/pricing",
   "/blog",
   "/faq",

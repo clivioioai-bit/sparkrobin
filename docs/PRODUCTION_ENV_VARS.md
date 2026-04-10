@@ -226,7 +226,7 @@ node scripts/check-supabase-config.js
 ### 最小配置（仅核心功能）
 
 ```bash
-NEXT_PUBLIC_APP_URL=https://sora3ai.io
+NEXT_PUBLIC_APP_URL=https://veo4video.io
 NODE_ENV=production
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=xxx

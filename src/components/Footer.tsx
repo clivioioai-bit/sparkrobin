@@ -1,4 +1,7 @@
-import { Twitter, Mail, MessageCircle } from "lucide-react";
+"use client";
+
+import { useEffect, useState } from "react";
+import { Mail } from "lucide-react";
 import Image from "next/image";
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -6,25 +9,28 @@ const Footer = () => {
   const t = useTranslations('footer');
   const tCommon = useTranslations('common');
   const locale = useLocale();
+  const [isMounted, setIsMounted] = useState(false);
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   const navigation = {
     product: [
-      { name: t('sora3TextToVideo'), href: `${localePrefix}/sora3-text-to-video` },
-      { name: t('sora3ImageToVideo'), href: `${localePrefix}/sora3-image-to-video` },
-      { name: 'Storyboard', href: `${localePrefix}/sora-3-storyboard` },
+      { name: t('sora3TextToVideo'), href: `${localePrefix}/veo4-text-to-video` },
+      { name: t('sora3ImageToVideo'), href: `${localePrefix}/veo4-image-to-video` },
       { name: t('sora3Pricing'), href: `${localePrefix}/pricing` },
       { name: t('sora3Faq'), href: `${localePrefix}/faq` },
     ],
     legal: [
-      { name: t('sora3Blog'), href: `${localePrefix}/blog` },
       { name: t('privacyPolicy'), href: `${localePrefix}/privacy` },
       { name: t('termsOfService'), href: `${localePrefix}/terms` },
       { name: t('refundPolicy'), href: `${localePrefix}/refund` },
-    ],
-    support: [
-      { name: t('support247'), href: "mailto:support@sora3ai.io", external: true },
-      { name: t('contactUs'), href: "mailto:team@sora3ai.io", external: true },
     ],
   } as const;
 
@@ -40,7 +46,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-5">
               <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
                 <Image
-                  src="/logo.jpg"
+                  src="/logo-v2.png"
                   alt={t('logoAlt')}
                   width={36}
                   height={36}
@@ -57,25 +63,7 @@ const Footer = () => {
             {/* Social */}
             <div className="flex items-center space-x-1 mb-6">
               <a
-                href="https://x.com/sora3aiteam"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/40 hover:text-white transition-all duration-200 p-2 rounded-lg hover:bg-white/[0.06]"
-                aria-label={t('socialLabels.twitter')}
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a
-                href="https://discord.com/invite/D48J2Fksm"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/40 hover:text-primary transition-all duration-200 p-2 rounded-lg hover:bg-white/[0.06]"
-                aria-label={t('socialLabels.discord')}
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
-              <a
-                href="mailto:support@sora3ai.io"
+                href="mailto:support@veo4video.io"
                 className="text-white/40 hover:text-white transition-all duration-200 p-2 rounded-lg hover:bg-white/[0.06]"
                 aria-label={t('socialLabels.email')}
               >
@@ -83,12 +71,6 @@ const Footer = () => {
               </a>
             </div>
 
-            {/* Company */}
-            <div className="text-xs text-white/25 leading-relaxed">
-              <p className="font-medium text-white/35 mb-0.5">Aivido LLC</p>
-              <p>71-75 Shelton Street, Covent Garden</p>
-              <p>London WC2H 9JQ, United Kingdom</p>
-            </div>
           </div>
 
           {/* Product */}
@@ -129,18 +111,16 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-white/70 mb-4 text-xs uppercase tracking-widest">{t('support')}</h4>
             <ul className="space-y-3">
-              {navigation.support.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-white/40 hover:text-white transition-colors duration-200"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="mailto:support@veo4video.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/40 hover:text-white transition-colors duration-200"
+                >
+                  {t('support247')}
+                </a>
+              </li>
             </ul>
           </div>
         </div>

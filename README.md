@@ -1,6 +1,6 @@
-# Sora3ai.io – AI Video Generation Platform
+# Veo4Video.io – AI Video Generation Platform
 
-Sora3ai.io is an independent AI video generation platform supporting multiple models and features:
+Veo4Video.io is an independent AI video generation platform supporting multiple models and features:
 
 - 🎬 Sora-style motion video generation
 - 🎞️ 10-second cinematic clips
@@ -8,7 +8,7 @@ Sora3ai.io is an independent AI video generation platform supporting multiple mo
 - 🚫 Watermark-free output
 - 🌍 Globally accessible models
 
-**Live Demo**: https://sora3ai.io
+**Live Demo**: https://veo4video.io
 
 ## 🚀 Quick Start
 
@@ -24,7 +24,7 @@ Sora3ai.io is an independent AI video generation platform supporting multiple mo
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd sora3ai.io
+cd veo4video.io
 
 # Install dependencies
 npm install
@@ -119,7 +119,7 @@ See [Database Architecture](./docs/DATABASE_ARCHITECTURE.md) for detailed inform
 ## 🏗️ Project Structure
 
 ```
-sora3ai.io/
+veo4video.io/
 ├── app/                    # Next.js app directory
 │   ├── api/               # API routes
 │   ├── auth/              # Authentication pages
@@ -198,7 +198,7 @@ For issues and questions:
 
 ## 🔗 Links
 
-- **Live Site**: https://sora3ai.io
+- **Live Site**: https://veo4video.io
 - **Supabase**: https://supabase.com
 - **Creem Payment**: https://creem.io
 - **Next.js Docs**: https://nextjs.org/docs

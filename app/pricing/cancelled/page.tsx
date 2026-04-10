@@ -43,10 +43,10 @@ export default function PaymentCancelledPage() {
           <p className="text-sm text-muted-foreground">
             Need help? Contact us at{" "}
             <a 
-              href="mailto:support@sora3ai.io?subject=Payment Question" 
+              href="mailto:support@veo4video.io?subject=Payment Question" 
               className="text-primary hover:underline"
             >
-              support@sora3ai.io
+              support@veo4video.io
             </a>
           </p>
         </div>

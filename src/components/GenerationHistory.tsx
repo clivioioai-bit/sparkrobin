@@ -8,12 +8,15 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Download, Play, Clock, AlertCircle, CheckCircle, Loader2 } from "lucide-react";
 import { generationHistoryService, GenerationHistoryItem } from "@/services/generationHistoryService";
 import { toast } from "sonner";
+import { useLocale, useTranslations } from "next-intl";
 
 interface GenerationHistoryProps {
   className?: string;
 }
 
 const GenerationHistory = ({ className }: GenerationHistoryProps) => {
+  const t = useTranslations("account.generationHistory");
+  const locale = useLocale();
   const [jobs, setJobs] = useState<GenerationHistoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -99,7 +102,7 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -118,7 +121,7 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
       <Card className={`p-6 ${className}`}>
         <div className="flex items-center justify-center py-8">
           <Loader2 className="w-6 h-6 animate-spin mr-2" />
-          <span>Loading generation history...</span>
+          <span>{t("loading")}</span>
         </div>
       </Card>
     );
@@ -131,7 +134,7 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
           <AlertCircle className="w-8 h-8 text-destructive mx-auto mb-2" />
           <p className="text-destructive mb-4">{error}</p>
           <Button onClick={loadHistory} variant="outline">
-            Try Again
+            {t("tryAgain")}
           </Button>
         </div>
       </Card>
@@ -143,9 +146,9 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
       <Card className={`p-6 ${className}`}>
         <div className="text-center py-8">
           <Clock className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-          <h3 className="text-lg font-semibold mb-2">No Generation History</h3>
+          <h3 className="text-lg font-semibold mb-2">{t("emptyTitle")}</h3>
           <p className="text-muted-foreground">
-            You haven't generated any videos yet. Start creating amazing videos!
+            {t("emptyDescription")}
           </p>
         </div>
       </Card>
@@ -155,9 +158,9 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
   return (
     <Card className={`p-6 ${className}`}>
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold">Generation History</h3>
+        <h3 className="text-lg font-semibold">{t("title")}</h3>
         <Button onClick={loadHistory} variant="outline" size="sm">
-          Refresh
+          {t("refresh")}
         </Button>
       </div>
       
@@ -169,7 +172,7 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
                 <div className="flex items-center space-x-2 mb-2">
                   {getStatusIcon(job.status)}
                   <Badge variant={getStatusBadgeVariant(job.status)}>
-                    {job.status}
+                    {t(`statuses.${job.status}`)}
                   </Badge>
                 </div>
                 
@@ -234,7 +237,7 @@ const GenerationHistory = ({ className }: GenerationHistoryProps) => {
       <Dialog open={!!playingVideoUrl} onOpenChange={(open) => !open && setPlayingVideoUrl(null)}>
         <DialogContent className="max-w-4xl max-h-[90vh]">
           <DialogHeader>
-            <DialogTitle>Video Player</DialogTitle>
+            <DialogTitle>{t("videoPlayer")}</DialogTitle>
           </DialogHeader>
           {playingVideoUrl && (
             <div className="aspect-video bg-black rounded-lg overflow-hidden">

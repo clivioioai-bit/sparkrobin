@@ -7,16 +7,16 @@ export const metadata: Metadata = {
   description: 'Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms.',
   keywords: 'refund policy, money back guarantee, AI video generation service refund, unused credits refund, customer service',
   alternates: {
-    canonical: 'https://sora3ai.io/refund',
+    canonical: 'https://veo4video.io/refund',
   },
   openGraph: {
     title: 'Refund Policy | AI video generation service',
     description: 'Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms.',
-    url: 'https://sora3ai.io/refund',
+    url: 'https://veo4video.io/refund',
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sora3ai.io/logo.jpg',
+        url: 'https://veo4video.io/logo-v2.png',
         width: 1200,
         height: 630,
         alt: 'Refund Policy',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Refund Policy | AI video generation service',
     description: 'Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms.',
-    images: ['https://sora3ai.io/logo.jpg']
+    images: ['https://veo4video.io/logo-v2.png']
   },
 };
 
@@ -40,7 +40,7 @@ const RefundPolicy: React.FC = () => {
         title="Refund Policy | AI video generation service"
         description="Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms."
         keywords="refund policy, money back guarantee, AI video generation service refund, unused credits refund, customer service"
-        canonical="https://sora3ai.io/refund"
+        canonical="https://veo4video.io/refund"
       />
       
       <div className="min-h-screen bg-background">
@@ -121,7 +121,7 @@ const RefundPolicy: React.FC = () => {
                     To submit a refund request, please adhere to these steps:
                   </p>
                   <ol className="list-decimal pl-6 text-gray-700 mb-4">
-                    <li>Reach out to our support department at <strong>support@sora3ai.io</strong></li>
+                    <li>Reach out to our support department at <strong>support@veo4video.io</strong></li>
                     <li>Provide your account email address and transaction/payment information</li>
                     <li>Submit a comprehensive explanation for your refund request</li>
                     <li>Attach any pertinent screenshots or supporting documents</li>
@@ -215,8 +215,7 @@ const RefundPolicy: React.FC = () => {
                     For refund applications or inquiries regarding this policy, please reach out to us:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-gray-700 mb-2"><strong>Refund Requests:</strong> support@sora3ai.io</p>
-                    <p className="text-gray-700 mb-2"><strong>General Inquiries:</strong> team@sora3ai.io</p>
+                    <p className="text-gray-700 mb-2"><strong>Refund Requests:</strong> support@veo4video.io</p>
                     <p className="text-gray-700 mb-2"><strong>Company:</strong> AIVIDO LLC</p>
                     <p className="text-gray-700 mb-2"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
                     <p className="text-gray-700 mb-2"><strong>Subject Line:</strong> "Refund Request - [Your Account Email]"</p>

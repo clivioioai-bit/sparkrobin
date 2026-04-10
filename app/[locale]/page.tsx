@@ -5,22 +5,22 @@ import HomePageClient from '@/components/home/HomePageClient'
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Sora 3 Video Generator',
-  alternateName: ['Sora 3 Generator', 'Sora 3 Video Creator', 'Sora3'],
+  name: 'Veo 4 Video Generator',
+  alternateName: ['Veo 4 Generator', 'Veo 4 Video Creator', 'Veo4'],
   applicationCategory: 'MultimediaApplication',
   operatingSystem: 'Web',
-  description: 'Transform ideas into polished Sora 3 video clips perfect for ads and brand campaigns. Our Sora 3 platform generates professional videos without watermarks, ideal for marketing teams and creators. Start creating Sora 3 content today.',
-  url: 'https://sora3ai.io',
+  description: 'Transform ideas into polished Veo 4 video clips perfect for ads and brand campaigns. Our Veo 4 platform generates professional videos without watermarks, ideal for marketing teams and creators. Start creating Veo 4 content today.',
+  url: 'https://veo4video.io',
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-    description: 'Sora 3 video generation with credits, paid plans available'
+    description: 'Veo 4 video generation with credits, paid plans available'
   },
   creator: {
     '@type': 'Organization',
-    name: 'Sora3',
-    url: 'https://sora3ai.io'
+    name: 'Veo4',
+    url: 'https://veo4video.io'
   },
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -30,16 +30,15 @@ const jsonLd = {
     worstRating: '1'
   },
   featureList: [
-    'Sora 3 text-to-video generation',
-    'Sora 3 image-to-video conversion',
-    'Sora 3 Storyboard builder for extended narratives',
-    'Sora 3 multi-model generation pipeline',
-    'Sora 3 character consistency across scenes',
-    'Sora 3 extended 25-30 second videos',
-    'Sora 3 ad-ready output formats',
-    'Sora 3 vertical and horizontal layouts',
-    'Sora 3 watermark-free exports',
-    'Sora 3 campaign-ready video generation'
+    'Veo 4 text-to-video generation',
+    'Veo 4 image-to-video conversion',
+    'Veo 4 multi-model generation pipeline',
+    'Veo 4 character consistency across scenes',
+    'Veo 4 extended 25-30 second videos',
+    'Veo 4 ad-ready output formats',
+    'Veo 4 vertical and horizontal layouts',
+    'Veo 4 watermark-free exports',
+    'Veo 4 campaign-ready video generation'
   ]
 }
 
@@ -51,7 +50,7 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://sora3ai.io'
+      item: 'https://veo4video.io'
     }
   ]
 }
@@ -59,19 +58,19 @@ const breadcrumbJsonLd = {
 const videoJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
-  name: 'Sora 3 Video Generator Demo - Create Ad-Ready Content',
-  description: 'Discover how Sora3ai.io transforms concepts into polished Sora 3 video clips using advanced Sora 3 technology. Learn to create Sora 3 videos for text-to-video, image-to-video, and Sora 3 Storyboard narratives. Sora3ai.io is an independent Sora 3 platform.',
-  thumbnailUrl: 'https://sora3ai.io/logo.jpg',
+  name: 'Veo 4 Video Generator Demo - Create Ad-Ready Content',
+  description: 'Discover how Veo4Video.io transforms concepts into polished Veo 4 video clips using advanced Veo 4 technology. Learn to create Veo 4 videos for text-to-video and image-to-video workflows. Veo4Video.io is an independent Veo 4 platform.',
+  thumbnailUrl: 'https://veo4video.io/logo-v2.png',
   uploadDate: '2024-01-01T00:00:00Z',
-  contentUrl: 'https://sora3ai.io',
-  embedUrl: 'https://sora3ai.io',
+  contentUrl: 'https://veo4video.io',
+  embedUrl: 'https://veo4video.io',
   duration: 'PT30S',
   publisher: {
     '@type': 'Organization',
-    name: 'Sora3',
+    name: 'Veo4',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://sora3ai.io/logo.jpg'
+      url: 'https://veo4video.io/logo-v2.png'
     }
   }
 }
@@ -82,34 +81,34 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Does this platform use official Sora 3 technology?',
+      name: 'Does this platform use official Veo 4 technology?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We leverage advanced Sora 3 compatible technology within our generation pipeline. This enables immediate Sora 3 video creation without waiting for official access. Sora3ai.io is not affiliated with OpenAI or any official Sora products.'
+        text: 'We leverage advanced Veo 4 compatible technology within our generation pipeline. This enables immediate Veo 4 video creation without waiting for official access. Veo4Video.io is not affiliated with OpenAI or any official Sora products.'
       }
     },
     {
       '@type': 'Question',
-      name: 'Can I build 25-second Sora 3 videos?',
+      name: 'Can I build 25-second Veo 4 videos?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes — Sora 3 Storyboard enables 25-second Sora 3 multi-scene generation for complete brand narratives.'
+        text: 'We currently focus on Veo 4 text-to-video and image-to-video creation for fast, campaign-ready output.'
       }
     },
     {
       '@type': 'Question',
-      name: 'Do Sora 3 videos include watermarks?',
+      name: 'Do Veo 4 videos include watermarks?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No — all Sora 3 exports are completely watermark-free. Premium Sora 3 plans ensure no platform branding on downloads.'
+        text: 'No — all Veo 4 exports are completely watermark-free. Premium Veo 4 plans ensure no platform branding on downloads.'
       }
     },
     {
       '@type': 'Question',
-      name: 'How do I create Sora 3 videos?',
+      name: 'How do I create Veo 4 videos?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'To create Sora 3 videos, enter your prompt on sora3ai.io and generate. We support Sora 3 text-to-video, image-to-video, and Sora 3 Storyboard creation. All Sora 3 videos export without watermarks.'
+        text: 'To create Veo 4 videos, enter your prompt on veo4video.io and generate. We support Veo 4 text-to-video and image-to-video creation. All Veo 4 videos export without watermarks.'
       }
     }
   ]

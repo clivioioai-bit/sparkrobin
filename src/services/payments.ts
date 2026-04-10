@@ -1,4 +1,5 @@
 import { safeJsonParse } from '@/lib/utils';
+import type { PaymentProvider } from '@/lib/payment-provider';
 
 export type CheckoutResult = {
   checkoutUrl: string;
@@ -37,12 +38,15 @@ async function parseErrorPayload(response: Response): Promise<{
   }
 }
 
-export async function createCheckoutSession(planId: string): Promise<CheckoutResult> {
+export async function createCheckoutSession(
+  planId: string,
+  provider?: PaymentProvider
+): Promise<CheckoutResult> {
   const response = await fetch('/api/checkout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    body: JSON.stringify({ planId }),
+    body: JSON.stringify({ planId, provider }),
   });
 
   if (response.status === 401) {
@@ -81,9 +85,9 @@ export async function createCheckoutSession(planId: string): Promise<CheckoutRes
     
     // 提供用户友好的错误消息
     if (message.includes('API key') || message.includes('not configured')) {
-      error.message = 'Payment service is temporarily unavailable. Please contact support@sora3ai.io for assistance.';
+      error.message = 'Payment service is temporarily unavailable. Please contact support@veo4video.io for assistance.';
     } else if (message.includes('安全错误') || message.includes('Security')) {
-      error.message = 'Payment service configuration error. Please contact support@sora3ai.io.';
+      error.message = 'Payment service configuration error. Please contact support@veo4video.io.';
     } else if (message.includes('Plan not found') || message.includes('Plan is not configured') || message.includes('productId')) {
       error.message = 'This plan is not available. Please select a different plan or contact support.';
     } else if (message.includes('Too Many Requests') || message.includes('rate limit')) {
@@ -104,9 +108,12 @@ export async function createCheckoutSession(planId: string): Promise<CheckoutRes
   return { checkoutUrl };
 }
 
-export async function startCheckout(planId: string): Promise<CheckoutResult> {
+export async function startCheckout(
+  planId: string,
+  provider?: PaymentProvider
+): Promise<CheckoutResult> {
   try {
-    const result = await createCheckoutSession(planId);
+    const result = await createCheckoutSession(planId, provider);
 
     // Best practice: Redirect in the same window
     // Some browsers like Safari may block popups opened with target="_blank" or window.open()

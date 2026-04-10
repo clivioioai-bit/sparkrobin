@@ -221,7 +221,7 @@ export default function AuthCallbackPage() {
             const savedPath = typeof window !== 'undefined' 
               ? sessionStorage.getItem('redirectAfterLogin')
               : null;
-            const redirectPath = savedPath || '/sora3-text-to-video';
+            const redirectPath = savedPath || '/veo4-text-to-video';
             
             // Clean up redirect path from storage
             if (typeof window !== 'undefined') {

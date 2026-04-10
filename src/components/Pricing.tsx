@@ -9,12 +9,21 @@ import { subscriptionPlans, oneTimePacks } from "@/config/pricing";
 import AuthModal from "@/components/AuthModal";
 import { startCheckout, CheckoutError } from "@/services/payments";
 import { toast } from "@/components/ui/use-toast";
+import {
+  getDefaultPaymentProvider,
+  getEnabledPaymentProviders,
+  getPaymentProviderLabel,
+  type PaymentProvider,
+} from "@/lib/payment-provider";
+
+const enabledProviders = getEnabledPaymentProviders();
 
 const Pricing = () => {
   // const { isSignedIn } = useUser();
   const { isAuthenticated } = useAuth();
   const [loadingPlanId, setLoadingPlanId] = useState<string | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [selectedProvider, setSelectedProvider] = useState<PaymentProvider>(getDefaultPaymentProvider());
 
   const beginCheckout = async (planId: string) => {
     if (!isAuthenticated) {
@@ -22,7 +31,7 @@ const Pricing = () => {
       toast({
         variant: 'destructive',
         title: 'Please sign in',
-        description: 'Sign in to continue to Creem checkout.',
+        description: `Sign in to continue to ${getPaymentProviderLabel(selectedProvider)} checkout.`,
       });
       return;
     }
@@ -30,7 +39,7 @@ const Pricing = () => {
     setLoadingPlanId(planId);
 
     try {
-      await startCheckout(planId);
+      await startCheckout(planId, selectedProvider);
     } catch (error) {
       if (error instanceof CheckoutError && error.code === 'AUTH_REQUIRED') {
         setShowAuthModal(true);
@@ -69,6 +78,21 @@ const Pricing = () => {
           <div className="inline-flex items-center bg-accent/20 text-accent-foreground border border-accent/30 rounded-lg px-4 py-2 text-sm font-medium">
             💡 Save up to 70% with subscription plans vs one-time purchases
           </div>
+
+          {enabledProviders.length > 1 && (
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              {enabledProviders.map((provider) => (
+                <Button
+                  key={provider}
+                  variant={selectedProvider === provider ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedProvider(provider)}
+                >
+                  {getPaymentProviderLabel(provider)}
+                </Button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Subscription Plans */}

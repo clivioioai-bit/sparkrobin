@@ -24,7 +24,7 @@ interface Veo3ModeProps {
   onChange: (params: Veo3Params) => void;
   onGenerate: () => void;
   isGenerating: boolean;
-  onModelChange?: (model: 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'storyboard' | 'veo3.1' | 'wan2.6') => void;
+  onModelChange?: (model: 'veo3.1' | 'wan2.6') => void;
 }
 
 export const Veo3Mode: React.FC<Veo3ModeProps> = ({
@@ -36,6 +36,8 @@ export const Veo3Mode: React.FC<Veo3ModeProps> = ({
 }) => {
   const t = useTranslations('generate');
   const [imageUrls, setImageUrls] = useState<string[]>(params.imageUrls || []);
+  const veoDisplayModel = params.veoDisplayModel || 'veo4';
+  const veoVariant = params.veoDisplayModel === 'veo4' ? 'veo3_fast' : (params.model || 'veo3_fast') === 'veo3' ? 'veo3' : 'veo3_fast';
 
   // Sync imageUrls with params when params change externally
   React.useEffect(() => {
@@ -92,14 +94,22 @@ export const Veo3Mode: React.FC<Veo3ModeProps> = ({
     }
   }, [imageUrls.length]);
 
-  const selectValue = (params.model || 'veo3_fast') === 'veo3' ? 'veo3.1-veo3' : 'veo3.1-veo3_fast';
+  const selectValue = veoDisplayModel === 'veo4' ? 'veo4-veo3_fast' : `${veoDisplayModel}-${veoVariant}`;
 
   const handleModelChange = (value: string) => {
-    if (value === 'veo3.1-veo3_fast' || value === 'veo3.1-veo3') {
-      onChange({ ...params, model: value === 'veo3.1-veo3' ? 'veo3' : 'veo3_fast' });
+    if (
+      value === 'veo4-veo3_fast' ||
+      value === 'veo3.1-veo3_fast' ||
+      value === 'veo3.1-veo3'
+    ) {
+      onChange({
+        ...params,
+        model: value.startsWith('veo4-') ? 'veo3_fast' : value.endsWith('-veo3') ? 'veo3' : 'veo3_fast',
+        veoDisplayModel: value.startsWith('veo4-') ? 'veo4' : 'veo3.1',
+      });
       return;
     }
-    onModelChange?.(value as 'sora3' | 'sora3-pro' | 'sora2' | 'sora2-pro' | 'storyboard' | 'wan2.6');
+    onModelChange?.(value as 'wan2.6');
   };
 
   return (
@@ -116,20 +126,16 @@ export const Veo3Mode: React.FC<Veo3ModeProps> = ({
                 </div>
                 <div className="flex-1 text-left">
                   <span className="font-semibold text-foreground">
-                    {(params.model || 'veo3_fast') === 'veo3' ? t('veo3Mode.quality') : t('veo3Mode.fast')}
+                    {veoDisplayModel === 'veo4' ? 'Veo4' : `Veo3.1 ${veoVariant === 'veo3' ? 'Quality' : 'Fast'}`}
                   </span>
                 </div>
                 <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
               </div>
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="sora3">{t('reframeMode.sora3')}</SelectItem>
-              <SelectItem value="sora3-pro">{t('reframeMode.sora3Pro')}</SelectItem>
-              <SelectItem value="sora2">{t('reframeMode.sora2')}</SelectItem>
-              <SelectItem value="sora2-pro">{t('reframeMode.sora2Pro')}</SelectItem>
-              <SelectItem value="storyboard">{t('reframeMode.storyboard')}</SelectItem>
-              <SelectItem value="veo3.1-veo3_fast">{t('veo3Mode.fast')}</SelectItem>
-              <SelectItem value="veo3.1-veo3">{t('veo3Mode.quality')}</SelectItem>
+              <SelectItem value="veo4-veo3_fast">Veo4 Fast</SelectItem>
+              <SelectItem value="veo3.1-veo3_fast">Veo3.1 Fast</SelectItem>
+              <SelectItem value="veo3.1-veo3">Veo3.1 Quality</SelectItem>
               <SelectItem value="wan2.6">Wan 2.6</SelectItem>
             </SelectContent>
           </Select>

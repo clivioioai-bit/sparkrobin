@@ -17,15 +17,15 @@ Crawl-delay: 1
 
 # Sitemaps (both Google and Bing)
 # Main sitemap index
-Sitemap: https://sora3ai.io/sitemap.xml
+Sitemap: https://veo4video.io/sitemap.xml
 # Language-specific sitemaps
-Sitemap: https://sora3ai.io/sitemap-en.xml
-Sitemap: https://sora3ai.io/sitemap-ar.xml
-Sitemap: https://sora3ai.io/sitemap-ja.xml
-Sitemap: https://sora3ai.io/sitemap-ru.xml
-Sitemap: https://sora3ai.io/sitemap-es.xml
-Sitemap: https://sora3ai.io/sitemap-zh-CN.xml
-Sitemap: https://sora3ai.io/sitemap-de.xml
+Sitemap: https://veo4video.io/sitemap-en.xml
+Sitemap: https://veo4video.io/sitemap-ar.xml
+Sitemap: https://veo4video.io/sitemap-ja.xml
+Sitemap: https://veo4video.io/sitemap-ru.xml
+Sitemap: https://veo4video.io/sitemap-es.xml
+Sitemap: https://veo4video.io/sitemap-zh-CN.xml
+Sitemap: https://veo4video.io/sitemap-de.xml
 
 # Disallow admin and API routes
 Disallow: /api/
@@ -35,12 +35,11 @@ Disallow: /dashboard/
 Disallow: /auth/
 
 # Allow important pages (explicitly allow for better indexing)
-Allow: /sora3-text-to-video
-Allow: /sora-3-storyboard
+Allow: /veo4-text-to-video
+Allow: /veo-4-storyboard
 Allow: /multi-scene
-Allow: /sora3-image-to-video
-Allow: /sora-3-video-generator
-Allow: /watermark-remover
+Allow: /veo4-image-to-video
+Allow: /veo-4-video-generator
 Allow: /pricing
 Allow: /blog
 Allow: /faq

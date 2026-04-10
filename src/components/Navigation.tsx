@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/routing';
 import { Button } from "@/components/ui/button";
-import { Menu, X, Play, DollarSign, User, LogOut, Home, ChevronDown, Settings, Clapperboard, Image as ImageIcon, FileText, Eraser, Palette, Wand2, Video, Sparkles } from "lucide-react";
+import { Menu, X, Play, DollarSign, User, LogOut, Home, ChevronDown, Settings, Image as ImageIcon, FileText, Palette, Wand2, Video, Sparkles, History } from "lucide-react";
 import Image from "next/image";
 import { useAuth } from "@/contexts/AuthContext";
 import AuthModal from "./AuthModal";
@@ -27,7 +27,8 @@ const Navigation = () => {
 
   const navItems = [
     { name: t('home'), href: '/', icon: Home },
-    { name: t('generate'), href: '/sora3-text-to-video', icon: Play },
+    { name: t('generate'), href: '/veo4-text-to-video', icon: Play },
+    { name: t('myCreations'), href: '/mycreation', icon: History },
     { name: t('pricing'), href: '/pricing', icon: DollarSign },
   ];
   const desktopNavItemClass =
@@ -57,15 +58,15 @@ const Navigation = () => {
           <Link href="/" className="flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90">
             <div className="h-8 w-8 overflow-hidden rounded-lg">
               <Image
-                src="/logo.jpg"
-                alt="Logo"
+                src="/logo-v2.png"
+                alt={tCommon('brand')}
                 width={32}
                 height={32}
                 className="w-full h-full object-contain"
               />
             </div>
             <span className="text-lg font-semibold leading-none tracking-tight text-white/90" suppressHydrationWarning>
-              SORA 3
+              VEO 4
             </span>
           </Link>
 
@@ -92,7 +93,7 @@ const Navigation = () => {
                     <p className="text-[10px] font-medium text-white/30 uppercase tracking-widest mb-2">{t('features')}</p>
                   </div>
                   <DropdownMenuItem asChild>
-                    <Link href="/sora3-text-to-video" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
+                    <Link href="/veo4-text-to-video" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
                       <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] text-white/50 group-hover:text-white">
                         <FileText className="h-4 w-4" />
                       </div>
@@ -103,7 +104,7 @@ const Navigation = () => {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/sora3-image-to-video" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
+                    <Link href="/veo4-image-to-video" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
                       <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] text-white/50 group-hover:text-white">
                         <ImageIcon className="h-4 w-4" />
                       </div>
@@ -113,73 +114,23 @@ const Navigation = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/sora-3-storyboard" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] text-white/50 group-hover:text-white">
-                        <Clapperboard className="h-4 w-4" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium text-white/90">{t('storyboard')}</span>
-                        <span className="text-xs text-white/40">{t('storyboardDescription')}</span>
-                      </div>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/watermark-remover" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] text-white/50 group-hover:text-white">
-                        <Eraser className="h-4 w-4" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium text-white/90">{t('watermarkRemover')}</span>
-                        <span className="text-xs text-white/40">{t('watermarkRemoverDescription')}</span>
-                      </div>
-                    </Link>
-                  </DropdownMenuItem>
                   <DropdownMenuSeparator className="bg-white/[0.06] my-1.5" />
                   <div className="px-2 py-1.5">
                     <p className="text-[10px] font-medium text-white/30 uppercase tracking-widest mb-2">{t('models')}</p>
                     <div className="flex flex-wrap gap-1.5">
                       <Link
-                        href="/sora-3-video-generator"
-                        className="group inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:border-primary/30 text-white/80 transition-all duration-200"
-                      >
-                        <Video className="h-3 w-3 text-primary" />
-                        <span className="whitespace-nowrap">{t('sora3')}</span>
-                      </Link>
-                      <Link
-                        href="/sora-3-video-generator"
-                        className="group inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:border-primary/30 text-white/80 transition-all duration-200"
-                      >
-                        <Sparkles className="h-3 w-3 text-primary" />
-                        <span className="whitespace-nowrap">{t('sora3Pro')}</span>
-                      </Link>
-                      <Link
-                        href="/sora-3-video-generator"
-                        className="group inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:border-primary/30 text-white/80 transition-all duration-200"
-                      >
-                        <Video className="h-3 w-3 text-primary" />
-                        <span className="whitespace-nowrap">{t('sora2')}</span>
-                      </Link>
-                      <Link
-                        href="/sora-3-video-generator"
-                        className="group inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:border-primary/30 text-white/80 transition-all duration-200"
-                      >
-                        <Sparkles className="h-3 w-3 text-primary" />
-                        <span className="whitespace-nowrap">{t('sora2Pro')}</span>
-                      </Link>
-                      <Link
-                        href="/sora-3-video-generator"
+                        href="/veo-4-video-generator"
                         className="group inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:border-primary/30 text-white/80 transition-all duration-200"
                       >
                         <Play className="h-3 w-3 text-primary" />
-                        <span className="whitespace-nowrap">{t('veo3')}</span>
+                        <span className="whitespace-nowrap">{t('veo4Model')}</span>
                       </Link>
                       <Link
-                        href="/sora-3-video-generator"
+                        href="/veo-4-video-generator"
                         className="group inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:border-primary/30 text-white/80 transition-all duration-200"
                       >
                         <Sparkles className="h-3 w-3 text-primary" />
-                        <span className="whitespace-nowrap">{t('wan26')}</span>
+                        <span className="whitespace-nowrap">{t('veo31Model')}</span>
                       </Link>
                     </div>
                   </div>
@@ -247,16 +198,17 @@ const Navigation = () => {
             </div>
 
             <Link
+              href="/mycreation"
+              className={desktopNavItemClass}
+            >
+              {t('myCreations')}
+            </Link>
+
+            <Link
               href="/pricing"
               className={desktopNavItemClass}
             >
               {t('pricing')}
-            </Link>
-            <Link
-              href="/blog"
-              className={desktopNavItemClass}
-            >
-              {t('blog')}
             </Link>
           </div>
 
@@ -296,6 +248,10 @@ const Navigation = () => {
                     <User className="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" />
                     {t('account')}
                   </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => router.push('/mycreation')} className="text-white/70 hover:text-white focus:text-white hover:bg-white/[0.06] focus:bg-white/[0.06]">
+                    <History className="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" />
+                    {t('myCreations')}
+                  </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => router.push('/dashboard')} className="text-white/70 hover:text-white focus:text-white hover:bg-white/[0.06] focus:bg-white/[0.06]">
                     <Settings className="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" />
                     {t('settings')}
@@ -331,10 +287,10 @@ const Navigation = () => {
                   className="h-9 rounded-lg bg-primary px-5 text-[14px] font-semibold text-primary-foreground shadow-[0_0_12px_rgba(100,102,241,0.3)] hover:shadow-[0_0_20px_rgba(100,102,241,0.45)] hover:bg-primary/90 transition-all"
                   onClick={() => {
                     if (isAuthenticated) {
-                      router.push('/sora3-text-to-video');
+                      router.push('/veo4-text-to-video');
                     } else {
                       if (typeof window !== 'undefined') {
-                        sessionStorage.setItem('redirectAfterLogin', '/sora3-text-to-video');
+                        sessionStorage.setItem('redirectAfterLogin', '/veo4-text-to-video');
                       }
                       setIsAuthModalOpen(true);
                     }
@@ -373,37 +329,19 @@ const Navigation = () => {
                   {t('generate')}
                 </div>
                 <div className="flex flex-col space-y-0.5">
-                  <Link href="/sora3-text-to-video" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('textToVideo')}</Link>
-                  <Link href="/sora3-image-to-video" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('imageToVideo')}</Link>
-                  <Link href="/sora-3-storyboard" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('storyboard')}</Link>
-                  <Link href="/watermark-remover" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('watermarkRemover')}</Link>
+                  <Link href="/veo4-text-to-video" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('textToVideo')}</Link>
+                  <Link href="/veo4-image-to-video" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('imageToVideo')}</Link>
                 </div>
                 <div className="px-3 pt-2 pb-1">
                   <div className="text-[10px] font-medium text-white/30 uppercase tracking-widest pb-1">{t('models')}</div>
                   <div className="flex flex-wrap gap-1.5">
-                    <Link href="/sora-3-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
-                      <Video className="h-3 w-3 text-primary" />
-                      <span>{t('sora3')}</span>
-                    </Link>
-                    <Link href="/sora-3-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
-                      <Sparkles className="h-3 w-3 text-primary" />
-                      <span>{t('sora3Pro')}</span>
-                    </Link>
-                    <Link href="/sora-3-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
-                      <Video className="h-3 w-3 text-primary" />
-                      <span>{t('sora2')}</span>
-                    </Link>
-                    <Link href="/sora-3-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
-                      <Sparkles className="h-3 w-3 text-primary" />
-                      <span>{t('sora2Pro')}</span>
-                    </Link>
-                    <Link href="/sora-3-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
+                    <Link href="/veo-4-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
                       <Play className="h-3 w-3 text-primary" />
-                      <span>{t('veo3')}</span>
+                      <span>{t('veo4Model')}</span>
                     </Link>
-                    <Link href="/sora-3-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
+                    <Link href="/veo-4-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
                       <Sparkles className="h-3 w-3 text-primary" />
-                      <span>{t('wan26')}</span>
+                      <span>{t('veo31Model')}</span>
                     </Link>
                   </div>
                 </div>
@@ -435,11 +373,11 @@ const Navigation = () => {
                   </div>
                 </div>
               </div>
-              <Link href="/blog" className="text-sm text-white/60 hover:text-white transition-colors px-3 py-2.5 rounded-lg hover:bg-white/[0.06]">
-                {t('blog')}
-              </Link>
               <Link href="/pricing" className="text-sm text-white/60 hover:text-white transition-colors px-3 py-2.5 rounded-lg hover:bg-white/[0.06]">
                 {t('pricing')}
+              </Link>
+              <Link href="/mycreation" className="text-sm text-white/60 hover:text-white transition-colors px-3 py-2.5 rounded-lg hover:bg-white/[0.06]">
+                {t('myCreations')}
               </Link>
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
                 {isAuthenticated ? (
@@ -452,6 +390,15 @@ const Navigation = () => {
                     >
                       <User className="w-4 h-4 mr-1" />
                       {tCommon('dashboard')}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-white/60 hover:text-white hover:bg-white/[0.06]"
+                      onClick={() => router.push('/mycreation')}
+                    >
+                      <History className="w-4 h-4 mr-1" />
+                      {t('myCreations')}
                     </Button>
                     <Button
                       variant="outline"
@@ -486,10 +433,10 @@ const Navigation = () => {
                       className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
                       onClick={() => {
                         if (isAuthenticated) {
-                          router.push('/sora3-text-to-video');
+                          router.push('/veo4-text-to-video');
                         } else {
                           if (typeof window !== 'undefined') {
-                            sessionStorage.setItem('redirectAfterLogin', '/sora3-text-to-video');
+                            sessionStorage.setItem('redirectAfterLogin', '/veo4-text-to-video');
                           }
                           setIsAuthModalOpen(true);
                         }

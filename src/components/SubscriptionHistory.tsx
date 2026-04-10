@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
+import { useTranslations } from 'next-intl';
 
 interface Subscription {
   id: number;
@@ -18,6 +19,7 @@ interface Subscription {
 }
 
 export default function SubscriptionHistory() {
+  const t = useTranslations('account.subscriptionHistory');
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -47,12 +49,12 @@ export default function SubscriptionHistory() {
 
   const getStatusBadge = (status: string) => {
     const statusMap: Record<string, { label: string; variant: 'default' | 'secondary' | 'destructive' | 'outline' }> = {
-      active: { label: 'Active', variant: 'default' },
-      canceled: { label: 'Canceled', variant: 'destructive' },
-      past_due: { label: 'Past Due', variant: 'destructive' },
-      trialing: { label: 'Trialing', variant: 'secondary' },
-      expired: { label: 'Expired', variant: 'outline' },
-      inactive: { label: 'Inactive', variant: 'outline' },
+      active: { label: t('statuses.active'), variant: 'default' },
+      canceled: { label: t('statuses.canceled'), variant: 'destructive' },
+      past_due: { label: t('statuses.pastDue'), variant: 'destructive' },
+      trialing: { label: t('statuses.trialing'), variant: 'secondary' },
+      expired: { label: t('statuses.expired'), variant: 'outline' },
+      inactive: { label: t('statuses.inactive'), variant: 'outline' },
     };
 
     const statusInfo = statusMap[status.toLowerCase()] || { label: status, variant: 'outline' as const };
@@ -90,12 +92,12 @@ export default function SubscriptionHistory() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Subscription History</CardTitle>
-          <CardDescription>Your subscription history will appear here</CardDescription>
+          <CardTitle>{t('title')}</CardTitle>
+          <CardDescription>{t('emptyDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-center text-muted-foreground py-8">
-            No subscriptions found
+            {t('emptyTitle')}
           </p>
         </CardContent>
       </Card>
@@ -105,8 +107,8 @@ export default function SubscriptionHistory() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Subscription History</CardTitle>
-        <CardDescription>View all your subscription records</CardDescription>
+        <CardTitle>{t('title')}</CardTitle>
+        <CardDescription>{t('description')}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -130,14 +132,14 @@ export default function SubscriptionHistory() {
               {subscription.currentPeriodStart && subscription.currentPeriodEnd && (
                 <div className="text-sm text-muted-foreground">
                   <p>
-                    Period: {format(new Date(subscription.currentPeriodStart), 'MMM d, yyyy')} -{' '}
+                    {t('labels.period')}: {format(new Date(subscription.currentPeriodStart), 'MMM d, yyyy')} -{' '}
                     {format(new Date(subscription.currentPeriodEnd), 'MMM d, yyyy')}
                   </p>
                 </div>
               )}
 
               <div className="text-xs text-muted-foreground">
-                <p>Created: {format(new Date(subscription.createdAt), 'MMM d, yyyy HH:mm')}</p>
+                <p>{t('labels.created')}: {format(new Date(subscription.createdAt), 'MMM d, yyyy HH:mm')}</p>
               </div>
             </div>
           ))}
@@ -146,4 +148,3 @@ export default function SubscriptionHistory() {
     </Card>
   );
 }
-

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
 
-const baseUrl = 'https://sora3ai.io'
+const baseUrl = 'https://veo4video.io'
 
 /**
  * Generate hreflang alternates for a given pathname and locale
