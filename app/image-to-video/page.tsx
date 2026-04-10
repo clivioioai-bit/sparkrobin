@@ -1,5 +1,7 @@
 import { redirect } from 'next/navigation';
+import { detectEntryLocale } from '@/src/i18n/detectEntryLocale';
 
 export default function LegacyImageToVideoPage() {
-  redirect('/en/veo4-image-to-video');
+  const locale = detectEntryLocale();
+  redirect(`/${locale}/veo4-image-to-video`);
 }

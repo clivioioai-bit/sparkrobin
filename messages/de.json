@@ -279,6 +279,8 @@
   "pricing": {
     "title": "Preispläne",
     "subtitle": "Wählen Sie den perfekten Plan für Ihre KI-Videogenerierungs-Bedürfnisse. Jederzeit kündbar.",
+    "creditRateTitle": "Grundlegender Credit-Kurs:",
+    "creditRateDescription": "$1 = 10 Credits. Einige Pläne enthalten Bonus-Credits, sodass höhere Stufen mehr Credits pro Dollar liefern können.",
     "secureCheckout": "Sicherer Checkout",
     "cancelAnytime": "Jederzeit kündbar",
     "noSurpriseCharges": "Keine Überraschungsgebühren",

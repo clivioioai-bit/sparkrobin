@@ -279,6 +279,8 @@
   "pricing": {
     "title": "料金プラン",
     "subtitle": "AI動画生成のニーズに最適なプランを選択してください。いつでもキャンセルできます。",
+    "creditRateTitle": "基本クレジット換算:",
+    "creditRateDescription": "$1 = 10クレジットです。一部のプランにはボーナスクレジットが含まれるため、上位プランでは1ドルあたりのクレジット数が増える場合があります。",
     "secureCheckout": "安全なチェックアウト",
     "cancelAnytime": "いつでもキャンセル",
     "noSurpriseCharges": "予期しない料金なし",

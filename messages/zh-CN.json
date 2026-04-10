@@ -279,6 +279,8 @@
   "pricing": {
     "title": "定价计划",
     "subtitle": "选择适合您 AI 视频生成需求的完美计划。随时取消。",
+    "creditRateTitle": "基础积分换算：",
+    "creditRateDescription": "1 美元 = 10 积分。部分套餐包含额外赠送积分，因此更高档位每美元可获得更多积分。",
     "secureCheckout": "安全结账",
     "cancelAnytime": "随时取消",
     "noSurpriseCharges": "无意外费用",

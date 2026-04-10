@@ -4,10 +4,231 @@ import { routing } from '@/i18n/routing'
 import { generateHreflangAlternates } from '@/utils/hreflang'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Play, Sparkles, Film, Image as ImageIcon, Check } from 'lucide-react'
+import { Play, Sparkles, Film, Image as ImageIcon } from 'lucide-react'
 import Footer from '@/components/Footer'
 
 export const dynamic = 'force-dynamic'
+
+const pageCopy = {
+  en: {
+    title: 'Veo 4 Video Generator | Text, Image, and AI Video Workflows',
+    description: 'Use the Veo 4 video generator for text to video, image to video, and campaign-ready AI video creation. Fast output, clean exports, and flexible workflows.',
+    badge: 'Flexible AI video workflows',
+    heroTitle: 'Veo 4 Video Generator for Modern Content Teams',
+    heroLead: 'Create campaign-ready AI videos from prompts, images, and creative direction.',
+    heroSublead: 'Use Veo 4 workflows for ads, product videos, social clips, and brand storytelling.',
+    primaryCta: 'Start Creating',
+    secondaryCta: 'View Pricing',
+    whyTitle: 'Why teams use this Veo 4 video generator',
+    whyCards: [
+      {
+        title: 'Text to video for fast ideation',
+        description: 'Turn prompts into polished video concepts when you need speed, motion, and clear scene direction.'
+      },
+      {
+        title: 'Image to video for product and brand assets',
+        description: 'Animate still images into ad-ready clips for launches, product pages, and social distribution.'
+      },
+      {
+        title: 'Cleaner exports for real marketing use',
+        description: 'Build usable creative assets that are easier to review, iterate, and publish across campaigns.'
+      },
+      {
+        title: 'Built for faster testing and iteration',
+        description: 'Move from concept to multiple video variations without relying on a full production cycle.'
+      }
+    ],
+    featuresTitle: 'Choose the workflow that fits your project',
+    features: [
+      {
+        title: 'Veo 4 Text to Video',
+        description: 'Generate AI videos from prompts for ads, product explainers, and social content.',
+        href: '/veo4-text-to-video'
+      },
+      {
+        title: 'Veo 4 Image to Video',
+        description: 'Upload images and turn them into moving visuals with stronger motion and scene continuity.',
+        href: '/veo4-image-to-video'
+      }
+    ],
+    stepsTitle: 'How it works',
+    steps: [
+      'Choose text to video or image to video based on your input.',
+      'Set style, aspect ratio, and output preferences for the video.',
+      'Generate, review, and export clips for campaigns, landing pages, or social channels.'
+    ]
+  },
+  ar: {
+    title: 'مولد فيديو Veo 4 | النص والصورة وسير عمل الفيديو بالذكاء الاصطناعي',
+    description: 'استخدم مولد فيديو Veo 4 لإنشاء فيديو بالذكاء الاصطناعي من النص أو الصورة مع مخرجات سريعة ونظيفة وسير عمل مرن للحملات.',
+    badge: 'سير عمل مرن لفيديو AI',
+    heroTitle: 'مولد فيديو Veo 4 لفرق المحتوى الحديثة',
+    heroLead: 'أنشئ فيديوهات جاهزة للحملات من النصوص والصور والتوجيه الإبداعي.',
+    heroSublead: 'استخدم سير عمل Veo 4 للإعلانات وفيديوهات المنتجات والمقاطع الاجتماعية وسرد العلامة التجارية.',
+    primaryCta: 'ابدأ الإنشاء',
+    secondaryCta: 'عرض الأسعار',
+    whyTitle: 'لماذا تستخدم الفرق مولد فيديو Veo 4 هذا',
+    whyCards: [
+      { title: 'النص إلى فيديو لابتكار سريع', description: 'حوّل النصوص إلى مفاهيم فيديو جاهزة عندما تحتاج إلى سرعة وحركة وتوجيه واضح للمشهد.' },
+      { title: 'الصورة إلى فيديو لأصول المنتج والعلامة', description: 'حوّل الصور الثابتة إلى مقاطع جاهزة للإعلانات لصفحات المنتجات والإطلاقات والنشر الاجتماعي.' },
+      { title: 'مخرجات أنظف للاستخدام التسويقي الحقيقي', description: 'أنشئ أصولًا إبداعية أسهل للمراجعة والتكرار والنشر عبر الحملات.' },
+      { title: 'مصمم لاختبار أسرع وتكرار أسهل', description: 'انتقل من الفكرة إلى عدة نسخ فيديو دون الاعتماد على دورة إنتاج كاملة.' }
+    ],
+    featuresTitle: 'اختر سير العمل المناسب لمشروعك',
+    features: [
+      { title: 'Veo 4 من النص إلى الفيديو', description: 'أنشئ فيديوهات AI من النصوص للإعلانات وشرح المنتجات والمحتوى الاجتماعي.', href: '/veo4-text-to-video' },
+      { title: 'Veo 4 من الصورة إلى الفيديو', description: 'ارفع الصور وحولها إلى فيديوهات متحركة بحركة أقوى واستمرارية أفضل للمشهد.', href: '/veo4-image-to-video' }
+    ],
+    stepsTitle: 'كيف يعمل',
+    steps: [
+      'اختر النص إلى فيديو أو الصورة إلى فيديو حسب نوع الإدخال.',
+      'حدد الأسلوب ونسبة الأبعاد وتفضيلات الإخراج.',
+      'أنشئ الفيديو وراجعه ثم صدّره للحملات أو الصفحات أو القنوات الاجتماعية.'
+    ]
+  },
+  ja: {
+    title: 'Veo 4 動画生成 | テキスト・画像・AI動画ワークフロー',
+    description: 'Veo 4 動画生成を使って、テキストから動画、画像から動画、キャンペーン向けのAI動画を作成。高速出力、きれいな書き出し、柔軟な制作フローに対応。',
+    badge: '柔軟なAI動画ワークフロー',
+    heroTitle: '現代のコンテンツチーム向け Veo 4 動画生成',
+    heroLead: 'プロンプト、画像、クリエイティブ指示からキャンペーン向け動画を作成します。',
+    heroSublead: '広告、商品動画、SNSクリップ、ブランドストーリーに Veo 4 ワークフローを活用できます。',
+    primaryCta: '作成を始める',
+    secondaryCta: '料金を見る',
+    whyTitle: 'この Veo 4 動画生成が選ばれる理由',
+    whyCards: [
+      { title: '高速な発想向けテキストから動画', description: 'スピード、動き、明確なシーン設計が必要なときに、プロンプトから完成度の高い動画案を作成します。' },
+      { title: '商品・ブランド素材向け画像から動画', description: '静止画像を、商品ページや告知、SNS配信用の広告向け動画に変換できます。' },
+      { title: '実運用しやすいクリーンな書き出し', description: 'レビュー、改善、公開がしやすい動画アセットを作成できます。' },
+      { title: 'より速い検証と反復に最適', description: 'フル制作体制に頼らず、アイデアから複数の動画バリエーションまで素早く進められます。' }
+    ],
+    featuresTitle: 'プロジェクトに合うワークフローを選択',
+    features: [
+      { title: 'Veo 4 テキストから動画', description: '広告、商品紹介、SNS向けに、プロンプトからAI動画を生成します。', href: '/veo4-text-to-video' },
+      { title: 'Veo 4 画像から動画', description: '画像をアップロードし、より自然な動きとシーンのつながりを持つ映像に変換します。', href: '/veo4-image-to-video' }
+    ],
+    stepsTitle: '使い方',
+    steps: [
+      '入力内容に応じてテキストから動画か画像から動画を選びます。',
+      'スタイル、アスペクト比、出力設定を調整します。',
+      '生成後に確認し、キャンペーンやLP、SNS向けに書き出します。'
+    ]
+  },
+  ru: {
+    title: 'Veo 4 Видео-генератор | Текст, изображение и AI-видео',
+    description: 'Используйте Veo 4 видео-генератор для text to video, image to video и создания AI-видео для кампаний. Быстрый результат, чистый экспорт и гибкие сценарии.',
+    badge: 'Гибкие AI-видео сценарии',
+    heroTitle: 'Veo 4 Видео-генератор для современных команд контента',
+    heroLead: 'Создавайте AI-видео для кампаний из текста, изображений и креативных идей.',
+    heroSublead: 'Подходит для рекламы, продуктовых роликов, соцсетей и бренд-сторителлинга.',
+    primaryCta: 'Начать создание',
+    secondaryCta: 'Посмотреть цены',
+    whyTitle: 'Почему команды выбирают этот Veo 4 видео-генератор',
+    whyCards: [
+      { title: 'Text to video для быстрого продакшна', description: 'Превращайте промпты в готовые видео-концепты, когда важны скорость, движение и понятная постановка сцены.' },
+      { title: 'Image to video для продукта и бренда', description: 'Анимируйте изображения в ролики для запусков, карточек товара и соцсетей.' },
+      { title: 'Чистый экспорт для реального маркетинга', description: 'Собирайте креативы, которые проще проверять, дорабатывать и публиковать в кампаниях.' },
+      { title: 'Быстрее тестировать и итерировать', description: 'Переходите от идеи к нескольким версиям видео без полного продакшн-цикла.' }
+    ],
+    featuresTitle: 'Выберите подходящий режим для проекта',
+    features: [
+      { title: 'Veo 4 Текст в Видео', description: 'Создавайте AI-видео из текста для рекламы, продуктовых обзоров и соцсетей.', href: '/veo4-text-to-video' },
+      { title: 'Veo 4 Изображение в Видео', description: 'Загружайте изображения и превращайте их в видео с более сильным движением и лучшей связностью сцен.', href: '/veo4-image-to-video' }
+    ],
+    stepsTitle: 'Как это работает',
+    steps: [
+      'Выберите text to video или image to video в зависимости от исходных материалов.',
+      'Настройте стиль, формат кадра и параметры результата.',
+      'Сгенерируйте, проверьте и экспортируйте ролик для кампаний, лендингов или соцсетей.'
+    ]
+  },
+  es: {
+    title: 'Generador de Video Veo 4 | Texto, imagen y flujos de video AI',
+    description: 'Usa el generador de video Veo 4 para texto a video, imagen a video y creación de video AI lista para campañas. Salida rápida, exportaciones limpias y flujos flexibles.',
+    badge: 'Flujos flexibles de video AI',
+    heroTitle: 'Generador de Video Veo 4 para equipos modernos de contenido',
+    heroLead: 'Crea videos listos para campañas a partir de prompts, imágenes y dirección creativa.',
+    heroSublead: 'Usa Veo 4 para anuncios, videos de producto, clips sociales y storytelling de marca.',
+    primaryCta: 'Empezar a crear',
+    secondaryCta: 'Ver precios',
+    whyTitle: 'Por qué los equipos usan este generador de video Veo 4',
+    whyCards: [
+      { title: 'Texto a video para ideación rápida', description: 'Convierte prompts en conceptos de video pulidos cuando necesitas velocidad, movimiento y una dirección de escena clara.' },
+      { title: 'Imagen a video para activos de producto y marca', description: 'Anima imágenes fijas en clips listos para anuncios, lanzamientos, páginas de producto y redes sociales.' },
+      { title: 'Exportaciones más limpias para marketing real', description: 'Crea activos de video más fáciles de revisar, iterar y publicar en campañas.' },
+      { title: 'Pensado para probar e iterar más rápido', description: 'Pasa de una idea a varias versiones de video sin depender de un ciclo completo de producción.' }
+    ],
+    featuresTitle: 'Elige el flujo adecuado para tu proyecto',
+    features: [
+      { title: 'Veo 4 Texto a Video', description: 'Genera videos AI desde prompts para anuncios, productos y contenido social.', href: '/veo4-text-to-video' },
+      { title: 'Veo 4 Imagen a Video', description: 'Sube imágenes y conviértelas en visuales en movimiento con mejor dinámica y continuidad de escena.', href: '/veo4-image-to-video' }
+    ],
+    stepsTitle: 'Cómo funciona',
+    steps: [
+      'Elige texto a video o imagen a video según tu material de entrada.',
+      'Configura estilo, proporción y preferencias de salida.',
+      'Genera, revisa y exporta clips para campañas, landing pages o redes sociales.'
+    ]
+  },
+  'zh-CN': {
+    title: 'Veo 4 视频生成器 | 文本、图片与 AI 视频工作流',
+    description: '使用 Veo 4 视频生成器完成文本转视频、图片转视频与适合营销活动的 AI 视频创作。输出更快，导出更干净，工作流更灵活。',
+    badge: '灵活的 AI 视频工作流',
+    heroTitle: '面向现代内容团队的 Veo 4 视频生成器',
+    heroLead: '通过提示词、图片和创意方向，快速生成适合活动投放的视频内容。',
+    heroSublead: '适用于广告、产品视频、社媒短片和品牌叙事内容。',
+    primaryCta: '开始创作',
+    secondaryCta: '查看价格',
+    whyTitle: '为什么团队会选择这个 Veo 4 视频生成器',
+    whyCards: [
+      { title: '文本转视频，适合快速创意验证', description: '当你需要速度、动感和清晰镜头表达时，可以把提示词快速变成更完整的视频概念。' },
+      { title: '图片转视频，适合产品和品牌素材', description: '把静态图片转成可用于产品页、发布活动和社媒分发的动态视频。' },
+      { title: '更干净的导出，更适合真实营销使用', description: '生成更容易审核、迭代和发布的视频资产，直接用于营销流程。' },
+      { title: '更适合快速测试和持续迭代', description: '从一个想法快速扩展到多个视频版本，不必依赖完整制作周期。' }
+    ],
+    featuresTitle: '选择适合你项目的工作流',
+    features: [
+      { title: 'Veo 4 文本转视频', description: '通过提示词生成适合广告、产品讲解和社媒内容的 AI 视频。', href: '/veo4-text-to-video' },
+      { title: 'Veo 4 图片转视频', description: '上传图片，将其转成拥有更强动效和更好场景连续性的动态视频。', href: '/veo4-image-to-video' }
+    ],
+    stepsTitle: '使用方式',
+    steps: [
+      '根据你的输入内容选择文本转视频或图片转视频。',
+      '设置风格、画幅比例和输出偏好。',
+      '生成、检查并导出视频，用于活动页、落地页或社交媒体。'
+    ]
+  },
+  de: {
+    title: 'Veo 4 Videogenerator | Text, Bild und AI-Video-Workflows',
+    description: 'Nutzen Sie den Veo 4 Videogenerator für Text zu Video, Bild zu Video und kampagnentaugliche AI-Videoproduktion. Schnelle Ausgabe, saubere Exporte und flexible Workflows.',
+    badge: 'Flexible AI-Video-Workflows',
+    heroTitle: 'Veo 4 Videogenerator für moderne Content-Teams',
+    heroLead: 'Erstellen Sie kampagnentaugliche AI-Videos aus Prompts, Bildern und kreativen Vorgaben.',
+    heroSublead: 'Geeignet für Ads, Produktvideos, Social Clips und Brand Storytelling.',
+    primaryCta: 'Jetzt erstellen',
+    secondaryCta: 'Preise ansehen',
+    whyTitle: 'Warum Teams diesen Veo 4 Videogenerator nutzen',
+    whyCards: [
+      { title: 'Text zu Video für schnelle Ideenfindung', description: 'Verwandeln Sie Prompts in ausgearbeitete Videokonzepte, wenn Geschwindigkeit, Bewegung und klare Szenenführung wichtig sind.' },
+      { title: 'Bild zu Video für Produkt- und Markenassets', description: 'Animieren Sie statische Bilder zu Clips für Launches, Produktseiten und Social Distribution.' },
+      { title: 'Sauberere Exporte für echtes Marketing', description: 'Erstellen Sie Assets, die leichter zu prüfen, zu iterieren und in Kampagnen zu veröffentlichen sind.' },
+      { title: 'Für schnelleres Testen und Iterieren gebaut', description: 'Gehen Sie von einer Idee zu mehreren Video-Varianten, ohne einen vollständigen Produktionszyklus zu benötigen.' }
+    ],
+    featuresTitle: 'Wählen Sie den passenden Workflow für Ihr Projekt',
+    features: [
+      { title: 'Veo 4 Text zu Video', description: 'Erzeugen Sie AI-Videos aus Prompts für Ads, Produkt-Erklärungen und Social Content.', href: '/veo4-text-to-video' },
+      { title: 'Veo 4 Bild zu Video', description: 'Laden Sie Bilder hoch und verwandeln Sie sie in bewegte Visuals mit stärkerer Dynamik und besserer Szenenkontinuität.', href: '/veo4-image-to-video' }
+    ],
+    stepsTitle: 'So funktioniert es',
+    steps: [
+      'Wählen Sie je nach Input Text zu Video oder Bild zu Video.',
+      'Legen Sie Stil, Seitenverhältnis und Ausgabeoptionen fest.',
+      'Generieren, prüfen und exportieren Sie Clips für Kampagnen, Landingpages oder Social Channels.'
+    ]
+  }
+} as const
+
+type SupportedLocale = keyof typeof pageCopy
 
 export async function generateMetadata({
   params
@@ -15,65 +236,47 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  
+
   if (!routing.locales.includes(locale as any)) {
     notFound()
   }
 
-  // Only show this page for Russian locale
-  if (locale !== 'ru') {
-    notFound()
-  }
-
   const baseUrl = 'https://veo4video.io'
-  const prefix = `/${locale}`
-  
-  const title = 'Veo4 Видео-Генератор | AI Видео Без Водяных Знаков'
-  const description = 'Создавайте AI-видео для рекламы, товаров, TikTok и соцсетей без водяных знаков. Быстро, понятно и с поддержкой русского языка.'
+  const prefix = locale === 'en' ? '' : `/${locale}`
+  const copy = pageCopy[locale as SupportedLocale] ?? pageCopy.en
 
   return {
-    title,
-    description,
+    title: copy.title,
+    description: copy.description,
     alternates: generateHreflangAlternates('/veo-4-video-generator', locale),
     openGraph: {
-      title,
-      description,
+      title: copy.title,
+      description: copy.description,
       url: `${baseUrl}${prefix}/veo-4-video-generator`,
       siteName: 'Veo4',
-      locale: 'ru_RU',
-      type: 'website',
       images: [
         {
           url: 'https://veo4video.io/logo-v2.png',
           width: 1200,
           height: 630,
-          alt: title,
+          alt: copy.title,
         }
       ],
+      locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: copy.title,
+      description: copy.description,
       images: ['https://veo4video.io/logo-v2.png']
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   }
 }
-
-const features = [
-  {
-    icon: Play,
-    title: 'Veo4 Текст-в-Видео',
-    description: 'Создавайте кинематографические видео из текстовых запросов с помощью Veo4 и совместимых AI-видеомоделей. Создавайте профессиональный контент мгновенно.',
-    href: '/ru/veo4-text-to-video'
-  },
-  {
-    icon: ImageIcon,
-    title: 'Veo4 Изображение-в-Видео',
-    description: 'Превращайте статичные изображения в динамичные видео Veo4. Идеально для демонстрации продуктов и творческих проектов.',
-    href: '/ru/veo4-image-to-video'
-  },
-]
 
 export default async function Veo4VideoGeneratorPage({
   params
@@ -81,23 +284,26 @@ export default async function Veo4VideoGeneratorPage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  
-  if (!routing.locales.includes(locale as any) || locale !== 'ru') {
+
+  if (!routing.locales.includes(locale as any)) {
     notFound()
   }
+
+  const prefix = locale === 'en' ? '' : `/${locale}`
+  const copy = pageCopy[locale as SupportedLocale] ?? pageCopy.en
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Veo4 Видео-Генератор',
-    description: 'veo4video.io — независимая платформа для создания AI-видео. Мы используем модели, совместимые с Veo4, для создания профессиональных видео без водяных знаков. Поддержка русского языка, оптимизация для рынка СНГ.',
-    url: 'https://veo4video.io/ru/veo-4-video-generator',
+    name: copy.title,
+    description: copy.description,
+    url: `https://veo4video.io${prefix}/veo-4-video-generator`,
     mainEntity: {
       '@type': 'SoftwareApplication',
-      name: 'Veo4 Видео-Генератор',
+      name: 'Veo 4 Video Generator',
       applicationCategory: 'MultimediaApplication',
       operatingSystem: 'Web',
-      description: 'Независимая платформа для создания AI-видео, предлагающая создание видео Veo4. veo4video.io использует совместимые AI-видеомодели и другие сторонние движки. veo4video.io не связана с OpenAI, Google или Veo4.',
+      description: copy.description,
       offers: {
         '@type': 'Offer',
         price: '0',
@@ -113,39 +319,34 @@ export default async function Veo4VideoGeneratorPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <main className="min-h-screen bg-background">
-        {/* Hero Section */}
         <section className="relative py-24 sm:py-32 bg-gradient-to-b from-background via-background to-muted/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-4xl mx-auto">
-              {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium">
                 <Sparkles className="w-4 h-4 text-primary" />
-                <span>Лучший инструмент для России и СНГ</span>
+                <span>{copy.badge}</span>
               </div>
 
-              {/* H1 */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-                Veo4 Видео-Генератор Без Водяных Знаков
+                {copy.heroTitle}
               </h1>
 
-              {/* Subtitle */}
               <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed mb-4">
-                Создавайте рекламные ролики за 30 секунд
+                {copy.heroLead}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                Быстро. Дёшево. Без водяных знаков.
+                {copy.heroSublead}
               </p>
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                 <Button
                   size="lg"
                   className="text-lg px-8 py-6"
                   asChild
                 >
-                  <Link href="/ru/veo4-text-to-video">
+                  <Link href={`${prefix}/veo4-text-to-video`}>
                     <Play className="w-5 h-5 mr-2" />
-                    Начать Создание
+                    {copy.primaryCta}
                   </Link>
                 </Button>
                 <Button
@@ -154,8 +355,8 @@ export default async function Veo4VideoGeneratorPage({
                   className="text-lg px-8 py-6"
                   asChild
                 >
-                  <Link href="/ru/pricing">
-                    Посмотреть Тарифы
+                  <Link href={`${prefix}/pricing`}>
+                    {copy.secondaryCta}
                   </Link>
                 </Button>
               </div>
@@ -163,272 +364,87 @@ export default async function Veo4VideoGeneratorPage({
           </div>
         </section>
 
-        {/* Why veo4video.io Section */}
         <section className="py-16 sm:py-24 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Почему veo4video.io лучший выбор для России и СНГ?
+                {copy.whyTitle}
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <h3 className="text-xl font-semibold mb-3">1. Видео как у Veo4 — без водяных знаков</h3>
-                <p className="text-muted-foreground mb-4">
-                  Большинство сервисов добавляют watermark или ограничивают качество. <strong>Мы — нет.</strong>
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Экспортируйте чистые ролики, идеально подходящие для:
-                </p>
-                <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-                  <li>• TikTok</li>
-                  <li>• Instagram Reels</li>
-                  <li>• YouTube Shorts</li>
-                  <li>• Рекламы в Яндекс.Директ и VK Ads</li>
-                </ul>
-              </div>
-
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <h3 className="text-xl font-semibold mb-3">2. Быстрые клипы и профессиональные форматы Veo4</h3>
-                <p className="text-muted-foreground mb-4">
-                  Выберите формат:
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• <strong>8-10 секунд</strong> (быстрое поколение)</li>
-                  <li>• <strong>качество / скорость</strong> (под разные задачи)</li>
-                </ul>
-                <p className="text-sm text-muted-foreground mt-4">
-                  Подходит для рекламы, обзоров, интро и демонстрации продуктов.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <h3 className="text-xl font-semibold mb-3">3. Поддержка русскоязычных продавцов</h3>
-                <p className="text-muted-foreground mb-4">
-                  Наши модели оптимизированы под сценарии:
-                </p>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li>• интернет-магазины</li>
-                  <li>• маркетплейсы (Ozon, Wildberries)</li>
-                  <li>• инфобизнес</li>
-                  <li>• услуги</li>
-                  <li>• тикток-блогеры</li>
-                  <li>• рекламные агентства</li>
-                </ul>
-                <p className="text-sm text-muted-foreground mt-4">
-                  Создавайте видео <strong>на русском</strong>, с русскими товарами, русскими людьми и русскими локациями.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <h3 className="text-xl font-semibold mb-3">4. Цена в 10 раз ниже конкурентов</h3>
-                <p className="text-muted-foreground mb-4">
-                  Мы не берём переплаты как западные сервисы.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <strong>Оплата за кредиты = максимально выгодно для СНГ пользователей.</strong>
-                </p>
-              </div>
+              {copy.whyCards.map((card) => (
+                <div key={card.title} className="p-6 rounded-xl border border-border bg-card">
+                  <h3 className="text-xl font-semibold mb-3">{card.title}</h3>
+                  <p className="text-muted-foreground">{card.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* How It Works Section */}
         <section className="py-16 sm:py-24 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                🎬 Как это работает?
+                {copy.featuresTitle}
               </h2>
             </div>
 
-            <div className="max-w-3xl mx-auto space-y-6">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold">1</div>
-                <div>
-                  <p className="text-lg">Введите текстовый запрос (на русском или английском)</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold">2</div>
-                <div>
-                  <p className="text-lg">Выберите нужный режим качества и скорости</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold">3</div>
-                <div>
-                  <p className="text-lg">Укажите стиль (реалистичный, аниме, кинематографичный, продуктовый)</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold">4</div>
-                <div>
-                  <p className="text-lg">Нажмите «Создать»</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold">5</div>
-                <div>
-                  <p className="text-lg">Готовое видео можно скачать без водяных знаков</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Prompt Examples Section */}
-        <section className="py-16 sm:py-24 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                🔥 Примеры запросов (Prompt Inspiration)
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <p className="text-muted-foreground italic">
-                  «красивый рекламный ролик для женской косметики, крупный план, мягкий свет»
-                </p>
-              </div>
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <p className="text-muted-foreground italic">
-                  «обзор нового смартфона, динамичные переходы, современный стиль»
-                </p>
-              </div>
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <p className="text-muted-foreground italic">
-                  «мальчик в зимнем лесу, снег, атмосфера сказки, кино-стиль»
-                </p>
-              </div>
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <p className="text-muted-foreground italic">
-                  «продуктовая съемка бутылки духов, черный фон, slow motion»
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Use Cases Section */}
-        <section className="py-16 sm:py-24 bg-muted/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                🛒 Подходит для продавцов и создателей контента
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <h3 className="font-semibold mb-3 text-lg">Для интернет-магазинов</h3>
-                <p className="text-sm text-muted-foreground">
-                  Создавайте видео для карточек товара.
-                </p>
-              </div>
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <h3 className="font-semibold mb-3 text-lg">Для рекламодателей</h3>
-                <p className="text-sm text-muted-foreground">
-                  Готовые ролики для VK Ads, Yandex Ads, MyTarget.
-                </p>
-              </div>
-              <div className="p-6 rounded-xl border border-border bg-card">
-                <h3 className="font-semibold mb-3 text-lg">Для блогеров</h3>
-                <p className="text-sm text-muted-foreground">
-                  Быстрая генерация контента без монтажа.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-16 sm:py-24 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Veo4 Видео-Генерация
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Создавайте профессиональные видео Veo4 с помощью нашего мультимодельного конвейера генерации
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {features.map((feature, index) => {
-                const Icon = feature.icon
-                return (
-                  <div
-                    key={index}
-                    className="p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-all hover:shadow-lg"
-                  >
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                      <Icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-muted-foreground mb-4">{feature.description}</p>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href={feature.href}>Попробовать</Link>
-                    </Button>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {copy.features.map((feature) => (
+                <div key={feature.title} className="p-6 rounded-xl border border-border bg-background">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+                    {feature.href.includes('image') ? <ImageIcon className="w-6 h-6" /> : <Film className="w-6 h-6" />}
                   </div>
-                )
-              })}
+                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground mb-5">{feature.description}</p>
+                  <Button asChild variant="outline">
+                    <Link href={`${prefix}${feature.href}`}>{feature.title}</Link>
+                  </Button>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="py-16 sm:py-24 bg-muted/30">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">💳 Тарифы</h2>
-            <div className="space-y-4 text-lg text-muted-foreground">
-              <p>• Нет подписки</p>
-              <p>• Оплата только за кредиты</p>
-              <p>• Прозрачная цена</p>
-              <p>• Лучшее предложение для СНГ рынка</p>
-            </div>
-            <Button size="lg" className="mt-8" asChild>
-              <Link href="/ru/pricing">Посмотреть Тарифы</Link>
-            </Button>
-          </div>
-        </section>
-
-        {/* CTA Section */}
         <section className="py-16 sm:py-24 bg-background">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              📥 Начните сейчас — бесплатно
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Создайте первые видео бесплатно и посмотрите качество сами.
-            </p>
-            <p className="text-lg font-semibold mb-8">
-              👉 <strong>veo4video.io — лучший российский генератор AI-видео</strong>
-            </p>
-            <Button size="lg" className="text-lg px-8 py-6" asChild>
-              <Link href="/ru/veo4-text-to-video">
-                <Play className="w-5 h-5 mr-2" />
-                Начать Создание
-              </Link>
-            </Button>
-          </div>
-        </section>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                {copy.stepsTitle}
+              </h2>
+            </div>
 
-        {/* Disclaimer Section */}
-        <section className="py-12 bg-background border-t border-border">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="p-6 rounded-xl bg-muted/50 border border-border">
-              <h3 className="font-semibold mb-3">Важное уведомление</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                veo4video.io — это независимая платформа для создания AI-видео. Мы используем модели, совместимые с Veo4, и другие сторонние модели для создания мультимодельной генерации видео. veo4video.io не связана с OpenAI, Google или Veo4. Эта страница предназначена для помощи создателям в поиске инструментов генерации видео Veo4 и не является официальным сервисом Veo4.
-              </p>
+            <div className="space-y-4">
+              {copy.steps.map((step, index) => (
+                <div key={step} className="flex gap-4 rounded-xl border border-border bg-card p-5 text-left">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary">
+                    {index + 1}
+                  </div>
+                  <p className="text-lg text-foreground">{step}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href={`${prefix}/veo4-text-to-video`}>
+                  <Play className="w-5 h-5 mr-2" />
+                  {copy.primaryCta}
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
+                <Link href={`${prefix}/faq`}>
+                  FAQ
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
+
+        <Footer />
       </main>
-      {typeof window !== 'undefined' && <Footer />}
     </>
   )
 }

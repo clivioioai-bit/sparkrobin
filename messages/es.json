@@ -279,6 +279,8 @@
   "pricing": {
     "title": "Pricing Plans",
     "subtitle": "Choose the perfect plan for your AI video generation needs. Cancel anytime.",
+    "creditRateTitle": "Tasa base de créditos:",
+    "creditRateDescription": "$1 = 10 créditos. Algunos planes incluyen créditos extra, por lo que los niveles superiores pueden ofrecer más créditos por dólar.",
     "secureCheckout": "Secure checkout",
     "cancelAnytime": "Cancel anytime",
     "noSurpriseCharges": "No surprise charges",
