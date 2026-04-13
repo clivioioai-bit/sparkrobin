@@ -74,19 +74,21 @@ export async function POST(request: NextRequest) {
 
     // 2. 获取请求数据
     const body = await request.json();
-    const { 
+    const {
       prompt, 
       model, 
       generationType, 
       aspectRatio, 
+      aspect_ratio,
       imageUrls, 
       seeds, 
       enableTranslation, 
       watermark 
     } = body;
+    const normalizedAspectRatio = aspectRatio || aspect_ratio;
 
     // 3. 验证必需参数
-    if (!prompt || !model || !generationType || !aspectRatio) {
+    if (!prompt || !model || !generationType || !normalizedAspectRatio) {
       return NextResponse.json(
         { error: 'Missing required parameters: prompt, model, generationType, aspectRatio' },
         { status: 400 }
@@ -130,7 +132,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 7. 计算所需积分
-    const requiredCredits = calculateCredits(model, aspectRatio);
+    const requiredCredits = calculateCredits(model, normalizedAspectRatio);
     
     if (userData.credits_balance < requiredCredits) {
       return NextResponse.json(
@@ -153,7 +155,7 @@ export async function POST(request: NextRequest) {
           prompt,
           model,
           generationType,
-          aspectRatio,
+          aspectRatio: normalizedAspectRatio,
           status: 'processing'
         }
       );
@@ -185,7 +187,7 @@ export async function POST(request: NextRequest) {
       prompt,
       model, // 'veo3' or 'veo3_fast'
       generationType, // 'TEXT_2_VIDEO', 'FIRST_AND_LAST_FRAMES_2_VIDEO', 'REFERENCE_2_VIDEO'
-      aspectRatio, // '16:9', '9:16', 'Auto'
+      aspectRatio: normalizedAspectRatio, // '16:9', '9:16', 'Auto'
       enableTranslation: enableTranslation !== false, // default true
     };
 
@@ -225,7 +227,7 @@ export async function POST(request: NextRequest) {
           await refundCredits(userId, deductedAmount, 'veo3_api_failed', {
             kie_status: kieResponse.status,
             kie_error: errorData,
-            original_metadata: { prompt, model, generationType, aspectRatio }
+            original_metadata: { prompt, model, generationType, aspectRatio: normalizedAspectRatio }
           });
           
           console.log(`[Veo3 API] Refunded ${deductedAmount} credits to user ${userId} due to Kie API failure`);
@@ -283,7 +285,7 @@ export async function POST(request: NextRequest) {
       params: {
         model,
         generationType,
-        aspectRatio,
+        aspectRatio: normalizedAspectRatio,
         imageUrls,
         seeds,
         enableTranslation,
@@ -330,5 +332,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
 

@@ -171,11 +171,14 @@ export const videoApi = {
     if (request.model === 'veo3.1' && request.veo3Params) {
       console.log('[Veo3.1 API] ========== STARTING VEO3.1 REQUEST ==========');
 
+      const normalizedAspectRatio = request.aspect_ratio;
+
       const veo3Body: any = {
         prompt: request.prompt,
         model: request.veo3Params.model,
         generationType: request.veo3Params.generationType,
-        aspect_ratio: request.aspect_ratio,
+        aspectRatio: normalizedAspectRatio,
+        aspect_ratio: normalizedAspectRatio,
         enableTranslation: request.veo3Params.enableTranslation !== false,
       };
 
