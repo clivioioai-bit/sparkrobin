@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { createServerClient } from '@supabase/ssr';
 
-import { creemPlansById } from '@/config/creemPlans';
+import { paymentPlansById } from '@/config/payment-plans';
 import { getDodoCheckoutSession } from '@/lib/dodo-payments';
+import { getExternalPaymentId } from '@/lib/payment-records';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export const runtime = 'nodejs';
@@ -39,7 +40,7 @@ export async function GET(request: NextRequest) {
     if (user) {
       const { data: payment } = await getSupabaseAdmin()
         .from('payments')
-        .select('amount, currency, creem_payment_id, payment_method')
+        .select('*')
         .eq('user_id', user.id)
         .eq('payment_method', 'dodo')
         .eq('status', 'succeeded')
@@ -51,7 +52,7 @@ export async function GET(request: NextRequest) {
       if (payment) {
         amount = (payment.amount / 100).toFixed(2);
         currency = payment.currency;
-        transactionId = payment.creem_payment_id || transactionId;
+        transactionId = getExternalPaymentId(payment) || transactionId;
       }
     }
 
@@ -67,7 +68,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (!transactionId && plan) {
-      const planConfig = creemPlansById[plan];
+      const planConfig = paymentPlansById[plan];
       if (planConfig) {
         amount = (planConfig.priceCents / 100).toFixed(2);
         currency = planConfig.currency;

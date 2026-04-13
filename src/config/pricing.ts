@@ -1,5 +1,5 @@
 import { Zap, Crown, Building } from "lucide-react";
-import { creemSubscriptionPlans, creemCreditPacks, type CreemPlanDefinition } from "./creemPlans";
+import { subscriptionPlanDefinitions, creditPackDefinitions, type PaymentPlanDefinition } from "./payment-plans";
 
 const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -15,14 +15,14 @@ const creditValueFormatter = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
 });
 
-const formatPriceLabel = (plan: CreemPlanDefinition) => {
+const formatPriceLabel = (plan: PaymentPlanDefinition) => {
   if (plan.currency !== "USD") {
     return (plan.priceCents / 100).toString();
   }
   return currencyFormatter.format(plan.priceCents / 100);
 };
 
-const formatCreditValue = (plan: CreemPlanDefinition) => {
+const formatCreditValue = (plan: PaymentPlanDefinition) => {
   if (!plan.credits || plan.credits <= 0) {
     return "—";
   }
@@ -30,7 +30,7 @@ const formatCreditValue = (plan: CreemPlanDefinition) => {
   return `${creditValueFormatter.format(value)}/credit`;
 };
 
-const periodLabel = (plan: CreemPlanDefinition) => {
+const periodLabel = (plan: PaymentPlanDefinition) => {
   if (!plan.billingInterval) {
     return "";
   }
@@ -52,7 +52,7 @@ export type CreditsDisplay = {
 };
 
 // Shared pricing configuration to ensure consistency across the app
-export const subscriptionPlans = creemSubscriptionPlans.map((plan) => {
+export const subscriptionPlans = subscriptionPlanDefinitions.map((plan) => {
   const Icon = plan.iconKey ? iconMap[plan.iconKey] : Zap;
   const base = plan.baseCredits ?? plan.credits;
   const bonus = plan.bonusCredits ?? 0;
@@ -83,12 +83,11 @@ export const subscriptionPlans = creemSubscriptionPlans.map((plan) => {
     features: plan.features ?? [],
     cta: plan.cta ?? "Start Creating",
     popular: plan.popular ?? false,
-    checkoutUrl: plan.checkoutUrl,
-    productId: plan.productId,
+    productId: plan.dodoProductId,
   };
 });
 
-export const oneTimePacks = creemCreditPacks.map((plan) => ({
+export const oneTimePacks = creditPackDefinitions.map((plan) => ({
   id: plan.id,
   name: plan.name,
   price: formatPriceLabel(plan),
@@ -101,8 +100,7 @@ export const oneTimePacks = creemCreditPacks.map((plan) => ({
   badge: plan.badge,
   popular: plan.popular ?? false,
   limitations: "No API access, No priority queue",
-  checkoutUrl: plan.checkoutUrl,
-  productId: plan.productId,
+  productId: plan.dodoProductId,
   iconKey: plan.iconKey,
   features: plan.features ?? [],
 }));
@@ -113,6 +111,6 @@ export const homepagePricingTeaser = subscriptionPlans.filter((plan) => plan.per
 export const getSubscriptionPlanById = (id: string) =>
   subscriptionPlans.find((plan) => plan.id === id);
 
-export const getCreemPlanById = (id: string) => {
-  return [...creemSubscriptionPlans, ...creemCreditPacks].find((plan) => plan.id === id) ?? null;
+export const getPaymentPlanById = (id: string) => {
+  return [...subscriptionPlanDefinitions, ...creditPackDefinitions].find((plan) => plan.id === id) ?? null;
 };

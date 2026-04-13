@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { creemPlansById } from '@/config/creemPlans';
+import { paymentPlansById } from '@/config/payment-plans';
+import { getExternalPaymentId } from '@/lib/payment-records';
 
 export const runtime = 'nodejs';
 
@@ -18,7 +19,8 @@ export async function GET(request: NextRequest) {
       hasServiceRoleKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
       supabaseUrlPrefix: process.env.NEXT_PUBLIC_SUPABASE_URL?.substring(0, 30) || 'NOT SET',
       serviceRoleKeyPrefix: process.env.SUPABASE_SERVICE_ROLE_KEY?.substring(0, 20) || 'NOT SET',
-      hasCreemApiKey: !!process.env.CREEM_API_KEY,
+      hasDodoApiKey: !!process.env.DODO_PAYMENTS_API_KEY,
+      hasDodoWebhookKey: !!process.env.DODO_PAYMENTS_WEBHOOK_KEY,
     };
     
     // 检查 2: Supabase 客户端创建
@@ -55,31 +57,34 @@ export async function GET(request: NextRequest) {
     
     // 检查 4: Plan 配置
     diagnostics.checks.plans = {
-      totalPlans: Object.keys(creemPlansById).length,
-      plans: Object.values(creemPlansById).map(p => ({
+      totalPlans: Object.keys(paymentPlansById).length,
+      plans: Object.values(paymentPlansById).map(p => ({
         id: p.id,
-        productId: p.productId,
+        productId: p.dodoProductId,
         credits: p.credits,
         category: p.category,
         name: p.name
       })),
       envProductIds: {
-        STARTER: process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_ID || 'NOT SET',
-        CREATOR: process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_ID || 'NOT SET',
-        DEV: process.env.NEXT_PUBLIC_CREEM_PACK_DEV_ID || 'NOT SET',
+        STARTER: process.env.NEXT_PUBLIC_DODO_PACK_STARTER_ID || process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_DODO_ID || 'NOT SET',
+        CREATOR: process.env.NEXT_PUBLIC_DODO_PACK_CREATOR_ID || process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_DODO_ID || 'NOT SET',
+        DEV: process.env.NEXT_PUBLIC_DODO_PACK_DEV_ID || process.env.NEXT_PUBLIC_CREEM_PACK_DEV_DODO_ID || 'NOT SET',
       }
     };
     
     // 检查 5: 最近的支付记录
     const { data: recentPayments, error: paymentsError } = await supabaseAdmin
       .from('payments')
-      .select('id, user_id, amount, status, creem_payment_id, created_at')
+      .select('*')
       .order('created_at', { ascending: false })
       .limit(10);
     
     diagnostics.checks.recentPayments = {
       count: recentPayments?.length || 0,
-      payments: recentPayments || [],
+      payments: (recentPayments || []).map((payment) => ({
+        ...payment,
+        external_payment_id: getExternalPaymentId(payment),
+      })),
       error: paymentsError?.message
     };
     
@@ -87,7 +92,7 @@ export async function GET(request: NextRequest) {
     const { data: recentCredits, error: creditsError } = await supabaseAdmin
       .from('credit_transactions')
       .select('id, user_id, amount, reason, metadata, created_at')
-      .eq('reason', 'creem_payment')
+      .eq('reason', 'dodo_payment')
       .order('created_at', { ascending: false })
       .limit(10);
     
@@ -132,4 +137,3 @@ export async function GET(request: NextRequest) {
     }, { status: 500 });
   }
 }
-

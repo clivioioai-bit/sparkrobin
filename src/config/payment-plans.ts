@@ -1,12 +1,10 @@
-import type { PaymentProvider } from '@/lib/payment-provider';
-
-export type CreemPlanCategory = 'subscription' | 'pack';
+export type PlanCategory = 'subscription' | 'pack';
 export type BillingInterval = 'month' | 'year';
 export type PaymentMethodType = 'credit' | 'debit' | 'apple_pay' | 'google_pay' | 'paypal';
 
-export interface CreemPlanDefinition {
+export interface PaymentPlanDefinition {
   id: string;
-  category: CreemPlanCategory;
+  category: PlanCategory;
   name: string;
   priceCents: number;
   originalPriceCents?: number;
@@ -22,8 +20,6 @@ export interface CreemPlanDefinition {
   popular?: boolean;
   cta?: string;
   description?: string;
-  checkoutUrl?: string;
-  productId?: string;
   dodoProductId?: string;
   allowedPaymentMethodTypes?: PaymentMethodType[];
   features?: string[];
@@ -41,7 +37,6 @@ const normalizeEnvValue = (value?: string) => {
   return trimmed;
 };
 
-// Guard against placeholder values copied from templates
 const normalizeProductId = (value?: string) => {
   const normalized = normalizeEnvValue(value);
   if (!normalized) return undefined;
@@ -57,30 +52,15 @@ const normalizeProductId = (value?: string) => {
   return normalized;
 };
 
-const normalizeCheckoutUrl = (value?: string) => {
-  const normalized = normalizeEnvValue(value);
-  if (!normalized) return undefined;
-  if (!/^https?:\/\//i.test(normalized)) return undefined;
-  return normalized;
-};
-
-const resolveProviderProductId = (envKeyRoot: string, provider: PaymentProvider) => {
-  const suffix = provider === 'dodo' ? '_DODO_ID' : '_ID';
-  return normalizeProductId(readEnv(`${envKeyRoot}${suffix}`));
-};
-
 const resolvePlanConfig = (
   baseId: string,
   billing: 'MONTHLY' | 'YEARLY',
   envSuffix?: string
 ) => {
-  const envKeyRoot = `NEXT_PUBLIC_CREEM_PLAN_${baseId}_${billing}${envSuffix ?? ''}`;
-
-  const checkoutUrl = normalizeCheckoutUrl(readEnv(`${envKeyRoot}_URL`));
-  const productId = resolveProviderProductId(envKeyRoot, 'creem');
-  const dodoProductId = resolveProviderProductId(envKeyRoot, 'dodo');
-
-  return { checkoutUrl, productId, dodoProductId };
+  const envKeyRoot = `NEXT_PUBLIC_DODO_PLAN_${baseId}_${billing}${envSuffix ?? ''}_ID`;
+  const legacyEnvKeyRoot = `NEXT_PUBLIC_CREEM_PLAN_${baseId}_${billing}${envSuffix ?? ''}_DODO_ID`;
+  const dodoProductId = normalizeProductId(readEnv(envKeyRoot) || readEnv(legacyEnvKeyRoot));
+  return { dodoProductId };
 };
 
 const buildSubscriptionPlans = () => {
@@ -194,8 +174,6 @@ const buildSubscriptionPlans = () => {
         badge: tier.monthlyBadge,
         popular: tier.popular,
         cta: tier.monthlyCta ?? 'Start Creating',
-        checkoutUrl: monthlyPlanConfig.checkoutUrl,
-        productId: monthlyPlanConfig.productId,
         dodoProductId: monthlyPlanConfig.dodoProductId,
         allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
         features: [...tier.baseFeatures],
@@ -215,8 +193,6 @@ const buildSubscriptionPlans = () => {
         badge: tier.yearlyBadge ?? yearlyBadgeFallback,
         popular: tier.popular,
         cta: tier.yearlyCta ?? 'Save with Annual',
-        checkoutUrl: yearlyPlanConfig.checkoutUrl,
-        productId: yearlyPlanConfig.productId,
         dodoProductId: yearlyPlanConfig.dodoProductId,
         allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
         features: [...tier.baseFeatures],
@@ -226,9 +202,9 @@ const buildSubscriptionPlans = () => {
   });
 };
 
-export const creemSubscriptionPlans: CreemPlanDefinition[] = buildSubscriptionPlans();
+export const subscriptionPlanDefinitions: PaymentPlanDefinition[] = buildSubscriptionPlans();
 
-export const creemCreditPacks: CreemPlanDefinition[] = [
+export const creditPackDefinitions: PaymentPlanDefinition[] = [
   {
     id: 'starter',
     category: 'pack',
@@ -240,9 +216,9 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     credits: 500,
     bonusCredits: 0,
     description: 'Pay once, use anytime — credits never expire',
-    checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_URL),
-    productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_ID),
-    dodoProductId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_DODO_ID),
+    dodoProductId: normalizeProductId(
+      process.env.NEXT_PUBLIC_DODO_PACK_STARTER_ID || process.env.NEXT_PUBLIC_CREEM_PACK_STARTER_DODO_ID
+    ),
     allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
     iconKey: 'zap' as const,
   },
@@ -260,9 +236,9 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     popular: true,
     highlight: true,
     description: 'Pay once, use anytime — credits never expire',
-    checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_URL),
-    productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_ID),
-    dodoProductId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_DODO_ID),
+    dodoProductId: normalizeProductId(
+      process.env.NEXT_PUBLIC_DODO_PACK_CREATOR_ID || process.env.NEXT_PUBLIC_CREEM_PACK_CREATOR_DODO_ID
+    ),
     allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
     iconKey: 'crown' as const,
   },
@@ -278,28 +254,21 @@ export const creemCreditPacks: CreemPlanDefinition[] = [
     bonusCredits: 0,
     badge: 'Best Value',
     description: 'Pay once, use anytime — credits never expire',
-    checkoutUrl: normalizeCheckoutUrl(process.env.NEXT_PUBLIC_CREEM_PACK_DEV_URL),
-    productId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_DEV_ID),
-    dodoProductId: normalizeProductId(process.env.NEXT_PUBLIC_CREEM_PACK_DEV_DODO_ID),
+    dodoProductId: normalizeProductId(
+      process.env.NEXT_PUBLIC_DODO_PACK_DEV_ID || process.env.NEXT_PUBLIC_CREEM_PACK_DEV_DODO_ID
+    ),
     allowedPaymentMethodTypes: ['credit', 'debit', 'apple_pay', 'google_pay'] as PaymentMethodType[],
     iconKey: 'building' as const,
     features: ['1-on-1 24/7 customer support'],
   },
 ];
 
-export const creemPlansById = Object.fromEntries(
-  [...creemSubscriptionPlans, ...creemCreditPacks].map((plan) => [plan.id, plan])
+export const paymentPlansById = Object.fromEntries(
+  [...subscriptionPlanDefinitions, ...creditPackDefinitions].map((plan) => [plan.id, plan])
 );
 
-export type CreemPlanId = keyof typeof creemPlansById;
+export type PaymentPlanId = keyof typeof paymentPlansById;
 
-export function getPlanProductId(
-  plan: CreemPlanDefinition,
-  provider: PaymentProvider
-): string | undefined {
-  if (provider === 'dodo') {
-    return plan.dodoProductId;
-  }
-
-  return plan.productId;
+export function getPlanProductId(plan: PaymentPlanDefinition): string | undefined {
+  return plan.dodoProductId;
 }

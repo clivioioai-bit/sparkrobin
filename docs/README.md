@@ -6,13 +6,6 @@ This directory contains all project documentation organized by category.
 
 ### Getting Started
 - **[Supabase Setup](./SUPABASE_SETUP.md)** - Complete guide for configuring Supabase authentication and database
-- **[Creem Payment Integration](./CREEM_PAYMENT_INTEGRATION.md)** - Payment system integration guide (test and production)
-- **[Creem Product Creation](./CREEM_PRODUCT_CREATION_GUIDE.md)** - How to create products in Creem Dashboard
-- **[Ngrok Webhook Setup](./NGROK_WEBHOOK_SETUP.md)** - Local webhook testing with ngrok
-
-## 🔌 API References
-
-- **[Creem API Reference](./CREEM_API_REFERENCE.md)** - Creem Payment API endpoints, request/response examples, and error codes
 
 ## 🏗️ Architecture
 
@@ -27,7 +20,6 @@ This directory contains all project documentation organized by category.
 
 ## 🐛 Troubleshooting
 
-- **[Troubleshooting Checkout](./TROUBLESHOOTING_CHECKOUT.md)** - Payment link creation issues and solutions
 - **[Demo Login](./DEMO_LOGIN.md)** - Test account information for development
 
 ## 🔍 SEO & Analytics
@@ -43,11 +35,10 @@ This directory contains all project documentation organized by category.
 4. Test user creation trigger
 
 ### Payment Setup Checklist
-- [ ] Create products in Creem Dashboard
-- [ ] Configure environment variables (test and production)
-- [ ] Set up webhook URL (local: ngrok, production: domain)
+- [ ] Configure Dodo Payments environment variables
+- [ ] Set up the Dodo webhook URL
 - [ ] Test checkout flow
-- [ ] Verify webhook events are received
+- [ ] Verify Dodo webhook events are received
 
 ### Security Checklist
 - [ ] Review Security Guidelines
@@ -68,4 +59,3 @@ This directory contains all project documentation organized by category.
 - `env.example` - Environment variable template
 - `middleware.ts` - Authentication middleware
 - `vercel.json` - Vercel deployment configuration
-

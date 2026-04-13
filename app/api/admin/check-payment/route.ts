@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { resolveExternalPaymentIdColumn } from '@/lib/payment-records';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export const runtime = 'nodejs';
@@ -32,10 +33,11 @@ export async function GET(request: NextRequest) {
     
     // 1. 检查支付记录
     if (orderId) {
+      const externalPaymentIdColumn = await resolveExternalPaymentIdColumn();
       const { data: payment, error: paymentError } = await supabaseAdmin
         .from('payments')
         .select('*')
-        .eq('creem_payment_id', orderId)
+        .eq(externalPaymentIdColumn, orderId)
         .maybeSingle();
       
       result.payment = {
@@ -53,7 +55,7 @@ export async function GET(request: NextRequest) {
           .from('credit_transactions')
           .select('*')
           .eq('metadata->>paymentId', checkoutId)
-          .eq('reason', 'creem_payment')
+          .eq('reason', 'dodo_payment')
       );
     }
     if (orderId) {
@@ -62,7 +64,7 @@ export async function GET(request: NextRequest) {
           .from('credit_transactions')
           .select('*')
           .eq('metadata->>paymentId', orderId)
-          .eq('reason', 'creem_payment')
+          .eq('reason', 'dodo_payment')
       );
     }
     
@@ -126,4 +128,3 @@ export async function GET(request: NextRequest) {
     }, { status: 500 });
   }
 }
-

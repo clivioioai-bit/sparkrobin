@@ -13,7 +13,7 @@ interface Payment {
   currency: string;
   status: string;
   paymentMethod: string;
-  creemPaymentId: string | null;
+  externalPaymentId: string | null;
   subscription: {
     id: number;
     planType: string;

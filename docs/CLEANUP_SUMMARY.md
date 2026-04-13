@@ -60,7 +60,7 @@
 
 #### 文档文件：
 所有重要文档已移动到 `docs/` 目录，包括：
-- 配置指南（Supabase, Creem Payment等）
+- 配置指南（Supabase 等）
 - API参考文档
 - 架构文档
 - 安全文档
@@ -74,9 +74,6 @@ veo4ai.ai/
 ├── docs/                        # 文档目录
 │   ├── README.md               # 文档索引
 │   ├── SUPABASE_SETUP.md
-│   ├── CREEM_PAYMENT_INTEGRATION.md
-│   ├── CREEM_PRODUCT_CREATION_GUIDE.md
-│   ├── CREEM_API_REFERENCE.md
 │   ├── DATABASE_ARCHITECTURE.md
 │   ├── CREDIT_SYSTEM_AUDIT.md
 │   ├── CREDIT_SYSTEM_ISSUES.md
@@ -98,7 +95,7 @@ veo4ai.ai/
 1. 阅读主 `README.md`
 2. 查看 `docs/README.md` 了解文档结构
 3. 按照 `docs/SUPABASE_SETUP.md` 配置Supabase
-4. 按照 `docs/CREEM_PAYMENT_INTEGRATION.md` 配置支付
+4. 按照当前 Dodo Payments 配置完成支付接入
 
 ### 数据库设置：
 1. 执行 `database/schema.sql`
@@ -121,4 +118,3 @@ veo4ai.ai/
 
 **整理完成时间**: 2025-01-XX
 **整理内容**: 文档结构重组、README完善、无用文件清理
-

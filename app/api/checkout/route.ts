@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
-import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { createCheckoutForProduct } from '@/lib/creem-payment';
+import { ensureProvisionedUser } from '@/lib/account-provisioning';
 import { createDodoCheckoutSession } from '@/lib/dodo-payments';
-import { creemPlansById, getPlanProductId } from '@/config/creemPlans';
+import { paymentPlansById, getPlanProductId } from '@/config/payment-plans';
 import { getPaymentProviderLabel, resolvePaymentProvider } from '@/lib/payment-provider';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
 
@@ -60,10 +59,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing planId' }, { status: 400 });
     }
 
-    const plan = creemPlansById[planId];
+    const plan = paymentPlansById[planId];
     debug.hasPlan = !!plan;
-    debug.usingCheckoutUrl = !!plan?.checkoutUrl;
-    debug.hasProductId = !!getPlanProductId(plan, provider);
+    debug.usingCheckoutUrl = false;
+    debug.hasProductId = !!getPlanProductId(plan);
 
     if (!plan) {
       return NextResponse.json({ error: 'Plan not found' }, { status: 404 });
@@ -101,48 +100,12 @@ export async function POST(request: NextRequest) {
     };
 
     try {
-      const adminClient = getSupabaseAdmin();
-      const { data: userData, error: userError } = await adminClient
-        .from('users')
-        .select('id, email')
-        .eq('id', user.id)
-        .single();
-
+      const userData = await ensureProvisionedUser(user);
       if (userData?.id) {
         checkoutUser = {
           id: userData.id,
           email: userData.email || checkoutUser.email,
         };
-      } else {
-        console.warn('[API] checkout user lookup missing, trying to provision user record', {
-          userId: user.id,
-          code: (userError as any)?.code,
-          message: (userError as any)?.message,
-        });
-
-        const { data: createdUser, error: createUserError } = await adminClient
-          .from('users')
-          .upsert({
-            id: user.id,
-            email: user.email || '',
-            full_name: user.user_metadata?.full_name || user.email || '',
-            subscription_plan: 'free',
-            subscription_status: 'active',
-            credits_balance: 0,
-            credits_total: 0,
-            credits_spent: 0,
-          }, { onConflict: 'id' })
-          .select('id, email')
-          .single();
-
-        if (createUserError || !createdUser) {
-          console.error('[API] checkout user auto-provision failed, fallback to auth user', createUserError);
-        } else {
-          checkoutUser = {
-            id: createdUser.id,
-            email: createdUser.email || checkoutUser.email,
-          };
-        }
       }
     } catch (userSyncError) {
       console.error('[API] checkout user sync failed, fallback to auth user', userSyncError);
@@ -151,20 +114,8 @@ export async function POST(request: NextRequest) {
     const baseUrl = normalizeBaseUrl(process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin);
     debug.baseUrl = baseUrl;
     debug.vercelEnv = process.env.VERCEL_ENV || process.env.NODE_ENV || 'unknown';
-    debug.hasCreemApiKey = !!process.env.CREEM_API_KEY;
-    debug.creemApiKeyPrefix = process.env.CREEM_API_KEY?.substring(0, 20) || 'not set';
-    const providerProductId = getPlanProductId(plan, provider);
+    const providerProductId = getPlanProductId(plan);
     debug.productId = providerProductId;
-
-    if (provider === 'creem' && !process.env.CREEM_API_KEY) {
-      console.error('[API] CREEM_API_KEY not configured');
-      return NextResponse.json(
-        debugMode
-          ? { error: 'Creem API key not configured', debug }
-          : { error: 'Payment service not configured' },
-        { status: 500 }
-      );
-    }
 
     if (provider === 'dodo' && !process.env.DODO_PAYMENTS_API_KEY) {
       console.error('[API] DODO_PAYMENTS_API_KEY not configured');
@@ -194,8 +145,7 @@ export async function POST(request: NextRequest) {
       if (returnPath) {
         callbackParams.set('return_to', returnPath);
       }
-      const callbackProvider = provider === 'dodo' ? 'dodo' : 'creem';
-      const successUrl = `${baseUrl}/api/pay/callback/${callbackProvider}?${callbackParams.toString()}`;
+      const successUrl = `${baseUrl}/api/pay/callback/dodo?${callbackParams.toString()}`;
 
       const cancelParams = new URLSearchParams({ checkout: 'cancelled', plan: plan.id });
       if (returnPath) {
@@ -220,26 +170,15 @@ export async function POST(request: NextRequest) {
           provider,
         };
 
-        const checkout =
-          provider === 'dodo'
-            ? await createDodoCheckoutSession({
-                productId: providerProductId,
-                customerId: checkoutUser.id,
-                customerEmail: checkoutUser.email,
-                customerName: user.user_metadata?.full_name || null,
-                returnUrl: successUrl,
-                allowedPaymentMethodTypes: plan.allowedPaymentMethodTypes,
-                metadata,
-              })
-            : await createCheckoutForProduct({
-                productId: providerProductId,
-                customerId: checkoutUser.id,
-                customerEmail: checkoutUser.email,
-                successUrl,
-                cancelUrl,
-                requestId,
-                metadata,
-              });
+        const checkout = await createDodoCheckoutSession({
+          productId: providerProductId,
+          customerId: checkoutUser.id,
+          customerEmail: checkoutUser.email,
+          customerName: user.user_metadata?.full_name || null,
+          returnUrl: successUrl,
+          allowedPaymentMethodTypes: plan.allowedPaymentMethodTypes,
+          metadata,
+        });
 
         debug.checkoutResult = checkout;
 
@@ -305,45 +244,10 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Fallback: if plan only has a static checkoutUrl, return it
-    // ⚠️ 注意：静态 URL 可能不存在，优先使用 productId 通过 API 创建 checkout
-    if (plan.checkoutUrl && plan.checkoutUrl.length > 0) {
-      // 在开发模式下，如果 productId 未配置，给出明确错误而不是使用可能不存在的静态 URL
-      const isDevelopment = process.env.NODE_ENV === 'development' || process.env.NEXT_PUBLIC_API_ENV === 'development';
-      if (isDevelopment && !plan.productId) {
-        console.error('[API] ⚠️ 开发模式：plan 缺少 productId，无法通过 API 创建 checkout', {
-          planId: plan.id,
-          hasCheckoutUrl: !!plan.checkoutUrl,
-          checkoutUrl: plan.checkoutUrl,
-        });
-        return NextResponse.json(
-          debugMode
-            ? {
-                error: 'Plan productId not configured',
-                message: `Plan "${plan.id}" 需要配置 NEXT_PUBLIC_CREEM_PACK_STARTER_ID (或对应的 productId) 环境变量。静态 checkoutUrl 可能不存在。`,
-                debug: {
-                  ...debug,
-                  planId: plan.id,
-                  hasProductId: !!plan.productId,
-                  hasCheckoutUrl: !!plan.checkoutUrl,
-                  checkoutUrl: plan.checkoutUrl,
-                }
-              }
-            : {
-                error: 'Plan not configured for checkout',
-                message: 'Please configure productId for this plan in environment variables.'
-              },
-          { status: 500 }
-        );
-      }
-      // 生产环境或已有 productId 时，允许使用静态 URL（向后兼容）
-      return NextResponse.json({ checkoutUrl: plan.checkoutUrl });
-    }
-
-    console.error(`[API] Plan ${planId} is missing productId and checkoutUrl`, {
+    console.error(`[API] Plan ${planId} is missing Dodo product ID`, {
       planId,
-      usingCheckoutUrl: !!plan.checkoutUrl,
-      hasProductId: !!plan.productId,
+      usingCheckoutUrl: false,
+      hasProductId: !!providerProductId,
     });
     return NextResponse.json({ error: 'Plan is not configured for checkout' }, { status: 500 });
   } catch (error) {

@@ -101,7 +101,7 @@ async function fixUserCredits() {
     const metadata = t.metadata as any;
     return metadata?.planId === 'starter' || 
            metadata?.planCategory === 'pack' ||
-           (t.reason === 'creem_payment' && t.amount === 300);
+           (t.reason === 'dodo_payment' && t.amount === 300);
   }) || [];
   
   console.log(`\n📊 分析结果:`);
@@ -223,4 +223,3 @@ async function fixUserCredits() {
 
 // 运行脚本
 fixUserCredits().catch(console.error);
-

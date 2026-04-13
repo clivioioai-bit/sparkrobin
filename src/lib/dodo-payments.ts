@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-import type { PaymentMethodType } from '@/config/creemPlans';
+import type { PaymentMethodType } from '@/config/payment-plans';
 
 type DodoEnvironment = 'test_mode' | 'live_mode';
 

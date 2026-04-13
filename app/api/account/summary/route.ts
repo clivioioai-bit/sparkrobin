@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
+import { ensureProvisionedUser, getDefaultUserSummary } from '@/lib/account-provisioning';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
 
@@ -20,29 +21,6 @@ type AccountSummary = {
   generation_count: number;
   subscription: Record<string, unknown> | null;
 };
-
-function defaultSummaryFromAuthUser(user: {
-  id: string;
-  email?: string | null;
-  user_metadata?: Record<string, unknown>;
-}): AccountSummary {
-  const now = new Date().toISOString();
-  return {
-    id: user.id,
-    email: user.email || '',
-    full_name: String(user.user_metadata?.full_name || user.email || ''),
-    subscription_plan: 'free',
-    subscription_status: 'active',
-    subscription_end_date: null,
-    credits_balance: 0,
-    credits_total: 0,
-    credits_spent: 0,
-    created_at: now,
-    updated_at: now,
-    generation_count: 0,
-    subscription: null,
-  };
-}
 
 export async function GET(request: NextRequest) {
   try {
@@ -68,7 +46,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
     }
 
-    const fallback = defaultSummaryFromAuthUser(user);
+    const fallback = {
+      ...getDefaultUserSummary(user),
+      generation_count: 0,
+      subscription: null,
+    };
     let summary: AccountSummary = fallback;
     let adminClient;
 
@@ -80,57 +62,16 @@ export async function GET(request: NextRequest) {
 
     if (adminClient) {
       try {
-        const { data: userRow, error: userError } = await adminClient
-          .from('users')
-          .select('id, email, full_name, subscription_plan, subscription_status, subscription_end_date, credits_balance, credits_total, credits_spent, created_at, updated_at')
-          .eq('id', user.id)
-          .maybeSingle();
-
-        if (userError) {
-          console.warn('[API] account summary users lookup failed:', {
-            code: (userError as any)?.code,
-            message: (userError as any)?.message,
-          });
-        } else if (!userRow) {
-          const { data: createdUser, error: createError } = await adminClient
-            .from('users')
-            .upsert({
-              id: user.id,
-              email: user.email || '',
-              full_name: user.user_metadata?.full_name || user.email || '',
-              subscription_plan: 'free',
-              subscription_status: 'active',
-              credits_balance: 0,
-              credits_total: 0,
-              credits_spent: 0,
-            }, { onConflict: 'id' })
-            .select('id, email, full_name, subscription_plan, subscription_status, subscription_end_date, credits_balance, credits_total, credits_spent, created_at, updated_at')
-            .single();
-
-          if (createError) {
-            console.warn('[API] account summary user auto-provision failed:', createError);
-          } else if (createdUser) {
-            summary = {
-              ...summary,
-              ...createdUser,
-              subscription_plan: createdUser.subscription_plan || 'free',
-              subscription_status: createdUser.subscription_status || 'active',
-              credits_balance: Number(createdUser.credits_balance || 0),
-              credits_total: Number(createdUser.credits_total || 0),
-              credits_spent: Number(createdUser.credits_spent || 0),
-            };
-          }
-        } else {
-          summary = {
-            ...summary,
-            ...userRow,
-            subscription_plan: userRow.subscription_plan || 'free',
-            subscription_status: userRow.subscription_status || 'active',
-            credits_balance: Number(userRow.credits_balance || 0),
-            credits_total: Number(userRow.credits_total || 0),
-            credits_spent: Number(userRow.credits_spent || 0),
-          };
-        }
+        const userRow = await ensureProvisionedUser(user);
+        summary = {
+          ...summary,
+          ...userRow,
+          subscription_plan: userRow.subscription_plan || 'free',
+          subscription_status: userRow.subscription_status || 'active',
+          credits_balance: Number(userRow.credits_balance || 0),
+          credits_total: Number(userRow.credits_total || 0),
+          credits_spent: Number(userRow.credits_spent || 0),
+        };
       } catch (error) {
         console.warn('[API] account summary user fetch failed unexpectedly:', error);
       }

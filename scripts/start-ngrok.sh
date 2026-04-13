@@ -26,12 +26,12 @@ echo "🚀 启动 ngrok..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 echo "📋 你的 Webhook URL 格式："
-echo "   https://[ngrok域名].ngrok-free.app/api/webhooks/creem"
+echo "   https://[ngrok域名].ngrok-free.app/api/webhooks/dodo"
 echo ""
 echo "💡 提示："
 echo "   - 启动后会在下方显示 Forwarding URL"
-echo "   - 复制该 URL 并加上 /api/webhooks/creem"
-echo "   - 在 Creem Dashboard → Settings → Webhooks 中配置"
+echo "   - 复制该 URL 并加上 /api/webhooks/dodo"
+echo "   - 在 Dodo Payments Dashboard 中配置 webhook"
 echo "   - 访问 http://localhost:4040 查看请求详情"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -39,4 +39,3 @@ echo ""
 
 # 启动 ngrok
 ngrok http 3000
-

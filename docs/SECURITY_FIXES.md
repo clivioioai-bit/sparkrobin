@@ -228,7 +228,7 @@ console.error(`[API ERROR] Unauthorized cancel attempt - userId: ${userId}, jobI
 
 ### 未修改的文件：
 - `/app/api/auth/signup/route.ts` - 认证接口，不需要 session 验证
-- `/app/api/webhooks/creem/route.ts` - Webhook，使用签名验证而非 session
+- `/app/api/webhooks/dodo/route.ts` - Webhook，使用签名验证而非 session
 - `middleware.ts` - 已有认证拦截，无需修改
 - `src/lib/rate-limiter.ts` - 已完整实现，无需修改
 
@@ -272,4 +272,3 @@ describe('API Security', () => {
 **修复完成时间**: 2025-10-03  
 **修复人员**: AI Assistant  
 **审核状态**: ⚠️ 待人工审核和测试
-

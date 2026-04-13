@@ -5,7 +5,6 @@
  */
 
 import { config } from 'dotenv';
-import { readFileSync } from 'fs';
 
 // 加载环境变量
 config({ path: '.env.local' });
@@ -20,26 +19,27 @@ const requiredVars = {
     'NEXT_PUBLIC_SUPABASE_ANON_KEY',
     'SUPABASE_SERVICE_ROLE_KEY',
   ],
-  'Creem Payment': [
-    'CREEM_API_KEY',
-    'CREEM_WEBHOOK_SECRET',
+  'Dodo Payments': [
+    'DODO_PAYMENTS_ENVIRONMENT',
+    'DODO_PAYMENTS_API_KEY',
+    'DODO_PAYMENTS_WEBHOOK_KEY',
   ],
 };
 
 // 可选的环境变量
 const optionalVars = {
-  'Creem 订阅计划产品 ID': [
-    'NEXT_PUBLIC_CREEM_PLAN_BASIC_MONTHLY_ID',
-    'NEXT_PUBLIC_CREEM_PLAN_BASIC_YEARLY_ID',
-    'NEXT_PUBLIC_CREEM_PLAN_CREATOR_MONTHLY_V2_ID',
-    'NEXT_PUBLIC_CREEM_PLAN_CREATOR_YEARLY_V2_ID',
-    'NEXT_PUBLIC_CREEM_PLAN_PRO_MONTHLY_ID',
-    'NEXT_PUBLIC_CREEM_PLAN_PRO_YEARLY_ID',
+  'Dodo 订阅计划产品 ID': [
+    'NEXT_PUBLIC_DODO_PLAN_BASIC_MONTHLY_ID',
+    'NEXT_PUBLIC_DODO_PLAN_BASIC_YEARLY_ID',
+    'NEXT_PUBLIC_DODO_PLAN_CREATOR_MONTHLY_V2_ID',
+    'NEXT_PUBLIC_DODO_PLAN_CREATOR_YEARLY_V2_ID',
+    'NEXT_PUBLIC_DODO_PLAN_PRO_MONTHLY_ID',
+    'NEXT_PUBLIC_DODO_PLAN_PRO_YEARLY_ID',
   ],
-  'Creem 一次性包产品 ID': [
-    'NEXT_PUBLIC_CREEM_PACK_STARTER_ID',
-    'NEXT_PUBLIC_CREEM_PACK_CREATOR_ID',
-    'NEXT_PUBLIC_CREEM_PACK_DEV_ID',
+  'Dodo 一次性包产品 ID': [
+    'NEXT_PUBLIC_DODO_PACK_STARTER_ID',
+    'NEXT_PUBLIC_DODO_PACK_CREATOR_ID',
+    'NEXT_PUBLIC_DODO_PACK_DEV_ID',
   ],
   'Google OAuth': [
     'GOOGLE_CLIENT_ID',
@@ -95,22 +95,23 @@ for (const [category, vars] of Object.entries(optionalVars)) {
 // 安全检查
 console.log('🔒 安全检查:\n');
 
-const apiKey = process.env.CREEM_API_KEY || '';
-const isProduction = process.env.NODE_ENV === 'production';
-const isTestKey = apiKey.includes('_test_');
+const apiKey = process.env.DODO_PAYMENTS_API_KEY || '';
+const environment = process.env.DODO_PAYMENTS_ENVIRONMENT || 'test_mode';
+const isTestKey = apiKey.startsWith('dodo_test_');
+const isLiveKey = apiKey.startsWith('dodo_live_');
 
 if (apiKey) {
-  if (isProduction && isTestKey) {
-    console.log('   ❌ 生产环境使用了测试密钥！');
+  if (environment === 'live_mode' && !isLiveKey) {
+    console.log('   ❌ live_mode 下没有使用 Dodo 生产密钥');
     hasErrors = true;
-  } else if (!isProduction && !isTestKey) {
-    console.log('   ⚠️  开发环境使用了生产密钥（建议使用测试密钥）');
+  } else if (environment === 'test_mode' && !isTestKey) {
+    console.log('   ⚠️  test_mode 下建议使用 dodo_test_ 密钥');
     hasWarnings = true;
   } else {
-    console.log('   ✅ 密钥环境匹配正确');
+    console.log('   ✅ Dodo 密钥与环境匹配');
   }
 } else {
-  console.log('   ⚠️  未配置 Creem API 密钥');
+  console.log('   ⚠️  未配置 Dodo API 密钥');
 }
 
 console.log('');

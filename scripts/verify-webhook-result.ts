@@ -72,7 +72,7 @@ async function verifyWebhookResult() {
     .from('credit_transactions')
     .select('id, amount, reason, created_at, metadata')
     .eq('user_id', user.id)
-    .or('reason.eq.subscription_created,reason.eq.creem_payment')
+    .or('reason.eq.subscription_created,reason.eq.dodo_payment')
     .gte('created_at', new Date(Date.now() - 10 * 60 * 1000).toISOString()) // 最近 10 分钟
     .order('created_at', { ascending: false });
   
@@ -110,7 +110,7 @@ async function verifyWebhookResult() {
     payments.forEach((payment, index) => {
       console.log(`${index + 1}. ${payment.amount} ${payment.currency} | ${payment.status}`);
       console.log(`   时间: ${payment.created_at}`);
-      console.log(`   Creem Payment ID: ${payment.creem_payment_id || 'N/A'}\n`);
+      console.log(`   Dodo Payment ID: ${payment.creem_payment_id || 'N/A'}\n`);
     });
   } else {
     console.log('   暂无支付记录\n');
@@ -124,4 +124,3 @@ async function verifyWebhookResult() {
 }
 
 verifyWebhookResult().catch(console.error);
-

@@ -55,53 +55,11 @@ function ErrorHandler() {
           const { data: { session } } = await supabase.auth.getSession();
 
           if (session?.user) {
-            const { data: existingUser, error: fetchError } = await supabase
-              .from('users')
-              .select('id')
-              .eq('id', session.user.id)
-              .single();
-
-            if (fetchError?.code === 'PGRST116' || !existingUser) {
-              const { supabase: supabaseClient } = await import("@/lib/supabase");
-              const { error: createError } = await supabaseClient
-                .from('users')
-                .insert({
-                  id: session.user.id,
-                  email: session.user.email,
-                  full_name: session.user.user_metadata?.full_name || session.user.email,
-                  subscription_plan: 'free',
-                  subscription_status: 'active',
-                  credits_balance: 3,
-                  credits_total: 3,
-                  credits_spent: 0,
-                  credits_limit: 50,
-                });
-
-              if (createError) {
-                try {
-                  await fetch('/api/users/fix-missing', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ userId: session.user.id }),
-                  });
-                } catch (apiError) {
-                  // silently fail
-                }
-              }
-            }
-
-            const { supabase: supabaseClient2 } = await import("@/lib/supabase");
-            const { data: existingSub, error: subFetchError } = await supabaseClient2
-              .from('user_subscriptions')
-              .select('user_id')
-              .eq('user_id', session.user.id)
-              .single();
-
-            if (subFetchError?.code === 'PGRST116' || !existingSub) {
-              await supabaseClient2
-                .from('user_subscriptions')
-                .insert({ user_id: session.user.id });
-            }
+            await fetch('/api/users/fix-missing', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ userId: session.user.id }),
+            });
 
             const cleanUrl = window.location.pathname;
             router.replace(cleanUrl);

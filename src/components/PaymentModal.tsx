@@ -21,13 +21,13 @@ const PaymentModal = ({ isOpen, onClose, selectedPlan = null, onSuccess }: Payme
   const [paymentMethod, setPaymentMethod] = useState<'subscription' | 'one-time'>('subscription');
 
   // Legacy mock payment integration IDs
-  const creemPlanIds = {
+  const mockSubscriptionPlanIds = {
     basic: "plan_basic_monthly",
     creator: "plan_creator_monthly",
     pro: "plan_pro_monthly"
   };
 
-  const creemProductIds = {
+  const mockPackProductIds = {
     starter: "pack_starter_10",
     creator_pack: "pack_creator_25",
     dev_team: "pack_dev_60"
@@ -45,14 +45,14 @@ const PaymentModal = ({ isOpen, onClose, selectedPlan = null, onSuccess }: Payme
       // Mock payment integration (delay only in development)
       const isDev = process.env.NEXT_PUBLIC_API_ENV === 'development';
       if (paymentMethod === 'subscription') {
-        const planId = creemPlanIds[chosenPlan as keyof typeof creemPlanIds];
+        const planId = mockSubscriptionPlanIds[chosenPlan as keyof typeof mockSubscriptionPlanIds];
         if (planId) {
           if (isDev) {
             await simulateMockCheckout(planId, 'subscription');
           }
         }
       } else {
-        const productId = creemProductIds[chosenPlan as keyof typeof creemProductIds];
+        const productId = mockPackProductIds[chosenPlan as keyof typeof mockPackProductIds];
         if (productId) {
           if (isDev) {
             await simulateMockCheckout(productId, 'one-time');

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { getExternalPaymentId } from '@/lib/payment-records';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
 
 export const runtime = 'nodejs';
@@ -70,7 +71,7 @@ export async function GET(request: NextRequest) {
       currency: payment.currency || 'USD',
       status: payment.status || 'pending',
       paymentMethod: payment.payment_method || 'unknown',
-      creemPaymentId: payment.creem_payment_id || null,
+      externalPaymentId: getExternalPaymentId(payment),
       subscription: payment.user_subscriptions ? {
         id: payment.user_subscriptions.id,
         planType: payment.user_subscriptions.plan_type,
@@ -101,4 +102,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-

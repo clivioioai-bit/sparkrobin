@@ -14,9 +14,10 @@ const requiredEnvVars = {
   NEXT_PUBLIC_SUPABASE_ANON_KEY: 'Supabase Anon Key',
   SUPABASE_SERVICE_ROLE_KEY: 'Supabase Service Role Key',
   
-  // Creem Payment
-  CREEM_API_KEY: 'Creem API Key',
-  CREEM_WEBHOOK_SECRET: 'Creem Webhook Secret',
+  // Dodo Payments
+  DODO_PAYMENTS_API_KEY: 'Dodo Payments API Key',
+  DODO_PAYMENTS_WEBHOOK_KEY: 'Dodo Payments Webhook Key',
+  DODO_PAYMENTS_ENVIRONMENT: 'Dodo Payments Environment',
   
   // KIE API
   KIE_API_KEY: 'KIE API Key',
@@ -64,9 +65,10 @@ if (nodeEnv === 'production') {
   console.log('  ✅ NODE_ENV=production');
   
   // 检查是否是生产环境的 API key
-  const creemKey = process.env.CREEM_API_KEY;
-  if (creemKey && creemKey.includes('test_')) {
-    console.log('  ⚠️  CREEM_API_KEY 看起来是测试环境的 key');
+  const dodoEnvironment = process.env.DODO_PAYMENTS_ENVIRONMENT;
+  const dodoApiKey = process.env.DODO_PAYMENTS_API_KEY;
+  if (dodoEnvironment === 'live_mode' && dodoApiKey && dodoApiKey.includes('test_')) {
+    console.log('  ⚠️  DODO_PAYMENTS_API_KEY 看起来是测试环境的 key');
     allPassed = false;
   }
   
@@ -86,4 +88,3 @@ if (allPassed) {
   console.log('❌ 发现未配置或配置错误的环境变量，请检查后重试');
   process.exit(1);
 }
-

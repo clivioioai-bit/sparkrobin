@@ -36,7 +36,7 @@
 - Test that API calls properly reject requests without valid userId
 - Review all API endpoints for proper authentication middleware
 
-### 3. Payment Integration (Creem Payment)
+### 3. Payment Integration (Dodo Payments)
 
 **Current Status**: 🚨 **MOCK IMPLEMENTATION - DO NOT USE IN PRODUCTION**
 
@@ -59,14 +59,14 @@
    );
    ```
 
-2. Replace mock subscription creation with actual Creem Payment API
+2. Replace mock subscription creation with actual Dodo Payments API
 3. Add proper error handling and retry logic
 4. Test all payment flows in staging environment
 5. Set up monitoring and alerting for payment failures
 
 **Current Protection**:
-- Webhook verification automatically rejects all requests in `NODE_ENV=production`
-- See warnings in `src/lib/creem-payment.ts`
+- Webhook verification must always be enforced for production traffic
+- Review `app/api/webhooks/dodo/route.ts` and `src/lib/dodo-payments.ts` before deployment
 
 ### 4. Database Security (Supabase)
 
@@ -121,4 +121,3 @@ If you discover a security vulnerability, please email support@veo4video.io
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [Supabase Security Best Practices](https://supabase.com/docs/guides/security)
 - [Next.js Security Headers](https://nextjs.org/docs/advanced-features/security-headers)
-

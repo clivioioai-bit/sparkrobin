@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { ensureProvisionedUser } from '@/lib/account-provisioning';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { rateLimit, authRateLimiter } from '@/lib/rate-limiter';
 
@@ -24,6 +25,9 @@ export async function POST(request: NextRequest) {
       email,
       password,
       email_confirm: false, // Require email confirmation
+      user_metadata: {
+        full_name: fullName || '',
+      },
     });
 
     if (authError) {
@@ -34,21 +38,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create user profile in our database
-    const { data: userData, error: userError } = await getSupabaseAdmin()
-      .from('users')
-      .insert({
+    let userData;
+    try {
+      userData = await ensureProvisionedUser({
         id: authData.user.id,
         email,
-        full_name: fullName || '',
-        subscription_plan: 'basic',
-        subscription_status: 'inactive',
-        credits_limit: 50,
-      })
-      .select()
-      .single();
-
-    if (userError) {
+        user_metadata: {
+          full_name: fullName || '',
+        },
+      });
+    } catch (userError) {
       console.error('User creation error:', userError);
       return NextResponse.json(
         { error: 'Failed to create user profile' },
@@ -63,7 +62,7 @@ export async function POST(request: NextRequest) {
         email: userData.email,
         full_name: userData.full_name,
         subscription_plan: userData.subscription_plan,
-        credits_limit: userData.credits_limit,
+        credits_balance: userData.credits_balance ?? 0,
       },
     });
 

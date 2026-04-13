@@ -137,7 +137,7 @@ const SubscriptionPlans = ({
         setTimeout(() => {
           try {
             const href = window.location.href;
-            if (!/payment\/success|creem|checkout/i.test(href)) {
+            if (!/payment\/success|checkout/i.test(href)) {
               window.location.href = result.checkoutUrl;
             }
           } catch {
@@ -162,18 +162,6 @@ const SubscriptionPlans = ({
           description: error.message || t('pleaseWait'),
         });
       } else {
-        // Fallback: if one-time pack has static URL, try direct redirect
-        const isOneTime = plan.billingInterval === 'one-time';
-        if (isOneTime && plan.checkoutUrl && typeof plan.checkoutUrl === 'string' && plan.checkoutUrl.length > 0) {
-          
-          if (typeof window !== 'undefined') {
-            try {
-              // Best practice: Redirect in the same window
-              window.location.href = plan.checkoutUrl;
-              return;
-            } catch (_) {}
-          }
-        }
         const errorMessage = error instanceof Error ? error.message : t('tryAgainLater');
         toast({
           variant: "destructive",
@@ -235,7 +223,6 @@ const SubscriptionPlans = ({
         creditValue: '',
         pricePerCredit: parseInt(pack.price.replace(/[^\d]/g, '')) / parseInt(pack.credits.replace(/[^\d]/g, '')),
         badge: '',
-        checkoutUrl: pack.checkoutUrl,
         productId: pack.productId,
       }));
     }
