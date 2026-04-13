@@ -8,6 +8,44 @@ export interface CreditSnapshot {
 
 const toNumber = (value: any): number => Number(value ?? 0);
 
+function hasCreditFields(value: any): value is { credits_balance?: unknown; credits_total?: unknown; credits_spent?: unknown } {
+  return !!value && typeof value === 'object' && (
+    'credits_balance' in value ||
+    'credits_total' in value ||
+    'credits_spent' in value ||
+    'balance' in value ||
+    'total' in value ||
+    'spent' in value
+  );
+}
+
+function normalizeSnapshot(data: any): CreditSnapshot | null {
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!hasCreditFields(row)) {
+    return null;
+  }
+
+  return {
+    balance: toNumber((row as any).credits_balance ?? (row as any).balance),
+    total: toNumber((row as any).credits_total ?? (row as any).total),
+    spent: toNumber((row as any).credits_spent ?? (row as any).spent),
+  };
+}
+
+async function resolveSnapshotFromRpc(userId: string, data: any) {
+  const normalized = normalizeSnapshot(data);
+  if (normalized) {
+    return normalized;
+  }
+
+  const snapshot = await fetchCreditSnapshot(userId);
+  if (!snapshot) {
+    throw new Error('Failed to resolve updated credit snapshot');
+  }
+
+  return snapshot;
+}
+
 export async function fetchCreditSnapshot(userId: string): Promise<CreditSnapshot | null> {
   const requestId = `snapshot_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   
@@ -91,17 +129,7 @@ export async function debitCredits(
       throw error;
     }
 
-    const row = (data as any[])?.[0];
-    if (!row) {
-      console.error(`[CREDITS:${requestId}] ❌ Debit RPC returned no data`);
-      throw new Error('Failed to debit credits');
-    }
-
-    const result = {
-      balance: toNumber(row.credits_balance),
-      total: toNumber(row.credits_total),
-      spent: toNumber(row.credits_spent),
-    };
+    const result = await resolveSnapshotFromRpc(userId, data);
 
     console.log(`[CREDITS:${requestId}] ✅ Debit successful:`, {
       user_id: userId,
@@ -143,12 +171,11 @@ export async function creditCredits(
   });
 
   try {
-    const { data, error } = await getSupabaseAdmin().rpc('credit_user_credits_transaction', {
+    const { data, error } = await getSupabaseAdmin().rpc('credit_user_credits', {
       p_user_id: userId,
       p_amount: amount,
       p_reason: reason ?? null,
       p_metadata: metadata ?? null,
-      p_bucket: bucket, // 🔥 传递 bucket 参数
     });
 
     if (error) {
@@ -163,17 +190,7 @@ export async function creditCredits(
       throw error;
     }
 
-    const row = (data as any[])?.[0];
-    if (!row) {
-      console.error(`[CREDITS:${requestId}] ❌ Credit RPC returned no data`);
-      throw new Error('Failed to credit credits');
-    }
-
-    const result = {
-      balance: toNumber(row.credits_balance),
-      total: toNumber(row.credits_total),
-      spent: toNumber(row.credits_spent),
-    };
+    const result = await resolveSnapshotFromRpc(userId, data);
 
     console.log(`[CREDITS:${requestId}] ✅ Credit successful:`, {
       user_id: userId,
@@ -231,17 +248,7 @@ export async function refundCredits(
       throw error;
     }
 
-    const row = (data as any[])?.[0];
-    if (!row) {
-      console.error(`[CREDITS:${requestId}] ❌ Refund RPC returned no data`);
-      throw new Error('Failed to refund credits');
-    }
-
-    const result = {
-      balance: toNumber(row.credits_balance),
-      total: toNumber(row.credits_total),
-      spent: toNumber(row.credits_spent),
-    };
+    const result = await resolveSnapshotFromRpc(userId, data);
 
     console.log(`[CREDITS:${requestId}] ✅ Refund successful:`, {
       user_id: userId,

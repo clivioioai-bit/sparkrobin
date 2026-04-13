@@ -87,6 +87,13 @@ export async function GET(request: NextRequest) {
 
         if (subscriptionRow) {
           summary.subscription = subscriptionRow;
+          const subscriptionPlan = String(subscriptionRow.plan_type || 'free');
+          const subscriptionStatus = String(subscriptionRow.plan_status || subscriptionRow.status || '');
+          if (subscriptionPlan !== 'free' && subscriptionStatus) {
+            summary.subscription_plan = subscriptionPlan;
+            summary.subscription_status = subscriptionStatus;
+            summary.subscription_end_date = (subscriptionRow.current_period_end as string | null) || summary.subscription_end_date;
+          }
         }
       } catch (error) {
         console.warn('[API] account summary subscription lookup failed:', error);

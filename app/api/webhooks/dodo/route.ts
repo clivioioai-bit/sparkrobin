@@ -66,10 +66,22 @@ function getPlanConfig(payload: any) {
 
 function getCurrentPeriodEnd(payload: any) {
   return (
+    payload?.subscription?.current_period_end ||
+    payload?.subscription?.current_period_end_date ||
     payload?.metadata?.currentPeriodEnd ||
     payload?.next_billing_date ||
     payload?.current_period_end ||
     payload?.current_period_end_date ||
+    null
+  );
+}
+
+function getSubscriptionId(payload: any) {
+  return (
+    payload?.subscription_id ||
+    payload?.subscription?.subscription_id ||
+    payload?.subscription?.id ||
+    payload?.metadata?.subscriptionId ||
     null
   );
 }
@@ -79,6 +91,7 @@ async function hasExistingSubscriptionReset(params: {
   paymentId?: string | null;
   subscriptionId?: string | null;
   currentPeriodEnd?: string | null;
+  planId?: string | null;
 }) {
   const admin = getSupabaseAdmin();
 
@@ -111,6 +124,37 @@ async function hasExistingSubscriptionReset(params: {
     }
   }
 
+  if (params.planId && params.currentPeriodEnd) {
+    const { data } = await admin
+      .from('credit_transactions')
+      .select('id')
+      .eq('user_id', params.userId)
+      .eq('reason', 'subscription_period_reset')
+      .eq('metadata->>planId', params.planId)
+      .eq('metadata->>currentPeriodEnd', params.currentPeriodEnd)
+      .maybeSingle();
+
+    if (data?.id) {
+      return true;
+    }
+  }
+
+  if (params.planId) {
+    const recentThreshold = new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString();
+    const { data } = await admin
+      .from('credit_transactions')
+      .select('id')
+      .eq('user_id', params.userId)
+      .eq('reason', 'subscription_period_reset')
+      .eq('metadata->>planId', params.planId)
+      .gte('created_at', recentThreshold)
+      .maybeSingle();
+
+    if (data?.id) {
+      return true;
+    }
+  }
+
   return false;
 }
 
@@ -118,7 +162,7 @@ async function resetSubscriptionCredits(params: {
   userId: string;
   credits: number;
   planId?: string | null;
-  subscriptionId: string;
+  subscriptionId?: string | null;
   paymentId?: string | null;
   currentPeriodEnd?: string | null;
   eventType: string;
@@ -132,6 +176,7 @@ async function resetSubscriptionCredits(params: {
     paymentId: params.paymentId,
     subscriptionId: params.subscriptionId,
     currentPeriodEnd: params.currentPeriodEnd,
+    planId: params.planId,
   });
 
   if (alreadyReset) {
@@ -153,7 +198,7 @@ async function resetSubscriptionCredits(params: {
       provider: 'dodo',
       planId: params.planId ?? null,
       paymentId: params.paymentId ?? null,
-      subscriptionId: params.subscriptionId,
+      subscriptionId: params.subscriptionId ?? null,
       currentPeriodEnd: params.currentPeriodEnd ?? null,
       eventType: params.eventType,
     },
@@ -164,18 +209,33 @@ async function resetSubscriptionCredits(params: {
 
 async function upsertSubscriptionRecord(params: {
   userId: string;
-  subscriptionId: string;
+  subscriptionId?: string | null;
   planId: string | null;
   status: string;
   currentPeriodEnd?: string | null;
 }) {
   const admin = getSupabaseAdmin();
   const subscriptionIdColumn = await resolveSubscriptionIdColumn();
-  const existing = await admin
-    .from('user_subscriptions')
-    .select('id')
-    .eq(subscriptionIdColumn, params.subscriptionId)
-    .maybeSingle();
+  let existing;
+
+  if (params.subscriptionId) {
+    existing = await admin
+      .from('user_subscriptions')
+      .select('id')
+      .eq(subscriptionIdColumn, params.subscriptionId)
+      .maybeSingle();
+  }
+
+  if (!existing?.data?.id) {
+    existing = await admin
+      .from('user_subscriptions')
+      .select('id')
+      .eq('user_id', params.userId)
+      .eq('plan_type', params.planId)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+  }
 
   const payload = {
     user_id: params.userId,
@@ -183,7 +243,7 @@ async function upsertSubscriptionRecord(params: {
     plan_status: params.status,
     status: params.status,
     current_period_end: params.currentPeriodEnd || null,
-    [subscriptionIdColumn]: params.subscriptionId,
+    ...(params.subscriptionId ? { [subscriptionIdColumn]: params.subscriptionId } : {}),
   };
 
   if (existing.data?.id) {
@@ -257,7 +317,7 @@ async function handlePaymentSucceeded(payment: any) {
   const planConfig = getPlanConfig(payment);
   const planId = payment?.metadata?.planId || planConfig?.id || null;
   const planCategory = payment?.metadata?.planCategory || planConfig?.category || null;
-  const subscriptionId = payment?.subscription_id || null;
+  const subscriptionId = getSubscriptionId(payment);
   const currentPeriodEnd = getCurrentPeriodEnd(payment);
   const amount = Number(payment?.total_amount ?? payment?.amount ?? 0);
   const currency = payment?.currency || 'USD';
@@ -266,10 +326,10 @@ async function handlePaymentSucceeded(payment: any) {
 
   let subscriptionRecordId: string | null = null;
 
-  if (subscriptionId) {
+  if (planCategory === 'subscription' && planId) {
     subscriptionRecordId = await upsertSubscriptionRecord({
       userId,
-      subscriptionId: String(subscriptionId),
+      subscriptionId: subscriptionId ? String(subscriptionId) : null,
       planId,
       status: 'active',
       currentPeriodEnd,
@@ -281,15 +341,33 @@ async function handlePaymentSucceeded(payment: any) {
       status: 'active',
       currentPeriodEnd,
     });
+
+    if (!subscriptionId) {
+      console.warn('[WEBHOOK][DODO] payment.succeeded missing subscription_id for subscription plan', {
+        userId,
+        planId,
+        paymentId,
+        currentPeriodEnd,
+      });
+    }
   }
 
+  await recordPayment({
+    userId,
+    paymentId,
+    subscriptionRecordId,
+    amount,
+    currency,
+    status: 'succeeded',
+  });
+
   if (credits > 0) {
-    if (planCategory === 'subscription' && subscriptionId) {
+    if (planCategory === 'subscription') {
       await resetSubscriptionCredits({
         userId,
         credits,
         planId,
-        subscriptionId: String(subscriptionId),
+        subscriptionId: subscriptionId ? String(subscriptionId) : null,
         paymentId,
         currentPeriodEnd,
         eventType: 'payment.succeeded',
@@ -315,15 +393,6 @@ async function handlePaymentSucceeded(payment: any) {
       }
     }
   }
-
-  await recordPayment({
-    userId,
-    paymentId,
-    subscriptionRecordId,
-    amount,
-    currency,
-    status: 'succeeded',
-  });
 }
 
 async function handlePaymentFailed(payment: any) {
@@ -341,7 +410,7 @@ async function handlePaymentFailed(payment: any) {
 
 async function handleSubscriptionUpdated(subscription: any, statusOverride?: string) {
   const userId = await findUserId(subscription);
-  const subscriptionId = subscription?.subscription_id || subscription?.id;
+  const subscriptionId = getSubscriptionId(subscription) || subscription?.id;
   if (!userId || !subscriptionId) return;
 
   const planConfig = getPlanConfig(subscription);

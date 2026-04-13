@@ -4,7 +4,9 @@ import { createServerClient } from '@supabase/ssr';
 
 import { paymentPlansById } from '@/config/payment-plans';
 import { getDodoCheckoutSession } from '@/lib/dodo-payments';
+import { creditCredits } from '@/lib/credits';
 import { getExternalPaymentId } from '@/lib/payment-records';
+import { resolveExternalPaymentIdColumn } from '@/lib/payment-records';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export const runtime = 'nodejs';
@@ -56,9 +58,12 @@ export async function GET(request: NextRequest) {
       }
     }
 
+    let checkoutSession: Awaited<ReturnType<typeof getDodoCheckoutSession>> | null = null;
+
     if ((!transactionId || !statusFromQuery) && sessionId && process.env.DODO_PAYMENTS_API_KEY) {
       try {
         const checkout = await getDodoCheckoutSession(sessionId);
+        checkoutSession = checkout;
         if (!transactionId) {
           transactionId = checkout.payment_id || '';
         }
@@ -78,6 +83,131 @@ export async function GET(request: NextRequest) {
 
     if (!plan) {
       return NextResponse.redirect(new URL('/dashboard?payment=error', request.url));
+    }
+
+    const planConfig = paymentPlansById[plan] || null;
+    const normalizedStatus = String(statusFromQuery || checkoutSession?.payment_status || '').toLowerCase();
+    const isPaid = ['paid', 'succeeded', 'success', 'completed'].includes(normalizedStatus);
+
+    if (user && planConfig && transactionId && isPaid) {
+      const admin = getSupabaseAdmin();
+      const externalPaymentIdColumn = await resolveExternalPaymentIdColumn();
+
+      const { data: existingPayment } = await admin
+        .from('payments')
+        .select('id')
+        .eq(externalPaymentIdColumn, transactionId)
+        .maybeSingle();
+
+      let paymentRecordId = existingPayment?.id || null;
+
+      if (!paymentRecordId) {
+        const insertedPayment = await admin
+          .from('payments')
+          .insert({
+            user_id: user.id,
+            payment_id: transactionId,
+            [externalPaymentIdColumn]: transactionId,
+            amount: planConfig.priceCents,
+            currency: planConfig.currency,
+            status: 'succeeded',
+            payment_method: 'dodo',
+          })
+          .select('id')
+          .single();
+
+        paymentRecordId = insertedPayment.data?.id || null;
+      }
+
+      if (planConfig.category === 'subscription') {
+        const { data: existingSubscription } = await admin
+          .from('user_subscriptions')
+          .select('id')
+          .eq('user_id', user.id)
+          .eq('plan_type', planConfig.id)
+          .order('created_at', { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        if (existingSubscription?.id) {
+          await admin
+            .from('user_subscriptions')
+            .update({
+              plan_status: 'active',
+              status: 'active',
+              updated_at: new Date().toISOString(),
+            })
+            .eq('id', existingSubscription.id);
+        } else {
+          const insertedSubscription = await admin
+            .from('user_subscriptions')
+            .insert({
+              user_id: user.id,
+              plan_type: planConfig.id,
+              plan_status: 'active',
+              status: 'active',
+            })
+            .select('id')
+            .single();
+
+          if (paymentRecordId && insertedSubscription.data?.id) {
+            await admin
+              .from('payments')
+              .update({ subscription_id: insertedSubscription.data.id })
+              .eq('id', paymentRecordId);
+          }
+        }
+
+        await admin
+          .from('users')
+          .update({
+            subscription_plan: planConfig.id,
+            subscription_status: 'active',
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', user.id);
+
+        const existingReset = await admin
+          .from('credit_transactions')
+          .select('id')
+          .eq('user_id', user.id)
+          .eq('reason', 'subscription_period_reset')
+          .eq('metadata->>paymentId', transactionId)
+          .maybeSingle();
+
+        if (!existingReset.data) {
+          await admin.rpc('reset_subscription_credits_for_period', {
+            p_user_id: user.id,
+            p_period_credits: planConfig.credits,
+            p_reason: 'subscription_period_reset',
+            p_metadata: {
+              provider: 'dodo',
+              planId: planConfig.id,
+              paymentId: transactionId,
+              eventType: 'callback.reconcile',
+            },
+          });
+        }
+      } else {
+        const existingCredit = await admin
+          .from('credit_transactions')
+          .select('id')
+          .eq('user_id', user.id)
+          .eq('reason', 'dodo_payment')
+          .eq('metadata->>paymentId', transactionId)
+          .maybeSingle();
+
+        if (!existingCredit.data) {
+          await creditCredits(user.id, planConfig.credits, 'dodo_payment', {
+            provider: 'dodo',
+            planId: planConfig.id,
+            planCategory: planConfig.category,
+            paymentId: transactionId,
+            bucket: 'flex',
+            eventType: 'callback.reconcile',
+          });
+        }
+      }
     }
 
     const qp: Record<string, string> = {
