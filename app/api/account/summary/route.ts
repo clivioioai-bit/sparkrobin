@@ -22,12 +22,27 @@ type AccountSummary = {
   subscription: Record<string, unknown> | null;
 };
 
+type ResponseCookie = {
+  name: string;
+  value: string;
+  options?: Parameters<NextResponse['cookies']['set']>[2];
+};
+
 export async function GET(request: NextRequest) {
   try {
     const rateLimitResponse = await rateLimit(request, apiRateLimiter);
     if (rateLimitResponse) {
       return rateLimitResponse;
     }
+
+    const responseCookies: ResponseCookie[] = [];
+    const json = (body: unknown, init?: ResponseInit) => {
+      const response = NextResponse.json(body, init);
+      for (const cookie of responseCookies) {
+        response.cookies.set(cookie.name, cookie.value, cookie.options);
+      }
+      return response;
+    };
 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -37,13 +52,19 @@ export async function GET(request: NextRequest) {
           get(name: string) {
             return request.cookies.get(name)?.value;
           },
+          set(name: string, value: string, options: Parameters<NextResponse['cookies']['set']>[2]) {
+            responseCookies.push({ name, value, options });
+          },
+          remove(name: string, options: Parameters<NextResponse['cookies']['set']>[2]) {
+            responseCookies.push({ name, value: '', options });
+          },
         },
       }
     );
 
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
+      return json({ error: 'Authentication required' }, { status: 401 });
     }
 
     const fallback = {
@@ -113,7 +134,7 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ summary });
+    return json({ summary });
   } catch (error) {
     console.error('[API] account summary error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

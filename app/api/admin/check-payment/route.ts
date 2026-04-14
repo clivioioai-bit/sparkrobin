@@ -4,6 +4,27 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export const runtime = 'nodejs';
 
+type SubscriptionIdColumn = 'subscription_id' | 'creem_subscription_id';
+
+let subscriptionIdColumnCache: SubscriptionIdColumn | null = null;
+
+async function resolveSubscriptionIdColumn(): Promise<SubscriptionIdColumn> {
+  if (subscriptionIdColumnCache) {
+    return subscriptionIdColumnCache;
+  }
+
+  const admin = getSupabaseAdmin();
+  for (const column of ['subscription_id', 'creem_subscription_id'] as const) {
+    const { error } = await admin.from('user_subscriptions').select(column).limit(1);
+    if (!error) {
+      subscriptionIdColumnCache = column;
+      return column;
+    }
+  }
+
+  return 'subscription_id';
+}
+
 // 检查特定支付的处理状态
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -20,9 +41,15 @@ export async function GET(request: NextRequest) {
   
   try {
     const supabaseAdmin = getSupabaseAdmin();
+    const externalPaymentIdColumn = await resolveExternalPaymentIdColumn();
+    const subscriptionIdColumn = await resolveSubscriptionIdColumn();
     
     const result: any = {
       timestamp: new Date().toISOString(),
+      schema: {
+        externalPaymentIdColumn,
+        subscriptionIdColumn,
+      },
       searchParams: {
         checkoutId,
         orderId,
@@ -33,7 +60,6 @@ export async function GET(request: NextRequest) {
     
     // 1. 检查支付记录
     if (orderId) {
-      const externalPaymentIdColumn = await resolveExternalPaymentIdColumn();
       const { data: payment, error: paymentError } = await supabaseAdmin
         .from('payments')
         .select('*')
@@ -46,6 +72,37 @@ export async function GET(request: NextRequest) {
         error: paymentError?.message
       };
     }
+
+    // 1.1 检查数据库中的积分 RPC 是否存在
+    let rpcRows: any[] | null = null;
+    let rpcError: { message: string } | null = null;
+
+    try {
+      const rpcResult = await supabaseAdmin
+        .rpc('exec_sql', {
+          query: `
+            select
+              proname,
+              oidvectortypes(proargtypes) as arguments
+            from pg_proc
+            where pronamespace = 'public'::regnamespace
+              and proname in ('credit_user_credits_transaction', 'credit_user_credits', 'reset_subscription_credits_for_period')
+            order by proname asc
+          `,
+        })
+        .single();
+
+      rpcRows = Array.isArray(rpcResult.data) ? rpcResult.data : [];
+      rpcError = rpcResult.error ? { message: rpcResult.error.message } : null;
+    } catch {
+      rpcError = { message: 'exec_sql RPC unavailable' };
+    }
+
+    result.rpcFunctions = {
+      success: !rpcError,
+      functions: Array.isArray(rpcRows) ? rpcRows : [],
+      error: rpcError?.message || null,
+    };
     
     // 2. 检查积分交易（通过 checkout_id 或 order_id）
     const creditQueries = [];
@@ -75,6 +132,29 @@ export async function GET(request: NextRequest) {
         found: allCredits.length > 0,
         count: allCredits.length,
         transactions: allCredits
+      };
+    }
+
+    // 2.1 检查订阅记录
+    if (orderId || customerId) {
+      let subscriptionQuery = supabaseAdmin
+        .from('user_subscriptions')
+        .select(`id, user_id, plan_type, plan_status, status, ${subscriptionIdColumn}, current_period_end, created_at, updated_at`)
+        .order('created_at', { ascending: false })
+        .limit(10);
+
+      if (customerId) {
+        subscriptionQuery = subscriptionQuery.eq('user_id', customerId);
+      } else if (result.payment?.data?.subscription_id) {
+        subscriptionQuery = subscriptionQuery.eq('id', result.payment.data.subscription_id);
+      }
+
+      const { data: subscriptions, error: subscriptionError } = await subscriptionQuery;
+      result.subscriptions = {
+        found: (subscriptions?.length || 0) > 0,
+        count: subscriptions?.length || 0,
+        records: subscriptions || [],
+        error: subscriptionError?.message,
       };
     }
     
@@ -111,13 +191,20 @@ export async function GET(request: NextRequest) {
     result.summary = {
       paymentFound: result.payment?.found || false,
       creditsFound: result.credits?.found || false,
+      subscriptionsFound: result.subscriptions?.found || false,
+      rpcFunctionsChecked: result.rpcFunctions?.success || false,
       status: result.payment?.found && result.credits?.found 
         ? 'COMPLETE' 
         : result.payment?.found 
           ? 'PAYMENT_ONLY' 
           : result.credits?.found
             ? 'CREDITS_ONLY'
-            : 'NOT_FOUND'
+            : 'NOT_FOUND',
+      notes: [
+        !result.rpcFunctions?.success && 'Could not verify RPC functions from this environment',
+        result.payment?.found && !result.credits?.found && 'Payment exists but no credit transaction matched this paymentId',
+        result.payment?.found && !result.subscriptions?.found && 'Payment exists but no subscription record was found',
+      ].filter(Boolean)
     };
     
     return NextResponse.json(result);

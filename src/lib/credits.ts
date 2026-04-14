@@ -171,12 +171,36 @@ export async function creditCredits(
   });
 
   try {
-    const { data, error } = await getSupabaseAdmin().rpc('credit_user_credits', {
+    const rpcPayload = {
       p_user_id: userId,
       p_amount: amount,
       p_reason: reason ?? null,
-      p_metadata: metadata ?? null,
-    });
+      p_metadata: {
+        ...(metadata ?? {}),
+        bucket,
+      },
+    };
+
+    // Prefer the transaction-safe RPC defined in this repo. Fall back only for
+    // older databases that still expose the legacy function name.
+    let data: any;
+    let error: any;
+
+    const primaryResult = await getSupabaseAdmin().rpc('credit_user_credits_transaction', rpcPayload);
+    data = primaryResult.data;
+    error = primaryResult.error;
+
+    if (error) {
+      console.warn(`[CREDITS:${requestId}] Primary credit RPC failed, trying legacy fallback`, {
+        error_code: error.code,
+        error_message: error.message,
+        user_id: userId,
+      });
+
+      const fallbackResult = await getSupabaseAdmin().rpc('credit_user_credits', rpcPayload);
+      data = fallbackResult.data;
+      error = fallbackResult.error;
+    }
 
     if (error) {
       console.error(`[CREDITS:${requestId}] ❌ Credit RPC error:`, {

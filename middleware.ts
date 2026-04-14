@@ -29,11 +29,12 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith('/favicon') ||
       pathname.startsWith('/icon') ||
       pathname.startsWith('/logo') ||
+      pathname === '/manifest.webmanifest' ||
       pathname.startsWith('/robots.txt') ||
       pathname.startsWith('/sitemap.xml') ||
       pathname.startsWith('/videos/') ||
       pathname.startsWith('/images/') ||
-      pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|avif|woff|woff2|ttf|eot|mp4|webm|mov|avi|mkv)$/)
+      pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|avif|woff|woff2|ttf|eot|mp4|webm|mov|avi|mkv|webmanifest)$/)
     ) {
       return NextResponse.next();
     }
