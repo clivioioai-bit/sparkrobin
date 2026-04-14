@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { createServerClient } from '@supabase/ssr';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
+import { mapDbStatusToApiJobStatus } from '@/lib/job-status';
 
 export const runtime = 'nodejs';
 
@@ -61,17 +62,9 @@ export async function GET(request: NextRequest) {
 
     // Map database fields to API response
     const mappedJobs = (jobs || []).map(job => {
-      const statusMap: Record<string, string> = {
-        pending: 'QUEUED',
-        processing: 'RUNNING',
-        completed: 'SUCCEEDED',
-        failed: 'FAILED',
-        canceled: 'CANCELED',
-      };
-
       return {
         job_id: job.job_id,
-        status: statusMap[job.status] || 'PENDING',
+        status: mapDbStatusToApiJobStatus(job.status),
         progress: job.progress || 0,
         result_url: job.result_url,
         preview_url: job.preview_url,

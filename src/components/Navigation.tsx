@@ -4,9 +4,10 @@ import { useState } from "react";
 import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/routing';
 import { Button } from "@/components/ui/button";
-import { Menu, X, Play, DollarSign, User, LogOut, Home, ChevronDown, Settings, Image as ImageIcon, FileText, Palette, Wand2, Video, Sparkles, History } from "lucide-react";
+import { Menu, X, Play, DollarSign, User, LogOut, Home, ChevronDown, Settings, Image as ImageIcon, FileText, Palette, Wand2, Video, Sparkles, History, Coins } from "lucide-react";
 import Image from "next/image";
 import { useAuth } from "@/contexts/AuthContext";
+import { useCredits } from "@/contexts/CreditsContext";
 import AuthModal from "./AuthModal";
 import LanguageSwitcher from "./LanguageSwitcher";
 import {
@@ -20,10 +21,14 @@ import {
 const Navigation = () => {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
+  const tGenerate = useTranslations('generate');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { user, isAuthenticated, signOut } = useAuth();
+  const { subscription, isLoading: isCreditsLoading } = useCredits();
   const router = useRouter();
+  const creditBalance = subscription?.credits ?? 0;
+  const formattedCreditBalance = new Intl.NumberFormat().format(creditBalance);
 
   const navItems = [
     { name: t('home'), href: '/', icon: Home },
@@ -218,21 +223,33 @@ const Navigation = () => {
 
             {isAuthenticated ? (
               <div suppressHydrationWarning>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="flex h-9 items-center space-x-2 rounded-lg border border-border px-2 py-1 text-white/80 transition-colors hover:bg-white/[0.06] hover:text-white"
+                <div className="flex items-center gap-2.5">
+                  <div
+                    className="inline-flex h-9 items-center gap-2 rounded-lg border border-border bg-white/[0.03] px-3 text-sm text-white/80"
+                    title={`${formattedCreditBalance} ${tGenerate('credits')}`}
                   >
-                    <div className="w-7 h-7 rounded-full bg-white/[0.12] flex items-center justify-center text-white text-xs font-medium">
-                      {getUserInitials()}
-                    </div>
-                    <span className="hidden text-sm text-white/80 sm:block">
-                      {getUserDisplayName()}
+                    <Coins className="h-4 w-4 text-primary" />
+                    <span className="text-white/50">{tGenerate('credits')}:</span>
+                    <span className="font-semibold text-white">
+                      {isCreditsLoading ? '--' : formattedCreditBalance}
                     </span>
-                    <ChevronDown className="w-3.5 h-3.5 text-white/40" />
-                  </Button>
-                </DropdownMenuTrigger>
+                  </div>
+
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="flex h-9 items-center space-x-2 rounded-lg border border-border px-2 py-1 text-white/80 transition-colors hover:bg-white/[0.06] hover:text-white"
+                    >
+                      <div className="w-7 h-7 rounded-full bg-white/[0.12] flex items-center justify-center text-white text-xs font-medium">
+                        {getUserInitials()}
+                      </div>
+                      <span className="hidden text-sm text-white/80 sm:block">
+                        {getUserDisplayName()}
+                      </span>
+                      <ChevronDown className="w-3.5 h-3.5 text-white/40" />
+                    </Button>
+                  </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56 bg-card border-border">
                   <div className="flex items-center space-x-2 p-2">
                     <div className="w-8 h-8 rounded-full bg-white/[0.12] flex items-center justify-center text-white text-sm font-medium">
@@ -262,7 +279,8 @@ const Navigation = () => {
                     {t('signOut')}
                   </DropdownMenuItem>
                   </DropdownMenuContent>
-                </DropdownMenu>
+                  </DropdownMenu>
+                </div>
               </div>
             ) : (
               <>
@@ -382,6 +400,15 @@ const Navigation = () => {
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
                 {isAuthenticated ? (
                   <>
+                    <div className="mx-3 inline-flex items-center justify-between rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-sm text-white/80">
+                      <span className="inline-flex items-center gap-2">
+                        <Coins className="h-4 w-4 text-primary" />
+                        <span>{tGenerate('credits')}</span>
+                      </span>
+                      <span className="font-semibold text-white">
+                        {isCreditsLoading ? '--' : formattedCreditBalance}
+                      </span>
+                    </div>
                     <Button
                       variant="ghost"
                       size="sm"

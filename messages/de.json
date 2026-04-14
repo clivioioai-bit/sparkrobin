@@ -622,6 +622,9 @@
       "standard": "Standard",
       "high": "Hoch"
     },
+    "generationForm": {
+      "model": "Modell"
+    },
     "veo3ImageMode": {
       "image": "Bild *",
       "startFrame": "Startframe",

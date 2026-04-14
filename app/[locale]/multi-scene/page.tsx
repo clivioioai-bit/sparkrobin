@@ -78,5 +78,3 @@ export default async function Page({
 
   return <Storyboard />
 }
-
-export const revalidate = 300

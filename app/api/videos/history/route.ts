@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { createServerClient } from '@supabase/ssr';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
+import { normalizeDbJobStatus } from '@/lib/job-status';
 
 export const runtime = 'nodejs';
 
@@ -82,6 +83,7 @@ export async function GET(request: NextRequest) {
 
     // Map database fields to API response format
     const mappedJobs = (jobs || []).map(job => {
+      const normalizedStatus = normalizeDbJobStatus(job.status);
       // Calculate duration in seconds from the job data
       const duration = job.duration || 8;
       
@@ -91,12 +93,14 @@ export async function GET(request: NextRequest) {
       
       // Determine status
       let status = 'processing';
-      if (job.status === 'completed' && job.result_url) {
+      if (normalizedStatus === 'completed' && job.result_url) {
         status = 'completed';
-      } else if (job.status === 'failed' || job.error_message) {
+      } else if (normalizedStatus === 'failed' || job.error_message) {
         status = 'failed';
-      } else if (job.status === 'pending') {
+      } else if (normalizedStatus === 'pending') {
         status = 'queued';
+      } else if (normalizedStatus === 'completed') {
+        status = 'completed';
       }
 
       return {

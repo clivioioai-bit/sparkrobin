@@ -622,6 +622,9 @@
       "standard": "標準",
       "high": "高"
     },
+    "generationForm": {
+      "model": "モデル"
+    },
     "veo3ImageMode": {
       "image": "画像 *",
       "startFrame": "開始フレーム",

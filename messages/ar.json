@@ -622,6 +622,9 @@
       "standard": "قياسي",
       "high": "عالي"
     },
+    "generationForm": {
+      "model": "النموذج"
+    },
     "veo3ImageMode": {
       "image": "الصورة *",
       "startFrame": "إطار البداية",

@@ -630,6 +630,9 @@
       "storyboard": "Storyboard",
       "storyboardDescription": "Multi-scene video generation with shot control"
     },
+    "generationForm": {
+      "model": "Model"
+    },
     "veo3ImageMode": {
       "image": "Image *",
       "startFrame": "Start Frame",

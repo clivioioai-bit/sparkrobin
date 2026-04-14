@@ -622,6 +622,9 @@
       "standard": "标准",
       "high": "高"
     },
+    "generationForm": {
+      "model": "模型"
+    },
     "veo3ImageMode": {
       "image": "图片 *",
       "startFrame": "起始帧",

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { createServerClient } from '@supabase/ssr';
 import { creditCredits } from '@/lib/credits';
+import { isDbJobFinalStatus } from '@/lib/job-status';
 
 export const runtime = 'nodejs';
 
@@ -68,7 +69,7 @@ export async function POST(
     }
 
     // Check if job is in a cancellable state
-    if (['completed', 'failed', 'canceled'].includes(job.status)) {
+    if (isDbJobFinalStatus(job.status)) {
       return NextResponse.json(
         { error: 'Job cannot be canceled' },
         { status: 400 }
@@ -115,4 +116,3 @@ export async function POST(
     );
   }
 }
-

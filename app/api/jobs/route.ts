@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { mapDbStatusToApiJobStatus } from '@/lib/job-status';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -68,9 +69,7 @@ export async function GET(request: NextRequest) {
       .filter(job => job.job_id && job.job_id !== 'undefined' && job.job_id !== 'null')
       .map(job => ({
         jobId: job.job_id,
-        status: job.status === 'completed' ? 'SUCCEEDED' : 
-                job.status === 'failed' ? 'FAILED' : 
-                job.status === 'processing' ? 'RUNNING' : 'PENDING',
+        status: mapDbStatusToApiJobStatus(job.status),
         progress: job.progress || 0,
         result_url: job.result_url,
         preview_url: job.preview_url,

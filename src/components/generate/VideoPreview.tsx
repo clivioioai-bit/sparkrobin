@@ -178,7 +178,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
   const [videoLoadError, setVideoLoadError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
   const retryTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const maxRetries = 15; // 增加到15次（因为文件上传可能需要更长时间）
+  const maxRetries = 6;
   const baseRetryDelay = 3000; // 基础延迟3秒
   const maxRetryDelay = 10000; // 最大延迟10秒（指数退避）
   
@@ -258,36 +258,19 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
       setRetryCount(nextRetry);
       setVideoLoadError(false); // 重置错误状态，准备重试
       
-      // 延迟后重试
-      const retryUrl = currentJob.result_url; // 保存 URL 到局部变量
+      // 延迟后重试，保留当前 src，避免清空视频元素导致闪屏
       retryTimeoutRef.current = setTimeout(() => {
-        // 强制重新加载视频元素
-        // 使用更灵活的查询方式，查找任何 video 元素
         const videoEl = document.querySelector('video') as HTMLVideoElement;
-        if (videoEl && retryUrl) {
-          const currentSrc = videoEl.src || '';
-          
-          console.log(`🔄 Retry ${nextRetry}: Reloading video element...`, {
-            expectedUrl: retryUrl.substring(0, 80) + '...',
-            currentSrc: currentSrc.substring(0, 80) + '...',
-            urlMatches: currentSrc.includes(retryUrl) || currentSrc === retryUrl
+        if (videoEl && currentJob.result_url) {
+          console.log(`🔄 Retry ${nextRetry}: Reloading current video source...`, {
+            currentSrc: (videoEl.currentSrc || videoEl.src || '').substring(0, 80) + '...',
+            expectedUrl: currentJob.result_url.substring(0, 80) + '...'
           });
-          
-          // 强制重新加载：先清除再设置
-          videoEl.src = '';
           videoEl.load();
-          // 短暂延迟后恢复 src 并重新加载
-          setTimeout(() => {
-            if (videoEl && retryUrl) {
-              videoEl.src = retryUrl;
-              videoEl.load();
-            }
-          }, 100);
         } else {
-          // 如果找不到元素，可能是组件重新渲染了，错误会在下次渲染时处理
           console.warn('⚠️ Video element not found for retry, will retry on next render', {
             foundElement: !!videoEl,
-            expectedUrl: retryUrl ? retryUrl.substring(0, 80) + '...' : 'N/A'
+            expectedUrl: currentJob.result_url ? currentJob.result_url.substring(0, 80) + '...' : 'N/A'
           });
         }
       }, delay);

@@ -646,6 +646,9 @@
       "standard": "Стандарт",
       "high": "Высокое"
     },
+    "generationForm": {
+      "model": "Модель"
+    },
     "veo3ImageMode": {
       "image": "Изображение *",
       "startFrame": "Начальный кадр",

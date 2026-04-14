@@ -5,6 +5,7 @@ import { creditCredits } from '@/lib/credits';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
 import { mapKieStateToJobStatus, parseResultJson } from '@/lib/kie';
 import { getErrorMessage, isRetryableError, isContentPolicyError } from '@/lib/kie-errors';
+import { isDbJobFinalStatus, mapDbStatusToApiJobStatus } from '@/lib/job-status';
 
 export const runtime = 'nodejs';
 
@@ -71,7 +72,7 @@ export async function GET(
     let currentJob = job;
 
     // If job is still pending/processing, sync with kie.ai
-    if (!['completed', 'failed', 'canceled'].includes(job.status)) {
+    if (!isDbJobFinalStatus(job.status)) {
       try {
         const apiBase = process.env.KIE_API_BASE_URL;
         if (!apiBase) {
@@ -137,14 +138,13 @@ export async function GET(
               ?? (typeof resourceUrl === 'string' ? resourceUrl : undefined);
 
             const updatePayload: Record<string, any> = {
-              status: mappedStatus === 'completed' ? 'SUCCEEDED' : mappedStatus === 'failed' ? 'FAILED' : mappedStatus === 'processing' ? 'RUNNING' : mappedStatus,
+              status: mappedStatus,
               updated_at: new Date().toISOString(),
             };
 
             if (mappedStatus === 'completed') {
               if (primaryUrl) {
                 updatePayload.result_url = primaryUrl;
-                updatePayload.preview_url = primaryUrl;
                 console.log(`[API DEBUG] Job ${jobId} completed with URL: ${primaryUrl}`);
               } else {
                 console.warn(`[API DEBUG] Job ${jobId} marked as completed but no URL found`);
@@ -212,28 +212,9 @@ export async function GET(
     console.log(`[API] Get job status - userId: ${userId}, jobId: ${jobId}, status: ${currentJob.status}`);
 
     // Map database fields to API response
-    const mapDbStatusToApiStatus = (dbStatus: string) => {
-      switch (dbStatus?.toLowerCase()) {
-        case 'completed':
-          return 'SUCCEEDED';
-        case 'failed':
-          return 'FAILED';
-        case 'processing':
-          return 'RUNNING';
-        case 'queued':
-          return 'QUEUED';
-        case 'pending':
-          return 'PENDING';
-        case 'canceled':
-          return 'CANCELED';
-        default:
-          return dbStatus?.toUpperCase() || 'PENDING';
-      }
-    };
-
     return NextResponse.json({
       job_id: currentJob.job_id,
-      status: mapDbStatusToApiStatus(currentJob.status),
+      status: mapDbStatusToApiJobStatus(currentJob.status),
       progress: currentJob.progress || 0,
       result_url: currentJob.result_url,
       preview_url: currentJob.preview_url,
