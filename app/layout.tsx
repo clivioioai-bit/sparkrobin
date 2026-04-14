@@ -1,15 +1,15 @@
 import React from 'react'
 import './globals.css'
 
-// Root layout must include <html> and <body> tags
-// The lang and dir attributes will be set dynamically by [locale]/layout.tsx via client-side script
+// Root layout must include <html> and <body> tags.
+// Keep a server-rendered default lang for crawlers; locale routes can refine it in nested head tags.
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="NjZczag78DS8-WMVBUNwIjPdLnascRmdeX6r9oF4oPA" />
