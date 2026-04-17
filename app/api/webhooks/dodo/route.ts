@@ -3,6 +3,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { paymentPlansById } from '@/config/payment-plans';
 import { creditCredits } from '@/lib/credits';
 import { verifyDodoWebhookSignature } from '@/lib/dodo-payments';
+import {
+  getPaymentEmail,
+  getPaymentIdentifier,
+  getPaymentSubscriptionIdentifier,
+  recordUnmatchedPaymentEmail,
+  resolveUserIdFromPaymentPayload,
+} from '@/lib/payment-recovery';
 import { resolveExternalPaymentIdColumn } from '@/lib/payment-records';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
@@ -27,24 +34,6 @@ async function resolveSubscriptionIdColumn(): Promise<SubscriptionIdColumn> {
   }
 
   return 'subscription_id';
-}
-
-async function findUserId(payload: any) {
-  const explicit = payload?.metadata?.customerId || payload?.customer_id || payload?.customer?.customer_id;
-  if (explicit) {
-    return String(explicit);
-  }
-
-  const email = payload?.customer?.email || payload?.metadata?.customerEmail;
-  if (!email) return null;
-
-  const { data } = await getSupabaseAdmin()
-    .from('users')
-    .select('id')
-    .ilike('email', String(email))
-    .maybeSingle();
-
-  return data?.id || null;
 }
 
 function getPlanConfig(payload: any) {
@@ -308,9 +297,21 @@ async function recordPayment(params: {
 }
 
 async function handlePaymentSucceeded(payment: any) {
-  const userId = await findUserId(payment);
+  const userId = await resolveUserIdFromPaymentPayload({
+    payload: payment,
+    eventType: 'payment.succeeded',
+  });
   if (!userId) {
     console.error('[WEBHOOK][DODO] Could not resolve user for payment.succeeded');
+    await recordUnmatchedPaymentEmail({
+      email: getPaymentEmail(payment) || 'unknown@payment.local',
+      paymentId: getPaymentIdentifier(payment) || null,
+      subscriptionId: getPaymentSubscriptionIdentifier(payment) || null,
+      amount: Number(payment?.total_amount ?? payment?.amount ?? 0),
+      currency: payment?.currency || 'USD',
+      webhookData: payment,
+      notes: 'payment.succeeded user resolution failed',
+    });
     return;
   }
 
@@ -323,6 +324,18 @@ async function handlePaymentSucceeded(payment: any) {
   const currency = payment?.currency || 'USD';
   const paymentId = payment?.payment_id || payment?.id || `dodo_${userId}_${Date.now()}`;
   const credits = Number(payment?.metadata?.credits ?? planConfig?.credits ?? 0);
+
+  if (!planId && !planConfig) {
+    await recordUnmatchedPaymentEmail({
+      email: getPaymentEmail(payment) || 'unknown@payment.local',
+      paymentId,
+      subscriptionId: subscriptionId ? String(subscriptionId) : null,
+      amount,
+      currency,
+      webhookData: payment,
+      notes: 'payment.succeeded missing plan mapping',
+    });
+  }
 
   let subscriptionRecordId: string | null = null;
 
@@ -396,8 +409,22 @@ async function handlePaymentSucceeded(payment: any) {
 }
 
 async function handlePaymentFailed(payment: any) {
-  const userId = await findUserId(payment);
-  if (!userId) return;
+  const userId = await resolveUserIdFromPaymentPayload({
+    payload: payment,
+    eventType: 'payment.failed',
+  });
+  if (!userId) {
+    await recordUnmatchedPaymentEmail({
+      email: getPaymentEmail(payment) || 'unknown@payment.local',
+      paymentId: getPaymentIdentifier(payment) || null,
+      subscriptionId: getPaymentSubscriptionIdentifier(payment) || null,
+      amount: Number(payment?.total_amount ?? payment?.amount ?? 0),
+      currency: payment?.currency || 'USD',
+      webhookData: payment,
+      notes: 'payment.failed user resolution failed',
+    });
+    return;
+  }
 
   await recordPayment({
     userId,
@@ -409,9 +436,25 @@ async function handlePaymentFailed(payment: any) {
 }
 
 async function handleSubscriptionUpdated(subscription: any, statusOverride?: string) {
-  const userId = await findUserId(subscription);
+  const userId = await resolveUserIdFromPaymentPayload({
+    payload: subscription,
+    eventType: `subscription.${statusOverride || subscription?.status || 'updated'}`,
+  });
   const subscriptionId = getSubscriptionId(subscription) || subscription?.id;
-  if (!userId || !subscriptionId) return;
+  if (!userId || !subscriptionId) {
+    await recordUnmatchedPaymentEmail({
+      email: getPaymentEmail(subscription) || 'unknown@payment.local',
+      paymentId: getPaymentIdentifier(subscription) || null,
+      subscriptionId: subscriptionId ? String(subscriptionId) : null,
+      amount: Number(subscription?.total_amount ?? subscription?.amount ?? 0),
+      currency: subscription?.currency || 'USD',
+      webhookData: subscription,
+      notes: !userId
+        ? 'subscription update user resolution failed'
+        : 'subscription update missing subscription id',
+    });
+    return;
+  }
 
   const planConfig = getPlanConfig(subscription);
   const planId = subscription?.metadata?.planId || planConfig?.id || null;
@@ -506,6 +549,15 @@ export async function POST(request: NextRequest) {
     }
   } catch (error) {
     console.error('[WEBHOOK][DODO] Failed to process event', { eventType, error });
+    await recordUnmatchedPaymentEmail({
+      email: getPaymentEmail(payload) || 'unknown@payment.local',
+      paymentId: getPaymentIdentifier(payload) || null,
+      subscriptionId: getPaymentSubscriptionIdentifier(payload) || null,
+      amount: Number(payload?.total_amount ?? payload?.amount ?? 0),
+      currency: payload?.currency || 'USD',
+      webhookData: payload,
+      notes: `webhook processing failed for ${eventType}`,
+    });
     return NextResponse.json({ error: 'Webhook processing failed' }, { status: 500 });
   }
 

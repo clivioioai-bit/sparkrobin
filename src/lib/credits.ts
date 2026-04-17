@@ -8,6 +8,12 @@ export interface CreditSnapshot {
 
 const toNumber = (value: any): number => Number(value ?? 0);
 
+type CreditBucket = 'subscription' | 'flex';
+type RpcAttempt = {
+  fn: string;
+  args: Record<string, unknown>;
+};
+
 function hasCreditFields(value: any): value is { credits_balance?: unknown; credits_total?: unknown; credits_spent?: unknown } {
   return !!value && typeof value === 'object' && (
     'credits_balance' in value ||
@@ -44,6 +50,36 @@ async function resolveSnapshotFromRpc(userId: string, data: any) {
   }
 
   return snapshot;
+}
+
+async function runCreditRpcWithFallbacks(
+  requestId: string,
+  attempts: RpcAttempt[],
+  logLabel: 'credit' | 'refund'
+) {
+  let data: any = null;
+  let error: any = null;
+
+  for (let index = 0; index < attempts.length; index += 1) {
+    const attempt = attempts[index];
+    const result = await getSupabaseAdmin().rpc(attempt.fn, attempt.args);
+    data = result.data;
+    error = result.error;
+
+    if (!error) {
+      return { data, error: null };
+    }
+
+    if (index < attempts.length - 1) {
+      console.warn(`[CREDITS:${requestId}] ${logLabel} RPC failed, trying fallback`, {
+        function_name: attempt.fn,
+        error_code: error.code,
+        error_message: error.message,
+      });
+    }
+  }
+
+  return { data, error };
 }
 
 export async function fetchCreditSnapshot(userId: string): Promise<CreditSnapshot | null> {
@@ -160,7 +196,7 @@ export async function creditCredits(
   const requestId = metadata?.request_id as string || `credit_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   
   // 从 metadata 中提取 bucket，默认为 'flex'
-  const bucket = (metadata?.bucket as 'subscription' | 'flex') || 'flex';
+  const bucket = (metadata?.bucket as CreditBucket) || 'flex';
   
   console.log(`[CREDITS:${requestId}] ========== Credit Credits Started ==========`, {
     user_id: userId,
@@ -180,27 +216,27 @@ export async function creditCredits(
         bucket,
       },
     };
-
-    // Prefer the transaction-safe RPC defined in this repo. Fall back only for
-    // older databases that still expose the legacy function name.
-    let data: any;
-    let error: any;
-
-    const primaryResult = await getSupabaseAdmin().rpc('credit_user_credits_transaction', rpcPayload);
-    data = primaryResult.data;
-    error = primaryResult.error;
-
-    if (error) {
-      console.warn(`[CREDITS:${requestId}] Primary credit RPC failed, trying legacy fallback`, {
-        error_code: error.code,
-        error_message: error.message,
-        user_id: userId,
-      });
-
-      const fallbackResult = await getSupabaseAdmin().rpc('credit_user_credits', rpcPayload);
-      data = fallbackResult.data;
-      error = fallbackResult.error;
-    }
+    const { data, error } = await runCreditRpcWithFallbacks(
+      requestId,
+      [
+        {
+          fn: 'credit_user_credits_transaction',
+          args: {
+            ...rpcPayload,
+            p_bucket: bucket,
+          },
+        },
+        {
+          fn: 'credit_user_credits_transaction',
+          args: rpcPayload,
+        },
+        {
+          fn: 'credit_user_credits',
+          args: rpcPayload,
+        },
+      ],
+      'credit'
+    );
 
     if (error) {
       console.error(`[CREDITS:${requestId}] ❌ Credit RPC error:`, {
@@ -243,21 +279,52 @@ export async function refundCredits(
   metadata?: Record<string, unknown>
 ): Promise<CreditSnapshot> {
   const requestId = metadata?.request_id as string || `refund_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  const bucket = (metadata?.bucket as CreditBucket) || 'flex';
   
   console.log(`[CREDITS:${requestId}] ========== Refund Credits Started ==========`, {
     user_id: userId,
     amount,
     reason,
+    bucket,
     metadata_keys: metadata ? Object.keys(metadata) : []
   });
   
   try {
-    const { data, error } = await getSupabaseAdmin().rpc('refund_user_credits', {
+    const rpcPayload = {
       p_user_id: userId,
       p_amount: amount,
       p_reason: reason,
-      p_metadata: metadata ?? null,
-    });
+      p_metadata: {
+        ...(metadata ?? {}),
+        bucket,
+        refund_reason: reason,
+      },
+    };
+    const { data, error } = await runCreditRpcWithFallbacks(
+      requestId,
+      [
+        {
+          fn: 'refund_user_credits',
+          args: rpcPayload,
+        },
+        {
+          fn: 'credit_user_credits_transaction',
+          args: {
+            ...rpcPayload,
+            p_bucket: bucket,
+          },
+        },
+        {
+          fn: 'credit_user_credits_transaction',
+          args: rpcPayload,
+        },
+        {
+          fn: 'credit_user_credits',
+          args: rpcPayload,
+        },
+      ],
+      'refund'
+    );
 
     if (error) {
       console.error(`[CREDITS:${requestId}] ❌ Refund RPC error:`, {

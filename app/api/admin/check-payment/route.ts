@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { isMissingPaymentRecoveryTable } from '@/lib/payment-recovery';
 import { resolveExternalPaymentIdColumn } from '@/lib/payment-records';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
@@ -175,7 +176,7 @@ export async function GET(request: NextRequest) {
     
     // 4. 检查未匹配的邮箱
     if (checkoutId || orderId) {
-      const { data: unmatched } = await supabaseAdmin
+      const { data: unmatched, error: unmatchedError } = await supabaseAdmin
         .from('unmatched_payment_emails')
         .select('*')
         .order('created_at', { ascending: false })
@@ -183,7 +184,9 @@ export async function GET(request: NextRequest) {
       
       result.unmatchedEmails = {
         count: unmatched?.length || 0,
-        recent: unmatched || []
+        recent: unmatched || [],
+        disabled: !!unmatchedError && isMissingPaymentRecoveryTable(unmatchedError),
+        error: unmatchedError && !isMissingPaymentRecoveryTable(unmatchedError) ? unmatchedError.message : null,
       };
     }
     

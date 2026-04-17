@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { isMissingPaymentRecoveryTable } from '@/lib/payment-recovery';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 export const runtime = 'nodejs';
 
@@ -17,7 +18,7 @@ export async function GET(request: NextRequest) {
         status,
         created_at,
         notes,
-        users!inner(id, email, full_name)
+        users!user_email_aliases_user_id_fkey(id, email, full_name)
       `);
 
     if (userId) {
@@ -27,6 +28,9 @@ export async function GET(request: NextRequest) {
     const { data: aliases, error } = await query.order('created_at', { ascending: false });
 
     if (error) {
+      if (isMissingPaymentRecoveryTable(error)) {
+        return NextResponse.json({ aliases: [], disabled: true });
+      }
       console.error('Failed to fetch email aliases:', error);
       return NextResponse.json({ error: 'Failed to fetch email aliases' }, { status: 500 });
     }
@@ -67,6 +71,9 @@ export async function POST(request: NextRequest) {
       .maybeSingle();
 
     if (aliasError) {
+      if (isMissingPaymentRecoveryTable(aliasError)) {
+        return NextResponse.json({ error: 'Payment recovery tables are not enabled in this database' }, { status: 400 });
+      }
       console.error('Failed to check existing alias:', aliasError);
       return NextResponse.json({ error: 'Failed to check existing alias' }, { status: 500 });
     }
@@ -88,6 +95,9 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (createError) {
+      if (isMissingPaymentRecoveryTable(createError)) {
+        return NextResponse.json({ error: 'Payment recovery tables are not enabled in this database' }, { status: 400 });
+      }
       console.error('Failed to create email alias:', createError);
       return NextResponse.json({ error: 'Failed to create email alias' }, { status: 500 });
     }
@@ -126,6 +136,9 @@ export async function PUT(request: NextRequest) {
       .single();
 
     if (error) {
+      if (isMissingPaymentRecoveryTable(error)) {
+        return NextResponse.json({ error: 'Payment recovery tables are not enabled in this database' }, { status: 400 });
+      }
       console.error('Failed to update email alias:', error);
       return NextResponse.json({ error: 'Failed to update email alias' }, { status: 500 });
     }

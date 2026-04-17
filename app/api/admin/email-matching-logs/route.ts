@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { isMissingPaymentRecoveryTable } from '@/lib/payment-recovery';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 export const runtime = 'nodejs';
 
@@ -47,6 +48,9 @@ export async function GET(request: NextRequest) {
       .range(offset, offset + limit - 1);
 
     if (error) {
+      if (isMissingPaymentRecoveryTable(error)) {
+        return NextResponse.json({ logs: [], stats: { total: 0, matchTypes: {} }, disabled: true });
+      }
       console.error('Failed to fetch email matching logs:', error);
       return NextResponse.json({ error: 'Failed to fetch email matching logs' }, { status: 500 });
     }
@@ -58,7 +62,9 @@ export async function GET(request: NextRequest) {
       .gte('created_at', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()); // 最近7天
 
     if (statsError) {
-      console.error('Failed to fetch stats:', statsError);
+      if (!isMissingPaymentRecoveryTable(statsError)) {
+        console.error('Failed to fetch stats:', statsError);
+      }
     }
 
     const matchStats = stats?.reduce((acc: any, log: any) => {
@@ -94,6 +100,16 @@ export async function POST(request: NextRequest) {
       .gte('created_at', startDate);
 
     if (matchTypeError) {
+      if (isMissingPaymentRecoveryTable(matchTypeError)) {
+        return NextResponse.json({
+          period: `${days} days`,
+          matchTypes: {},
+          unmatched: {},
+          totalLogs: 0,
+          totalUnmatched: 0,
+          disabled: true
+        });
+      }
       console.error('Failed to fetch match type stats:', matchTypeError);
       return NextResponse.json({ error: 'Failed to fetch match type stats' }, { status: 500 });
     }
@@ -105,6 +121,16 @@ export async function POST(request: NextRequest) {
       .gte('created_at', startDate);
 
     if (unmatchedError) {
+      if (isMissingPaymentRecoveryTable(unmatchedError)) {
+        return NextResponse.json({
+          period: `${days} days`,
+          matchTypes: {},
+          unmatched: {},
+          totalLogs: matchTypeStats?.length || 0,
+          totalUnmatched: 0,
+          disabled: true
+        });
+      }
       console.error('Failed to fetch unmatched stats:', unmatchedError);
       return NextResponse.json({ error: 'Failed to fetch unmatched stats' }, { status: 500 });
     }

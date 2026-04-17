@@ -5,6 +5,7 @@ import { createServerClient } from '@supabase/ssr';
 import { paymentPlansById } from '@/config/payment-plans';
 import { getDodoCheckoutSession } from '@/lib/dodo-payments';
 import { creditCredits } from '@/lib/credits';
+import { recordUnmatchedPaymentEmail } from '@/lib/payment-recovery';
 import { getExternalPaymentId } from '@/lib/payment-records';
 import { resolveExternalPaymentIdColumn } from '@/lib/payment-records';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -88,6 +89,38 @@ export async function GET(request: NextRequest) {
     const planConfig = paymentPlansById[plan] || null;
     const normalizedStatus = String(statusFromQuery || checkoutSession?.payment_status || '').toLowerCase();
     const isPaid = ['paid', 'succeeded', 'success', 'completed'].includes(normalizedStatus);
+
+    if (!planConfig && isPaid) {
+      await recordUnmatchedPaymentEmail({
+        email: user?.email || checkoutSession?.customer_email || 'unknown@payment.local',
+        paymentId: transactionId || null,
+        amount: Number(amount),
+        currency,
+        webhookData: {
+          plan,
+          sessionId,
+          paymentId: transactionId,
+          status: normalizedStatus,
+        },
+        notes: 'callback reconcile missing plan config',
+      });
+    }
+
+    if (!user && planConfig && transactionId && isPaid) {
+      await recordUnmatchedPaymentEmail({
+        email: checkoutSession?.customer_email || 'unknown@payment.local',
+        paymentId: transactionId || null,
+        amount: planConfig.priceCents / 100,
+        currency: planConfig.currency,
+        webhookData: {
+          plan,
+          sessionId,
+          paymentId: transactionId,
+          status: normalizedStatus,
+        },
+        notes: 'callback reconcile missing authenticated user',
+      });
+    }
 
     if (user && planConfig && transactionId && isPaid) {
       const admin = getSupabaseAdmin();

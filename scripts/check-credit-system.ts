@@ -12,6 +12,21 @@ config({ path: resolve(process.cwd(), '.env.local') });
 
 import { getSupabaseAdmin } from '../src/lib/supabase-admin';
 
+async function checkRpcVariants(
+  supabase: ReturnType<typeof getSupabaseAdmin>,
+  functionName: string,
+  argsList: Record<string, unknown>[]
+) {
+  for (const args of argsList) {
+    const result = await supabase.rpc(functionName as any, args);
+    if (!result.error || result.error.code !== 'PGRST202') {
+      return result;
+    }
+  }
+
+  return { data: null, error: { code: 'PGRST202', message: `${functionName} not found in schema cache` } };
+}
+
 async function checkCreditSystem() {
   const supabase = getSupabaseAdmin();
   
@@ -28,16 +43,40 @@ async function checkCreditSystem() {
   
   for (const funcName of functionsToCheck) {
     try {
-      // 尝试调用函数（使用无效参数来测试是否存在）
-      const { error } = await supabase.rpc(funcName as any, {
-        p_user_id: '00000000-0000-0000-0000-000000000000' as any,
-        p_amount: 0,
-        p_reason: null,
-        p_metadata: null
-      });
+      const argsList =
+        funcName === 'credit_user_credits_transaction'
+          ? [
+              {
+                p_user_id: '00000000-0000-0000-0000-000000000000' as any,
+                p_amount: 0,
+                p_reason: null,
+                p_metadata: null,
+                p_bucket: 'flex',
+              },
+              {
+                p_user_id: '00000000-0000-0000-0000-000000000000' as any,
+                p_amount: 0,
+                p_reason: null,
+                p_metadata: null,
+              },
+            ]
+          : [
+              {
+                p_user_id: '00000000-0000-0000-0000-000000000000' as any,
+                p_amount: 0,
+                p_reason: null,
+                p_metadata: null,
+              },
+            ];
+
+      const { error } = await checkRpcVariants(supabase, funcName, argsList);
       
       if (error) {
-        if (error.message?.includes('does not exist') || error.code === '42883') {
+        if (
+          error.message?.includes('does not exist') ||
+          error.code === '42883' ||
+          error.code === 'PGRST202'
+        ) {
           console.log(`  ❌ ${funcName}: 函数不存在`);
         } else if (error.code === 'P0003' || error.message?.includes('positive')) {
           console.log(`  ✅ ${funcName}: 存在（参数验证正常）`);
@@ -72,21 +111,29 @@ async function checkCreditSystem() {
     
     if (user) {
       // 测试 credit 函数返回类型
-      const { data: creditData, error: creditError } = await supabase.rpc('credit_user_credits_transaction', {
-        p_user_id: user.id,
-        p_amount: 1,
-        p_reason: 'system_check',
-        p_metadata: { check: true }
-      });
+      const { data: creditData, error: creditError } = await checkRpcVariants(supabase, 'credit_user_credits_transaction', [
+        {
+          p_user_id: user.id,
+          p_amount: 1,
+          p_reason: 'system_check',
+          p_metadata: { check: true },
+          p_bucket: 'flex',
+        },
+        {
+          p_user_id: user.id,
+          p_amount: 1,
+          p_reason: 'system_check',
+          p_metadata: { check: true }
+        },
+      ]);
       
       if (!creditError && creditData) {
         const row = (creditData as any[])?.[0];
         const fields = Object.keys(row || {});
         console.log(`  ✅ credit_user_credits_transaction 返回字段: ${fields.join(', ')}`);
         
-        // 检查是否有 subscription_credits_balance 和 flex_credits_balance
         if (fields.includes('subscription_credits_balance') && fields.includes('flex_credits_balance')) {
-          console.log(`     ⚠️  返回 5 个字段（包含 split credits），但代码可能期望 3 个字段`);
+          console.log(`     ✅ 返回 split credits 字段（当前代码已兼容）`);
         } else if (fields.length === 3) {
           console.log(`     ✅ 返回 3 个字段（标准格式）`);
         }
@@ -98,6 +145,10 @@ async function checkCreditSystem() {
           p_reason: 'system_check_revert',
           p_metadata: { check: true, revert: true }
         });
+      }
+
+      if (creditError?.code === 'PGRST202') {
+        console.log(`  ❌ credit_user_credits_transaction: schema cache 中未找到可用签名`);
       }
       
       // 测试 debit 函数返回类型
@@ -161,7 +212,7 @@ async function checkCreditSystem() {
       
       const hasSplitCredits = fields.includes('subscription_credits_balance') && fields.includes('flex_credits_balance');
       if (hasSplitCredits) {
-        console.log(`     ⚠️  有 split credits 字段，但函数可能不支持`);
+        console.log(`     ✅ 已启用 split credits 字段`);
       }
     }
   } catch (error) {
@@ -170,26 +221,24 @@ async function checkCreditSystem() {
   
   // 5. 检查代码中的不一致
   console.log('\n📋 5. 检查代码一致性...');
-  console.log(`  ✅ src/lib/credits.ts 使用标准函数: debitCredits, creditCredits, refundCredits`);
-  console.log(`  ⚠️  部分 API 直接调用 RPC，部分使用 credits.ts 函数`);
-  console.log(`  ⚠️  需要统一使用 credits.ts 中的函数`);
+  console.log(`  ✅ src/lib/credits.ts 已兼容新旧 RPC 签名`);
+  console.log(`  ⚠️  仍有少量路由直接调用 RPC，部署前建议继续收口到 credits.ts`);
   
   // 6. 总结和建议
   console.log('\n📊 检查总结:');
   console.log('='.repeat(60));
   console.log('\n⚠️  发现的问题:');
-  console.log('  1. debit_user_credits_transaction 函数可能存在列名歧义');
+  console.log('  1. 数据库环境可能同时存在旧版/新版 RPC 签名');
   console.log('  2. 函数返回类型可能不一致（3 字段 vs 5 字段）');
-  console.log('  3. 部分 API 直接调用 RPC，应该统一使用 credits.ts 函数');
+  console.log('  3. 部分 API 仍然直接调用 RPC');
   console.log('\n✅ 建议的修复步骤:');
-  console.log('  1. 在 Supabase Dashboard 执行 database/fix-debit-function.sql');
+  console.log('  1. 在 Supabase 上统一积分函数版本');
   console.log('  2. 确认所有函数返回类型一致');
-  console.log('  3. 统一 API 使用 credits.ts 中的函数');
+  console.log('  3. 继续统一 API 使用 credits.ts 中的函数');
   console.log('\n✅ 检查完成!\n');
 }
 
 // 运行检查
 checkCreditSystem().catch(console.error);
-
 
 

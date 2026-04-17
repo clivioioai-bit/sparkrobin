@@ -6,6 +6,7 @@
 
 import { config } from 'dotenv';
 import { getSupabaseAdmin } from '../src/lib/supabase-admin';
+import { getExternalPaymentId } from '../src/lib/payment-records';
 
 config({ path: '.env.local' });
 
@@ -99,7 +100,7 @@ async function verifyWebhookResult() {
   
   const { data: payments, error: paymentError } = await supabaseAdmin
     .from('payments')
-    .select('id, amount, currency, status, created_at, creem_payment_id')
+    .select('id, amount, currency, status, created_at, payment_id, external_payment_id, creem_payment_id')
     .eq('user_id', user.id)
     .order('created_at', { ascending: false })
     .limit(5);
@@ -110,7 +111,7 @@ async function verifyWebhookResult() {
     payments.forEach((payment, index) => {
       console.log(`${index + 1}. ${payment.amount} ${payment.currency} | ${payment.status}`);
       console.log(`   时间: ${payment.created_at}`);
-      console.log(`   Dodo Payment ID: ${payment.creem_payment_id || 'N/A'}\n`);
+      console.log(`   Dodo Payment ID: ${getExternalPaymentId(payment) || 'N/A'}\n`);
     });
   } else {
     console.log('   暂无支付记录\n');

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { isMissingPaymentRecoveryTable } from '@/lib/payment-recovery';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 export const runtime = 'nodejs';
 
@@ -28,6 +29,9 @@ export async function GET(request: NextRequest) {
       .range(offset, offset + limit - 1);
 
     if (error) {
+      if (isMissingPaymentRecoveryTable(error)) {
+        return NextResponse.json({ unmatchedEmails: [], disabled: true });
+      }
       console.error('Failed to fetch unmatched emails:', error);
       return NextResponse.json({ error: 'Failed to fetch unmatched emails' }, { status: 500 });
     }
@@ -71,6 +75,9 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
+      if (isMissingPaymentRecoveryTable(error)) {
+        return NextResponse.json({ error: 'Payment recovery tables are not enabled in this database' }, { status: 400 });
+      }
       console.error('Failed to update unmatched email:', error);
       return NextResponse.json({ error: 'Failed to update unmatched email' }, { status: 500 });
     }
