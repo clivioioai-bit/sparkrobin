@@ -34,6 +34,12 @@ const Footer = () => {
     ],
   } as const;
 
+  const footerBadges = [
+    { name: "happyhorse.llc", label: "HH", href: "https://happyhorse.llc" },
+    { name: "veemo.ai", label: "V", href: "https://veemo.ai" },
+    { name: "seedancev2.ai", label: "S2", href: "https://seedancev2.ai" },
+  ] as const;
+
   return (
     <footer className="bg-background/80 backdrop-blur-xl border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
@@ -130,14 +136,33 @@ const Footer = () => {
           <p className="text-xs text-white/25 leading-relaxed max-w-4xl">
             {t('disclaimer')}
           </p>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <p className="text-xs text-white/25">
               {t('copyright')}
             </p>
-            <div className="flex items-center gap-4">
-              <a href={`${localePrefix}/privacy`} className="text-xs text-white/25 hover:text-white/50 transition-colors">{t('privacyPolicy')}</a>
-              <a href={`${localePrefix}/terms`} className="text-xs text-white/25 hover:text-white/50 transition-colors">{t('termsOfService')}</a>
-              <a href={`${localePrefix}/refund`} className="text-xs text-white/25 hover:text-white/50 transition-colors">{t('refundPolicy')}</a>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+              <div className="flex flex-wrap items-center gap-2">
+                {footerBadges.map((badge) => (
+                  <a
+                    key={badge.href}
+                    href={badge.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={badge.name}
+                    className="inline-flex h-7 items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-2 text-[11px] font-medium text-white/35 transition-colors hover:border-white/20 hover:bg-white/[0.06] hover:text-white/60"
+                  >
+                    <span className="flex h-4 min-w-4 items-center justify-center rounded-sm bg-white/10 px-1 text-[9px] font-bold leading-none text-white/45">
+                      {badge.label}
+                    </span>
+                    <span>{badge.name}</span>
+                  </a>
+                ))}
+              </div>
+              <div className="flex items-center gap-4">
+                <a href={`${localePrefix}/privacy`} className="text-xs text-white/25 hover:text-white/50 transition-colors">{t('privacyPolicy')}</a>
+                <a href={`${localePrefix}/terms`} className="text-xs text-white/25 hover:text-white/50 transition-colors">{t('termsOfService')}</a>
+                <a href={`${localePrefix}/refund`} className="text-xs text-white/25 hover:text-white/50 transition-colors">{t('refundPolicy')}</a>
+              </div>
             </div>
           </div>
         </div>
