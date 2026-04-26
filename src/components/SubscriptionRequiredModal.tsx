@@ -20,12 +20,18 @@ interface SubscriptionRequiredModalProps {
   isOpen: boolean;
   onClose: () => void;
   feature?: string; // e.g., "download videos"
+  pendingCost?: number;
+  title?: string;
+  description?: string;
 }
 
 const SubscriptionRequiredModal: React.FC<SubscriptionRequiredModalProps> = ({
   isOpen,
   onClose,
-  feature = "download videos"
+  feature = "download videos",
+  pendingCost: _pendingCost,
+  title,
+  description
 }) => {
   const t = useTranslations('pricing');
   const { isAuthenticated } = useAuth();
@@ -83,16 +89,20 @@ const SubscriptionRequiredModal: React.FC<SubscriptionRequiredModalProps> = ({
               ) : (
                 <Crown className="w-6 h-6 text-primary" />
               )}
-              {feature === "generate videos" ? t('modal.insufficientCredits') : 
-               feature === "upgrade your plan" ? t('modal.upgradeYourPlan') : 
-               t('modal.subscriptionRequired')}
+              {title || (
+                feature === "generate videos" ? t('modal.insufficientCredits') : 
+                feature === "upgrade your plan" ? t('modal.upgradeYourPlan') : 
+                t('modal.subscriptionRequired')
+              )}
             </DialogTitle>
             <DialogDescription className="text-lg">
-              {feature === "generate videos" ? 
-                t('modal.insufficientCreditsDescription') :
-               feature === "upgrade your plan" ? 
-                t('modal.upgradePlanDescription') :
-                t('modal.subscriptionRequiredDescription', { feature })}
+              {description || (
+                feature === "generate videos" ? 
+                  t('modal.insufficientCreditsDescription') :
+                feature === "upgrade your plan" ? 
+                  t('modal.upgradePlanDescription') :
+                  t('modal.subscriptionRequiredDescription', { feature })
+              )}
             </DialogDescription>
           </DialogHeader>
 

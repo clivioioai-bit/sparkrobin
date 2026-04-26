@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { FileText, ImageIcon, Clapperboard, Play } from 'lucide-react';
+import { FileText, ImageIcon, Clapperboard, Play, Clock } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Sora3Mode } from '@/components/generate/modes/sora3mode';
@@ -59,9 +59,17 @@ const createDefaultStoryboardParams = (): StoryboardParams => ({
   image_file: undefined
 });
 
+const UPGRADE_WAIT_MS = 60_000;
+
+type UpgradeWaitFlow = {
+  tab: 'text-to-video' | 'image-to-video' | 'storyboard';
+  startedAt: number;
+};
+
 const ToolsSection = () => {
   const t = useTranslations('navigation');
   const tGenerate = useTranslations('generate');
+  const tPricing = useTranslations('pricing');
   const { user, isAuthenticated } = useAuth();
   const { subscription, calculateCredits } = useCredits();
   const { hasActiveSubscription } = useSubscription();
@@ -90,10 +98,12 @@ const ToolsSection = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   const [pendingCost, setPendingCost] = useState<number | undefined>(undefined);
+  const [upgradeWaitFlow, setUpgradeWaitFlow] = useState<UpgradeWaitFlow | null>(null);
   
   // Sample video state
   const [sampleVideo, setSampleVideo] = useState<SampleVideo | null>(null);
   const [showingSample, setShowingSample] = useState(false);
+  const upgradeWaitTimerRef = useRef<NodeJS.Timeout | null>(null);
   
   const userCredits = subscription?.credits || 0;
   
@@ -152,6 +162,39 @@ const ToolsSection = () => {
       setShowingSample(false);
     };
   }, [activeTab]);
+
+  useEffect(() => {
+    return () => {
+      if (upgradeWaitTimerRef.current) {
+        clearTimeout(upgradeWaitTimerRef.current);
+      }
+    };
+  }, []);
+
+  const clearUpgradeWaitFlow = useCallback(() => {
+    if (upgradeWaitTimerRef.current) {
+      clearTimeout(upgradeWaitTimerRef.current);
+      upgradeWaitTimerRef.current = null;
+    }
+    setUpgradeWaitFlow(null);
+  }, []);
+
+  const startUpgradeWaitFlow = useCallback((tab: UpgradeWaitFlow['tab']) => {
+    if (upgradeWaitTimerRef.current) {
+      clearTimeout(upgradeWaitTimerRef.current);
+    }
+
+    setUpgradeWaitFlow({
+      tab,
+      startedAt: Date.now(),
+    });
+
+    upgradeWaitTimerRef.current = setTimeout(() => {
+      setUpgradeWaitFlow(null);
+      setShowSubscriptionModal(true);
+      upgradeWaitTimerRef.current = null;
+    }, UPGRADE_WAIT_MS);
+  }, []);
   
   // Job polling for Sora3 and Reframe
   const onSora3JobUpdate = useCallback((updatedJob: Job) => {
@@ -251,6 +294,11 @@ const ToolsSection = () => {
     if (!sora3Params.prompt?.trim()) {
       return;
     }
+
+    if (!hasActiveSubscription) {
+      startUpgradeWaitFlow('text-to-video');
+      return;
+    }
     
     const creditCost = getSora3CreditCost();
     if (userCredits < creditCost) {
@@ -266,7 +314,7 @@ const ToolsSection = () => {
         prompt: sora3Params.prompt.trim(),
         negative_prompt: sora3Params.negative_prompt?.trim(),
         duration_sec: (sora3Params.duration || 8) as Duration,
-        aspect_ratio: sora3Params.aspectRatio,
+        aspect_ratio: sora3Params.aspectRatio === 'Auto' ? '16:9' : sora3Params.aspectRatio,
         cfg_scale: 7,
         model: sora3Params.model || 'sora3',
         n_frames: sora3Params.n_frames,
@@ -309,7 +357,7 @@ const ToolsSection = () => {
     } finally {
       setIsSora3Generating(false);
     }
-  }, [isAuthenticated, user, sora3Params, userCredits, getSora3CreditCost, startSora3Polling]);
+  }, [isAuthenticated, user, sora3Params, hasActiveSubscription, startUpgradeWaitFlow, userCredits, getSora3CreditCost, startSora3Polling]);
   
   // Handle Sora3 retry
   const handleSora3Retry = useCallback(async (job: Job) => {
@@ -367,6 +415,11 @@ const ToolsSection = () => {
     if (reframeParams.model === 'veo3.1' && !reframeParams.startFrame && !reframeParams.endFrame) {
       return;
     }
+
+    if (!hasActiveSubscription) {
+      startUpgradeWaitFlow('image-to-video');
+      return;
+    }
     
     const creditCost = getReframeCreditCost();
     if (userCredits < creditCost) {
@@ -421,7 +474,7 @@ const ToolsSection = () => {
         request = {
           prompt: reframeParams.prompt?.trim() || tGenerate('defaultPrompts.smoothAnimation'),
           duration_sec: 8,
-          aspect_ratio: reframeParams.targetAspectRatio,
+          aspect_ratio: reframeParams.targetAspectRatio === 'Auto' ? '16:9' : reframeParams.targetAspectRatio,
           cfg_scale: 7,
           reference_image_url: videoUrl,
           model: reframeParams.model || 'sora3',
@@ -454,7 +507,7 @@ const ToolsSection = () => {
     } finally {
       setIsReframeGenerating(false);
     }
-  }, [isAuthenticated, user, reframeParams, userCredits, getReframeCreditCost, startReframePolling, tGenerate]);
+  }, [isAuthenticated, user, reframeParams, hasActiveSubscription, startUpgradeWaitFlow, userCredits, getReframeCreditCost, startReframePolling, tGenerate]);
   
   // Handle Reframe retry
   const handleReframeRetry = useCallback(async (job: Job) => {
@@ -644,6 +697,10 @@ const ToolsSection = () => {
   
   // Get current generating state
   const getCurrentGenerating = (): boolean => {
+    if (upgradeWaitFlow?.tab === activeTab) {
+      return true;
+    }
+
     if (activeTab === 'text-to-video') {
       return isSora3Generating;
     } else if (activeTab === 'image-to-video') {
@@ -666,6 +723,7 @@ const ToolsSection = () => {
   
   const currentJob = getCurrentJob();
   const isGenerating = getCurrentGenerating();
+  const isUpgradeWaitingOnActiveTab = upgradeWaitFlow?.tab === activeTab;
   
   // Convert StoryboardJob to Job format for VideoPreview
   const getJobForPreview = (): Job | undefined => {
@@ -812,11 +870,71 @@ const ToolsSection = () => {
                   )}
                 </div>
               ) : (
-                <VideoPreview
-                  currentJob={getJobForPreview()}
-                  onRetry={currentJob ? () => handleRetry(currentJob) : undefined}
-                  isGenerating={isGenerating}
-                />
+                isUpgradeWaitingOnActiveTab ? (
+                  <Card className="min-h-[500px] flex items-center justify-center bg-primary/5 border-border relative overflow-hidden">
+                    <div className="text-center space-y-6 p-8 z-10 max-w-lg w-full">
+                      <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+                        <Clock className="w-10 h-10 text-primary animate-spin" />
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-semibold text-foreground">
+                          {tGenerate('upgradeWait.title')}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {tGenerate('upgradeWait.description')}
+                        </p>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="h-3 rounded-full bg-muted overflow-hidden">
+                          <div className="h-full w-2/5 rounded-full bg-primary transition-all duration-700" />
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 text-left text-sm">
+                          <div className="rounded-xl border border-border/70 bg-background/70 p-4">
+                            <div className="text-muted-foreground mb-1">{tGenerate('upgradeWait.modelLabel')}</div>
+                            <div className="font-medium">
+                              {activeTab === 'text-to-video'
+                                ? (sora3Params.veoDisplayModel === 'veo4' ? 'Veo4' : (sora3Params.model || 'Veo3.1'))
+                                : (reframeParams.veoDisplayModel === 'veo4' ? 'Veo4' : (reframeParams.model || 'Veo3.1'))}
+                            </div>
+                          </div>
+                          <div className="rounded-xl border border-border/70 bg-background/70 p-4">
+                            <div className="text-muted-foreground mb-1">{tGenerate('upgradeWait.durationLabel')}</div>
+                            <div className="font-medium">
+                              {activeTab === 'text-to-video'
+                                ? `${sora3Params.duration || 8}s`
+                                : `${reframeParams.wan26Duration || 8}s`}
+                            </div>
+                          </div>
+                          <div className="rounded-xl border border-border/70 bg-background/70 p-4">
+                            <div className="text-muted-foreground mb-1">{tGenerate('upgradeWait.ratioLabel')}</div>
+                            <div className="font-medium">
+                              {activeTab === 'text-to-video'
+                                ? (sora3Params.aspectRatio || '16:9')
+                                : (reframeParams.targetAspectRatio || '16:9')}
+                            </div>
+                          </div>
+                          <div className="rounded-xl border border-border/70 bg-background/70 p-4">
+                            <div className="text-muted-foreground mb-1">{tGenerate('upgradeWait.outputLabel')}</div>
+                            <div className="font-medium">
+                              {activeTab === 'text-to-video'
+                                ? (sora3Params.veo3SubModel === 'veo3' ? tGenerate('upgradeWait.highQuality') : tGenerate('upgradeWait.fastRender'))
+                                : (reframeParams.veo3SubModel === 'veo3' ? tGenerate('upgradeWait.highQuality') : tGenerate('upgradeWait.fastRender'))}
+                            </div>
+                          </div>
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                          {tGenerate('upgradeWait.notice')}
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                ) : (
+                  <VideoPreview
+                    currentJob={getJobForPreview()}
+                    onRetry={currentJob ? () => handleRetry(currentJob) : undefined}
+                    isGenerating={isGenerating}
+                  />
+                )
               )}
             </Card>
           </div>
@@ -830,7 +948,12 @@ const ToolsSection = () => {
       />
       <SubscriptionRequiredModal
         isOpen={showSubscriptionModal}
-        onClose={() => setShowSubscriptionModal(false)}
+        onClose={() => {
+          clearUpgradeWaitFlow();
+          setShowSubscriptionModal(false);
+        }}
+        title={tPricing('modal.subscribeToStartTitle')}
+        description={tPricing('modal.subscribeToStartDescription')}
         pendingCost={pendingCost}
       />
     </section>

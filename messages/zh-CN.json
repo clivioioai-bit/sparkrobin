@@ -392,6 +392,8 @@
       "insufficientCreditsDescription": "您当前的积分不足以生成此视频。订阅计划，解锁更多积分的无限创作可能性！",
       "upgradePlanDescription": "选择订阅计划以访问高级功能。",
       "subscriptionRequiredDescription": "要 {feature}，您需要有效的订阅计划。",
+      "subscribeToStartTitle": "订阅后即可开始生成并导出视频",
+      "subscribeToStartDescription": "当前账号尚未订阅。升级后即可开始本次生成，并解锁视频导出与更多生成额度。",
       "pleaseLogInFirst": "请先登录",
       "logInToProceed": "登录以继续订阅。",
       "loginSessionExpired": "登录会话已过期",
@@ -433,6 +435,17 @@
     "enterPrompt": "输入您的提示并点击生成以创建您的视频",
     "videoBeingCreated": "正在创建您的视频。这可能需要几分钟。",
     "initializingGeneration": "正在初始化生成...",
+    "upgradeWait": {
+      "title": "正在检查素材与生成参数",
+      "description": "我们正在为本次视频创建准备模型、时长、比例和输出设置。",
+      "modelLabel": "模型",
+      "durationLabel": "时长",
+      "ratioLabel": "比例",
+      "outputLabel": "输出",
+      "fastRender": "快速生成",
+      "highQuality": "高质量",
+      "notice": "处理完成后会自动提示你继续下一步。"
+    },
     "aiWorkSubtitles": {
       "writingOpeningScene": "🎬 正在编写您的开场场景…",
       "paintingBackground": "🎨 正在绘制背景细节…",

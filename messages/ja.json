@@ -361,6 +361,8 @@
       "insufficientCreditsDescription": "現在のクレジットでは、この動画を生成するのに十分ではありません。プランに登録して、より多くのクレジットで無制限の創造的な可能性を解き放ちましょう！",
       "upgradePlanDescription": "プレミアム機能にアクセスするには、サブスクリプションプランを選択してください。",
       "subscriptionRequiredDescription": "{feature} するには、アクティブなサブスクリプションプランが必要です。",
+      "subscribeToStartTitle": "Subscribe to start generating and export your video",
+      "subscribeToStartDescription": "This account does not have an active subscription yet. Upgrade to start this generation and unlock video export plus more generation credits.",
       "pleaseLogInFirst": "まずログインしてください",
       "logInToProceed": "サブスクリプションに進むにはログインしてください。",
       "loginSessionExpired": "ログインセッションが期限切れ",
@@ -433,6 +435,17 @@
     "enterPrompt": "プロンプトを入力し、生成をクリックして動画を作成します",
     "videoBeingCreated": "動画を作成しています。数分かかる場合があります。",
     "initializingGeneration": "生成を初期化中...",
+    "upgradeWait": {
+      "title": "Checking assets and generation settings",
+      "description": "We are preparing the model, duration, ratio, and output settings for this video.",
+      "modelLabel": "Model",
+      "durationLabel": "Duration",
+      "ratioLabel": "Ratio",
+      "outputLabel": "Output",
+      "fastRender": "Fast render",
+      "highQuality": "High quality",
+      "notice": "You will be prompted automatically when the next step is ready."
+    },
     "aiWorkSubtitles": {
       "writingOpeningScene": "🎬 オープニングシーンを書いています…",
       "paintingBackground": "🎨 背景の詳細を描いています…",

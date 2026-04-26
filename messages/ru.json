@@ -392,6 +392,8 @@
       "insufficientCreditsDescription": "Ваших текущих кредитов недостаточно для генерации этого видео. Подпишитесь на план и откройте неограниченные творческие возможности с большим количеством кредитов!",
       "upgradePlanDescription": "Выберите план подписки для доступа к премиум функциям.",
       "subscriptionRequiredDescription": "Для {feature} вам нужен активный план подписки.",
+      "subscribeToStartTitle": "Subscribe to start generating and export your video",
+      "subscribeToStartDescription": "This account does not have an active subscription yet. Upgrade to start this generation and unlock video export plus more generation credits.",
       "pleaseLogInFirst": "Пожалуйста, сначала войдите",
       "logInToProceed": "Войдите, чтобы перейти к подписке.",
       "loginSessionExpired": "Сессия входа истекла",
@@ -457,6 +459,17 @@
     "enterPrompt": "Введите промпт и нажмите \"Генерировать\", чтобы создать видео",
     "videoBeingCreated": "Ваше видео создаётся. Это может занять несколько минут.",
     "initializingGeneration": "Инициализация генерации...",
+    "upgradeWait": {
+      "title": "Checking assets and generation settings",
+      "description": "We are preparing the model, duration, ratio, and output settings for this video.",
+      "modelLabel": "Model",
+      "durationLabel": "Duration",
+      "ratioLabel": "Ratio",
+      "outputLabel": "Output",
+      "fastRender": "Fast render",
+      "highQuality": "High quality",
+      "notice": "You will be prompted automatically when the next step is ready."
+    },
     "aiWorkSubtitles": {
       "writingOpeningScene": "🎬 Writing your opening scene…",
       "paintingBackground": "🎨 Painting background details…",

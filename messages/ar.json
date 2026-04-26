@@ -361,6 +361,8 @@
       "insufficientCreditsDescription": "اعتماداتك الحالية غير كافية لإنشاء هذا الفيديو. اشترك في خطة وافتح إمكانيات إبداعية غير محدودة مع المزيد من الاعتمادات!",
       "upgradePlanDescription": "اختر خطة اشتراك للوصول إلى الميزات المميزة.",
       "subscriptionRequiredDescription": "للقيام بـ {feature}، تحتاج إلى خطة اشتراك نشطة.",
+      "subscribeToStartTitle": "Subscribe to start generating and export your video",
+      "subscribeToStartDescription": "This account does not have an active subscription yet. Upgrade to start this generation and unlock video export plus more generation credits.",
       "pleaseLogInFirst": "يرجى تسجيل الدخول أولاً",
       "logInToProceed": "سجل الدخول للمتابعة إلى الاشتراك.",
       "loginSessionExpired": "انتهت صلاحية جلسة تسجيل الدخول",
@@ -433,6 +435,17 @@
     "enterPrompt": "أدخل وصفك واضغط إنشاء لإنشاء الفيديو الخاص بك",
     "videoBeingCreated": "جاري إنشاء الفيديو الخاص بك. قد يستغرق هذا بضع دقائق.",
     "initializingGeneration": "تهيئة الإنشاء...",
+    "upgradeWait": {
+      "title": "Checking assets and generation settings",
+      "description": "We are preparing the model, duration, ratio, and output settings for this video.",
+      "modelLabel": "Model",
+      "durationLabel": "Duration",
+      "ratioLabel": "Ratio",
+      "outputLabel": "Output",
+      "fastRender": "Fast render",
+      "highQuality": "High quality",
+      "notice": "You will be prompted automatically when the next step is ready."
+    },
     "aiWorkSubtitles": {
       "writingOpeningScene": "🎬 كتابة مشهدك الافتتاحي…",
       "paintingBackground": "🎨 رسم تفاصيل الخلفية…",

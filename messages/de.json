@@ -392,6 +392,8 @@
       "insufficientCreditsDescription": "Ihre aktuellen Credits reichen nicht aus, um dieses Video zu generieren. Abonnieren Sie einen Plan und schalten Sie unbegrenzte kreative Möglichkeiten mit mehr Credits frei!",
       "upgradePlanDescription": "Wählen Sie einen Abonnement-Plan, um auf Premium-Funktionen zuzugreifen.",
       "subscriptionRequiredDescription": "Um {feature} zu nutzen, benötigen Sie einen aktiven Abonnement-Plan.",
+      "subscribeToStartTitle": "Subscribe to start generating and export your video",
+      "subscribeToStartDescription": "This account does not have an active subscription yet. Upgrade to start this generation and unlock video export plus more generation credits.",
       "pleaseLogInFirst": "Bitte melden Sie sich zuerst an",
       "logInToProceed": "Melden Sie sich an, um zum Abonnement zu gelangen.",
       "loginSessionExpired": "Anmeldesitzung abgelaufen",
@@ -433,6 +435,17 @@
     "enterPrompt": "Geben Sie Ihren Prompt ein und klicken Sie auf Generieren, um Ihr Video zu erstellen",
     "videoBeingCreated": "Ihr Video wird erstellt. Dies kann einige Minuten dauern.",
     "initializingGeneration": "Generierung wird initialisiert...",
+    "upgradeWait": {
+      "title": "Checking assets and generation settings",
+      "description": "We are preparing the model, duration, ratio, and output settings for this video.",
+      "modelLabel": "Model",
+      "durationLabel": "Duration",
+      "ratioLabel": "Ratio",
+      "outputLabel": "Output",
+      "fastRender": "Fast render",
+      "highQuality": "High quality",
+      "notice": "You will be prompted automatically when the next step is ready."
+    },
     "aiWorkSubtitles": {
       "writingOpeningScene": "🎬 Schreibe Ihre Eröffnungsszene…",
       "paintingBackground": "🎨 Male Hintergrunddetails…",
