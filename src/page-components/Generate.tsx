@@ -16,9 +16,7 @@ import watermarkApi from "@/services/watermarkApi";
 import InsufficientCreditsDialog from "@/components/insufficient-credits-dialog";
 import { Sora3Mode } from "@/components/generate/modes/sora3mode";
 import { ReframeMode } from "@/components/generate/modes/ReframeMode";
-import { Veo3Mode } from "@/components/generate/modes/Veo3Mode";
-import { Veo3ImageMode } from "@/components/generate/modes/Veo3ImageMode";
-import { GenerationMode, ModeParams, Sora3Params, ReframeParams, Veo3Params } from "@/types/generation-modes";
+import { GenerationMode, ModeParams, Sora3Params, ReframeParams } from "@/types/generation-modes";
 import videoApi from "@/services/videoApi";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import Link from "next/link";
@@ -36,6 +34,9 @@ import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
+import { getVideoGenerationCreditCost } from "@/config/generation-models";
+import { primaryActionButtonClass, subtleButtonClass } from "@/components/generate/styles";
+import { buildImageToVideoRequest, buildTextToVideoRequest } from "@/lib/generation-adapters";
 
 const createDefaultSora3Params = (): Sora3Params => ({
   prompt: '',
@@ -60,21 +61,15 @@ const createDefaultReframeParams = (): ReframeParams => ({
   n_frames: '10'
 });
 
-const createDefaultVeo3Params = (): Veo3Params => ({
-  prompt: 'A dog playing in a park',
-  model: 'veo3_fast',
-  veoDisplayModel: 'veo4',
-  generationType: 'TEXT_2_VIDEO',
-  aspectRatio: '16:9',
-  enableTranslation: true
-});
+const videoApiModeFromWorkflow = (mode: GenerationMode): 'sora3' | 'reframe' =>
+  mode === 'image-to-video' ? 'reframe' : 'sora3';
 
 const Generate = () => {
   const t = useTranslations('navigation');
   const tGenerate = useTranslations('generate');
   const tPricing = useTranslations('pricing.plans');
   const { user, isAuthenticated } = useAuth();
-  const { subscription, calculateCredits } = useCredits();
+  const { subscription } = useCredits();
   const { hasActiveSubscription } = useSubscription();
   const isMobile = useIsMobile();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -84,25 +79,20 @@ const Generate = () => {
   const [showingSample, setShowingSample] = useState(false);
   
   // Mode state
-  const [generationMode, setGenerationMode] = useState<GenerationMode>('sora3');
+  const [generationMode, setGenerationMode] = useState<GenerationMode>('text-to-video');
   const [modeParams, setModeParamsState] = useState<ModeParams>(() => ({
-    mode: 'sora3',
+    mode: 'text-to-video',
     params: createDefaultSora3Params()
   }));
   const sora3ParamsCache = useRef<Sora3Params>(
-    modeParams.mode === 'sora3'
+    modeParams.mode === 'text-to-video'
       ? (modeParams.params as Sora3Params)
       : createDefaultSora3Params()
   );
   const reframeParamsCache = useRef<ReframeParams>(
-    modeParams.mode === 'reframe'
+    modeParams.mode === 'image-to-video'
       ? (modeParams.params as ReframeParams)
       : createDefaultReframeParams()
-  );
-  const veo3ParamsCache = useRef<Veo3Params>(
-    modeParams.mode === 'veo3'
-      ? (modeParams.params as Veo3Params)
-      : createDefaultVeo3Params()
   );
   const setModeParams = useCallback(
     (value: ModeParams | ((prev: ModeParams) => ModeParams)) => {
@@ -112,12 +102,10 @@ const Generate = () => {
             ? (value as (prev: ModeParams) => ModeParams)(prev)
             : value;
 
-        if (next.mode === 'sora3') {
+        if (next.mode === 'text-to-video') {
           sora3ParamsCache.current = next.params as Sora3Params;
-        } else if (next.mode === 'reframe') {
+        } else if (next.mode === 'image-to-video') {
           reframeParamsCache.current = next.params as ReframeParams;
-        } else if (next.mode === 'veo3') {
-          veo3ParamsCache.current = next.params as Veo3Params;
         }
 
         return next;
@@ -135,11 +123,11 @@ const Generate = () => {
   }, []);
 
   const routeFromMode = useCallback((mode: GenerationMode) => (
-    mode === 'reframe' ? '/veo4-image-to-video' : '/veo4-text-to-video'
+    mode === 'image-to-video' ? '/veo4-image-to-video' : '/veo4-text-to-video'
   ), []);
 
   const modeFromPathname = useCallback((path: string): GenerationMode => (
-    path?.startsWith('/veo4-image-to-video') ? 'reframe' : 'sora3'
+    path?.startsWith('/veo4-image-to-video') ? 'image-to-video' : 'text-to-video'
   ), []);
 
   const handleModeChange = useCallback(
@@ -149,24 +137,24 @@ const Generate = () => {
           return prev;
         }
 
-        if (prev.mode === 'sora3') {
+        if (prev.mode === 'text-to-video') {
           sora3ParamsCache.current = prev.params as Sora3Params;
         } else {
           reframeParamsCache.current = prev.params as ReframeParams;
         }
 
         const nextParams =
-          mode === 'sora3'
+          mode === 'text-to-video'
             ? sora3ParamsCache.current
             : reframeParamsCache.current;
-        if (mode === 'sora3') {
+        if (mode === 'text-to-video') {
           return {
-            mode: 'sora3',
+            mode: 'text-to-video',
             params: { ...(nextParams as Sora3Params) }
           } as ModeParams;
         }
         return {
-          mode: 'reframe',
+          mode: 'image-to-video',
           params: { ...(nextParams as ReframeParams) }
         } as ModeParams;
       });
@@ -183,74 +171,14 @@ const Generate = () => {
   const handleSora3ParamsChange = useCallback(
     (params: Sora3Params) => {
       sora3ParamsCache.current = params;
-      
-      // If model is veo3.1, switch to veo3 mode
-      if (params.model === 'veo3.1') {
-        const veo3Params: Veo3Params = {
-          prompt: params.prompt,
-          model: 'veo3_fast',
-          generationType: 'TEXT_2_VIDEO',
-          aspectRatio: params.aspectRatio === '16:9' ? '16:9' : params.aspectRatio === '9:16' ? '9:16' : '16:9',
-          enableTranslation: true
-        };
-        veo3ParamsCache.current = veo3Params;
-        setModeParams({ mode: 'veo3', params: veo3Params });
-      } else {
-        setModeParams({ mode: 'sora3', params });
-      }
+      setModeParams({ mode: 'text-to-video', params });
     },
     [setModeParams]
   );
   const handleReframeParamsChange = useCallback(
     (params: ReframeParams) => {
       reframeParamsCache.current = params;
-      
-      // If model is changed to veo3.1, keep in reframe mode but use Veo3ImageMode
-      // If model is changed to sora3, update the model
-      if (params.model === 'veo3.1') {
-        setModeParams({ mode: 'reframe', params });
-      } else {
-        setModeParams({ mode: 'reframe', params });
-      }
-    },
-    [setModeParams]
-  );
-  
-  // Handle model change from Veo3Mode or Veo3ImageMode
-  const handleModelChange = useCallback(
-    (model: 'veo3.1' | 'wan2.6') => {
-      if (model === 'veo3.1') {
-        // Already in veo3 mode, do nothing
-        return;
-      } else {
-        const isWan26 = model === 'wan2.6';
-        const sora3Params: Sora3Params = {
-          prompt: modeParams.mode === 'veo3' 
-            ? (modeParams.params as Veo3Params).prompt 
-            : modeParams.mode === 'reframe'
-            ? (modeParams.params as ReframeParams).prompt || ''
-            : '',
-          aspectRatio: modeParams.mode === 'veo3'
-            ? (modeParams.params as Veo3Params).aspectRatio === 'Auto' ? '16:9' : (modeParams.params as Veo3Params).aspectRatio
-            : modeParams.mode === 'reframe'
-            ? (modeParams.params as ReframeParams).targetAspectRatio === 'Auto' ? '16:9' : (modeParams.params as ReframeParams).targetAspectRatio
-            : '16:9',
-          duration: 8,
-          model,
-          wan26Duration: isWan26 ? '5' : undefined,
-          wan26Resolution: isWan26 ? '1080p' : undefined,
-          wan26MultiShots: isWan26 ? false : undefined,
-        };
-        sora3ParamsCache.current = sora3Params;
-        setModeParams({ mode: 'sora3', params: sora3Params });
-      }
-    },
-    [modeParams, setModeParams]
-  );
-  const handleVeo3ParamsChange = useCallback(
-    (params: Veo3Params) => {
-      veo3ParamsCache.current = params;
-      setModeParams({ mode: 'veo3', params });
+      setModeParams({ mode: 'image-to-video', params });
     },
     [setModeParams]
   );
@@ -281,7 +209,7 @@ const Generate = () => {
 
   // Get sample video based on generation mode (consistent with home page)
   const getSampleVideoForMode = useCallback((mode: GenerationMode): SampleVideo | null => {
-    if (mode === 'sora3') {
+    if (mode === 'text-to-video') {
       // Use sushi video for text-to-video (sora3 mode)
       return {
         id: 'sample-sushi',
@@ -292,7 +220,7 @@ const Generate = () => {
         duration: 8,
         tags: ['food', 'sushi', 'asmr', 'text-to-video']
       };
-    } else if (mode === 'reframe') {
+    } else if (mode === 'image-to-video') {
       // Image to video example video - use running car video
       return {
         id: 'sample-running-car',
@@ -302,17 +230,6 @@ const Generate = () => {
         aspectRatio: '16:9',
         duration: 8,
         tags: ['image-to-video', 'animation', 'motion', 'car']
-      };
-    } else if (mode === 'veo3') {
-      // Veo3 mode is also text-to-video, use sushi video
-      return {
-        id: 'sample-sushi',
-        prompt: 'A master sushi chef expertly preparing nigiri in a traditional Japanese restaurant. Close-up shots of precise knife work cutting fresh salmon. Rice being molded with practiced hands. Elegant presentation on wooden serving board. Natural window lighting with clean aesthetic. ASMR-style detail focus.',
-        videoUrl: getVideoUrl(DEMO_VIDEO_PATHS.sushi),
-        thumbnailUrl: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=450&fit=crop',
-        aspectRatio: '16:9',
-        duration: 8,
-        tags: ['food', 'sushi', 'asmr', 'text-to-video']
       };
     }
     return null;
@@ -338,9 +255,9 @@ const Generate = () => {
     // Pre-fill the prompt with URL parameter if available, otherwise keep empty
     if (urlPrompt) {
       setModeParams(prev => {
-        if (prev.mode === 'sora3') {
+        if (prev.mode === 'text-to-video') {
           return {
-            mode: 'sora3',
+            mode: 'text-to-video',
             params: {
               ...prev.params,
               prompt: decodeURIComponent(urlPrompt),
@@ -499,32 +416,7 @@ const Generate = () => {
     const newErrors: FormErrors = {};
     
     switch (modeParams.mode) {
-      case 'veo3': {
-        const params = modeParams.params;
-        if (!params.prompt?.trim()) {
-          newErrors.prompt = "Prompt cannot be empty";
-        }
-        
-        // Validate imageUrls based on generationType
-        if (params.generationType === 'FIRST_AND_LAST_FRAMES_2_VIDEO' && (!params.imageUrls || params.imageUrls.length === 0)) {
-          newErrors.reference_image = "At least 1 image URL is required for First and Last Frames mode";
-        } else if (params.generationType === 'REFERENCE_2_VIDEO' && (!params.imageUrls || params.imageUrls.length === 0)) {
-          newErrors.reference_image = "At least 1 image URL is required for Reference mode";
-        }
-        
-        // REFERENCE_2_VIDEO only supports Fast model and 16:9
-        if (params.generationType === 'REFERENCE_2_VIDEO') {
-          if (params.model !== 'veo3_fast') {
-            newErrors.prompt = "REFERENCE_2_VIDEO mode only supports veo3_fast model";
-          }
-          if (params.aspectRatio !== '16:9') {
-            newErrors.prompt = "REFERENCE_2_VIDEO mode only supports 16:9 aspect ratio";
-          }
-        }
-        break;
-      }
-      
-      case 'sora3': {
+      case 'text-to-video': {
         const params = modeParams.params;
         // Storyboard mode: validate shots instead of prompt
         if (params.model === 'storyboard') {
@@ -548,7 +440,7 @@ const Generate = () => {
         break;
       }
       
-      case 'reframe': {
+      case 'image-to-video': {
         const params = modeParams.params;
         if (params.model === 'veo3.1') {
           // Veo3.1 requires at least start frame or end frame
@@ -594,29 +486,30 @@ const Generate = () => {
     }
     
     // Check credits balance using unified credit calculator
-    const sora3Params = modeParams.mode === 'sora3' ? (modeParams.params as Sora3Params) : null;
-    const reframeParams = modeParams.mode === 'reframe' ? (modeParams.params as ReframeParams) : null;
+    const sora3Params = modeParams.mode === 'text-to-video' ? (modeParams.params as Sora3Params) : null;
+    const reframeParams = modeParams.mode === 'image-to-video' ? (modeParams.params as ReframeParams) : null;
     const model = sora3Params?.model || reframeParams?.model || 'sora3';
-    const quality = sora3Params?.quality || reframeParams?.quality;
+    const quality = sora3Params?.model === 'veo3.1'
+      ? (sora3Params.veo3SubModel === 'veo3' ? 'high' : 'standard')
+      : reframeParams?.model === 'veo3.1'
+        ? (reframeParams.veo3SubModel === 'veo3' ? 'high' : 'standard')
+        : sora3Params?.quality || reframeParams?.quality;
 
     // For storyboard, use n_frames from storyboardParams; otherwise from params
     const n_frames = model === 'storyboard'
       ? (sora3Params?.storyboardParams?.n_frames as '10' | '15' | undefined)
-      : modeParams.mode === 'sora3'
+      : modeParams.mode === 'text-to-video'
         ? (modeParams.params as Sora3Params).n_frames
         : (modeParams.params as ReframeParams).n_frames;
 
-    const estimatedCost = calculateCredits(
-      (modeParams.mode === 'sora3'
-        ? (modeParams.params.duration || 8)
-        : 8) as number,
-      modeParams.mode === 'sora3'
-        ? (modeParams.params.aspectRatio || '16:9')
-        : (modeParams.params.targetAspectRatio || '16:9'),
+    const estimatedCost = getVideoGenerationCreditCost({
       model,
       n_frames,
-      quality
-    );
+      quality,
+      veo3SubModel: sora3Params?.veo3SubModel || reframeParams?.veo3SubModel,
+      wan26Duration: sora3Params?.wan26Duration || reframeParams?.wan26Duration,
+      wan26Resolution: sora3Params?.wan26Resolution || reframeParams?.wan26Resolution,
+    });
 
     if (userCredits < estimatedCost) {
       setPendingCost(estimatedCost);
@@ -632,26 +525,7 @@ const Generate = () => {
       let request: CreateJobRequest;
       
       // Convert mode-specific params to CreateJobRequest
-      if (modeParams.mode === 'veo3') {
-        const params = modeParams.params;
-        request = {
-          prompt: params.prompt.trim(),
-          duration_sec: 8 as Duration, // Veo3.1 defaults to 8 seconds
-          aspect_ratio: params.aspectRatio === 'Auto' ? '16:9' : params.aspectRatio === '9:16' ? '9:16' : '16:9',
-          cfg_scale: 7,
-          // Veo4 is a frontend-only brand alias. Backend generation still uses the existing veo3.1 pipeline.
-          model: 'veo3.1',
-          // Veo3.1 specific fields
-          veo3Params: {
-            model: params.model,
-            generationType: params.generationType,
-            imageUrls: params.imageUrls,
-            seeds: params.seeds,
-            enableTranslation: params.enableTranslation,
-            watermark: params.watermark
-          }
-        };
-      } else if (modeParams.mode === 'sora3' && (modeParams.params as Sora3Params).model === 'storyboard') {
+      if (modeParams.mode === 'text-to-video' && (modeParams.params as Sora3Params).model === 'storyboard') {
         // Storyboard generation — uses separate /api/storyboard/generate endpoint
         const params = modeParams.params as Sora3Params;
         const sbParams = params.storyboardParams;
@@ -708,117 +582,19 @@ const Generate = () => {
 
         setIsGenerating(false);
         return;
-      } else if (modeParams.mode === 'sora3') {
-        const params = modeParams.params;
-        request = {
-          prompt: params.prompt.trim(),
-          negative_prompt: params.negative_prompt?.trim(),
-          duration_sec: (params.duration || 8) as Duration,
-          aspect_ratio: params.aspectRatio,
-          cfg_scale: 7,
-          model: params.model || 'sora3',
-          n_frames: params.n_frames,
-          quality: params.quality // Add quality field for sora3-pro
-        };
-      } else if (modeParams.mode === 'reframe') {
-        const params = modeParams.params;
-        
-        // Handle Veo3.1 image-to-video
-        if (params.model === 'veo3.1') {
-          // Upload start and end frames
-          const imageUrls: string[] = [];
-          
-          if (params.startFrame) {
-            try {
-              const startUrl = await videoApi.uploadVideo(params.startFrame, user.id);
-              imageUrls.push(startUrl);
-            } catch (uploadError) {
-              throw new Error(`Failed to upload start frame: ${uploadError instanceof Error ? uploadError.message : 'Unknown error'}`);
-            }
-          }
-          
-          if (params.endFrame) {
-            try {
-              const endUrl = await videoApi.uploadVideo(params.endFrame, user.id);
-              imageUrls.push(endUrl);
-            } catch (uploadError) {
-              throw new Error(`Failed to upload end frame: ${uploadError instanceof Error ? uploadError.message : 'Unknown error'}`);
-            }
-          }
-
-          if (imageUrls.length === 0) {
-            throw new Error(tGenerate('errors.atLeastOneImageRequired'));
-          }
-
-          request = {
-            prompt: params.prompt?.trim() || tGenerate('defaultPrompts.smoothTransition'),
-            duration_sec: 8 as Duration,
-            aspect_ratio: params.targetAspectRatio === 'Auto' ? '16:9' : params.targetAspectRatio === '9:16' ? '9:16' : '16:9',
-            cfg_scale: 7,
-            // Veo4 is a frontend-only brand alias. Backend generation still uses the existing veo3.1 pipeline.
-            model: 'veo3.1',
-            veo3Params: {
-              model: params.veo3SubModel || 'veo3_fast', // Use selected sub-model or default to fast
-              generationType: imageUrls.length === 1 ? 'FIRST_AND_LAST_FRAMES_2_VIDEO' : 'FIRST_AND_LAST_FRAMES_2_VIDEO',
-              imageUrls: imageUrls,
-              seeds: params.seeds,
-              enableTranslation: true
-            }
-          };
-        } else {
-          // Handle Sora3 image-to-video (existing logic)
-          // Upload source video first to get public URL
-          if (!params.sourceVideo) {
-            console.error('Source video is missing:', { params, modeParams });
-            throw new Error(tGenerate('errors.referenceImageUrlRequired'));
-          }
-
-          let videoUrl: string | undefined;
-          try {
-            console.log('Uploading source video:', { 
-              fileName: params.sourceVideo.name, 
-              fileSize: params.sourceVideo.size,
-              fileType: params.sourceVideo.type 
-            });
-            videoUrl = await videoApi.uploadVideo(params.sourceVideo, user.id);
-            console.log('Upload successful, videoUrl:', videoUrl);
-          } catch (uploadError) {
-            // 如果错误信息已经包含详细说明，直接使用；否则添加前缀
-            const errorMsg = uploadError instanceof Error ? uploadError.message : 'Unknown error';
-            console.error('Upload failed:', { error: uploadError, errorMsg });
-            if (errorMsg.includes('Failed to upload') || errorMsg.includes('Permission') || errorMsg.includes('too large')) {
-              throw new Error(errorMsg);
-            }
-            throw new Error(`Failed to upload reference image: ${errorMsg}`);
-          }
-
-          if (!videoUrl) {
-            console.error('Upload succeeded but videoUrl is empty:', { params, videoUrl });
-            throw new Error(tGenerate('errors.referenceImageUrlRequired'));
-          }
-
-          request = {
-            prompt: params.prompt?.trim() || tGenerate('defaultPrompts.smoothAnimation'),
-            duration_sec: 8,
-            aspect_ratio: params.targetAspectRatio === 'Auto' ? '16:9' : params.targetAspectRatio === '9:16' ? '9:16' : '16:9',
-            cfg_scale: 7,
-            reference_image_url: videoUrl,
-            model: params.model || 'sora3',
-            n_frames: params.n_frames,
-            quality: params.quality,
-            // Wan2.6 specific params
-            wan26Duration: params.wan26Duration,
-            wan26Resolution: params.wan26Resolution,
-            wan26MultiShots: params.wan26MultiShots,
-            wan26AspectRatio: params.wan26AspectRatio,
-            imageUrls: videoUrl ? [videoUrl] : undefined,
-          };
-        }
+      } else if (modeParams.mode === 'text-to-video') {
+        request = buildTextToVideoRequest(modeParams.params);
+      } else if (modeParams.mode === 'image-to-video') {
+        request = await buildImageToVideoRequest(modeParams.params, {
+          userId: user.id,
+          uploadVideo: videoApi.uploadVideo,
+          t: tGenerate,
+        });
       } else {
         throw new Error('Invalid generation mode');
       }
 
-      const response = await videoApi.createJob(request, modeParams.mode);
+      const response = await videoApi.createJob(request, videoApiModeFromWorkflow(modeParams.mode));
 
       // 验证响应
       if (!response || !response.jobId) {
@@ -1078,7 +854,7 @@ const Generate = () => {
       // 注意：这里不能直接检查 currentJob，因为它是异步更新的
       // 所以我们在 catch 块中处理
     }
-  }, [modeParams, startPolling, user, isAuthenticated, userCredits, validateForm, calculateCredits]);
+  }, [modeParams, startPolling, user, isAuthenticated, userCredits, validateForm]);
 
   // Handle retry
   const handleRetry = useCallback(async (job: Job) => {
@@ -1099,7 +875,7 @@ const Generate = () => {
     setErrors({});
     
     try {
-      const mode = job.params.reference_image_url ? 'reframe' : 'sora3';
+      const mode: GenerationMode = job.params.reference_image_url ? 'image-to-video' : 'text-to-video';
       
       // 调试：检查重试参数
       console.log('🔄 Retry parameters:', {
@@ -1111,14 +887,15 @@ const Generate = () => {
         hasReferenceImage: !!job.params.reference_image_url
       });
       
-      const response = await videoApi.createJob(job.params, mode);
+      const response = await videoApi.createJob(job.params, videoApiModeFromWorkflow(mode));
 
-      const retryCost = calculateCredits(
-        job.params.duration_sec,
-        job.params.aspect_ratio,
-        mode,
-        job.params.n_frames as '10' | '15' | undefined
-      );
+      const retryCost = getVideoGenerationCreditCost({
+        model: job.params.model,
+        n_frames: job.params.n_frames as '10' | '15' | undefined,
+        quality: job.params.quality,
+        wan26Duration: job.params.wan26Duration,
+        wan26Resolution: job.params.wan26Resolution,
+      });
 
       const newJob: Job = {
         ...job,
@@ -1143,7 +920,7 @@ const Generate = () => {
         setErrors({ prompt: errorMessage });
       }
     }
-  }, [startPolling, user, userCredits, calculateCredits]);
+  }, [startPolling, user, userCredits]);
 
   // Handle cancel
   const handleCancel = useCallback(async (jobId: string) => {
@@ -1165,16 +942,16 @@ const Generate = () => {
   // Handle copy params
   const handleCopyParams = useCallback(
     (job: Job) => {
-      const mode = job.params.reference_image_url ? 'reframe' : 'sora3';
+      const mode: GenerationMode = job.params.reference_image_url ? 'image-to-video' : 'text-to-video';
 
       setModeParams(prev => {
-        if (prev.mode === 'sora3') {
+        if (prev.mode === 'text-to-video') {
           sora3ParamsCache.current = prev.params as Sora3Params;
         } else {
           reframeParamsCache.current = prev.params as ReframeParams;
         }
 
-        if (mode === 'reframe') {
+        if (mode === 'image-to-video') {
           const params: ReframeParams = {
             sourceVideo: undefined,
             targetAspectRatio:
@@ -1187,7 +964,7 @@ const Generate = () => {
           };
 
           return {
-            mode: 'reframe',
+            mode: 'image-to-video',
             params
           };
         }
@@ -1201,7 +978,7 @@ const Generate = () => {
         };
 
         return {
-          mode: 'sora3',
+          mode: 'text-to-video',
           params
         };
       });
@@ -1222,11 +999,11 @@ const Generate = () => {
       // only update state; handleModeChange would push again
       setModeParams(prev => {
         if (prev.mode === next) return prev;
-        const nextParams = next === 'sora3' ? sora3ParamsCache.current : reframeParamsCache.current;
-        if (next === 'sora3') {
-          return { mode: 'sora3', params: { ...(nextParams as Sora3Params) } } as ModeParams;
+        const nextParams = next === 'text-to-video' ? sora3ParamsCache.current : reframeParamsCache.current;
+        if (next === 'text-to-video') {
+          return { mode: 'text-to-video', params: { ...(nextParams as Sora3Params) } } as ModeParams;
         }
-        return { mode: 'reframe', params: { ...(nextParams as ReframeParams) } } as ModeParams;
+        return { mode: 'image-to-video', params: { ...(nextParams as ReframeParams) } } as ModeParams;
       });
       setGenerationMode(next);
     }
@@ -1452,12 +1229,12 @@ const Generate = () => {
                     <div className="mt-4 flex gap-3">
                       <button
                         onClick={() => { setVideoUrl(''); setOutputUrl(undefined); setWatermarkError(undefined); }}
-                        className="px-4 py-2 rounded-xl border border-border bg-card/80 backdrop-blur-xl hover:bg-muted"
+                        className={`h-12 px-4 ${subtleButtonClass}`}
                       >{tGenerate('watermarkRemover.reset')}</button>
                       <button
                         onClick={handleWatermarkRun}
                         disabled={isRunning || !isValid}
-                        className="px-5 py-2 rounded-xl bg-primary text-primary-foreground font-semibold inline-flex items-center gap-2 disabled:opacity-50"
+                        className={`px-5 inline-flex items-center gap-2 ${primaryActionButtonClass}`}
                       >
                         {isRunning ? (
                           <span className="inline-flex items-center gap-2"><span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" /> {tGenerate('watermarkRemover.running')}</span>
@@ -1717,9 +1494,9 @@ const Generate = () => {
                   {/* Tab switcher */}
                   <div className="flex items-center bg-muted/60 border border-border rounded-xl p-1 mb-5 gap-1">
                     <button
-                      onClick={() => handleModeChange('sora3')}
+                      onClick={() => handleModeChange('text-to-video')}
                       className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
-                        modeParams.mode !== 'reframe'
+                        modeParams.mode === 'text-to-video'
                           ? 'bg-background shadow-sm text-primary border border-border/50'
                           : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                       }`}
@@ -1728,9 +1505,9 @@ const Generate = () => {
                       Text to Video
                     </button>
                     <button
-                      onClick={() => handleModeChange('reframe')}
+                      onClick={() => handleModeChange('image-to-video')}
                       className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
-                        modeParams.mode === 'reframe'
+                        modeParams.mode === 'image-to-video'
                           ? 'bg-background shadow-sm text-primary border border-border/50'
                           : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                       }`}
@@ -1741,17 +1518,7 @@ const Generate = () => {
                   </div>
 
                   {/* Mode-specific UI */}
-                  {modeParams.mode === 'veo3' && (
-                    <Veo3Mode
-                      params={modeParams.params as Veo3Params}
-                      onChange={handleVeo3ParamsChange}
-                      onGenerate={handleGenerate}
-                      isGenerating={isGenerating}
-                      onModelChange={handleModelChange}
-                    />
-                  )}
-
-                  {modeParams.mode === 'sora3' && (
+                  {modeParams.mode === 'text-to-video' && (
                     <Sora3Mode
                       params={modeParams.params as Sora3Params}
                       onChange={handleSora3ParamsChange}
@@ -1760,25 +1527,13 @@ const Generate = () => {
                     />
                   )}
 
-                  {modeParams.mode === 'reframe' && (
-                    <>
-                      {(modeParams.params as ReframeParams).model === 'veo3.1' ? (
-                        <Veo3ImageMode
-                          params={modeParams.params as ReframeParams}
-                          onChange={handleReframeParamsChange}
-                          onGenerate={handleGenerate}
-                          isGenerating={isGenerating}
-                          onModelChange={handleModelChange}
-                        />
-                      ) : (
-                        <ReframeMode
-                          params={modeParams.params as ReframeParams}
-                          onChange={handleReframeParamsChange}
-                          onGenerate={handleGenerate}
-                          isGenerating={isGenerating}
-                        />
-                      )}
-                    </>
+                  {modeParams.mode === 'image-to-video' && (
+                    <ReframeMode
+                      params={modeParams.params as ReframeParams}
+                      onChange={handleReframeParamsChange}
+                      onGenerate={handleGenerate}
+                      isGenerating={isGenerating}
+                    />
                   )}
                 </div>
               </div>
@@ -1842,7 +1597,7 @@ const Generate = () => {
                       {!isAuthenticated && (
                         <button
                           onClick={() => setShowAuthModal(true)}
-                          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2"
+                          className={`w-full px-6 flex items-center justify-center gap-2 ${primaryActionButtonClass}`}
                         >
                           <Play className="w-5 h-5" />
                           {tGenerate('signUpToCreate')}
@@ -2578,7 +2333,7 @@ const Generate = () => {
                       : tGenerate('getStartedImageToVideo.description')}
                   </p>
                   <Link href="/pricing">
-                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
+                    <Button size="lg" className={`px-6 ${primaryActionButtonClass}`}>
                       {routeFromMode(generationMode) === '/veo4-image-to-video' 
                         ? tGenerate('getStartedImageToVideo.button')
                         : tGenerate('fallbacks.getPremium')}
@@ -2591,7 +2346,7 @@ const Generate = () => {
             {/* Mobile: Fixed Generate Button */}
             <div className="lg:hidden fixed bottom-4 left-4 right-4 z-40">
               <button
-                className="w-full bg-primary text-primary-foreground font-bold py-4 px-6 rounded-2xl shadow-2xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-xl hover:scale-105 transition-shadow duration-200 backdrop-blur-sm"
+                className={`w-full px-6 flex items-center justify-center gap-2 ${primaryActionButtonClass}`}
                 onClick={handleGenerate}
                 disabled={isGenerating}
               >

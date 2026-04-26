@@ -5,21 +5,21 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ReframeParams } from '@/types/generation-modes';
-import { RotateCcw, Play, Upload as UploadIcon, Lightbulb, Sparkles, CircleHelp, Image as ImageIcon, Info, X, Check, ChevronUp, Wand2, Maximize2, Square } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { RotateCcw, Play, Upload as UploadIcon, Sparkles, CircleHelp, Image as ImageIcon, Info, X, Check, Wand2, Maximize2, Square } from 'lucide-react';
+import { DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { imagePromptCategories, getImageExamplesByCategory } from '@/data/promptExamples';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
+import ModelSelector from '@/components/generate/ModelSelector';
+import PromptSection from '@/components/generate/PromptSection';
+import { GenerationModelId, getVideoGenerationCreditCost, getVideoModelId, getVideoModelPatch } from '@/config/generation-models';
 import {
   dropzoneClass,
   fieldLabelClass,
   primaryActionButtonClass,
   segmentedButtonClass,
-  selectTriggerClass,
   subtleButtonClass,
-  textAreaClass,
   workspaceSectionClass,
 } from '@/components/generate/styles';
 
@@ -123,84 +123,19 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
     setIsExamplesOpen(false);
   };
 
-  const currentModel = params.model === 'wan2.6' ? 'wan2.6' : 'veo3.1';
-  const isVeo31 = currentModel === 'veo3.1';
-  const isWan26 = currentModel === 'wan2.6';
+  const selectedModelId = getVideoModelId(params);
+  const isVeo31 = selectedModelId !== 'wan26';
+  const isWan26 = selectedModelId === 'wan26';
   const isLegacyModel = !isVeo31 && !isWan26;
-  const veoDisplayModel = params.veoDisplayModel || 'veo4';
-  const veoModelVariant = params.veoDisplayModel === 'veo4' ? 'veo3_fast' : (params.veo3SubModel || 'veo3_fast');
 
-  // Calculate credits based on model, quality, and n_frames
-  const calculateCredits = (): number => {
-    if (isWan26) {
-      const durationKey = params.wan26Duration || '5';
-      const resolutionKey = params.wan26Resolution || '1080p';
-      const pricingTable: Record<'720p' | '1080p', Record<'5' | '10' | '15', number>> = {
-        '720p': { '5': 80, '10': 160, '15': 220 },
-        '1080p': { '5': 120, '10': 220, '15': 320 }
-      };
-      return pricingTable[resolutionKey][durationKey];
-    }
-    if (isVeo31) {
-      return params.veo3SubModel === 'veo3' ? 250 : 60;
-    }
-    return params.n_frames === '15' ? 40 : 30;
-  };
+  const creditCost = getVideoGenerationCreditCost(params);
 
-  const creditCost = calculateCredits();
-
-  // Get display label for the selected model in the trigger
-  const getModelLabel = (): string => {
-    if (isVeo31) {
-      if (veoDisplayModel === 'veo4') {
-        return 'Veo4';
-      }
-      return veoModelVariant === 'veo3_fast' ? 'Veo3.1 Fast' : 'Veo3.1 Quality';
-    }
-    if (isWan26) return 'Wan 2.6';
-    return 'Veo4 Fast';
-  };
-
-  // Get trigger icon
-  const getTriggerIcon = () => {
-    if (isVeo31) return <img src="/images/google_veo_logo.jpeg" alt="Veo3.1" width={32} height={32} className="w-full h-full object-contain" />;
-    if (isWan26) return <img src="/images/qwen-color.webp" alt="Wan2.6" width={32} height={32} className="w-full h-full object-contain" />;
-    return <img src="/logo-v2.png" alt="Veo4 model icon" width={32} height={32} className="w-full h-full object-contain" />;
-  };
-
-  // Compute the Select value — Veo3.1 uses compound values
-  const selectValue = isVeo31
-    ? (veoDisplayModel === 'veo4' ? 'veo4-veo3_fast' : `veo3.1-${veoModelVariant}`)
-    : currentModel;
-
-  const handleModelChange = (value: string) => {
-    // Veo4 is a frontend alias; both Veo4 and Veo3.1 selections map to the same backend model.
-    if (
-      value === 'veo4-veo3_fast' ||
-      value === 'veo3.1-veo3_fast' ||
-      value === 'veo3.1-veo3'
-    ) {
-      const subModel = value.startsWith('veo4-') ? 'veo3_fast' : value.endsWith('-veo3_fast') ? 'veo3_fast' : 'veo3';
-      const displayModel = value.startsWith('veo4-') ? 'veo4' : 'veo3.1';
+  const handleModelChange = (value: GenerationModelId) => {
+    if (value === 'wan26') {
       onChange({
         ...params,
-        model: 'veo3.1',
-        veo3SubModel: subModel,
-        veoDisplayModel: displayModel,
+        ...getVideoModelPatch(value),
         quality: undefined,
-        wan26Duration: undefined,
-        wan26Resolution: undefined,
-        wan26MultiShots: undefined,
-      });
-      return;
-    }
-    if (value === 'wan2.6') {
-      onChange({
-        ...params,
-        model: 'wan2.6',
-        quality: undefined,
-        veo3SubModel: undefined,
-        veoDisplayModel: undefined,
         seeds: undefined,
         startFrame: undefined,
         endFrame: undefined,
@@ -210,12 +145,11 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
       });
       return;
     }
+
     onChange({
       ...params,
-      model: 'veo3.1',
+      ...getVideoModelPatch(value),
       quality: undefined,
-      veo3SubModel: undefined,
-      veoDisplayModel: 'veo4',
       seeds: undefined,
       startFrame: undefined,
       endFrame: undefined,
@@ -230,157 +164,62 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
       <div className="space-y-5">
         {/* Model Selection */}
         <div className={workspaceSectionClass}>
-          <Label className={fieldLabelClass}>{t('reframeMode.model')}</Label>
-          {!isMounted ? (
-            <div className={selectTriggerClass}>
-              <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
-                {getTriggerIcon()}
-              </div>
-              <span className="font-semibold text-foreground">{getModelLabel()}</span>
-            </div>
-          ) : (
-          <Select value={selectValue} onValueChange={handleModelChange}>
-            <SelectTrigger className={selectTriggerClass}>
-              <div className="flex items-center gap-3 w-full">
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-transparent">
-                  {getTriggerIcon()}
-                </div>
-                <div className="flex-1 text-left">
-                  <span className="font-semibold text-foreground">{getModelLabel()}</span>
-                </div>
-                <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </div>
-            </SelectTrigger>
-            <SelectContent>
-              {/* Veo4 Fast */}
-              <SelectItem value="veo4-veo3_fast" className="py-3">
-                <div className="flex items-start gap-3 w-full">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                    <img src="/images/google_veo_logo.jpeg" alt="Veo4 model icon" width={32} height={32} className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">Veo4 Fast</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Veo4 branding on the frontend, powered by the Veo3.1 fast backend.</p>
-                  </div>
-                </div>
-              </SelectItem>
-              {/* Veo3.1 Fast */}
-              <SelectItem value="veo3.1-veo3_fast" className="py-3">
-                <div className="flex items-start gap-3 w-full">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                    <img src="/images/google_veo_logo.jpeg" alt="Veo3.1 model icon" width={32} height={32} className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">Veo3.1 Fast</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Faster generation with good quality</p>
-                  </div>
-                </div>
-              </SelectItem>
-              {/* Veo3.1 Quality */}
-              <SelectItem value="veo3.1-veo3" className="py-3">
-                <div className="flex items-start gap-3 w-full">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                    <img src="/images/google_veo_logo.jpeg" alt="Veo3.1 model icon" width={32} height={32} className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">Veo3.1 Quality</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Higher quality with longer generation time</p>
-                  </div>
-                </div>
-              </SelectItem>
-              {/* Wan 2.6 */}
-              <SelectItem value="wan2.6" className="py-3">
-                <div className="flex items-start gap-3 w-full">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 overflow-hidden bg-transparent">
-                    <img src="/images/qwen-color.webp" alt="Wan2.6 model icon" width={32} height={32} className="w-full h-full object-contain" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-foreground">Wan 2.6</span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary">NEW</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">Fast and efficient image-to-video generation</p>
-                  </div>
-                </div>
-              </SelectItem>
-            </SelectContent>
-          </Select>
-          )}
-        </div>
-
-        {/* Prompt Section */}
-        <div className="space-y-2 rounded-xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-4 shadow-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Label className={fieldLabelClass}>{t('reframeMode.prompt')}</Label>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button type="button" aria-label="Prompt info" className="text-muted-foreground transition-colors hover:text-foreground">
-                    <Info className="h-4 w-4" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent className="max-w-xs text-xs leading-relaxed">{t('reframeMode.promptTooltip')}</TooltipContent>
-              </Tooltip>
-            </div>
-            <div className="flex items-center gap-2">
-              <Dialog open={isExamplesOpen} onOpenChange={setIsExamplesOpen}>
-                <DialogTrigger asChild>
-                  <Button variant="outline" size="sm" className={subtleButtonClass}>
-                    <Lightbulb className="w-4 h-4" />
-                    {t('reframeMode.aiExamples')}
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                  <DialogHeader>
-                    <DialogTitle className="flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-primary" />
-                      {t('reframeMode.promptExamplesTitle')}
-                    </DialogTitle>
-                    <DialogDescription>{t('reframeMode.promptExamplesDescription')}</DialogDescription>
-                  </DialogHeader>
-                  <Tabs defaultValue={imagePromptCategories[0]} className="w-full">
-                    <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-white/[0.04] backdrop-blur-sm">
-                      {imagePromptCategories.map(category => (
-                        <TabsTrigger key={category} value={category} className="text-xs px-3 py-2 !whitespace-normal leading-snug text-center rounded-md min-h-[2.75rem] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                          {getTranslatedCategory(category)}
-                        </TabsTrigger>
-                      ))}
-                    </TabsList>
-                    {imagePromptCategories.map(category => (
-                      <TabsContent key={category} value={category} className="mt-4">
-                        <div className="grid gap-3">
-                          {getImageExamplesByCategory(category).map(example => (
-                            <Card key={example.id} className="p-4 hover:shadow-md transition-shadow cursor-pointer border-border hover:border-primary" onClick={() => handleSelectExample(example.prompt, example.aspectRatio)}>
-                              <div className="space-y-3">
-                                <div className="text-sm font-medium text-foreground">{example.title}</div>
-                                <div className="text-xs text-muted-foreground leading-relaxed">{example.prompt}</div>
-                                <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" onClick={(e) => { e.stopPropagation(); handleSelectExample(example.prompt, example.aspectRatio); }}>
-                                  {t('reframeMode.useThisPrompt')}
-                                </Button>
-                              </div>
-                            </Card>
-                          ))}
-                        </div>
-                      </TabsContent>
-                    ))}
-                  </Tabs>
-                </DialogContent>
-              </Dialog>
-            </div>
-          </div>
-          <textarea
-            placeholder={t('reframeMode.promptPlaceholder')}
-            value={params.prompt || ''}
-            onChange={(e) => onChange({ ...params, prompt: e.target.value })}
-            className={`${textAreaClass} relative z-10`}
+          <ModelSelector
+            workflow="image-to-video"
+            value={selectedModelId}
+            onValueChange={handleModelChange}
+            label={t('reframeMode.model')}
+            mounted={isMounted}
           />
         </div>
+
+        <PromptSection
+          label={t('reframeMode.prompt')}
+          tooltip={t('reframeMode.promptTooltip')}
+          examplesLabel={t('reframeMode.aiExamples')}
+          placeholder={t('reframeMode.promptPlaceholder')}
+          value={params.prompt || ''}
+          onChange={(prompt) => onChange({ ...params, prompt })}
+          examplesOpen={isExamplesOpen}
+          onExamplesOpenChange={setIsExamplesOpen}
+          examplesDialog={
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-primary" />
+                  {t('reframeMode.promptExamplesTitle')}
+                </DialogTitle>
+                <DialogDescription>{t('reframeMode.promptExamplesDescription')}</DialogDescription>
+              </DialogHeader>
+              <Tabs defaultValue={imagePromptCategories[0]} className="w-full">
+                <TabsList className="!flex flex-wrap gap-2 justify-start !h-auto p-2 bg-white/[0.04] backdrop-blur-sm">
+                  {imagePromptCategories.map(category => (
+                    <TabsTrigger key={category} value={category} className="text-xs px-3 py-2 !whitespace-normal leading-snug text-center rounded-md min-h-[2.75rem] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                      {getTranslatedCategory(category)}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                {imagePromptCategories.map(category => (
+                  <TabsContent key={category} value={category} className="mt-4">
+                    <div className="grid gap-3">
+                      {getImageExamplesByCategory(category).map(example => (
+                        <Card key={example.id} className="p-4 hover:shadow-md transition-shadow cursor-pointer border-border hover:border-primary" onClick={() => handleSelectExample(example.prompt, example.aspectRatio)}>
+                          <div className="space-y-3">
+                            <div className="text-sm font-medium text-foreground">{example.title}</div>
+                            <div className="text-xs text-muted-foreground leading-relaxed">{example.prompt}</div>
+                            <Button size="sm" className={`w-full ${primaryActionButtonClass}`} onClick={(e) => { e.stopPropagation(); handleSelectExample(example.prompt, example.aspectRatio); }}>
+                              {t('reframeMode.useThisPrompt')}
+                            </Button>
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </DialogContent>
+          }
+        />
 
         {/* Image Upload Section */}
         <div className={workspaceSectionClass}>

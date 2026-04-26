@@ -1,6 +1,6 @@
 // Generation Mode Types
 
-export type GenerationMode = 'sora3' | 'reframe' | 'veo3';
+export type GenerationMode = 'text-to-video' | 'image-to-video';
 
 // Fast Mode
 export interface FastModeParams {
@@ -70,21 +70,6 @@ export interface NormalParams {
   style: 'standard' | 'creative' | 'abstract';
 }
 
-// Veo3 Mode
-export interface Veo3Params {
-  prompt: string;
-  model?: 'veo3' | 'veo3_fast';
-  veoDisplayModel?: 'veo4' | 'veo3.1'; // Frontend-only label while backend continues using veo3.1
-  imageUrls?: string[];
-  generationType?: 'TEXT_2_VIDEO' | 'FIRST_AND_LAST_FRAMES_2_VIDEO' | 'REFERENCE_2_VIDEO';
-  aspectRatio: '16:9' | '9:16' | 'Auto';
-  targetAspectRatio?: '16:9' | '9:16' | 'Auto';
-  seeds?: number;
-  enableTranslation?: boolean;
-  watermark?: string;
-}
-
 export type ModeParams =
-  | { mode: 'sora3'; params: Sora3Params }
-  | { mode: 'reframe'; params: ReframeParams }
-  | { mode: 'veo3'; params: Veo3Params };
+  | { mode: 'text-to-video'; params: Sora3Params }
+  | { mode: 'image-to-video'; params: ReframeParams };

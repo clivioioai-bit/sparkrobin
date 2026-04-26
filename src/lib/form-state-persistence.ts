@@ -39,7 +39,7 @@ async function serializeModeParams(params: ModeParams): Promise<string> {
   };
 
   // Handle File objects in params
-  if (params.mode === 'reframe') {
+  if (params.mode === 'image-to-video') {
     const reframeParams = params.params as ReframeParams;
     const fileFields: Array<keyof ReframeParams> = ['sourceVideo', 'startFrame', 'endFrame'];
 
@@ -83,6 +83,10 @@ function deserializeModeParams(serialized: string): ModeParams | null {
 
     // Restore File objects
     if (data.mode === 'reframe') {
+      data.mode = 'image-to-video';
+    }
+
+    if (data.mode === 'image-to-video') {
       const fileFields: Array<keyof ReframeParams> = ['sourceVideo', 'startFrame', 'endFrame'];
 
       for (const field of fileFields) {
@@ -103,7 +107,11 @@ function deserializeModeParams(serialized: string): ModeParams | null {
     }
 
     // Validate mode
-    if (data.mode !== 'sora3' && data.mode !== 'reframe' && data.mode !== 'veo3') {
+    if (data.mode === 'sora3' || data.mode === 'veo3') {
+      data.mode = 'text-to-video';
+    }
+
+    if (data.mode !== 'text-to-video' && data.mode !== 'image-to-video') {
       console.warn('Invalid mode in stored data:', data.mode);
       return null;
     }
@@ -156,7 +164,7 @@ export function saveFormStateSync(modeParams: ModeParams): void {
       params: { ...modeParams.params }
     };
 
-    if (modeParams.mode === 'reframe') {
+    if (modeParams.mode === 'image-to-video') {
       const reframeParams = modeParams.params as ReframeParams;
       const fileFields: Array<keyof ReframeParams> = ['sourceVideo', 'startFrame', 'endFrame'];
       for (const field of fileFields) {

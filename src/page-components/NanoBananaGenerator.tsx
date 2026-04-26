@@ -8,19 +8,31 @@ import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Upload, X, Play, Download, RefreshCw, AlertTriangle, AlertCircle, CheckCircle, Clock, Zap, Menu, Palette, Wand2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
-import { generateImage, uploadImage, getImageStatus, type GenerateImageRequest, type ImageJobStatus } from '@/services/imageApi';
+import { generateImage, uploadImage, getImageStatus, type ImageJobStatus } from '@/services/imageApi';
 import { useCredits } from '@/contexts/CreditsContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import AuthModal from '@/components/AuthModal';
+import ModelSelector from '@/components/generate/ModelSelector';
+import { GenerationModelId, getGenerationModelCreditCost } from '@/config/generation-models';
+import { buildImageGenerationRequest } from '@/lib/generation-adapters';
+import {
+  dropzoneClass,
+  fieldLabelClass,
+  primaryActionButtonClass,
+  segmentedButtonClass,
+  selectTriggerClass,
+  subtleButtonClass,
+  textAreaClass,
+  workspaceSectionClass,
+} from '@/components/generate/styles';
 
 // Dynamically import components to avoid SSR issues
 const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
@@ -33,17 +45,6 @@ type TabType = 'nano-banana-pro' | 'text-to-image' | 'image-editor'; // Keep for
 interface NanoBananaGeneratorProps {
   defaultTab?: TabType;
 }
-
-const CREDIT_COSTS = {
-  'text-to-image': {
-    'nano-banana': 12,
-    'nano-banana-pro': 24,
-  },
-  'image-editor': {
-    'nano-banana': 12,
-    'nano-banana-pro': 24,
-  },
-};
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -94,7 +95,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
   const [dragOver, setDragOver] = useState(false);
 
   const userCredits = subscription?.credits || 0;
-  const currentCreditCost = CREDIT_COSTS[featureType][modelType];
+  const currentCreditCost = getGenerationModelCreditCost(modelType);
 
   // Cleanup polling on unmount
   useEffect(() => {
@@ -253,50 +254,16 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
         setImageUrls(finalImageUrls);
       }
 
-      // Determine model based on featureType and modelType
-      let model: GenerateImageRequest['model'];
-      if (featureType === 'text-to-image') {
-        if (modelType === 'nano-banana-pro') {
-          model = 'nano-banana-pro';
-        } else {
-          model = 'nano-banana-text-to-image';
-        }
-      } else {
-        // image-editor
-        if (modelType === 'nano-banana-pro') {
-          model = 'nano-banana-pro';
-        } else {
-          model = 'nano-banana-image-editor';
-        }
-      }
-
-      // Build request
-      const request: GenerateImageRequest = {
-        prompt: prompt.trim(),
-        model,
-        output_format: outputFormat === 'jpeg' ? 'jpeg' : 'png',
-      };
-
-      // Add parameters based on model type
-      if (modelType === 'nano-banana-pro') {
-        // Pro model uses aspect_ratio and resolution
-        request.aspect_ratio = aspectRatio;
-        request.resolution = resolution;
-        if (finalImageUrls.length > 0) {
-          request.image_input = finalImageUrls;
-        }
-      } else {
-        // Basic model
-        if (featureType === 'text-to-image') {
-          request.image_size = imageSize;
-        } else {
-          // image-editor basic
-          request.aspect_ratio = aspectRatio;
-          if (finalImageUrls.length > 0) {
-            request.image_input = finalImageUrls;
-          }
-        }
-      }
+      const request = buildImageGenerationRequest({
+        workflow: featureType,
+        modelId: modelType,
+        prompt,
+        outputFormat,
+        imageSize,
+        aspectRatio,
+        resolution,
+        imageUrls: finalImageUrls,
+      });
 
       // Generate
       const response = await generateImage(request);
@@ -364,66 +331,41 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
         )}
         
         <div className="flex-1 container mx-auto px-3 sm:px-4 pt-[5.25rem] md:pt-24 pb-8 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-2 gap-8">
         {/* Left Panel - Input */}
         <div className="space-y-6">
-          <Card className="p-6">
+          <Card className="relative bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 shadow-lg shadow-black/5 transition-all duration-200 [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.05)]">
             <Tabs value={featureType} onValueChange={(v) => setFeatureType(v as FeatureType)} className="w-full">
               {/* Feature Selection Group */}
-              <div className="mb-6 pb-6 border-b border-border">
-                <Label className="mb-3 block text-base font-medium text-foreground">Feature Type</Label>
-                <div className="w-full">
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="text-to-image" className="flex items-center gap-2">
+              <div className={`${workspaceSectionClass} mb-5`}>
+                <Label className={fieldLabelClass}>Feature Type</Label>
+                <TabsList className="grid w-full grid-cols-2 h-auto bg-muted/60 border border-border rounded-xl p-1 gap-1">
+                    <TabsTrigger value="text-to-image" className="flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm">
                       <Palette className="w-4 h-4" />
                       <span>Text-to-Image</span>
                     </TabsTrigger>
-                    <TabsTrigger value="image-editor" className="flex items-center gap-2">
+                    <TabsTrigger value="image-editor" className="flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm">
                       <Wand2 className="w-4 h-4" />
                       <span>Image Editor</span>
                     </TabsTrigger>
                   </TabsList>
-                </div>
               </div>
 
               {/* Model Selection Group */}
-              <div className="mb-6">
-                <Label className="mb-3 block text-base font-medium text-foreground">Model Selection</Label>
-                <RadioGroup value={modelType} onValueChange={(v) => setModelType(v as ModelType)} className="flex gap-4">
-                  <div className="flex items-center space-x-2 flex-1 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
-                    <RadioGroupItem value="nano-banana" id="nano-banana" />
-                    <Label htmlFor="nano-banana" className="flex items-center gap-2 cursor-pointer flex-1">
-                      <Image src="/logo-v2.png" alt="Nano Banana" width={16} height={16} className="w-4 h-4 rounded-sm object-cover" />
-                      <span>Nano Banana</span>
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2 flex-1 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
-                    <RadioGroupItem value="nano-banana-pro" id="nano-banana-pro" />
-                    <Label htmlFor="nano-banana-pro" className="flex items-center gap-2 cursor-pointer flex-1">
-                      <Image src="/logo-v2.png" alt="Nano Banana Pro" width={16} height={16} className="w-4 h-4 rounded-sm object-cover" />
-                      <span>Nano Banana Pro</span>
-                    </Label>
-                  </div>
-                </RadioGroup>
+              <div className={`${workspaceSectionClass} mb-5`}>
+                <ModelSelector
+                  workflow={featureType}
+                  value={modelType}
+                  onValueChange={(value: GenerationModelId) => setModelType(value as ModelType)}
+                  label="Model Selection"
+                  mounted={mounted}
+                />
               </div>
 
               {/* Text-to-Image Tab */}
-              <TabsContent value="text-to-image" className="space-y-6">
-                <div>
-                  <h2 className="text-xl font-semibold mb-2">
-                    {modelType === 'nano-banana-pro' 
-                      ? 'Generate high-quality images with advanced controls.'
-                      : 'Generate images from text descriptions.'}
-                  </h2>
-                  {modelType === 'nano-banana-pro' && (
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Create professional images with customizable aspect ratios, resolutions, and optional image inputs.
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <Label htmlFor="prompt-text" className="text-base font-medium">
+              <TabsContent value="text-to-image" className="space-y-5">
+                <div className={workspaceSectionClass}>
+                  <Label htmlFor="prompt-text" className={fieldLabelClass}>
                     Prompt *
                   </Label>
                   <Textarea
@@ -431,7 +373,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                     placeholder="Describe the image you want to generate..."
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
-                    className={`mt-2 min-h-[120px] resize-none ${errors.prompt ? 'border-destructive' : ''}`}
+                    className={`${textAreaClass} ${errors.prompt ? 'border-destructive' : ''}`}
                     maxLength={20000}
                   />
                   <div className="flex justify-between items-center mt-1">
@@ -446,8 +388,8 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
 
                 {/* Image Input - Only for nano-banana-pro */}
                 {modelType === 'nano-banana-pro' && (
-                  <div>
-                    <Label className="text-base font-medium">Image Input (Optional)</Label>
+                  <div className={workspaceSectionClass}>
+                    <Label className={fieldLabelClass}>Image Input (Optional)</Label>
                     <p className="text-xs text-muted-foreground mb-2">
                       Input images to transform or use as reference (supports up to {MAX_FILES} images)
                     </p>
@@ -473,9 +415,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                       </div>
                     ) : (
                       <div
-                        className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors mt-2 ${
-                          dragOver ? 'border-primary bg-primary/5' : 'border-muted-foreground/25'
-                        }`}
+                        className={`${dropzoneClass} ${dragOver ? 'border-primary bg-primary/5' : ''}`}
                         onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
                         onDragLeave={() => setDragOver(false)}
                         onDrop={handleDrop}
@@ -500,7 +440,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                         <Button
                           variant="outline"
                           size="sm"
-                          className="mt-4"
+                          className={`mt-4 ${subtleButtonClass}`}
                           onClick={() => fileInputRef.current?.click()}
                         >
                           Select Files
@@ -512,10 +452,10 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
 
                 {/* Aspect Ratio - Only for nano-banana-pro */}
                 {modelType === 'nano-banana-pro' ? (
-                  <div>
-                    <Label className="text-base font-medium">Aspect Ratio</Label>
+                  <div className={workspaceSectionClass}>
+                    <Label className={fieldLabelClass}>Aspect Ratio</Label>
                     <Select value={aspectRatio} onValueChange={setAspectRatio}>
-                      <SelectTrigger className="mt-2">
+                      <SelectTrigger className={selectTriggerClass}>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -534,10 +474,10 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                     </Select>
                   </div>
                 ) : (
-                  <div>
-                    <Label className="text-base font-medium">Image Size</Label>
+                  <div className={workspaceSectionClass}>
+                    <Label className={fieldLabelClass}>Image Size</Label>
                     <Select value={imageSize} onValueChange={setImageSize}>
-                      <SelectTrigger className="mt-2">
+                      <SelectTrigger className={selectTriggerClass}>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -559,57 +499,46 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
 
                 {/* Resolution - Only for nano-banana-pro */}
                 {modelType === 'nano-banana-pro' && (
-                  <div>
-                    <Label className="text-base font-medium">Resolution</Label>
-                    <RadioGroup value={resolution} onValueChange={(v) => setResolution(v as '1K' | '2K' | '4K')} className="mt-2">
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1K" id="1k" />
-                        <Label htmlFor="1k">1K</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2K" id="2k" />
-                        <Label htmlFor="2k">2K</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="4K" id="4k" />
-                        <Label htmlFor="4k">4K</Label>
-                      </div>
-                    </RadioGroup>
+                  <div className={workspaceSectionClass}>
+                    <Label className={fieldLabelClass}>Resolution</Label>
+                    <div className="flex space-x-2">
+                      {(['1K', '2K', '4K'] as const).map(value => (
+                        <Button
+                          key={value}
+                          type="button"
+                          variant={resolution === value ? 'default' : 'outline'}
+                          onClick={() => setResolution(value)}
+                          className={segmentedButtonClass(resolution === value)}
+                        >
+                          {value}
+                        </Button>
+                      ))}
+                    </div>
                   </div>
                 )}
 
-                <div>
-                  <Label className="text-base font-medium">Output Format</Label>
-                  <RadioGroup value={outputFormat} onValueChange={(v) => setOutputFormat(v as 'png' | 'jpeg')} className="mt-2">
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="png" id="png-text" />
-                      <Label htmlFor="png-text">PNG</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="jpeg" id="jpeg-text" />
-                      <Label htmlFor="jpeg-text">JPEG</Label>
-                    </div>
-                  </RadioGroup>
+                <div className={workspaceSectionClass}>
+                  <Label className={fieldLabelClass}>Output Format</Label>
+                  <div className="flex space-x-2">
+                    {(['png', 'jpeg'] as const).map(value => (
+                      <Button
+                        key={value}
+                        type="button"
+                        variant={outputFormat === value ? 'default' : 'outline'}
+                        onClick={() => setOutputFormat(value)}
+                        className={segmentedButtonClass(outputFormat === value)}
+                      >
+                        {value.toUpperCase()}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
               </TabsContent>
 
               {/* Image Editor Tab */}
-              <TabsContent value="image-editor" className="space-y-6">
-                <div>
-                  <h2 className="text-xl font-semibold mb-2">
-                    {modelType === 'nano-banana-pro'
-                      ? 'Edit and transform your images with AI - Advanced'
-                      : 'Edit and transform your images with AI'}
-                  </h2>
-                  {modelType === 'nano-banana-pro' && (
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Advanced image editing with customizable aspect ratios and resolutions.
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <Label htmlFor="prompt-editor" className="text-base font-medium">
+              <TabsContent value="image-editor" className="space-y-5">
+                <div className={workspaceSectionClass}>
+                  <Label htmlFor="prompt-editor" className={fieldLabelClass}>
                     Prompt *
                   </Label>
                   <Textarea
@@ -617,7 +546,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                     placeholder="Describe how you want to edit the image..."
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
-                    className={`mt-2 min-h-[120px] resize-none ${errors.prompt ? 'border-destructive' : ''}`}
+                    className={`${textAreaClass} ${errors.prompt ? 'border-destructive' : ''}`}
                     maxLength={5000}
                   />
                   <div className="flex justify-between items-center mt-1">
@@ -630,8 +559,8 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                   </div>
                 </div>
 
-                <div>
-                  <Label className="text-base font-medium">Upload Images *</Label>
+                <div className={workspaceSectionClass}>
+                  <Label className={fieldLabelClass}>Upload Images *</Label>
                   {errors.images && (
                     <p className="text-sm text-destructive mt-1">{errors.images}</p>
                   )}
@@ -657,9 +586,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                     </div>
                   ) : (
                     <div
-                      className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors mt-2 ${
-                        dragOver ? 'border-primary bg-primary/5' : 'border-muted-foreground/25'
-                      }`}
+                      className={`${dropzoneClass} ${dragOver ? 'border-primary bg-primary/5' : ''}`}
                       onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
                       onDragLeave={() => setDragOver(false)}
                       onDrop={handleDrop}
@@ -684,7 +611,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                       <Button
                         variant="outline"
                         size="sm"
-                        className="mt-4"
+                        className={`mt-4 ${subtleButtonClass}`}
                         onClick={() => fileInputRef.current?.click()}
                       >
                         Select Files
@@ -695,10 +622,10 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
 
                 {modelType === 'nano-banana-pro' ? (
                   <>
-                    <div>
-                      <Label className="text-base font-medium">Aspect Ratio</Label>
+                    <div className={workspaceSectionClass}>
+                      <Label className={fieldLabelClass}>Aspect Ratio</Label>
                       <Select value={aspectRatio} onValueChange={setAspectRatio}>
-                        <SelectTrigger className="mt-2">
+                        <SelectTrigger className={selectTriggerClass}>
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -716,29 +643,28 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                         </SelectContent>
                       </Select>
                     </div>
-                    <div>
-                      <Label className="text-base font-medium">Resolution</Label>
-                      <RadioGroup value={resolution} onValueChange={(v) => setResolution(v as '1K' | '2K' | '4K')} className="mt-2">
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="1K" id="1k-editor" />
-                          <Label htmlFor="1k-editor">1K</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="2K" id="2k-editor" />
-                          <Label htmlFor="2k-editor">2K</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="4K" id="4k-editor" />
-                          <Label htmlFor="4k-editor">4K</Label>
-                        </div>
-                      </RadioGroup>
+                    <div className={workspaceSectionClass}>
+                      <Label className={fieldLabelClass}>Resolution</Label>
+                      <div className="flex space-x-2">
+                        {(['1K', '2K', '4K'] as const).map(value => (
+                          <Button
+                            key={value}
+                            type="button"
+                            variant={resolution === value ? 'default' : 'outline'}
+                            onClick={() => setResolution(value)}
+                            className={segmentedButtonClass(resolution === value)}
+                          >
+                            {value}
+                          </Button>
+                        ))}
+                      </div>
                     </div>
                   </>
                 ) : (
-                  <div>
-                    <Label className="text-base font-medium">Image Size</Label>
+                  <div className={workspaceSectionClass}>
+                    <Label className={fieldLabelClass}>Image Size</Label>
                     <Select value={aspectRatio} onValueChange={setAspectRatio}>
-                      <SelectTrigger className="mt-2">
+                      <SelectTrigger className={selectTriggerClass}>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -751,18 +677,21 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                   </div>
                 )}
 
-                <div>
-                  <Label className="text-base font-medium">Output Format</Label>
-                  <RadioGroup value={outputFormat} onValueChange={(v) => setOutputFormat(v as 'png' | 'jpeg')} className="mt-2">
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="png" id="png-editor" />
-                      <Label htmlFor="png-editor">PNG</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="jpeg" id="jpeg-editor" />
-                      <Label htmlFor="jpeg-editor">JPEG</Label>
-                    </div>
-                  </RadioGroup>
+                <div className={workspaceSectionClass}>
+                  <Label className={fieldLabelClass}>Output Format</Label>
+                  <div className="flex space-x-2">
+                    {(['png', 'jpeg'] as const).map(value => (
+                      <Button
+                        key={value}
+                        type="button"
+                        variant={outputFormat === value ? 'default' : 'outline'}
+                        onClick={() => setOutputFormat(value)}
+                        className={segmentedButtonClass(outputFormat === value)}
+                      >
+                        {value.toUpperCase()}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
               </TabsContent>
             </Tabs>
@@ -773,7 +702,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                 variant="outline"
                 onClick={handleReset}
                 disabled={isGenerating}
-                className="flex-1"
+                className={`flex-1 h-11 ${subtleButtonClass}`}
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Reset
@@ -781,7 +710,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
               <Button
                 onClick={handleGenerate}
                 disabled={isGenerating || !prompt.trim() || userCredits < currentCreditCost}
-                className="flex-1 bg-primary text-primary-foreground"
+                className={`flex-[2] ${primaryActionButtonClass}`}
               >
                 {isGenerating ? (
                   <>
@@ -798,7 +727,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
             </div>
 
             {/* Credit Info */}
-            <div className="mt-4 p-3 bg-muted rounded-lg">
+            <div className={`${workspaceSectionClass} mt-4`}>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Available Credits:</span>
                 <span className="font-medium flex items-center">
@@ -820,13 +749,18 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
 
         {/* Right Panel - Output */}
         <div className="space-y-6">
-          <Card className="p-6">
-            <h3 className="text-lg font-semibold mb-4">Output</h3>
+          <Card className="relative bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 shadow-lg shadow-black/5 transition-all duration-200 [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.05)]">
+            <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <Palette className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm font-semibold text-foreground">Output</span>
+              </div>
+            </div>
             
             {currentJob ? (
               <div className="space-y-4">
                 {currentJob.status === 'processing' && (
-                  <div className="space-y-2">
+                  <div className={workspaceSectionClass}>
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">Generating...</span>
                       <span className="font-medium">{currentJob.progress}%</span>
@@ -840,7 +774,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
 
                 {currentJob.status === 'completed' && currentJob.result_url && (
                   <div className="space-y-4">
-                    <div className="relative w-full aspect-square bg-muted rounded-lg overflow-hidden">
+                    <div className="relative w-full aspect-square rounded-xl overflow-hidden border border-white/[0.08] bg-white/[0.04]">
                       <img
                         src={currentJob.result_url}
                         alt="Generated"
@@ -848,11 +782,11 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                       />
                     </div>
                     <div className="flex gap-2">
-                      <Button onClick={handleDownload} className="flex-1">
+                      <Button onClick={handleDownload} className={`flex-1 ${primaryActionButtonClass}`}>
                         <Download className="w-4 h-4 mr-2" />
                         Download
                       </Button>
-                      <Button variant="outline" className="flex-1" onClick={() => router.push('/dashboard')}>
+                      <Button variant="outline" className={`flex-1 ${subtleButtonClass}`} onClick={() => router.push('/dashboard')}>
                         View full history
                       </Button>
                     </div>
@@ -870,7 +804,7 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="relative w-full aspect-square bg-muted rounded-lg overflow-hidden">
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden border border-white/[0.08] bg-white/[0.04]">
                   <Image
                     src="/images/google_veo_logo.jpeg"
                     alt="Example output"
@@ -879,7 +813,6 @@ const NanoBananaGenerator: React.FC<NanoBananaGeneratorProps> = ({ defaultTab = 
                     priority
                   />
                 </div>
-                <p className="text-sm text-center text-muted-foreground">Example output preview</p>
               </div>
             )}
           </Card>
