@@ -22,7 +22,7 @@ export function generateHreflangAlternates(
   routing.locales.forEach((loc) => {
     // English (default locale) has no prefix
     if (loc === 'en') {
-      urls[loc] = normalizedPath ? `${baseUrl}/${normalizedPath}` : baseUrl
+      urls[loc] = normalizedPath ? `${baseUrl}/${normalizedPath}` : `${baseUrl}/en`
     } else {
       urls[loc] = normalizedPath 
         ? `${baseUrl}/${loc}/${normalizedPath}` 
@@ -33,7 +33,7 @@ export function generateHreflangAlternates(
   // Create alternates object
   const alternates: Metadata['alternates'] = {
     canonical: locale === 'en'
-      ? (normalizedPath ? `${baseUrl}/${normalizedPath}` : baseUrl)
+      ? (normalizedPath ? `${baseUrl}/${normalizedPath}` : `${baseUrl}/en`)
       : (normalizedPath ? `${baseUrl}/${locale}/${normalizedPath}` : `${baseUrl}/${locale}/`),
     languages: {
       'en': urls['en'],
@@ -70,4 +70,3 @@ export function getPathnameWithoutLocale(fullPathname: string, locale: string): 
   // If it's the root path or doesn't have locale prefix, return as is
   return fullPathname || '/'
 }
-

@@ -15,26 +15,18 @@ User-agent: msnbot-media
 Allow: /
 Crawl-delay: 1
 
-# Sitemaps (both Google and Bing)
-# Main sitemap index
+# Sitemap for Google and Bing
 Sitemap: https://veo4video.io/sitemap.xml
-# Language-specific sitemaps
-Sitemap: https://veo4video.io/sitemap-en.xml
-Sitemap: https://veo4video.io/sitemap-ar.xml
-Sitemap: https://veo4video.io/sitemap-ja.xml
-Sitemap: https://veo4video.io/sitemap-ru.xml
-Sitemap: https://veo4video.io/sitemap-es.xml
-Sitemap: https://veo4video.io/sitemap-zh-CN.xml
-Sitemap: https://veo4video.io/sitemap-de.xml
 
 # Disallow admin and API routes
 Disallow: /api/
 Disallow: /admin/
-Disallow: /_next/
-Disallow: /dashboard/
 Disallow: /auth/
+Disallow: /payment/
+Disallow: /pricing/cancelled
 
 # Allow important pages (explicitly allow for better indexing)
+Allow: /_next/static/
 Allow: /veo4-text-to-video
 Allow: /veo-4-storyboard
 Allow: /multi-scene

@@ -51,6 +51,9 @@ export const DEEPMIND_VEO_VIDEO_PATHS = {
   textSample: '/videos/deepmind-veo/nyc.webm',
   imageSample: '/videos/deepmind-veo/off-road.mp4',
   storyboardSample: '/videos/deepmind-veo/flow-hd.mp4',
+  textSamplePoster: '/videos/deepmind-veo/poster-text-sample.jpg',
+  imageSamplePoster: '/videos/deepmind-veo/poster-image-sample.jpg',
+  storyboardSamplePoster: '/videos/deepmind-veo/poster-storyboard-sample.jpg',
 } as const;
 
 export const CAPABILITY_VIDEO_PATHS = {
@@ -134,5 +137,4 @@ export function getHeroVideoPoster(): string {
 export function getLocalVideoPath(fileName: string): string {
   return `/videos/${fileName}`;
 }
-
 

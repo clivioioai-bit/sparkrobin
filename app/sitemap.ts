@@ -1,54 +1,11 @@
 import { MetadataRoute } from 'next'
+import { routing } from '@/i18n/routing'
+import { buildLocalizedSitemap } from '@/lib/sitemap-pages'
 
 /**
- * Sitemap index that points to language-specific sitemaps
- * This is the main sitemap.xml that both Google Search Console and Bing Webmaster Tools will read
+ * Main sitemap consumed by Google Search Console and Bing Webmaster Tools.
+ * Keep this as a direct URL set so crawlers do not depend on secondary sitemap routes.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://veo4video.io'
-
-  return [
-    {
-      url: `${baseUrl}/sitemap-en.xml`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/sitemap-ar.xml`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/sitemap-ja.xml`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/sitemap-ru.xml`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/sitemap-es.xml`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/sitemap-zh-CN.xml`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/sitemap-de.xml`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-  ]
+  return routing.locales.flatMap((locale) => buildLocalizedSitemap(locale))
 }

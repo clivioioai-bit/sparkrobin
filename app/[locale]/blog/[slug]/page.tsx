@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import BlogPostPage from '@/components/blog/BlogPostPage';
 import { routing } from '@/i18n/routing';
 import { getPostBySlug, getPostSlugs } from '@/lib/blog';
+import { generateHreflangAlternates } from '@/utils/hreflang';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,9 +26,7 @@ export async function generateMetadata({
   return {
     title: post.meta.title,
     description: post.meta.description,
-    alternates: {
-      canonical: url,
-    },
+    alternates: generateHreflangAlternates(`/blog/${post.slug}`, locale),
     openGraph: {
       title: post.meta.title,
       description: post.meta.description,

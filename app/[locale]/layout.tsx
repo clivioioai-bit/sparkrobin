@@ -152,12 +152,6 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
-    verification: {
-      google: process.env.GOOGLE_SITE_VERIFICATION || 'RXG1GciT_6Lk-VckDXsTp0wkUZYZfI0RDWy-9D_P-0E',
-      other: {
-        'msvalidate.01': process.env.BING_VERIFICATION_CODE || 'your-bing-verification-code',
-      },
-    },
     icons: {
       icon: '/logo-v2.png',
       shortcut: '/logo-v2.png',

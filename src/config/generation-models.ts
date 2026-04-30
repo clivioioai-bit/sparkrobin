@@ -9,7 +9,6 @@ export type GenerationModelId =
   | 'veo4-fast'
   | 'veo31-fast'
   | 'veo31-quality'
-  | 'wan26'
   | 'nano-banana'
   | 'nano-banana-pro';
 
@@ -47,15 +46,6 @@ export const generationModels: GenerationModelOption[] = [
     iconSrc: '/images/google_veo_logo.jpeg',
     workflows: ['text-to-video', 'image-to-video', 'video-to-video'],
     creditCost: 250,
-  },
-  {
-    id: 'wan26',
-    label: 'Wan 2.6',
-    description: 'Fast and efficient text-to-video and image-to-video generation.',
-    iconSrc: '/images/qwen-color.webp',
-    workflows: ['text-to-video', 'image-to-video', 'video-to-video'],
-    badge: 'NEW',
-    creditCost: 120,
   },
   {
     id: 'nano-banana',
@@ -103,20 +93,8 @@ export const getVideoGenerationCreditCost = ({
   veo3SubModel,
   n_frames,
   quality,
-  wan26Duration,
-  wan26Resolution,
 }: VideoCreditInput): number => {
-  if (model === 'wan2.6') {
-    const durationKey = wan26Duration || '5';
-    const resolutionKey = wan26Resolution || '1080p';
-    const pricingTable: Record<'720p' | '1080p', Record<'5' | '10' | '15', number>> = {
-      '720p': { '5': 80, '10': 160, '15': 220 },
-      '1080p': { '5': 120, '10': 220, '15': 320 },
-    };
-    return pricingTable[resolutionKey][durationKey];
-  }
-
-  if (model === 'veo3.1') {
+  if (model === 'veo3.1' || model === 'wan2.6') {
     return veo3SubModel === 'veo3' || quality === 'high' ? 250 : 60;
   }
 
@@ -139,27 +117,18 @@ export interface VideoModelState {
 }
 
 export interface VideoModelPatch {
-  model: 'veo3.1' | 'wan2.6';
+  model: 'veo3.1';
   veo3SubModel?: 'veo3_fast' | 'veo3';
   veoDisplayModel?: 'veo4' | 'veo3.1';
 }
 
 export const getVideoModelId = (state: VideoModelState): GenerationModelId => {
-  if (state.model === 'wan2.6') return 'wan26';
   if (state.veoDisplayModel === 'veo3.1' && state.veo3SubModel === 'veo3') return 'veo31-quality';
   if (state.veoDisplayModel === 'veo3.1') return 'veo31-fast';
   return 'veo4-fast';
 };
 
 export const getVideoModelPatch = (id: GenerationModelId): VideoModelPatch => {
-  if (id === 'wan26') {
-    return {
-      model: 'wan2.6',
-      veo3SubModel: undefined,
-      veoDisplayModel: undefined,
-    };
-  }
-
   if (id === 'veo31-quality') {
     return {
       model: 'veo3.1',

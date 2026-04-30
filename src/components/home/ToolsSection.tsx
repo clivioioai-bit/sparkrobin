@@ -116,7 +116,7 @@ const ToolsSection = () => {
         id: 'sample-veo-nyc',
         prompt: 'A cinematic city sequence with realistic motion, atmospheric lighting, and detailed scene continuity generated with Veo.',
         videoUrl: DEEPMIND_VEO_VIDEO_PATHS.textSample,
-        thumbnailUrl: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=450&fit=crop',
+        thumbnailUrl: DEEPMIND_VEO_VIDEO_PATHS.textSamplePoster,
         aspectRatio: '16:9',
         duration: 8,
         tags: ['city', 'cinematic', 'veo', 'text-to-video']
@@ -127,7 +127,7 @@ const ToolsSection = () => {
         id: 'sample-veo-off-road',
         prompt: 'An off-road vehicle scene with dynamic camera movement and natural environmental motion.',
         videoUrl: DEEPMIND_VEO_VIDEO_PATHS.imageSample,
-        thumbnailUrl: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&h=450&fit=crop',
+        thumbnailUrl: DEEPMIND_VEO_VIDEO_PATHS.imageSamplePoster,
         aspectRatio: '16:9',
         duration: 8,
         tags: ['image-to-video', 'motion', 'vehicle', 'veo']
@@ -138,7 +138,7 @@ const ToolsSection = () => {
         id: 'sample-veo-flow',
         prompt: 'A polished Veo sequence with cinematic transitions and platform-ready motion.',
         videoUrl: DEEPMIND_VEO_VIDEO_PATHS.storyboardSample,
-        thumbnailUrl: undefined,
+        thumbnailUrl: DEEPMIND_VEO_VIDEO_PATHS.storyboardSamplePoster,
         aspectRatio: '16:9',
         duration: 25,
         tags: ['storyboard', 'flow', 'cinematic']

@@ -124,28 +124,13 @@ export const ReframeMode: React.FC<ReframeModeProps> = ({
   };
 
   const selectedModelId = getVideoModelId(params);
-  const isVeo31 = selectedModelId !== 'wan26';
-  const isWan26 = selectedModelId === 'wan26';
+  const isVeo31 = true;
+  const isWan26 = false;
   const isLegacyModel = !isVeo31 && !isWan26;
 
   const creditCost = getVideoGenerationCreditCost(params);
 
   const handleModelChange = (value: GenerationModelId) => {
-    if (value === 'wan26') {
-      onChange({
-        ...params,
-        ...getVideoModelPatch(value),
-        quality: undefined,
-        seeds: undefined,
-        startFrame: undefined,
-        endFrame: undefined,
-        wan26Duration: params.wan26Duration || '5',
-        wan26Resolution: params.wan26Resolution || '1080p',
-        wan26MultiShots: params.wan26MultiShots !== undefined ? params.wan26MultiShots : false,
-      });
-      return;
-    }
-
     onChange({
       ...params,
       ...getVideoModelPatch(value),
