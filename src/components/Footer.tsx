@@ -26,6 +26,7 @@ const Footer = () => {
       { name: t('sora3ImageToVideo'), href: `${localePrefix}/veo4-image-to-video` },
       { name: t('sora3Pricing'), href: `${localePrefix}/pricing` },
       { name: t('sora3Faq'), href: `${localePrefix}/faq` },
+      { name: t('sora3Blog'), href: `${localePrefix}/blog` },
     ],
     legal: [
       { name: t('privacyPolicy'), href: `${localePrefix}/privacy` },

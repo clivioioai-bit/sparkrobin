@@ -5,6 +5,7 @@ date: "2025-12-08"
 author: "Equipo Veo4"
 tags: ["veo4", "ai-video", "product-updates", "predictions", "technology"]
 featured: true
+draft: true
 ---
 
 ## Introducción: Más Allá de Sora 2, La Industria Mira Hacia Veo 4
@@ -168,4 +169,3 @@ La misión central de **Veo 4** es resolver los tres desafíos principales de co
 4. [Sora Vs Sora 2: Here's What OpenAI's Newest Video Model Can Do - SlashGear](https://www.slashgear.com/2031927/sora-vs-sora-2-ai-video-capabilities-explained/)
 
 5. [Sora (text-to-video model) - Wikipedia](https://en.wikipedia.org/wiki/Sora_\(text-to-video_model\))
-

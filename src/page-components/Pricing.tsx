@@ -56,10 +56,6 @@ const PricingPage = () => {
             <h1 className="text-3xl sm:text-4xl font-bold mb-3">
               <span className="text-primary">{t('title')}</span>
             </h1>
-            <p className="mx-auto mb-4 max-w-2xl rounded-2xl border border-primary/20 bg-primary/10 px-4 py-3 text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">{t('creditRateTitle')}</span>{" "}
-              {t('creditRateDescription')}
-            </p>
             {/* Trust Badges */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-4">
               <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-xl border border-border/50">

@@ -10,7 +10,7 @@ const SubscriptionPlans = dynamic(() => import('@/components/pricing/Subscriptio
   loading: () => (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
       {Array.from({ length: 3 }).map((_, index) => (
-        <div key={index} className="rounded-2xl border border-border bg-card p-5">
+        <div key={index} className="glass-surface rounded-2xl p-5">
           <div className="space-y-4 animate-pulse">
             <div className="space-y-3 text-center">
               <div className="mx-auto h-12 w-12 rounded-xl bg-muted" />
@@ -41,6 +41,7 @@ const PricingTeaser = () => {
     <section className="py-20 sm:py-28 bg-card/30 backdrop-blur-xl relative overflow-hidden">
       {/* Subtle top gradient line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_50%_0%,rgba(14,165,233,0.14),transparent_48%)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}

@@ -1,12 +1,8 @@
 /**
  * 主页演示视频配置
- * 
- * 这些视频存储在 Supabase Storage 中，通过 CDN 加速加载
- * 
- * 使用说明:
- * 1. 运行 `tsx scripts/upload-demo-videos.ts` 上传视频到 Supabase Storage
- * 2. 上传成功后，脚本会输出视频路径和 URL
- * 3. 将输出内容更新到此文件中
+ *
+ * 首页展示素材使用本地 DeepMind Veo 视频，生成页历史示例仍保留 Supabase
+ * 路径配置用于兼容旧页面和服务。
  */
 
 // Supabase Storage bucket 名称
@@ -50,13 +46,20 @@ export const DEMO_VIDEO_PATHS = {
 } as const;
 
 // Capability videos (local paths, used by Sora3Capabilities)
+export const DEEPMIND_VEO_VIDEO_PATHS = {
+  hero: '/videos/deepmind-veo/hero.mp4',
+  textSample: '/videos/deepmind-veo/nyc.webm',
+  imageSample: '/videos/deepmind-veo/off-road.mp4',
+  storyboardSample: '/videos/deepmind-veo/flow-hd.mp4',
+} as const;
+
 export const CAPABILITY_VIDEO_PATHS = {
-  cinematic: '/videos/capability-cinematic.mp4',
-  camera: '/videos/capability-camera.mp4',
-  characters: '/videos/capability-characters.mp4',
-  longform: '/videos/capability-longform.mp4',
-  scene: '/videos/capability-scene.mp4',
-  audio: '/videos/capability-audio.mp4',
+  cinematic: '/videos/deepmind-veo/background-preservation.webm',
+  camera: '/videos/deepmind-veo/camera-move-back.mp4',
+  characters: '/videos/deepmind-veo/character-consistency.webm',
+  longform: '/videos/deepmind-veo/extend-scene.webm',
+  scene: '/videos/deepmind-veo/match-style.webm',
+  audio: '/videos/deepmind-veo/flow-hd.mp4',
 } as const;
 
 /**
@@ -78,24 +81,25 @@ export function getVideoUrl(path: string): string {
  */
 export function getDemoVideoUrls(): string[] {
   return [
-    '/videos/sora3.mp4',
-    '/videos/girl.mp4',
-    '/videos/advertise.mp4',
-    '/videos/12月30日.mov',
-    '/videos/eyes.mp4',
-    '/videos/celebrate.mp4',
-    '/videos/neuralMane.mp4',
-    '/videos/bride.mp4',
-    '/videos/sushi.mp4',
-    '/videos/annimate.mp4',
-    '/videos/running car.mp4',
-    '/videos/4_2ec5d6ac08.mp4',
-    '/videos/cyberpunk city.mp4',
-    '/videos/grandama sing.mp4',
-    '/videos/flying bird.mp4',
-    '/videos/storyboardexample.mp4',
-    '/videos/3_d40976e7f1.mp4',
-    '/videos/sora2.mp4',
+    '/videos/deepmind-veo/nyc.webm',
+    '/videos/deepmind-veo/sailor.webm',
+    '/videos/deepmind-veo/owl.webm',
+    '/videos/deepmind-veo/historical-adventure.webm',
+    '/videos/deepmind-veo/rubber-duck.webm',
+    '/videos/deepmind-veo/spies.webm',
+    '/videos/deepmind-veo/off-road.mp4',
+    '/videos/deepmind-veo/candle.webm',
+    '/videos/deepmind-veo/paper.mp4',
+    '/videos/deepmind-veo/ireland.webm',
+    '/videos/deepmind-veo/forest.webm',
+    '/videos/deepmind-veo/polar-bears.webm',
+    '/videos/deepmind-veo/camper.webm',
+    '/videos/deepmind-veo/wok.webm',
+    '/videos/deepmind-veo/keyboard.webm',
+    '/videos/deepmind-veo/bar.webm',
+    '/videos/deepmind-veo/moon-dust.webm',
+    '/videos/deepmind-veo/violinist.webm',
+    '/videos/deepmind-veo/onions.webm',
   ];
 }
 
@@ -103,8 +107,7 @@ export function getDemoVideoUrls(): string[] {
  * 获取 Hero 组件背景视频 URL
  */
 export function getHeroVideoUrl(): string {
-  // Use bride video from Supabase Storage
-  return getVideoUrl(DEMO_VIDEO_PATHS.bride);
+  return DEEPMIND_VEO_VIDEO_PATHS.hero;
 }
 
 /**
@@ -131,6 +134,5 @@ export function getHeroVideoPoster(): string {
 export function getLocalVideoPath(fileName: string): string {
   return `/videos/${fileName}`;
 }
-
 
 

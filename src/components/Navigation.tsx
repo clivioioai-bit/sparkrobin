@@ -53,7 +53,7 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className="fixed top-0 z-50 w-full border-b border-white/[0.06] bg-background/85 backdrop-blur-xl transition-all duration-300"
+        className="glass-nav fixed top-0 z-50 w-full transition-all duration-300"
         style={{ top: 0 }}
         suppressHydrationWarning
       >
@@ -93,7 +93,7 @@ const Navigation = () => {
                   <span>{navItems[1].name}</span>
                   <ChevronDown className="w-3.5 h-3.5" />
                 </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" sideOffset={10} className="w-72 rounded-xl border border-border bg-card/95 backdrop-blur-xl p-1.5 shadow-2xl" suppressHydrationWarning>
+                  <DropdownMenuContent align="start" sideOffset={10} className="glass-surface w-72 rounded-2xl p-1.5 shadow-2xl" suppressHydrationWarning>
                   <div className="px-2 py-1.5">
                     <p className="text-[10px] font-medium text-white/30 uppercase tracking-widest mb-2">{t('features')}</p>
                   </div>
@@ -152,7 +152,7 @@ const Navigation = () => {
                   <span>{t('imageAI')}</span>
                   <ChevronDown className="w-3.5 h-3.5" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" sideOffset={10} className="w-72 rounded-xl border border-border bg-card/95 backdrop-blur-xl p-1.5 shadow-2xl" suppressHydrationWarning>
+                <DropdownMenuContent align="start" sideOffset={10} className="glass-surface w-72 rounded-2xl p-1.5 shadow-2xl" suppressHydrationWarning>
                   <div className="px-2 py-1.5">
                     <p className="text-[10px] font-medium text-white/30 uppercase tracking-widest mb-2">{t('features')}</p>
                   </div>
@@ -210,6 +210,13 @@ const Navigation = () => {
             </Link>
 
             <Link
+              href="/blog"
+              className={desktopNavItemClass}
+            >
+              {t('blog')}
+            </Link>
+
+            <Link
               href="/pricing"
               className={desktopNavItemClass}
             >
@@ -225,7 +232,7 @@ const Navigation = () => {
               <div suppressHydrationWarning>
                 <div className="flex items-center gap-2.5">
                   <div
-                    className="inline-flex h-9 items-center gap-2 rounded-lg border border-border bg-white/[0.03] px-3 text-sm text-white/80"
+                    className="glass-chip inline-flex h-9 items-center gap-2 rounded-lg px-3 text-sm text-white/80"
                     title={`${formattedCreditBalance} ${tGenerate('credits')}`}
                   >
                     <Coins className="h-4 w-4 text-primary" />
@@ -239,7 +246,7 @@ const Navigation = () => {
                     <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className="flex h-9 items-center space-x-2 rounded-lg border border-border px-2 py-1 text-white/80 transition-colors hover:bg-white/[0.06] hover:text-white"
+                      className="glass-chip flex h-9 items-center space-x-2 rounded-lg px-2 py-1 text-white/80 transition-colors hover:bg-white/[0.08] hover:text-white"
                     >
                       <div className="w-7 h-7 rounded-full bg-white/[0.12] flex items-center justify-center text-white text-xs font-medium">
                         {getUserInitials()}
@@ -250,7 +257,7 @@ const Navigation = () => {
                       <ChevronDown className="w-3.5 h-3.5 text-white/40" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-56 bg-card border-border">
+                  <DropdownMenuContent align="end" className="glass-surface w-56 rounded-2xl p-1.5">
                   <div className="flex items-center space-x-2 p-2">
                     <div className="w-8 h-8 rounded-full bg-white/[0.12] flex items-center justify-center text-white text-sm font-medium">
                       {getUserInitials()}
@@ -302,7 +309,7 @@ const Navigation = () => {
                 </Button>
                 <Button
                   size="sm"
-                  className="h-9 rounded-lg bg-primary px-5 text-[14px] font-semibold text-primary-foreground shadow-[0_0_12px_rgba(100,102,241,0.3)] hover:shadow-[0_0_20px_rgba(100,102,241,0.45)] hover:bg-primary/90 transition-all"
+                  className="glass-button-gradient h-9 rounded-lg px-5 text-[14px] font-semibold text-white hover:scale-[1.02] transition-all"
                   onClick={() => {
                     if (isAuthenticated) {
                       router.push('/veo4-text-to-video');
@@ -336,7 +343,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-4 border-t border-white/[0.08]">
             <div className="flex flex-col space-y-1">
               <Link href="/" className="text-sm text-white/60 hover:text-white transition-colors px-3 py-2.5 rounded-lg hover:bg-white/[0.06]">
                 {t('home')}
@@ -393,6 +400,9 @@ const Navigation = () => {
               </div>
               <Link href="/pricing" className="text-sm text-white/60 hover:text-white transition-colors px-3 py-2.5 rounded-lg hover:bg-white/[0.06]">
                 {t('pricing')}
+              </Link>
+              <Link href="/blog" className="text-sm text-white/60 hover:text-white transition-colors px-3 py-2.5 rounded-lg hover:bg-white/[0.06]">
+                {t('blog')}
               </Link>
               <Link href="/mycreation" className="text-sm text-white/60 hover:text-white transition-colors px-3 py-2.5 rounded-lg hover:bg-white/[0.06]">
                 {t('myCreations')}
@@ -457,7 +467,7 @@ const Navigation = () => {
                     </Button>
                     <Button
                       size="sm"
-                      className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+                      className="glass-button-gradient text-white font-medium"
                       onClick={() => {
                         if (isAuthenticated) {
                           router.push('/veo4-text-to-video');

@@ -31,8 +31,8 @@ export default function SignInPage() {
             variables: {
               default: {
                 colors: {
-                  brand: '#7c3aed',
-                  brandAccent: '#6d28d9',
+                  brand: '#0EA5E9',
+                  brandAccent: '#22C55E',
                   inputBackground: 'transparent',
                   inputText: 'hsl(var(--foreground))',
                   anchorTextColor: 'hsl(var(--primary))',

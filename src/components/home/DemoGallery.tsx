@@ -106,9 +106,10 @@ function VideoCard({ src }: { src: string }) {
       {shouldLoad ? (
         <video
           ref={videoRef}
+          autoPlay
           playsInline
           loop
-          preload="none"
+          preload="metadata"
           muted={isMuted}
           tabIndex={0}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
@@ -117,11 +118,16 @@ function VideoCard({ src }: { src: string }) {
           onTouchStart={toggleMute}
           onClick={toggleMute}
           onKeyDown={(e) => { if (e.key === 'Enter') void toggleMute(); }}
+          onLoadedData={() => {
+            const el = videoRef.current;
+            if (!el) return;
+            el.play().then(() => setIsPlaying(true)).catch(() => {});
+          }}
           onError={() => setHasError(true)}
         >
           <source
             src={encodeURI(src)}
-            type={src.endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}
+            type={src.endsWith('.webm') ? 'video/webm' : src.endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}
           />
         </video>
       ) : (
@@ -148,7 +154,7 @@ function VideoCard({ src }: { src: string }) {
       {isMuted && isPlaying && (
         <button
           onClick={unmuteOnClick}
-          className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 text-[10px] font-medium rounded-full bg-black/60 backdrop-blur-xl text-white border border-white/10 whitespace-nowrap transition-opacity hover:bg-black/80"
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 text-[10px] font-medium rounded-full bg-black/60 backdrop-blur-xl text-white border border-white/10 whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100 hover:bg-black/80"
         >
           {t('tapToUnmute')}
         </button>

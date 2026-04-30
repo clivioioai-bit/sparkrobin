@@ -5,6 +5,7 @@ date: "2024-12-20"
 author: "Veo4 团队"
 tags: ["veo4", "ai-video", "product-updates", "predictions", "technology"]
 featured: true
+draft: true
 ---
 
 ## 引言：超越 Sora 2，行业瞩目 Veo 4
@@ -168,5 +169,4 @@ Sora 的底层技术是一个借鉴 DALL·E 3 在图像生成领域成功的扩�
 4. [Sora Vs Sora 2: Here's What OpenAI's Newest Video Model Can Do - SlashGear](https://www.slashgear.com/2031927/sora-vs-sora-2-ai-video-capabilities-explained/)
 
 5. [Sora (text-to-video model) - Wikipedia](https://en.wikipedia.org/wiki/Sora_\(text-to-video_model\))
-
 

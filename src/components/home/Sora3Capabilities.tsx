@@ -37,6 +37,7 @@ const Sora3Capabilities = () => {
       tag: "Longer Clips",
     },
   ];
+  const getVideoType = (src: string) => src.endsWith(".webm") ? "video/webm" : "video/mp4";
 
   return (
     <section className="py-24 sm:py-32 lg:py-36 bg-background relative overflow-hidden">
@@ -71,7 +72,7 @@ const Sora3Capabilities = () => {
                   preload="metadata"
                   className="w-full h-full object-cover"
                 >
-                  <source src={capability.videoUrl} type="video/mp4" />
+                  <source src={capability.videoUrl} type={getVideoType(capability.videoUrl)} />
                 </video>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

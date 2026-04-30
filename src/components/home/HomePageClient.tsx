@@ -86,7 +86,7 @@ export default function HomePageClient() {
       <Suspense fallback={null}>
         <ErrorHandler />
       </Suspense>
-      <main>
+      <main className="premium-page">
         <Hero />
         <ToolsSection />
         <WhatIsVeo4Section />

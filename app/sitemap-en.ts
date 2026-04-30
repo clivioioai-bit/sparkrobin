@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { getAllPosts } from '@/lib/blog'
 
 /**
  * English sitemap
@@ -37,5 +38,23 @@ export default async function sitemapEn(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  return basePages
+  const blogPages: MetadataRoute.Sitemap = getAllPosts().flatMap((post) => [
+    {
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.meta.date ? new Date(post.meta.date) : new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: post.meta.featured ? 0.85 : 0.75,
+    },
+  ])
+
+  return [
+    ...basePages,
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    ...blogPages,
+  ]
 }

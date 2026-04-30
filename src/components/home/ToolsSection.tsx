@@ -21,7 +21,7 @@ import videoApi from '@/services/videoApi';
 import useJobsPolling from '@/hooks/useJobsPolling';
 import { useStoryboardPolling } from '@/hooks/useStoryboardPolling';
 import { getRandomSampleVideo, type SampleVideo } from '@/data/sampleVideos';
-import { getVideoUrl, DEMO_VIDEO_PATHS } from '@/config/demoVideos';
+import { DEEPMIND_VEO_VIDEO_PATHS } from '@/config/demoVideos';
 import { Sparkles } from 'lucide-react';
 
 const createDefaultSora3Params = (): Sora3Params => ({
@@ -106,41 +106,42 @@ const ToolsSection = () => {
   const upgradeWaitTimerRef = useRef<NodeJS.Timeout | null>(null);
   
   const userCredits = subscription?.credits || 0;
+  const getSampleVideoType = (src: string) => src.endsWith('.webm') ? 'video/webm' : 'video/mp4';
   
   // Get sample video based on active tab
   const getSampleVideoForTab = (tab: typeof activeTab): SampleVideo | null => {
     if (tab === 'text-to-video') {
       // Use sushi video for text-to-video
       return {
-        id: 'sample-sushi',
-        prompt: 'A master sushi chef expertly preparing nigiri in a traditional Japanese restaurant. Close-up shots of precise knife work cutting fresh salmon. Rice being molded with practiced hands. Elegant presentation on wooden serving board. Natural window lighting with clean aesthetic. ASMR-style detail focus.',
-        videoUrl: getVideoUrl(DEMO_VIDEO_PATHS.sushi),
+        id: 'sample-veo-nyc',
+        prompt: 'A cinematic city sequence with realistic motion, atmospheric lighting, and detailed scene continuity generated with Veo.',
+        videoUrl: DEEPMIND_VEO_VIDEO_PATHS.textSample,
         thumbnailUrl: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=450&fit=crop',
         aspectRatio: '16:9',
         duration: 8,
-        tags: ['food', 'sushi', 'asmr', 'text-to-video']
+        tags: ['city', 'cinematic', 'veo', 'text-to-video']
       };
     } else if (tab === 'image-to-video') {
       // Image to video example video - use running car video
       return {
-        id: 'sample-running-car',
-        prompt: 'A car running on a highway with smooth motion and dynamic camera movement. Converted from static image to video with natural motion.',
-        videoUrl: getVideoUrl(DEMO_VIDEO_PATHS.runningCar),
+        id: 'sample-veo-off-road',
+        prompt: 'An off-road vehicle scene with dynamic camera movement and natural environmental motion.',
+        videoUrl: DEEPMIND_VEO_VIDEO_PATHS.imageSample,
         thumbnailUrl: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&h=450&fit=crop',
         aspectRatio: '16:9',
         duration: 8,
-        tags: ['image-to-video', 'animation', 'motion', 'car']
+        tags: ['image-to-video', 'motion', 'vehicle', 'veo']
       };
     } else if (tab === 'storyboard') {
       // Storyboard example video - use storyboardexample video
       return {
-        id: 'sample-storyboard',
-        prompt: 'Multi-scene storyboard example with cinematic transitions and consistent character movement across scenes.',
-        videoUrl: getVideoUrl(DEMO_VIDEO_PATHS.storyboardExample),
+        id: 'sample-veo-flow',
+        prompt: 'A polished Veo sequence with cinematic transitions and platform-ready motion.',
+        videoUrl: DEEPMIND_VEO_VIDEO_PATHS.storyboardSample,
         thumbnailUrl: undefined,
         aspectRatio: '16:9',
         duration: 25,
-        tags: ['storyboard', 'multi-scene', 'cinematic']
+        tags: ['storyboard', 'flow', 'cinematic']
       };
     }
     return null;
@@ -755,11 +756,12 @@ const ToolsSection = () => {
   
   return (
     <section className="relative w-full py-8 sm:py-12 md:py-16 lg:py-24 bg-background">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/[0.045] to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {/* Left Panel: Input */}
           <div className="space-y-4 sm:space-y-6 order-1 lg:order-1">
-            <Card className="p-4 sm:p-6 lg:p-8">
+            <Card className="p-4 sm:p-6 lg:p-8 shadow-[0_28px_90px_rgba(0,0,0,0.28)]">
               <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as typeof activeTab)} className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-4 sm:mb-6 h-auto">
                   <TabsTrigger value="text-to-video" className="flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm">
@@ -798,7 +800,7 @@ const ToolsSection = () => {
           
           {/* Right Panel: Output */}
           <div className="space-y-4 sm:space-y-6 order-2 lg:order-2">
-            <Card className="p-4 sm:p-6 lg:p-8">
+            <Card className="p-4 sm:p-6 lg:p-8 shadow-[0_28px_90px_rgba(0,0,0,0.28)]">
               <div className="flex items-center justify-between mb-4 sm:mb-6">
                 <div className="text-base sm:text-lg font-semibold text-foreground">
                   {tGenerate('output')}
@@ -808,7 +810,7 @@ const ToolsSection = () => {
               {/* Show sample video only when not generating and no current job */}
               {showingSample && sampleVideo && !isGenerating && !currentJob ? (
                 <div className="space-y-3 sm:space-y-4">
-                  <div className="bg-accent/10 border-2 border-accent/20 rounded-lg sm:rounded-xl p-3 sm:p-4">
+                  <div className="glass-chip rounded-lg sm:rounded-xl p-3 sm:p-4">
                     <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
                       <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
                       <span className="font-bold text-accent-foreground/80 text-sm sm:text-base">{tGenerate('exampleVideo')}</span>
@@ -841,7 +843,7 @@ const ToolsSection = () => {
                         }
                       }}
                     >
-                      <source src={sampleVideo.videoUrl} type="video/mp4" />
+                      <source src={sampleVideo.videoUrl} type={getSampleVideoType(sampleVideo.videoUrl)} />
                       {tGenerate('browserNotSupportVideo')}
                     </video>
                   </div>
@@ -861,7 +863,7 @@ const ToolsSection = () => {
                   {!isAuthenticated && (
                     <button
                       onClick={() => setShowAuthModal(true)}
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base touch-manipulation"
+                      className="glass-button-gradient w-full text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base touch-manipulation"
                       style={{ touchAction: 'manipulation' }}
                     >
                       <Play className="w-4 h-4 sm:w-5 sm:h-5" />

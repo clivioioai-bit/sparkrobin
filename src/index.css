@@ -31,10 +31,10 @@ All colors MUST be HSL.
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Accent: Purple accent */
-    --accent: 263 70% 60%;
+    /* Accent: Lime green */
+    --accent: 142 76% 36%;
     --accent-foreground: 210 40% 98%;
-    --accent-glow: 263 70% 70%;
+    --accent-glow: 84 81% 60%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -47,11 +47,11 @@ All colors MUST be HSL.
 
     /* Enhanced Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(55 92% 55%), hsl(var(--accent)), hsl(var(--primary)));
     --gradient-dark: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
-    --gradient-rainbow: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary-glow)));
-    --gradient-metallic: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-rainbow: linear-gradient(135deg, hsl(55 92% 55%), hsl(var(--accent)), hsl(var(--primary)));
+    --gradient-metallic: linear-gradient(135deg, #facc15 0%, #22c55e 52%, #0ea5e9 100%);
     --gradient-cyber: linear-gradient(135deg, #00d4ff 0%, #090979 100%);
 
     /* Enhanced Shadows */
@@ -64,13 +64,13 @@ All colors MUST be HSL.
 
   .dark {
     /* Dark mode - Modern tech platform */
-    --background: 222 47% 11%;
+    --background: 158 52% 5%;
     --foreground: 213 31% 91%;
 
-    --card: 222 47% 11%;
+    --card: 157 46% 8%;
     --card-foreground: 213 31% 91%;
 
-    --popover: 224 71% 4%;
+    --popover: 157 46% 8%;
     --popover-foreground: 213 31% 91%;
 
     /* Primary: Deep blue with tech feel */
@@ -79,34 +79,34 @@ All colors MUST be HSL.
     --primary-glow: 217 91% 70%;
 
     /* Secondary: Darker blue-gray */
-    --secondary: 224 71% 4%;
+    --secondary: 157 39% 11%;
     --secondary-foreground: 213 31% 91%;
 
     /* Muted: Subtle grays */
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
+    --muted: 157 39% 11%;
+    --muted-foreground: 158 22% 63%;
 
-    /* Accent: Purple tech */
-    --accent: 263 70% 50%;
+    /* Accent: Lime green */
+    --accent: 142 72% 45%;
     --accent-foreground: 213 31% 91%;
-    --accent-glow: 263 70% 60%;
+    --accent-glow: 84 81% 60%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
+    --border: 158 33% 17%;
+    --input: 158 33% 17%;
     --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
     /* Enhanced Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(55 92% 55%), hsl(var(--accent)), hsl(var(--primary)));
     --gradient-dark: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
-    --gradient-rainbow: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary-glow)));
-    --gradient-metallic: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-rainbow: linear-gradient(135deg, hsl(55 92% 55%), hsl(var(--accent)), hsl(var(--primary)));
+    --gradient-metallic: linear-gradient(135deg, #fde047 0%, #4ade80 52%, #38bdf8 100%);
     --gradient-cyber: linear-gradient(135deg, #00d4ff 0%, #090979 100%);
 
     /* Enhanced Shadows */
@@ -241,7 +241,7 @@ All colors MUST be HSL.
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    background: linear-gradient(135deg, hsl(55 92% 55%), hsl(var(--accent)), hsl(var(--primary)));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

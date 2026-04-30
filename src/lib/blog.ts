@@ -10,6 +10,7 @@ export type BlogPostMeta = {
   tags?: string[];
   coverImage?: string;
   featured?: boolean;
+  draft?: boolean;
 };
 
 export type BlogPost = {
@@ -52,6 +53,19 @@ const estimateReadingTime = (content: string) => {
   return Math.max(1, Math.round(words / 200));
 };
 
+const parsePostFile = (filePath: string) => {
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  return matter(fileContent);
+};
+
+const isDraftPostFile = (filePath: string) => {
+  try {
+    return Boolean(parsePostFile(filePath).data.draft);
+  } catch {
+    return false;
+  }
+};
+
 export const getPostSlugs = () => {
   try {
     if (!fs.existsSync(BLOG_DIR)) {
@@ -61,6 +75,7 @@ export const getPostSlugs = () => {
     const files = fs.readdirSync(BLOG_DIR);
     const slugs = files
       .filter((file) => file.endsWith('.md') || file.endsWith('.mdx'))
+      .filter((file) => !isDraftPostFile(path.join(BLOG_DIR, file)))
       .map((file) => file.replace(/\.(en|ar|ja|ru|es|zh-CN|de)\.mdx?$/, '').replace(/\.mdx?$/, ''))
       .filter((slug, index, self) => self.indexOf(slug) === index); // Remove duplicates
     return slugs;
@@ -75,8 +90,7 @@ export const getPostBySlug = (slug: string, locale?: string): BlogPost | null =>
     const filePath = getPostFilePath(slug, locale);
     if (!filePath) return null;
 
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const { data, content } = matter(fileContent);
+    const { data, content } = parsePostFile(filePath);
 
     const meta: BlogPostMeta = {
       title: data.title || slug,
@@ -86,7 +100,12 @@ export const getPostBySlug = (slug: string, locale?: string): BlogPost | null =>
       tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
       coverImage: data.coverImage,
       featured: Boolean(data.featured),
+      draft: Boolean(data.draft),
     };
+
+    if (meta.draft) {
+      return null;
+    }
 
     return {
       slug,
