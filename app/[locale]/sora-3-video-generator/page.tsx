@@ -2,11 +2,11 @@ import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-export default async function LegacyLocalizedVeo4VideoGeneratorPage({
+export default async function LegacyLocalizedSparkRobinVideoGeneratorPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  redirect(`/${locale}/veo-4-video-generator`);
+  redirect(`/${locale}/spark-robin-video-generator`);
 }

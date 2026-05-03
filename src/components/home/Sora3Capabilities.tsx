@@ -9,28 +9,28 @@ const Sora3Capabilities = () => {
 
   const capabilities = [
     {
-      id: "veo4-text-and-image-input",
+      id: "spark-robin-text-and-image-input",
       title: t("cinematicRealism.title"),
       description: t("cinematicRealism.description"),
       videoUrl: CAPABILITY_VIDEO_PATHS.cinematic,
       tag: "Text + Image",
     },
     {
-      id: "veo4-motion-and-camera-control",
+      id: "spark-robin-motion-and-camera-control",
       title: t("naturalCameraMotion.title"),
       description: t("naturalCameraMotion.description"),
       videoUrl: CAPABILITY_VIDEO_PATHS.camera,
       tag: "Motion",
     },
     {
-      id: "veo4-ads-social-and-product-content",
+      id: "spark-robin-ads-social-and-product-content",
       title: t("consistentCharacters.title"),
       description: t("consistentCharacters.description"),
       videoUrl: CAPABILITY_VIDEO_PATHS.characters,
       tag: "Ads + Social",
     },
     {
-      id: "veo4-longer-clips-and-exports",
+      id: "spark-robin-longer-clips-and-exports",
       title: t("longFormPlatformReady.title"),
       description: t("longFormPlatformReady.description"),
       videoUrl: CAPABILITY_VIDEO_PATHS.longform,

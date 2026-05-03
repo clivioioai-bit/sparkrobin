@@ -16,24 +16,24 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://veo4video.io'
+  const baseUrl = 'https://sparkrobinai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
-  let title = 'Veo 4 Multi-Scene | Build Story Videos'
-  let description = 'Create Veo 4 multi-scene videos with stronger continuity, cleaner pacing, and scenes built for ads, brand stories, and product narratives.'
+  let title = 'Spark Robin Multi-Scene | Build Story Videos'
+  let description = 'Create Spark Robin multi-scene videos with stronger continuity, cleaner pacing, and scenes built for ads, brand stories, and product narratives.'
   
   if (locale === 'ar') {
-    title = 'Veo 4 متعدد المشاهد | إنشاء فيديوهات قصصية'
-    description = 'أنشئ فيديوهات Veo 4 متعددة المشاهد باتساق أفضل وإيقاع أنظف ومشاهد مناسبة للإعلانات وقصص العلامة التجارية وعرض المنتجات.'
+    title = 'Spark Robin متعدد المشاهد | إنشاء فيديوهات قصصية'
+    description = 'أنشئ فيديوهات Spark Robin متعددة المشاهد باتساق أفضل وإيقاع أنظف ومشاهد مناسبة للإعلانات وقصص العلامة التجارية وعرض المنتجات.'
   } else if (locale === 'ja') {
-    title = 'Veo 4 マルチシーン | ストーリー動画を作成'
-    description = '広告、ブランドストーリー、商品紹介向けに、流れと一貫性に優れたVeo 4マルチシーン動画を作成できます。'
+    title = 'Spark Robin マルチシーン | ストーリー動画を作成'
+    description = '広告、ブランドストーリー、商品紹介向けに、流れと一貫性に優れたSpark Robinマルチシーン動画を作成できます。'
   } else if (locale === 'ru') {
-    title = 'Veo 4 Мульти-сцена | Сюжетные Видео'
-    description = 'Создавайте многосценовые видео Veo 4 с лучшей связностью, ритмом и сценами для рекламы, бренда и продуктовых историй.'
+    title = 'Spark Robin Мульти-сцена | Сюжетные Видео'
+    description = 'Создавайте многосценовые видео Spark Robin с лучшей связностью, ритмом и сценами для рекламы, бренда и продуктовых историй.'
   } else if (locale === 'es') {
-    title = 'Veo 4 Multi-Escena | Videos con Historia'
-    description = 'Crea videos multi-escena de Veo 4 con mejor continuidad, ritmo más limpio y escenas pensadas para anuncios, marca y productos.'
+    title = 'Spark Robin Multi-Escena | Videos con Historia'
+    description = 'Crea videos multi-escena de Spark Robin con mejor continuidad, ritmo más limpio y escenas pensadas para anuncios, marca y productos.'
   }
 
   return {
@@ -44,10 +44,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/multi-scene`,
-    siteName: 'Veo4',
+    siteName: 'Spark Robin',
     images: [
       {
-        url: 'https://veo4video.io/logo-v2.png',
+        url: 'https://sparkrobinai.io/logo-v2.png',
         width: 1200,
         height: 630,
           alt: title,
@@ -60,7 +60,7 @@ export async function generateMetadata({
     card: 'summary_large_image',
       title,
       description,
-    images: ['https://veo4video.io/logo-v2.png']
+    images: ['https://sparkrobinai.io/logo-v2.png']
   },
 }
 }

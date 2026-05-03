@@ -42,6 +42,25 @@ const getPostFilePath = (slug: string, locale?: string) => {
   return null;
 };
 
+export const hasPostLocale = (slug: string, locale: string) => {
+  if (locale === 'en') {
+    return Boolean(
+      fs.existsSync(path.join(BLOG_DIR, `${slug}.md`)) ||
+      fs.existsSync(path.join(BLOG_DIR, `${slug}.mdx`))
+    );
+  }
+
+  return Boolean(
+    fs.existsSync(path.join(BLOG_DIR, `${slug}.${locale}.md`)) ||
+    fs.existsSync(path.join(BLOG_DIR, `${slug}.${locale}.mdx`))
+  );
+};
+
+export const getAvailablePostLocales = (slug: string) => {
+  const supportedLocales = ['en', 'ar', 'ja', 'ru', 'es', 'zh-CN', 'de'];
+  return supportedLocales.filter((locale) => hasPostLocale(slug, locale));
+};
+
 const safeDate = (value?: string) => {
   if (!value) return undefined;
   const parsed = new Date(value);

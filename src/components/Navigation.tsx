@@ -32,7 +32,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: t('home'), href: '/', icon: Home },
-    { name: t('generate'), href: '/veo4-text-to-video', icon: Play },
+    { name: t('generate'), href: '/spark-robin-text-to-video', icon: Play },
     { name: t('myCreations'), href: '/mycreation', icon: History },
     { name: t('pricing'), href: '/pricing', icon: DollarSign },
   ];
@@ -71,7 +71,7 @@ const Navigation = () => {
               />
             </div>
             <span className="text-lg font-semibold leading-none tracking-tight text-white/90" suppressHydrationWarning>
-              VEO 4
+              Spark Robin
             </span>
           </Link>
 
@@ -98,7 +98,7 @@ const Navigation = () => {
                     <p className="text-[10px] font-medium text-white/30 uppercase tracking-widest mb-2">{t('features')}</p>
                   </div>
                   <DropdownMenuItem asChild>
-                    <Link href="/veo4-text-to-video" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
+                    <Link href="/spark-robin-text-to-video" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
                       <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] text-white/50 group-hover:text-white">
                         <FileText className="h-4 w-4" />
                       </div>
@@ -109,7 +109,7 @@ const Navigation = () => {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/veo4-image-to-video" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
+                    <Link href="/spark-robin-image-to-video" className="group flex gap-3 p-2.5 rounded-lg hover:bg-white/[0.06] transition-colors" suppressHydrationWarning>
                       <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] text-white/50 group-hover:text-white">
                         <ImageIcon className="h-4 w-4" />
                       </div>
@@ -124,14 +124,14 @@ const Navigation = () => {
                     <p className="text-[10px] font-medium text-white/30 uppercase tracking-widest mb-2">{t('models')}</p>
                     <div className="flex flex-wrap gap-1.5">
                       <Link
-                        href="/veo-4-video-generator"
+                        href="/spark-robin-video-generator"
                         className="group inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:border-primary/30 text-white/80 transition-all duration-200"
                       >
                         <Play className="h-3 w-3 text-primary" />
-                        <span className="whitespace-nowrap">{t('veo4Model')}</span>
+                        <span className="whitespace-nowrap">{t('sparkRobinModel')}</span>
                       </Link>
                       <Link
-                        href="/veo-4-video-generator"
+                        href="/spark-robin-video-generator"
                         className="group inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:border-primary/30 text-white/80 transition-all duration-200"
                       >
                         <Sparkles className="h-3 w-3 text-primary" />
@@ -312,10 +312,10 @@ const Navigation = () => {
                   className="glass-button-gradient h-9 rounded-lg px-5 text-[14px] font-semibold text-white hover:scale-[1.02] transition-all"
                   onClick={() => {
                     if (isAuthenticated) {
-                      router.push('/veo4-text-to-video');
+                      router.push('/spark-robin-text-to-video');
                     } else {
                       if (typeof window !== 'undefined') {
-                        sessionStorage.setItem('redirectAfterLogin', '/veo4-text-to-video');
+                        sessionStorage.setItem('redirectAfterLogin', '/spark-robin-text-to-video');
                       }
                       setIsAuthModalOpen(true);
                     }
@@ -354,17 +354,17 @@ const Navigation = () => {
                   {t('generate')}
                 </div>
                 <div className="flex flex-col space-y-0.5">
-                  <Link href="/veo4-text-to-video" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('textToVideo')}</Link>
-                  <Link href="/veo4-image-to-video" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('imageToVideo')}</Link>
+                  <Link href="/spark-robin-text-to-video" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('textToVideo')}</Link>
+                  <Link href="/spark-robin-image-to-video" className="px-3 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">{t('imageToVideo')}</Link>
                 </div>
                 <div className="px-3 pt-2 pb-1">
                   <div className="text-[10px] font-medium text-white/30 uppercase tracking-widest pb-1">{t('models')}</div>
                   <div className="flex flex-wrap gap-1.5">
-                    <Link href="/veo-4-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
+                    <Link href="/spark-robin-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
                       <Play className="h-3 w-3 text-primary" />
-                      <span>{t('veo4Model')}</span>
+                      <span>{t('sparkRobinModel')}</span>
                     </Link>
-                    <Link href="/veo-4-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
+                    <Link href="/spark-robin-video-generator" className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-primary/10 border border-primary/20 text-white/80 transition-all duration-200">
                       <Sparkles className="h-3 w-3 text-primary" />
                       <span>{t('veo31Model')}</span>
                     </Link>
@@ -470,10 +470,10 @@ const Navigation = () => {
                       className="glass-button-gradient text-white font-medium"
                       onClick={() => {
                         if (isAuthenticated) {
-                          router.push('/veo4-text-to-video');
+                          router.push('/spark-robin-text-to-video');
                         } else {
                           if (typeof window !== 'undefined') {
-                            sessionStorage.setItem('redirectAfterLogin', '/veo4-text-to-video');
+                            sessionStorage.setItem('redirectAfterLogin', '/spark-robin-text-to-video');
                           }
                           setIsAuthModalOpen(true);
                         }

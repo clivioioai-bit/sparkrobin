@@ -5,8 +5,8 @@ import { Check, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Veo 4 Video Generator | Ad-Ready Content Platform',
-  description: 'Transform ideas into polished Veo 4 video clips perfect for ads and brand campaigns. Our Veo 4 platform generates professional videos without watermarks. Start creating Veo 4 content for your campaigns today.',
+  title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
+  description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts without relying on unconfirmed model claims.',
   robots: {
     index: false,
     follow: false,
@@ -14,16 +14,16 @@ export const metadata: Metadata = {
     // so search engines are aware of its existence
   },
   openGraph: {
-    title: 'Veo 4 Video Generator | Ad-Ready Content Platform',
-    description: 'Transform ideas into polished Veo 4 video clips perfect for ads and brand campaigns. Our Veo 4 platform generates professional videos without watermarks.',
-    url: 'https://veo4video.io/ads-landing',
-    siteName: 'Veo4',
+    title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
+    description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts without relying on unconfirmed model claims.',
+    url: 'https://sparkrobinai.io/ads-landing',
+    siteName: 'Spark Robin',
     images: [
       {
-        url: 'https://veo4video.io/logo-v2.png',
+        url: 'https://sparkrobinai.io/logo-v2.png',
         width: 1200,
         height: 630,
-        alt: 'Veo 4 Video Generator',
+        alt: 'Spark Robin Video Generator',
       },
     ],
     locale: 'en_US',
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Veo 4 Video Generator | Ad-Ready Content Platform',
-    description: 'Transform ideas into polished Veo 4 video clips perfect for ads and brand campaigns.',
-    images: ['https://veo4video.io/logo-v2.png'],
+    title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
+    description: 'Prepare prompt systems and reference-led video drafts for Spark Robin watchers.',
+    images: ['https://sparkrobinai.io/logo-v2.png'],
   },
   alternates: {
-    canonical: 'https://veo4video.io/ads-landing',
+    canonical: 'https://sparkrobinai.io/ads-landing',
   },
 }
 
@@ -48,9 +48,9 @@ export default function AdsLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-primary">veo4video.io</span>
+              <span className="text-xl font-bold text-primary">sparkrobinai.io</span>
             </div>
-            <Link href="/veo4-text-to-video">
+            <Link href="/spark-robin-text-to-video">
               <Button variant="outline" size="sm">
                 Start Creating
               </Button>
@@ -63,21 +63,21 @@ export default function AdsLandingPage() {
       <section className="py-20 sm:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Turn Ideas Into Polished Veo 4 Clips Ready for Ads
+            Build Spark Robin-Ready Video Drafts Before Official Details Settle
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Transform concepts into professional Veo 4 video content without any branding on top. Our Veo 4 platform generates ad-ready clips perfect for marketing campaigns, brand storytelling, and social media. Start creating Veo 4 videos today.
+            Organize prompts, reference images, and shot notes into a repeatable workflow for AI video drafts. Keep producing while Spark Robin updates, specs, and access paths continue to evolve.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/veo4-text-to-video">
+            <Link href="/spark-robin-text-to-video">
               <Button size="lg" className="w-full sm:w-auto">
-                Create Veo 4 Videos
+                Build a Video Draft
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
             <Link href="/pricing">
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                View Veo 4 Pricing
+                View Workflow Plans
               </Button>
             </Link>
           </div>
@@ -88,25 +88,25 @@ export default function AdsLandingPage() {
       <section className="py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Why Marketing Teams Choose Veo 4
+            Why Teams Use This Spark Robin Workflow
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-3">Veo 4 Text-to-Video</h3>
+              <h3 className="text-xl font-semibold mb-3">Structured Prompt Briefs</h3>
               <p className="text-muted-foreground">
-                Transform ideas into polished Veo 4 clips ready for ads. Our Veo 4 text-to-video generator produces professional content without watermarks, perfect for campaigns.
+                Convert rough ideas into layered scene notes covering subject, camera, motion, pacing, and continuity.
               </p>
             </Card>
             <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-3">Veo 4 Image-to-Video</h3>
+              <h3 className="text-xl font-semibold mb-3">Reference-Led Drafts</h3>
               <p className="text-muted-foreground">
-                Animate photos into professional Veo 4 video content. Veo 4 image-to-video tool creates dynamic sequences ideal for product launches and brand content.
+                Use product photos, style frames, and visual samples to anchor the draft before testing motion direction.
               </p>
             </Card>
             <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-3">Veo 4 Fast Production</h3>
+              <h3 className="text-xl font-semibold mb-3">Release-Aware Planning</h3>
               <p className="text-muted-foreground">
-                Generate polished Veo 4 campaign clips quickly with flexible prompt control, strong visual consistency, and export-ready output for ads and brand content.
+                Separate confirmed updates from assumptions so your pages and workflows do not depend on unsupported specs.
               </p>
             </Card>
           </div>
@@ -117,17 +117,17 @@ export default function AdsLandingPage() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">
-            What Veo 4 Delivers
+            What the Workflow Gives You
           </h2>
           <div className="space-y-4">
             {[
-              'Veo 4 videos with full commercial licensing',
-              'Veo 4 exports without any platform watermarks',
-              'Veo 4 fast generation for campaign timelines',
-              'Veo 4 HD and 4K quality output options',
-              'Veo 4 character consistency across scenes',
-              'Veo 4 extended 25-30 second video support',
-              'Veo 4 integrated audio synchronization',
+              'Reusable prompt structures for future model access',
+              'Reference image workflows for clearer visual direction',
+              'Shot notes for camera, motion, and pacing',
+              'Draft generation for review and comparison',
+              'Release-watch positioning that avoids overclaiming',
+              'Creative iteration records your team can reuse',
+              'A practical bridge between current tools and future Spark Robin updates',
             ].map((feature, index) => (
               <div key={index} className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -142,14 +142,14 @@ export default function AdsLandingPage() {
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready to Build Campaigns with Veo 4?
+            Ready to Build a Spark Robin-Ready Workflow?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Start creating Veo 4 videos with free credits. Upgrade your Veo 4 plan when you need more capacity for campaigns.
+            Start with a prompt brief or reference image, generate a draft, and improve the creative notes before the next version.
           </p>
-          <Link href="/veo4-text-to-video">
+          <Link href="/spark-robin-text-to-video">
             <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Start Creating Veo 4
+              Start a Draft
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
@@ -160,13 +160,12 @@ export default function AdsLandingPage() {
       <section className="py-8 border-t border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-muted-foreground text-center">
-            veo4video.io is an independent platform specializing in Veo 4 video generation. We leverage advanced Veo 4 technology to produce professional content. veo4video.io is not affiliated with OpenAI, Google or any official Sora products. All trademarks belong to their respective owners.
+            sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or any official Sora products. All trademarks belong to their respective owners.
           </p>
         </div>
       </section>
     </main>
   )
 }
-
 
 

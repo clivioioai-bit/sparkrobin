@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "Veo4",
+    "brand": "Spark Robin",
     "new": "新",
     "generate": "生成",
     "home": "首页",
@@ -21,31 +21,31 @@
     "haveMoreQuestions": "还有更多问题？我们随时为您提供帮助。"
   },
   "hero": {
-    "badge": "2026 Best Model",
+    "badge": "发布动态观察 + 创作工作流",
     "discord": "加入 Discord 社区",
-    "brandName": "VEO 4",
-    "tagline": "AI 文生视频与图生视频生成器",
-    "title": "Veo4 — 重新定义 AI 视频的可能性",
-    "subtitle": "全新的 Veo4 带来超真实动感、更长场景和电影级细节 — 让创作者在数秒内将纯想象转化为工作室级别的视频。",
+    "brandName": "Spark Robin",
+    "tagline": "AI 视频工作流实验室",
+    "title": "Spark Robin — 为下一代 AI 视频准备创作系统",
+    "subtitle": "跟踪 Spark Robin 的可信动态，整理可复用提示词、参考素材和分镜草稿，让团队在模型真正发布前就准备好可执行的视频工作流。",
     "placeholder": "描述您想要创建的视频...",
-    "cta": "生成",
-    "trySora3": "🚀 即将推出 — 加入抢先体验",
+    "cta": "创建草稿",
+    "trySora3": "整理视频提示词",
     "trySora2": "生成图片",
-    "sora2Description": "使用我们的 Sora 2 引擎立即生成视频 — 无水印，适用于 TikTok 和广告。",
-    "storyboard25s": "构建 25 秒 Veo4 故事",
-    "disclaimer": "专注于 Veo4 视频生成的独立平台。我们利用先进的 Veo4 技术生产专业内容。与 OpenAI 或任何官方 Sora 产品无关。",
+    "sora2Description": "把创意拆成镜头、参考图和迭代说明，先建立可复用的视频制作流程。",
+    "storyboard25s": "构建 Spark Robin 分镜系统",
+    "disclaimer": "独立的 Spark Robin 发布观察与 AI 视频工作流站点。与 Google、Google DeepMind、OpenAI 或任何官方 Sora 产品无关。",
     "features": {
       "noWatermark": {
-        "title": "Veo4 无水印",
-        "description": "导出干净整洁的 Veo4 视频，适用于商业活动"
+        "title": "清晰的创作草稿",
+        "description": "把想法整理成可评审、可复用、可继续迭代的视频草稿"
       },
       "noRegionalLimits": {
-        "title": "全球 Veo4 访问",
-        "description": "从世界任何地方创建 Veo4 内容"
+        "title": "发布动态跟踪",
+        "description": "围绕已确认信息和公开信号更新 Spark Robin 相关内容"
       },
       "noInviteCode": {
-        "title": "即时 Veo4 访问",
-        "description": "立即开始生成 Veo4 视频，无需等待名单"
+        "title": "提示词系统",
+        "description": "为文生视频、图生视频和分镜计划沉淀可复用提示结构"
       }
     }
   },
@@ -54,7 +54,7 @@
     "generate": "Video AI",
     "textToVideo": "文本转视频",
     "imageToVideo": "图片转视频",
-    "storyboard": "Veo4 故事板",
+    "storyboard": "Spark Robin 故事板",
     "watermarkRemover": "水印移除",
     "pricing": "定价",
     "myCreations": "我的作品",
@@ -70,10 +70,10 @@
     "startForFree": "立即开始",
     "preferences": "偏好设置",
     "generationHistory": "生成历史",
-    "textToVideoDescription": "将想法转化为精美的 Veo4 片段，适用于广告",
-    "imageToVideoDescription": "将照片动画化为专业的 Veo4 视频内容",
-    "storyboardDescription": "构建最多 25 秒的多场景 Veo4 叙事",
-    "watermarkRemoverDescription": "即时移除 Veo4 视频中的水印",
+    "textToVideoDescription": "把想法整理成 Spark Robin 风格的视频提示词草稿",
+    "imageToVideoDescription": "用参考图规划镜头运动、主体关系和复盘方向",
+    "storyboardDescription": "构建多场景 Spark Robin 分镜和镜头说明",
+    "watermarkRemoverDescription": "整理已生成素材，保持评审流程清晰",
     "imageAI": "AI 图像",
     "textToImage": "文字生成图片",
     "textToImageDescription": "通过文字提示生成图片",
@@ -83,13 +83,13 @@
     "models": "模型",
     "nanoBanana": "Nano Banana",
     "nanoBananaPro": "Nano Banana Pro",
-    "sora3": "Veo4",
-    "sora3Pro": "Veo4 Pro",
+    "sora3": "Spark Robin",
+    "sora3Pro": "Spark Robin Pro",
     "sora2": "Sora 2",
     "sora2Pro": "Sora 2 Pro",
     "veo3": "Veo 3",
     "wan26": "Wan 2.6",
-    "veo4Model": "Veo 4",
+    "sparkRobinModel": "Spark Robin",
     "veo31Model": "Veo 3.1",
     "whoThisIsFor": {
       "ecommerce": {
@@ -104,30 +104,30 @@
     }
   },
   "footer": {
-    "description": "veo4video.io 将想法转化为精美的 Veo4 视频片段，完美适用于广告和品牌活动。我们的 Veo4 平台生成无水印的专业视频，非常适合营销团队和创作者。立即开始创建 Veo4 内容。",
+    "description": "sparkrobinai.io 是独立的 Spark Robin 发布观察与 AI 视频工作流站点，帮助创作者和团队整理提示词、参考素材、分镜草稿和可复盘的创作流程。",
     "product": "产品",
     "company": "公司",
     "resources": "资源",
     "support": "支持",
-    "sora3TextToVideo": "Veo4 文本转视频",
-    "sora3ImageToVideo": "Veo4 图片转视频",
-    "sora3Pricing": "Veo4 定价",
-    "sora3Faq": "Veo4 常见问题",
-    "sora3Blog": "Veo4 博客",
+    "sora3TextToVideo": "Spark Robin 文本转视频",
+    "sora3ImageToVideo": "Spark Robin 图片转视频",
+    "sora3Pricing": "Spark Robin 定价",
+    "sora3Faq": "Spark Robin 常见问题",
+    "sora3Blog": "Spark Robin 博客",
     "aiVideoPromptGpt": "AI 视频提示 GPT",
     "privacyPolicy": "隐私政策",
     "termsOfService": "服务条款",
     "refundPolicy": "退款政策",
     "support247": "24/7 支持",
     "contactUs": "联系我们 / 合作",
-    "disclaimer": "veo4video.io 是专注于 Veo4 视频生成的独立平台。我们利用先进的 Veo4 技术生产广告就绪的专业视频。veo4video.io 与 OpenAI、Google 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
-    "poweredBy": "由专有的 Veo4 视频合成技术提供支持。与任何官方供应商无关。",
-    "copyright": "© 2024 Veo4. 保留所有权利。",
+    "disclaimer": "sparkrobinai.io 是独立的 Spark Robin 发布观察与 AI 视频工作流站点。我们与 Google、Google DeepMind、OpenAI 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
+    "poweredBy": "面向 Spark Robin 关注者的独立创作工作流与资料整理站点。",
+    "copyright": "© 2024 Spark Robin. 保留所有权利。",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24/7 支持: support@veo4video.io",
-    "businessEmail": "商务与合作: support@veo4video.io",
-    "logoAlt": "Veo4 AI 视频生成器标志",
+    "supportEmail": "24/7 支持: support@sparkrobinai.io",
+    "businessEmail": "商务与合作: support@sparkrobinai.io",
+    "logoAlt": "Spark Robin 工作流实验室标志",
     "socialLabels": {
       "twitter": "在 Twitter 上关注我们",
       "discord": "加入我们的 Discord 社区",
@@ -138,75 +138,75 @@
     }
   },
   "whyThisMatters": {
-    "title": "为什么营销团队选择 Veo4",
-    "subtitle": "广告活动需要高质量的视频内容 — Veo4 无阻碍交付。我们的 Veo4 平台能够为品牌和代理商即时创建专业视频。",
-    "challenges": "常见障碍",
-    "solutions": "Veo4 如何解决",
+    "title": "为什么现在需要 Spark Robin 工作流",
+    "subtitle": "在新模型传闻和公开信号之间，团队更需要可验证的信息、稳定的提示词结构和可复盘的草稿流程，而不是只追热点。",
+    "challenges": "常见问题",
+    "solutions": "Spark Robin 工作流如何处理",
     "watermarks": {
-      "title": "导出时的平台品牌标识",
-      "description": "水印会削弱客户工作的专业呈现。"
+      "title": "信息来源分散",
+      "description": "模型传闻、官方消息和第三方解读混在一起，很难判断哪些内容值得进入计划。"
     },
     "pricing": {
-      "title": "每个视频的高昂成本",
-      "description": "昂贵的定价限制了频繁的内容制作。"
+      "title": "提示词不可复用",
+      "description": "临时写出的提示词难以复盘，也不方便团队共同迭代。"
     },
     "storyboarding": {
-      "title": "技术复杂性",
-      "description": "多场景 Veo4 故事板创建需要专业知识。"
+      "title": "参考素材缺少结构",
+      "description": "图片、镜头说明、品牌约束和修改意见分散后，视频草稿很快失控。"
     },
     "speed": {
-      "title": "冗长的处理时间",
-      "description": "生成速度慢会打乱活动时间表和创作动力。"
+      "title": "评审节奏缓慢",
+      "description": "如果没有统一的镜头语言和版本说明，反馈往往停留在主观感受。"
     },
     "noWatermark": {
-      "title": "Veo4 无任何品牌标识",
-      "description": "导出干净整洁的 Veo4 视频，完美适用于客户交付。"
+      "title": "可信动态整理",
+      "description": "围绕 Spark Robin 的已确认更新、公开信号和不确定项建立清晰边界。"
     },
     "costPerformance": {
-      "title": "Veo4 具有竞争力的价格",
-      "description": "Veo4 生成成本显著低于同类平台。"
+      "title": "可复用提示词库",
+      "description": "把创意拆成目标、镜头、主体、运动、风格和评审标准，方便持续优化。"
     },
     "multiModel": {
-      "title": "Veo4 多模型方法",
-      "description": "Veo4 利用多个引擎实现可靠、一致的输出。"
+      "title": "参考图驱动流程",
+      "description": "用图片、产品素材和视觉方向约束草稿，让生成结果更容易被评审。"
     },
     "storyboard": {
-      "title": "Veo4 扩展叙事",
-      "description": "Veo4 故事板构建最多 25 秒的完整品牌故事。"
+      "title": "分镜式迭代",
+      "description": "把复杂想法拆成场景、镜头和修改记录，保留每次迭代的判断依据。"
     },
-    "solution": "Veo4 解决了所有这些挑战"
+    "solution": "Spark Robin 工作流让准备工作更清楚"
   },
   "whoThisIsFor": {
-    "title": "谁使用 Veo4 构建活动",
-    "subtitle": "从内容创作者到营销总监，Veo4 赋能团队制作推动结果的专业视频内容。",
+    "title": "谁适合使用 Spark Robin 工作流",
+    "subtitle": "适合正在关注新模型、准备 AI 视频流程、或需要把创意快速整理成可评审草稿的团队。",
     "creators": {
       "title": "内容创作者和影响者",
-      "description": "为社交平台制作 Veo4 视频，无水印或制作开销。"
+      "description": "把选题、脚本、镜头节奏和发布素材整理成可反复使用的视频提示词。"
     },
     "ecommerce": {
       "title": "电商和市场卖家",
-      "description": "生成转化率高的 Veo4 产品视频和促销内容，无需工作室成本。"
+      "description": "用产品图、卖点和场景说明准备图生视频草稿，方便快速测试方向。"
     },
     "businesses": {
       "title": "成长中的企业",
-      "description": "以代理商定价的一小部分获得 Veo4 质量的视频制作。"
+      "description": "建立轻量视频工作流，让内部团队先完成创意结构和素材准备。"
     },
     "marketers": {
       "title": "测试创意的营销团队",
-      "description": "快速制作 Veo4 视频变体，用于 A/B 测试和活动优化。"
+      "description": "围绕不同受众和渠道维护提示词版本，减少重复沟通。"
     },
     "shortFilmStudios": {
-      "title": "制作工作室",
-      "description": "利用 Veo4 技术以电影级质量增强项目。"
+      "title": "创意工作室",
+      "description": "把视觉参考、分镜和客户反馈沉淀为可复盘的项目资料。"
     },
     "advertisers": {
-      "title": "广告代理商",
-      "description": "交付满足客户期望和活动目标的 Veo4 视频内容。"
+      "title": "品牌与代理团队",
+      "description": "在模型能力变化前准备好内容策略、SEO 页面和创意测试框架。"
     }
   },
   "blogShowcase": {
-    "title": "Veo4 创作者和品牌策略",
-    "subtitle": "可操作的见解，最大化您的 Veo4 视频表现和活动结果。",
+    "title": "Spark Robin 动态与创作策略",
+    "subtitle": "围绕模型发布、提示词结构、参考素材和 AI 视频工作流的可执行笔记。",
     "viewAll": "查看所有博客文章",
     "readMore": "阅读更多",
     "featured": "精选"
@@ -220,51 +220,51 @@
     "emptyDescription": "将 Markdown 文件添加到 content/blog，它们将显示在这里。"
   },
   "howItWorks": {
-    "title": "如何在几分钟内创建 Veo4 视频",
-    "subtitle": "通过三个简单的步骤将您的概念转化为精美的 Veo4 内容。",
+    "title": "如何准备 Spark Robin 视频工作流",
+    "subtitle": "用三个步骤把概念变成可生成、可评审、可继续迭代的草稿。",
     "step1": {
-      "title": "分享您的愿景或上传图片",
-      "description": "描述您想在 Veo4 视频中看到的内容，或提供起始图片供 Veo4 动画化。"
+      "title": "写清楚创意目标",
+      "description": "说明受众、场景、主体、镜头节奏和希望测试的视觉方向。"
     },
     "step2": {
-      "title": "配置您的 Veo4 输出设置",
-      "description": "选择宽高比和时长，或设置 Veo4 故事板场景以扩展叙事。"
+      "title": "组织提示词和参考素材",
+      "description": "把脚本、图片、品牌限制和分镜拆成结构化字段，方便团队复用。"
     },
     "step3": {
-      "title": "导出您的 Veo4 视频，准备用于活动",
-      "description": "以 HD 或 4K 下载您的 Veo4 创作，可立即部署用于广告和品牌内容。"
+      "title": "生成草稿并记录反馈",
+      "description": "对比不同版本，保留有效提示词、失败原因和下一轮修改方向。"
     }
   },
   "faq": {
-    "title": "关于 Veo4 的常见问题",
-    "subtitle": "查找关于 Veo4 视频生成、活动使用和平台功能的答案。了解 Veo4 的工作原理以及为什么营销团队选择 Veo4 来满足他们的视频内容需求。",
+    "title": "关于 Spark Robin 的常见问题",
+    "subtitle": "了解 Spark Robin 发布观察、提示词工作流、参考素材草稿和商业使用边界。",
     "viewAllFaqs": "查看所有常见问题",
     "contactSupport": "联系支持",
     "haveMoreQuestions": "还有更多问题？我们随时为您提供帮助。",
     "questions": {
       "whatMakesDifferent": {
-        "question": "Veo4 与其他视频生成平台有何不同？",
-        "answer": "Veo4 擅长通过 Veo4 故事板构建扩展叙事，在整个过程中保持角色一致性。虽然竞争对手将输出限制为简短片段，但 Veo4 可生成 25 秒以上的故事，非常适合品牌活动、产品发布和社交内容。Veo4 故事板提供逐场景控制，保留角色身份，并交付活动就绪的 Veo4 视频。"
+        "question": "sparkrobinai.io 是什么？",
+        "answer": "sparkrobinai.io 是独立的 Spark Robin 发布观察与 AI 视频工作流站点。我们帮助创作者整理模型动态、提示词、参考素材和分镜草稿，但不代表 Google、Google DeepMind 或任何官方模型团队。"
       },
       "characterConsistency": {
-        "question": "Veo4 如何在多个场景中保持角色一致性？",
-        "answer": "Veo4 故事板在您的 Veo4 视频的每个场景中保留角色外观、服装和造型。这一 Veo4 功能对于品牌叙事、角色驱动的活动和产品演示至关重要，在这些场景中一致的身份很重要。"
+        "question": "Spark Robin 已经正式发布了吗？",
+        "answer": "截至目前，Spark Robin 相关信息应以 Google 或 Google DeepMind 的官方公告为准。本站会把已确认信息、公开信号和推测内容区分开来，避免把传闻写成事实。"
       },
       "videosLongerThan10s": {
-        "question": "Veo4 能否生成超过 10 秒的视频？",
-        "answer": "是的。Veo4 通过 Veo4 故事板模式支持最多 25-30 秒的扩展时长。这一 Veo4 功能解决了关键限制，能够实现完整的品牌故事而不是碎片化的片段。Veo4 扩展视频在活动中表现更好。"
+        "question": "现在能用它做什么？",
+        "answer": "你可以先准备可复用的文生视频提示词、图生视频参考说明、分镜结构和评审标准。这样当模型能力或官方入口明确后，团队可以更快进入测试。"
       },
       "commercialUse": {
-        "question": "Veo4 视频是否适用于商业广告？",
-        "answer": "绝对可以。Veo4 生成的内容完全授权用于商业用途，包括付费广告、电商视频和社交活动。您保留对创建的 Veo4 视频的完全权利，但需遵守我们的使用指南。"
+        "question": "这些草稿可以用于商业项目吗？",
+        "answer": "提示词、脚本和参考流程可以用于商业项目准备。最终视频的使用权取决于生成模型、素材来源、人物肖像、音乐和平台条款，发布前需要逐项确认。"
       },
       "watermarks": {
-        "question": "Veo4 视频是否包含水印？",
-        "answer": "不 — 所有 Veo4 导出完全无水印。高级 Veo4 计划确保下载时不会出现平台品牌标识。您的 Veo4 视频导出干净整洁，可立即部署用于活动。注意：这仅适用于我们平台添加的水印，不适用于第三方内容。"
+        "question": "这里会冒充官方 Spark Robin 吗？",
+        "answer": "不会。本站是独立站点，不与 Google、Google DeepMind、OpenAI 或官方 Sora 产品有关。涉及模型能力、发布时间和访问方式的内容都应以官方公告为准。"
       },
       "25SecondVideos": {
-        "question": "我可以构建 25 秒的 Veo4 视频吗？",
-        "answer": "是的 — Veo4 故事板支持 25 秒的 Veo4 多场景生成，用于完整的品牌叙事。"
+        "question": "为什么强调提示词系统？",
+        "answer": "AI 视频质量不仅取决于一句提示词，还取决于参考素材、镜头语言、角色约束、风格边界和复盘记录。系统化整理能让每轮测试更有价值。"
       },
       "paymentSafe": {
         "question": "如果我付款，我的付款信息是否安全？",
@@ -278,7 +278,7 @@
   },
   "pricing": {
     "title": "定价计划",
-    "subtitle": "选择适合您 AI 视频生成需求的完美计划。随时取消。",
+    "subtitle": "选择适合提示词测试、参考图草稿和视频工作流整理的计划。随时取消。",
     "creditRateTitle": "基础积分换算：",
     "creditRateDescription": "1 美元 = 10 积分。部分套餐包含额外赠送积分，因此更高档位每美元可获得更多积分。",
     "secureCheckout": "安全结账",
@@ -293,9 +293,9 @@
     "ourPriceValue": "$0.05/秒",
     "fiftyPercentCheaper": "便宜 50%",
     "thanMarket": "比市场",
-    "chooseYourPlan": "选择您的 Veo4 计划",
-    "teaserSubtitle": "专业的 Veo4 视频生成，适用于活动。随时取消。年度计划节省 50%。",
-    "proTip": "💡 <strong>专业提示：</strong> 订阅计划包括 API 访问、webhooks 和优先支持",
+    "chooseYourPlan": "选择您的 Spark Robin 计划",
+    "teaserSubtitle": "用于 Spark Robin 工作流、草稿测试和素材复盘的创作计划。随时取消。年度计划节省 50%。",
+    "proTip": "💡 <strong>提示：</strong> 订阅计划适合持续测试提示词、参考素材和多版本草稿",
     "plans": {
       "monthly": "月度",
       "annual": "年度",
@@ -323,7 +323,7 @@
       "tryAgainLater": "请稍后再试。",
       "failedToCreatePaymentLink": "创建支付链接失败",
       "needHelp": "需要帮助？",
-      "contactSupport": "联系 support@veo4video.io 获取帮助。",
+      "contactSupport": "联系 support@sparkrobinai.io 获取帮助。",
       "contactSupportLink": "联系支持",
       "features": {
         "creditsIncluded": "包含 {count} 积分",
@@ -369,10 +369,10 @@
       "pleaseEnterPrompt": "请输入您的提示",
       "pleaseUploadImage": "请上传图片以生成视频",
       "watermarkRemover": {
-        "title": "Veo4 水印移除器",
+        "title": "Spark Robin 水印移除器",
         "description": "从您托管的 Sora 视频中移除 Sora 水印。粘贴公开的 `sora.chatgpt.com` URL 并运行。API 上的典型处理时间为 1-3 秒。",
-        "seoTitle": "Veo4 水印移除器 | 移除 Sora 水印",
-        "seoDescription": "Veo4 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
+        "seoTitle": "Spark Robin 水印移除器 | 移除 Sora 水印",
+        "seoDescription": "Spark Robin 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
         "input": "输入",
         "output": "输出",
         "videoUrl": "video_url",
@@ -385,8 +385,8 @@
         "waitingForResult": "等待结果…",
         "noOutputYet": "暂无输出",
         "exampleVideo": "示例视频",
-        "exampleVideoDescription": "这是由 Veo4 AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
-        "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Veo4 视频干净整洁，适合品牌使用。",
+        "exampleVideoDescription": "这是由 Spark Robin AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
+        "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Spark Robin 视频干净整洁，适合品牌使用。",
         "browserNotSupportVideo": "您的浏览器不支持视频标签。"
       }
     },
@@ -416,8 +416,8 @@
       "answer": "订阅存储桶在每个计费期重置，不会结转。一次性附加积分转到灵活存储桶，不会被订阅重置清除。"
     },
     "faqRefundPolicy": {
-      "question": "veo4video.io 的退款政策是什么？",
-      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@veo4video.io 退款。退款在 5-7 个工作日内处理。"
+      "question": "sparkrobinai.io 的退款政策是什么？",
+      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@sparkrobinai.io 退款。退款在 5-7 个工作日内处理。"
     },
     "faqContentRestrictions": {
       "question": "是否有视频内容限制？",
@@ -469,151 +469,151 @@
     "video": "视频",
     "credits": "积分",
     "exampleVideo": "示例视频",
-    "sampleVideoDescription": "这是由 Veo4 AI 生成的示例视频。使用输入面板创建您自己的视频！",
-    "sampleVideoDescriptionUnauthenticated": "这是由 Veo4 AI 生成的示例视频。注册以创建您自己的视频！",
+    "sampleVideoDescription": "这是用于评审的示例视频草稿。使用输入面板创建您自己的版本。",
+    "sampleVideoDescriptionUnauthenticated": "这是用于评审的示例视频草稿。注册后可以创建您自己的版本。",
     "browserNotSupportVideo": "您的浏览器不支持视频标签。",
     "signUpToCreate": "注册以创建您自己的视频",
-    "textToVideoTitle": "Veo 4 文本转视频 | 创建 AI 视频",
-    "textToVideoSubtitle": "将提示词转换为具有强动态、干净场景和广告级输出的 Veo 4 视频。",
-    "textToVideoFeaturesTitle": "AI 视频生成器文本转视频功能",
+    "textToVideoTitle": "Spark Robin 文本转视频 | 提示词工作流",
+    "textToVideoSubtitle": "把创意简报整理成镜头清晰、可评审、可继续迭代的视频提示词草稿。",
+    "textToVideoFeaturesTitle": "文本转视频工作流",
     "featureAIPowered": {
-      "title": "AI 驱动的脚本到屏幕魔法",
-      "description": "使用文本转视频，您只需要一个提示。无论是单个句子还是详细故事，我们的 AI 引擎都会解释您的文本并将其转换为令人惊叹的视觉效果。非常适合创作者、营销人员、教育工作者以及任何想要将文字转化为高影响力视频的人。"
+      "title": "从简报到镜头提示",
+      "description": "把目标、受众、主体、场景、运动和语气拆成清晰结构，减少一句话提示带来的不确定性。"
     },
     "featureCinematic": {
-      "title": "零编辑技能的电影级质量",
-      "description": "我们先进的 AI 确保每一帧都经过专业渲染。您获得流畅的过渡、逼真的照明和动态运动 - 无需打开视频编辑器。从社交短片到产品说明，您的内容获得工作室级别的升级。"
+      "title": "可评审的草稿输出",
+      "description": "每次生成都围绕明确镜头目标展开，方便团队判断哪里有效、哪里需要重新描述。"
     },
     "featureAudio": {
-      "title": "与您的消息匹配的内置音频",
-      "description": "无需单独的音效设计。AI 会生成与您的脚本同步的背景音乐、环境声音甚至旁白。这是端到端的 AI 视频生成器体验，专为匆忙的创作者而设计。"
+      "title": "保留声音和节奏说明",
+      "description": "把旁白、环境声、音乐情绪和剪辑节奏写进提示词，让后续生成或剪辑更容易对齐。"
     },
     "featureContextual": {
-      "title": "以人为中心的上下文场景生成",
-      "description": "系统不仅理解您的文字，还理解背后的情绪、语调和意图。无论您想要悬疑、幽默、情感还是清晰 - AI 都会选择符合您目的的视觉效果。"
+      "title": "围绕语境迭代",
+      "description": "记录每轮草稿的语气、构图和修改原因，逐步建立适合品牌或项目的提示词模板。"
     },
-    "howToUseTitle": "如何使用 AI 视频生成器进行文本转视频",
+    "howToUseTitle": "如何准备文本转视频草稿",
     "howToUseStep1": {
-      "title": "注册或登录 veo4video.io",
-      "description": "创建账户以解锁我们文本转视频界面的全部功能。"
+      "title": "注册或登录 sparkrobinai.io",
+      "description": "创建账户后，可以保存提示词、草稿和生成历史。"
     },
     "howToUseStep2": {
-      "title": "访问文本转视频创建面板",
-      "description": "在您的仪表板上找到该工具，选择从头开始或使用 AI 辅助。"
+      "title": "打开文本转视频面板",
+      "description": "从一个简短想法开始，也可以粘贴完整脚本或镜头说明。"
     },
     "howToUseStep3": {
-      "title": "输入或粘贴您的脚本",
-      "description": "在文本框中输入您的想法。您可以输入简单的提示、场景描述或完整脚本。"
+      "title": "补充镜头和风格约束",
+      "description": "加入主体、地点、相机运动、画面节奏、品牌语气和需要避免的内容。"
     },
     "howToUseStep4": {
-      "title": "点击生成",
-      "description": "点击\"生成\"按钮。AI 将处理您的脚本并创建带有匹配视觉效果、运动和音乐的视频。只需几分钟，您的视频就可以预览和下载了。"
+      "title": "生成并复盘",
+      "description": "生成草稿后，记录有效提示、失败细节和下一轮修改方向。"
     },
-    "whoUsesTitle": "谁使用 Veo4？",
+    "whoUsesTitle": "谁使用 Spark Robin？",
     "whoUsesContentCreators": "内容创作者",
     "whoUsesTikTokMarketers": "TikTok 营销人员",
-    "imageToVideoTitle": "Veo 4 图片转视频 | 照片动起来",
-    "imageToVideoSubtitle": "将照片转换为具有自然运动、清晰细节和广告级输出的 Veo 4 视频，上传图片即可快速生成。",
-    "imageToVideoFeaturesTitle": "Veo4 图片转视频功能 - 高级 AI 视频生成",
+    "imageToVideoTitle": "Spark Robin 图片转视频 | 参考图驱动草稿",
+    "imageToVideoSubtitle": "用产品图、人物图或视觉参考建立运动说明，生成更容易评审和迭代的视频草稿。",
+    "imageToVideoFeaturesTitle": "图片转视频工作流",
     "imageToVideoFeature1": {
-      "title": "Veo4 简单的图片到动感转换",
-      "description": "使用 Veo4 图片转视频，只需上传您的照片，看着它变得生动。Veo4 AI 引擎分析您的图片并生成自然的电影级动感，增强场景效果。Veo4 非常适合产品展示、艺术创作以及将静态时刻转化为动态故事。"
+      "title": "参考图优先",
+      "description": "从已有图片出发，明确需要保留的主体、构图、材质和品牌细节，降低视频草稿偏题的概率。"
     },
     "imageToVideoFeature2": {
-      "title": "Veo4 专业动感，零动画技能",
-      "description": "Veo4 先进的 AI 理解深度、照明和构图。Veo4 生成流畅的相机运动、自然的物体运动和逼真的环境效果 - 所有这些都无需任何动画或视频编辑专业知识。使用 Veo4 将您的作品集照片转化为专业视频内容。"
+      "title": "写清楚运动意图",
+      "description": "为参考图补充推拉摇移、主体动作、背景变化和节奏说明，让每个草稿都有明确评审标准。"
     },
     "imageToVideoFeature3": {
-      "title": "Veo4 自动音频生成",
-      "description": "每个 Veo4 视频都配有完美匹配的背景音乐和环境声音。Veo4 AI 分析您图片的情绪和氛围，创建与视觉故事互补的音频。这是从单张图片开始的完整 Veo4 视频创建体验。"
+      "title": "适合产品和视觉测试",
+      "description": "把同一张参考图变成多个方向的草稿，用于比较镜头语言、卖点表达和渠道适配。"
     },
     "imageToVideoFeature4": {
-      "title": "Veo4 智能场景理解",
-      "description": "Veo4 AI 识别您图片中的物体、人物、风景和场景。Veo4 生成在上下文中有意义的动感 - 无论是穿过树木的微风、在 3D 空间中旋转的产品，还是带有微妙动作的肖像。每个 Veo4 动画都感觉自然且有目的。"
+      "title": "保留复盘记录",
+      "description": "记录参考图、运动提示和生成结果之间的关系，方便下一次更快得到接近目标的版本。"
     },
-    "imageToVideoHowToUseTitle": "如何使用 Veo4 图片转视频生成器",
+    "imageToVideoHowToUseTitle": "如何准备图片转视频草稿",
     "imageToVideoHowToUseStep1": {
-      "title": "注册或登录 veo4video.io",
-      "description": "创建账户以解锁 Veo4 图片转视频的全部功能并开始使用 Veo4 AI 技术。"
+      "title": "注册或登录 sparkrobinai.io",
+      "description": "创建账户后，可以保存参考素材、提示词版本和草稿历史。"
     },
     "imageToVideoHowToUseStep2": {
-      "title": "访问 Veo4 图片转视频面板",
-      "description": "导航到您仪表板上的 Veo4 图片转视频工具。Veo4 界面专为简单的图片到视频转换而设计。"
+      "title": "打开图片转视频面板",
+      "description": "进入仪表板中的图片转视频工具，准备上传参考图片或短视频。"
     },
     "imageToVideoHowToUseStep3": {
-      "title": "将您的图片上传到 Veo4",
-      "description": "拖放或选择您的图片文件进行 Veo4 处理。Veo4 支持照片、插图、产品图片或您想要使用 Veo4 动画化的任何静态视觉。"
+      "title": "上传参考素材",
+      "description": "选择产品图、人物图、场景图或设计稿，并说明哪些视觉元素必须保留。"
     },
     "imageToVideoHowToUseStep4": {
-      "title": "使用 Veo4 生成",
-      "description": "点击\"生成\"按钮，让 Veo4 AI 分析您的图片。Veo4 创建具有自然运动、相机运动和同步音频的视频。您的 Veo4 动画视频将在几分钟内准备就绪。"
+      "title": "生成草稿并比较版本",
+      "description": "生成后对比不同运动方向，记录最有效的相机语言和修改意见。"
     },
-    "imageToVideoPageTitle": "Veo 4 图片转视频",
-    "imageToVideoPageSubtitle": "使用 Veo4 AI 技术将您的图片转化为电影级视频 — 无水印",
-    "imageToVideoTestimonialsTitle": "为什么选择 Veo4 图片转视频生成器",
+    "imageToVideoPageTitle": "Spark Robin 图片转视频",
+    "imageToVideoPageSubtitle": "用参考图建立可评审、可复用的视频草稿流程",
+    "imageToVideoTestimonialsTitle": "为什么使用参考图工作流",
     "imageToVideoTestimonial1": {
-      "quote": "我上传了一张产品照片，Veo4 在几分钟内生成了专业的视频广告。Veo4 完全改变了我为在线商店创建内容的方式！",
+      "quote": "我把产品图和卖点放进去后，很快得到了几版可讨论的运动草稿，团队评审效率高了很多。",
       "author": "Emma L.，电商店主"
     },
     "imageToVideoTestimonial2": {
-      "quote": "作为摄影师，我喜欢 Veo4 如何让我的静态图片变得生动。Veo4 的运动感觉自然，为我的作品集增加了深度。",
+      "quote": "参考图工作流让我能清楚说明哪些构图和光线必须保留，客户反馈也更具体。",
       "author": "Michael R.，专业摄影师"
     },
     "imageToVideoTestimonial3": {
-      "quote": "Veo4 图片转视频功能为我节省了数小时的动画工作。我现在可以使用 Veo4 从现有照片即时创建引人入胜的社交媒体内容。",
+      "quote": "我现在会为每个渠道保留一套提示词和参考图说明，复用起来比重新写提示快得多。",
       "author": "Jessica T.，社交媒体经理"
     },
     "imageToVideoTestimonial4": {
-      "quote": "我用它来为我的房地产列表动画化房产照片。视频看起来很专业，帮助房产在市场中脱颖而出。",
+      "quote": "用房源照片做多个镜头方向测试，比直接讨论抽象创意更容易达成一致。",
       "author": "Robert K.，房地产经纪人"
     },
     "imageToVideoTestimonial5": {
-      "quote": "非常适合将我的设计模型转化为动画演示。AI 理解构图并添加有意义的运动。",
+      "quote": "设计稿、运动说明和修改意见放在一起后，每一轮草稿都更容易追踪。",
       "author": "Alex W.，平面设计师"
     },
     "imageToVideoTestimonial6": {
-      "quote": "从单张产品照片到完整的视频广告 - 这个工具简化了我的整个内容创建工作流程。强烈推荐！",
+      "quote": "从一张产品图到多版视频草稿，这个流程帮助我们快速找到值得继续投入的方向。",
       "author": "Sarah H.，营销总监"
     },
     "pricingBanner": "💎 定价：从每月 $19 起，提供高质量 100 个 AI 生成视频（含音频）",
-    "faqImageToVideoTitle": "关于 AI 视频生成器图片转视频的常见问题",
+    "faqImageToVideoTitle": "关于图片转视频工作流的常见问题",
     "faqImageToVideo": {
       "whatIsTool": {
         "question": "图片转视频工具是什么？",
-        "answer": "我们的 AI 图片转视频工具使用先进的 AI 将您的静态图片转化为完全动画化的视频。只需上传您的照片、插图或产品图片，AI 就会通过自然运动、相机运动和同步音频让它变得生动。"
+        "answer": "图片转视频工作流会把参考图片、运动意图、镜头语言和评审标准放在一起，帮助你生成更容易判断和修改的视频草稿。"
       },
       "needExperience": {
         "question": "使用图片转视频工具是否需要任何动画或视频编辑经验？",
-        "answer": "不需要经验。只需上传您的图片文件，AI 将自动生成具有自然运动和专业效果的高质量动画视频 - 无需技术技能。"
+        "answer": "不需要动画经验，但越清楚地说明主体、镜头、节奏和不能改变的元素，草稿越容易接近目标。"
       },
       "imageTypes": {
         "question": "哪些类型的图片最适合图片转视频工具？",
-        "answer": "该工具适用于各种图片，包括产品照片、肖像、风景、插图、建筑照片和设计模型。AI 分析构图并为每种图片类型生成在上下文中有意义的运动。"
+        "answer": "产品照片、肖像、风景、插图、建筑照片和设计稿都可以使用。关键是补充清楚希望保留的视觉元素和想测试的运动方向。"
       },
       "howLong": {
         "question": "从图片生成视频需要多长时间？",
-        "answer": "大多数视频只需几分钟即可生成，具体取决于复杂性。AI 分析您的图片，生成运动，并添加同步音频。一旦准备就绪，您就可以预览和下载您的动画视频。"
+        "answer": "生成时间取决于模型、队列和草稿复杂度。更重要的是保留每次生成的提示词和反馈，方便下一轮更快收敛。"
       },
       "motionType": {
         "question": "AI 为图片添加什么类型的运动？",
-        "answer": "AI 生成在上下文上适当的运动，例如流畅的相机运动、自然的物体运动、环境效果（如穿过树木的风）、产品旋转和微妙的肖像运动。运动增强图片效果而不会分散注意力。"
+        "answer": "你可以描述推拉摇移、产品转动、人物微动作、背景变化、光线变化或节奏变化。建议把运动写得具体，而不是只写“更有电影感”。"
       },
       "commercialUse": {
         "question": "我可以将图片转视频生成的视频用于商业目的吗？",
-        "answer": "可以。使用我们的 AI 创建的视频可用于营销、电商、社交媒体、商业演示和任何其他商业用途，只要它们遵循我们的使用和许可条款。"
+        "answer": "提示词和草稿流程可以用于商业项目准备。最终视频是否可商用，还需要确认参考图片版权、人物授权、音乐来源和生成模型条款。"
       }
     },
     "getStartedImageToVideo": {
-      "title": "开始使用 AI 视频生成器进行图片转视频",
-      "description": "准备好让您的图片变得生动了吗？升级以访问更快的渲染、更长的视频时长、高级动感效果和高级样式。无论您是在创建产品广告、作品集展示还是社交媒体内容，我们的 Pro 计划都为您提供将静态图片转化为令人惊叹的动画视频所需的一切 - 轻松自如。",
-      "button": "获取高级版"
+      "title": "开始整理图片转视频工作流",
+      "description": "为产品图、作品集、社交素材或品牌视觉建立参考图说明、运动提示和复盘记录，让每一轮草稿都能沉淀为下一次创作资产。",
+      "button": "查看计划"
     },
     "reframeMode": {
       "model": "模型",
-      "sora3": "Veo4",
-      "sora3Pro": "Veo4 pro",
-      "sora3Description": "OpenAI 的高级视频生成模型，具有高质量输出和精确控制。",
-      "sora3ProDescription": "OpenAI 的高级视频生成模型，具有增强的质量、卓越的逼真度和高级控制功能。",
+      "sora3": "Spark Robin",
+      "sora3Pro": "Spark Robin pro",
+      "sora3Description": "用于结构化提示词、参考素材和视频草稿的标准工作流。",
+      "sora3ProDescription": "用于更复杂分镜、更多版本测试和团队复盘的增强工作流。",
       "prompt": "提示 *",
       "promptTooltip": "描述您想从参考图片创建的运动",
       "aiExamples": "AI 示例",
@@ -743,50 +743,50 @@
       "duration": "时长",
       "generatingStoryboard": "正在生成故事板...",
       "generationTimeNote": "⏱️ 这通常需要 5-15 分钟。请保持此页面打开。",
-      "exampleDescription": "这是一个 25 秒多场景故事板视频的示例。配置您的场景并点击生成以创建您自己的视频。",
-      "exampleNote": "示例：3 场景故事板（8秒 + 8秒 + 9秒 = 总计 25秒）",
-      "whatIsSora3ProStoryboard": "什么是 Veo4 Pro 故事板？",
-      "sora3ProStoryboardDescription": "Veo4 Pro 故事板是为顺序内容制作而设计的尖端 AI 视频生成系统。为 YouTube Shorts、TikTok 和 Reels 构建最多 25 秒的多场景 AI 视频。这个强大的平台支持多场景协调，保持视觉一致性和连贯性，提供对最多 25 秒长度的输出的精确控制，并导出带音频的 HD 质量视频。",
-      "upTo25sDuration": "最多 25 秒时长",
+      "exampleDescription": "这是一个多场景故事板草稿示例。配置场景、镜头和参考素材后生成您自己的版本。",
+      "exampleNote": "示例：3 个场景组成一个完整叙事节奏",
+      "whatIsSora3ProStoryboard": "什么是 Spark Robin Pro 故事板工作流？",
+      "sora3ProStoryboardDescription": "Spark Robin Pro 故事板用于把顺序内容拆成可管理的场景、镜头、参考素材和修改记录。它适合提前规划短视频、产品叙事、品牌提案和多版本草稿，让团队在评审时能看到每个镜头的目标和修改依据。",
+      "upTo25sDuration": "多场景节奏规划",
       "multiSceneControl": "多场景控制（故事板）",
-      "socialMediaReady": "社交媒体就绪",
-      "hdQualityAudio": "HD 质量 + 音频",
-      "whatPeopleAreSaying": "人们对 Veo4 Pro 故事板的评价",
-      "keyFeatures": "Veo4 Pro 故事板的主要功能",
+      "socialMediaReady": "渠道版本规划",
+      "hdQualityAudio": "声音与节奏备注",
+      "whatPeopleAreSaying": "人们对 Spark Robin Pro 故事板的评价",
+      "keyFeatures": "Spark Robin Pro 故事板的主要功能",
       "multiSceneSequencing": "多场景排序",
-      "multiSceneSequencingDescription": "使用 Veo4 Pro 故事板，定义多个场景以创建连贯的故事线。Veo4 Pro 故事板引擎确保场景之间的流畅过渡，实现无缝的多场景视频。",
+      "multiSceneSequencingDescription": "使用 Spark Robin Pro 故事板定义多个场景，明确每个镜头的目标、主体、动作和转场逻辑。",
       "visualConsistency": "视觉一致性",
-      "visualConsistencyDescription": "Veo4 Pro 故事板在所有场景中保持一致的视觉样式和元素，提供观众期望从 Veo4 Pro 故事板获得的专业质量视频输出。",
+      "visualConsistencyDescription": "在所有场景中记录需要保持一致的人物、产品、品牌色、材质和画面风格。",
       "flexibleOutputControl": "灵活的输出控制",
-      "flexibleOutputControlDescription": "使用 Veo4 Pro 故事板生成最多 25 秒的视频。使用 Veo4 Pro 故事板选择 10 秒、15 秒或 25 秒时长选项以适应您的内容需求。",
+      "flexibleOutputControlDescription": "根据渠道和叙事目标规划不同长度、节奏和镜头数量，方便比较多个草稿方向。",
       "referenceImageSupport": "参考图片支持",
-      "referenceImageSupportDescription": "上传参考图片以指导 Veo4 Pro 故事板生成过程，确保整个 Veo4 故事板视频的视觉一致性。",
-      "howToUse": "如何使用 Veo4 Pro 故事板",
+      "referenceImageSupportDescription": "上传参考图片并说明哪些细节必须保留，帮助每个场景保持视觉方向一致。",
+      "howToUse": "如何使用 Spark Robin Pro 故事板",
       "step1DefineScenes": "定义场景",
-      "step1Description": "为 Veo4 Pro 故事板详细描述每个场景",
+      "step1Description": "为每个场景写清楚目标、主体、动作和镜头语言",
       "step2SetParameters": "设置参数",
-      "step2Description": "选择时长（10秒/15秒/25秒）和宽高比",
+      "step2Description": "选择宽高比、节奏和每个镜头的时间分配",
       "step3UploadReference": "上传参考",
-      "step3Description": "添加图片以指导 Veo4 Pro 故事板（可选）",
+      "step3Description": "添加图片并说明需要保留的视觉元素（可选）",
       "step4Generate": "生成",
-      "step4Description": "点击生成，让 Veo4 Pro 故事板创建您的视频",
-      "perfectFor": "非常适合 TikTok、Instagram Reels、YouTube Shorts 和品牌内容制作。了解更多关于我们的",
+      "step4Description": "点击生成，创建可评审的视频草稿并记录反馈",
+      "perfectFor": "适合 TikTok、Instagram Reels、YouTube Shorts 和品牌内容的前期规划。了解更多关于我们的",
       "pricingPlans": "定价计划",
       "pricing": "💎 定价",
-      "pricingDescription": "从每月 $19 起，提供带音频的高质量多场景 AI 视频",
+      "pricingDescription": "从每月 $19 起，用于多场景草稿、提示词测试和参考素材工作流",
       "powerfulStoryboardFeatures": "强大的故事板功能",
       "sceneBySceneControl": "逐场景控制",
-      "sceneBySceneControlDescription": "拖放场景，自定义提示和资源以实现完美流程。",
+      "sceneBySceneControlDescription": "拖放场景，自定义提示词和参考素材，让叙事流程更清楚。",
       "socialMediaFormats": "社交媒体格式",
-      "socialMediaFormatsDescription": "TikTok、Instagram Reels、YouTube Shorts 的内置模板。",
+      "socialMediaFormatsDescription": "为 TikTok、Instagram Reels、YouTube Shorts 准备不同构图和节奏版本。",
       "fastExportShare": "快速导出和分享",
-      "fastExportShareDescription": "在几分钟内生成、预览和下载您的 Veo4 故事板视频。"
+      "fastExportShareDescription": "快速生成、预览和保存您的 Spark Robin 故事板草稿。"
     },
     "watermarkRemover": {
-      "title": "Veo4 水印移除器",
-      "description": "从您托管的 Sora 视频中移除 Sora 水印。粘贴公开的 `sora.chatgpt.com` URL 并运行。API 上的典型处理时间为 1-3 秒。",
-      "seoTitle": "Veo4 水印移除器 | 移除 Sora 水印",
-      "seoDescription": "Veo4 水印移除器：在几秒内从托管的 Sora 视频中移除 Sora 水印。商业用途，API 就绪，适用于公开的 sora.chatgpt.com 链接。",
+      "title": "Spark Robin 素材整理器",
+      "description": "整理公开托管的视频素材 URL，帮助团队记录来源、版本和复盘备注。",
+      "seoTitle": "Spark Robin 素材整理器 | 视频素材工作流",
+      "seoDescription": "Spark Robin 素材整理器用于记录公开视频素材、版本备注和评审信息，适合 AI 视频工作流复盘。",
       "input": "输入",
       "output": "输出",
       "videoUrl": "video_url",
@@ -799,8 +799,8 @@
       "waitingForResult": "等待结果…",
       "noOutputYet": "暂无输出",
       "exampleVideo": "示例视频",
-      "exampleVideoDescription": "这是由 Veo4 AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
-      "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Veo4 视频干净整洁，适合品牌使用。",
+      "exampleVideoDescription": "这是一个示例视频素材。添加您的公开素材 URL 以记录版本和反馈。",
+      "creditsInfo": "此工具每次运行消耗 10 积分，用于素材处理和工作流记录。",
       "browserNotSupportVideo": "您的浏览器不支持视频标签。"
     },
     "promptExamples": {
@@ -815,49 +815,49 @@
     }
   },
   "demoGallery": {
-    "title": "探索 Veo4 视频示例",
-    "description": "由我们平台创建的真实 Veo4 视频，展示 Veo4 在广告和品牌内容方面的能力。",
+    "title": "探索 Spark Robin 视频示例",
+    "description": "用于观察镜头结构、参考素材和提示词方向的 Spark Robin 视频草稿示例。",
     "seeMoreExamples": "查看更多示例",
     "tapToUnmute": "点击取消静音"
   },
   "keyFeatures": {
-    "title": "Veo4 AI 的独特之处",
+    "title": "Spark Robin AI 的独特之处",
     "noWatermark": {
-      "title": "无水印",
-      "description": "您的视频干净、可品牌化，随时可用于商业用途。"
+      "title": "草稿清晰",
+      "description": "每个版本都围绕明确的创意目标、参考素材和评审标准展开。"
     },
     "bestCostPerformance": {
-      "title": "最佳性价比",
-      "description": "比其他 AI 视频工具便宜多达 10 倍，提供丰富的积分。"
+      "title": "提示词可复用",
+      "description": "把有效的镜头语言和修改记录沉淀下来，减少下一次从零开始。"
     },
     "fastConvenient": {
-      "title": "快速便捷",
-      "description": "在几分钟内在浏览器中生成 10 秒片段。"
+      "title": "快速比较方向",
+      "description": "在浏览器中测试不同提示词、参考图和运动设定，尽快找到可继续推进的版本。"
     },
     "sora3ProStoryboard": {
-      "title": "Veo4 Pro 故事板（25 秒）",
-      "description": "Veo4 故事板叙事，适用于广告、预告片、产品展示和电影级短片。"
+      "title": "Spark Robin 分镜系统",
+      "description": "把多场景想法拆成镜头、角色、动作和转场，方便团队协作评审。"
     },
     "textToVideoImageToVideo": {
       "title": "文本转视频和图片转视频",
-      "description": "上传图片并为其添加动画动感，或用一句话描述场景。"
+      "description": "上传参考图建立运动说明，或用结构化提示词描述场景。"
     },
     "socialReady": {
-      "title": "社交媒体就绪",
-      "description": "非常适合 TikTok、Reels、Shorts 和付费广告。"
+      "title": "面向渠道测试",
+      "description": "为短视频、产品页、品牌内容和内部提案准备不同版本的创意草稿。"
     },
     "trySora3Free": {
-      "title": "免费试用 Veo4 — 无需编辑",
-      "description": "开始使用 Veo4 AI 驱动的工具创建电影级视频。Veo4 使视频创建变得简单 - 无需经验。发现 Veo4 能为您的项目做什么。免费试用 Veo4，了解为什么创作者选择 Veo4 进行 AI 视频生成。",
-      "startGenerating": "开始生成"
+      "title": "试用 Spark Robin 工作流",
+      "description": "从提示词、参考图和分镜草稿开始，了解 Spark Robin 相关创作流程如何服务您的项目。",
+      "startGenerating": "创建草稿"
     }
   },
   "testimonials": {
     "title": "受到全球创作者喜爱",
-    "subtitle": "加入全球使用 Veo4 进行 AI 视频生成的创作者。查看用户对我们平台无水印视频和渲染功能的评价。发现为什么使用 Veo4 技术的创作者信任 Veo4。",
+    "subtitle": "看看创作者如何用 Spark Robin 工作流整理提示词、参考素材和多版本草稿。",
     "ctaTitle": "加入使用 AI 制作视频的创作者",
-    "ctaDescription": "体验 AI 视频生成，具有无水印视频、音频功能和高效渲染。立即开始创建视频。",
-    "ctaButton": "立即开始创建"
+    "ctaDescription": "用结构化提示词、参考图说明和复盘记录准备下一轮 AI 视频创作。",
+    "ctaButton": "开始创建草稿"
   },
   "error": {
     "goHome": "返回首页",
@@ -865,7 +865,7 @@
   },
   "auth": {
     "signIn": "登录",
-    "signInToSora3": "登录 Veo4",
+    "signInToSora3": "登录 Spark Robin",
     "createAccount": "创建账户",
     "checkEmail": "检查您的电子邮件",
     "backToSignUp": "返回注册",
@@ -888,31 +888,31 @@
     "redirectingToGoogle": "正在重定向到 Google..."
   },
   "sora3Capabilities": {
-    "title": "为什么 Veo4 在广告活动中表现出色",
-    "subtitle": "Veo4 帮助团队更快做出更强的视频内容，拥有更顺滑的动态、更干净的场景表现，以及更适合真实营销流程的输出。",
+    "title": "Spark Robin 工作流适合哪些创作环节",
+    "subtitle": "Spark Robin 相关能力仍需要以官方发布为准。本站重点帮助团队提前整理提示词、参考素材、分镜和评审流程。",
     "cinematicRealism": {
-      "title": "Veo4 电影级质量",
-      "description": "Veo4 产生工作室级别的视觉效果，提升品牌信息传递。\n\n每个 Veo4 视频保持一致的质量，无伪影。\n\nVeo4 输出无缝适用于产品发布、品牌故事和营销活动。"
+      "title": "视觉目标拆解",
+      "description": "把“高级感”“真实感”等模糊描述拆成光线、镜头、材质、主体和构图。\n\n让每个草稿都有明确判断标准。\n\n减少团队只凭感觉评审的情况。"
     },
     "naturalCameraMotion": {
-      "title": "Veo4 智能相机控制",
-      "description": "Veo4 自动处理专业的相机运动和角度。\n\nVeo4 生成流畅、自然的运动，感觉是有意的。\n\nVeo4 相机工作立即增强您广告的制作价值。"
+      "title": "镜头运动说明",
+      "description": "把推、拉、摇、移、跟拍、旋转等运动写成具体提示。\n\n明确运动速度、主体关系和转场节奏。\n\n让不同版本更容易比较。"
     },
     "consistentCharacters": {
-      "title": "Veo4 角色一致性",
-      "description": "Veo4 在多个场景中保持角色外观。\n\nVeo4 处理复杂的角色动作，同时保留身份。\n\nVeo4 专为多场景品牌叙事和广告故事讲述而构建。"
+      "title": "角色和品牌约束",
+      "description": "记录人物外观、服装、产品细节和品牌禁区。\n\n在多版本草稿中持续检查一致性。\n\n适合角色故事、产品演示和品牌视觉测试。"
     },
     "longFormPlatformReady": {
-      "title": "Veo4 扩展时长",
-      "description": "Veo4 支持最多 25 秒的视频，用于完整的品牌故事。\n\nVeo4 内容针对社交平台和广告投放进行了优化。\n\nVeo4 视频导出干净整洁，可立即用于活动。"
+      "title": "多场景分镜",
+      "description": "把长一点的创意拆成开场、推进、转折和收尾。\n\n每个镜头都有单独提示和评审目标。\n\n适合提案、故事短片和产品叙事准备。"
     },
     "advancedSceneIntelligence": {
-      "title": "Veo4 场景理解",
-      "description": "Veo4 理解空间关系和环境上下文。\n\nVeo4 生成具有逼真物理和自然交互的场景。\n\nVeo4 在产品展示、生活方式内容和品牌世界构建方面表现出色。"
+      "title": "场景关系整理",
+      "description": "明确人物、产品、空间、背景和道具之间的关系。\n\n为参考图补充不能改变的关键元素。\n\n让生成结果更容易定位问题。"
     },
     "audioSoundGeneration": {
-      "title": "Veo4 集成音频",
-      "description": "Veo4 生成与您的视觉效果匹配的同步音效。\n\nVeo4 自动添加对话、环境声音和效果。\n\nVeo4 交付完整的视频，无需额外编辑即可部署。"
+      "title": "声音和节奏备注",
+      "description": "提前记录旁白、音乐情绪、环境声和剪辑节奏。\n\n让视频草稿和后期制作保持同一方向。\n\n适合需要团队协作的内容项目。"
     }
   },
   "paymentSuccess": {
@@ -925,14 +925,14 @@
     "autoRedirect": "您将在几秒钟内自动重定向..."
   },
   "account": {
-    "dashboardMetaTitle": "控制台 | 管理您的 VEO 4 账户",
-    "dashboardMetaDescription": "在一个地方管理您的 VEO 4 账户、积分、订阅、付款和生成历史。",
-    "myCreationsMetaTitle": "我的作品 | VEO 4 生成历史",
-    "myCreationsMetaDescription": "查看您的 VEO 4 生成历史，回放已完成的视频，并下载需要保留的作品。",
+    "dashboardMetaTitle": "控制台 | 管理您的 Spark Robin 账户",
+    "dashboardMetaDescription": "在一个地方管理您的 Spark Robin 账户、积分、订阅、付款和生成历史。",
+    "myCreationsMetaTitle": "我的作品 | Spark Robin 生成历史",
+    "myCreationsMetaDescription": "查看您的 Spark Robin 生成历史，回放已完成的视频，并下载需要保留的作品。",
     "dashboardPageTitle": "账户控制台",
     "dashboardPageDescription": "在一个页面中管理订阅、积分、付款记录和视频历史。",
     "myCreationsPageTitle": "我的作品",
-    "myCreationsPageDescription": "查看您的 VEO 4 生成历史，回放完成的视频，并下载想保留的片段。",
+    "myCreationsPageDescription": "查看您的 Spark Robin 生成历史，回放完成的视频，并下载想保留的片段。",
     "stats": {
       "creditsAvailable": "可用积分",
       "videosGenerated": "已生成视频",

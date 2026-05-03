@@ -1,12 +1,12 @@
-import { redirect } from 'next/navigation'
+import { redirect } from 'next/navigation';
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic';
 
-export default async function Page({
+export default async function LegacyLocalizedSparkRobinStoryboardPage({
   params
 }: {
   params: Promise<{ locale: string }>
 }) {
-  const { locale } = await params
-  redirect(`/${locale}/veo4-text-to-video`)
+  const { locale } = await params;
+  redirect(`/${locale}/spark-robin-text-to-video`);
 }

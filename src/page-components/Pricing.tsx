@@ -44,9 +44,9 @@ const PricingPage = () => {
   return (
     <div className="min-h-screen bg-background" suppressHydrationWarning>
       <SEOHead 
-        title="Pricing Plans - Choose Your AI Video Generation Plan | Veo4"
-        description="View Veo4 pricing plans. Choose from Basic, Creator, or Pro plans with monthly and annual options. Create professional videos with Veo4 technology."
-        canonical="https://veo4video.io/pricing"
+        title="Pricing Plans - Choose Your AI Video Generation Plan | Spark Robin"
+        description="View plans for Spark Robin workflow credits, prompt tests, reference-led video drafts, and ongoing AI video iteration."
+        canonical="https://sparkrobinai.io/pricing"
       />
       
       <div className="pt-20 pb-16">

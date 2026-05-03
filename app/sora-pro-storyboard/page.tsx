@@ -5,5 +5,5 @@ export const dynamic = 'force-dynamic';
 
 export default function LegacySoraProStoryboardPage() {
   const locale = detectEntryLocale();
-  redirect(`/${locale}/veo4-text-to-video`);
+  redirect(`/${locale}/spark-robin-text-to-video`);
 }

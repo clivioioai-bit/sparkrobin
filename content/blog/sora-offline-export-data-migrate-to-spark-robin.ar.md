@@ -1,9 +1,9 @@
 ---
-title: "أصبح Sora غير متاح رسميًا: كيفية تصدير بياناتك والانتقال إلى Veo 4"
-description: "دليل عملي بعد إيقاف Sora: التواريخ المهمة، تصدير فيديوهات Sora، حفظ المطالبات، والانتقال إلى سير عمل Veo4Video."
+title: "أصبح Sora غير متاح رسميًا: كيفية تصدير بياناتك والانتقال إلى Spark Robin"
+description: "دليل عملي بعد إيقاف Sora: التواريخ المهمة، تصدير فيديوهات Sora، حفظ المطالبات، والانتقال إلى سير عمل sparkrobinai.io."
 date: "2026-04-30"
-author: "فريق Veo4"
-tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Veo 4", "ai-video"]
+author: "فريق Spark Robin"
+tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Spark Robin", "ai-video"]
 featured: true
 ---
 
@@ -13,7 +13,7 @@ featured: true
 - تشير OpenAI إلى أن **واجهة Sora API ستتوقف في 24 سبتمبر 2026**.
 - إذا أنشأت محتوى على Sora، صدّره في أسرع وقت. بعد الإيقاف وأي نافذة تصدير نهائية، قد تُحذف البيانات نهائيًا.
 - لا تحفظ ملف MP4 فقط. احفظ المطالبات، الصور المرجعية، النسبة، الإعدادات، الملاحظات وحقوق الاستخدام.
-- يمكن لـ Veo4Video دعم text-to-video و image-to-video وتخطيط المشاهد المتعددة وإنتاج فيديوهات إعلانية.
+- يمكن لـ sparkrobinai.io دعم text-to-video و image-to-video وتخطيط المشاهد المتعددة وإنتاج فيديوهات إعلانية.
 
 ## جدول إيقاف Sora
 
@@ -58,11 +58,11 @@ featured: true
 | `notes.md` | ما نجح وما يجب تغييره |
 | `license.txt` | الحقوق والعميل والاستخدام |
 
-## لماذا الانتقال إلى سير عمل Veo 4؟
+## لماذا الانتقال إلى سير عمل Spark Robin؟
 
 مستخدمو Sora يحتاجون إلى استمرار الإنتاج: تحويل النصوص إلى مقاطع، اختبار إعلانات المنتجات، إنشاء فيديوهات عمودية، تحريك الصور وبناء مشاهد متعددة.
 
-يوفر Veo4Video مسارات **Veo 4 text-to-video** و **Veo 4 image-to-video** وسير عمل storyboard للحملات.
+يوفر sparkrobinai.io مسارات **Spark Robin text-to-video** و **Spark Robin image-to-video** وسير عمل storyboard للحملات.
 
 ## تحويل المطالبات
 

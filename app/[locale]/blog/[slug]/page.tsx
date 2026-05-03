@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BlogPostPage from '@/components/blog/BlogPostPage';
 import { routing } from '@/i18n/routing';
-import { getPostBySlug, getPostSlugs } from '@/lib/blog';
+import { getAvailablePostLocales, getPostBySlug, getPostSlugs, hasPostLocale } from '@/lib/blog';
 import { generateHreflangAlternates } from '@/utils/hreflang';
 
 export const dynamic = 'force-dynamic';
@@ -20,13 +20,22 @@ export async function generateMetadata({
   }
 
   const url = locale === 'en'
-    ? `https://veo4video.io/blog/${post.slug}`
-    : `https://veo4video.io/${locale}/blog/${post.slug}`;
+    ? `https://sparkrobinai.io/blog/${post.slug}`
+    : `https://sparkrobinai.io/${locale}/blog/${post.slug}`;
+  const hasLocalizedContent = hasPostLocale(post.slug, locale);
 
   return {
     title: post.meta.title,
     description: post.meta.description,
-    alternates: generateHreflangAlternates(`/blog/${post.slug}`, locale),
+    alternates: hasLocalizedContent
+      ? generateHreflangAlternates(`/blog/${post.slug}`, locale, getAvailablePostLocales(post.slug))
+      : {
+        canonical: `https://sparkrobinai.io/blog/${post.slug}`,
+      },
+    robots: hasLocalizedContent ? undefined : {
+      index: false,
+      follow: true,
+    },
     openGraph: {
       title: post.meta.title,
       description: post.meta.description,
@@ -47,7 +56,9 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    getPostSlugs().map((slug) => ({ locale, slug }))
+    getPostSlugs()
+      .filter((slug) => hasPostLocale(slug, locale))
+      .map((slug) => ({ locale, slug }))
   );
 }
 

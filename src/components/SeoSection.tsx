@@ -9,11 +9,11 @@ const SeoSection = () => {
         {/* Main SEO Content */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
-            The Best <span className="text-primary">Veo4 Platform</span> for AI Video Generation in 2025
+            A Practical <span className="text-primary">Spark Robin Watch & Workflow</span> Hub
           </h2>
           <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-            Veo4 Studio 提供 <strong>原生音频的 AI 视频生成</strong>，支持文字与图片双模式输入，
-            通过安全的 REST API 或可视化控制台在 45 秒内交付高清成片。无需复杂配置，即可把 Veo4 接入到任何产品或创作流程。
+            Spark Robin 相关信息还在快速变化。这个站点不再用夸张参数包装模型，
+            而是帮助创作者整理提示词、参考图、镜头说明和可复用的 AI 视频工作流。
           </p>
           
           <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -22,10 +22,10 @@ const SeoSection = () => {
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <Zap className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold">Veo4 Fast 渲染</h3>
+                <h3 className="text-lg font-semibold">Release Watch</h3>
               </div>
                 <p className="text-muted-foreground text-sm">
-                  采用优化后的 <strong>Veo4 Fast</strong> 编排流程，平均 30-45 秒即可输出及 8-16 秒、1080p 的视频，并同步生成环境音与对白。
+                  跟踪 Spark Robin、Veo 与 Google Cloud 文档中的真实更新，把确认信息和市场传闻区分开，避免 SEO 文案过度承诺。
                 </p>
             </Card>
 
@@ -34,10 +34,10 @@ const SeoSection = () => {
                 <div className="p-2 bg-accent/10 rounded-lg">
                   <Code className="w-5 h-5 text-accent-foreground" />
                 </div>
-                <h3 className="text-lg font-semibold">Developer-First API</h3>
+                <h3 className="text-lg font-semibold">Prompt System</h3>
               </div>
                 <p className="text-muted-foreground text-sm">
-                  简洁的 <strong>REST API</strong> 与 webhooks，配套 TypeScript / Python SDK、Postman collection，轻松接入现有流水线与无代码工具。
+                  把一句话 prompt 拆成主体、镜头、动作、场景、风格和连续性说明，让团队可以复用、比较和持续迭代。
                 </p>
             </Card>
 
@@ -46,10 +46,10 @@ const SeoSection = () => {
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <Globe className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold">全球分发与存储</h3>
+                <h3 className="text-lg font-semibold">Reference Workflow</h3>
               </div>
                 <p className="text-muted-foreground text-sm">
-                  成片自动上传至全球 CDN，提供签名 URL 与生命周期管理，满足高并发播放与企业合规需求。
+                  用产品图、视觉样张和品牌资产作为生成依据，让每次视频草稿都有清晰的创意锚点，而不是纯文本碰运气。
                 </p>
             </Card>
           </div>
@@ -59,7 +59,7 @@ const SeoSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h3 className="text-2xl font-bold mb-6">
-              为什么团队选择 <span className="text-primary">Veo4</span>？
+              为什么需要新的 <span className="text-primary">Spark Robin</span> 文案逻辑？
             </h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
@@ -67,9 +67,9 @@ const SeoSection = () => {
                   <Video className="w-3 h-3 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">面向开发者与工作室</h4>
+                  <h4 className="font-semibold mb-1">从“模型宣传”转向“工作流准备”</h4>
                   <p className="text-sm text-muted-foreground">
-                    提供直接的 Veo4 API 访问，无需额外的租户即可开通，多环境密钥、组织权限与请求日志一应俱全。
+                    现在最有价值的不是重复旧模型卖点，而是帮助用户准备可迁移的创意资产和提示词结构。
                   </p>
                 </div>
               </div>
@@ -79,9 +79,9 @@ const SeoSection = () => {
                   <Sparkles className="w-3 h-3 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">原生音频 + 多比例输出</h4>
+                  <h4 className="font-semibold mb-1">从“参数堆叠”转向“可信信息”</h4>
                   <p className="text-sm text-muted-foreground">
-                    支持文字/图片驱动生成，输出 16:9、9:16、1:1 等多种比例，并自动生成对白与环境音效，满足社媒与广告投放需求。
+                    对未确认的 Spark Robin 参数保持克制，把官方确认、合理推测和站内功能分开表达。
                   </p>
                 </div>
               </div>
@@ -91,9 +91,9 @@ const SeoSection = () => {
                   <Clock className="w-3 h-3 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">按使用量计费</h4>
+                  <h4 className="font-semibold mb-1">从“一次生成”转向“可复盘迭代”</h4>
                   <p className="text-sm text-muted-foreground">
-                    采用透明的积分体系，免费额度即可体验，升级套餐后可享批量优惠与 SLA 保障。
+                    每个草稿都保留创意意图，方便团队比较版本、复用镜头语言，并快速进入下一轮修改。
                   </p>
                 </div>
               </div>
@@ -105,14 +105,14 @@ const SeoSection = () => {
               <h4 className="text-lg font-semibold mb-4">Perfect for:</h4>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "产品团队",
-                  "影视动画工作室", 
-                  "营销与广告代理商",
-                  "短视频与直播平台",
-                  "教育培训企业",
-                  "SaaS 创业公司",
-                  "游戏与虚拟世界",
-                  "AR/VR 创作者"
+                  "AI 视频 SEO 团队",
+                  "内容创作者", 
+                  "产品营销团队",
+                  "广告创意团队",
+                  "电商品牌",
+                  "短视频运营",
+                  "创意工作室",
+                  "模型观察者"
                 ].map((useCase) => (
                   <Badge key={useCase} variant="secondary" className="text-xs">
                     {useCase}
@@ -125,11 +125,11 @@ const SeoSection = () => {
               <h4 className="text-lg font-semibold mb-4">Trending Keywords:</h4>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "veo4",
-                  "veo4 ai",
-                  "sora video generator",
-                  "veo4 text to video",
-                  "veo4 api",
+                  "spark-robin",
+                  "spark robin ai",
+                  "google spark robin",
+                  "spark-robin text to video",
+                  "spark robin api",
                   "ai video generator",
                   "text to video",
                   "image to video"
@@ -142,9 +142,9 @@ const SeoSection = () => {
             </div>
 
             <div className="bg-card/30 rounded-lg p-4 border border-primary/20">
-              <h4 className="font-semibold mb-2 text-primary">🚀 2025 行业领先</h4>
+              <h4 className="font-semibold mb-2 text-primary">Release-aware SEO</h4>
               <p className="text-sm text-muted-foreground">
-                被评为 <strong>最具创意的 Veo4 视频平台</strong>。超过 2,500 家企业与创作者已经在使用 Veo4 Studio 批量生成内容。
+                Spark Robin 还没有足够稳定的官方公开参数时，最好的 SEO 不是伪造确定性，而是建立可信、可更新、可操作的内容体系。
               </p>
             </div>
           </div>
@@ -154,26 +154,25 @@ const SeoSection = () => {
         <div className="mt-16 max-w-4xl mx-auto">
           <div className="bg-muted/30 rounded-lg p-8">
             <h3 className="text-xl font-bold mb-4 text-center">
-              如何使用 Veo4 生成 AI 视频
+              如何准备 Spark Robin AI 视频工作流
             </h3>
             <div className="grid md:grid-cols-2 gap-6 text-sm text-muted-foreground">
               <div>
-                <h4 className="font-semibold text-foreground mb-2">快速接入 Veo4 API</h4>
+                <h4 className="font-semibold text-foreground mb-2">建立可复用 Prompt 模板</h4>
                 <p className="mb-3">
-                  使用我们封装的 Veo4 API，仅需一个 POST 请求即可提交文本或图片提示词，后端自动完成渲染、上传与结果轮询。
+                  先写清楚主体、场景、镜头、运动、光线、节奏和品牌限制。这样无论使用当前工具还是未来模型，都能快速迁移。
                 </p>
                 <p>
-                  无需自行处理复杂的鉴权、队列或存储，我们提供鉴权、扩缩容、CDN、Webhook 全流程托管，让你把精力放在产品体验上。
+                  对每次生成保留版本说明，记录哪些镜头语言有效、哪些提示词容易导致偏差，逐步形成团队内部标准。
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-2">Veo4 Fast vs Veo4 High Fidelity</h4>
+                <h4 className="font-semibold text-foreground mb-2">用参考资产降低不确定性</h4>
                 <p className="mb-3">
-                  选择 <strong>Veo4 Fast</strong> 获取最快的生成速度，适合社媒与批量内容；
-                  而 <strong>Veo4 High Fidelity</strong> 专注于电影级细节和物理一致性，适合广告、品牌影片与长线项目。
+                  图片、产品图、分镜图和品牌样张比抽象描述更稳定。把参考资产和 motion notes 组合起来，能让视频草稿更容易评审。
                 </p>
                 <p>
-                  两种模型都支持 16:9、9:16、1:1 等主流比例，并可输出 1080p 原生音频，完美适配社媒、营销、教育等多种场景。
+                  当官方 Spark Robin 信息更新时，这套资产和提示词结构仍然可以复用，不会因为模型名称变化而重做全部内容。
                 </p>
               </div>
             </div>

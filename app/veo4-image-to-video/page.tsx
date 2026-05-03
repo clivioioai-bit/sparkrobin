@@ -3,7 +3,7 @@ import { detectEntryLocale } from '@/i18n/detectEntryLocale';
 
 export const dynamic = 'force-dynamic';
 
-export default function Veo4ImageToVideoPage() {
+export default function LegacySparkRobinImageToVideoPage() {
   const locale = detectEntryLocale();
-  redirect(`/${locale}/veo4-image-to-video`);
+  redirect(`/${locale}/spark-robin-image-to-video`);
 }

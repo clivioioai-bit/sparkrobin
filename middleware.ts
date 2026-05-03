@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
     if (host === 'sora3ai.io' || host === 'www.sora3ai.io') {
       const redirectUrl = new URL(request.url);
       redirectUrl.protocol = 'https:';
-      redirectUrl.host = 'veo4video.io';
+      redirectUrl.host = 'sparkrobinai.io';
       return NextResponse.redirect(redirectUrl, { status: 301 });
     }
 

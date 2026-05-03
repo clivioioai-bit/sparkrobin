@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
 
-const baseUrl = 'https://veo4video.io'
+const baseUrl = 'https://sparkrobinai.io'
 
 /**
  * Generate hreflang alternates for a given pathname and locale
@@ -11,7 +11,8 @@ const baseUrl = 'https://veo4video.io'
  */
 export function generateHreflangAlternates(
   pathname: string,
-  locale: string
+  locale: string,
+  supportedLocales: readonly string[] = routing.locales
 ): Metadata['alternates'] {
   // Normalize pathname: remove leading/trailing slashes except for root
   const normalizedPath = pathname === '/' ? '' : pathname.replace(/^\/|\/$/g, '')
@@ -19,7 +20,7 @@ export function generateHreflangAlternates(
   // Build URLs for each locale
   const urls: Record<string, string> = {}
   
-  routing.locales.forEach((loc) => {
+  supportedLocales.forEach((loc) => {
     // English (default locale) has no prefix
     if (loc === 'en') {
       urls[loc] = normalizedPath ? `${baseUrl}/${normalizedPath}` : `${baseUrl}/en`
@@ -35,22 +36,24 @@ export function generateHreflangAlternates(
     canonical: locale === 'en'
       ? (normalizedPath ? `${baseUrl}/${normalizedPath}` : `${baseUrl}/en`)
       : (normalizedPath ? `${baseUrl}/${locale}/${normalizedPath}` : `${baseUrl}/${locale}/`),
-    languages: {
-      'en': urls['en'],
-      'ar': urls['ar'],
-      'ar-SA': urls['ar'], // Saudi Arabia variant
-      'ar-AE': urls['ar'], // UAE variant
-      'ja': urls['ja'],
-      'ru': urls['ru'],
-      'ru-RU': urls['ru'], // Russia variant
-      'es': urls['es'],
-      'es-ES': urls['es'], // Spain variant
-      'zh-CN': urls['zh-CN'],
-      'zh-Hans': urls['zh-CN'], // Simplified Chinese variant
-      'de': urls['de'],
-      'de-DE': urls['de'], // Germany variant
-      'x-default': urls['en'], // Default fallback
-    }
+    languages: Object.fromEntries(
+      [
+        ['en', urls['en']],
+        ['ar', urls['ar']],
+        ['ar-SA', urls['ar']],
+        ['ar-AE', urls['ar']],
+        ['ja', urls['ja']],
+        ['ru', urls['ru']],
+        ['ru-RU', urls['ru']],
+        ['es', urls['es']],
+        ['es-ES', urls['es']],
+        ['zh-CN', urls['zh-CN']],
+        ['zh-Hans', urls['zh-CN']],
+        ['de', urls['de']],
+        ['de-DE', urls['de']],
+        ['x-default', urls['en']],
+      ].filter((entry): entry is [string, string] => Boolean(entry[1]))
+    ),
   }
   
   return alternates

@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
       const kieData: SoraTaskStatus = await kieResponse.json();
       console.log(`[API] Kie.ai status data:`, JSON.stringify(kieData, null, 2));
 
-      // Handle Kie.ai API response format according to Veo4 Pro Storyboard spec
+      // Handle Kie.ai API response format according to Spark Robin Pro Storyboard spec
       if (kieData.code !== 200) {
         console.error(`[API] Kie.ai API response error:`, kieData);
         throw new Error(`Kie.ai API error: ${kieData.msg || 'Invalid response'}`);

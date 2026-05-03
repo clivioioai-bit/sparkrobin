@@ -20,58 +20,58 @@ type CompareRow = {
 
 const creationCards: ContentCard[] = [
   {
-    title: "Product ads and marketing videos",
+    title: "Prompt libraries for campaign teams",
     description:
-      "Use VEO 4 to turn product angles, offer hooks, and visual direction into polished first drafts for paid campaigns, landing pages, and launch assets."
+      "Capture product angles, audience objections, offer hooks, visual rules, and camera notes in a format your team can reuse across drafts."
   },
   {
-    title: "Social media short-form content",
+    title: "Reference packs for visual consistency",
     description:
-      "Build vertical videos, faster hooks, and more creative variations for TikTok, Reels, Shorts, and performance testing without rebuilding every asset from scratch."
+      "Collect product photos, style frames, brand colors, and example shots before rendering, so each draft starts with a stronger visual anchor."
   },
   {
-    title: "Brand storytelling and creative campaigns",
+    title: "Shot notes for reviewable motion",
     description:
-      "Explore cinematic direction, stronger scene pacing, and more consistent visual language when your goal is atmosphere, narrative flow, and branded storytelling."
+      "Write motion, camera, pacing, and continuity notes separately from the core prompt so reviewers can see what changed between versions."
   },
   {
-    title: "Concept videos and visual prototypes",
+    title: "Release-aware content planning",
     description:
-      "Bridge the gap between static mockups and finished edits by using VEO 4 for launch concepts, product demos, onboarding visuals, and motion-based prototypes."
+      "Build pages and workflows around confirmed updates and clearly labeled assumptions instead of recycling unsupported model claims."
   }
 ];
 
 const advertisingCards: ContentCard[] = [
   {
-    title: "Faster creative testing",
+    title: "Less speculative messaging",
     description:
-      "Validate multiple hooks, openings, and scene directions quickly so your team can test ideas before committing more budget or production time."
+      "Keep the difference between Spark Robin rumors, official Google documentation, and your own workflow capabilities visible."
   },
   {
-    title: "Lower production cost",
+    title: "More useful first drafts",
     description:
-      "Reduce the amount of manual work needed to get a strong first draft, especially when campaigns require fresh assets every week."
+      "A structured brief gives each generated clip a purpose, which makes feedback sharper and the next version easier to improve."
   },
   {
-    title: "More variations for campaigns",
+    title: "Reusable learning across models",
     description:
-      "Generate different pacing styles, framing choices, and visual angles while keeping a repeatable workflow that supports campaign iteration."
+      "The prompt system you build now can carry into Veo, Sora, Runway, Kling, or future Spark Robin access."
   },
   {
-    title: "Better fit for performance marketing",
+    title: "Better editorial trust",
     description:
-      "Use VEO 4 when you need videos designed around a job to be done, such as earning a click, improving message clarity, or increasing product understanding."
+      "Pages that are careful about uncertainty are easier to update when official specs, pricing, or access paths finally change."
   }
 ];
 
 const comparisonRows: CompareRow[] = [
   {
-    model: "VEO 4",
-    bestFor: "Teams that need the fastest path from idea to usable video output",
-    strengths: "Balanced text-to-video and image-to-video workflows, simpler product UX, cleaner export paths, and stronger fit for campaign iteration",
-    chooseWhen: "You want one workflow that gets your team from prompt or image to ad concepts, landing-page media, and social creative without extra setup.",
-    recommendation: "Best overall starting point",
-    href: "/veo4-text-to-video",
+    model: "Spark Robin Workspace",
+    bestFor: "Teams preparing prompt systems, reference assets, and draft reviews around Spark Robin interest",
+    strengths: "Release-watch framing, structured prompts, image-led drafts, reusable shot notes, and a practical workflow for current production",
+    chooseWhen: "You want to keep producing AI video drafts while staying honest about what Google has and has not confirmed.",
+    recommendation: "Best for preparation",
+    href: "/spark-robin-text-to-video",
   },
   {
     model: "Veo 3",
@@ -141,7 +141,7 @@ function CardGrid({
           className="rounded-3xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-6 sm:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.22)] transition-colors hover:border-primary/30"
         >
           <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary mb-4">
-            VEO 4
+            Spark Robin
           </div>
           <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">{item.title}</h3>
           <p className="text-sm sm:text-base leading-7 text-white/65">{item.description}</p>
@@ -210,7 +210,7 @@ function ComparisonSection({ rows }: { rows: CompareRow[] }) {
           <div className="rounded-2xl border border-primary/20 bg-black/20 p-5 sm:p-6">
             <div className="text-white/40 uppercase tracking-[0.18em] text-[11px] mb-2">Why it wins for teams</div>
             <p className="text-sm sm:text-base leading-7 text-white/80">
-              VEO 4 is the most practical default choice when the goal is not just visual quality, but actually shipping ad concepts, landing-page media, and social creative faster.
+              The Spark Robin workspace is strongest when the job is preparation: organizing prompts, references, assumptions, and review notes so your team can move faster when model access changes.
             </p>
             {renderCompareLink(primary, true)}
           </div>
@@ -258,22 +258,21 @@ function CTASection() {
   return (
     <section className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/14 via-white/[0.04] to-transparent p-8 sm:p-10 shadow-[0_16px_50px_rgba(0,0,0,0.25)]">
       <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-        Start Creating with VEO 4
+        Build a Spark Robin-Ready Workflow
       </h2>
       <p className="text-base sm:text-lg text-white/65 leading-8 max-w-3xl">
-        Evaluate VEO 4 by the outcomes it helps you reach: faster first drafts, stronger ad
-        testing, clearer product storytelling, and less friction between idea and execution.
-        The best platform is the one that helps your team learn faster and ship better video.
+        Do not wait for rumors to settle before improving your workflow. Build reusable prompt
+        structures, organize reference assets, and create drafts your team can review today.
       </p>
       <div className="mt-7 flex flex-col sm:flex-row gap-3">
         <Link
-          href="/veo4-text-to-video"
+          href="/spark-robin-text-to-video"
           className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Try Text to Video
         </Link>
         <Link
-          href="/veo4-image-to-video"
+          href="/spark-robin-image-to-video"
           className="inline-flex items-center justify-center rounded-xl border border-white/[0.14] bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/[0.08]"
         >
           Try Image to Video
@@ -283,7 +282,7 @@ function CTASection() {
   );
 }
 
-const Veo4KnowledgeSection = () => {
+const SparkRobinKnowledgeSection = () => {
   const locale = useLocale();
 
   if (locale !== "en") {
@@ -296,24 +295,24 @@ const Veo4KnowledgeSection = () => {
         <div className="space-y-16 sm:space-y-20">
           <section>
             <SectionHeader
-              title="What You Can Create with VEO 4"
-              description="Use VEO 4 for ad concepts, social formats, product storytelling, and motion-first prototypes that shorten the gap between idea and output."
+              title="What to Prepare for Spark Robin"
+              description="Use this workspace to organize prompt libraries, references, shot notes, and release-aware content before official model details are stable."
             />
             <CardGrid items={creationCards} />
           </section>
 
           <section>
             <SectionHeader
-              title="Why VEO 4 Works for Advertising"
-              description="The value of VEO 4 is not only visual quality. It is the speed, variation, and workflow efficiency it brings to real campaign production."
+              title="Why the New Copy Should Be Different"
+              description="Spark Robin content should not sound like a recycled model page. It should communicate uncertainty clearly and give creators something practical to do now."
             />
             <CardGrid items={advertisingCards} />
           </section>
 
           <section>
             <SectionHeader
-              title="VEO 4 vs Other Models"
-              description="Compare VEO 4 with Veo 3, Seedance 2.0, Kling, and Sora 2 to see which model fits campaign production, realism-focused work, or heavier editing workflows."
+              title="Spark Robin Workspace vs Other Models"
+              description="Compare the preparation workflow here with Veo 3, Seedance 2.0, Kling, and Sora 2 so teams can choose between release watching, realism, control, and editing depth."
             />
             <ComparisonSection rows={comparisonRows} />
             <p className="mt-5 text-center text-sm text-white/35 leading-6 max-w-4xl mx-auto">
@@ -328,4 +327,4 @@ const Veo4KnowledgeSection = () => {
   );
 };
 
-export default Veo4KnowledgeSection;
+export default SparkRobinKnowledgeSection;

@@ -379,7 +379,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
           {/* Brand emotional tagline */}
           <div className="pt-3 border-t border-border/50">
             <p className="text-xs text-muted-foreground italic">
-              Made with ❤️ by Veo4 — where AI meets imagination
+              Made with ❤️ by Spark Robin — where AI meets imagination
             </p>
             <p className="text-xs text-muted-foreground mt-1">
               Hang tight, your masterpiece is on its way 🌈
@@ -427,7 +427,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       name: currentJob.params?.prompt?.slice(0, 80) || 'AI generated video',
-      description: currentJob.params?.prompt || 'AI generated video by Veo4',
+      description: currentJob.params?.prompt || 'AI generated video by Spark Robin',
       thumbnailUrl: currentJob.preview_url ? [currentJob.preview_url] : undefined,
       uploadDate: new Date(currentJob.updated_at || Date.now()).toISOString(),
       duration: currentJob.params?.duration_sec
@@ -438,7 +438,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({
       inLanguage: 'en',
       publisher: {
         '@type': 'Organization',
-        name: 'Veo4',
+        name: 'Spark Robin',
         logo: {
           '@type': 'ImageObject',
           url: 'https://ivido.ai/icon.png',

@@ -1,9 +1,9 @@
 ---
-title: "Sora 已正式下线：如何导出数据并迁移到 Veo 4"
-description: "面向创作者的 Sora 停运迁移指南：关键日期、Sora 视频导出方法、Prompt 归档方式，以及如何迁移到 Veo4Video 工作流。"
+title: "Sora 已正式下线：如何导出数据并迁移到 Spark Robin"
+description: "面向创作者的 Sora 停运迁移指南：关键日期、Sora 视频导出方法、Prompt 归档方式，以及如何迁移到 sparkrobinai.io 工作流。"
 date: "2026-04-30"
-author: "Veo4 团队"
-tags: ["OpenAI Sora 停运指南", "如何导出 Sora 视频", "Sora 替代品 2026", "Sora prompt 迁移到 Veo 4", "ai-video"]
+author: "Spark Robin 团队"
+tags: ["OpenAI Sora 停运指南", "如何导出 Sora 视频", "Sora 替代品 2026", "Sora prompt 迁移到 Spark Robin", "ai-video"]
 featured: true
 ---
 
@@ -13,7 +13,7 @@ featured: true
 - OpenAI 表示 **Sora API 将于 2026 年 9 月 24 日**停止服务。
 - 如果你曾在 Sora 中生成内容，应立即导出。OpenAI 表示，在停运及任何最终导出窗口结束后，相关数据会被永久删除。
 - 迁移时不要只保存视频文件，还要保存 prompt、比例、参考图、镜头说明、生成设置和项目备注。
-- Veo4Video 可以承接日常创作中的文本生成视频、图生视频、多镜头规划和广告级输出工作流。
+- sparkrobinai.io 可以承接日常创作中的文本生成视频、图生视频、多镜头规划和广告级输出工作流。
 
 ## Sora 关停时间线
 
@@ -62,7 +62,7 @@ featured: true
 
 这一步决定你是在“保存文件”，还是在“保住可复用的生产流程”。
 
-## 为什么迁移到 Veo 4 工作流？
+## 为什么迁移到 Spark Robin 工作流？
 
 大多数 Sora 用户需要的不是另一个演示工具，而是能继续完成日常任务的创作流程：
 
@@ -73,7 +73,7 @@ featured: true
 - 为营销活动搭建多镜头草案
 - 快速迭代 prompt
 
-Veo4Video 的定位正是承接这些工作：通过 **Veo 4 text-to-video**、**Veo 4 image-to-video** 和多场景工作流，帮助创作者从旧 Sora 项目平稳迁移。
+sparkrobinai.io 的定位正是承接这些工作：通过 **Spark Robin text-to-video**、**Spark Robin image-to-video** 和多场景工作流，帮助创作者从旧 Sora 项目平稳迁移。
 
 ## Prompt 转换指南
 
@@ -83,7 +83,7 @@ Sora prompt 往往是一整段电影感描述。迁移时，建议拆成更明�
 
 > 一辆流线型电动自行车在雨夜霓虹城市中穿行，电影级灯光，街面反射，戏剧化镜头运动，高端广告风格。
 
-### Veo4Video 结构化 prompt
+### sparkrobinai.io 结构化 prompt
 
 ```text
 主体：一辆哑光黑色电动自行车，车架细节清晰
@@ -146,7 +146,7 @@ OpenAI 当前说明是访问 `sora.chatgpt.com/sunset`，点击 **Export**，等
 
 保存最终视频、prompt、参考图、设置、客户备注和授权记录。很多时候，prompt 上下文比单个视频文件更有价值。
 
-### Sora prompt 可以直接迁移到 Veo 4 吗？
+### Sora prompt 可以直接迁移到 Spark Robin 吗？
 
 可以复用创意方向，但建议重写为结构化镜头说明，拆分主体、镜头、运动、灯光、比例和负面约束。
 

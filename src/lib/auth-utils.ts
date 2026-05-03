@@ -81,7 +81,7 @@ export function validateSignin(data: SigninFormData): string | null {
 export function getBaseUrl(): string {
   const isProduction = process.env.NODE_ENV === 'production';
   if (isProduction) {
-    return process.env.NEXT_PUBLIC_APP_URL || 'https://veo4video.io';
+    return process.env.NEXT_PUBLIC_APP_URL || 'https://sparkrobinai.io';
   }
   if (typeof window !== 'undefined') {
     return window.location.origin;
@@ -100,6 +100,6 @@ export function getRedirectPath(): string {
       return savedPath;
     }
   }
-  return '/veo4-text-to-video';
+  return '/spark-robin-text-to-video';
 }
 

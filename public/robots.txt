@@ -16,7 +16,7 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap for Google and Bing
-Sitemap: https://veo4video.io/sitemap.xml
+Sitemap: https://sparkrobinai.io/sitemap.xml
 
 # Disallow admin and API routes
 Disallow: /api/
@@ -27,11 +27,11 @@ Disallow: /pricing/cancelled
 
 # Allow important pages (explicitly allow for better indexing)
 Allow: /_next/static/
-Allow: /veo4-text-to-video
-Allow: /veo-4-storyboard
+Allow: /spark-robin-text-to-video
+Allow: /spark-robin-storyboard
 Allow: /multi-scene
-Allow: /veo4-image-to-video
-Allow: /veo-4-video-generator
+Allow: /spark-robin-image-to-video
+Allow: /spark-robin-video-generator
 Allow: /pricing
 Allow: /blog
 Allow: /faq

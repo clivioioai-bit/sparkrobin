@@ -15,17 +15,17 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({ 
-  title = "Veo4 AI Video Generator | Text-to-Video with Sora-Level Quality",
-  description = "Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use.",
-  ogTitle = "Veo4 AI Video Generator | Text-to-Video with Sora-Level Quality",
-  ogDescription = "Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use.",
+  title = "Spark Robin Workflow Lab | Release Watch and AI Video Drafts",
+  description = "Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images.",
+  ogTitle = "Spark Robin Workflow Lab | Release Watch and AI Video Drafts",
+  ogDescription = "Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images.",
   canonical,
   noindex = false,
-  keywords = "AI video ads, Veo4 video generator, text to video AI, image to video AI, consistent characters, 25 second AI video, vertical ad templates, TikTok ad generator, Shopify product video, AI video maker",
-  image = "https://veo4video.io/logo-v2.png"
+  keywords = "Spark Robin release watch, AI video prompt workflow, text to video drafts, image to video references, AI video planning, reusable prompts",
+  image = "https://sparkrobinai.io/logo-v2.png"
 }: SEOHeadProps) => {
   const pathname = usePathname();
-  const baseUrl = "https://veo4video.io"; // Replace with your actual domain
+  const baseUrl = "https://sparkrobinai.io"; // Replace with your actual domain
   const currentUrl = canonical || `${baseUrl}${pathname}`;
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const SEOHead = ({
     if (!metaAuthor) {
       metaAuthor = document.createElement('meta');
       metaAuthor.setAttribute('name', 'author');
-      metaAuthor.setAttribute('content', 'Veo4');
+      metaAuthor.setAttribute('content', 'Spark Robin');
       document.head.appendChild(metaAuthor);
     }
 
@@ -115,7 +115,7 @@ const SEOHead = ({
     updateOGTag('og:image', image);
     updateOGTag('og:image:width', '1200');
     updateOGTag('og:image:height', '630');
-    updateOGTag('og:site_name', 'Veo4');
+    updateOGTag('og:site_name', 'Spark Robin');
     updateOGTag('og:locale', 'en_US');
 
     // Update Twitter Card tags
@@ -152,9 +152,9 @@ const SEOHead = ({
       const structuredData = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Veo4",
-        "alternateName": ["Veo4", "veo4video.io", "AI Video Ads", "AI Video Generator"],
-        "description": "Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use.",
+        "name": "Spark Robin",
+        "alternateName": ["Spark Robin", "sparkrobinai.io", "AI Video Ads", "AI Video Generator"],
+        "description": "Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images.",
         "url": baseUrl,
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Web Browser",
@@ -165,11 +165,11 @@ const SEOHead = ({
           "priceCurrency": "USD",
           "priceValidUntil": "2025-12-31",
           "availability": "https://schema.org/InStock",
-          "description": "AI video ads generation subscription"
+          "description": "AI video workflow and draft generation subscription"
         },
         "creator": {
           "@type": "Organization",
-          "name": "Veo4",
+          "name": "Spark Robin",
           "url": baseUrl,
           "logo": `${baseUrl}/logo-v2.png`
         },
@@ -181,19 +181,18 @@ const SEOHead = ({
           "worstRating": "1"
         },
         "featureList": [
-          "Consistent character identity",
-          "25-30 second video extension",
-          "Ad-ready layouts and templates",
-          "Vertical ad generation",
-          "Text to Video Generation",
-          "Image to Video Conversion",
-          "No Platform Watermark on Premium"
+          "Spark Robin release-watch guidance",
+          "Reusable AI video prompt briefs",
+          "Reference-led image to video drafts",
+          "Text to video draft workflow",
+          "Shot notes and continuity prompts",
+          "Creative review and iteration"
         ],
         "screenshot": `${baseUrl}/placeholder.svg`,
         "video": {
           "@type": "VideoObject",
-          "name": "Veo4 AI Video Ads Tutorial",
-          "description": "Learn how to create Veo4 video ads with consistent characters and campaign-ready output",
+          "name": "Spark Robin AI Video Workflow Tutorial",
+          "description": "Learn how to structure prompts, references, and draft reviews for Spark Robin-ready AI video workflows",
           "thumbnailUrl": `${baseUrl}/placeholder.svg`,
           "uploadDate": "2025-01-01"
         },

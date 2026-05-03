@@ -512,7 +512,7 @@ function calculateCredits(
     return pricingTable[resolutionKey][durationKey];
   }
 
-  // Veo4 Pro pricing
+  // Spark Robin Pro pricing
   if (model === 'sora2-pro' || model === 'sora3-pro') {
     if (quality === 'high') {
       return n_frames === '15' ? 650 : 350;
@@ -527,7 +527,7 @@ function calculateCredits(
     return n_frames === '15' ? 50 : 40;
   }
 
-  // Veo4 base pricing: 10s=30, 15s=40
+  // Spark Robin base pricing: 10s=30, 15s=40
   if (n_frames === '15') {
     return 40;
   }

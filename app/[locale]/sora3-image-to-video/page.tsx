@@ -2,11 +2,11 @@ import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-export default async function LegacyLocalizedVeo4ImageToVideoPage({
+export default async function LegacyLocalizedSparkRobinImageToVideoPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  redirect(`/${locale}/veo4-image-to-video`);
+  redirect(`/${locale}/spark-robin-image-to-video`);
 }

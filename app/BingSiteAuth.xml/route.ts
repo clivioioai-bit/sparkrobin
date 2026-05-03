@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server'
  * To use this:
  * 1. Get your verification code from Bing Webmaster Tools
  * 2. Set BING_VERIFICATION_CODE in your .env file
- * 3. Bing will look for this file at: https://veo4video.io/BingSiteAuth.xml
+ * 3. Bing will look for this file at: https://sparkrobinai.io/BingSiteAuth.xml
  * 
  * Alternatively, you can use the meta tag method (already configured in layout.tsx)
  * 

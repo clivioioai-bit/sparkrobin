@@ -10,7 +10,7 @@ export interface StoryboardParams {
   aspect_ratio: "portrait" | "landscape";
 }
 
-// Veo4 Pro Storyboard API Types
+// Spark Robin Pro Storyboard API Types
 export interface SoraStoryboardRequest {
   model: "sora-2-pro-storyboard";
   input: {

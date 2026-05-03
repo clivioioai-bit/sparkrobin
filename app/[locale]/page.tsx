@@ -5,22 +5,22 @@ import HomePageClient from '@/components/home/HomePageClient'
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Veo 4 Video Generator',
-  alternateName: ['Veo 4 Generator', 'Veo 4 Video Creator', 'Veo4'],
+  name: 'Spark Robin Video Generator',
+  alternateName: ['Spark Robin Generator', 'Spark Robin Video Creator', 'Spark Robin'],
   applicationCategory: 'MultimediaApplication',
   operatingSystem: 'Web',
-  description: 'Transform ideas into polished Veo 4 video clips perfect for ads and brand campaigns. Our Veo 4 platform generates professional videos without watermarks, ideal for marketing teams and creators. Start creating Veo 4 content today.',
-  url: 'https://veo4video.io',
+  description: 'Track Spark Robin updates, structure reusable AI video prompts, and create reviewable text-to-video or image-to-video drafts while the next model cycle develops.',
+  url: 'https://sparkrobinai.io',
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-    description: 'Veo 4 video generation with credits, paid plans available'
+    description: 'Spark Robin video generation with credits, paid plans available'
   },
   creator: {
     '@type': 'Organization',
-    name: 'Veo4',
-    url: 'https://veo4video.io'
+    name: 'Spark Robin',
+    url: 'https://sparkrobinai.io'
   },
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -30,15 +30,14 @@ const jsonLd = {
     worstRating: '1'
   },
   featureList: [
-    'Veo 4 text-to-video generation',
-    'Veo 4 image-to-video conversion',
-    'Veo 4 multi-model generation pipeline',
-    'Veo 4 character consistency across scenes',
-    'Veo 4 extended 25-30 second videos',
-    'Veo 4 ad-ready output formats',
-    'Veo 4 vertical and horizontal layouts',
-    'Veo 4 watermark-free exports',
-    'Veo 4 campaign-ready video generation'
+    'Spark Robin release-watch guidance',
+    'Structured text-to-video prompt briefs',
+    'Reference-led image-to-video drafts',
+    'Reusable shot notes and continuity prompts',
+    'AI video workflow preparation',
+    'Creative review and iteration support',
+    'Prompt libraries for future model access',
+    'Marketing and product video draft workflows'
   ]
 }
 
@@ -50,7 +49,7 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://veo4video.io'
+      item: 'https://sparkrobinai.io'
     }
   ]
 }
@@ -58,19 +57,19 @@ const breadcrumbJsonLd = {
 const videoJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
-  name: 'Veo 4 Video Generator Demo - Create Ad-Ready Content',
-  description: 'Discover how Veo4Video.io transforms concepts into polished Veo 4 video clips using advanced Veo 4 technology. Learn to create Veo 4 videos for text-to-video and image-to-video workflows. Veo4Video.io is an independent Veo 4 platform.',
-  thumbnailUrl: 'https://veo4video.io/logo-v2.png',
+  name: 'Spark Robin Workflow Demo - From Brief to Reviewable Draft',
+  description: 'See how sparkrobinai.io helps creators turn concepts into structured prompts, reference-led drafts, and repeatable AI video workflows while tracking Spark Robin updates.',
+  thumbnailUrl: 'https://sparkrobinai.io/logo-v2.png',
   uploadDate: '2024-01-01T00:00:00Z',
-  contentUrl: 'https://veo4video.io',
-  embedUrl: 'https://veo4video.io',
+  contentUrl: 'https://sparkrobinai.io',
+  embedUrl: 'https://sparkrobinai.io',
   duration: 'PT30S',
   publisher: {
     '@type': 'Organization',
-    name: 'Veo4',
+    name: 'Spark Robin',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://veo4video.io/logo-v2.png'
+      url: 'https://sparkrobinai.io/logo-v2.png'
     }
   }
 }
@@ -81,34 +80,34 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Does this platform use official Veo 4 technology?',
+      name: 'Is sparkrobinai.io an official Google Spark Robin product?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We leverage advanced Veo 4 compatible technology within our generation pipeline. This enables immediate Veo 4 video creation without waiting for official access. Veo4Video.io is not affiliated with OpenAI or any official Sora products.'
+        text: 'No. sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
       }
     },
     {
       '@type': 'Question',
-      name: 'Can I build 25-second Veo 4 videos?',
+      name: 'What can I do here today?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We currently focus on Veo 4 text-to-video and image-to-video creation for fast, campaign-ready output.'
+        text: 'You can organize prompts, prepare reference assets, create text-to-video or image-to-video drafts, and build a repeatable review workflow.'
       }
     },
     {
       '@type': 'Question',
-      name: 'Do Veo 4 videos include watermarks?',
+      name: 'Why prepare before official Spark Robin details are confirmed?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No — all Veo 4 exports are completely watermark-free. Premium Veo 4 plans ensure no platform branding on downloads.'
+        text: 'Reusable prompts, shot notes, and reference libraries remain useful across current AI video tools and future model access.'
       }
     },
     {
       '@type': 'Question',
-      name: 'How do I create Veo 4 videos?',
+      name: 'How should I start a Spark Robin workflow?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'To create Veo 4 videos, enter your prompt on veo4video.io and generate. We support Veo 4 text-to-video and image-to-video creation. All Veo 4 videos export without watermarks.'
+        text: 'Start with a clear brief, split it into subject, camera, motion, style, and continuity notes, then generate drafts and compare them against the brief.'
       }
     }
   ]

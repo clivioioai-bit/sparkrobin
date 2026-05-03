@@ -115,7 +115,7 @@ const FaqTeaser = () => {
               className="text-white/40 hover:text-white/60 hover:bg-white/[0.04]"
               asChild
             >
-              <a href="mailto:support@veo4video.io">
+              <a href="mailto:support@sparkrobinai.io">
                 {t('contactSupport')}
               </a>
             </Button>

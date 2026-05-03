@@ -15,7 +15,7 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://veo4video.io'
+  const baseUrl = 'https://sparkrobinai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Refund Policy | AI video generation service'
@@ -37,10 +37,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/refund`,
-      siteName: 'Veo4',
+      siteName: 'Spark Robin',
       images: [
         {
-          url: 'https://veo4video.io/logo-v2.png',
+          url: 'https://sparkrobinai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://veo4video.io/logo-v2.png']
+      images: ['https://sparkrobinai.io/logo-v2.png']
     },
   };
 }
@@ -143,7 +143,7 @@ const RefundPolicy: React.FC<{ locale: string }> = ({ locale }) => {
                     To submit a refund request, please adhere to these steps:
                   </p>
                   <ol className="list-decimal pl-6 text-gray-700 mb-4">
-                    <li>Reach out to our support department at <strong>support@veo4video.io</strong></li>
+                    <li>Reach out to our support department at <strong>support@sparkrobinai.io</strong></li>
                     <li>Provide your account email address and transaction/payment information</li>
                     <li>Submit a comprehensive explanation for your refund request</li>
                     <li>Attach any pertinent screenshots or supporting documents</li>
@@ -237,7 +237,7 @@ const RefundPolicy: React.FC<{ locale: string }> = ({ locale }) => {
                     For refund applications or inquiries regarding this policy, please reach out to us:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-gray-700 mb-2"><strong>Refund Requests:</strong> support@veo4video.io</p>
+                    <p className="text-gray-700 mb-2"><strong>Refund Requests:</strong> support@sparkrobinai.io</p>
                     <p className="text-gray-700 mb-2"><strong>Company:</strong> AIVIDO LLC</p>
                     <p className="text-gray-700 mb-2"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
                     <p className="text-gray-700 mb-2"><strong>Subject Line:</strong> "Refund Request - [Your Account Email]"</p>

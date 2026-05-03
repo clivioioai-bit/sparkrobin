@@ -40,28 +40,28 @@ const BlogPostPage = async ({ post, locale = 'en' }: Props) => {
     '@type': 'BlogPosting',
     headline: post.meta.title,
     description: post.meta.description || '',
-    image: post.meta.coverImage || 'https://veo4video.io/logo-v2.png',
+    image: post.meta.coverImage || 'https://sparkrobinai.io/logo-v2.png',
     datePublished: post.meta.date || undefined,
     dateModified: post.meta.date || undefined,
     author: {
       '@type': post.meta.author ? 'Person' : 'Organization',
-      name: post.meta.author || 'Veo4 Team',
-      url: 'https://veo4video.io',
+      name: post.meta.author || 'Spark Robin Team',
+      url: 'https://sparkrobinai.io',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Veo4',
-      url: 'https://veo4video.io',
+      name: 'Spark Robin',
+      url: 'https://sparkrobinai.io',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://veo4video.io/logo-v2.png',
+        url: 'https://sparkrobinai.io/logo-v2.png',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': locale === 'en'
-        ? `https://veo4video.io/blog/${post.slug}`
-        : `https://veo4video.io/${locale}/blog/${post.slug}`,
+        ? `https://sparkrobinai.io/blog/${post.slug}`
+        : `https://sparkrobinai.io/${locale}/blog/${post.slug}`,
     },
     wordCount: post.content.trim().split(/\s+/).length,
     keywords: post.meta.tags?.join(', ') || undefined,

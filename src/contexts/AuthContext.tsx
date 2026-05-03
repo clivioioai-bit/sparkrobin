@@ -46,7 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // 使用 Supabase 自带的 signUp 触发确认邮件（依赖 Supabase Auth 邮件配置）
     try {
       const isProduction = process.env.NODE_ENV === 'production'
-      const baseUrl = isProduction ? (process.env.NEXT_PUBLIC_APP_URL || 'https://veo4video.io') : window.location.origin
+      const baseUrl = isProduction ? (process.env.NEXT_PUBLIC_APP_URL || 'https://sparkrobinai.io') : window.location.origin
 
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -79,7 +79,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     let baseUrl: string;
     
     if (isProduction) {
-      baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://veo4video.io';
+      baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://sparkrobinai.io';
     } else {
       // 开发环境：强制使用当前页面的 origin
       if (typeof window !== 'undefined') {

@@ -1,56 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { routing } from '@/i18n/routing';
+import { buildLocalizedSitemap } from '@/lib/sitemap-pages';
 
 export const runtime = 'nodejs';
 
 const INDEXNOW_KEY = 'f4226aa28d5202485960101e1ad8874b';
-const SITE_HOST = 'veo4video.io';
+const SITE_HOST = 'sparkrobinai.io';
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
 
-// All site URLs to push
-const ALL_URLS: string[] = [
-  // English (no prefix)
-  '',
-  'veo4-text-to-video',
-  'veo4-image-to-video',
-  'multi-scene',
-  'veo-4-video-generator',
-  'pricing',
-  'faq',
-  'privacy',
-  'terms',
-  'refund',
-  // Localized prefixes
-  'ar', 'ja', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'it', 'ko', 'nl', 'pl', 'pt', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW',
-];
-
 function buildUrlList(): string[] {
-  const base = `https://${SITE_HOST}`;
-  const locales = ['ar', 'ja', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'it', 'ko', 'nl', 'pl', 'pt', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW'];
-  const pages = [
-    '',
-    'veo4-text-to-video',
-    'veo4-image-to-video',
-    'multi-scene',
-    'veo-4-video-generator',
-    'pricing',
-    'faq',
-  ];
-
-  const urls: string[] = [];
-
-  // English pages (no prefix)
-  for (const page of pages) {
-    urls.push(page ? `${base}/${page}` : base);
-  }
-
-  // Localized pages
-  for (const locale of locales) {
-    for (const page of pages) {
-      urls.push(page ? `${base}/${locale}/${page}` : `${base}/${locale}`);
-    }
-  }
-
-  return urls;
+  return routing.locales.flatMap((locale) =>
+    buildLocalizedSitemap(locale).map((entry) => entry.url)
+  );
 }
 
 /**

@@ -16,24 +16,24 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://veo4video.io'
+  const baseUrl = 'https://sparkrobinai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
-  let title = 'Veo 4 Pricing | Basic, Standard, and Pro'
-  let description = 'Compare Veo 4 pricing plans for text to video, image to video, and campaign-ready creation. Choose the plan that fits your output needs.'
+  let title = 'Spark Robin Pricing | Basic, Standard, and Pro'
+  let description = 'Compare plans for prompt tests, reference-led video drafts, workflow credits, and ongoing AI video iteration.'
   
   if (locale === 'ar') {
-    title = 'أسعار Veo 4 | Basic وStandard وPro'
-    description = 'قارن بين خطط أسعار Veo 4 للنص إلى فيديو والصورة إلى فيديو وإنشاء المحتوى الجاهز للحملات. اختر الخطة المناسبة لاحتياجك.'
+    title = 'أسعار Spark Robin | Basic وStandard وPro'
+    description = 'قارن بين خطط أسعار Spark Robin للنص إلى فيديو والصورة إلى فيديو وإنشاء المحتوى الجاهز للحملات. اختر الخطة المناسبة لاحتياجك.'
   } else if (locale === 'ja') {
-    title = 'Veo 4 料金 | Basic・Standard・Pro'
-    description = 'テキストから動画、画像から動画、キャンペーン向け制作に対応するVeo 4の料金プランを比較できます。'
+    title = 'Spark Robin 料金 | Basic・Standard・Pro'
+    description = 'テキストから動画、画像から動画、キャンペーン向け制作に対応するSpark Robinの料金プランを比較できます。'
   } else if (locale === 'ru') {
-    title = 'Veo 4 Тарифы | Basic, Standard и Pro'
-    description = 'Сравните тарифы Veo 4 для текст-в-видео, изображение-в-видео и создания контента для кампаний. Выберите план под ваш объём.'
+    title = 'Spark Robin Тарифы | Basic, Standard и Pro'
+    description = 'Сравните тарифы Spark Robin для текст-в-видео, изображение-в-видео и создания контента для кампаний. Выберите план под ваш объём.'
   } else if (locale === 'es') {
-    title = 'Veo 4 Precios | Basic, Standard y Pro'
-    description = 'Compara los planes de Veo 4 para texto a video, imagen a video y creacion lista para campanas. Elige el plan adecuado para tu volumen.'
+    title = 'Spark Robin Precios | Basic, Standard y Pro'
+    description = 'Compara los planes de Spark Robin para texto a video, imagen a video y creacion lista para campanas. Elige el plan adecuado para tu volumen.'
   }
 
   return {
@@ -44,10 +44,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/pricing`,
-      siteName: 'Veo4',
+      siteName: 'Spark Robin',
       images: [
         {
-          url: 'https://veo4video.io/logo-v2.png',
+          url: 'https://sparkrobinai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -60,7 +60,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://veo4video.io/logo-v2.png']
+      images: ['https://sparkrobinai.io/logo-v2.png']
     },
     robots: {
       index: true,

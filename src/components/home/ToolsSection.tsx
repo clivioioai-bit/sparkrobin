@@ -33,7 +33,7 @@ const createDefaultSora3Params = (): Sora3Params => ({
   n_frames: '10',
   model: 'veo3.1',
   veo3SubModel: 'veo3_fast',
-  veoDisplayModel: 'veo4'
+  veoDisplayModel: 'spark-robin'
 });
 
 const createDefaultReframeParams = (): ReframeParams => ({
@@ -43,7 +43,7 @@ const createDefaultReframeParams = (): ReframeParams => ({
   speed: 'normal',
   model: 'veo3.1',
   veo3SubModel: 'veo3_fast',
-  veoDisplayModel: 'veo4',
+  veoDisplayModel: 'spark-robin',
   n_frames: '10'
 });
 
@@ -895,8 +895,8 @@ const ToolsSection = () => {
                             <div className="text-muted-foreground mb-1">{tGenerate('upgradeWait.modelLabel')}</div>
                             <div className="font-medium">
                               {activeTab === 'text-to-video'
-                                ? (sora3Params.veoDisplayModel === 'veo4' ? 'Veo4' : (sora3Params.model || 'Veo3.1'))
-                                : (reframeParams.veoDisplayModel === 'veo4' ? 'Veo4' : (reframeParams.model || 'Veo3.1'))}
+                                ? (sora3Params.veoDisplayModel === 'spark-robin' ? 'Spark Robin' : (sora3Params.model || 'Veo3.1'))
+                                : (reframeParams.veoDisplayModel === 'spark-robin' ? 'Spark Robin' : (reframeParams.model || 'Veo3.1'))}
                             </div>
                           </div>
                           <div className="rounded-xl border border-border/70 bg-background/70 p-4">

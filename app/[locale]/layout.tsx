@@ -58,44 +58,43 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://veo4video.io'
+  const baseUrl = 'https://sparkrobinai.io'
   
-  // Get locale-specific metadata - Veo 4 focused, keyword density >3%
-  let title = 'Veo 4 AI Video Generator — Next-Gen Model'
-  let description = 'Explore Veo 4, a next-gen AI video generator for creators and brands. Create realistic videos with stronger motion, detail, and scene control.'
-  let ogTitle = 'Veo 4 AI Video Generator — Next-Gen Model'
-  let ogDescription = 'Explore Veo 4, a next-gen AI video generator for creators and brands. Create realistic videos with stronger motion, detail, and scene control.'
+  let title = 'Spark Robin Release Watch & AI Video Workflow Lab'
+  let description = 'Track Spark Robin updates, organize reusable AI video prompts, and create practical text-to-video or image-to-video drafts for review.'
+  let ogTitle = 'Spark Robin Release Watch & AI Video Workflow Lab'
+  let ogDescription = 'Track Spark Robin updates, organize reusable AI video prompts, and create practical text-to-video or image-to-video drafts for review.'
   
   if (locale === 'ar') {
-    title = 'مولّد فيديو Veo 4 بالذكاء الاصطناعي'
-    description = 'اكتشف Veo 4، الجيل المتقدم من مولدات الفيديو بالذكاء الاصطناعي. جودة أعلى، لقطات أطول، وتحكم أفضل في الحركة والمشهد. سجّل في الوصول المبكر. ويمكنك تجربة Sora 2 الآن أثناء انتظار الإطلاق.'
-    ogTitle = 'مولّد فيديو Veo 4 بالذكاء الاصطناعي'
-    ogDescription = 'اكتشف Veo 4، الجيل المتقدم من مولدات الفيديو بالذكاء الاصطناعي. جودة أعلى، لقطات أطول، وتحكم أفضل في الحركة والمشهد. سجّل في الوصول المبكر. ويمكنك تجربة Sora 2 الآن أثناء انتظار الإطلاق.'
+    title = 'Spark Robin: متابعة الإطلاق وسير عمل الفيديو'
+    description = 'تابع تحديثات Spark Robin، ونظّم prompts قابلة لإعادة الاستخدام، وأنشئ مسودات فيديو من النص أو الصورة للمراجعة.'
+    ogTitle = 'Spark Robin: متابعة الإطلاق وسير عمل الفيديو'
+    ogDescription = 'تابع تحديثات Spark Robin، ونظّم prompts قابلة لإعادة الاستخدام، وأنشئ مسودات فيديو من النص أو الصورة للمراجعة.'
   } else if (locale === 'ja') {
-    title = 'Veo 4 AI 動画ジェネレーター | 次世代モデル'
-    description = 'Veo 4 は、より長いシーン、高精細なビジュアル、自然な物理表現を実現する次世代AI動画モデルです。先行アクセスに登録して最新情報をチェック。公開までの間は Sora 2 をご利用いただけます。'
-    ogTitle = 'Veo 4 AI 動画ジェネレーター | 次世代モデル'
-    ogDescription = 'Veo 4 は、より長いシーン、高精細なビジュアル、自然な物理表現を実現する次世代AI動画モデルです。先行アクセスに登録して最新情報をチェック。公開までの間は Sora 2 をご利用いただけます。'
+    title = 'Spark Robin リリースウォッチとAI動画ワークフロー'
+    description = 'Spark Robin の更新を追跡し、再利用できるプロンプトと参照素材を整理し、テキストや画像からレビュー用の動画ドラフトを作成します。'
+    ogTitle = 'Spark Robin リリースウォッチとAI動画ワークフロー'
+    ogDescription = 'Spark Robin の更新を追跡し、再利用できるプロンプトと参照素材を整理し、テキストや画像からレビュー用の動画ドラフトを作成します。'
   } else if (locale === 'ru') {
-    title = 'Veo 4 AI видео генератор — новое поколение'
-    description = 'Veo 4 — мощный AI-видео генератор для маркетинга, брендов и создателей контента. Более длинные сцены, улучшенная физика и кинематографическое качество. Подпишитесь на ранний доступ. Пока ждёте — попробуйте Sora 2.'
-    ogTitle = 'Veo 4 AI видео генератор — новое поколение'
-    ogDescription = 'Veo 4 — мощный AI-видео генератор для маркетинга, брендов и создателей контента. Более длинные сцены, улучшенная физика и кинематографическое качество. Подпишитесь на ранний доступ. Пока ждёте — попробуйте Sora 2.'
+    title = 'Spark Robin: мониторинг релиза и AI-видео workflow'
+    description = 'Отслеживайте обновления Spark Robin, собирайте reusable prompts и создавайте черновики видео из текста или изображения для быстрой проверки.'
+    ogTitle = 'Spark Robin: мониторинг релиза и AI-видео workflow'
+    ogDescription = 'Отслеживайте обновления Spark Robin, собирайте reusable prompts и создавайте черновики видео из текста или изображения для быстрой проверки.'
   } else if (locale === 'es') {
-    title = 'Veo 4 Generador de Video con IA — Próxima generación'
-    description = 'Veo 4 es el nuevo generador de video por IA con escenas más largas, realismo mejorado y control avanzado. Únete a la lista de acceso temprano. Mientras tanto, prueba Sora 2 para crear videos profesionales sin marca de agua.'
-    ogTitle = 'Veo 4 Generador de Video con IA — Próxima generación'
-    ogDescription = 'Veo 4 es el nuevo generador de video por IA con escenas más largas, realismo mejorado y control avanzado. Únete a la lista de acceso temprano. Mientras tanto, prueba Sora 2 para crear videos profesionales sin marca de agua.'
+    title = 'Spark Robin: seguimiento de lanzamiento y workflow de video AI'
+    description = 'Sigue las novedades de Spark Robin, organiza prompts reutilizables y crea borradores de video desde texto o imágenes para revisar e iterar.'
+    ogTitle = 'Spark Robin: seguimiento de lanzamiento y workflow de video AI'
+    ogDescription = 'Sigue las novedades de Spark Robin, organiza prompts reutilizables y crea borradores de video desde texto o imágenes para revisar e iterar.'
   } else if (locale === 'zh-CN') {
-    title = 'Veo 4 AI 视频生成器 — 下一代模型'
-    description = '探索 Veo 4，专为创作者、品牌和广告商设计的下一代 AI 视频生成器。制作更长、更清晰、更逼真的视频，具有先进的物理效果和场景控制。'
-    ogTitle = 'Veo 4 AI 视频生成器 — 下一代模型'
-    ogDescription = '探索 Veo 4，专为创作者、品牌和广告商设计的下一代 AI 视频生成器。制作更长、更清晰、更逼真的视频，具有先进的物理效果和场景控制。'
+    title = 'Spark Robin 发布观察与 AI 视频工作流'
+    description = '跟踪 Spark Robin 更新，整理可复用提示词、参考图和镜头说明，并用文本或图片生成可评审的视频草稿。'
+    ogTitle = 'Spark Robin 发布观察与 AI 视频工作流'
+    ogDescription = '跟踪 Spark Robin 更新，整理可复用提示词、参考图和镜头说明，并用文本或图片生成可评审的视频草稿。'
   } else if (locale === 'de') {
-    title = 'Veo 4 AI Video Generator — Naechste Generation'
-    description = 'Entdecken Sie Veo 4, den AI-Videogenerator der naechsten Generation fuer Kreative, Marken und Werbetreibende. Erstellen Sie laengere, schaerfere und realistischere Videos mit fortschrittlicher Physik und Szenenkontrolle.'
-    ogTitle = 'Veo 4 AI Video Generator — Naechste Generation'
-    ogDescription = 'Entdecken Sie Veo 4, den AI-Videogenerator der naechsten Generation fuer Kreative, Marken und Werbetreibende. Erstellen Sie laengere, schaerfere und realistischere Videos mit fortschrittlicher Physik und Szenenkontrolle.'
+    title = 'Spark Robin Release Watch und AI-Video-Workflow'
+    description = 'Verfolgen Sie Spark Robin Updates, strukturieren Sie wiederverwendbare Prompts und erstellen Sie Videoentwürfe aus Text oder Bildern zur schnellen Bewertung.'
+    ogTitle = 'Spark Robin Release Watch und AI-Video-Workflow'
+    ogDescription = 'Verfolgen Sie Spark Robin Updates, strukturieren Sie wiederverwendbare Prompts und erstellen Sie Videoentwürfe aus Text oder Bildern zur schnellen Bewertung.'
   }
 
   // Generate hreflang alternates for homepage using utility function
@@ -103,13 +102,13 @@ export async function generateMetadata({
 
   return {
     title: {
-      template: '%s | Veo4',
+      template: '%s | Spark Robin',
       default: title
     },
     description,
-    authors: [{ name: 'Veo4 Team' }],
-    creator: 'Veo4',
-    publisher: 'Veo4',
+    authors: [{ name: 'Spark Robin Team' }],
+    creator: 'Spark Robin',
+    publisher: 'Spark Robin',
     formatDetection: {
       email: false,
       address: false,
@@ -122,12 +121,12 @@ export async function generateMetadata({
       type: 'website',
       locale: locale === 'ar' ? 'ar_SA' : locale === 'ja' ? 'ja_JP' : locale === 'ru' ? 'ru_RU' : locale === 'es' ? 'es_ES' : locale === 'zh-CN' ? 'zh_CN' : locale === 'de' ? 'de_DE' : 'en_US',
       url: locale === 'en' ? baseUrl : `${baseUrl}/${locale}/`,
-      siteName: 'Veo4',
+      siteName: 'Spark Robin',
       title: ogTitle,
       description: ogDescription,
       images: [
         {
-          url: 'https://veo4video.io/logo-v2.png',
+          url: 'https://sparkrobinai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -138,7 +137,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: ogTitle,
       description: ogDescription,
-      images: ['https://veo4video.io/logo-v2.png'],
+      images: ['https://sparkrobinai.io/logo-v2.png'],
       creator: '@sora3aiteam',
     },
     robots: {
@@ -218,16 +217,16 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Veo4",
-              "url": "https://veo4video.io",
-              "logo": "https://veo4video.io/logo-v2.png",
+              "name": "Spark Robin",
+              "url": "https://sparkrobinai.io",
+              "logo": "https://sparkrobinai.io/logo-v2.png",
               "description": locale === 'ar' 
-                ? "Veo4Video.io هي منصة مستقلة لإنشاء فيديوهات Veo 4 الاحترافية. نستخدم تقنيات Veo 4 المتقدمة لإنشاء فيديوهات إعلانية جاهزة للاستخدام بدون علامة مائية. منصة Veo 4 مثالية لفرق التسويق والمنشئين."
+                ? "sparkrobinai.io موقع مستقل لمتابعة Spark Robin وتنظيم prompts ومراجع الصور ومسودات الفيديو القابلة للمراجعة."
                 : locale === 'ja'
-                ? "Veo4Video.ioは独立したVeo 4動画生成プラットフォームです。Veo 4の高度な技術を使用して、ウォーターマークなしの広告向けプロフェッショナルな動画を作成します。Veo 4プラットフォームはマーケティングチームやクリエイターに最適です。"
+                ? "sparkrobinai.ioは、Spark Robinの更新を追跡し、再利用できるプロンプト、参照素材、レビュー用動画ドラフトを整理する独立サイトです。"
                 : locale === 'ru'
-                ? "Veo4Video.io — это независимая платформа для создания профессиональных видео Veo 4. Мы используем передовые технологии Veo 4 для создания рекламных видео без водяных знаков. Платформа Veo 4 идеально подходит для маркетинговых команд и создателей контента."
-                : "Veo4Video.io is an independent platform specializing in Veo 4 video generation. We leverage advanced Veo 4 technology to produce ad-ready professional videos without watermarks. Our Veo 4 platform is designed for marketing teams and creators who need high-quality video content. Veo4Video.io is not affiliated with OpenAI, Google or any official Sora products.",
+                ? "sparkrobinai.io — независимый сайт для отслеживания Spark Robin, организации reusable prompts, референсов и черновиков видео для ревью."
+                : "sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It helps creators organize reusable prompts, reference assets, and reviewable drafts while tracking official model updates. sparkrobinai.io is not affiliated with Google, Google DeepMind, OpenAI, or any official Sora products.",
               "sameAs": [
                 "https://x.com/sora3aiteam"
               ]
@@ -241,10 +240,10 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "url": "https://veo4video.io",
+              "url": "https://sparkrobinai.io",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://veo4video.io/search?q={search_term_string}",
+                "target": "https://sparkrobinai.io/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

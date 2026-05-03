@@ -46,7 +46,7 @@ const PromoBanner = () => {
             <div className="flex items-center space-x-2">
               <Gift className="w-5 h-5 text-primary-foreground" />
               <span className="font-semibold text-sm sm:text-base">
-                Create Veo 4 Videos Now — <span className="text-primary-foreground font-bold">50% OFF Credits!</span>
+                Build more AI video drafts — <span className="text-primary-foreground font-bold">50% OFF Credits!</span>
               </span>
             </div>
           </div>
@@ -57,7 +57,7 @@ const PromoBanner = () => {
               href="/pricing"
               className="bg-primary-foreground text-primary px-4 py-2 rounded-lg font-semibold text-sm hover:bg-primary-foreground/90 transition-colors duration-200 shadow-sm"
             >
-              Start Creating Veo 4
+              Get Draft Credits
             </Link>
             <button
               onClick={handleClose}

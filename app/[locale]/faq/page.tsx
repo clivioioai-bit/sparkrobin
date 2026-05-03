@@ -14,24 +14,24 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://veo4video.io'
+  const baseUrl = 'https://sparkrobinai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
-  let title = 'Veo 4 FAQ | Pricing, Use, and Video Limits'
-  let description = 'Find answers about Veo 4 pricing, commercial use, video length, watermarks, and how the platform works before you start.'
+  let title = 'Spark Robin FAQ | Pricing, Use, and Video Limits'
+  let description = 'Find answers about Spark Robin pricing, commercial use, video length, watermarks, and how the platform works before you start.'
   
   if (locale === 'ar') {
-    title = 'أسئلة Veo 4 الشائعة | الأسعار والاستخدام والمدة'
-    description = 'اعثر على إجابات حول أسعار Veo 4 والاستخدام التجاري ومدة الفيديو والعلامات المائية وكيف تعمل المنصة قبل البدء.'
+    title = 'أسئلة Spark Robin الشائعة | الأسعار والاستخدام والمدة'
+    description = 'اعثر على إجابات حول أسعار Spark Robin والاستخدام التجاري ومدة الفيديو والعلامات المائية وكيف تعمل المنصة قبل البدء.'
   } else if (locale === 'ja') {
-    title = 'Veo 4 よくある質問 | 料金・用途・動画尺'
-    description = 'Veo 4の料金、商用利用、動画の長さ、ウォーターマーク、プラットフォームの使い方に関する回答を確認できます。'
+    title = 'Spark Robin よくある質問 | 料金・用途・動画尺'
+    description = 'Spark Robinの料金、商用利用、動画の長さ、ウォーターマーク、プラットフォームの使い方に関する回答を確認できます。'
   } else if (locale === 'ru') {
-    title = 'Veo 4 FAQ | Тарифы, Использование и Лимиты'
-    description = 'Найдите ответы о тарифах Veo 4, коммерческом использовании, длине видео, водяных знаках и работе платформы до начала генерации.'
+    title = 'Spark Robin FAQ | Тарифы, Использование и Лимиты'
+    description = 'Найдите ответы о тарифах Spark Robin, коммерческом использовании, длине видео, водяных знаках и работе платформы до начала генерации.'
   } else if (locale === 'es') {
-    title = 'Veo 4 FAQ | Precios, Uso y Duracion'
-    description = 'Encuentra respuestas sobre precios de Veo 4, uso comercial, duracion del video, marcas de agua y funcionamiento de la plataforma.'
+    title = 'Spark Robin FAQ | Precios, Uso y Duracion'
+    description = 'Encuentra respuestas sobre precios de Spark Robin, uso comercial, duracion del video, marcas de agua y funcionamiento de la plataforma.'
   }
 
   return {
@@ -42,10 +42,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/faq`,
-      siteName: 'Veo4',
+      siteName: 'Spark Robin',
       images: [
         {
-          url: 'https://veo4video.io/logo-v2.png',
+          url: 'https://sparkrobinai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -58,39 +58,39 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://veo4video.io/logo-v2.png']
+      images: ['https://sparkrobinai.io/logo-v2.png']
     },
   }
 }
 
 const faqs = [
   {
-    q: 'What is a VEO 4 AI video platform?',
-    a: 'A VEO 4 AI video platform helps you create videos from text prompts or images through a faster web workflow. On veo4video.io, that includes VEO 4 text to video, VEO 4 image to video, and campaign-ready exports for ads, product videos, and social content.'
+    q: 'What is sparkrobinai.io?',
+    a: 'sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It helps creators track confirmed updates, structure reusable prompts, and create reviewable video drafts from text or images.'
   },
   {
-    q: 'Can I create VEO 4 videos from text prompts?',
-    a: 'Yes. VEO 4 text to video lets you turn prompts into polished clips for ads, social posts, product storytelling, and landing-page media. This workflow is useful when you want to move from idea to first draft quickly.'
+    q: 'Can I create drafts from text prompts?',
+    a: 'Yes. The text workflow helps you turn a rough idea into layered scene notes, then generate a draft you can compare against the brief.'
   },
   {
-    q: 'Can I turn images into VEO 4 videos?',
-    a: 'Yes. VEO 4 image to video helps you animate a still image into a more dynamic clip with motion, cleaner framing, and export-ready output. This is useful for product shots, creator assets, and ad variations.'
+    q: 'Can I use images as creative references?',
+    a: 'Yes. The image workflow uses a reference image as the visual anchor, then lets you add motion, camera, pacing, and continuity notes.'
   },
   {
-    q: 'How does Veo4 maintain character consistency across scenes?',
-    a: 'Veo4 maintains stronger character consistency by keeping the same subject appearance, wardrobe, and visual direction across related shots. This is useful for brand storytelling, product explainers, and ad campaigns where the same character must stay recognizable.'
+    q: 'How do I keep drafts consistent?',
+    a: 'Use the same reference assets and continuity notes across related drafts. Keep wardrobe, subject, setting, and camera rules explicit instead of relying on memory.'
   },
   {
-    q: 'Can Veo4 generate videos longer than 10 seconds?',
-    a: 'Yes. Veo4 supports longer video workflows beyond short clips, including multi-scene generation for more complete brand stories and campaign concepts. Available duration depends on the workflow you choose on the platform.'
+    q: 'Can I plan multi-shot ideas?',
+    a: 'Yes. Write the idea as shot notes first, then generate drafts from the sections you want to test. This keeps longer concepts easier to review.'
   },
   {
-    q: 'Are VEO 4 videos suitable for commercial use?',
-    a: 'Yes. VEO 4 videos can be used for commercial work such as paid ads, e-commerce content, landing pages, and social campaigns, subject to the platform terms and the rules that apply to your source assets and prompts.'
+    q: 'Are drafts suitable for commercial work?',
+    a: 'Commercial use depends on your plan, assets, prompts, and applicable terms. Check rights and licensing before publishing any output.'
   },
   {
-    q: 'Do Veo4 videos include watermarks?',
-    a: 'No. Veo4 exports from our platform are watermark-free, so the final video is cleaner for ads, product demos, and social publishing.'
+    q: 'What should I review before exporting?',
+    a: 'Check factual claims, asset rights, brand fit, visual artifacts, and whether the draft actually follows the brief.'
   },
   {
     q: 'What payment methods do you accept?',
@@ -101,12 +101,12 @@ const faqs = [
     a: 'No. The displayed price is the amount you pay for the selected plan. There are no hidden charges added later outside the stated billing terms.'
   },
   {
-    q: 'Who is VEO 4 best for?',
-    a: 'VEO 4 is a strong fit for marketers, creators, e-commerce teams, agencies, and product teams that need faster video production for ads, social content, explainers, and campaign testing.'
+    q: 'Who is this workflow best for?',
+    a: 'It is best for creators, marketers, e-commerce teams, agencies, and product teams that want reusable AI video briefs and faster draft review.'
   },
   {
-    q: 'How do I get started with VEO 4?',
-    a: 'Choose a plan, open the text-to-video or image-to-video workflow, enter your prompt or upload your image, then generate and export your clip. Most teams can move from concept to usable output in a few minutes.'
+    q: 'How do I get started?',
+    a: 'Open text to video for a written idea, or image to video for a visual reference. Add shot notes, generate a draft, then revise the brief.'
   }
 ]
 
@@ -135,13 +135,13 @@ export default async function FAQPage({
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <h1 className="text-3xl font-bold mb-6">VEO 4 FAQ</h1>
+      <h1 className="text-3xl font-bold mb-6">Spark Robin FAQ</h1>
       <p className="text-muted-foreground mb-8">
-        Find answers about VEO 4 pricing, text to video, image to video, commercial use, video length, watermarks, and platform setup. For more details, explore our 
+        Find answers about Spark Robin pricing, text to video, image to video, commercial use, video length, watermarks, and platform setup. For more details, explore our 
         <a href={`${prefix}/`} className="text-primary hover:underline"> homepage</a>, 
-        <a href={`${prefix}/veo4-text-to-video`} className="text-primary hover:underline"> Veo 4 Text to Video</a>, 
-        <a href={`${prefix}/veo4-image-to-video`} className="text-primary hover:underline"> Veo 4 Image to Video</a>, 
-        <a href={`${prefix}/pricing`} className="text-primary hover:underline"> Veo 4 Pricing</a>, or review our 
+        <a href={`${prefix}/spark-robin-text-to-video`} className="text-primary hover:underline"> Spark Robin Text to Video</a>, 
+        <a href={`${prefix}/spark-robin-image-to-video`} className="text-primary hover:underline"> Spark Robin Image to Video</a>, 
+        <a href={`${prefix}/pricing`} className="text-primary hover:underline"> Spark Robin Pricing</a>, or review our 
         <a href={`${prefix}/terms`} className="text-primary hover:underline"> Terms of Service</a> and 
         <a href={`${prefix}/privacy`} className="text-primary hover:underline"> Privacy Policy</a>.
       </p>

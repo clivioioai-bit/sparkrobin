@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "Veo4",
+    "brand": "Spark Robin",
     "new": "NEW",
     "generate": "Generate",
     "home": "Home",
@@ -21,31 +21,31 @@
     "haveMoreQuestions": "Have more questions? We're here to help."
   },
   "hero": {
-    "badge": "2026 Best Model",
+    "badge": "Release watch + creative workspace",
     "discord": "Join Discord Community",
-    "brandName": "VEO 4",
-    "tagline": "AI Video Generator",
-    "title": "Veo4 — Redefining What AI Video Can Be",
-    "subtitle": "The new Veo4 delivers ultra-realistic motion, longer scenes, and cinematic detail — finally letting creators turn pure imagination into studio-grade video in seconds.",
+    "brandName": "Spark Robin",
+    "tagline": "Video Workflow Lab",
+    "title": "Spark Robin — Track the Next Google Video Wave",
+    "subtitle": "Follow Spark Robin signals, prepare reusable prompts, and turn text or images into production-ready video drafts while the next model cycle unfolds.",
     "placeholder": "Describe the video you want to create...",
     "cta": "Generate",
-    "trySora3": "Generate Videos",
-    "trySora2": "Generate images",
-    "sora2Description": "Generate videos today using our Sora 2 engine — no watermark, ready for TikTok & ads.",
-    "storyboard25s": "Build 25s Veo4 Stories",
-    "disclaimer": "Independent platform specializing in Veo4 video generation. We leverage advanced Veo4 technology to produce professional content. Not affiliated with OpenAI or any official Sora products.",
+    "trySora3": "Draft from Text",
+    "trySora2": "Animate an Image",
+    "sora2Description": "Create practical video drafts today while tracking official Spark Robin updates.",
+    "storyboard25s": "Plan Multi-Shot Concepts",
+    "disclaimer": "Independent editorial and creation workspace for Spark Robin watchers. Not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.",
     "features": {
       "noWatermark": {
-        "title": "Veo4 without watermark",
-        "description": "Export clean Veo4 videos ready for commercial campaigns"
+        "title": "Clean draft exports",
+        "description": "Keep review clips simple to share, compare, and revise"
       },
       "noRegionalLimits": {
-        "title": "Global Veo4 access",
-        "description": "Create Veo4 content from anywhere worldwide"
+        "title": "Model-watch guidance",
+        "description": "Separate confirmed updates from rumors before you plan"
       },
       "noInviteCode": {
-        "title": "Instant Veo4 access",
-        "description": "Start generating Veo4 videos immediately, no waitlist"
+        "title": "Reusable prompt systems",
+        "description": "Build shot notes that can move across future video models"
       }
     }
   },
@@ -54,7 +54,7 @@
     "generate": "Video AI",
     "textToVideo": "Text to Video",
     "imageToVideo": "Image to Video",
-    "storyboard": "Veo4 Storyboard",
+    "storyboard": "Spark Robin Storyboard",
     "watermarkRemover": "Watermark Remover",
     "pricing": "Pricing",
     "myCreations": "My Creations",
@@ -70,10 +70,10 @@
     "startForFree": "Start Now",
     "preferences": "Preferences",
     "generationHistory": "Generation History",
-    "textToVideoDescription": "Transform ideas into polished Veo4 clips ready for ads",
-    "imageToVideoDescription": "Animate photos into professional Veo4 video content",
-    "storyboardDescription": "Build multi-scene Veo4 narratives up to 25 seconds",
-    "watermarkRemoverDescription": "Remove watermarks from Veo4 videos instantly",
+    "textToVideoDescription": "Turn rough concepts into structured video drafts",
+    "imageToVideoDescription": "Use reference images to guide motion and framing",
+    "storyboardDescription": "Plan multi-shot sequences before rendering",
+    "watermarkRemoverDescription": "Clean compatible source clips for review workflows",
     "imageAI": "Image AI",
     "textToImage": "Text to Image",
     "textToImageDescription": "Generate images from text prompts",
@@ -83,13 +83,13 @@
     "models": "Models",
     "nanoBanana": "Nano Banana",
     "nanoBananaPro": "Nano Banana Pro",
-    "sora3": "Veo4",
-    "sora3Pro": "Veo4 Pro",
+    "sora3": "Spark Robin",
+    "sora3Pro": "Spark Robin Pro",
     "sora2": "Sora 2",
     "sora2Pro": "Sora 2 Pro",
     "veo3": "Veo 3",
     "wan26": "Wan 2.6",
-    "veo4Model": "Veo 4",
+    "sparkRobinModel": "Spark Robin",
     "veo31Model": "Veo 3.1",
     "whoThisIsFor": {
       "ecommerce": {
@@ -104,30 +104,30 @@
     }
   },
   "footer": {
-    "description": "veo4video.io transforms ideas into polished Veo4 video clips perfect for ads and brand campaigns. Our Veo4 platform generates professional videos without watermarks, ideal for marketing teams and creators. Start creating Veo4 content today.",
+    "description": "sparkrobinai.io helps creators follow Spark Robin release signals, organize prompt systems, and produce practical AI video drafts from text or images.",
     "product": "Product",
     "company": "Company",
     "resources": "Resources",
     "support": "Support",
-    "sora3TextToVideo": "Veo4 Text to Video",
-    "sora3ImageToVideo": "Veo4 Image to Video",
-    "sora3Pricing": "Veo4 Pricing",
-    "sora3Faq": "Veo4 FAQ",
-    "sora3Blog": "Veo4 Blog",
+    "sora3TextToVideo": "Spark Robin Text to Video",
+    "sora3ImageToVideo": "Spark Robin Image to Video",
+    "sora3Pricing": "Spark Robin Pricing",
+    "sora3Faq": "Spark Robin FAQ",
+    "sora3Blog": "Spark Robin Blog",
     "aiVideoPromptGpt": "AI Video Prompt GPT",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "refundPolicy": "Refund Policy",
     "support247": "24/7 Support",
     "contactUs": "Contact Us / Partnership",
-    "disclaimer": "veo4video.io is an independent platform specializing in Veo4 video generation. We leverage advanced Veo4 technology to produce ad-ready professional videos. veo4video.io is not affiliated with OpenAI, Google or any official Sora products. All trademarks belong to their respective owners.",
-    "poweredBy": "Powered by proprietary Veo4 video synthesis technology. Not affiliated with any official vendor.",
-    "copyright": "© 2024 Veo4. All rights reserved.",
+    "disclaimer": "sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or official Sora products. All trademarks belong to their respective owners.",
+    "poweredBy": "Built for practical AI video planning, prompt reuse, and draft generation. Not affiliated with any official vendor.",
+    "copyright": "© 2024 Spark Robin. All rights reserved.",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24/7 Support: support@veo4video.io",
-    "businessEmail": "Business & Partnership: support@veo4video.io",
-    "logoAlt": "Veo4 AI Video Generator logo",
+    "supportEmail": "24/7 Support: support@sparkrobinai.io",
+    "businessEmail": "Business & Partnership: support@sparkrobinai.io",
+    "logoAlt": "Spark Robin AI Video Generator logo",
     "socialLabels": {
       "twitter": "Follow us on Twitter",
       "discord": "Join our Discord community",
@@ -138,75 +138,75 @@
     }
   },
   "whyThisMatters": {
-    "title": "Why Marketing Teams Choose Veo4",
-    "subtitle": "Ad campaigns demand quality video content — Veo4 delivers without the barriers. Our Veo4 platform enables instant creation of professional videos for brands and agencies.",
+    "title": "Why Teams Prepare with Spark Robin",
+    "subtitle": "The teams that benefit most from new video models already have prompts, references, shot lists, and review rules ready before access arrives.",
     "challenges": "Common Roadblocks",
-    "solutions": "How Veo4 Solves This",
+    "solutions": "How Spark Robin Solves This",
     "watermarks": {
-      "title": "Platform branding on exports",
-      "description": "Watermarks undermine professional presentation for client work."
+      "title": "Rumor-driven planning",
+      "description": "Unconfirmed specs can push teams into fragile content plans."
     },
     "pricing": {
-      "title": "Prohibitive costs per video",
-      "description": "Expensive pricing restricts frequent content production."
+      "title": "Unstructured prompts",
+      "description": "One-paragraph prompts are hard to reuse, compare, or improve."
     },
     "storyboarding": {
-      "title": "Technical complexity",
-      "description": "Multi-scene Veo4 Storyboard creation requires specialized knowledge."
+      "title": "Scattered references",
+      "description": "Brand assets, style notes, and shot direction often live in separate places."
     },
     "speed": {
-      "title": "Lengthy processing times",
-      "description": "Slow generation disrupts campaign timelines and creative momentum."
+      "title": "Slow creative review",
+      "description": "Without a repeatable workflow, every new clip becomes a one-off experiment."
     },
     "noWatermark": {
-      "title": "Veo4 without any branding",
-      "description": "Export clean Veo4 videos perfect for client deliverables."
+      "title": "Confirmed-update framing",
+      "description": "Write around what is known, label what is speculative, and avoid overclaiming."
     },
     "costPerformance": {
-      "title": "Veo4 at competitive rates",
-      "description": "Veo4 generation costs significantly less than comparable platforms."
+      "title": "Prompt systems",
+      "description": "Split ideas into subject, camera, motion, scene, and continuity notes."
     },
     "multiModel": {
-      "title": "Veo4 multi-model approach",
-      "description": "Veo4 leverages multiple engines for reliable, consistent output."
+      "title": "Reference-led creation",
+      "description": "Use images and visual notes to keep draft direction more consistent."
     },
     "storyboard": {
-      "title": "Veo4 extended narratives",
-      "description": "Veo4 Storyboard builds complete brand stories up to 25 seconds."
+      "title": "Reviewable drafts",
+      "description": "Generate clips that are easy to compare, annotate, and route into the next edit."
     },
-    "solution": "Veo4 addresses all of these challenges"
+    "solution": "Spark Robin preparation turns uncertainty into a usable workflow"
   },
   "whoThisIsFor": {
-    "title": "Who Builds Campaigns with Veo4",
-    "subtitle": "From content creators to marketing directors, Veo4 empowers teams to produce professional video content that drives results.",
+    "title": "Who Uses This Spark Robin Workspace",
+    "subtitle": "For creators and teams that want to be ready for the next video model without pausing current production.",
     "creators": {
       "title": "Content creators & influencers",
-      "description": "Produce Veo4 videos for social platforms without watermarks or production overhead."
+      "description": "Shape hooks, visual ideas, and short-form drafts before committing to a full edit."
     },
     "ecommerce": {
       "title": "E-commerce & marketplace sellers",
-      "description": "Generate Veo4 product videos and promotional content that converts, without studio costs."
+      "description": "Turn product photos, offer angles, and customer objections into video test concepts."
     },
     "businesses": {
       "title": "Growing businesses",
-      "description": "Access Veo4 quality video production at a fraction of agency pricing."
+      "description": "Create clearer first drafts before spending on outside production or agency time."
     },
     "marketers": {
       "title": "Marketing teams testing creatives",
-      "description": "Rapidly produce Veo4 video variations for A/B testing and campaign optimization."
+      "description": "Compare message variants, framing, and pacing before launching a campaign."
     },
     "shortFilmStudios": {
       "title": "Production studios",
-      "description": "Leverage Veo4 technology to enhance projects with cinematic quality."
+      "description": "Use structured prompts and references to brief motion concepts faster."
     },
     "advertisers": {
       "title": "Advertising agencies",
-      "description": "Deliver Veo4 video content that meets client expectations and campaign objectives."
+      "description": "Prepare client-ready concepts with clearer assumptions and faster revision cycles."
     }
   },
   "blogShowcase": {
-    "title": "Veo4 Strategies for Creators & Brands",
-    "subtitle": "Actionable insights to maximize your Veo4 video performance and campaign results.",
+    "title": "Spark Robin Notes for Creators & Teams",
+    "subtitle": "Release tracking, prompt structure, workflow preparation, and practical AI video guidance.",
     "viewAll": "View all blog posts",
     "readMore": "Read More",
     "featured": "Featured"
@@ -220,47 +220,47 @@
     "emptyDescription": "Add Markdown files to content/blog and they will appear here."
   },
   "howItWorks": {
-    "title": "How to Use VEO 4",
-    "subtitle": "Use a simple workflow to move from prompt or image input to export-ready video.",
+    "title": "How to Prepare a Spark Robin Workflow",
+    "subtitle": "Start with a clear brief, turn it into reusable shot notes, then generate drafts you can evaluate.",
     "step1": {
-      "title": "Upload an image or enter a prompt",
-      "description": "Start with a text prompt for a new video or upload an image when you want VEO 4 to animate an existing visual."
+      "title": "Write the creative brief",
+      "description": "Capture the subject, offer, audience, setting, mood, and visual references before generating."
     },
     "step2": {
-      "title": "Set aspect ratio, motion, and style",
-      "description": "Adjust the format, motion direction, and visual style so the video matches your ad, product, or brand goal."
+      "title": "Structure the shot notes",
+      "description": "Separate camera, motion, continuity, and style instructions so the prompt can be reused."
     },
     "step3": {
-      "title": "Generate, review, and export",
-      "description": "Create the video, review the result, and export a polished asset for ads, landing pages, social content, or product storytelling."
+      "title": "Generate and compare drafts",
+      "description": "Review outputs against the brief, keep what works, and refine the notes for the next pass."
     }
   },
   "faq": {
-    "title": "VEO 4 FAQ",
-    "subtitle": "Find answers about VEO 4 pricing, text to video, image to video, commercial use, watermarks, video length, and how the platform works.",
+    "title": "Spark Robin FAQ",
+    "subtitle": "Clear answers about the Spark Robin release watch, current workflow tools, prompts, references, and draft generation.",
     "viewAllFaqs": "View All FAQs",
     "contactSupport": "Contact Support",
     "haveMoreQuestions": "Have more questions? We're here to help.",
     "questions": {
     "whatMakesDifferent": {
-      "question": "What is a VEO 4 AI video platform?",
-      "answer": "A VEO 4 AI video platform helps you create videos from text prompts or images through a faster web workflow. On veo4video.io, that includes VEO 4 text to video, VEO 4 image to video, and campaign-ready exports for ads, product videos, and social content."
+      "question": "What is sparkrobinai.io?",
+      "answer": "sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It helps creators track confirmed updates, structure reusable prompts, and create practical video drafts from text or images."
     },
     "characterConsistency": {
-      "question": "How does Veo4 maintain character consistency across scenes?",
-      "answer": "Veo4 maintains stronger character consistency by keeping the same subject appearance, wardrobe, and visual direction across related shots. This is useful for brand storytelling, product explainers, and ad campaigns where the same character must stay recognizable."
+      "question": "Is Spark Robin officially available from Google?",
+      "answer": "Google has not confirmed a public Spark Robin release in the materials we reference. Treat specific model specs as watch items until they appear in official Google, Google DeepMind, or Google Cloud documentation."
     },
     "videosLongerThan10s": {
-      "question": "Can Veo4 generate videos longer than 10 seconds?",
-      "answer": "Yes. Veo4 supports longer video workflows beyond short clips, including multi-scene generation for more complete brand stories and campaign concepts. Available duration depends on the workflow you choose on the platform."
+      "question": "What can I do here before official access arrives?",
+      "answer": "You can prepare prompts, references, shot lists, and draft clips now. That makes it easier to move quickly when new model access or official Spark Robin details become available."
     },
     "commercialUse": {
-      "question": "Are VEO 4 videos suitable for commercial use?",
-      "answer": "Yes. VEO 4 videos can be used for commercial work such as paid ads, e-commerce content, landing pages, and social campaigns, subject to the platform terms and the rules that apply to your source assets and prompts."
+      "question": "Can I use the drafts commercially?",
+      "answer": "Commercial use depends on the plan, your source assets, your prompts, and the terms that apply to the generation workflow. Review licensing and asset rights before publishing."
     },
     "watermarks": {
-      "question": "Do Veo4 videos include watermarks?",
-      "answer": "No. Veo4 exports from our platform are watermark-free, so the final video is cleaner for ads, product demos, and social publishing."
+      "question": "Why focus on prompt systems instead of only generation?",
+      "answer": "AI video changes quickly. A structured prompt system gives your team reusable creative direction that can move across tools, models, and future Spark Robin updates."
     },
     "paymentSafe": {
       "question": "What payment methods do you accept?",
@@ -289,8 +289,8 @@
     "ourPriceValue": "$0.05/s",
     "fiftyPercentCheaper": "50% CHEAPER",
     "thanMarket": "than market",
-    "chooseYourPlan": "Select Your Veo4 Plan",
-    "teaserSubtitle": "Professional Veo4 video generation for campaigns. Cancel anytime. Annual plans save 50%.",
+    "chooseYourPlan": "Choose a Creative Workflow Plan",
+    "teaserSubtitle": "Credits for prompt tests, image-led drafts, and video workflow exploration. Cancel anytime.",
     "proTip": "💡 <strong>Pro tip:</strong> Subscription plans include API access, webhooks, and priority support",
     "plans": {
       "monthly": "Monthly",
@@ -319,7 +319,7 @@
       "tryAgainLater": "Please try again later.",
       "failedToCreatePaymentLink": "Failed to create payment link",
       "needHelp": "Need Help?",
-      "contactSupport": "Contact support@veo4video.io for assistance.",
+      "contactSupport": "Contact support@sparkrobinai.io for assistance.",
       "contactSupportLink": "Contact Support",
       "features": {
         "creditsIncluded": "{count} credits included",
@@ -366,10 +366,10 @@
       "pleaseEnterPrompt": "Please enter your prompt",
       "pleaseUploadImage": "Please upload an image to generate the video",
       "watermarkRemover": {
-        "title": "Veo4 Watermark Remover",
+        "title": "Spark Robin Watermark Remover",
         "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
-        "seoTitle": "Veo4 Watermark Remover | Remove Sora Watermarks",
-        "seoDescription": "Veo4 watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+        "seoTitle": "Spark Robin Watermark Remover | Remove Sora Watermarks",
+        "seoDescription": "Spark Robin watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
         "input": "Input",
         "output": "Output",
         "videoUrl": "video_url",
@@ -382,8 +382,8 @@
         "waitingForResult": "Waiting for result…",
         "noOutputYet": "No output yet",
         "exampleVideo": "Example Video",
-        "exampleVideoDescription": "This is a sample video generated by Veo4 AI. Upload your own Sora video to remove watermarks!",
-        "creditsInfo": "This tool consumes 10 credits per run. Keep your Veo4 videos clean and brand-ready.",
+        "exampleVideoDescription": "This is a sample video generated by Spark Robin AI. Upload your own Sora video to remove watermarks!",
+        "creditsInfo": "This tool consumes 10 credits per run. Keep your Spark Robin videos clean and brand-ready.",
         "browserNotSupportVideo": "Your browser does not support the video tag."
       }
     },
@@ -413,8 +413,8 @@
       "answer": "Subscription bucket resets each billing period and does not roll over. One-time add-on credits go to the flexible bucket and are not cleared by subscription resets."
     },
     "faqRefundPolicy": {
-      "question": "What is veo4video.io refund policy?",
-      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@veo4video.io for refunds. Refunds are processed within 5-7 business days."
+      "question": "What is sparkrobinai.io refund policy?",
+      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@sparkrobinai.io for refunds. Refunds are processed within 5-7 business days."
     },
     "faqContentRestrictions": {
       "question": "Are there any video content restrictions?",
@@ -466,98 +466,98 @@
     "video": "Video",
     "credits": "Credits",
     "exampleVideo": "Example Video",
-    "sampleVideoDescription": "This is a sample video generated by Veo4 AI. Create your own videos using the input panel!",
-    "sampleVideoDescriptionUnauthenticated": "This is a sample video generated by Veo4 AI. Sign up to create your own!",
+    "sampleVideoDescription": "This sample shows how a structured prompt can become a reviewable video draft.",
+    "sampleVideoDescriptionUnauthenticated": "This sample shows the kind of draft you can create after signing in.",
     "browserNotSupportVideo": "Your browser does not support the video tag.",
     "signUpToCreate": "Sign Up to Create Your Own",
-    "textToVideoTitle": "Veo 4 Text to Video | Create AI Video",
-    "textToVideoSubtitle": "Turn prompts into Veo 4 videos with strong motion, clean scenes, and ad-ready output for marketing, social, and product stories.",
-    "textToVideoFeaturesTitle": "Why Teams Use Veo 4 for Text to Video",
+    "textToVideoTitle": "Spark Robin Text to Video | Prompt Workflow Lab",
+    "textToVideoSubtitle": "Turn a loose idea into a structured video brief, then generate a draft you can review, compare, and improve.",
+    "textToVideoFeaturesTitle": "A Better Way to Write AI Video Prompts",
     "featureAIPowered": {
-      "title": "Veo 4 Prompt-to-Video Generation",
-      "description": "With Veo 4, you can turn a short prompt or a detailed script into a polished scene. The Veo 4 workflow is built for creators, marketers, educators, and teams that need production-ready AI video from text."
+      "title": "Prompt briefs, not prompt guesses",
+      "description": "Break a concept into subject, setting, camera, motion, pacing, and continuity notes so each generation has a clearer job."
     },
     "featureCinematic": {
-      "title": "Veo 4 Cinematic Motion and Detail",
-      "description": "Veo 4 helps produce smooth motion, stronger lighting, and cleaner scene composition without opening a traditional editor. From social reels to product explainers, Veo 4 gives teams a faster path to cinematic output."
+      "title": "Drafts you can critique",
+      "description": "Create outputs that are useful for review: enough visual direction to evaluate the idea, without pretending every first render is final."
     },
     "featureAudio": {
-      "title": "Veo 4 Output Built for Real Workflows",
-      "description": "Use Veo 4 for launch videos, social posts, ad concepts, and product storytelling. The Veo 4 setup keeps prompt input simple while giving you export-ready AI video for commercial use cases."
+      "title": "Built around iteration",
+      "description": "Save the reasoning behind each draft so your next version improves the hook, framing, motion, or offer instead of starting over."
     },
     "featureContextual": {
-      "title": "Veo 4 Scene Direction with Prompt Control",
-      "description": "Veo 4 responds to style, pacing, mood, and scene intent in your prompt, helping you shape branded, educational, or narrative video with more control and less manual production work."
+      "title": "Reusable shot language",
+      "description": "Keep camera moves, product angles, scene rhythm, and brand tone in a format your team can reuse across campaigns and future model access."
     },
     "howToUseTitle": "How to Use the AI Video Generator for Text to Video",
     "howToUseStep1": {
-      "title": "Sign Up or Log In to veo4video.io",
-      "description": "Create an account to unlock the full features of our Text to Video interface."
+      "title": "Sign Up or Log In to sparkrobinai.io",
+      "description": "Create an account so your drafts, prompt notes, and generation history stay organized."
     },
     "howToUseStep2": {
-      "title": "Access the Text to Video Creation Panel",
-      "description": "Find the tool on your dashboard and choose to start from scratch or use AI assistance."
+      "title": "Open the prompt workspace",
+      "description": "Start with a blank idea, a product angle, a script fragment, or a prompt you want to restructure."
     },
     "howToUseStep3": {
-      "title": "Type or Paste Your Script",
-      "description": "Enter your idea in the text box. You can type a simple prompt, scene description, or full script."
+      "title": "Write the scene in layers",
+      "description": "Add the subject, environment, camera behavior, motion, mood, and any constraints the draft should respect."
     },
     "howToUseStep4": {
-      "title": "Click to Generate",
-      "description": "Click the \"Generate\" button. The AI will process your script and create a video with matching visuals, motion, and music. It only takes a few minutes, and your video will be ready to preview and download."
+      "title": "Generate and revise the brief",
+      "description": "Generate a draft, compare it with your goal, then tighten the prompt notes for the next version."
     },
-    "whoUsesTitle": "Who Uses Veo4?",
+    "whoUsesTitle": "Who Uses This Workflow?",
     "whoUsesContentCreators": "Content creators",
     "whoUsesTikTokMarketers": "TikTok marketers",
-    "imageToVideoTitle": "Veo 4 Image to Video | Animate Photos",
-    "imageToVideoSubtitle": "Turn photos into Veo 4 videos with natural motion, clean detail, and ad-ready output. Upload an image and create polished clips in minutes.",
-    "imageToVideoFeaturesTitle": "Veo4 Image to Video Features - Advanced AI Video Generation",
+    "imageToVideoTitle": "Spark Robin Image to Video | Reference-Led Motion",
+    "imageToVideoSubtitle": "Use a product photo, frame, or visual reference as the anchor for a video draft with clearer motion direction.",
+    "imageToVideoFeaturesTitle": "Use Images as Creative Direction",
     "imageToVideoFeature1": {
-      "title": "Veo4 Simple Image-to-Motion Transformation",
-      "description": "With Veo4 Image to Video, just upload your photo and watch it come alive. Veo4 AI engine analyzes your image and generates natural, cinematic motion that enhances the scene. Veo4 is perfect for product showcases, artistic creations, and bringing still moments into dynamic stories."
+      "title": "Reference-first generation",
+      "description": "Start from a concrete visual instead of a vague description. The uploaded image anchors the subject, composition, and visual style of the draft."
     },
     "imageToVideoFeature2": {
-      "title": "Veo4 Professional Motion with Zero Animation Skills",
-      "description": "Veo4 advanced AI understands depth, lighting, and composition. Veo4 generates smooth camera movements, natural object motion, and realistic environmental effects - all without requiring any animation or video editing expertise. Transform your portfolio photos into professional video content with Veo4."
+      "title": "Motion notes that match the frame",
+      "description": "Add camera direction, pacing, and object movement on top of the image so the draft has a specific creative target."
     },
     "imageToVideoFeature3": {
-      "title": "Veo4 Automatic Audio Generation",
-      "description": "Every Veo4 video comes with perfectly matched background music and ambient sounds. Veo4 AI analyzes your image's mood and atmosphere to create audio that complements the visual story. It's a complete Veo4 video creation experience from a single image."
+      "title": "Useful for product and brand tests",
+      "description": "Turn packshots, mockups, lifestyle images, or campaign stills into motion concepts before booking production time."
     },
     "imageToVideoFeature4": {
-      "title": "Veo4 Intelligent Scene Understanding",
-      "description": "Veo4 AI recognizes objects, people, landscapes, and scenes in your image. Veo4 generates motion that makes sense contextually - whether it's a gentle breeze through trees, a product rotating in 3D space, or a portrait with subtle movement. Every Veo4 animation feels natural and purposeful."
+      "title": "A cleaner review loop",
+      "description": "Because every draft starts from the same reference image, teams can compare motion choices without losing the visual baseline."
     },
-    "imageToVideoHowToUseTitle": "How to Use Veo4 Image to Video Generator",
+    "imageToVideoHowToUseTitle": "How to Build an Image-Led Video Draft",
     "imageToVideoHowToUseStep1": {
-      "title": "Sign Up or Log In to veo4video.io",
-      "description": "Create an account to unlock the full Veo4 Image to Video features and start using Veo4 AI technology."
+      "title": "Sign Up or Log In to sparkrobinai.io",
+      "description": "Create an account to keep reference images, prompts, and drafts in one workflow."
     },
     "imageToVideoHowToUseStep2": {
-      "title": "Access Veo4 Image to Video Panel",
-      "description": "Navigate to the Veo4 Image to Video tool on your dashboard. Veo4 interface is designed for easy image-to-video conversion."
+      "title": "Open the image workflow",
+      "description": "Choose image to video when your visual direction is already captured in a photo, design, or frame."
     },
     "imageToVideoHowToUseStep3": {
-      "title": "Upload Your Image to Veo4",
-      "description": "Drag and drop or select your image file for Veo4 processing. Veo4 supports photos, illustrations, product images, or any static visual you want to animate with Veo4."
+      "title": "Upload the reference image",
+      "description": "Use a clean source image and add notes about what should move, what should stay stable, and what mood the draft should carry."
     },
     "imageToVideoHowToUseStep4": {
-      "title": "Generate with Veo4",
-      "description": "Click the \"Generate\" button and let Veo4 AI analyze your image. Veo4 creates videos with natural motion, camera movement, and synchronized audio. Your Veo4 animated video will be ready in minutes."
+      "title": "Generate and compare motion",
+      "description": "Review the result against the original reference and revise the camera, motion, or pacing notes for the next pass."
     },
-    "imageToVideoPageTitle": "Veo 4 Image to Video",
-    "imageToVideoPageSubtitle": "Transform your images into cinematic videos with Veo4 AI technology — no watermark",
-    "imageToVideoTestimonialsTitle": "Why Choose Veo4 Image to Video Generator",
+    "imageToVideoPageTitle": "Image to Video Drafting",
+    "imageToVideoPageSubtitle": "Use reference images to explore motion, pacing, and framing before final production.",
+    "imageToVideoTestimonialsTitle": "How Teams Use Image-Led Drafts",
     "imageToVideoTestimonial1": {
-      "quote": "I uploaded a product photo and Veo4 generated a professional video ad in minutes. Veo4 has completely changed how I create content for my online store!",
+      "quote": "Starting from a product photo helped us test three motion directions before deciding what to shoot for the campaign.",
       "author": "Emma L., E-commerce Owner"
     },
     "imageToVideoTestimonial2": {
-      "quote": "As a photographer, I love how Veo4 brings my static images to life. Veo4 motion feels natural and adds so much depth to my portfolio.",
+      "quote": "I use the image workflow to show clients how a still frame could move before we commit to a full edit.",
       "author": "Michael R., Professional Photographer"
     },
     "imageToVideoTestimonial3": {
-      "quote": "Veo4 Image to Video feature saved me hours of animation work. I can now create engaging social media content from my existing photos instantly with Veo4.",
+      "quote": "The reference image keeps the visual direction grounded, which makes feedback much easier than reviewing prompt-only drafts.",
       "author": "Jessica T., Social Media Manager"
     },
     "imageToVideoTestimonial4": {
@@ -607,10 +607,10 @@
     },
     "reframeMode": {
       "model": "Model",
-      "sora3": "Veo4",
-      "sora3Pro": "Veo4 pro",
-      "sora3Description": "OpenAI's advanced video generation model with high-quality output and precise control.",
-      "sora3ProDescription": "OpenAI's premium video generation model with enhanced quality, superior realism, and advanced control capabilities.",
+      "sora3": "Spark Robin",
+      "sora3Pro": "Spark Robin pro",
+      "sora3Description": "A structured AI video workflow for prompt briefs, reference images, and reviewable drafts.",
+      "sora3ProDescription": "A higher-capacity workflow for teams testing more draft variations and reference-led scenes.",
       "prompt": "Prompt *",
       "promptTooltip": "Describe the motion you want to create from the reference image",
       "aiExamples": "AI Examples",
@@ -748,31 +748,31 @@
       "generationTimeNote": "⏱️ This typically takes 5-15 minutes. Please keep this page open.",
       "exampleDescription": "Here's an example of a 25-second multi-scene storyboard video. Configure your scenes and click generate to create your own.",
       "exampleNote": "Example: 3-scene storyboard (8s + 8s + 9s = 25s total)",
-      "whatIsSora3ProStoryboard": "What is Veo4 Pro Storyboard?",
-      "sora3ProStoryboardDescription": "Veo4 Pro Storyboard is a cutting-edge AI video generation system designed for sequential content production. Build multi-scene AI videos up to 25s for Youtube Shorts, TikTok and Reels. This robust platform enables multi-scene coordination, maintains visual consistency and coherence, provides precise control over outputs up to 25 seconds in length, and exports HD quality videos with audio.",
+      "whatIsSora3ProStoryboard": "What is Spark Robin Pro Storyboard?",
+      "sora3ProStoryboardDescription": "Spark Robin Pro Storyboard is a cutting-edge AI video generation system designed for sequential content production. Build multi-scene AI videos up to 25s for Youtube Shorts, TikTok and Reels. This robust platform enables multi-scene coordination, maintains visual consistency and coherence, provides precise control over outputs up to 25 seconds in length, and exports HD quality videos with audio.",
       "upTo25sDuration": "Up to 25s Duration",
       "multiSceneControl": "Multi-Scene Control (Storyboard)",
       "socialMediaReady": "Social Media Ready",
       "hdQualityAudio": "HD Quality + Audio",
-      "whatPeopleAreSaying": "What People Are Saying About Veo4 Pro Storyboard",
-      "keyFeatures": "Key Features of Veo4 Pro Storyboard",
+      "whatPeopleAreSaying": "What People Are Saying About Spark Robin Pro Storyboard",
+      "keyFeatures": "Key Features of Spark Robin Pro Storyboard",
       "multiSceneSequencing": "Multi-Scene Sequencing",
-      "multiSceneSequencingDescription": "With Veo4 Pro Storyboard, define multiple scenes in order to create coherent storylines. The Veo4 Pro Storyboard engine ensures smooth transitions between scenes for seamless multi-scene videos.",
+      "multiSceneSequencingDescription": "With Spark Robin Pro Storyboard, define multiple scenes in order to create coherent storylines. The Spark Robin Pro Storyboard engine ensures smooth transitions between scenes for seamless multi-scene videos.",
       "visualConsistency": "Visual Consistency",
-      "visualConsistencyDescription": "Veo4 Pro Storyboard maintains consistent visual style and elements across all scenes, delivering professional-quality video output that viewers expect from Veo4 Pro Storyboard.",
+      "visualConsistencyDescription": "Spark Robin Pro Storyboard maintains consistent visual style and elements across all scenes, delivering professional-quality video output that viewers expect from Spark Robin Pro Storyboard.",
       "flexibleOutputControl": "Flexible Output Control",
-      "flexibleOutputControlDescription": "Generate videos up to 25 seconds with Veo4 Pro Storyboard. Choose 10s, 15s, or 25s duration options to fit your content needs using Veo4 Pro Storyboard.",
+      "flexibleOutputControlDescription": "Generate videos up to 25 seconds with Spark Robin Pro Storyboard. Choose 10s, 15s, or 25s duration options to fit your content needs using Spark Robin Pro Storyboard.",
       "referenceImageSupport": "Reference Image Support",
-      "referenceImageSupportDescription": "Upload a reference image to guide the Veo4 Pro Storyboard generation process, ensuring visual consistency throughout your Veo4 Storyboard video.",
-      "howToUse": "How to Use Veo4 Pro Storyboard",
+      "referenceImageSupportDescription": "Upload a reference image to guide the Spark Robin Pro Storyboard generation process, ensuring visual consistency throughout your Spark Robin Storyboard video.",
+      "howToUse": "How to Use Spark Robin Pro Storyboard",
       "step1DefineScenes": "Define Scenes",
-      "step1Description": "Describe each scene in detail for Veo4 Pro Storyboard",
+      "step1Description": "Describe each scene in detail for Spark Robin Pro Storyboard",
       "step2SetParameters": "Set Parameters",
       "step2Description": "Choose duration (10s/15s/25s) and aspect ratio",
       "step3UploadReference": "Upload Reference",
-      "step3Description": "Add an image to guide Veo4 Pro Storyboard (Optional)",
+      "step3Description": "Add an image to guide Spark Robin Pro Storyboard (Optional)",
       "step4Generate": "Generate",
-      "step4Description": "Click generate and let Veo4 Pro Storyboard create your video",
+      "step4Description": "Click generate and let Spark Robin Pro Storyboard create your video",
       "perfectFor": "Perfect for TikTok, Instagram Reels, YouTube Shorts, and brand content creation. Learn more about our",
       "pricingPlans": "pricing plans",
       "pricing": "💎 Pricing",
@@ -783,13 +783,13 @@
       "socialMediaFormats": "Social Media Formats",
       "socialMediaFormatsDescription": "Built-in templates for TikTok, Instagram Reels, YouTube Shorts.",
       "fastExportShare": "Fast Export & Share",
-      "fastExportShareDescription": "Generate, preview and download your Veo4 Storyboard videos in minutes."
+      "fastExportShareDescription": "Generate, preview and download your Spark Robin Storyboard videos in minutes."
     },
     "watermarkRemover": {
-      "title": "Veo4 Watermark Remover",
+      "title": "Spark Robin Watermark Remover",
       "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
-      "seoTitle": "Veo4 Watermark Remover | Remove Sora Watermarks",
-      "seoDescription": "Veo4 watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+      "seoTitle": "Spark Robin Watermark Remover | Remove Sora Watermarks",
+      "seoDescription": "Spark Robin watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
       "input": "Input",
       "output": "Output",
       "videoUrl": "video_url",
@@ -802,8 +802,8 @@
       "waitingForResult": "Waiting for result…",
       "noOutputYet": "No output yet",
       "exampleVideo": "Example Video",
-      "exampleVideoDescription": "This is a sample video generated by Veo4 AI. Upload your own Sora video to remove watermarks!",
-      "creditsInfo": "This tool consumes 10 credits per run. Keep your Veo4 videos clean and brand-ready.",
+      "exampleVideoDescription": "This is a sample video generated by Spark Robin AI. Upload your own Sora video to remove watermarks!",
+      "creditsInfo": "This tool consumes 10 credits per run. Keep your Spark Robin videos clean and brand-ready.",
       "browserNotSupportVideo": "Your browser does not support the video tag."
     },
     "promptExamples": {
@@ -818,13 +818,13 @@
     }
   },
   "demoGallery": {
-    "title": "VEO 4 Examples",
-    "description": "Browse text-to-video, image-to-video, and commercial-ready VEO 4 outputs built for creators, brands, and marketing teams.",
+    "title": "Spark Robin Examples",
+    "description": "Browse text-to-video, image-to-video, and commercial-ready Spark Robin outputs built for creators, brands, and marketing teams.",
     "seeMoreExamples": "See more examples",
     "tapToUnmute": "Tap to unmute"
   },
   "keyFeatures": {
-    "title": "What makes Veo4 AI different",
+    "title": "What makes Spark Robin AI different",
     "noWatermark": {
       "title": "No watermark",
       "description": "Your videos are clean, brandable, and ready for commercial use."
@@ -838,8 +838,8 @@
       "description": "Generate 10-second clips within minutes — right in the browser."
     },
     "sora3ProStoryboard": {
-      "title": "Veo4 Pro Storyboard (25 seconds)",
-      "description": "Veo4 Storyboard storytelling for ads, trailers, product showcases, and cinematic short films."
+      "title": "Spark Robin Pro Storyboard (25 seconds)",
+      "description": "Spark Robin Storyboard storytelling for ads, trailers, product showcases, and cinematic short films."
     },
     "textToVideoImageToVideo": {
       "title": "Text-to-video & image-to-video",
@@ -850,16 +850,16 @@
       "description": "Perfect for TikTok, Reels, Shorts, and paid ads."
     },
     "trySora3Free": {
-      "title": "Try Veo4 Free — No Editing Required",
-      "description": "Start creating cinematic videos with Veo4 AI-powered tools. Veo4 makes video creation easy - no experience needed. Discover what Veo4 can do for your projects. Try Veo4 free and see why creators choose Veo4 for AI video generation.",
+      "title": "Try Spark Robin Free — No Editing Required",
+      "description": "Start with a prompt brief or reference image, generate a draft, and refine the creative notes for the next pass.",
       "startGenerating": "Start Generating"
     }
   },
   "testimonials": {
     "title": "Loved by creators worldwide",
-    "subtitle": "Join creators worldwide who use Veo4 for AI video generation. See what users say about our platform watermark-free videos and rendering features. Discover why Veo4 is trusted by creators using Veo4 technology.",
-    "ctaTitle": "Join creators making videos with AI",
-    "ctaDescription": "Experience AI video generation with watermark-free videos, audio features, and efficient rendering. Start creating videos today.",
+    "subtitle": "See how creators use structured prompts, reference images, and review loops to move from rough ideas to clearer AI video drafts.",
+    "ctaTitle": "Build a better AI video workflow",
+    "ctaDescription": "Start with reusable prompt notes, generate drafts, and improve the next version with less guesswork.",
     "ctaButton": "Start Creating Now"
   },
   "error": {
@@ -868,7 +868,7 @@
   },
   "auth": {
     "signIn": "Sign In",
-    "signInToSora3": "Sign In to Veo4",
+    "signInToSora3": "Sign In to Spark Robin",
     "createAccount": "Create Account",
     "checkEmail": "Check Your Email",
     "backToSignUp": "Back to Sign Up",
@@ -891,31 +891,31 @@
     "redirectingToGoogle": "Redirecting to Google..."
   },
   "sora3Capabilities": {
-    "title": "Why Choose VEO 4",
-    "subtitle": "VEO 4 helps teams create stronger video faster across text to video, image to video, and video to video workflows, with smoother motion, cleaner scenes, and outputs that fit real marketing workflows.",
+    "title": "Why Choose Spark Robin",
+    "subtitle": "Spark Robin helps teams prepare better AI video briefs across text, image, and video workflows, with clearer review notes and reusable creative direction.",
     "cinematicRealism": {
       "title": "Create videos from text, images, or existing footage",
-      "description": "Start with a prompt, a still image, or a source video and turn it into polished VEO 4 output. This gives teams a clearer path from concept, asset, or rough clip to a stronger first draft."
+      "description": "Start with a prompt, still image, or source clip and turn it into a draft that is easier to review, compare, and revise."
     },
     "naturalCameraMotion": {
       "title": "Get better motion, framing, and scene control",
-      "description": "Use VEO 4 when you need smoother motion, cleaner framing, and scenes that feel more intentional. The result is stronger ad creative and more believable visual storytelling."
+      "description": "Use layered camera, motion, and pacing notes so each draft has a clear creative target."
     },
     "consistentCharacters": {
       "title": "Build ads, social videos, and product content faster",
-      "description": "VEO 4 fits common commercial jobs such as product launches, paid social videos, branded storytelling, and short-form content testing. It is built for teams that need usable clips fast."
+      "description": "Use structured briefs for product launches, paid social concepts, branded storytelling, and short-form testing."
     },
     "longFormPlatformReady": {
-      "title": "Create longer clips with cleaner exports",
-      "description": "Create longer VEO 4 clips for narrative sequences, campaign concepts, and product explainers. Clean exports make it easier to move straight into editing, landing pages, or ad workflows."
+      "title": "Prepare sequences before rendering",
+      "description": "Plan multi-shot ideas as shot notes first, then generate drafts that reviewers can judge against the same brief."
     },
     "advancedSceneIntelligence": {
-      "title": "Veo4 Scene Understanding",
-      "description": "Veo4 comprehends spatial relationships and environmental context.\n\nVeo4 generates scenes with realistic physics and natural interactions.\n\nVeo4 excels at product showcases, lifestyle content, and brand world-building."
+      "title": "Scene Notes and Continuity",
+      "description": "Separate setting, subject, camera, action, and continuity details.\n\nThis makes each draft easier to diagnose.\n\nIt also helps teams reuse successful shot language across future model access."
     },
     "audioSoundGeneration": {
-      "title": "Veo4 Integrated Audio",
-      "description": "Veo4 generates synchronized soundscapes that match your visuals.\n\nVeo4 automatically adds dialogue, ambient sounds, and effects.\n\nVeo4 delivers complete videos ready for deployment without extra editing."
+      "title": "Review Before Final Production",
+      "description": "Treat early outputs as creative evidence, not final answers.\n\nCompare drafts against the brief.\n\nThen refine the prompt, reference, or shot plan before investing more production time."
     }
   },
   "paymentSuccess": {
@@ -956,14 +956,14 @@
     "credits": "Credits"
   },
   "account": {
-    "dashboardMetaTitle": "Dashboard | Manage Your Veo 4 Account",
-    "dashboardMetaDescription": "Manage your Veo 4 account, credits, subscriptions, payments, and generation history in one place.",
-    "myCreationsMetaTitle": "My Creations | Veo 4 Generation History",
-    "myCreationsMetaDescription": "Review your Veo 4 generation history, replay completed videos, and download the clips you want to keep.",
+    "dashboardMetaTitle": "Dashboard | Manage Your Spark Robin Account",
+    "dashboardMetaDescription": "Manage your Spark Robin account, credits, subscriptions, payments, and generation history in one place.",
+    "myCreationsMetaTitle": "My Creations | Spark Robin Generation History",
+    "myCreationsMetaDescription": "Review your Spark Robin generation history, replay completed videos, and download the clips you want to keep.",
     "dashboardPageTitle": "Account Dashboard",
     "dashboardPageDescription": "Manage your subscription, credits, payments, and video history from one place.",
     "myCreationsPageTitle": "My Creations",
-    "myCreationsPageDescription": "Review your Veo 4 generation history, replay finished videos, and download the clips you want to keep.",
+    "myCreationsPageDescription": "Review your Spark Robin generation history, replay finished videos, and download the clips you want to keep.",
     "stats": {
       "creditsAvailable": "Credits Available",
       "videosGenerated": "Videos Generated",

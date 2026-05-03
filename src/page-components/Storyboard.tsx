@@ -298,29 +298,29 @@ const Storyboard = () => {
   // Get localized SEO content
   const getSEOTitle = () => {
     if (locale === 'ru') {
-      return 'Veo4 Pro Storyboard | Мультисценовый генератор видео';
+      return 'Spark Robin Pro Storyboard | Мультисценовый генератор видео';
     } else if (locale === 'ar') {
-      return 'لوحة Veo4 Pro | مولد فيديو متعدد المشاهد';
+      return 'لوحة Spark Robin Pro | مولد فيديو متعدد المشاهد';
     } else if (locale === 'ja') {
-      return 'Veo4 Pro ストーリーボード | マルチシーン動画生成';
+      return 'Spark Robin Pro ストーリーボード | マルチシーン動画生成';
     }
-    return 'Veo4 Pro Storyboard | Multi-Scene Video Generator';
+    return 'Spark Robin Pro Storyboard | Multi-Scene Video Generator';
   };
 
   const getSEODescription = () => {
     if (locale === 'ru') {
-      return 'Veo4 Pro Storyboard — создавайте мультисценовые AI-видео до 25 секунд для YouTube Shorts, TikTok и Reels. Контроль сцен и визуальная согласованность.';
+      return 'Spark Robin Pro Storyboard — создавайте мультисценовые AI-видео до 25 секунд для YouTube Shorts, TikTok и Reels. Контроль сцен и визуальная согласованность.';
     } else if (locale === 'ar') {
-      return 'لوحة Veo4 Pro - أنشئ فيديوهات AI متعددة المشاهد حتى 25 ثانية لـ YouTube Shorts وTikTok وReels. بدون علامة مائية.';
+      return 'لوحة Spark Robin Pro - أنشئ فيديوهات AI متعددة المشاهد حتى 25 ثانية لـ YouTube Shorts وTikTok وReels. بدون علامة مائية.';
     } else if (locale === 'ja') {
-      return 'Veo4 Proストーリーボード - YouTube Shorts、TikTok、Reels用の最大25秒のマルチシーンAI動画を作成。ウォーターマークなし。';
+      return 'Spark Robin Proストーリーボード - YouTube Shorts、TikTok、Reels用の最大25秒のマルチシーンAI動画を作成。ウォーターマークなし。';
     }
-    return 'Veo4 Pro Storyboard - Create multi-scene AI videos up to 25s for YouTube Shorts, TikTok and Reels. Control scenes and maintain visual consistency.';
+    return 'Spark Robin Pro Storyboard - Create multi-scene AI videos up to 25s for YouTube Shorts, TikTok and Reels. Control scenes and maintain visual consistency.';
   };
 
   const canonicalUrl = locale === 'en' 
-    ? 'https://veo4video.io/veo-4-storyboard'
-    : `https://veo4video.io/${locale}/veo-4-storyboard`;
+    ? 'https://sparkrobinai.io/spark-robin-storyboard'
+    : `https://sparkrobinai.io/${locale}/spark-robin-storyboard`;
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -328,8 +328,8 @@ const Storyboard = () => {
         title={getSEOTitle()}
         description={getSEODescription()}
         canonical={canonicalUrl}
-        keywords="Veo4 Pro Storyboard,veo4 storyboard,AI video storyboard,multi-scene video,TikTok video generator,Instagram Reels,YouTube Shorts,AI video creator,Veo4,storyboard generator,AI video maker,social media video creator"
-        image="https://veo4video.io/og-sora3-storyboard.jpg"
+        keywords="Spark Robin Pro Storyboard,spark-robin storyboard,AI video storyboard,multi-scene video,TikTok video generator,Instagram Reels,YouTube Shorts,AI video creator,Spark Robin,storyboard generator,AI video maker,social media video creator"
+        image="https://sparkrobinai.io/og-sora3-storyboard.jpg"
       />
       
       {/* Structured Data */}
@@ -339,9 +339,9 @@ const Storyboard = () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "Veo4 Pro Storyboard",
-            "description": "Create professional multi-scene AI videos up to 25 seconds perfect for YouTube Shorts, TikTok, Instagram Reels. Design your story with scene-by-scene control and seamless transitions using Veo4 Pro Storyboard's advanced capabilities.",
-            "url": "https://veo4video.io/veo-4-storyboard",
+            "name": "Spark Robin Pro Storyboard",
+            "description": "Create professional multi-scene AI videos up to 25 seconds perfect for YouTube Shorts, TikTok, Instagram Reels. Design your story with scene-by-scene control and seamless transitions using Spark Robin Pro Storyboard's advanced capabilities.",
+            "url": "https://sparkrobinai.io/spark-robin-storyboard",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "Web Browser",
             "offers": {
@@ -358,7 +358,7 @@ const Storyboard = () => {
             "creator": {
               "@type": "Organization",
               "name": "ivido",
-              "url": "https://veo4video.io"
+              "url": "https://sparkrobinai.io"
             },
             "featureList": [
               "Multi-scene video generation",
@@ -368,7 +368,7 @@ const Storyboard = () => {
               "Reference image support",
               "Portrait and landscape modes"
             ],
-            "screenshot": "https://veo4video.io/sora3-storyboard-screenshot.jpg",
+            "screenshot": "https://sparkrobinai.io/sora3-storyboard-screenshot.jpg",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.8",
@@ -425,7 +425,7 @@ const Storyboard = () => {
                 {/* Tab switcher */}
                 <div className="flex items-center bg-muted/60 border border-border rounded-xl p-1 mb-5 gap-1">
                   <Link
-                    href="/veo4-text-to-video"
+                    href="/spark-robin-text-to-video"
                     className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center text-muted-foreground hover:text-foreground hover:bg-muted"
                   >
                     <FileText className="w-4 h-4" />
@@ -568,7 +568,7 @@ const Storyboard = () => {
               </div>
             </div>
 
-            {/* What is Veo4 Pro Storyboard */}
+            {/* What is Spark Robin Pro Storyboard */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-foreground mb-4 text-center">
                 {tGenerate('storyboard.whatIsSora3ProStoryboard')}
@@ -607,7 +607,7 @@ const Storyboard = () => {
                   <Card className="p-4 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="twitter-tweet">
                       <p lang="en" dir="ltr">
-                        2 Veo4 updates:<br/><br/>
+                        2 Spark Robin updates:<br/><br/>
                         - Storyboards are now available on web to Pro users<br/>
                         - All users can now generate videos up to 15 seconds on app and web, Pro users up to 25 seconds on web 
                         <a href="https://t.co/iINg7alWGL">pic.twitter.com/iINg7alWGL</a>
@@ -640,7 +640,7 @@ const Storyboard = () => {
                   <Card className="p-4 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="twitter-tweet">
                       <p lang="en" dir="ltr">
-                        Here's an example of a 25s video I made in Veo4 using the new storyboard feature.<br/><br/>
+                        Here's an example of a 25s video I made in Spark Robin using the new storyboard feature.<br/><br/>
                         Still learning what's the best way to use this… 
                         <a href="https://t.co/urYyCy3gqz">pic.twitter.com/urYyCy3gqz</a>
                       </p>
@@ -797,10 +797,10 @@ const Storyboard = () => {
             </div>
           </section>
 
-          {/* Veo4 Pro Storyboard Application */}
+          {/* Spark Robin Pro Storyboard Application */}
           <section className="mt-16 mb-8">
             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-              <span suppressHydrationWarning>Veo4 Pro Storyboard Application</span>
+              <span suppressHydrationWarning>Spark Robin Pro Storyboard Application</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
@@ -809,9 +809,9 @@ const Storyboard = () => {
                     <Film className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">Veo4 Storyboard AI Videos</h3>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Spark Robin Storyboard AI Videos</h3>
                     <p className="text-muted-foreground">
-                      Veo4 Pro Storyboard API lets you design complete multi-scene video flows where every shot follows your creative vision. 
+                      Spark Robin Pro Storyboard API lets you design complete multi-scene video flows where every shot follows your creative vision. 
                       You define each scene's visuals and pacing using text or image prompts, while the API ensures natural transitions 
                       and consistent visual style throughout the video.
                     </p>
@@ -877,7 +877,7 @@ const Storyboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <Quote className="w-8 h-8 text-primary mb-4" />
-                <p className="text-muted-foreground italic mb-4">"Veo4 Pro Storyboard transformed my content creation. My engagement has skyrocketed!"</p>
+                <p className="text-muted-foreground italic mb-4">"Spark Robin Pro Storyboard transformed my content creation. My engagement has skyrocketed!"</p>
                 <p className="font-semibold text-foreground">- Sarah Chen <span className="text-sm text-muted-foreground">(@sarahcreates)</span></p>
                 <p className="text-sm text-primary mt-2 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> +300% Engagement</p>
               </Card>
@@ -909,10 +909,10 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      How can Veo4 Pro Storyboard API help in creating multi-scene AI videos?
+                      How can Spark Robin Pro Storyboard API help in creating multi-scene AI videos?
                     </h3>
                     <p className="text-muted-foreground">
-                      Veo4 Pro Storyboard API lets you design complete Veo4 Storyboard video flows where every shot follows your creative vision. 
+                      Spark Robin Pro Storyboard API lets you design complete Spark Robin Storyboard video flows where every shot follows your creative vision. 
                       You define each scene's visuals and pacing using text or image prompts, while the API ensures natural transitions 
                       and consistent visual style throughout the video.
                     </p>
@@ -927,7 +927,7 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      How can brands use Veo4 Pro Storyboard API for cinematic ads and storytelling?
+                      How can brands use Spark Robin Pro Storyboard API for cinematic ads and storytelling?
                     </h3>
                     <p className="text-muted-foreground">
                       The API helps brands and creators structure professional-grade short films or ad visuals. 
@@ -945,7 +945,7 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      Can Veo4 Pro Storyboard API be used for concept videos or visual prototypes?
+                      Can Spark Robin Pro Storyboard API be used for concept videos or visual prototypes?
                     </h3>
                     <p className="text-muted-foreground">
                       Yes. It's ideal for turning creative concepts into structured visual prototypes. 
@@ -963,7 +963,7 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      How does Veo4 Pro Storyboard API enable character-driven animation sequences?
+                      How does Spark Robin Pro Storyboard API enable character-driven animation sequences?
                     </h3>
                     <p className="text-muted-foreground">
                       You can maintain the same characters, environments, and tone across different shots to produce 
@@ -981,10 +981,10 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      What video durations are supported by Veo4 Pro Storyboard?
+                      What video durations are supported by Spark Robin Pro Storyboard?
                     </h3>
                     <p className="text-muted-foreground">
-                      Veo4 Pro Storyboard costs 250 credits per 10-second video and 450 credits per 15–25 second video. 
+                      Spark Robin Pro Storyboard costs 250 credits per 10-second video and 450 credits per 15–25 second video. 
                       You can distribute the total duration across multiple scenes as needed.
                     </p>
                   </div>
@@ -998,11 +998,11 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      Can I upload reference images for Veo4 Pro Storyboard generation?
+                      Can I upload reference images for Spark Robin Pro Storyboard generation?
                     </h3>
                     <p className="text-muted-foreground">
-                      Yes, you can upload a reference image to guide the Veo4 Pro Storyboard generation process. 
-                      This helps ensure visual consistency throughout your Veo4 Storyboard video. The image is applied globally 
+                      Yes, you can upload a reference image to guide the Spark Robin Pro Storyboard generation process. 
+                      This helps ensure visual consistency throughout your Spark Robin Storyboard video. The image is applied globally 
                       to all scenes in your storyboard.
                     </p>
                   </div>

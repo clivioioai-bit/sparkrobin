@@ -15,12 +15,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        title="Veo4 AI Video Generator | Text-to-Video with Sora-Level Quality"
-        description="Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use."
-        ogTitle="Veo4 AI Video Generator | Text-to-Video with Sora-Level Quality"
-        ogDescription="Create cinematic videos from text prompts. Advanced motion realism, multi-shot storytelling, and creative control. Independent platform, easy to use."
-        canonical="https://veo4video.io/"
-        keywords="AI video ads, Veo4 Storyboard, veo4 storyboard, multi-scene storyboard, consistent characters, 25 second AI video, vertical ad templates, TikTok ad generator, Shopify product video, AI storyboard builder"
+        title="Spark Robin Workflow Lab | Release Watch and AI Video Drafts"
+        description="Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images."
+        ogTitle="Spark Robin Workflow Lab | Release Watch and AI Video Drafts"
+        ogDescription="Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images."
+        canonical="https://sparkrobinai.io/"
+        keywords="Spark Robin release watch, AI video workflow, prompt briefs, reference image video, text to video drafts, image to video drafts"
       />
       <ScrollProgress />
       

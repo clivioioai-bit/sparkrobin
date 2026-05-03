@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BlogPostPage from '@/components/blog/BlogPostPage';
-import { getPostBySlug, getPostSlugs } from '@/lib/blog';
+import { getAvailablePostLocales, getPostBySlug, getPostSlugs } from '@/lib/blog';
 import { generateHreflangAlternates } from '@/utils/hreflang';
 
 export const dynamic = 'force-dynamic';
@@ -18,12 +18,12 @@ export async function generateMetadata({
     return {};
   }
 
-  const url = `https://veo4video.io/blog/${post.slug}`;
+  const url = `https://sparkrobinai.io/blog/${post.slug}`;
 
   return {
     title: post.meta.title,
     description: post.meta.description,
-    alternates: generateHreflangAlternates(`/blog/${post.slug}`, 'en'),
+    alternates: generateHreflangAlternates(`/blog/${post.slug}`, 'en', getAvailablePostLocales(post.slug)),
     openGraph: {
       title: post.meta.title,
       description: post.meta.description,

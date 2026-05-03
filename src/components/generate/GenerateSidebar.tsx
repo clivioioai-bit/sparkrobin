@@ -17,12 +17,12 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     nameKey: "imageToVideo",
-    href: "/veo4-image-to-video",
+    href: "/spark-robin-image-to-video",
     icon: ImageIcon,
   },
   {
     nameKey: "textToVideo",
-    href: "/veo4-text-to-video",
+    href: "/spark-robin-text-to-video",
     icon: FileText,
   },
   {

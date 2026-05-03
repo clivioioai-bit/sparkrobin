@@ -69,10 +69,6 @@ const nextConfig = {
             value: 'origin-when-cross-origin',
           },
           {
-            key: 'X-Robots-Tag',
-            value: 'noai, noimageai',
-          },
-          {
             key: 'Content-Signals',
             value: 'search=yes, ai-train=no',
           },

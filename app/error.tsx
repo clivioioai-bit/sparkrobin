@@ -57,10 +57,10 @@ export default function Error({
           <p className="text-sm text-muted-foreground">
             Need help? Contact{" "}
             <a
-              href="mailto:support@veo4video.io?subject=Application Error"
+              href="mailto:support@sparkrobinai.io?subject=Application Error"
               className="text-primary hover:underline"
             >
-              support@veo4video.io
+              support@sparkrobinai.io
             </a>
           </p>
         </div>

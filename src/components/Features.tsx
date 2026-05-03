@@ -11,8 +11,8 @@ const Features = () => {
     },
     {
       icon: Zap,
-      title: "Veo4 Fast Model",
-      description: "Access the latest Veo4 Fast for rapid video generation. 3x faster than standard models.",
+      title: "Spark Robin Fast Model",
+      description: "Access the latest Spark Robin Fast for rapid video generation. 3x faster than standard models.",
       highlight: "Fast Generation"
     },
     {
@@ -94,7 +94,7 @@ const Features = () => {
             <Code className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium">Ready to get started?</span>
             <a 
-            href="/veo4-text-to-video" 
+            href="/spark-robin-text-to-video" 
               className="text-primary hover:text-primary-glow transition-colors font-medium"
             >
               Start Generating Videos →

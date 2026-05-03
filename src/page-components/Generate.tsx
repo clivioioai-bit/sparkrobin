@@ -46,7 +46,7 @@ const createDefaultSora3Params = (): Sora3Params => ({
   style: 'realistic',
   n_frames: '10',
   model: 'veo3.1',
-  veoDisplayModel: 'veo4',
+  veoDisplayModel: 'spark-robin',
   veo3SubModel: 'veo3_fast',
 });
 
@@ -57,7 +57,7 @@ const createDefaultReframeParams = (): ReframeParams => ({
   speed: 'normal',
   model: 'veo3.1',
   veo3SubModel: 'veo3_fast', // Default to fast for image-to-video
-  veoDisplayModel: 'veo4',
+  veoDisplayModel: 'spark-robin',
   n_frames: '10'
 });
 
@@ -123,11 +123,11 @@ const Generate = () => {
   }, []);
 
   const routeFromMode = useCallback((mode: GenerationMode) => (
-    mode === 'image-to-video' ? '/veo4-image-to-video' : '/veo4-text-to-video'
+    mode === 'image-to-video' ? '/spark-robin-image-to-video' : '/spark-robin-text-to-video'
   ), []);
 
   const modeFromPathname = useCallback((path: string): GenerationMode => (
-    path?.startsWith('/veo4-image-to-video') ? 'image-to-video' : 'text-to-video'
+    path?.startsWith('/spark-robin-image-to-video') ? 'image-to-video' : 'text-to-video'
   ), []);
 
   const handleModeChange = useCallback(
@@ -1154,22 +1154,22 @@ const Generate = () => {
       <SEOHead 
         title={isWatermarkRemover 
           ? tGenerate('watermarkRemover.seoTitle')
-          : routeFromMode(generationMode) === '/veo4-image-to-video' 
+          : routeFromMode(generationMode) === '/spark-robin-image-to-video' 
           ? tGenerate('imageToVideoTitle')
           : tGenerate('textToVideoTitle')}
         description={isWatermarkRemover
           ? tGenerate('watermarkRemover.seoDescription')
-          : routeFromMode(generationMode) === '/veo4-image-to-video'
+          : routeFromMode(generationMode) === '/spark-robin-image-to-video'
           ? tGenerate('imageToVideoSubtitle')
           : tGenerate('textToVideoSubtitle')}
         canonical={isWatermarkRemover 
-          ? 'https://veo4video.io/watermark-remover'
-          : routeFromMode(generationMode) === '/veo4-image-to-video' ? 'https://veo4video.io/veo4-image-to-video' : 'https://veo4video.io/veo4-text-to-video'}
+          ? 'https://sparkrobinai.io/watermark-remover'
+          : routeFromMode(generationMode) === '/spark-robin-image-to-video' ? 'https://sparkrobinai.io/spark-robin-image-to-video' : 'https://sparkrobinai.io/spark-robin-text-to-video'}
         keywords={isWatermarkRemover
-          ? "veo4 watermark remover,Sora watermark remover,remove watermark sora,watermark removal Sora3"
-          : routeFromMode(generationMode) === '/veo4-image-to-video'
-          ? "Veo4 workspace,Veo4 studio,Sora video generator,image to video,Veo4 AI,AI video workflow"
-          : "veo 4,veo 4 text to video,veo 4 video generator,veo 4 ai video generator,text to video ai,cinematic ai video generator"}
+          ? "spark-robin watermark remover,Sora watermark remover,remove watermark sora,watermark removal Sora3"
+          : routeFromMode(generationMode) === '/spark-robin-image-to-video'
+          ? "Spark Robin workspace,Spark Robin studio,Sora video generator,image to video,Spark Robin AI,AI video workflow"
+          : "spark robin,spark robin text to video,spark robin video generator,spark robin ai video generator,text to video ai,cinematic ai video generator"}
       />
       <GenerateSidebar open={isSidebarOpen} onOpenChange={setIsSidebarOpen} />
       
@@ -1316,29 +1316,29 @@ const Generate = () => {
 
               {/* Documentation block */}
               <section className="mt-10 mb-16">
-                <h2 className="text-2xl font-bold mb-6">Veo4 Watermark Remover Documentation</h2>
+                <h2 className="text-2xl font-bold mb-6">Spark Robin Watermark Remover Documentation</h2>
 
                 {/* Feature rows */}
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                   <div>
-                    <h3 className="text-lg font-semibold">Intelligent Detection in Veo4 Watermark Remover</h3>
+                    <h3 className="text-lg font-semibold">Intelligent Detection in Spark Robin Watermark Remover</h3>
                     <p className="text-muted-foreground mt-2">
-                      The <strong>veo4 watermark remover</strong> detects and tracks static or moving overlays with AI. It pinpoints logos, text and stickers, then reconstructs pixels so colors, motion, and structure stay true to the original.
+                      The <strong>spark-robin watermark remover</strong> detects and tracks static or moving overlays with AI. It pinpoints logos, text and stickers, then reconstructs pixels so colors, motion, and structure stay true to the original.
                     </p>
                   </div>
                   <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden">
-                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/4.webp" alt="veo4 watermark remover intelligent detection" className="w-full h-auto" loading="lazy" />
+                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/4.webp" alt="spark-robin watermark remover intelligent detection" className="w-full h-auto" loading="lazy" />
                   </figure>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                   <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden order-2 md:order-1">
-                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/2.webp" alt="veo4 watermark remover frame consistent output" className="w-full h-auto" loading="lazy" />
+                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/2.webp" alt="spark-robin watermark remover frame consistent output" className="w-full h-auto" loading="lazy" />
                   </figure>
                   <div className="order-1 md:order-2">
                     <h3 className="text-lg font-semibold">Remove Watermark with Frame‑Consistent Output</h3>
                     <p className="text-muted-foreground mt-2">
-                      With motion‑aware tracking, the <strong>veo4 watermark remover</strong> preserves flow and lighting balance. Your clips stay smooth and stable without flicker—ready for export or re‑edit.
+                      With motion‑aware tracking, the <strong>spark-robin watermark remover</strong> preserves flow and lighting balance. Your clips stay smooth and stable without flicker—ready for export or re‑edit.
                     </p>
                   </div>
                 </div>
@@ -1347,79 +1347,79 @@ const Generate = () => {
                   <div>
                     <h3 className="text-lg font-semibold">Seamless Restoration and Audio Sync</h3>
                     <p className="text-muted-foreground mt-2">
-                      Using AI reconstruction, the <strong>veo4 watermark remover</strong> fills removed regions naturally, restoring textures and color while keeping audio perfectly in sync for clean, high‑quality Veo4 videos.
+                      Using AI reconstruction, the <strong>spark-robin watermark remover</strong> fills removed regions naturally, restoring textures and color while keeping audio perfectly in sync for clean, high‑quality Spark Robin videos.
                     </p>
                   </div>
                   <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden">
-                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/3.webp" alt="veo4 watermark remover seamless restoration" className="w-full h-auto" loading="lazy" />
+                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/3.webp" alt="spark-robin watermark remover seamless restoration" className="w-full h-auto" loading="lazy" />
                   </figure>
                 </div>
 
                 {/* What you can remove */}
-                <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">What You Can Remove Using Veo4 Watermark Remover</h3>
-                <p className="text-xl text-muted-foreground text-center mb-10">Capabilities of the <strong>veo4 watermark remover</strong></p>
+                <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">What You Can Remove Using Spark Robin Watermark Remover</h3>
+                <p className="text-xl text-muted-foreground text-center mb-10">Capabilities of the <strong>spark-robin watermark remover</strong></p>
                 <div className="grid md:grid-cols-2 gap-8 mb-14">
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
-                    <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Veo4</div>
-                    <h4 className="text-xl font-semibold mb-2">Remove Watermark from Veo4 Video</h4>
-                    <p className="text-muted-foreground">AI tracking clears moving or static overlays while the <strong>veo4 watermark remover</strong> keeps motion smooth and natural.</p>
+                    <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Spark Robin</div>
+                    <h4 className="text-xl font-semibold mb-2">Remove Watermark from Spark Robin Video</h4>
+                    <p className="text-muted-foreground">AI tracking clears moving or static overlays while the <strong>spark-robin watermark remover</strong> keeps motion smooth and natural.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
-                    <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Veo4</div>
-                    <h4 className="text-xl font-semibold mb-2">Remove Watermark from Veo4 Video</h4>
-                    <p className="text-muted-foreground">Optimized for 1080p/cinematic outputs, the <strong>veo4 watermark remover</strong> handles embedded or semi‑transparent overlays.</p>
+                    <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Spark Robin</div>
+                    <h4 className="text-xl font-semibold mb-2">Remove Watermark from Spark Robin Video</h4>
+                    <p className="text-muted-foreground">Optimized for 1080p/cinematic outputs, the <strong>spark-robin watermark remover</strong> handles embedded or semi‑transparent overlays.</p>
                   </div>
                 </div>
 
                 {/* Why remove */}
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">Why remove watermarks</h3>
-                <p className="text-xl text-muted-foreground text-center mb-10">Benefits of using the <strong>veo4 watermark remover</strong></p>
+                <p className="text-xl text-muted-foreground text-center mb-10">Benefits of using the <strong>spark-robin watermark remover</strong></p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Professional</div>
                     <h4 className="text-xl font-semibold mb-2">Create Clean, Professional Videos</h4>
-                    <p className="text-muted-foreground">The <strong>veo4 watermark remover</strong> removes visual noise so clips look polished for marketing, social, and presentations.</p>
+                    <p className="text-muted-foreground">The <strong>spark-robin watermark remover</strong> removes visual noise so clips look polished for marketing, social, and presentations.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Editing</div>
                     <h4 className="text-xl font-semibold mb-2">Prepare Clips for Editing & Reuse</h4>
-                    <p className="text-muted-foreground">Start with a clean base—transitions, grading, and effects work better after the <strong>veo4 watermark remover</strong> pass.</p>
+                    <p className="text-muted-foreground">Start with a clean base—transitions, grading, and effects work better after the <strong>spark-robin watermark remover</strong> pass.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Workflow</div>
                     <h4 className="text-xl font-semibold mb-2">Integrate with AI Workflows</h4>
-                    <p className="text-muted-foreground">Consistent, watermark‑free outputs make it easy to chain the <strong>veo4 watermark remover</strong> with other AI tools.</p>
+                    <p className="text-muted-foreground">Consistent, watermark‑free outputs make it easy to chain the <strong>spark-robin watermark remover</strong> with other AI tools.</p>
                   </div>
                 </div>
 
                 {/* How to remove for free */}
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">How to remove for free</h3>
-                <p className="text-xl text-muted-foreground text-center mb-10">Three easy steps with the <strong>veo4 watermark remover</strong></p>
+                <p className="text-xl text-muted-foreground text-center mb-10">Three easy steps with the <strong>spark-robin watermark remover</strong></p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">1</div>
                     <h4 className="text-xl font-semibold mb-2">Paste your Sora URL</h4>
-                    <p className="text-muted-foreground">Open the playground and paste your video link; the <strong>veo4 watermark remover</strong> prepares it for AI detection.</p>
+                    <p className="text-muted-foreground">Open the playground and paste your video link; the <strong>spark-robin watermark remover</strong> prepares it for AI detection.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">2</div>
                     <h4 className="text-xl font-semibold mb-2">Generate</h4>
-                    <p className="text-muted-foreground">Click once— the <strong>veo4 watermark remover</strong> detects and removes logos/text across frames.</p>
+                    <p className="text-muted-foreground">Click once— the <strong>spark-robin watermark remover</strong> detects and removes logos/text across frames.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">3</div>
                     <h4 className="text-xl font-semibold mb-2">Download & integrate</h4>
-                    <p className="text-muted-foreground">Preview and save the clean clip; integrate the <strong>veo4 watermark remover</strong> into your workflow.</p>
+                    <p className="text-muted-foreground">Preview and save the clean clip; integrate the <strong>spark-robin watermark remover</strong> into your workflow.</p>
                   </div>
                 </div>
 
                 {/* Use cases */}
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">Use cases</h3>
-                <p className="text-xl text-muted-foreground text-center mb-10">Where the <strong>veo4 watermark remover</strong> fits</p>
+                <p className="text-xl text-muted-foreground text-center mb-10">Where the <strong>spark-robin watermark remover</strong> fits</p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Publish clean AI videos</h4><p className="text-muted-foreground">Use the <strong>veo4 watermark remover</strong> before posting to social, YouTube, or portfolios.</p></div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Editing & remix</h4><p className="text-muted-foreground">A clean base from the <strong>veo4 watermark remover</strong> avoids artifacts in transitions and effects.</p></div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Automated pipelines</h4><p className="text-muted-foreground">Developers can batch clips through the <strong>veo4 watermark remover</strong> for consistent results.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Publish clean AI videos</h4><p className="text-muted-foreground">Use the <strong>spark-robin watermark remover</strong> before posting to social, YouTube, or portfolios.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Editing & remix</h4><p className="text-muted-foreground">A clean base from the <strong>spark-robin watermark remover</strong> avoids artifacts in transitions and effects.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Automated pipelines</h4><p className="text-muted-foreground">Developers can batch clips through the <strong>spark-robin watermark remover</strong> for consistent results.</p></div>
                 </div>
               </section>
 
@@ -1428,33 +1428,33 @@ const Generate = () => {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center mb-10">
                     <h2 className="text-3xl sm:text-4xl font-bold mb-3">Frequently asked <span className="text-primary">questions</span></h2>
-                    <p className="text-xl text-muted-foreground">Quick answers about the <strong>veo4 watermark remover</strong></p>
+                    <p className="text-xl text-muted-foreground">Quick answers about the <strong>spark-robin watermark remover</strong></p>
                   </div>
                   <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6">
                     <div className="divide-y divide-border">
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">How do I remove the watermark from a Sora video?</summary>
-                        <div className="text-muted-foreground pt-2">Open the playground, paste the URL, click Generate—the <strong>veo4 watermark remover</strong> does the rest.</div>
+                        <div className="text-muted-foreground pt-2">Open the playground, paste the URL, click Generate—the <strong>spark-robin watermark remover</strong> does the rest.</div>
                       </details>
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">Can I use it for free?</summary>
-                        <div className="text-muted-foreground pt-2">Yes—try the <strong>veo4 watermark remover</strong> with free credits after sign‑up.</div>
+                        <div className="text-muted-foreground pt-2">Yes—try the <strong>spark-robin watermark remover</strong> with free credits after sign‑up.</div>
                       </details>
                       <details className="group py-3">
-                        <summary className="cursor-pointer font-semibold group-open:text-primary">Does it support Veo4 videos?</summary>
-                        <div className="text-muted-foreground pt-2">Yes, the <strong>veo4 watermark remover</strong> handles semi‑transparent overlays in Pro outputs.</div>
+                        <summary className="cursor-pointer font-semibold group-open:text-primary">Does it support Spark Robin videos?</summary>
+                        <div className="text-muted-foreground pt-2">Yes, the <strong>spark-robin watermark remover</strong> handles semi‑transparent overlays in Pro outputs.</div>
                       </details>
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">What types of watermarks can be removed?</summary>
-                        <div className="text-muted-foreground pt-2">Logos, text, and overlays—static or moving—via the <strong>veo4 watermark remover</strong>.</div>
+                        <div className="text-muted-foreground pt-2">Logos, text, and overlays—static or moving—via the <strong>spark-robin watermark remover</strong>.</div>
                       </details>
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">Does removal affect quality?</summary>
-                        <div className="text-muted-foreground pt-2">The <strong>veo4 watermark remover</strong> uses reconstruction to keep texture and motion consistent.</div>
+                        <div className="text-muted-foreground pt-2">The <strong>spark-robin watermark remover</strong> uses reconstruction to keep texture and motion consistent.</div>
                       </details>
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">Can I integrate it into my workflow?</summary>
-                        <div className="text-muted-foreground pt-2">Yes, call the API directly or chain Veo4 with the <strong>veo4 watermark remover</strong>.</div>
+                        <div className="text-muted-foreground pt-2">Yes, call the API directly or chain Spark Robin with the <strong>spark-robin watermark remover</strong>.</div>
                       </details>
                     </div>
                   </div>
@@ -1630,47 +1630,47 @@ const Generate = () => {
             {/* Page Header with H1 - below the functional area */}
             <header className="text-center mt-10 mb-8">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                {routeFromMode(generationMode) === '/veo4-image-to-video'
+                {routeFromMode(generationMode) === '/spark-robin-image-to-video'
                   ? tGenerate('imageToVideoPageTitle')
                   : tGenerate('textToVideoTitle')}
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {routeFromMode(generationMode) === '/veo4-image-to-video'
+                {routeFromMode(generationMode) === '/spark-robin-image-to-video'
                   ? tGenerate('imageToVideoPageSubtitle')
                   : tGenerate('textToVideoSubtitle')}
               </p>
             </header>
 
             {/* Marketing Content - Only for text-to-video */}
-            {routeFromMode(generationMode) === '/veo4-text-to-video' && (
+            {routeFromMode(generationMode) === '/spark-robin-text-to-video' && (
               <>
                 <section className="mt-10 mb-12 max-w-5xl mx-auto">
                   <div className="rounded-2xl border border-border bg-card/70 backdrop-blur-xl p-8 md:p-10">
                     <h2 className="text-3xl font-bold text-foreground mb-5 text-center">
-                      Veo 4 Text to Video for Fast, Searchable, Ad-Ready AI Video
+                      Spark Robin Text to Video for Fast, Searchable, Ad-Ready AI Video
                     </h2>
                     <div className="space-y-4 text-muted-foreground leading-7 text-base">
                       <p>
-                        <strong>Veo 4</strong> helps teams turn a simple prompt into a polished clip without building a full production workflow. This text to video page is designed for creators, advertisers, and product teams that need cinematic motion, clear scene intent, and quick turnaround from one interface.
+                        <strong>Spark Robin</strong> helps teams turn a simple prompt into a polished clip without building a full production workflow. This text to video page is designed for creators, advertisers, and product teams that need cinematic motion, clear scene intent, and quick turnaround from one interface.
                       </p>
                       <p>
-                        You can write a short concept, shape the ratio for social or landscape delivery, and generate a <strong>Veo 4</strong> video suited for product launches, landing pages, paid campaigns, demos, and creative tests. The goal is not generic output. The goal is a workflow that gives you stronger visuals, faster iteration, and production-friendly exports.
+                        You can write a short concept, shape the ratio for social or landscape delivery, and generate a <strong>Spark Robin</strong> video suited for product launches, landing pages, paid campaigns, demos, and creative tests. The goal is not generic output. The goal is a workflow that gives you stronger visuals, faster iteration, and production-friendly exports.
                       </p>
                       <p>
-                        If you are comparing tools, this generator is optimized around prompt control, image-to-video expansion, and commercial-ready rendering. Use <strong>Veo 4</strong> when you need quick experiments, repeatable campaign assets, or a direct path from prompt to polished AI video.
+                        If you are comparing tools, this generator is optimized around prompt control, image-to-video expansion, and commercial-ready rendering. Use <strong>Spark Robin</strong> when you need quick experiments, repeatable campaign assets, or a direct path from prompt to polished AI video.
                       </p>
                     </div>
                     <div className="mt-6 grid gap-4 md:grid-cols-3">
                       <div className="rounded-xl border border-border/70 bg-background/70 p-4">
-                        <h3 className="font-semibold text-foreground mb-2">Veo 4 for ad creative</h3>
+                        <h3 className="font-semibold text-foreground mb-2">Spark Robin for ad creative</h3>
                         <p className="text-sm text-muted-foreground">Build short video concepts for paid social, product hooks, and brand tests.</p>
                       </div>
                       <div className="rounded-xl border border-border/70 bg-background/70 p-4">
-                        <h3 className="font-semibold text-foreground mb-2">Veo 4 for content teams</h3>
+                        <h3 className="font-semibold text-foreground mb-2">Spark Robin for content teams</h3>
                         <p className="text-sm text-muted-foreground">Move from prompt drafts to ready-to-edit clips without heavy manual production.</p>
                       </div>
                       <div className="rounded-xl border border-border/70 bg-background/70 p-4">
-                        <h3 className="font-semibold text-foreground mb-2">Veo 4 for product storytelling</h3>
+                        <h3 className="font-semibold text-foreground mb-2">Spark Robin for product storytelling</h3>
                         <p className="text-sm text-muted-foreground">Create scenes for feature launches, onboarding, demos, and landing page media.</p>
                       </div>
                     </div>
@@ -1792,7 +1792,7 @@ const Generate = () => {
                 {/* Who Uses Section */}
                 <section className="mt-16 mb-12">
                   <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-                    Who Uses Veo4?
+                    Who Uses Spark Robin?
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
@@ -1850,7 +1850,7 @@ const Generate = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
-                      <p className="text-muted-foreground italic mb-4">"Veo4 AI Text to Video tool helped me turn my blog posts into engaging videos in minutes. A total game-changer for my content strategy!"</p>
+                      <p className="text-muted-foreground italic mb-4">"Spark Robin AI Text to Video tool helped me turn my blog posts into engaging videos in minutes. A total game-changer for my content strategy!"</p>
                       <p className="font-semibold text-foreground">- Sophia M., Content Creator</p>
                     </Card>
 
@@ -1868,7 +1868,7 @@ const Generate = () => {
 
                     <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
-                      <p className="text-muted-foreground italic mb-4">"I used Veo4 AI to create a product explainer video. The results looked like I hired a professional team!"</p>
+                      <p className="text-muted-foreground italic mb-4">"I used Spark Robin AI to create a product explainer video. The results looked like I hired a professional team!"</p>
                       <p className="font-semibold text-foreground">- Jason P., Startup Founder</p>
                     </Card>
 
@@ -1889,7 +1889,7 @@ const Generate = () => {
             )}
 
             {/* Marketing Content - Only for image-to-video */}
-            {routeFromMode(generationMode) === '/veo4-image-to-video' && (
+            {routeFromMode(generationMode) === '/spark-robin-image-to-video' && (
               <>
                 {/* Features Section */}
                 <section className="mt-16 mb-12">
@@ -2114,82 +2114,82 @@ const Generate = () => {
             {/* SEO-Optimized FAQ Section */}
             <section className="mt-12 mb-8" itemScope itemType="https://schema.org/FAQPage">
               <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-                {routeFromMode(generationMode) === '/veo4-text-to-video' 
-                  ? "Frequently Asked Questions About Veo 4 Text to Video"
-                  : routeFromMode(generationMode) === '/veo4-image-to-video'
+                {routeFromMode(generationMode) === '/spark-robin-text-to-video' 
+                  ? "Frequently Asked Questions About Spark Robin Text to Video"
+                  : routeFromMode(generationMode) === '/spark-robin-image-to-video'
                   ? tGenerate('faqImageToVideoTitle')
-                  : "Frequently Asked Questions About Veo4 AI Video Generator"}
+                  : "Frequently Asked Questions About Spark Robin AI Video Generator"}
               </h2>
               <div className="max-w-4xl mx-auto space-y-6">
-                {routeFromMode(generationMode) === '/veo4-text-to-video' ? (
+                {routeFromMode(generationMode) === '/spark-robin-text-to-video' ? (
                   <>
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        What is the Veo 4 text to video generator?
+                        What is the Spark Robin text to video generator?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          The Veo 4 text to video generator turns written prompts, scripts, and scene ideas into cinematic AI video. You describe the concept, and Veo 4 generates visuals, motion, pacing, and presentation-ready output from that prompt.
+                          The Spark Robin text to video generator turns written prompts, scripts, and scene ideas into cinematic AI video. You describe the concept, and Spark Robin generates visuals, motion, pacing, and presentation-ready output from that prompt.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Do I need editing experience to use Veo 4?
+                        Do I need editing experience to use Spark Robin?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          No. Veo 4 is built so marketers, founders, creators, and content teams can move from prompt to video without traditional editing skills. Enter the idea, set the format, and let Veo 4 handle the heavy lifting.
+                          No. Spark Robin is built so marketers, founders, creators, and content teams can move from prompt to video without traditional editing skills. Enter the idea, set the format, and let Spark Robin handle the heavy lifting.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Can I customize style and scene direction in Veo 4?
+                        Can I customize style and scene direction in Spark Robin?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Yes. Veo 4 follows prompt instructions for visual style, camera feel, pacing, tone, and scene detail. That makes Veo 4 useful for branded content, product video, explainers, and social-first creative testing.
+                          Yes. Spark Robin follows prompt instructions for visual style, camera feel, pacing, tone, and scene detail. That makes Spark Robin useful for branded content, product video, explainers, and social-first creative testing.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        How long does Veo 4 take to generate a video?
+                        How long does Spark Robin take to generate a video?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Most Veo 4 generations finish within a few minutes, depending on prompt complexity, ratio, and queue conditions. Once the Veo 4 job is complete, you can preview and download the result directly.
+                          Most Spark Robin generations finish within a few minutes, depending on prompt complexity, ratio, and queue conditions. Once the Spark Robin job is complete, you can preview and download the result directly.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        What kinds of videos can I create with Veo 4?
+                        What kinds of videos can I create with Spark Robin?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          You can use Veo 4 for ad creatives, explainer clips, social videos, product demos, launch assets, educational scenes, and short brand stories. Veo 4 works well anywhere prompt-driven video production is useful.
+                          You can use Spark Robin for ad creatives, explainer clips, social videos, product demos, launch assets, educational scenes, and short brand stories. Spark Robin works well anywhere prompt-driven video production is useful.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Can I use Veo 4 videos for commercial work?
+                        Can I use Spark Robin videos for commercial work?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Yes. Veo 4 videos can be used for marketing, business, product, and campaign work, subject to our usage terms. That makes Veo 4 a practical option for teams producing conversion-focused video at speed.
+                          Yes. Spark Robin videos can be used for marketing, business, product, and campaign work, subject to our usage terms. That makes Spark Robin a practical option for teams producing conversion-focused video at speed.
                         </p>
                       </div>
                     </div>
                   </>
-                ) : routeFromMode(generationMode) === '/veo4-image-to-video' ? (
+                ) : routeFromMode(generationMode) === '/spark-robin-image-to-video' ? (
                   <>
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
@@ -2261,55 +2261,55 @@ const Generate = () => {
                   <>
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        What is Veo4 AI Video Generator?
+                        What is Spark Robin AI Video Generator?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Veo4 serves as a sophisticated AI-powered video creation system built on advanced multimodel video technology. It enables you to produce studio-grade videos using text inputs or image uploads within moments. Our service provides dual functionality for text-to-video and image-to-video conversion, delivering high-definition results with synchronized audio.
+                          Spark Robin on this site is a practical workflow for turning briefs, prompts, and reference images into reviewable AI video drafts. It is designed to help teams structure creative direction, compare versions, and prepare reusable notes for current and future video models.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Is Veo4 video generator free to use?
+                        Can I try the Spark Robin workflow for free?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Yes. Veo4 offers a free tier to get started. You can try our AI video generator with limited credits. For unlimited access and premium features, plans start from $19/month for 100 high-quality AI-generated videos with audio.
+                          Yes. You can start with limited credits to test prompt briefs, image-led drafts, and the review workflow. Paid plans add more credits and capacity for ongoing iteration.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        How long does it take to generate a video with Veo4?
+                        How long does a draft take?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Veo4 AI generates videos in seconds to minutes depending on the complexity and length. Most standard videos (8-16 seconds) are ready in under 3 minutes. Our fast processing ensures you get high-quality results quickly.
+                          Timing depends on the selected workflow, duration, and queue state. Treat the first output as a draft: review it against the brief, then refine the prompt or reference notes for the next pass.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        What video formats and resolutions does Veo4 support?
+                        What video formats and resolutions does Spark Robin support?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Veo4 supports multiple aspect ratios including 16:9 (landscape), 9:16 (vertical/TikTok), and 1:1 (square). All videos are generated in HD quality with professional audio. You can download your videos in standard formats compatible with all platforms.
+                          Spark Robin supports multiple aspect ratios including 16:9 (landscape), 9:16 (vertical/TikTok), and 1:1 (square). All videos are generated in HD quality with professional audio. You can download your videos in standard formats compatible with all platforms.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Can I use Veo4 videos for commercial purposes?
+                        Can I use Spark Robin videos for commercial purposes?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Yes! Videos generated with Veo4 AI can be used for commercial purposes including social media marketing, advertising, content creation, and more. Premium subscribers get full commercial rights with no platform watermark on generated videos.
+                          Yes! Videos generated with Spark Robin AI can be used for commercial purposes including social media marketing, advertising, content creation, and more. Premium subscribers get full commercial rights with no platform watermark on generated videos.
                         </p>
                       </div>
                     </div>
@@ -2319,22 +2319,22 @@ const Generate = () => {
             </section>
 
             {/* Get Started Section - For text-to-video and image-to-video */}
-            {(routeFromMode(generationMode) === '/veo4-text-to-video' || routeFromMode(generationMode) === '/veo4-image-to-video') && (
+            {(routeFromMode(generationMode) === '/spark-robin-text-to-video' || routeFromMode(generationMode) === '/spark-robin-image-to-video') && (
               <section className="mt-16 mb-12">
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/20 rounded-2xl p-8 text-center">
                   <h2 className="text-3xl font-bold text-foreground mb-4">
-                    {routeFromMode(generationMode) === '/veo4-text-to-video' 
-                      ? "Start Creating with Veo 4 Text to Video"
+                    {routeFromMode(generationMode) === '/spark-robin-text-to-video' 
+                      ? "Start Creating with Spark Robin Text to Video"
                       : tGenerate('getStartedImageToVideo.title')}
                   </h2>
                   <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
-                    {routeFromMode(generationMode) === '/veo4-text-to-video' 
-                      ? "Use Veo 4 to turn scripts, prompts, and campaign ideas into polished AI video. Upgrade for faster rendering, longer durations, more flexible workflows, and a Veo 4 setup that supports creators, marketers, and product teams."
+                    {routeFromMode(generationMode) === '/spark-robin-text-to-video' 
+                      ? "Use Spark Robin to turn scripts, prompts, and campaign ideas into polished AI video. Upgrade for faster rendering, longer durations, more flexible workflows, and a Spark Robin setup that supports creators, marketers, and product teams."
                       : tGenerate('getStartedImageToVideo.description')}
                   </p>
                   <Link href="/pricing">
                     <Button size="lg" className={`px-6 ${primaryActionButtonClass}`}>
-                      {routeFromMode(generationMode) === '/veo4-image-to-video' 
+                      {routeFromMode(generationMode) === '/spark-robin-image-to-video' 
                         ? tGenerate('getStartedImageToVideo.button')
                         : tGenerate('fallbacks.getPremium')}
                     </Button>

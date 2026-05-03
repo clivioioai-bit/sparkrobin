@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import Hero from '@/components/home/Hero'
 import ToolsSection from '@/components/home/ToolsSection'
 import Footer from '@/components/Footer'
-import WhatIsVeo4Section from '@/components/home/WhatIsVeo4Section'
+import WhatIsSparkRobinSection from '@/components/home/WhatIsSparkRobinSection'
 
 const DemoGallery = dynamic(() => import('@/components/home/DemoGallery'), {
   loading: () => <div className="h-96" />,
@@ -20,7 +20,7 @@ const PricingTeaser = dynamic(() => import('@/components/home/PricingTeaser'), {
   loading: () => <div className="h-96" />,
   ssr: true
 });
-const Veo4KnowledgeSection = dynamic(() => import('@/components/home/Veo4KnowledgeSection'), {
+const SparkRobinKnowledgeSection = dynamic(() => import('@/components/home/SparkRobinKnowledgeSection'), {
   loading: () => <div className="h-96" />,
   ssr: true
 });
@@ -89,7 +89,7 @@ export default function HomePageClient() {
       <main className="premium-page">
         <Hero />
         <ToolsSection />
-        <WhatIsVeo4Section />
+        <WhatIsSparkRobinSection />
         <Suspense fallback={<div className="h-96" />}>
           <Sora3Capabilities />
         </Suspense>
@@ -100,7 +100,7 @@ export default function HomePageClient() {
           <HowItWorks />
         </Suspense>
         <Suspense fallback={<div className="h-96" />}>
-          <Veo4KnowledgeSection />
+          <SparkRobinKnowledgeSection />
         </Suspense>
         <Suspense fallback={<div className="h-96" />}>
           <PricingTeaser />

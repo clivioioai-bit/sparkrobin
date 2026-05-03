@@ -1,9 +1,9 @@
 ---
-title: "Sora is Officially Offline: How to Export Your Data and Migrate to Veo 4"
-description: "A practical Sora discontinuation guide for creators: key shutdown dates, how to export Sora videos, how to preserve prompts, and how to rebuild your workflow in Veo4Video."
+title: "Sora is Officially Offline: How to Export Your Data and Migrate to Spark Robin"
+description: "A practical Sora discontinuation guide for creators: key shutdown dates, how to export Sora videos, how to preserve prompts, and how to rebuild your workflow in sparkrobinai.io."
 date: "2026-04-30"
-author: "Veo4 Team"
-tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Veo 4", "ai-video"]
+author: "Spark Robin Team"
+tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Spark Robin", "ai-video"]
 featured: true
 ---
 
@@ -13,7 +13,7 @@ featured: true
 - OpenAI says the **Sora API will be discontinued on September 24, 2026**.
 - If you created Sora content, export it now. OpenAI says Sora data will be permanently deleted after discontinuation and any final export window.
 - For migration, do not only save video files. Save prompts, aspect ratios, reference images, seed notes, shot lists, and review notes.
-- Veo4Video can replace the everyday creative workflow around prompt writing, image-to-video, multi-scene planning, and ad-ready exports, even while official model names and platform specs continue to change.
+- sparkrobinai.io can replace the everyday creative workflow around prompt writing, image-to-video, multi-scene planning, and ad-ready exports, even while official model names and platform specs continue to change.
 
 ## Sora Shutdown Timeline
 
@@ -79,13 +79,13 @@ Create a spreadsheet with these columns:
 | Project | Spring product launch |
 | Original Sora prompt | A cinematic macro shot of... |
 | Asset status | Exported / missing / needs rerender |
-| Replacement workflow | Veo4 text-to-video / image-to-video / multi-scene |
+| Replacement workflow | Spark Robin text-to-video / image-to-video / multi-scene |
 | Priority | High / medium / low |
 | Notes | Need vertical 9:16 version |
 
 This gives you a working map for rebuilding the projects that still matter.
 
-## Why the Migration to Veo 4?
+## Why the Migration to Spark Robin?
 
 Most Sora users are not simply looking for another toy. They need a replacement workflow that covers the daily jobs Sora handled:
 
@@ -96,7 +96,7 @@ Most Sora users are not simply looking for another toy. They need a replacement 
 - Building multi-scene drafts for campaigns
 - Iterating prompts quickly without rebuilding a whole production stack
 
-That is where Veo4Video is positioned. It gives creators a practical workspace for **Veo 4 text-to-video**, **Veo 4 image-to-video**, and longer storyboard-style workflows from one site.
+That is where sparkrobinai.io is positioned. It gives creators a practical workspace for **Spark Robin text-to-video**, **Spark Robin image-to-video**, and longer storyboard-style workflows from one site.
 
 The migration question is less "which model name wins this week?" and more "which workflow lets my team keep publishing?" For most creators, the priority is continuity: stable prompts, reusable creative direction, fast exports, and fewer dead ends when a product changes access rules.
 
@@ -108,7 +108,7 @@ Sora prompts often worked well when they described a rich scene in one cinematic
 
 > A sleek electric bicycle moves through a rainy neon city at night, cinematic lighting, reflections on the street, dramatic camera movement, premium commercial style.
 
-### Veo4Video-Ready Prompt
+### sparkrobinai.io-Ready Prompt
 
 ```text
 Subject: a matte black electric bicycle with visible frame details
@@ -189,7 +189,7 @@ OpenAI's current Help Center guidance says to visit `sora.chatgpt.com/sunset`, c
 
 Save final videos, prompts, reference images, settings, client notes, and any usage rights records. Prompt context is often more valuable than a single rendered file.
 
-### Can I transfer Sora prompts directly to Veo 4?
+### Can I transfer Sora prompts directly to Spark Robin?
 
 You can reuse the creative idea, but you should rewrite prompts into structured shot instructions. Separate subject, camera, motion, lighting, duration goal, aspect ratio, and negative constraints.
 

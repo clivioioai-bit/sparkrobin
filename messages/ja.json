@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "Veo4",
+    "brand": "Spark Robin",
     "new": "新着",
     "generate": "生成",
     "home": "ホーム",
@@ -21,195 +21,195 @@
     "haveMoreQuestions": "他にご質問がありますか？お手伝いします。"
   },
   "hero": {
-    "badge": "2026 Best Model",
-    "discord": "Discordコミュニティに参加",
-    "brandName": "VEO 4",
-    "tagline": "テキストと画像から動画を生成するAI動画ジェネレーター",
-    "title": "Veo4 — AI動画の可能性を再定義",
-    "subtitle": "新しい Veo4 は、超リアルな動き、より長いシーン、映画的な細部を実現 — ついにクリエイターが純粋な想像力を数秒でスタジオ品質の動画に変えることができます。",
-    "placeholder": "作成したい動画を説明してください...",
-    "cta": "今すぐ作る",
-    "trySora3": "🚀 まもなく公開 — 先行アクセスに登録",
-    "trySora2": "画像を生成",
-    "sora2Description": "Sora 2 なら、今日から透かしなしの動画を生成できます。広告・TikTok 向けに最適。",
-    "storyboard25s": "25秒ストーリーボード",
-    "disclaimer": "Sora互換およびマルチモデルエンジンを使用する独立したサードパーティプラットフォーム。OpenAIまたはVeo4とは提携していません。",
+    "badge": "Release watch + creative workspace",
+    "discord": "Join Discord Community",
+    "brandName": "Spark Robin",
+    "tagline": "Video Workflow Lab",
+    "title": "Spark Robin — Track the Next Google Video Wave",
+    "subtitle": "Follow Spark Robin signals, prepare reusable prompts, and turn text or images into production-ready video drafts while the next model cycle unfolds.",
+    "placeholder": "Describe the video you want to create...",
+    "cta": "Generate",
+    "trySora3": "Draft from Text",
+    "trySora2": "Animate an Image",
+    "sora2Description": "Create practical video drafts today while tracking official Spark Robin updates.",
+    "storyboard25s": "Plan Multi-Shot Concepts",
+    "disclaimer": "Independent editorial and creation workspace for Spark Robin watchers. Not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.",
     "features": {
       "noWatermark": {
-        "title": "Veo4 ウォーターマークなし",
-        "description": "商用利用に最適なクリーンでプロフェッショナルな動画"
+        "title": "Clean draft exports",
+        "description": "Keep review clips simple to share, compare, and revise"
       },
       "noRegionalLimits": {
-        "title": "グローバル Veo4 アクセス",
-        "description": "世界中のどこからでもアクセス可能"
+        "title": "Model-watch guidance",
+        "description": "Separate confirmed updates from rumors before you plan"
       },
       "noInviteCode": {
-        "title": "即座に Veo4 アクセス",
-        "description": "待機なしで即座に作成を開始"
+        "title": "Reusable prompt systems",
+        "description": "Build shot notes that can move across future video models"
       }
     }
   },
   "navigation": {
-    "home": "ホーム",
+    "home": "Home",
     "generate": "Video AI",
-    "textToVideo": "テキストから動画",
-    "imageToVideo": "画像から動画",
-    "storyboard": "Veo4ストーリーボード",
-    "watermarkRemover": "ウォーターマーク除去",
-    "pricing": "料金",
+    "textToVideo": "Text to Video",
+    "imageToVideo": "Image to Video",
+    "storyboard": "Spark Robin Storyboard",
+    "watermarkRemover": "Watermark Remover",
+    "pricing": "Pricing",
     "myCreations": "My Creations",
-    "blog": "ブログ",
-    "dashboard": "ダッシュボード",
-    "user": "ユーザー",
-    "account": "アカウント",
-    "settings": "設定",
-    "signOut": "ログアウト",
-    "aiTools": "AIツール",
-    "upgradeNow": "今すぐアップグレード",
-    "login": "ログイン",
-    "startForFree": "今すぐ始める",
-    "preferences": "設定",
-    "generationHistory": "生成履歴",
-    "textToVideoDescription": "プロンプトを入力して動画を取得",
-    "imageToVideoDescription": "静止画を動きに変換",
-    "storyboardDescription": "より長い映画のような動画を作成",
-    "watermarkRemoverDescription": "動画からSoraのウォーターマークを削除",
-    "imageAI": "画像AI",
-    "textToImage": "テキストから画像",
-    "textToImageDescription": "テキストから画像を生成",
-    "imageEditor": "画像エディター",
-    "imageEditorDescription": "AIで画像を編集",
-    "features": "機能",
-    "models": "モデル",
+    "blog": "Blog",
+    "dashboard": "Dashboard",
+    "user": "User",
+    "account": "Account",
+    "settings": "Settings",
+    "signOut": "Sign Out",
+    "aiTools": "AI Tools",
+    "upgradeNow": "Upgrade Now",
+    "login": "Login",
+    "startForFree": "Start Now",
+    "preferences": "Preferences",
+    "generationHistory": "Generation History",
+    "textToVideoDescription": "Turn rough concepts into structured video drafts",
+    "imageToVideoDescription": "Use reference images to guide motion and framing",
+    "storyboardDescription": "Plan multi-shot sequences before rendering",
+    "watermarkRemoverDescription": "Clean compatible source clips for review workflows",
+    "imageAI": "Image AI",
+    "textToImage": "Text to Image",
+    "textToImageDescription": "Generate images from text prompts",
+    "imageEditor": "Image Editor",
+    "imageEditorDescription": "Edit images with AI",
+    "features": "Features",
+    "models": "Models",
     "nanoBanana": "Nano Banana",
     "nanoBananaPro": "Nano Banana Pro",
-    "sora3": "Veo4",
-    "sora3Pro": "Veo4 Pro",
+    "sora3": "Spark Robin",
+    "sora3Pro": "Spark Robin Pro",
     "sora2": "Sora 2",
     "sora2Pro": "Sora 2 Pro",
     "veo3": "Veo 3",
     "wan26": "Wan 2.6",
-    "veo4Model": "Veo 4",
+    "sparkRobinModel": "Spark Robin",
     "veo31Model": "Veo 3.1",
     "whoThisIsFor": {
       "ecommerce": {
-        "title": "TikTok・Reels 広告を運用している方"
+        "title": "Shopify & e-commerce sellers"
       },
       "shortFilmStudios": {
-        "title": "短編映画スタジオ"
+        "title": "Short-film studios"
       },
       "advertisers": {
-        "title": "広告主"
+        "title": "Advertisers"
       }
     }
   },
   "footer": {
-    "description": "Veo4 AI動画生成ツール。Veo4テキストから動画、画像から動画、Veo4ストーリーボード（マルチシーンストーリーボード）で映画のような動画を作成。ウォーターマークなしでVeo4にアクセス。",
-    "product": "製品",
-    "company": "会社",
-    "resources": "リソース",
-    "support": "サポート",
-    "sora3TextToVideo": "Veo4テキストから動画",
-    "sora3ImageToVideo": "Veo4画像から動画",
-    "sora3Pricing": "Veo4料金",
-    "sora3Faq": "Veo4よくある質問",
-    "sora3Blog": "Veo4ブログ",
-    "aiVideoPromptGpt": "AI動画プロンプトGPT",
-    "privacyPolicy": "プライバシーポリシー",
-    "termsOfService": "利用規約",
-    "refundPolicy": "返金ポリシー",
-    "support247": "24時間サポート",
-    "contactUs": "お問い合わせ / パートナーシップ",
-    "disclaimer": "veo4video.ioは独立したAI動画生成プラットフォームです。OpenAIまたは公式「Sora」製品とは提携、承認、または後援されていません。すべての商標はそれぞれの所有者に帰属します。",
-    "poweredBy": "独自の動画合成ワークフローによって提供されています。公式ベンダーとは提携していません。",
-    "copyright": "© 2024 Veo4. 全著作権所有。",
+    "description": "sparkrobinai.io helps creators follow Spark Robin release signals, organize prompt systems, and produce practical AI video drafts from text or images.",
+    "product": "Product",
+    "company": "Company",
+    "resources": "Resources",
+    "support": "Support",
+    "sora3TextToVideo": "Spark Robin Text to Video",
+    "sora3ImageToVideo": "Spark Robin Image to Video",
+    "sora3Pricing": "Spark Robin Pricing",
+    "sora3Faq": "Spark Robin FAQ",
+    "sora3Blog": "Spark Robin Blog",
+    "aiVideoPromptGpt": "AI Video Prompt GPT",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "refundPolicy": "Refund Policy",
+    "support247": "24/7 Support",
+    "contactUs": "Contact Us / Partnership",
+    "disclaimer": "sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or official Sora products. All trademarks belong to their respective owners.",
+    "poweredBy": "Built for practical AI video planning, prompt reuse, and draft generation. Not affiliated with any official vendor.",
+    "copyright": "© 2024 Spark Robin. All rights reserved.",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24時間サポート: support@veo4video.io",
-    "businessEmail": "ビジネス・パートナーシップ: support@veo4video.io",
-    "logoAlt": "Veo4 AI動画生成ツールのロゴ",
+    "supportEmail": "24/7 Support: support@sparkrobinai.io",
+    "businessEmail": "Business & Partnership: support@sparkrobinai.io",
+    "logoAlt": "Spark Robin AI Video Generator logo",
     "socialLabels": {
-      "twitter": "Twitterでフォロー",
-      "discord": "Discordコミュニティに参加",
-      "github": "GitHubを訪問",
-      "email": "メールでお問い合わせ",
-      "supportEmail": "24時間サポートメール",
-      "businessEmail": "ビジネス・パートナーシップメール"
+      "twitter": "Follow us on Twitter",
+      "discord": "Join our Discord community",
+      "github": "Visit our GitHub",
+      "email": "Contact us via email",
+      "supportEmail": "24/7 Support email",
+      "businessEmail": "Business and partnership email"
     }
   },
   "whyThisMatters": {
-    "title": "veo4video.io が選ばれる理由",
-    "subtitle": "プロ向けの広告動画を、編集経験なしで簡単に作成できます。すべての動画はウォーターマークなし。TikTok、Instagram、Shopify の広告に最適です。",
-    "challenges": "課題",
-    "solutions": "機能一覧",
+    "title": "Why Teams Prepare with Spark Robin",
+    "subtitle": "The teams that benefit most from new video models already have prompts, references, shot lists, and review rules ready before access arrives.",
+    "challenges": "Common Roadblocks",
+    "solutions": "How Spark Robin Solves This",
     "watermarks": {
-      "title": "重いウォーターマーク",
-      "description": "プラットフォームのロゴにより、商用利用に適さない動画になります。"
+      "title": "Rumor-driven planning",
+      "description": "Unconfirmed specs can push teams into fragile content plans."
     },
     "pricing": {
-      "title": "高価な料金",
-      "description": "高いコストにより、頻繁な動画作成が制限されます。"
+      "title": "Unstructured prompts",
+      "description": "One-paragraph prompts are hard to reuse, compare, or improve."
     },
     "storyboarding": {
-      "title": "複雑なストーリーボード",
-      "description": "Veo4ストーリーボード動画には技術的な専門知識が必要です。"
+      "title": "Scattered references",
+      "description": "Brand assets, style notes, and shot direction often live in separate places."
     },
     "speed": {
-      "title": "生成が遅い",
-      "description": "長い待機時間がクリエイティブなワークフローと生産性を妨げます。"
+      "title": "Slow creative review",
+      "description": "Without a repeatable workflow, every new clip becomes a one-off experiment."
     },
     "noWatermark": {
-      "title": "わずか10秒で高品質なAI動画を自動生成",
-      "description": "最新のVeo4モデルを利用し、テキストや画像からリアルな動画を生成します。"
+      "title": "Confirmed-update framing",
+      "description": "Write around what is known, label what is speculative, and avoid overclaiming."
     },
     "costPerformance": {
-      "title": "ウォーターマークなしで安心利用",
-      "description": "広告、LP、商品紹介、SNS投稿など、商用利用にも安心してお使いいただけます。"
+      "title": "Prompt systems",
+      "description": "Split ideas into subject, camera, motion, scene, and continuity notes."
     },
     "multiModel": {
-      "title": "Shopify・TikTok・Instagram に最適化",
-      "description": "商品PR動画やSNS広告向けに調整されたテンプレートと動きを採用。"
+      "title": "Reference-led creation",
+      "description": "Use images and visual notes to keep draft direction more consistent."
     },
     "storyboard": {
-      "title": "25秒のストーリーボードにも対応",
-      "description": "ストーリー性のある25秒動画を自動作成。プロモーション動画としてそのまま利用できます。"
+      "title": "Reviewable drafts",
+      "description": "Generate clips that are easy to compare, annotate, and route into the next edit."
     },
-    "solution": "Veo4スタイルの生成でそれらすべてを解決します"
+    "solution": "Spark Robin preparation turns uncertainty into a usable workflow"
   },
   "whoThisIsFor": {
-    "title": "こんな方におすすめ",
-    "subtitle": "Shopify の商品紹介動画を作りたい方、TikTok・Reels 広告を運用している方、Instagram 用の短尺動画を量産したい方、クオリティの高い商品動画が必要な EC オーナー、広告代理店・クリエイター。",
+    "title": "Who Uses This Spark Robin Workspace",
+    "subtitle": "For creators and teams that want to be ready for the next video model without pausing current production.",
     "creators": {
-      "title": "Shopify の商品紹介動画を作りたい方",
-      "description": "商品PR動画を簡単に作成できます。"
+      "title": "Content creators & influencers",
+      "description": "Shape hooks, visual ideas, and short-form drafts before committing to a full edit."
     },
     "ecommerce": {
-      "title": "TikTok・Reels 広告を運用している方",
-      "description": "SNS広告向けに最適化された動画を生成します。"
+      "title": "E-commerce & marketplace sellers",
+      "description": "Turn product photos, offer angles, and customer objections into video test concepts."
     },
     "businesses": {
-      "title": "Instagram 用の短尺動画を量産したい方",
-      "description": "高品質な短尺動画を効率的に作成できます。"
+      "title": "Growing businesses",
+      "description": "Create clearer first drafts before spending on outside production or agency time."
     },
     "marketers": {
-      "title": "広告代理店・クリエイター",
-      "description": "クオリティの高い商品動画を迅速に作成できます。"
+      "title": "Marketing teams testing creatives",
+      "description": "Compare message variants, framing, and pacing before launching a campaign."
     },
     "shortFilmStudios": {
-      "title": "短編映画スタジオ",
-      "description": "プロフェッショナルな品質の映画的な短編映画を作成します。"
+      "title": "Production studios",
+      "description": "Use structured prompts and references to brief motion concepts faster."
     },
     "advertisers": {
-      "title": "広告主",
-      "description": "プロフェッショナルな動画品質で魅力的な広告コンテンツを作成します。"
+      "title": "Advertising agencies",
+      "description": "Prepare client-ready concepts with clearer assumptions and faster revision cycles."
     }
   },
   "blogShowcase": {
-    "title": "クリエイターとブランドのためのVeo4プレイブック",
-    "subtitle": "より多くの視聴回数と売上を獲得するための実践的なガイド。",
-    "viewAll": "すべてのブログ投稿を表示",
-    "readMore": "続きを読む",
-    "featured": "おすすめ"
+    "title": "Spark Robin Notes for Creators & Teams",
+    "subtitle": "Release tracking, prompt structure, workflow preparation, and practical AI video guidance.",
+    "viewAll": "View all blog posts",
+    "readMore": "Read More",
+    "featured": "Featured"
   },
   "blogPage": {
     "featured": "おすすめ",
@@ -220,226 +220,223 @@
     "emptyDescription": "content/blog に Markdown ファイルを追加するとここに表示されます。"
   },
   "howItWorks": {
-    "title": "使い方",
-    "subtitle": "3つの簡単なステップでプロフェッショナルなAI動画を作成します。",
+    "title": "How to Prepare a Spark Robin Workflow",
+    "subtitle": "Start with a clear brief, turn it into reusable shot notes, then generate drafts you can evaluate.",
     "step1": {
-      "title": "Step 1：テキストを入力、または画像をアップロード",
-      "description": "商品説明、雰囲気、スタイルなどを入力します。"
+      "title": "Write the creative brief",
+      "description": "Capture the subject, offer, audience, setting, mood, and visual references before generating."
     },
     "step2": {
-      "title": "Step 2：動画タイプを選択",
-      "description": "10秒動画、25秒ストーリーボード、テキストから動画、画像から動画。"
+      "title": "Structure the shot notes",
+      "description": "Separate camera, motion, continuity, and style instructions so the prompt can be reused."
     },
     "step3": {
-      "title": "Step 3：生成ボタンを押すだけ",
-      "description": "AI が高品質な動画を自動で作成します。"
+      "title": "Generate and compare drafts",
+      "description": "Review outputs against the brief, keep what works, and refine the notes for the next pass."
     }
   },
   "faq": {
-    "title": "よくある質問",
-    "subtitle": "Veo4 AI動画広告に関するよくある質問への回答。Veo4の仕組みと、クリエイターがVeo4を選ぶ理由を学びます。",
-    "viewAllFaqs": "すべてのFAQを表示",
-    "contactSupport": "サポートに連絡",
-    "haveMoreQuestions": "他にご質問がありますか？お手伝いします。",
+    "title": "Spark Robin FAQ",
+    "subtitle": "Clear answers about the Spark Robin release watch, current workflow tools, prompts, references, and draft generation.",
+    "viewAllFaqs": "View All FAQs",
+    "contactSupport": "Contact Support",
+    "haveMoreQuestions": "Have more questions? We're here to help.",
     "questions": {
       "whatMakesDifferent": {
-        "question": "Veo4は他のAI動画生成ツールとどう違いますか？",
-        "answer": "Veo4は一貫したキャラクターを持つVeo4ストーリーボード動画広告に特化しています。他のツールが10秒の単一ショットを生成するのに対し、TikTok、Shopify、商品プロモーションに最適な25秒以上のストーリーを作成します。"
+        "question": "What is sparkrobinai.io?",
+        "answer": "sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It helps creators track confirmed updates, structure reusable prompts, and create practical video drafts from text or images."
       },
       "characterConsistency": {
-        "question": "複数のシーンでキャラクターの一貫性はどのように機能しますか？",
-        "answer": "Veo4ストーリーボード機能は、動画内のすべてのシーンで外見、服装、髪型の一貫性を維持します。"
+        "question": "Is Spark Robin officially available from Google?",
+        "answer": "Google has not confirmed a public Spark Robin release in the materials we reference. Treat specific model specs as watch items until they appear in official Google, Google DeepMind, or Google Cloud documentation."
       },
       "videosLongerThan10s": {
-        "question": "10秒より長い動画を作成できますか？",
-        "answer": "はい。Veo4スタイルの生成は、ストーリーボードモードを通じて25-30秒の動画生成をサポートしています。"
+        "question": "What can I do here before official access arrives?",
+        "answer": "You can prepare prompts, references, shot lists, and draft clips now. That makes it easier to move quickly when new model access or official Spark Robin details become available."
       },
       "commercialUse": {
-        "question": "生成された動画を商用広告に使用できますか？",
-        "answer": "はい、すべての動画は商用利用が可能です。"
+        "question": "Can I use the drafts commercially?",
+        "answer": "Commercial use depends on the plan, your source assets, your prompts, and the terms that apply to the generation workflow. Review licensing and asset rights before publishing."
       },
       "watermarks": {
-        "question": "動画にウォーターマークはありますか？",
-        "answer": "いいえ — すべてのVeo4スタイルの動画はウォーターマークなしです。"
-      },
-      "25SecondVideos": {
-        "question": "Veo4スタイルの25秒動画を作成できますか？",
-        "answer": "はい — Veo4ストーリーボード機能は25秒のVeo4スタイルのマルチシーン生成をサポートしています。"
+        "question": "Why focus on prompt systems instead of only generation?",
+        "answer": "AI video changes quickly. A structured prompt system gives your team reusable creative direction that can move across tools, models, and future Spark Robin updates."
       },
       "paymentSafe": {
-        "question": "支払いを行う場合、支払い情報は安全ですか？",
-        "answer": "はい。安全で信頼できる支払いプラットフォームと銀行を使用しています。"
+        "question": "What payment methods do you accept?",
+        "answer": "We accept the payment methods shown at checkout through secure payment providers. Pricing is shown before purchase so you can review the plan and billing terms before you pay."
       },
       "hiddenCharges": {
-        "question": "隠れた料金はありますか？",
-        "answer": "いいえ、表示されている価格がお支払いいただく合計金額です。追加の隠れた料金はありません。"
+        "question": "Are there any hidden charges?",
+        "answer": "No. The displayed price is the amount you pay for the selected plan. There are no hidden charges added later outside the stated billing terms."
       }
     }
   },
   "pricing": {
-    "title": "料金プラン",
-    "subtitle": "AI動画生成のニーズに最適なプランを選択してください。いつでもキャンセルできます。",
-    "creditRateTitle": "基本クレジット換算:",
-    "creditRateDescription": "$1 = 10クレジットです。一部のプランにはボーナスクレジットが含まれるため、上位プランでは1ドルあたりのクレジット数が増える場合があります。",
-    "secureCheckout": "安全なチェックアウト",
-    "cancelAnytime": "いつでもキャンセル",
-    "noSurpriseCharges": "予期しない料金なし",
-    "fastSupport": "迅速なサポート",
-    "priceIncreaseAlert": "まもなく価格が上がります！今すぐ購読して低価格をロックしてください！",
-    "pricePerVideoGeneration": "動画生成あたりの価格",
-    "marketPrice": "市場価格",
-    "ourPrice": "当社の価格",
-    "marketPriceValue": "$0.10/秒",
-    "ourPriceValue": "$0.05/秒",
-    "fiftyPercentCheaper": "50%安い",
-    "thanMarket": "市場より",
-    "chooseYourPlan": "プランを選択",
-    "teaserSubtitle": "プロフェッショナルなAI動画広告生成。いつでもキャンセル可能。年間プランで50%節約。",
-    "proTip": "💡 <strong>プロのヒント:</strong> サブスクリプションプランには、APIアクセス、webhooks、優先サポートが含まれます",
+    "title": "Pricing Plans",
+    "subtitle": "Choose the perfect plan for your AI video generation needs. Cancel anytime.",
+    "creditRateTitle": "Base credit rate:",
+    "creditRateDescription": "$1 = 10 credits. Some plans include bonus credits, so higher tiers can deliver more credits per dollar.",
+    "secureCheckout": "Secure checkout",
+    "cancelAnytime": "Cancel anytime",
+    "noSurpriseCharges": "No surprise charges",
+    "fastSupport": "Fast support",
+    "priceIncreaseAlert": "Price increase coming soon! Subscribe now to lock in low prices!",
+    "pricePerVideoGeneration": "Price per Video Generation",
+    "marketPrice": "Market Price",
+    "ourPrice": "Our Price",
+    "marketPriceValue": "$0.10/s",
+    "ourPriceValue": "$0.05/s",
+    "fiftyPercentCheaper": "50% CHEAPER",
+    "thanMarket": "than market",
+    "chooseYourPlan": "Choose a Creative Workflow Plan",
+    "teaserSubtitle": "Credits for prompt tests, image-led drafts, and video workflow exploration. Cancel anytime.",
+    "proTip": "💡 <strong>Pro tip:</strong> Subscription plans include API access, webhooks, and priority support",
     "plans": {
-      "monthly": "月額",
-      "annual": "年額",
-      "oneTime": "ワンタイム",
-      "save50Percent": "17%節約",
-      "mostPopular": "最も人気",
-      "billedAnnually": "年額請求",
-      "billedMonthly": "月額請求 · いつでもキャンセル可能",
-      "savePerYear": "年間 ${amount} 節約",
-      "perMonth": "/月",
-      "perYear": "/年",
-      "payOnce": "一度支払えば、いつでも使用可能 — クレジットは期限切れになりません",
-      "oneTimePurchase": "ワンタイム購入 • サブスクリプション特典なし",
-      "buyNow": "今すぐ購入",
-      "upToVideos": "最大 {count} 本の sora3 動画",
-      "oneTimePurchaseLabel": "ワンタイム購入",
-      "noSubscriptionRequired": "サブスクリプション不要",
-      "commercialUsageRights": "商用利用権",
-      "pleaseLogInFirst": "まずログインしてください",
-      "logInToProceed": "支払いのために Creem に進むにはログインしてください。",
-      "loginSessionExpired": "ログインセッションが期限切れ",
-      "pleaseLogInAgain": "購入を続行するには、再度ログインしてください。",
-      "tooManyRequests": "リクエストが多すぎます",
-      "pleaseWait": "しばらく待ってから再試行してください。",
-      "tryAgainLater": "後でもう一度お試しください。",
-      "failedToCreatePaymentLink": "支払いリンクの作成に失敗しました",
-      "needHelp": "ヘルプが必要ですか？",
-      "contactSupport": "サポートについては support@veo4video.io にお問い合わせください。",
-      "contactSupportLink": "サポートに連絡",
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "oneTime": "One-Time",
+      "save50Percent": "Save 17%",
+      "mostPopular": "Most Popular",
+      "billedAnnually": "billed annually",
+      "billedMonthly": "Billed monthly · cancel anytime",
+      "savePerYear": "Save ${amount}/year",
+      "perMonth": "/month",
+      "perYear": "/year",
+      "payOnce": "Pay once, use anytime — credits never expire",
+      "oneTimePurchase": "One-time purchase • No subscription benefits",
+      "buyNow": "Buy Now",
+      "upToVideos": "up to {count} sora3 videos",
+      "oneTimePurchaseLabel": "One-time purchase",
+      "noSubscriptionRequired": "No subscription required",
+      "commercialUsageRights": "Commercial usage rights",
+      "pleaseLogInFirst": "Please log in first",
+      "logInToProceed": "Log in to proceed to Creem for payment.",
+      "loginSessionExpired": "Login session expired",
+      "pleaseLogInAgain": "Please log in again to continue your purchase.",
+      "tooManyRequests": "Too many requests",
+      "pleaseWait": "Please wait a moment before trying again.",
+      "tryAgainLater": "Please try again later.",
+      "failedToCreatePaymentLink": "Failed to create payment link",
+      "needHelp": "Need Help?",
+      "contactSupport": "Contact support@sparkrobinai.io for assistance.",
+      "contactSupportLink": "Contact Support",
       "features": {
-        "creditsIncluded": "{count} クレジット付き",
-        "aiVideosPerMonth": "月額 {count} 本の AI 動画",
-        "aiVideosPerYear": "年間 {count} 本の AI 動画",
-        "hd4kQuality": "HD および 4K 品質オプション",
-        "commercialUsageRights": "商用利用権",
-        "emailSupport": "メールサポート",
-        "priorityEmailSupport": "優先メールサポート",
-        "priorityQueue": "優先キュー",
-        "4kAt1xCredits": "4K を 1倍クレジットで利用（Basic は 2倍）",
-        "fastestQueue": "最速キュー",
-        "highestConcurrency": "最高同時実行数 / バッチ処理向け",
-        "apiEarlyAccess": "API 早期アクセス + 優先オンボーディング",
-        "apiAccess": "API アクセス（近日公開）",
-        "generationHistory": "生成履歴",
-        "fastestProcessing": "最速処理",
-        "professionalConsultation": "1対1のプロフェッショナルコンサルテーションサポート"
+        "creditsIncluded": "{count} credits included",
+        "aiVideosPerMonth": "{count} AI videos per month",
+        "aiVideosPerYear": "{count} AI videos per year",
+        "hd4kQuality": "HD & 4K quality options",
+        "commercialUsageRights": "Commercial usage rights",
+        "emailSupport": "Email support",
+        "priorityEmailSupport": "Priority email support",
+        "priorityQueue": "Priority queue",
+        "4kAt1xCredits": "4K at 1x credits (Basic uses 2x)",
+        "fastestQueue": "Fastest queue",
+        "highestConcurrency": "Highest concurrency / batch-friendly",
+        "apiEarlyAccess": "API early access + priority onboarding",
+        "apiAccess": "API access (coming soon)",
+        "generationHistory": "Generation history",
+        "fastestProcessing": "Fastest processing",
+        "professionalConsultation": "1-on-1 professional consultation support"
       },
       "cta": {
-        "startCreating": "作成を開始",
-        "getAnnualDeal": "年額プランを取得",
-        "getCreator": "Creator を取得",
-        "bestValue": "ベストバリュー",
-        "goPro": "Pro に進む",
-        "unlockPro": "Pro をアンロック",
-        "saveWithAnnual": "年額で節約"
+        "buyNow": "Buy Now",
+        "startCreating": "Start Creating",
+        "getAnnualDeal": "Get Annual Deal",
+        "getCreator": "Get Creator",
+        "bestValue": "Best Value",
+        "goPro": "Go Pro",
+        "unlockPro": "Unlock Pro",
+        "saveWithAnnual": "Save with Annual"
       },
       "planNames": {
         "basic": "Basic",
         "creator": "Creator",
         "pro": "Pro"
       },
-      "credits": "クレジット"
-    },
-    "modal": {
-      "insufficientCredits": "クレジット不足",
-      "upgradeYourPlan": "プランをアップグレード",
-      "subscriptionRequired": "サブスクリプションが必要",
-      "insufficientCreditsDescription": "現在のクレジットでは、この動画を生成するのに十分ではありません。プランに登録して、より多くのクレジットで無制限の創造的な可能性を解き放ちましょう！",
-      "upgradePlanDescription": "プレミアム機能にアクセスするには、サブスクリプションプランを選択してください。",
-      "subscriptionRequiredDescription": "{feature} するには、アクティブなサブスクリプションプランが必要です。",
-      "subscribeToStartTitle": "Subscribe to start generating and export your video",
-      "subscribeToStartDescription": "This account does not have an active subscription yet. Upgrade to start this generation and unlock video export plus more generation credits.",
-      "pleaseLogInFirst": "まずログインしてください",
-      "logInToProceed": "サブスクリプションに進むにはログインしてください。",
-      "loginSessionExpired": "ログインセッションが期限切れ",
-      "pleaseLogInAgain": "サブスクリプションを続行するには、再度ログインしてください。",
-      "subscriptionFailed": "サブスクリプションに失敗しました",
-      "unexpectedError": "予期しないエラーが発生しました。"
-    },
-    "faqTitle": "よくある質問",
-    "faqCancelAnytime": {
-      "question": "いつでもキャンセルできますか？",
-      "answer": "はい！すべてのプランはいつでもキャンセルできます。請求期間の終了までアクセスを維持できます。"
-    },
-    "faqCreditsRollOver": {
-      "question": "未使用のクレジットは繰り越されますか？",
-      "answer": "サブスクリプションバケットは各請求期間にリセットされ、繰り越されません。ワンタイムアドオンのクレジットは柔軟なバケットに移動し、サブスクリプションリセットによってクリアされません。"
-    },
-    "faqRefundPolicy": {
-      "question": "返金ポリシーは何ですか？",
-      "answer": "すべてのサブスクリプションプランに対して7日間の返金保証を提供しています。返金は5-7営業日以内に処理されます。"
-    },
-    "faqContentRestrictions": {
-      "question": "動画コンテンツに制限はありますか？",
-      "answer": "当社のプラットフォームは厳格なコンテンツポリシーを実施しています。有害、違法、または不適切なコンテンツの生成を禁止しています。生成されたすべての動画は、ポリシー準拠を確保するために自動スクリーニングを受けます。"
-    },
-    "faqCreditsDeduction": {
-      "question": "生成が失敗した場合、クレジットは差し引かれますか？",
-      "answer": "いいえ。クレジットはジョブが開始されると原子的に差し引かれ、生成が失敗した場合、または上流サービスがエラーを返した場合、自動的に返金されます。返金は通常1分以内に表示されます。"
-    },
-    "faqCancelSubscription": {
-      "question": "サブスクリプションをキャンセルした場合、クレジットはどうなりますか？",
-      "answer": "いつでもキャンセルできます。柔軟な（ワンタイム）クレジットは引き続き利用可能です。サブスクリプションバケットは請求期間に従い、現在の期間が終了した後は更新を停止します。"
+      "credits": "Credits"
     },
     "generate": {
-      "insufficientCredits": "クレジットが不足しています。クレジットを購入するか、プランに登録してください。",
-      "insufficientCreditsWithDetails": "クレジットが不足しています。{required} クレジットが必要ですが、{available} クレジットしかありません。{details}",
-      "insufficientCreditsRetry": "クレジットが不足しています。再試行するには、クレジットを購入してください。",
-      "creditDeductionFailed": "クレジットの引き落としに失敗しました: {error}。データベースの問題が原因である可能性があります。もう一度お試しいただくか、サポートにお問い合わせください。",
-      "creditSystemError": "クレジットシステムエラー: {error}。この問題が続く場合は、サポートにお問い合わせください。",
-      "storageBucketNotConfigured": "ストレージバケットが設定されていません。Supabase ダッシュボード → Storage → New bucket → Name: \"videos\" → Public bucket → Create bucket で \"videos\" バケットを作成してください。",
-      "pleaseEnterPrompt": "プロンプトを入力してください",
-      "pleaseUploadImage": "動画を生成するための画像をアップロードしてください",
+      "insufficientCredits": "Insufficient credits. Please purchase more credits or subscribe to a plan.",
+      "insufficientCreditsWithDetails": "Insufficient credits. You need {required} credits but only have {available}. {details}",
+      "insufficientCreditsRetry": "Insufficient credits. Please purchase more credits to retry.",
+      "creditDeductionFailed": "Credit deduction failed: {error}. This may be due to a database issue. Please try again or contact support.",
+      "creditSystemError": "Credit system error: {error}. Please contact support if this persists.",
+      "storageBucketNotConfigured": "Storage bucket not configured. Please create a \"videos\" bucket in Supabase Dashboard → Storage → New bucket → Name: \"videos\" → Public bucket → Create bucket.",
+      "pleaseEnterPrompt": "Please enter your prompt",
+      "pleaseUploadImage": "Please upload an image to generate the video",
       "watermarkRemover": {
-        "title": "Veo4 ウォーターマーク除去",
-        "description": "Sora でホストされている動画から Sora のウォーターマークを削除します。公開されている `sora.chatgpt.com` URL を貼り付けて実行してください。通常、API での処理には 1〜3 秒かかります。",
-        "seoTitle": "Veo4 ウォーターマーク除去 | ウォーターマーク削除ツール",
-        "seoDescription": "Veo4 ウォーターマーク除去: Sora でホストされている動画から Sora のウォーターマークを数秒で削除。商用利用可能、API対応、公開 sora.chatgpt.com リンクで動作します。",
-        "input": "入力",
-        "output": "出力",
+        "title": "Spark Robin Watermark Remover",
+        "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
+        "seoTitle": "Spark Robin Watermark Remover | Remove Sora Watermarks",
+        "seoDescription": "Spark Robin watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+        "input": "Input",
+        "output": "Output",
         "videoUrl": "video_url",
         "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
-        "videoUrlHint": "公開アクセス可能で、`https://sora.chatgpt.com/` で始まる必要があります。",
-        "reset": "リセット",
-        "running": "実行中…",
-        "run": "{credits} クレジットで実行",
-        "processing": "処理中…",
-        "waitingForResult": "結果を待機中…",
-        "noOutputYet": "まだ出力がありません",
-        "exampleVideo": "サンプル動画",
-        "exampleVideoDescription": "これは Veo4 AI によって生成されたサンプル動画です。独自の Sora 動画をアップロードしてウォーターマークを削除してください！",
-        "creditsInfo": "このツールは実行ごとに 10 クレジットを消費します。Veo4 動画をクリーンでブランド対応の状態に保ちます。",
-        "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。"
+        "videoUrlHint": "Must be publicly accessible and start with `https://sora.chatgpt.com/`.",
+        "reset": "Reset",
+        "running": "Running…",
+        "run": "Run {credits}credits",
+        "processing": "Processing…",
+        "waitingForResult": "Waiting for result…",
+        "noOutputYet": "No output yet",
+        "exampleVideo": "Example Video",
+        "exampleVideoDescription": "This is a sample video generated by Spark Robin AI. Upload your own Sora video to remove watermarks!",
+        "creditsInfo": "This tool consumes 10 credits per run. Keep your Spark Robin videos clean and brand-ready.",
+        "browserNotSupportVideo": "Your browser does not support the video tag."
       }
+    },
+    "modal": {
+      "insufficientCredits": "Insufficient Credits",
+      "upgradeYourPlan": "Upgrade Your Plan",
+      "subscriptionRequired": "Subscription Required",
+      "insufficientCreditsDescription": "Your current credits are not enough to generate this video. Subscribe to a plan and unlock unlimited creative possibilities with more credits!",
+      "upgradePlanDescription": "Choose a subscription plan to access premium features.",
+      "subscriptionRequiredDescription": "To {feature}, you need an active subscription plan.",
+      "subscribeToStartTitle": "Subscribe to start generating and export your video",
+      "subscribeToStartDescription": "This account does not have an active subscription yet. Upgrade to start this generation and unlock video export plus more generation credits.",
+      "pleaseLogInFirst": "Please log in first",
+      "logInToProceed": "Log in to proceed to subscription.",
+      "loginSessionExpired": "Login session expired",
+      "pleaseLogInAgain": "Please log in again to continue your subscription.",
+      "subscriptionFailed": "Subscription failed",
+      "unexpectedError": "An unexpected error occurred."
+    },
+    "faqTitle": "Frequently Asked Questions",
+    "faqCancelAnytime": {
+      "question": "Can I cancel anytime?",
+      "answer": "Yes! All plans can be canceled anytime. You'll retain access until the end of your billing period."
+    },
+    "faqCreditsRollOver": {
+      "question": "Do unused credits roll over?",
+      "answer": "Subscription bucket resets each billing period and does not roll over. One-time add-on credits go to the flexible bucket and are not cleared by subscription resets."
+    },
+    "faqRefundPolicy": {
+      "question": "What is sparkrobinai.io refund policy?",
+      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@sparkrobinai.io for refunds. Refunds are processed within 5-7 business days."
+    },
+    "faqContentRestrictions": {
+      "question": "Are there any video content restrictions?",
+      "answer": "Our platform enforces strict content policies. We prohibit the generation of harmful, illegal, or inappropriate content. All generated videos undergo automatic screening to ensure policy compliance."
+    },
+    "faqCreditsDeduction": {
+      "question": "Will credits be deducted if generation fails?",
+      "answer": "No. Credits are deducted atomically when a job starts, and automatically refunded if the generation fails or the upstream service returns an error. Refunds usually appear within a minute."
+    },
+    "faqCancelSubscription": {
+      "question": "What happens to credits if I cancel my subscription?",
+      "answer": "You can cancel anytime. Flexible (one-time) credits remain available. Subscription bucket follows your billing period and stops refreshing after the current period ends."
     }
   },
   "generate": {
-    "generate": "生成",
-    "generating": "生成中...",
-    "readyToGenerate": "生成準備完了",
-    "startGeneration": "生成を開始",
-    "enterPrompt": "プロンプトを入力し、生成をクリックして動画を作成します",
-    "videoBeingCreated": "動画を作成しています。数分かかる場合があります。",
-    "initializingGeneration": "生成を初期化中...",
+    "generate": "Generate",
+    "generating": "Generating...",
+    "readyToGenerate": "Ready to Generate",
+    "startGeneration": "Start Generation",
+    "enterPrompt": "Enter your prompt and click Generate to create your video",
+    "videoBeingCreated": "Your video is being created. This may take a few minutes.",
+    "initializingGeneration": "Initializing generation...",
     "upgradeWait": {
       "title": "Checking assets and generation settings",
       "description": "We are preparing the model, duration, ratio, and output settings for this video.",
@@ -452,413 +449,418 @@
       "notice": "You will be prompted automatically when the next step is ready."
     },
     "aiWorkSubtitles": {
-      "writingOpeningScene": "🎬 オープニングシーンを書いています…",
-      "paintingBackground": "🎨 背景の詳細を描いています…",
-      "recordingNarrator": "🎙️ ナレーターの声を録音しています…",
-      "addingSoundscape": "🔊 背景サウンドスケープを追加しています…",
-      "syncingEverything": "🚀 すべてを同期しています…"
+      "writingOpeningScene": "🎬 Writing your opening scene…",
+      "paintingBackground": "🎨 Painting background details…",
+      "recordingNarrator": "🎙️ Recording the narrator's voice…",
+      "addingSoundscape": "🔊 Adding background soundscape…",
+      "syncingEverything": "🚀 Syncing everything together…"
     },
-    "videoGeneratedSuccessfully": "動画が正常に生成されました！",
-    "videoReady": "動画の準備ができました。動画URLはまもなく利用可能になります。",
-    "generateWithCredits": "生成 · {creditCost} クレジット",
-    "generateShots": "{count}ショットのストーリーボードを生成",
-    "addPromptsToAllShots": "すべてのショットにプロンプトを追加して生成",
-    "reset": "リセット",
-    "input": "入力",
-    "output": "出力",
-    "video": "動画",
-    "credits": "クレジット",
-    "exampleVideo": "サンプル動画",
-    "sampleVideoDescription": "これは Veo4 AI によって生成されたサンプル動画です。入力パネルを使用して独自の動画を作成してください！",
-    "sampleVideoDescriptionUnauthenticated": "これは Veo4 AI によって生成されたサンプル動画です。登録して独自の動画を作成してください！",
-    "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。",
-    "signUpToCreate": "登録して独自の動画を作成",
-    "textToVideoTitle": "Veo 4 テキストから動画 | AI動画を作成",
-    "textToVideoSubtitle": "プロンプトを動きのあるVeo 4動画に変換し、広告やSNS向けのクリップをすばやく作成できます。",
-    "textToVideoFeaturesTitle": "テキストから動画 AI動画生成ツールの機能",
+    "videoGeneratedSuccessfully": "Video Generated Successfully!",
+    "videoReady": "Your video is ready. The video URL will be available shortly.",
+    "generateWithCredits": "Generate · {creditCost} Credits",
+    "generateShots": "Generate {count} shot storyboard",
+    "addPromptsToAllShots": "Add prompts to all shots to generate",
+    "reset": "Reset",
+    "input": "Input",
+    "output": "Output",
+    "video": "Video",
+    "credits": "Credits",
+    "exampleVideo": "Example Video",
+    "sampleVideoDescription": "This sample shows how a structured prompt can become a reviewable video draft.",
+    "sampleVideoDescriptionUnauthenticated": "This sample shows the kind of draft you can create after signing in.",
+    "browserNotSupportVideo": "Your browser does not support the video tag.",
+    "signUpToCreate": "Sign Up to Create Your Own",
+    "textToVideoTitle": "Spark Robin Text to Video | Prompt Workflow Lab",
+    "textToVideoSubtitle": "Turn a loose idea into a structured video brief, then generate a draft you can review, compare, and improve.",
+    "textToVideoFeaturesTitle": "A Better Way to Write AI Video Prompts",
     "featureAIPowered": {
-      "title": "AI パワード スクリプトからスクリーンへの魔法",
-      "description": "テキストから動画では、プロンプトだけで十分です。1つの文でも詳細なストーリーでも、AIエンジンがテキストを解釈し、見事なビジュアルに変換します。クリエイター、マーケター、教育者、言葉を高インパクトな動画に変えたいすべての人に最適です。"
+      "title": "Prompt briefs, not prompt guesses",
+      "description": "Break a concept into subject, setting, camera, motion, pacing, and continuity notes so each generation has a clearer job."
     },
     "featureCinematic": {
-      "title": "編集スキル不要のシネマ品質",
-      "description": "高度なAIにより、すべてのフレームがプロフェッショナルにレンダリングされます。ビデオエディタを開くことなく、スムーズなトランジション、リアルな照明、ダイナミックな動きを実現。ソーシャルリールから製品説明まで、コンテンツがスタジオレベルのアップグレードを受けます。"
+      "title": "Drafts you can critique",
+      "description": "Create outputs that are useful for review: enough visual direction to evaluate the idea, without pretending every first render is final."
     },
     "featureAudio": {
-      "title": "メッセージにマッチする内蔵オーディオ",
-      "description": "別のサウンドデザインは不要です。AIがスクリプトと同期して背景音楽、環境音、さらには音声オーバーレイを生成します。急いでいるクリエイター向けに構築された、エンドツーエンドのAI動画生成ツール体験です。"
+      "title": "Built around iteration",
+      "description": "Save the reasoning behind each draft so your next version improves the hook, framing, motion, or offer instead of starting over."
     },
     "featureContextual": {
-      "title": "人間中心の焦点を持つコンテキストシーン生成",
-      "description": "システムは単に言葉だけでなく、その背後にあるムード、トーン、意図を理解します。サスペンス、ユーモア、感情、明確さを望む場合でも、AIは目的に合ったビジュアルを選択します。"
+      "title": "Reusable shot language",
+      "description": "Keep camera moves, product angles, scene rhythm, and brand tone in a format your team can reuse across campaigns and future model access."
     },
-    "howToUseTitle": "テキストから動画 AI動画生成ツールの使い方",
+    "howToUseTitle": "How to Use the AI Video Generator for Text to Video",
     "howToUseStep1": {
-      "title": "veo4video.io に登録またはログイン",
-      "description": "アカウントを作成して、テキストから動画インターフェースの全機能を解除します。"
+      "title": "Sign Up or Log In to sparkrobinai.io",
+      "description": "Create an account so your drafts, prompt notes, and generation history stay organized."
     },
     "howToUseStep2": {
-      "title": "テキストから動画作成パネルにアクセス",
-      "description": "ダッシュボードでツールを見つけ、ゼロから始めるか、AIアシスタンスを使用するかを選択します。"
+      "title": "Open the prompt workspace",
+      "description": "Start with a blank idea, a product angle, a script fragment, or a prompt you want to restructure."
     },
     "howToUseStep3": {
-      "title": "スクリプトを入力または貼り付け",
-      "description": "テキストボックスにアイデアを入力します。簡単なプロンプト、シーン説明、または完全なスクリプトを入力できます。"
+      "title": "Write the scene in layers",
+      "description": "Add the subject, environment, camera behavior, motion, mood, and any constraints the draft should respect."
     },
     "howToUseStep4": {
-      "title": "クリックして生成",
-      "description": "「生成」ボタンをクリックします。AIがスクリプトを処理し、マッチするビジュアル、動き、音楽で動画を作成します。わずか数分で、動画をプレビューしてダウンロードできるようになります。"
+      "title": "Generate and revise the brief",
+      "description": "Generate a draft, compare it with your goal, then tighten the prompt notes for the next version."
     },
-    "whoUsesTitle": "Veo4 を使用する人",
-    "whoUsesContentCreators": "コンテンツクリエイター",
-    "whoUsesTikTokMarketers": "TikTokマーケター",
-    "imageToVideoTitle": "Veo 4 画像から動画 | 写真をアニメーション化",
-    "imageToVideoSubtitle": "写真を自然な動きと高い再現性を持つVeo 4動画に変換し、広告向けクリップを数分で作成できます。",
-    "imageToVideoFeaturesTitle": "Veo4画像から動画機能 - 高度なAI動画生成",
+    "whoUsesTitle": "Who Uses This Workflow?",
+    "whoUsesContentCreators": "Content creators",
+    "whoUsesTikTokMarketers": "TikTok marketers",
+    "imageToVideoTitle": "Spark Robin Image to Video | Reference-Led Motion",
+    "imageToVideoSubtitle": "Use a product photo, frame, or visual reference as the anchor for a video draft with clearer motion direction.",
+    "imageToVideoFeaturesTitle": "Use Images as Creative Direction",
     "imageToVideoFeature1": {
-      "title": "Veo4 シンプルな画像から動きへの変換",
-      "description": "Veo4画像から動画では、写真をアップロードするだけで、それが生き生きとします。Veo4 AIエンジンが画像を分析し、シーンを強化する自然で映画のような動きを生成します。Veo4は製品紹介、芸術作品、静止した瞬間を動的なストーリーに変えるのに最適です。"
+      "title": "Reference-first generation",
+      "description": "Start from a concrete visual instead of a vague description. The uploaded image anchors the subject, composition, and visual style of the draft."
     },
     "imageToVideoFeature2": {
-      "title": "アニメーションスキル不要のVeo4プロフェッショナル動き",
-      "description": "Veo4高度なAIは深度、照明、構図を理解します。Veo4は、アニメーションや動画編集の専門知識を必要とせずに、スムーズなカメラの動き、自然なオブジェクトの動き、リアルな環境効果を生成します。Veo4でポートフォリオ写真をプロフェッショナルな動画コンテンツに変換します。"
+      "title": "Motion notes that match the frame",
+      "description": "Add camera direction, pacing, and object movement on top of the image so the draft has a specific creative target."
     },
     "imageToVideoFeature3": {
-      "title": "Veo4自動オーディオ生成",
-      "description": "すべてのVeo4動画には、完璧にマッチした背景音楽と環境音が付属しています。Veo4 AIが画像のムードと雰囲気を分析し、視覚的なストーリーを補完するオーディオを作成します。1つの画像からの完全なVeo4動画作成体験です。"
+      "title": "Useful for product and brand tests",
+      "description": "Turn packshots, mockups, lifestyle images, or campaign stills into motion concepts before booking production time."
     },
     "imageToVideoFeature4": {
-      "title": "Veo4インテリジェントシーン理解",
-      "description": "Veo4 AIは画像内のオブジェクト、人物、風景、シーンを認識します。Veo4は、文脈的に意味のある動きを生成します - 木々を通るそよ風、3D空間で回転する製品、微妙な動きのあるポートレートなど。すべてのVeo4アニメーションは自然で目的のあるものに感じられます。"
+      "title": "A cleaner review loop",
+      "description": "Because every draft starts from the same reference image, teams can compare motion choices without losing the visual baseline."
     },
-    "imageToVideoHowToUseTitle": "Veo4画像から動画生成ツールの使い方",
+    "imageToVideoHowToUseTitle": "How to Build an Image-Led Video Draft",
     "imageToVideoHowToUseStep1": {
-      "title": "veo4video.io に登録またはログイン",
-      "description": "アカウントを作成して、Veo4画像から動画の全機能を解除し、Veo4 AI技術の使用を開始します。"
+      "title": "Sign Up or Log In to sparkrobinai.io",
+      "description": "Create an account to keep reference images, prompts, and drafts in one workflow."
     },
     "imageToVideoHowToUseStep2": {
-      "title": "Veo4画像から動画パネルにアクセス",
-      "description": "ダッシュボードでVeo4画像から動画ツールに移動します。Veo4インターフェースは、簡単な画像から動画への変換のために設計されています。"
+      "title": "Open the image workflow",
+      "description": "Choose image to video when your visual direction is already captured in a photo, design, or frame."
     },
     "imageToVideoHowToUseStep3": {
-      "title": "画像をVeo4にアップロード",
-      "description": "Veo4処理のために画像ファイルをドラッグアンドドロップまたは選択します。Veo4は写真、イラスト、製品画像、またはVeo4でアニメーション化したい任意の静止画像をサポートします。"
+      "title": "Upload the reference image",
+      "description": "Use a clean source image and add notes about what should move, what should stay stable, and what mood the draft should carry."
     },
     "imageToVideoHowToUseStep4": {
-      "title": "Veo4で生成",
-      "description": "「生成」ボタンをクリックして、Veo4 AIに画像を分析させます。Veo4は自然な動き、カメラの動き、同期されたオーディオで動画を作成します。Veo4アニメーション動画は数分で準備できます。"
+      "title": "Generate and compare motion",
+      "description": "Review the result against the original reference and revise the camera, motion, or pacing notes for the next pass."
     },
-    "imageToVideoPageTitle": "Veo 4 画像から動画",
-    "imageToVideoPageSubtitle": "Veo4 AI技術を使用して画像を映画のような動画に変換 — ウォーターマークなし",
-    "imageToVideoTestimonialsTitle": "Veo4画像から動画生成ツールを選ぶ理由",
+    "imageToVideoPageTitle": "Image to Video Drafting",
+    "imageToVideoPageSubtitle": "Use reference images to explore motion, pacing, and framing before final production.",
+    "imageToVideoTestimonialsTitle": "How Teams Use Image-Led Drafts",
     "imageToVideoTestimonial1": {
-      "quote": "商品写真をアップロードしたところ、Veo4が数分でプロフェッショナルな動画広告を生成しました。Veo4はオンラインストアのコンテンツ作成方法を完全に変えました！",
-      "author": "Emma L., Eコマースオーナー"
+      "quote": "Starting from a product photo helped us test three motion directions before deciding what to shoot for the campaign.",
+      "author": "Emma L., E-commerce Owner"
     },
     "imageToVideoTestimonial2": {
-      "quote": "写真家として、Veo4が静止画像を生き生きとさせる方法が大好きです。Veo4の動きは自然で、ポートフォリオに深みを加えます。",
-      "author": "Michael R., プロフェッショナル写真家"
+      "quote": "I use the image workflow to show clients how a still frame could move before we commit to a full edit.",
+      "author": "Michael R., Professional Photographer"
     },
     "imageToVideoTestimonial3": {
-      "quote": "Veo4画像から動画機能により、何時間ものアニメーション作業を節約できました。既存の写真からVeo4で即座に魅力的なソーシャルメディアコンテンツを作成できます。",
-      "author": "Jessica T., ソーシャルメディアマネージャー"
+      "quote": "The reference image keeps the visual direction grounded, which makes feedback much easier than reviewing prompt-only drafts.",
+      "author": "Jessica T., Social Media Manager"
     },
     "imageToVideoTestimonial4": {
-      "quote": "不動産リストの物件写真をアニメーション化するために使用しました。動画はプロフェッショナルに見え、物件を市場で際立たせるのに役立ちます。",
-      "author": "Robert K., 不動産エージェント"
+      "quote": "I used this to animate property photos for my real estate listings. The videos look professional and help properties stand out in the market.",
+      "author": "Robert K., Real Estate Agent"
     },
     "imageToVideoTestimonial5": {
-      "quote": "デザインモックアップをアニメーション化されたプレゼンテーションに変換するのに最適です。AIは構図を理解し、意味のある動きを追加します。",
-      "author": "Alex W., グラフィックデザイナー"
+      "quote": "Perfect for turning my design mockups into animated presentations. The AI understands the composition and adds motion that makes sense.",
+      "author": "Alex W., Graphic Designer"
     },
     "imageToVideoTestimonial6": {
-      "quote": "1つの商品写真から完全な動画広告まで - このツールはコンテンツ作成ワークフロー全体を効率化しました。強くお勧めします！",
-      "author": "Sarah H., マーケティングディレクター"
+      "quote": "From a single product photo to a full video ad - this tool has streamlined my entire content creation workflow. Highly recommend!",
+      "author": "Sarah H., Marketing Director"
     },
-    "pricingBanner": "💎 料金: 高品質な100本のAI生成動画（音声付き）が月額$19から",
-    "faqImageToVideoTitle": "画像から動画 AI動画生成ツールに関するよくある質問",
+    "pricingBanner": "💎 Pricing: Starting from $49/month for high-quality 100 AI-generated videos with audio",
+    "faqImageToVideoTitle": "Frequently Asked Questions About AI Video Generator for Image to Video",
     "faqImageToVideo": {
       "whatIsTool": {
-        "question": "画像から動画ツールとは何ですか？",
-        "answer": "AI画像から動画ツールは、高度なAIを使用して静止画像を完全にアニメーション化された動画に変換します。写真、イラスト、または商品画像をアップロードするだけで、AIが自然な動き、カメラの動き、同期されたオーディオで画像を生き生きとさせます。"
+        "question": "What is the Image to Video tool?",
+        "answer": "Our AI Image to Video tool transforms your static images into fully animated videos using advanced AI. Simply upload your photo, illustration, or product image, and the AI brings it to life with natural motion, camera movements, and synchronized audio."
       },
       "needExperience": {
-        "question": "画像から動画ツールを使用するために、アニメーションや動画編集の経験は必要ですか？",
-        "answer": "経験は不要です。画像ファイルをアップロードするだけで、AIが自然な動きとプロフェッショナルな効果を持つ高品質なアニメーション動画を自動生成します - 技術的なスキルは不要です。"
+        "question": "Do I need any animation or video editing experience to use the Image to Video tool?",
+        "answer": "No experience is needed. Simply upload your image file, and the AI will automatically generate a high-quality animated video with natural motion and professional effects - no technical skills required."
       },
       "imageTypes": {
-        "question": "画像から動画ツールに最適な画像の種類は何ですか？",
-        "answer": "このツールは、商品写真、ポートレート、風景、イラスト、建築写真、デザインモックアップなど、幅広い種類の画像で動作します。AIは構図を分析し、各画像タイプに文脈的に意味のある動きを生成します。"
+        "question": "What types of images work best with the Image to Video tool?",
+        "answer": "The tool works with a wide variety of images including product photos, portraits, landscapes, illustrations, architectural photos, and design mockups. The AI analyzes the composition and generates motion that makes sense contextually for each image type."
       },
       "howLong": {
-        "question": "画像から動画を生成するのにどのくらい時間がかかりますか？",
-        "answer": "複雑さによって異なりますが、ほとんどの動画は数分で生成されます。AIは画像を分析し、動きを生成し、同期されたオーディオを追加します。準備ができ次第、アニメーション動画をプレビューしてダウンロードできます。"
+        "question": "How long does it take to generate a video from an image?",
+        "answer": "Most videos are generated in just a few minutes, depending on complexity. The AI analyzes your image, generates motion, and adds synchronized audio. You'll be able to preview and download your animated video once it's ready."
       },
       "motionType": {
-        "question": "AIは画像にどのような種類の動きを追加しますか？",
-        "answer": "AIは、スムーズなカメラの動き、自然なオブジェクトの動き、環境効果（木々を通る風など）、商品の回転、微妙なポートレートの動きなど、文脈的に適切な動きを生成します。動きは画像を強化し、気を散らすことなく自然です。"
+        "question": "What kind of motion does the AI add to images?",
+        "answer": "The AI generates contextually appropriate motion such as smooth camera movements, natural object motion, environmental effects (like wind through trees), product rotations, and subtle portrait movements. The motion enhances the image without being distracting."
       },
       "commercialUse": {
-        "question": "画像から動画で生成された動画を商用目的で使用できますか？",
-        "answer": "はい。AIを使用して作成された動画は、使用とライセンス条件に従う限り、マーケティング、Eコマース、ソーシャルメディア、ビジネスプレゼンテーション、その他の商用利用に使用できます。"
+        "question": "Can I use Image to Video generated videos for commercial purposes?",
+        "answer": "Yes. Videos created using our AI can be used for marketing, e-commerce, social media, business presentations, and any other commercial use, as long as they follow our usage and licensing terms."
       }
     },
     "getStartedImageToVideo": {
-      "title": "画像から動画 AI動画生成ツールを始める",
-      "description": "画像を生き生きとさせる準備はできていますか？より高速なレンダリング、より長い動画時間、高度な動き効果、プレミアムスタイルにアクセスするためにアップグレードしてください。商品広告、ポートフォリオショーケース、またはソーシャルメディアコンテンツを作成している場合でも、Proプランは静止画像を美しいアニメーション動画に変換するために必要なすべてを提供します - 簡単に。",
-      "button": "プレミアムを取得"
+      "title": "Get Started with AI Video Generator for Image to Video",
+      "description": "Ready to bring your images to life? Upgrade to access faster rendering, longer video durations, advanced motion effects, and premium styles. Whether you're creating product ads, portfolio showcases, or social media content, our Pro plan gives you everything you need to transform static images into stunning, animated videos - effortlessly.",
+      "button": "Get Premium"
     },
     "reframeMode": {
-      "model": "モデル",
-      "sora3": "Veo4",
-      "sora3Pro": "Veo4 pro",
-      "sora3Description": "高品質な出力と精密な制御を備えたOpenAIの高度な動画生成モデル。",
-      "sora3ProDescription": "強化された品質、優れたリアリズム、高度な制御機能を備えたOpenAIのプレミアム動画生成モデル。",
-      "prompt": "プロンプト *",
-      "promptTooltip": "参照画像から作成したい動きを説明してください",
-      "aiExamples": "AI例",
-      "promptExamplesTitle": "画像から動画プロンプト例",
-      "promptExamplesDescription": "画像から動画生成のインスピレーションを得るためのプロンプト例を閲覧",
-      "useThisPrompt": "このプロンプトを使用",
-      "promptGpt": "プロンプトGPT",
-      "promptGptTooltip": "インスピレーションが必要ですか？AI動画プロンプトGPTでカメラの動き、ストーリービート、音響キューをブレインストームし、アップグレードされたプロンプトをここに貼り付けてください。",
-      "promptPlaceholder": "作成したい動きを説明してください。例：「寿司職人の手が米を丁寧に形作る様子を、背景をソフトフォーカスで優しくズームイン」",
-      "referenceImage": "参照画像 *",
-      "referenceImageTooltip": "開始フレームとして使用される参照画像または動画（JPG、PNG、WEBP、MP4、MOV、最大10MB）をアップロードしてください。",
-      "changeImage": "画像を変更",
-      "uploadReferenceFile": "参照ファイルをアップロード",
-      "dragDropText": "画像または動画をここにドラッグアンドドロップするか、クリックして参照",
-      "fileFormatText": "JPG、PNG、WEBP、MP4、MOVをサポート、最大10MB",
-      "aspectRatio": "アスペクト比",
-      "aspectRatioTooltip": "生成される動画出力のターゲットアスペクト比を選択してください。",
-      "portrait": "縦向き",
-      "landscape": "横向き",
-      "duration": "時間",
-      "durationTooltip": "動画の時間を選択：10秒または15秒",
-      "quality": "品質",
-      "qualityTooltip": "標準：低コスト、良好な品質。高：プレミアム品質、高コスト。",
-      "standard": "標準",
-      "high": "高"
+      "model": "Model",
+      "sora3": "Spark Robin",
+      "sora3Pro": "Spark Robin pro",
+      "sora3Description": "A structured AI video workflow for prompt briefs, reference images, and reviewable drafts.",
+      "sora3ProDescription": "A higher-capacity workflow for teams testing more draft variations and reference-led scenes.",
+      "prompt": "Prompt *",
+      "promptTooltip": "Describe the motion you want to create from the reference image",
+      "aiExamples": "AI Examples",
+      "promptExamplesTitle": "Image-to-Video Prompt Examples",
+      "promptExamplesDescription": "Browse example prompts to inspire your image-to-video generation",
+      "useThisPrompt": "Use This Prompt",
+      "promptGpt": "Prompt GPT",
+      "promptGptTooltip": "Need inspiration? Brainstorm camera moves, story beats, and audio cues with the AI Video Prompt GPT, then paste the upgraded prompt here.",
+      "promptPlaceholder": "Describe the motion you want to create. For example: 'A gentle zoom in on the sushi chef's hands as they carefully shape the rice, with soft focus on the background'",
+      "referenceImage": "Reference Image *",
+      "referenceImageTooltip": "Upload one reference image or video (JPG, PNG, WEBP, MP4, MOV up to 10MB) that will be used as the opening frame.",
+      "changeImage": "Change Image",
+      "uploadReferenceFile": "Upload Reference File",
+      "dragDropText": "Drag and drop an image or video here, or click to browse",
+      "fileFormatText": "Supports JPG, PNG, WEBP, MP4, MOV up to 10MB",
+      "aspectRatio": "Aspect Ratio",
+      "aspectRatioTooltip": "Select the target aspect ratio for the generated video output.",
+      "portrait": "Portrait",
+      "landscape": "Landscape",
+      "duration": "Duration",
+      "durationTooltip": "Select the video duration: 10 seconds or 15 seconds",
+      "quality": "Quality",
+      "qualityTooltip": "Standard: Lower cost, good quality. High: Premium quality with higher cost.",
+      "standard": "Standard",
+      "high": "High",
+      "sora2": "Sora 2",
+      "sora2Description": "Non-stable variant, potentially higher quality",
+      "sora2Pro": "Sora 2 Pro",
+      "sora2ProDescription": "Premium non-stable video generation",
+      "storyboard": "Storyboard",
+      "storyboardDescription": "Multi-scene video generation with shot control"
     },
     "generationForm": {
-      "model": "モデル"
+      "model": "Model"
     },
     "veo3ImageMode": {
-      "image": "画像 *",
-      "startFrame": "開始フレーム",
-      "endFrame": "終了フレーム",
-      "uploadStartFrame": "開始フレームをアップロード",
-      "uploadEndFrame": "終了フレームをアップロード",
-      "dragDropImage": "画像をドラッグアンドドロップするか、クリックしてアップロード",
-      "supportedFormats": "サポート形式：JPG、JPEG、PNG；各ファイル最大10MB",
-      "generationPrompt": "生成プロンプト *",
-      "promptPlaceholder": "カメラは、歌手の正面からのビューから始まり、彼女の周りを滑らかに180度のアークショットを実行し、ステージ上の彼女の後ろからのPOVショットでシームレスに終了します。歌手は「あなたが私の目を見つめるとき、私は百万の星を見ることができます」と歌います。",
-      "ratio": "比率",
-      "ratioTooltip": "16:9：横向きフォーマット、1080P HDをサポート（16:9のみが1080Pをサポート）\n9:16：モバイル動画用の縦向きフォーマット\n自動：アップロードされた画像に基づいてアスペクト比を自動的に一致",
-      "auto": "自動",
-      "seed": "シード（オプション）",
-      "seedTooltip": "ランダムシード（10000-99999）。同じシードは類似のコンテンツを生成します。",
-      "seedPlaceholder": "シードを入力してください",
-      "generating": "生成中...",
-      "generate": "生成"
+      "image": "Image *",
+      "startFrame": "Start Frame",
+      "endFrame": "End Frame",
+      "uploadStartFrame": "Upload Start Frame",
+      "uploadEndFrame": "Upload End Frame",
+      "dragDropImage": "Drag and drop or click to upload your image",
+      "supportedFormats": "Supported formats: JPG, JPEG, PNG; each file max 10MB",
+      "generationPrompt": "Generation prompt *",
+      "promptPlaceholder": "The camera performs a smooth 180-degree arc shot, starting with the front-facing view of the singer and circling around her to seamlessly end on the POV shot from behind her on stage. The singer sings \"when you look me in the eyes, I can see a million stars.\"",
+      "ratio": "Ratio",
+      "ratioTooltip": "16:9: Landscape format, supports 1080P HD (only 16:9 supports 1080P)\n9:16: Portrait format for mobile videos\nAuto: Automatically matches aspect ratio based on uploaded image",
+      "auto": "Auto",
+      "seed": "Seed (Optional)",
+      "seedTooltip": "Random seed (10000-99999). Same seed generates similar content.",
+      "seedPlaceholder": "please input seed",
+      "generating": "Generating...",
+      "generate": "Generate"
     },
     "errors": {
-      "uploadAtLeastOneImage": "少なくとも1つの画像（開始フレームまたは終了フレーム）をアップロードしてください",
-      "invalidSoraUrl": "https://sora.chatgpt.com/で始まる有効なSora URLを入力してください。",
-      "atLeastOneImageRequired": "少なくとも1つの画像（開始フレームまたは終了フレーム）が必要です",
-      "referenceImageUrlRequired": "画像から動画モードには参照画像URLが必要です"
+      "uploadAtLeastOneImage": "Please upload at least one image (Start Frame or End Frame)",
+      "invalidSoraUrl": "Enter a valid Sora URL starting with https://sora.chatgpt.com/.",
+      "referenceImageUrlRequired": "Reference image URL is required for image to video mode"
     },
     "defaultPrompts": {
-      "smoothTransition": "フレーム間の滑らかな動画トランジションを作成",
-      "smoothAnimation": "参照画像からの滑らかな動画アニメーションを作成"
+      "smoothTransition": "Create a smooth video transition between the frames",
+      "smoothAnimation": "Create a smooth video animation from the reference image"
     },
     "fallbacks": {
-      "getPremium": "プレミアムを取得",
-      "generating": "生成中...",
-      "startGeneration": "生成を開始"
+      "getPremium": "Get Premium",
+      "generating": "Generating...",
+      "startGeneration": "Start Generation"
     },
-    "costEstimate": "コスト見積もり",
-    "baseCost": "基本コスト ({duration}秒)",
-    "aspectRatioCost": "アスペクト比 ({aspectRatio})",
-    "total": "合計",
-    "creditsCount": "{count} クレジット",
-    "availableCredits": "利用可能なクレジット: {count}",
-    "sufficientBalance": "✓ 残高十分",
-    "insufficientCredits": "⚠ クレジット不足",
-    "acceptableUsePolicy": "利用規約",
-    "acceptableUsePolicyDescription": "詐欺、なりすまし、著作権侵害などの違法コンテンツを生成するためにこのサービスを使用することは厳禁です。",
-    "brandStatement": "ブランド声明",
-    "brandStatementDescription": "このサービスは、Google、Vertex AI、またはFlowとの提携や公式関係はありません。",
+    "costEstimate": "Cost Estimate",
+    "baseCost": "Base cost ({duration}s)",
+    "aspectRatioCost": "Aspect ratio ({aspectRatio})",
+    "total": "Total",
+    "creditsCount": "{count} credits",
+    "availableCredits": "Available credits: {count}",
+    "sufficientBalance": "✓ Sufficient balance",
+    "insufficientCredits": "⚠ Insufficient credits",
+    "acceptableUsePolicy": "Acceptable Use Policy",
+    "acceptableUsePolicyDescription": "It is strictly prohibited to use this service to generate illegal content such as fraud, impersonation, copyright infringement, etc.",
+    "brandStatement": "Brand Statement",
+    "brandStatementDescription": "This service has no affiliation or official relationship with Google, Vertex AI, or Flow.",
     "veo3Mode": {
-      "auto": "自動",
+      "auto": "Auto",
       "fast": "Veo 3.1 Fast",
       "quality": "Veo 3.1 Quality",
-      "generationPrompt": "生成プロンプト",
-      "promptPlaceholder": "キーがさまざまな種類のキャンディで作られたキーボード。タイピングすると甘く、カリカリした音がします。オーディオ: カリカリした、砂糖のようなタイピング音、嬉しそうな笑い声。",
-      "enterImageUrl": "画像URLを入力:",
-      "imageUrls": "画像URL",
-      "imageUrlsTooltip": "FIRST_AND_LAST_FRAMES_2_VIDEOの場合: 1-2枚の画像\nREFERENCE_2_VIDEOの場合: 1-3枚の画像（高速モデル、16:9のみ）\n画像はアクセス可能な公開URLである必要があります",
-      "addImageUrl": "画像URLを追加",
+      "generationPrompt": "Generation prompt",
+      "promptPlaceholder": "A keyboard whose keys are made of different types of candy. Typing makes sweet, crunchy sounds. Audio: Crunchy, sugary typing sounds, delighted giggles.",
+      "enterImageUrl": "Enter image URL:",
+      "imageUrls": "Image URLs",
+      "imageUrlsTooltip": "For FIRST_AND_LAST_FRAMES_2_VIDEO: 1-2 images\nFor REFERENCE_2_VIDEO: 1-3 images (Fast model, 16:9 only)\nImages must be accessible public URLs",
+      "addImageUrl": "Add Image URL",
       "imageUrlPlaceholder": "https://example.com/image.jpg",
-      "noImagesAdded": "画像が追加されていません。「画像URLを追加」をクリックして参照画像を追加してください。",
-      "ratio": "比率",
-      "ratioTooltip": "16:9: 横向きフォーマット、1080P HDをサポート（16:9のみが1080Pをサポート）\n9:16: モバイル動画用の縦向きフォーマット\n自動: アップロードされた画像に基づいてアスペクト比を自動的に一致",
-      "advancedOptions": "高度なオプション",
-      "seed": "シード（オプション）",
-      "seedTooltip": "ランダムシード（10000-99999）。同じシードは類似のコンテンツを生成します。",
-      "seedPlaceholder": "シードを入力してください",
-      "enableTranslation": "翻訳を有効化",
-      "enableTranslationTooltip": "より良い生成結果のためにプロンプトを自動的に英語に翻訳",
-      "on": "オン",
-      "off": "オフ",
-      "watermark": "ウォーターマーク（オプション）",
+      "noImagesAdded": "No images added. Click \"Add Image URL\" to add reference images.",
+      "ratio": "Ratio",
+      "ratioTooltip": "16:9: Landscape format, supports 1080P HD (only 16:9 supports 1080P)\n9:16: Portrait format for mobile videos\nAuto: Automatically matches aspect ratio based on uploaded image",
+      "advancedOptions": "Advanced Options",
+      "seed": "Seed (Optional)",
+      "seedTooltip": "Random seed (10000-99999). Same seed generates similar content.",
+      "seedPlaceholder": "please input seed",
+      "enableTranslation": "Enable Translation",
+      "enableTranslationTooltip": "Automatically translate prompts to English for better generation results",
+      "on": "On",
+      "off": "Off",
+      "watermark": "Watermark (Optional)",
       "watermarkPlaceholder": "MyBrand",
-      "audioDisclaimer": "Googleによると、オーディオは実験的な機能であり、一部の動画では利用できない場合があります。",
-      "audioDisclaimerTooltip": "GoogleのVeo 3.1はデフォルトでオーディオ生成を含みますが、一部の場合（例：未成年者を含む機密コンテンツ）ではオーディオが抑制される場合があります。"
+      "audioDisclaimer": "According to google, audio is an experimental feature and may be unavailable on some videos.",
+      "audioDisclaimerTooltip": "Google's Veo 3.1 includes audio generation by default, but in some cases (e.g., sensitive content involving minors) audio may be suppressed."
     },
     "storyboard": {
-      "invalidImageFile": "有効な画像ファイルを選択してください",
-      "imageSizeTooLarge": "画像サイズは10MB未満である必要があります",
-      "totalDuration": "合計時間 *",
-      "totalLengthDescription": "動画の合計長さ",
-      "shots": "ショット",
-      "remaining": "残り",
-      "addShot": "ショットを追加",
-      "maximumDurationReached": "最大時間に達しました",
-      "allocateRemainingDuration": "生成前に残りの時間（{duration}秒）をすべてシーンに割り当ててください。",
-      "imageUrls": "画像をアップロード",
-      "removeAll": "すべて削除",
-      "selectedImage": "選択された画像",
-      "referenceImage": "参照画像",
-      "imageUploadOnGenerate": "動画生成時に画像がアップロードされます",
-      "selectImage": "画像を選択",
-      "supportedFormats": "サポート形式: JPEG、PNG、WEBP 最大ファイルサイズ: 10MB；最大ファイル数: 1",
-      "uploadImageDescription": "APIの入力として使用する画像ファイルをアップロード",
-      "aspectRatio": "アスペクト比",
-      "portrait": "縦向き",
-      "landscape": "横向き",
-      "aspectRatioDescription": "このパラメータは画像のアスペクト比を定義します。",
-      "shot": "ショット",
-      "shotDescription": "ショット説明",
-      "shotDescriptionPlaceholder": "このショットで何が起こるか説明してください...",
-      "duration": "時間",
-      "generatingStoryboard": "ストーリーボードを生成中...",
-      "generationTimeNote": "⏱️ 通常5-15分かかります。このページを開いたままにしてください。",
-      "exampleDescription": "25秒のマルチシーンストーリーボード動画の例です。シーンを設定して生成をクリックして独自の動画を作成してください。",
-      "exampleNote": "例: 3シーンのストーリーボード（8秒 + 8秒 + 9秒 = 合計25秒）",
-      "whatIsSora3ProStoryboard": "Veo4 Proストーリーボードとは？",
-      "sora3ProStoryboardDescription": "Veo4 Proストーリーボードは、シーケンシャルコンテンツ制作向けに設計された最先端のAI動画生成システムです。YouTube Shorts、TikTok、Reels用に最大25秒のマルチシーンAI動画を構築します。この堅牢なプラットフォームは、マルチシーンの調整を可能にし、視覚的な一貫性と一貫性を維持し、最大25秒の長さの出力を正確に制御し、オーディオ付きのHD品質動画をエクスポートします。",
-      "upTo25sDuration": "最大25秒",
-      "multiSceneControl": "マルチシーン制御（ストーリーボード）",
-      "socialMediaReady": "ソーシャルメディア対応",
-      "hdQualityAudio": "HD品質 + オーディオ",
-      "whatPeopleAreSaying": "Veo4 Proストーリーボードについて人々が言っていること",
-      "keyFeatures": "Veo4 Proストーリーボードの主な機能",
-      "multiSceneSequencing": "マルチシーンシーケンシング",
-      "multiSceneSequencingDescription": "Veo4 Proストーリーボードを使用して、一貫したストーリーラインを作成するために複数のシーンを定義します。Veo4 Proストーリーボードエンジンは、シームレスなマルチシーン動画のためにシーン間のスムーズなトランジションを保証します。",
-      "visualConsistency": "視覚的一貫性",
-      "visualConsistencyDescription": "Veo4 Proストーリーボードは、すべてのシーンにわたって一貫した視覚スタイルと要素を維持し、視聴者がVeo4 Proストーリーボードから期待するプロフェッショナル品質の動画出力を提供します。",
-      "flexibleOutputControl": "柔軟な出力制御",
-      "flexibleOutputControlDescription": "Veo4 Proストーリーボードで最大25秒の動画を生成します。Veo4 Proストーリーボードを使用して、コンテンツのニーズに合わせて10秒、15秒、または25秒の時間オプションを選択します。",
-      "referenceImageSupport": "参照画像サポート",
-      "referenceImageSupportDescription": "参照画像をアップロードしてVeo4 Proストーリーボード生成プロセスをガイドし、Veo4ストーリーボード動画全体で視覚的一貫性を確保します。",
-      "howToUse": "Veo4 Proストーリーボードの使い方",
-      "step1DefineScenes": "シーンを定義",
-      "step1Description": "Veo4 Proストーリーボードの各シーンを詳細に説明",
-      "step2SetParameters": "パラメータを設定",
-      "step2Description": "時間（10秒/15秒/25秒）とアスペクト比を選択",
-      "step3UploadReference": "参照をアップロード",
-      "step3Description": "Veo4 Proストーリーボードをガイドする画像を追加（オプション）",
-      "step4Generate": "生成",
-      "step4Description": "生成をクリックしてVeo4 Proストーリーボードに動画を作成させます",
-      "perfectFor": "TikTok、Instagram Reels、YouTube Shorts、ブランドコンテンツ制作に最適です。詳細については",
-      "pricingPlans": "料金プラン",
-      "pricing": "💎 料金",
-      "pricingDescription": "オーディオ付き高品質マルチシーンAI動画は月額19ドルから",
-      "powerfulStoryboardFeatures": "強力なストーリーボード機能",
-      "sceneBySceneControl": "シーンごとの制御",
-      "sceneBySceneControlDescription": "シーンをドラッグ&ドロップし、プロンプトとアセットをカスタマイズして完璧なフローを実現。",
-      "socialMediaFormats": "ソーシャルメディアフォーマット",
-      "socialMediaFormatsDescription": "TikTok、Instagram Reels、YouTube Shorts用の組み込みテンプレート。",
-      "fastExportShare": "高速エクスポートと共有",
-      "fastExportShareDescription": "Veo4ストーリーボード動画を数分で生成、プレビュー、ダウンロード。"
+      "invalidImageFile": "Please select a valid image file",
+      "imageSizeTooLarge": "Image size must be less than 10MB",
+      "totalDuration": "Total Duration *",
+      "totalLengthDescription": "Total length of the video",
+      "shots": "shots",
+      "remaining": "Remaining",
+      "addShot": "Add Shot",
+      "maximumDurationReached": "Maximum duration reached",
+      "allocateRemainingDuration": "Please allocate all remaining duration ({duration}s) to scenes before generating.",
+      "imageUrls": "Upload Image",
+      "removeAll": "Remove All",
+      "selectedImage": "Selected Image",
+      "referenceImage": "Reference image",
+      "imageUploadOnGenerate": "Image will be uploaded when generating video",
+      "selectImage": "Select Image",
+      "supportedFormats": "Supported formats: JPEG, PNG, WEBP Maximum file size: 10MB; Maximum files: 1",
+      "uploadImageDescription": "Upload an image file to use as input for the API",
+      "aspectRatio": "Aspect Ratio",
+      "portrait": "Portrait",
+      "landscape": "Landscape",
+      "aspectRatioDescription": "This parameter defines the aspect ratio of the image.",
+      "shot": "Shot",
+      "shotDescription": "Shot Description",
+      "shotDescriptionPlaceholder": "Describe what happens in this shot...",
+      "duration": "Duration",
+      "generatingStoryboard": "Generating Storyboard...",
+      "generationTimeNote": "⏱️ This typically takes 5-15 minutes. Please keep this page open.",
+      "exampleDescription": "Here's an example of a 25-second multi-scene storyboard video. Configure your scenes and click generate to create your own.",
+      "exampleNote": "Example: 3-scene storyboard (8s + 8s + 9s = 25s total)",
+      "whatIsSora3ProStoryboard": "What is Spark Robin Pro Storyboard?",
+      "sora3ProStoryboardDescription": "Spark Robin Pro Storyboard is a cutting-edge AI video generation system designed for sequential content production. Build multi-scene AI videos up to 25s for Youtube Shorts, TikTok and Reels. This robust platform enables multi-scene coordination, maintains visual consistency and coherence, provides precise control over outputs up to 25 seconds in length, and exports HD quality videos with audio.",
+      "upTo25sDuration": "Up to 25s Duration",
+      "multiSceneControl": "Multi-Scene Control (Storyboard)",
+      "socialMediaReady": "Social Media Ready",
+      "hdQualityAudio": "HD Quality + Audio",
+      "whatPeopleAreSaying": "What People Are Saying About Spark Robin Pro Storyboard",
+      "keyFeatures": "Key Features of Spark Robin Pro Storyboard",
+      "multiSceneSequencing": "Multi-Scene Sequencing",
+      "multiSceneSequencingDescription": "With Spark Robin Pro Storyboard, define multiple scenes in order to create coherent storylines. The Spark Robin Pro Storyboard engine ensures smooth transitions between scenes for seamless multi-scene videos.",
+      "visualConsistency": "Visual Consistency",
+      "visualConsistencyDescription": "Spark Robin Pro Storyboard maintains consistent visual style and elements across all scenes, delivering professional-quality video output that viewers expect from Spark Robin Pro Storyboard.",
+      "flexibleOutputControl": "Flexible Output Control",
+      "flexibleOutputControlDescription": "Generate videos up to 25 seconds with Spark Robin Pro Storyboard. Choose 10s, 15s, or 25s duration options to fit your content needs using Spark Robin Pro Storyboard.",
+      "referenceImageSupport": "Reference Image Support",
+      "referenceImageSupportDescription": "Upload a reference image to guide the Spark Robin Pro Storyboard generation process, ensuring visual consistency throughout your Spark Robin Storyboard video.",
+      "howToUse": "How to Use Spark Robin Pro Storyboard",
+      "step1DefineScenes": "Define Scenes",
+      "step1Description": "Describe each scene in detail for Spark Robin Pro Storyboard",
+      "step2SetParameters": "Set Parameters",
+      "step2Description": "Choose duration (10s/15s/25s) and aspect ratio",
+      "step3UploadReference": "Upload Reference",
+      "step3Description": "Add an image to guide Spark Robin Pro Storyboard (Optional)",
+      "step4Generate": "Generate",
+      "step4Description": "Click generate and let Spark Robin Pro Storyboard create your video",
+      "perfectFor": "Perfect for TikTok, Instagram Reels, YouTube Shorts, and brand content creation. Learn more about our",
+      "pricingPlans": "pricing plans",
+      "pricing": "💎 Pricing",
+      "pricingDescription": "Starting from $19/month for high-quality multi-scene AI videos with audio",
+      "powerfulStoryboardFeatures": "Powerful Storyboard Features",
+      "sceneBySceneControl": "Scene-by-Scene Control",
+      "sceneBySceneControlDescription": "Drag & drop scenes, customize prompts & assets for perfect flow.",
+      "socialMediaFormats": "Social Media Formats",
+      "socialMediaFormatsDescription": "Built-in templates for TikTok, Instagram Reels, YouTube Shorts.",
+      "fastExportShare": "Fast Export & Share",
+      "fastExportShareDescription": "Generate, preview and download your Spark Robin Storyboard videos in minutes."
+    },
+    "watermarkRemover": {
+      "title": "Spark Robin Watermark Remover",
+      "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
+      "seoTitle": "Spark Robin Watermark Remover | Remove Sora Watermarks",
+      "seoDescription": "Spark Robin watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+      "input": "Input",
+      "output": "Output",
+      "videoUrl": "video_url",
+      "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
+      "videoUrlHint": "Must be publicly accessible and start with `https://sora.chatgpt.com/`.",
+      "reset": "Reset",
+      "running": "Running…",
+      "run": "Run {credits}credits",
+      "processing": "Processing…",
+      "waitingForResult": "Waiting for result…",
+      "noOutputYet": "No output yet",
+      "exampleVideo": "Example Video",
+      "exampleVideoDescription": "This is a sample video generated by Spark Robin AI. Upload your own Sora video to remove watermarks!",
+      "creditsInfo": "This tool consumes 10 credits per run. Keep your Spark Robin videos clean and brand-ready.",
+      "browserNotSupportVideo": "Your browser does not support the video tag."
     },
     "promptExamples": {
       "categories": {
-        "cinematicCameraMoves": "シネマティックカメラムーブ",
-        "lifestyleProductMotion": "ライフスタイル・商品モーション",
-        "natureTravel": "自然・旅行",
-        "futuristicTech": "未来的・テクノロジー",
-        "portraitFashion": "ポートレート・ファッション",
-        "artisticTransformations": "アーティスティック変換"
+        "cinematicCameraMoves": "Cinematic Camera Moves",
+        "lifestyleProductMotion": "Lifestyle & Product Motion",
+        "natureTravel": "Nature & Travel",
+        "futuristicTech": "Futuristic & Tech",
+        "portraitFashion": "Portrait & Fashion",
+        "artisticTransformations": "Artistic Transformations"
       }
-    },
-    "watermarkRemover": {
-      "title": "Veo4 ウォーターマーク除去",
-      "description": "Sora でホストされている動画から Sora のウォーターマークを削除します。公開されている `sora.chatgpt.com` URL を貼り付けて実行してください。通常、API での処理には 1〜3 秒かかります。",
-      "seoTitle": "Veo4 ウォーターマーク除去 | ウォーターマーク削除ツール",
-      "seoDescription": "Veo4 ウォーターマーク除去: Sora でホストされている動画から Sora のウォーターマークを数秒で削除。商用利用可能、API対応、公開 sora.chatgpt.com リンクで動作します。",
-      "input": "入力",
-      "output": "出力",
-      "videoUrl": "video_url",
-      "videoUrlPlaceholder": "https://sora.chatgpt.com/p/...",
-      "videoUrlHint": "公開アクセス可能で、`https://sora.chatgpt.com/` で始まる必要があります。",
-      "reset": "リセット",
-      "running": "実行中…",
-      "run": "{credits} クレジットで実行",
-      "processing": "処理中…",
-      "waitingForResult": "結果を待機中…",
-      "noOutputYet": "まだ出力がありません",
-      "exampleVideo": "サンプル動画",
-      "exampleVideoDescription": "これは Veo4 AI によって生成されたサンプル動画です。独自の Sora 動画をアップロードしてウォーターマークを削除してください！",
-      "creditsInfo": "このツールは実行ごとに 10 クレジットを消費します。Veo4 動画をクリーンでブランド対応の状態に保ちます。",
-      "browserNotSupportVideo": "お使いのブラウザは動画タグをサポートしていません。"
     }
   },
   "demoGallery": {
-    "title": "Veo4で作成できる動画を見る",
-    "description": "Saroのマルチモデルエンジンで生成された本物の映画のような動画。Veo4スタイルのプロンプトとストーリーボード出力を含みます。",
-    "seeMoreExamples": "もっと見る",
-    "tapToUnmute": "タップして音声をオン"
+    "title": "Spark Robin Examples",
+    "description": "Browse text-to-video, image-to-video, and commercial-ready Spark Robin outputs built for creators, brands, and marketing teams.",
+    "seeMoreExamples": "See more examples",
+    "tapToUnmute": "Tap to unmute"
   },
   "keyFeatures": {
-    "title": "Veo4 AIの特徴",
+    "title": "What makes Spark Robin AI different",
     "noWatermark": {
-      "title": "ウォーターマークなし",
-      "description": "動画はクリーンで、ブランディング可能で、商用利用に最適です。"
+      "title": "No watermark",
+      "description": "Your videos are clean, brandable, and ready for commercial use."
     },
     "bestCostPerformance": {
-      "title": "最高の費用対効果",
-      "description": "他のAI動画ツールよりも最大10倍安く、充実したクレジットを提供します。"
+      "title": "Best cost-performance",
+      "description": "Up to 10× cheaper than other AI video tools, with generous credits."
     },
     "fastConvenient": {
-      "title": "高速で便利",
-      "description": "数分で10秒のクリップを生成 — ブラウザで直接。"
+      "title": "Fast & convenient",
+      "description": "Generate 10-second clips within minutes — right in the browser."
     },
     "sora3ProStoryboard": {
-      "title": "Veo4 プロストーリーボード（25秒）",
-      "description": "広告、トレーラー、商品紹介、映画のような短編動画のためのVeo4ストーリーボードストーリーテリング。"
+      "title": "Spark Robin Pro Storyboard (25 seconds)",
+      "description": "Spark Robin Storyboard storytelling for ads, trailers, product showcases, and cinematic short films."
     },
     "textToVideoImageToVideo": {
-      "title": "テキストから動画＆画像から動画",
-      "description": "画像をアップロードして動きをアニメーション化するか、1つの文でシーンを説明します。"
+      "title": "Text-to-video & image-to-video",
+      "description": "Upload an image and animate motion around it, or describe a scene in one sentence."
     },
     "socialReady": {
-      "title": "SNS対応",
-      "description": "TikTok、Reels、Shorts、有料広告に最適です。"
+      "title": "Social-ready",
+      "description": "Perfect for TikTok, Reels, Shorts, and paid ads."
     },
     "trySora3Free": {
-      "title": "Veo4を無料でお試し — 編集不要",
-      "description": "Veo4 AI搭載ツールで映画のような動画の作成を始めましょう。Veo4は動画作成を簡単にします - 経験は不要です。Veo4がプロジェクトで何ができるか発見してください。Veo4を無料でお試し、クリエイターがAI動画生成にVeo4を選ぶ理由をご覧ください。",
-      "startGenerating": "生成を開始"
+      "title": "Try Spark Robin Free — No Editing Required",
+      "description": "Start with a prompt brief or reference image, generate a draft, and refine the creative notes for the next pass.",
+      "startGenerating": "Start Generating"
     }
   },
   "testimonials": {
-    "title": "世界中のクリエイターに愛されています",
-    "subtitle": "AI動画生成にVeo4を使用している世界中のクリエイターに参加してください。プラットフォームのウォーターマークなしの動画とレンダリング機能について、ユーザーが何と言っているかご覧ください。Veo4テクノロジーを使用するクリエイターがVeo4を信頼する理由を発見してください。",
-    "ctaTitle": "AIで動画を作成するクリエイターに参加",
-    "ctaDescription": "ウォーターマークなしの動画、音声機能、効率的なレンダリングを備えたAI動画生成を体験してください。今すぐ動画の作成を始めましょう。",
-    "ctaButton": "今すぐ作成を開始"
+    "title": "Loved by creators worldwide",
+    "subtitle": "See how creators use structured prompts, reference images, and review loops to move from rough ideas to clearer AI video drafts.",
+    "ctaTitle": "Build a better AI video workflow",
+    "ctaDescription": "Start with reusable prompt notes, generate drafts, and improve the next version with less guesswork.",
+    "ctaButton": "Start Creating Now"
   },
   "error": {
     "goHome": "ホーム",
@@ -866,7 +868,7 @@
   },
   "auth": {
     "signIn": "ログイン",
-    "signInToSora3": "Veo4にログイン",
+    "signInToSora3": "Spark Robinにログイン",
     "createAccount": "アカウントを作成",
     "checkEmail": "メールを確認",
     "backToSignUp": "サインアップに戻る",
@@ -889,31 +891,31 @@
     "redirectingToGoogle": "Googleにリダイレクト中..."
   },
   "sora3Capabilities": {
-    "title": "Veo4 — 6つの核心機能",
-    "subtitle": "Veo4 は、より滑らかな動き、より整ったシーン、実際のマーケティング制作に使いやすい出力で、チームの動画制作を高速化します。",
+    "title": "Why Choose Spark Robin",
+    "subtitle": "Spark Robin helps teams prepare better AI video briefs across text, image, and video workflows, with clearer review notes and reusable creative direction.",
     "cinematicRealism": {
-      "title": "シネマ級のリアリズム",
-      "description": "Veo4 は映画のような質感・光・カメラワークを再現します。\n\n安定した、高品質で自然な映像。AIっぽさを感じさせません。\n\n商品紹介やストーリー動画に最適。"
+      "title": "Create videos from text, images, or existing footage",
+      "description": "Start with a prompt, still image, or source clip and turn it into a draft that is easier to review, compare, and revise."
     },
     "naturalCameraMotion": {
-      "title": "自然なカメラモーション",
-      "description": "トラッキング、ドリー、クレーン、ドローン、横移動などを自動理解。\n\nロボット的でぎくしゃくした動きのない滑らかなトランジション。\n\n動画の映画的な雰囲気を即座に向上させます。"
+      "title": "Get better motion, framing, and scene control",
+      "description": "Use layered camera, motion, and pacing notes so each draft has a clear creative target."
     },
     "consistentCharacters": {
-      "title": "キャラクターと動きの一貫性",
-      "description": "複数のカットでキャラクターが一貫性を保ちます — 顔、服装、プロポーション。\n\n走る、回転、相互作用、ダンスなどの複雑なアクションを処理。\n\nマルチショットストーリーテリングと高品質な広告クリエイティブに最適。"
+      "title": "Build ads, social videos, and product content faster",
+      "description": "Use structured briefs for product launches, paid social concepts, branded storytelling, and short-form testing."
     },
     "longFormPlatformReady": {
-      "title": "最長 25 秒 & マルチプラットフォーム対応",
-      "description": "ストーリーを完全に表現する最大 25 秒の動画を生成。\n\nTikTok、Reels、YouTube Shorts、広告、Eコマース向けに最適化。\n\n透かし無しで、商用利用が可能。"
+      "title": "Prepare sequences before rendering",
+      "description": "Plan multi-shot ideas as shot notes first, then generate drafts that reviewers can judge against the same brief."
     },
     "advancedSceneIntelligence": {
-      "title": "高度なシーン理解",
-      "description": "オブジェクト、物理、環境、空間関係を理解します。\n\n正確な深度、影、反射を持つ一貫したシーンを生成。\n\nライフスタイル動画、商品デモ、映画的な世界構築に最適。"
+      "title": "Scene Notes and Continuity",
+      "description": "Separate setting, subject, camera, action, and continuity details.\n\nThis makes each draft easier to diagnose.\n\nIt also helps teams reuse successful shot language across future model access."
     },
     "audioSoundGeneration": {
-      "title": "オーディオ・サウンド生成",
-      "description": "同期されたオーディオ（対話、環境音、効果音）を生成。\n\nアクションに合わせて環境音とリアルなフォーリー音を自動追加。\n\n外部の音声編集なしで、没入感のある即座に使用可能な動画を作成。"
+      "title": "Review Before Final Production",
+      "description": "Treat early outputs as creative evidence, not final answers.\n\nCompare drafts against the brief.\n\nThen refine the prompt, reference, or shot plan before investing more production time."
     }
   },
   "paymentSuccess": {
@@ -926,14 +928,14 @@
     "autoRedirect": "数秒後に自動的にリダイレクトされます..."
   },
   "account": {
-    "dashboardMetaTitle": "ダッシュボード | VEO 4 アカウント管理",
-    "dashboardMetaDescription": "VEO 4 アカウント、クレジット、サブスクリプション、支払い、生成履歴を一か所で管理できます。",
-    "myCreationsMetaTitle": "My Creations | VEO 4 生成履歴",
-    "myCreationsMetaDescription": "VEO 4 の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
+    "dashboardMetaTitle": "ダッシュボード | Spark Robin アカウント管理",
+    "dashboardMetaDescription": "Spark Robin アカウント、クレジット、サブスクリプション、支払い、生成履歴を一か所で管理できます。",
+    "myCreationsMetaTitle": "My Creations | Spark Robin 生成履歴",
+    "myCreationsMetaDescription": "Spark Robin の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
     "dashboardPageTitle": "アカウントダッシュボード",
     "dashboardPageDescription": "サブスクリプション、クレジット、支払い、動画履歴をまとめて管理できます。",
     "myCreationsPageTitle": "My Creations",
-    "myCreationsPageDescription": "VEO 4 の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
+    "myCreationsPageDescription": "Spark Robin の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
     "stats": {
       "creditsAvailable": "利用可能クレジット",
       "videosGenerated": "生成済み動画",
