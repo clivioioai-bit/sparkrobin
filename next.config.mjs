@@ -199,7 +199,28 @@ const nextConfig = {
   // Configure redirects if needed
   async redirects() {
     return [
-      // Add redirects here if needed
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'sora3ai.io',
+          },
+        ],
+        destination: 'https://sparkrobin.app/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.sora3ai.io',
+          },
+        ],
+        destination: 'https://sparkrobin.app/:path*',
+        permanent: true,
+      },
     ];
   },
   // Configure rewrites if needed
