@@ -1,12 +1,11 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, type ReactNode } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import Hero from '@/components/home/Hero'
 import ToolsSection from '@/components/home/ToolsSection'
 import Footer from '@/components/Footer'
-import WhatIsSparkRobinSection from '@/components/home/WhatIsSparkRobinSection'
 
 const DemoGallery = dynamic(() => import('@/components/home/DemoGallery'), {
   loading: () => <div className="h-96" />,
@@ -80,7 +79,7 @@ function ErrorHandler() {
   return null;
 }
 
-export default function HomePageClient({ locale }: { locale: string }) {
+export default function HomePageClient({ children }: { children?: ReactNode }) {
   return (
     <>
       <Suspense fallback={null}>
@@ -89,7 +88,7 @@ export default function HomePageClient({ locale }: { locale: string }) {
       <main className="premium-page">
         <Hero />
         <ToolsSection />
-        <WhatIsSparkRobinSection locale={locale} />
+        {children}
         <Suspense fallback={<div className="h-96" />}>
           <Sora3Capabilities />
         </Suspense>

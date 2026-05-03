@@ -1,6 +1,7 @@
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import HomePageClient from '@/components/home/HomePageClient'
+import WhatIsSparkRobinSection from '@/components/home/WhatIsSparkRobinSection'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -146,7 +147,9 @@ export default async function HomePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <HomePageClient locale={locale} />
+      <HomePageClient>
+        <WhatIsSparkRobinSection locale={locale} />
+      </HomePageClient>
     </>
   )
 }
