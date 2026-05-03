@@ -46,8 +46,6 @@ const nextConfig = {
   },
   // Enable compression (Gzip + Brotli handled by server/CDN)
   compress: true,
-  // Enable standalone output for deployment
-  output: 'standalone',
   skipTrailingSlashRedirect: true,
   // Configure headers for better SEO and performance
   async headers() {
