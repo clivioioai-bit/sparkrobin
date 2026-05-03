@@ -20,7 +20,7 @@ export async function generateMetadata({
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Spark Robin Text to Video | Prompt Workflow Lab'
-  let description = 'Turn rough ideas into structured video prompts, generate reviewable drafts, and build reusable shot language for future AI video models.'
+  let description = 'Turn rough ideas into structured video prompts, generate reviewable drafts, and build reusable shot language for future AI video models and workflows.'
   
   if (locale === 'ar') {
     title = 'Spark Robin من النص إلى الفيديو | مختبر prompts'

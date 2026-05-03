@@ -20,7 +20,7 @@ export async function generateMetadata({
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Spark Robin Image to Video | Reference-Led Drafts'
-  let description = 'Use images as creative anchors for AI video drafts. Add motion notes, camera direction, and reviewable pacing before final production.'
+  let description = 'Use images as creative anchors for AI video drafts. Add motion notes, camera direction, pacing, and review criteria before final production.'
   
   if (locale === 'ar') {
     title = 'Spark Robin من الصورة إلى الفيديو | مسودات مرجعية'

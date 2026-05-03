@@ -20,7 +20,7 @@ export async function generateMetadata({
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Spark Robin Pricing | Basic, Standard, and Pro'
-  let description = 'Compare plans for prompt tests, reference-led video drafts, workflow credits, and ongoing AI video iteration.'
+  let description = 'Compare Spark Robin plans for prompt tests, reference-led video drafts, workflow credits, commercial use, and ongoing AI video iteration needs.'
   
   if (locale === 'ar') {
     title = 'أسعار Spark Robin | Basic وStandard وPro'

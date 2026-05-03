@@ -14,7 +14,7 @@ export async function generateMetadata({
   const baseUrl = 'https://sparkrobin.app';
   const prefix = locale === 'en' ? '' : `/${locale}`;
   const title = 'AI Video Blog | Spark Robin';
-  const description = 'Practical guides and release-watch updates for Spark Robin, Google Veo, and AI video generation workflows.';
+  const description = 'Read practical Spark Robin guides, release-watch updates, AI video workflow notes, prompt systems, and production tips for reviewable video drafts.';
 
   return {
     title,

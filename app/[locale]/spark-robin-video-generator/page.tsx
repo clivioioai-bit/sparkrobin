@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic'
 const pageCopy = {
   en: {
     title: 'Spark Robin Workflow Lab | Text, Image, and Prompt Systems',
-    description: 'Track Spark Robin updates, structure reusable prompts, and create text-to-video or image-to-video drafts for review and iteration.',
+    description: 'Track Spark Robin updates, structure reusable prompts, and create text-to-video or image-to-video drafts your team can review, compare, and improve.',
     badge: 'Release watch + video workflow',
     heroTitle: 'Prepare Your Spark Robin Video Workflow Before the Hype Catches Up',
     heroLead: 'Turn ideas, references, and shot notes into reviewable AI video drafts.',
