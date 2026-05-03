@@ -258,10 +258,10 @@ function CTASection() {
   return (
     <section className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/14 via-white/[0.04] to-transparent p-8 sm:p-10 shadow-[0_16px_50px_rgba(0,0,0,0.25)]">
       <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-        Build a Release-Ready Workflow
+        Build a Spark Robin-Ready Workflow
       </h2>
       <p className="text-base sm:text-lg text-white/65 leading-8 max-w-3xl">
-        Do not wait for rumors to settle before improving your workflow. Build reusable prompt
+        Do not wait for Spark Robin rumors to settle before improving your workflow. Build reusable prompt
         structures, organize reference assets, and create drafts your team can review today.
       </p>
       <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -295,7 +295,7 @@ const SparkRobinKnowledgeSection = () => {
         <div className="space-y-16 sm:space-y-20">
           <section>
             <SectionHeader
-              title="What to Prepare Before Access Changes"
+              title="What to Prepare for Spark Robin"
               description="Use this workspace to organize prompt libraries, references, shot notes, and release-aware content before official model details are stable."
             />
             <CardGrid items={creationCards} />
@@ -304,7 +304,7 @@ const SparkRobinKnowledgeSection = () => {
           <section>
             <SectionHeader
               title="Why the New Copy Should Be Different"
-              description="Model-watch content should not sound like a recycled landing page. It should communicate uncertainty clearly and give creators something practical to do now."
+              description="Spark Robin content should not sound like a recycled landing page. It should communicate uncertainty clearly and give creators something practical to do now."
             />
             <CardGrid items={advertisingCards} />
           </section>

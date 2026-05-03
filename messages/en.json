@@ -26,7 +26,7 @@
     "brandName": "Spark Robin",
     "tagline": "Video Workflow Lab",
     "title": "Spark Robin — Track the Next Google Video Wave",
-    "subtitle": "Follow release signals, prepare reusable prompts, and turn text or images into production-ready video drafts while the next model cycle unfolds.",
+    "subtitle": "Follow Spark Robin signals, prepare reusable prompts, and turn text or images into production-ready video drafts while the next model cycle unfolds.",
     "placeholder": "Describe the video you want to create...",
     "cta": "Generate",
     "trySora3": "Draft from Text",
@@ -220,7 +220,7 @@
     "emptyDescription": "Add Markdown files to content/blog and they will appear here."
   },
   "howItWorks": {
-    "title": "How to Prepare a Video Workflow",
+    "title": "How to Prepare a Spark Robin Workflow",
     "subtitle": "Start with a clear brief, turn it into reusable shot notes, then generate drafts you can evaluate.",
     "step1": {
       "title": "Write the creative brief",
@@ -237,7 +237,7 @@
   },
   "faq": {
     "title": "Spark Robin FAQ",
-    "subtitle": "Clear answers about release watching, current workflow tools, prompts, references, and draft generation.",
+    "subtitle": "Clear answers about the Spark Robin release watch, current workflow tools, prompts, references, and draft generation.",
     "viewAllFaqs": "View All FAQs",
     "contactSupport": "Contact Support",
     "haveMoreQuestions": "Have more questions? We're here to help.",

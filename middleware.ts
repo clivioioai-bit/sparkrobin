@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@supabase/ssr';
 import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
+import { routing } from './i18n/routing-config';
 
 // Create next-intl middleware
 // next-intl 语言检测优先级（localeDetection: false，不自动检测浏览器语言）：
@@ -16,7 +15,8 @@ export async function middleware(request: NextRequest) {
     if (host === 'sora3ai.io' || host === 'www.sora3ai.io') {
       const redirectUrl = new URL(request.url);
       redirectUrl.protocol = 'https:';
-      redirectUrl.host = 'sparkrobin.app';
+      redirectUrl.hostname = 'sparkrobin.app';
+      redirectUrl.port = '';
       return NextResponse.redirect(redirectUrl, { status: 301 });
     }
 
@@ -44,73 +44,9 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     }
 
-    // 跳过 API 路由，让它们直接处理（避免 next-intl 中间件干扰）
-    if (pathname.startsWith('/api/')) {
-      return NextResponse.next();
-    }
-
     // 跳过 auth 回调路由，避免被国际化中间件处理
     if (pathname === '/auth/callback' || pathname.startsWith('/auth/callback')) {
-      // 检查环境变量
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-      
-      if (!supabaseUrl || !supabaseAnonKey) {
-        // 如果环境变量缺失，直接返回响应，不处理 Supabase
-        return NextResponse.next();
-      }
-
-      // 创建响应对象
-      const response = NextResponse.next();
-      
-      try {
-        // 创建 Supabase 客户端用于处理 OAuth 回调
-        const supabase = createServerClient(
-          supabaseUrl,
-          supabaseAnonKey,
-          {
-            cookies: {
-              get(name: string) {
-                return request.cookies.get(name)?.value;
-              },
-              set(name: string, value: string, options: any) {
-                request.cookies.set({
-                  name,
-                  value,
-                  ...options,
-                });
-                // 设置 cookies 到 response
-                response.cookies.set({
-                  name,
-                  value,
-                  ...options,
-                });
-              },
-              remove(name: string, options: any) {
-                request.cookies.set({
-                  name,
-                  value: '',
-                  ...options,
-                });
-                // 删除 cookies 从 response
-                response.cookies.set({
-                  name,
-                  value: '',
-                  ...options,
-                });
-              },
-            },
-          }
-        );
-        
-        // 刷新 session 并设置 cookies
-        await supabase.auth.getSession();
-      } catch (error) {
-        // 如果 Supabase 操作失败，记录错误但继续返回响应
-        console.error('Supabase auth callback error:', error);
-      }
-      
-      return response;
+      return NextResponse.next();
     }
 
     // Handle locale routing first - this may return a redirect
@@ -173,73 +109,6 @@ export async function middleware(request: NextRequest) {
       console.error('Locale detection error:', error);
     }
     
-    // 检查环境变量
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    
-    // 保护 API 路由
-    const protectedApiRoutes = ['/api/videos', '/api/subscriptions', '/api/usage'];
-    const isProtectedApiRoute = protectedApiRoutes.some(route => pathname.startsWith(route));
-
-    if (isProtectedApiRoute && supabaseUrl && supabaseAnonKey) {
-      try {
-        // 创建 Supabase 客户端用于处理所有需要 session 的路由
-        const supabase = createServerClient(
-          supabaseUrl,
-          supabaseAnonKey,
-          {
-            cookies: {
-              get(name: string) {
-                return request.cookies.get(name)?.value;
-              },
-              set(name: string, value: string, options: any) {
-                request.cookies.set({
-                  name,
-                  value,
-                  ...options,
-                });
-                // Update response cookies
-                response.cookies.set({
-                  name,
-                  value,
-                  ...options,
-                });
-              },
-              remove(name: string, options: any) {
-                request.cookies.set({
-                  name,
-                  value: '',
-                  ...options,
-                });
-                response.cookies.set({
-                  name,
-                  value: '',
-                  ...options,
-                });
-              },
-            },
-          }
-        );
-
-        const { data: { session } } = await supabase.auth.getSession();
-        const user = session?.user;
-
-        if (!user) {
-          return NextResponse.json(
-            { error: 'Authentication required' },
-            { status: 401 }
-          );
-        }
-      } catch (error) {
-        // 如果 Supabase 操作失败，返回 401
-        console.error('Supabase auth check error:', error);
-        return NextResponse.json(
-          { error: 'Authentication check failed' },
-          { status: 401 }
-        );
-      }
-    }
-
     return response;
   } catch (error) {
     // 捕获所有未处理的错误，记录并返回基本响应
@@ -251,9 +120,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/api/:path*',
-    '/auth/:path*',
-    '/dashboard/:path*',
-    '/:path*',
+    '/((?!api|_next|static|videos|images|favicon|icon|logo|robots\\.txt|sitemap\\.xml|manifest\\.webmanifest|.*\\.(?:ico|png|jpg|jpeg|svg|gif|webp|avif|woff|woff2|ttf|eot|mp4|webm|mov|avi|mkv|webmanifest)$).*)',
   ],
 };
