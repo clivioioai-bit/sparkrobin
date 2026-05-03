@@ -1,6 +1,6 @@
-# Veo4Video.io – AI Video Generation Platform
+# Spark RobinVideo.io – AI Video Generation Platform
 
-Veo4Video.io is an independent AI video generation platform supporting multiple models and features:
+Spark RobinVideo.io is an independent AI video generation platform supporting multiple models and features:
 
 - 🎬 Sora-style motion video generation
 - 🎞️ 10-second cinematic clips
@@ -8,7 +8,7 @@ Veo4Video.io is an independent AI video generation platform supporting multiple 
 - 🚫 Watermark-free output
 - 🌍 Globally accessible models
 
-**Live Demo**: https://veo4video.io
+**Live Demo**: https://sparkrobinai.io
 
 ## 🚀 Quick Start
 
@@ -24,7 +24,7 @@ Veo4Video.io is an independent AI video generation platform supporting multiple 
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd veo4video.io
+cd sparkrobinai.io
 
 # Install dependencies
 npm install
@@ -119,7 +119,7 @@ See [Database Architecture](./docs/DATABASE_ARCHITECTURE.md) for detailed inform
 ## 🏗️ Project Structure
 
 ```
-veo4video.io/
+sparkrobinai.io/
 ├── app/                    # Next.js app directory
 │   ├── api/               # API routes
 │   ├── auth/              # Authentication pages
@@ -198,7 +198,7 @@ For issues and questions:
 
 ## 🔗 Links
 
-- **Live Site**: https://veo4video.io
+- **Live Site**: https://sparkrobinai.io
 - **Supabase**: https://supabase.com
 - **Creem Payment**: https://creem.io
 - **Next.js Docs**: https://nextjs.org/docs
@@ -206,3 +206,4 @@ For issues and questions:
 ---
 
 **Last Updated**: 2025-01-XX
+# sparkrobin
