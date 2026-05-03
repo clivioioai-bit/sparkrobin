@@ -7,7 +7,7 @@ export default function AnalyticsScripts() {
     <>
       {/* Google Analytics */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-1YBVQCR6CT"
+        src="https://www.googletagmanager.com/gtag/js?id=G-HBZBPMZ987"
         strategy="lazyOnload"
       />
       <Script id="google-analytics" strategy="lazyOnload">
@@ -15,7 +15,7 @@ export default function AnalyticsScripts() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-1YBVQCR6CT');
+          gtag('config', 'G-HBZBPMZ987');
         `}
       </Script>
 
