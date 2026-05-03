@@ -1,12 +1,12 @@
-User-agent: *
+import { NextResponse } from 'next/server';
+
+const robots = `User-agent: *
 Allow: /
 
-# Bing-specific crawler rules (optimized for Bing indexing)
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Additional Bing crawlers
 User-agent: msnbot
 Allow: /
 Crawl-delay: 1
@@ -15,17 +15,14 @@ User-agent: msnbot-media
 Allow: /
 Crawl-delay: 1
 
-# Sitemap for Google and Bing
 Sitemap: https://sparkrobin.app/sitemap.xml
 
-# Disallow admin and API routes
 Disallow: /api/
 Disallow: /admin/
 Disallow: /auth/
 Disallow: /payment/
 Disallow: /pricing/cancelled
 
-# Allow important pages (explicitly allow for better indexing)
 Allow: /_next/static/
 Allow: /spark-robin-text-to-video
 Allow: /spark-robin-storyboard
@@ -39,7 +36,6 @@ Allow: /privacy
 Allow: /terms
 Allow: /refund
 
-# Allow locale-specific pages
 Allow: /en/
 Allow: /ar/
 Allow: /ja/
@@ -47,3 +43,13 @@ Allow: /ru/
 Allow: /es/
 Allow: /zh-CN/
 Allow: /de/
+`;
+
+export function GET() {
+  return new NextResponse(robots, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=86400, s-maxage=86400',
+    },
+  });
+}
