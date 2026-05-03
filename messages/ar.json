@@ -589,21 +589,21 @@
       },
       "howLong": {
         "question": "How long does it take to generate a video from an image?",
-        "answer": "Most videos are generated in just a few minutes, depending on complexity. The AI analyzes your image, generates motion, and adds synchronized audio. You'll be able to preview and download your animated video once it's ready."
+        "answer": "Timing depends on model availability, queue state, and draft complexity. The important part is keeping the prompt, reference image, and review notes together so each next pass improves faster."
       },
       "motionType": {
         "question": "What kind of motion does the AI add to images?",
-        "answer": "The AI generates contextually appropriate motion such as smooth camera movements, natural object motion, environmental effects (like wind through trees), product rotations, and subtle portrait movements. The motion enhances the image without being distracting."
+        "answer": "Describe the motion you want explicitly: camera push-in, orbit, product turn, subtle portrait movement, background change, lighting shift, or pacing notes. Specific motion language is easier to evaluate than vague cinematic requests."
       },
       "commercialUse": {
         "question": "Can I use Image to Video generated videos for commercial purposes?",
-        "answer": "Yes. Videos created using our AI can be used for marketing, e-commerce, social media, business presentations, and any other commercial use, as long as they follow our usage and licensing terms."
+        "answer": "Prompt systems and draft workflows can support commercial planning. Final usage depends on the generation model, source assets, likeness rights, music, and platform terms, so review those before publishing."
       }
     },
     "getStartedImageToVideo": {
-      "title": "Get Started with AI Video Generator for Image to Video",
-      "description": "Ready to bring your images to life? Upgrade to access faster rendering, longer video durations, advanced motion effects, and premium styles. Whether you're creating product ads, portfolio showcases, or social media content, our Pro plan gives you everything you need to transform static images into stunning, animated videos - effortlessly.",
-      "button": "Get Premium"
+      "title": "Get Started with Reference-Led Video Drafts",
+      "description": "Build a repeatable workflow for product images, portfolio visuals, social assets, and brand references. Save the reference, motion prompt, and review notes so each draft becomes useful input for the next pass.",
+      "button": "View Plans"
     },
     "reframeMode": {
       "model": "Model",
@@ -746,50 +746,50 @@
       "duration": "Duration",
       "generatingStoryboard": "Generating Storyboard...",
       "generationTimeNote": "⏱️ This typically takes 5-15 minutes. Please keep this page open.",
-      "exampleDescription": "Here's an example of a 25-second multi-scene storyboard video. Configure your scenes and click generate to create your own.",
-      "exampleNote": "Example: 3-scene storyboard (8s + 8s + 9s = 25s total)",
-      "whatIsSora3ProStoryboard": "What is Spark Robin Pro Storyboard?",
-      "sora3ProStoryboardDescription": "Spark Robin Pro Storyboard is a cutting-edge AI video generation system designed for sequential content production. Build multi-scene AI videos up to 25s for Youtube Shorts, TikTok and Reels. This robust platform enables multi-scene coordination, maintains visual consistency and coherence, provides precise control over outputs up to 25 seconds in length, and exports HD quality videos with audio.",
-      "upTo25sDuration": "Up to 25s Duration",
+      "exampleDescription": "Here is an example of a multi-scene storyboard draft. Configure scenes, references, and shot notes to create your own reviewable version.",
+      "exampleNote": "Example: 3 scenes arranged into a complete narrative rhythm",
+      "whatIsSora3ProStoryboard": "What is the Spark Robin Pro Storyboard Workflow?",
+      "sora3ProStoryboardDescription": "Spark Robin Pro Storyboard helps teams break sequential ideas into scenes, shots, references, and revision notes. It is useful for planning short-form concepts, product narratives, brand pitches, and multi-version drafts before committing more production time.",
+      "upTo25sDuration": "Multi-scene pacing",
       "multiSceneControl": "Multi-Scene Control (Storyboard)",
-      "socialMediaReady": "Social Media Ready",
-      "hdQualityAudio": "HD Quality + Audio",
+      "socialMediaReady": "Channel Version Planning",
+      "hdQualityAudio": "Sound and Pacing Notes",
       "whatPeopleAreSaying": "What People Are Saying About Spark Robin Pro Storyboard",
       "keyFeatures": "Key Features of Spark Robin Pro Storyboard",
       "multiSceneSequencing": "Multi-Scene Sequencing",
-      "multiSceneSequencingDescription": "With Spark Robin Pro Storyboard, define multiple scenes in order to create coherent storylines. The Spark Robin Pro Storyboard engine ensures smooth transitions between scenes for seamless multi-scene videos.",
+      "multiSceneSequencingDescription": "Define multiple scenes in order, with a clear goal, subject, action, and transition for each shot.",
       "visualConsistency": "Visual Consistency",
-      "visualConsistencyDescription": "Spark Robin Pro Storyboard maintains consistent visual style and elements across all scenes, delivering professional-quality video output that viewers expect from Spark Robin Pro Storyboard.",
+      "visualConsistencyDescription": "Track the characters, products, brand colors, materials, and visual rules that must remain consistent across scenes.",
       "flexibleOutputControl": "Flexible Output Control",
-      "flexibleOutputControlDescription": "Generate videos up to 25 seconds with Spark Robin Pro Storyboard. Choose 10s, 15s, or 25s duration options to fit your content needs using Spark Robin Pro Storyboard.",
+      "flexibleOutputControlDescription": "Plan different pacing, shot counts, and draft lengths based on channel, audience, and story goal.",
       "referenceImageSupport": "Reference Image Support",
-      "referenceImageSupportDescription": "Upload a reference image to guide the Spark Robin Pro Storyboard generation process, ensuring visual consistency throughout your Spark Robin Storyboard video.",
+      "referenceImageSupportDescription": "Upload reference images and note which details must be preserved so each scene keeps the same visual direction.",
       "howToUse": "How to Use Spark Robin Pro Storyboard",
       "step1DefineScenes": "Define Scenes",
-      "step1Description": "Describe each scene in detail for Spark Robin Pro Storyboard",
+      "step1Description": "Describe the goal, subject, action, and camera language for each scene",
       "step2SetParameters": "Set Parameters",
-      "step2Description": "Choose duration (10s/15s/25s) and aspect ratio",
+      "step2Description": "Choose aspect ratio, pacing, and how much time each shot should receive",
       "step3UploadReference": "Upload Reference",
-      "step3Description": "Add an image to guide Spark Robin Pro Storyboard (Optional)",
+      "step3Description": "Add reference images and note the visual elements that must stay intact",
       "step4Generate": "Generate",
-      "step4Description": "Click generate and let Spark Robin Pro Storyboard create your video",
-      "perfectFor": "Perfect for TikTok, Instagram Reels, YouTube Shorts, and brand content creation. Learn more about our",
+      "step4Description": "Generate a draft, review it against the brief, and record feedback for the next pass",
+      "perfectFor": "Useful for planning TikTok, Instagram Reels, YouTube Shorts, and brand content before production. Learn more about our",
       "pricingPlans": "pricing plans",
       "pricing": "💎 Pricing",
-      "pricingDescription": "Starting from $19/month for high-quality multi-scene AI videos with audio",
+      "pricingDescription": "Starting from $19/month for multi-scene drafts, prompt tests, and reference-led workflows",
       "powerfulStoryboardFeatures": "Powerful Storyboard Features",
       "sceneBySceneControl": "Scene-by-Scene Control",
-      "sceneBySceneControlDescription": "Drag & drop scenes, customize prompts & assets for perfect flow.",
+      "sceneBySceneControlDescription": "Drag and drop scenes, then customize prompts and assets for a clearer story flow.",
       "socialMediaFormats": "Social Media Formats",
-      "socialMediaFormatsDescription": "Built-in templates for TikTok, Instagram Reels, YouTube Shorts.",
+      "socialMediaFormatsDescription": "Prepare different framing and pacing versions for TikTok, Instagram Reels, and YouTube Shorts.",
       "fastExportShare": "Fast Export & Share",
-      "fastExportShareDescription": "Generate, preview and download your Spark Robin Storyboard videos in minutes."
+      "fastExportShareDescription": "Generate, preview, and save Spark Robin storyboard drafts for review."
     },
     "watermarkRemover": {
-      "title": "Spark Robin Watermark Remover",
-      "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
-      "seoTitle": "Spark Robin Watermark Remover | Remove Sora Watermarks",
-      "seoDescription": "Spark Robin watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+      "title": "Spark Robin Asset Organizer",
+      "description": "Organize publicly hosted video assets so teams can track source links, versions, and review notes in one workflow.",
+      "seoTitle": "Spark Robin Asset Organizer | Video Review Workflow",
+      "seoDescription": "Spark Robin asset organizer for tracking public video references, version notes, and review context inside an AI video workflow.",
       "input": "Input",
       "output": "Output",
       "videoUrl": "video_url",
@@ -802,8 +802,8 @@
       "waitingForResult": "Waiting for result…",
       "noOutputYet": "No output yet",
       "exampleVideo": "Example Video",
-      "exampleVideoDescription": "This is a sample video generated by Spark Robin AI. Upload your own Sora video to remove watermarks!",
-      "creditsInfo": "This tool consumes 10 credits per run. Keep your Spark Robin videos clean and brand-ready.",
+      "exampleVideoDescription": "This is a sample video asset. Add your own public asset URL to track versions and feedback.",
+      "creditsInfo": "This tool consumes 10 credits per run for asset processing and workflow notes.",
       "browserNotSupportVideo": "Your browser does not support the video tag."
     },
     "promptExamples": {
@@ -818,41 +818,41 @@
     }
   },
   "demoGallery": {
-    "title": "Spark Robin Examples",
-    "description": "Browse text-to-video, image-to-video, and commercial-ready Spark Robin outputs built for creators, brands, and marketing teams.",
+    "title": "Spark Robin Draft Examples",
+    "description": "Browse draft examples for text-to-video prompts, reference-led image motion, and storyboard planning.",
     "seeMoreExamples": "See more examples",
     "tapToUnmute": "Tap to unmute"
   },
   "keyFeatures": {
-    "title": "What makes Spark Robin AI different",
+    "title": "What makes the Spark Robin workflow useful",
     "noWatermark": {
-      "title": "No watermark",
-      "description": "Your videos are clean, brandable, and ready for commercial use."
+      "title": "Clear Drafts",
+      "description": "Each version connects the creative goal, reference assets, and review criteria."
     },
     "bestCostPerformance": {
-      "title": "Best cost-performance",
-      "description": "Up to 10× cheaper than other AI video tools, with generous credits."
+      "title": "Reusable Prompts",
+      "description": "Save effective shot language and revision notes instead of starting from scratch."
     },
     "fastConvenient": {
-      "title": "Fast & convenient",
-      "description": "Generate 10-second clips within minutes — right in the browser."
+      "title": "Faster Direction Tests",
+      "description": "Compare prompt, reference, and motion ideas in the browser before committing to production."
     },
     "sora3ProStoryboard": {
-      "title": "Spark Robin Pro Storyboard (25 seconds)",
-      "description": "Spark Robin Storyboard storytelling for ads, trailers, product showcases, and cinematic short films."
+      "title": "Spark Robin Storyboard System",
+      "description": "Break multi-scene concepts into shots, characters, actions, and transitions for team review."
     },
     "textToVideoImageToVideo": {
       "title": "Text-to-video & image-to-video",
-      "description": "Upload an image and animate motion around it, or describe a scene in one sentence."
+      "description": "Upload a reference image with motion notes, or describe a scene with a structured prompt."
     },
     "socialReady": {
-      "title": "Social-ready",
-      "description": "Perfect for TikTok, Reels, Shorts, and paid ads."
+      "title": "Channel-Aware Drafts",
+      "description": "Prepare alternate versions for short-form, product pages, brand content, and internal pitches."
     },
     "trySora3Free": {
-      "title": "Try Spark Robin Free — No Editing Required",
+      "title": "Try the Spark Robin Workflow",
       "description": "Start with a prompt brief or reference image, generate a draft, and refine the creative notes for the next pass.",
-      "startGenerating": "Start Generating"
+      "startGenerating": "Create Draft"
     }
   },
   "testimonials": {
@@ -860,7 +860,7 @@
     "subtitle": "See how creators use structured prompts, reference images, and review loops to move from rough ideas to clearer AI video drafts.",
     "ctaTitle": "Build a better AI video workflow",
     "ctaDescription": "Start with reusable prompt notes, generate drafts, and improve the next version with less guesswork.",
-    "ctaButton": "Start Creating Now"
+    "ctaButton": "Create a Draft"
   },
   "error": {
     "goHome": "الرئيسية",

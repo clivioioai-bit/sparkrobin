@@ -298,24 +298,24 @@ const Storyboard = () => {
   // Get localized SEO content
   const getSEOTitle = () => {
     if (locale === 'ru') {
-      return 'Spark Robin Pro Storyboard | Мультисценовый генератор видео';
+      return 'Spark Robin Pro Storyboard | Multi-Scene Workflow';
     } else if (locale === 'ar') {
-      return 'لوحة Spark Robin Pro | مولد فيديو متعدد المشاهد';
+      return 'Spark Robin Pro Storyboard | Multi-Scene Workflow';
     } else if (locale === 'ja') {
-      return 'Spark Robin Pro ストーリーボード | マルチシーン動画生成';
+      return 'Spark Robin Pro Storyboard | Multi-Scene Workflow';
     }
-    return 'Spark Robin Pro Storyboard | Multi-Scene Video Generator';
+    return 'Spark Robin Pro Storyboard | Multi-Scene Workflow';
   };
 
   const getSEODescription = () => {
     if (locale === 'ru') {
-      return 'Spark Robin Pro Storyboard — создавайте мультисценовые AI-видео до 25 секунд для YouTube Shorts, TikTok и Reels. Контроль сцен и визуальная согласованность.';
+      return 'Spark Robin Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
     } else if (locale === 'ar') {
-      return 'لوحة Spark Robin Pro - أنشئ فيديوهات AI متعددة المشاهد حتى 25 ثانية لـ YouTube Shorts وTikTok وReels. بدون علامة مائية.';
+      return 'Spark Robin Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
     } else if (locale === 'ja') {
-      return 'Spark Robin Proストーリーボード - YouTube Shorts、TikTok、Reels用の最大25秒のマルチシーンAI動画を作成。ウォーターマークなし。';
+      return 'Spark Robin Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
     }
-    return 'Spark Robin Pro Storyboard - Create multi-scene AI videos up to 25s for YouTube Shorts, TikTok and Reels. Control scenes and maintain visual consistency.';
+    return 'Spark Robin Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
   };
 
   const canonicalUrl = locale === 'en' 
@@ -340,7 +340,7 @@ const Storyboard = () => {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Spark Robin Pro Storyboard",
-            "description": "Create professional multi-scene AI videos up to 25 seconds perfect for YouTube Shorts, TikTok, Instagram Reels. Design your story with scene-by-scene control and seamless transitions using Spark Robin Pro Storyboard's advanced capabilities.",
+            "description": "Plan multi-scene AI video drafts with scene-by-scene notes, reference images, continuity rules, and review context using Spark Robin Pro Storyboard.",
             "url": "https://sparkrobinai.io/spark-robin-storyboard",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "Web Browser",
@@ -361,10 +361,10 @@ const Storyboard = () => {
               "url": "https://sparkrobinai.io"
             },
             "featureList": [
-              "Multi-scene video generation",
+              "Multi-scene draft planning",
               "Scene-by-scene control",
-              "Up to 25 seconds duration",
-              "Social media optimization",
+              "Shot notes and pacing",
+              "Channel version planning",
               "Reference image support",
               "Portrait and landscape modes"
             ],
@@ -608,8 +608,8 @@ const Storyboard = () => {
                     <blockquote className="twitter-tweet">
                       <p lang="en" dir="ltr">
                         2 Spark Robin updates:<br/><br/>
-                        - Storyboards are now available on web to Pro users<br/>
-                        - All users can now generate videos up to 15 seconds on app and web, Pro users up to 25 seconds on web 
+                        - Storyboard workflows help teams plan scenes before generation<br/>
+                        - Reference notes and prompt systems make draft reviews easier
                         <a href="https://t.co/iINg7alWGL">pic.twitter.com/iINg7alWGL</a>
                       </p>
                       <a href="https://twitter.com/status/1978661828419822066?ref_src=twsrc%5Etfw">October 16, 2025</a>
