@@ -80,7 +80,7 @@ function ErrorHandler() {
   return null;
 }
 
-export default function HomePageClient() {
+export default function HomePageClient({ locale }: { locale: string }) {
   return (
     <>
       <Suspense fallback={null}>
@@ -89,7 +89,7 @@ export default function HomePageClient() {
       <main className="premium-page">
         <Hero />
         <ToolsSection />
-        <WhatIsSparkRobinSection />
+        <WhatIsSparkRobinSection locale={locale} />
         <Suspense fallback={<div className="h-96" />}>
           <Sora3Capabilities />
         </Suspense>

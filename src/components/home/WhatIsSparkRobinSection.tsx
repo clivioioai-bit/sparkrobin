@@ -1,7 +1,3 @@
-"use client";
-
-import { useLocale } from "next-intl";
-
 const points = [
   {
     id: "spark-robin-practical-ai-video-workflow",
@@ -29,9 +25,7 @@ const points = [
   },
 ];
 
-export default function WhatIsSparkRobinSection() {
-  const locale = useLocale();
-
+export default function WhatIsSparkRobinSection({ locale }: { locale: string }) {
   if (locale !== "en") {
     return null;
   }
