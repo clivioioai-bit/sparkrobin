@@ -4,16 +4,16 @@ import SEOHead from '@/components/SEOHead';
 
 export const metadata: Metadata = {
   title: 'Refund Policy | AI video generation service',
-  description: 'Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms.',
+  description: 'Review the Spark Robin refund policy for unused credits, subscription terms, case-by-case refund eligibility, processing timelines, and support requirements.',
   keywords: 'refund policy, money back guarantee, AI video generation service refund, unused credits refund, customer service',
   alternates: {
     canonical: 'https://sparkrobin.app/refund',
   },
   openGraph: {
     title: 'Refund Policy | AI video generation service',
-    description: 'Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms.',
+    description: 'Review the Spark Robin refund policy for unused credits, subscription terms, case-by-case refund eligibility, processing timelines, and support requirements.',
     url: 'https://sparkrobin.app/refund',
-    siteName: 'Saro 2',
+    siteName: 'Spark Robin',
     images: [
       {
         url: 'https://sparkrobin.app/logo-v2.png',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Refund Policy | AI video generation service',
-    description: 'Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms.',
+    description: 'Review the Spark Robin refund policy for unused credits, subscription terms, case-by-case refund eligibility, processing timelines, and support requirements.',
     images: ['https://sparkrobin.app/logo-v2.png']
   },
 };
@@ -38,7 +38,7 @@ const RefundPolicy: React.FC = () => {
     <>
       <SEOHead
         title="Refund Policy | AI video generation service"
-        description="Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms."
+        description="Review the Spark Robin refund policy for unused credits, subscription terms, case-by-case refund eligibility, processing timelines, and support requirements."
         keywords="refund policy, money back guarantee, AI video generation service refund, unused credits refund, customer service"
         canonical="https://sparkrobin.app/refund"
       />

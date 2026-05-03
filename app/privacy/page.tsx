@@ -4,16 +4,16 @@ import SEOHead from '@/components/SEOHead';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | AI video generation service',
-  description: 'Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information.',
+  description: 'Read the Spark Robin privacy policy to learn how we collect, use, protect, and store account data, generation history, payment records, and support details.',
   keywords: 'privacy policy, data protection, AI video generation service, personal information, GDPR',
   alternates: {
     canonical: 'https://sparkrobin.app/privacy',
   },
   openGraph: {
     title: 'Privacy Policy | AI video generation service',
-    description: 'Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information.',
+    description: 'Read the Spark Robin privacy policy to learn how we collect, use, protect, and store account data, generation history, payment records, and support details.',
     url: 'https://sparkrobin.app/privacy',
-    siteName: 'Saro 2',
+    siteName: 'Spark Robin',
     images: [
       {
         url: 'https://sparkrobin.app/logo-v2.png',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Privacy Policy | AI video generation service',
-    description: 'Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information.',
+    description: 'Read the Spark Robin privacy policy to learn how we collect, use, protect, and store account data, generation history, payment records, and support details.',
     images: ['https://sparkrobin.app/logo-v2.png']
   },
 };
@@ -38,7 +38,7 @@ const PrivacyPolicy: React.FC = () => {
     <>
       <SEOHead
         title="Privacy Policy | AI video generation service"
-        description="Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information."
+        description="Read the Spark Robin privacy policy to learn how we collect, use, protect, and store account data, generation history, payment records, and support details."
         keywords="privacy policy, data protection, AI video generation service, personal information, GDPR"
         canonical="https://sparkrobin.app/privacy"
       />

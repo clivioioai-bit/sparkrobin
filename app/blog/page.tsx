@@ -6,11 +6,11 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'AI Video Blog | Spark Robin',
-  description: 'Practical guides and release-watch updates for Spark Robin, Google Veo, and AI video generation workflows.',
+  description: 'Read practical Spark Robin guides, release-watch updates, AI video workflow notes, prompt systems, and production tips for reviewable video drafts.',
   alternates: generateHreflangAlternates('/blog', 'en'),
   openGraph: {
     title: 'AI Video Blog | Spark Robin',
-    description: 'Practical guides and release-watch updates for Spark Robin, Google Veo, and AI video generation workflows.',
+    description: 'Read practical Spark Robin guides, release-watch updates, AI video workflow notes, prompt systems, and production tips for reviewable video drafts.',
     url: 'https://sparkrobin.app/blog',
     siteName: 'Spark Robin',
     images: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AI Video Blog | Spark Robin',
-    description: 'Practical guides and release-watch updates for Spark Robin, Google Veo, and AI video generation workflows.',
+    description: 'Read practical Spark Robin guides, release-watch updates, AI video workflow notes, prompt systems, and production tips for reviewable video drafts.',
     images: ['https://sparkrobin.app/logo-v2.png'],
   },
 };

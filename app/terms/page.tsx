@@ -4,16 +4,16 @@ import SEOHead from '@/components/SEOHead';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | AI video generation service',
-  description: 'Terms of Service for AI video generation service - Read our terms and conditions for using our AI video generation service.',
+  description: 'Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
   keywords: 'terms of service, terms and conditions, AI video generation service, user agreement, legal terms',
   alternates: {
     canonical: 'https://sparkrobin.app/terms',
   },
   openGraph: {
     title: 'Terms of Service | AI video generation service',
-    description: 'Terms of Service for AI video generation service - Read our terms and conditions for using our AI video generation service.',
+    description: 'Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
     url: 'https://sparkrobin.app/terms',
-    siteName: 'Saro 2',
+    siteName: 'Spark Robin',
     images: [
       {
         url: 'https://sparkrobin.app/logo-v2.png',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Terms of Service | AI video generation service',
-    description: 'Terms of Service for AI video generation service - Read our terms and conditions for using our AI video generation service.',
+    description: 'Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
     images: ['https://sparkrobin.app/logo-v2.png']
   },
 };
@@ -38,7 +38,7 @@ const TermsOfService: React.FC = () => {
     <>
       <SEOHead
         title="Terms of Service | AI video generation service"
-        description="Terms of Service for AI video generation service - Read our terms and conditions for using our AI video generation service."
+        description="Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules."
         keywords="terms of service, terms and conditions, AI video generation service, user agreement, legal terms"
         canonical="https://sparkrobin.app/terms"
       />

@@ -2,15 +2,15 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
-  description: 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, and pricing.',
+  description: 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
   alternates: {
     canonical: 'https://sparkrobin.app/faq',
   },
   openGraph: {
     title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
-    description: 'Find answers about Spark Robin availability, prompt workflows, reference images, draft generation, and pricing.',
+    description: 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
     url: 'https://sparkrobin.app/faq',
-    siteName: 'Saro 2',
+    siteName: 'Spark Robin',
     images: [
       {
         url: 'https://sparkrobin.app/logo-v2.png',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
-    description: 'Find answers about Spark Robin availability, prompt workflows, reference images, draft generation, and pricing.',
+    description: 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
     images: ['https://sparkrobin.app/logo-v2.png']
   },
 }

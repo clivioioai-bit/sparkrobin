@@ -61,7 +61,7 @@ export async function generateMetadata({
   const baseUrl = 'https://sparkrobin.app'
   
   let title = 'Spark Robin Release Watch & AI Video Workflow Lab'
-  let description = 'Track Spark Robin updates, organize reusable AI video prompts, and create practical text-to-video or image-to-video drafts for review.'
+  let description = 'Track Spark Robin updates, organize reusable AI video prompts, and create practical text-to-video or image-to-video drafts your team can review and improve.'
   let ogTitle = 'Spark Robin Release Watch & AI Video Workflow Lab'
   let ogDescription = 'Track Spark Robin updates, organize reusable AI video prompts, and create practical text-to-video or image-to-video drafts for review.'
   
