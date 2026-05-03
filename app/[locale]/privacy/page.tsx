@@ -19,7 +19,7 @@ export async function generateMetadata({
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Privacy Policy | AI video generation service'
-  let description = 'Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information.'
+  let description = 'Read the Spark Robin privacy policy to learn how we collect, use, protect, and store account data, generation history, payment records, and support details.'
   
   if (locale === 'ar') {
     title = 'سياسة الخصوصية | خدمة إنشاء فيديو AI'

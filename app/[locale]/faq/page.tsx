@@ -18,7 +18,7 @@ export async function generateMetadata({
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Spark Robin FAQ | Pricing, Use, and Video Limits'
-  let description = 'Find answers about Spark Robin pricing, commercial use, video length, watermarks, and how the platform works before you start.'
+  let description = 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.'
   
   if (locale === 'ar') {
     title = 'أسئلة Spark Robin الشائعة | الأسعار والاستخدام والمدة'

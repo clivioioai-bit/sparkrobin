@@ -19,7 +19,7 @@ export async function generateMetadata({
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Refund Policy | AI video generation service'
-  let description = 'Refund Policy for AI video generation service - Learn about our case-by-case refund policy for unused credits and service terms.'
+  let description = 'Review the Spark Robin refund policy for unused credits, subscription terms, case-by-case refund eligibility, processing timelines, and support requirements.'
   
   if (locale === 'ar') {
     title = 'سياسة الاسترداد | خدمة إنشاء فيديو AI'

@@ -19,7 +19,7 @@ export async function generateMetadata({
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Terms of Service | AI video generation service'
-  let description = 'Terms of Service for AI video generation service - Read our terms and conditions for using our AI video generation service.'
+  let description = 'Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.'
   
   if (locale === 'ar') {
     title = 'شروط الخدمة | خدمة إنشاء فيديو AI'

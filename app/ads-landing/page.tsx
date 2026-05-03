@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
-  description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts without relying on unconfirmed model claims.',
+  description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
   robots: {
     index: false,
     follow: false,
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
-    description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts without relying on unconfirmed model claims.',
+    description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
     url: 'https://sparkrobin.app/ads-landing',
     siteName: 'Spark Robin',
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
-    description: 'Prepare prompt systems and reference-led video drafts for Spark Robin watchers.',
+    description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
     images: ['https://sparkrobin.app/logo-v2.png'],
   },
   alternates: {
@@ -167,5 +167,4 @@ export default function AdsLandingPage() {
     </main>
   )
 }
-
 
