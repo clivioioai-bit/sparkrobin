@@ -58,7 +58,7 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sparkrobinai.io'
+  const baseUrl = 'https://sparkrobin.app'
   
   let title = 'Spark Robin Release Watch & AI Video Workflow Lab'
   let description = 'Track Spark Robin updates, organize reusable AI video prompts, and create practical text-to-video or image-to-video drafts for review.'
@@ -126,7 +126,7 @@ export async function generateMetadata({
       description: ogDescription,
       images: [
         {
-          url: 'https://sparkrobinai.io/logo-v2.png',
+          url: 'https://sparkrobin.app/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -137,7 +137,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: ogTitle,
       description: ogDescription,
-      images: ['https://sparkrobinai.io/logo-v2.png'],
+      images: ['https://sparkrobin.app/logo-v2.png'],
       creator: '@sora3aiteam',
     },
     robots: {
@@ -218,15 +218,15 @@ export default async function LocaleLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Spark Robin",
-              "url": "https://sparkrobinai.io",
-              "logo": "https://sparkrobinai.io/logo-v2.png",
+              "url": "https://sparkrobin.app",
+              "logo": "https://sparkrobin.app/logo-v2.png",
               "description": locale === 'ar' 
-                ? "sparkrobinai.io موقع مستقل لمتابعة Spark Robin وتنظيم prompts ومراجع الصور ومسودات الفيديو القابلة للمراجعة."
+                ? "sparkrobin.app موقع مستقل لمتابعة Spark Robin وتنظيم prompts ومراجع الصور ومسودات الفيديو القابلة للمراجعة."
                 : locale === 'ja'
-                ? "sparkrobinai.ioは、Spark Robinの更新を追跡し、再利用できるプロンプト、参照素材、レビュー用動画ドラフトを整理する独立サイトです。"
+                ? "sparkrobin.appは、Spark Robinの更新を追跡し、再利用できるプロンプト、参照素材、レビュー用動画ドラフトを整理する独立サイトです。"
                 : locale === 'ru'
-                ? "sparkrobinai.io — независимый сайт для отслеживания Spark Robin, организации reusable prompts, референсов и черновиков видео для ревью."
-                : "sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It helps creators organize reusable prompts, reference assets, and reviewable drafts while tracking official model updates. sparkrobinai.io is not affiliated with Google, Google DeepMind, OpenAI, or any official Sora products.",
+                ? "sparkrobin.app — независимый сайт для отслеживания Spark Robin, организации reusable prompts, референсов и черновиков видео для ревью."
+                : "sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. It helps creators organize reusable prompts, reference assets, and reviewable drafts while tracking official model updates. sparkrobin.app is not affiliated with Google, Google DeepMind, OpenAI, or any official Sora products.",
               "sameAs": [
                 "https://x.com/sora3aiteam"
               ]
@@ -240,10 +240,10 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "url": "https://sparkrobinai.io",
+              "url": "https://sparkrobin.app",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://sparkrobinai.io/search?q={search_term_string}",
+                "target": "https://sparkrobin.app/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

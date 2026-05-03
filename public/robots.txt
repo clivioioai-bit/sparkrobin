@@ -16,7 +16,7 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap for Google and Bing
-Sitemap: https://sparkrobinai.io/sitemap.xml
+Sitemap: https://sparkrobin.app/sitemap.xml
 
 # Disallow admin and API routes
 Disallow: /api/

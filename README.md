@@ -8,7 +8,7 @@ Spark RobinVideo.io is an independent AI video generation platform supporting mu
 - 🚫 Watermark-free output
 - 🌍 Globally accessible models
 
-**Live Demo**: https://sparkrobinai.io
+**Live Demo**: https://sparkrobin.app
 
 ## 🚀 Quick Start
 
@@ -24,7 +24,7 @@ Spark RobinVideo.io is an independent AI video generation platform supporting mu
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd sparkrobinai.io
+cd sparkrobin.app
 
 # Install dependencies
 npm install
@@ -119,7 +119,7 @@ See [Database Architecture](./docs/DATABASE_ARCHITECTURE.md) for detailed inform
 ## 🏗️ Project Structure
 
 ```
-sparkrobinai.io/
+sparkrobin.app/
 ├── app/                    # Next.js app directory
 │   ├── api/               # API routes
 │   ├── auth/              # Authentication pages
@@ -198,7 +198,7 @@ For issues and questions:
 
 ## 🔗 Links
 
-- **Live Site**: https://sparkrobinai.io
+- **Live Site**: https://sparkrobin.app
 - **Supabase**: https://supabase.com
 - **Creem Payment**: https://creem.io
 - **Next.js Docs**: https://nextjs.org/docs

@@ -176,7 +176,7 @@ const SubscriptionPlans = ({
               description: t('contactSupport'),
               action: (
                 <a 
-                  href="mailto:support@sparkrobinai.io?subject=Payment Issue" 
+                  href="mailto:support@sparkrobin.app?subject=Payment Issue" 
                   className="text-primary hover:underline"
                 >
                   {t('contactSupportLink')}

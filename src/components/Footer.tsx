@@ -70,7 +70,7 @@ const Footer = () => {
             {/* Social */}
             <div className="flex items-center space-x-1 mb-6">
               <a
-                href="mailto:support@sparkrobinai.io"
+                href="mailto:support@sparkrobin.app"
                 className="text-white/40 hover:text-white transition-all duration-200 p-2 rounded-lg hover:bg-white/[0.06]"
                 aria-label={t('socialLabels.email')}
               >
@@ -120,7 +120,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:support@sparkrobinai.io"
+                  href="mailto:support@sparkrobin.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/40 hover:text-white transition-colors duration-200"

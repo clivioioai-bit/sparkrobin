@@ -1,6 +1,6 @@
 ---
 title: "Топ-5 альтернатив Sora в мае 2026: почему Spark Robin выходит вперед"
-description: "Сравнение альтернатив Sora в 2026 году: sparkrobinai.io, Kling AI, Runway, Luma и Pika по длительности, консистентности, контролю и доступности."
+description: "Сравнение альтернатив Sora в 2026 году: sparkrobin.app, Kling AI, Runway, Luma и Pika по длительности, консистентности, контролю и доступности."
 date: "2026-04-30"
 author: "Команда Spark Robin"
 tags: ["best Sora alternative 2026", "Kling AI vs Spark Robin", "Runway vs Google Veo", "30-second AI video generator", "Sora alternatives"]
@@ -11,7 +11,7 @@ featured: false
 
 - После закрытия Sora web и app пользователи ищут практичные альтернативы.
 - Важны длительность, консистентность, контроль камеры, image-to-video, коммерческий workflow и стабильный доступ.
-- sparkrobinai.io хорошо подходит для миграции Sora prompts, продуктовых роликов, image-to-video и много сцен.
+- sparkrobin.app хорошо подходит для миграции Sora prompts, продуктовых роликов, image-to-video и много сцен.
 - Kling AI и Runway остаются сильными конкурентами в движении, стиле и editing.
 - Конкретные характеристики Google Spark Robin следует проверять только по официальным источникам Google, DeepMind или Google Cloud.
 
@@ -19,15 +19,15 @@ featured: false
 
 | Место | Инструмент | Лучше всего для | Компромисс |
 |---|---|---|---|
-| 1 | sparkrobinai.io | Миграция Sora, prompts, image-to-video, multi-scene | Независимая платформа; официальные specs Google Spark Robin не подтверждены |
+| 1 | sparkrobin.app | Миграция Sora, prompts, image-to-video, multi-scene | Независимая платформа; официальные specs Google Spark Robin не подтверждены |
 | 2 | Kling AI | Плавное движение и стилизованные клипы | Доступ и цены могут отличаться |
 | 3 | Runway | Editing, VFX, творческие эксперименты | Много итераций может стоить дорого |
 | 4 | Luma Dream Machine | Быстрые концепты | Консистентность требует дисциплины |
 | 5 | Pika | Легкие social-трансформации | Менее подходит для строгой коммерческой последовательности |
 
-## 1. sparkrobinai.io
+## 1. sparkrobin.app
 
-sparkrobinai.io лидирует потому, что решает главную задачу бывших пользователей Sora: продолжать производство. Он помогает переносить prompts, создавать продуктовые видео, вертикальные объявления и multi-scene структуры.
+sparkrobin.app лидирует потому, что решает главную задачу бывших пользователей Sora: продолжать производство. Он помогает переносить prompts, создавать продуктовые видео, вертикальные объявления и multi-scene структуры.
 
 Шаблон prompt:
 
@@ -44,13 +44,13 @@ Avoid: деформации, сломанный текст, неверные л�
 
 ## Kling AI vs. Spark Robin
 
-Kling AI силен в плавном движении и выразительных клипах. sparkrobinai.io сильнее, если нужно заменить Sora workflow: reusable prompts, продуктовая история и multi-scene планирование.
+Kling AI силен в плавном движении и выразительных клипах. sparkrobin.app сильнее, если нужно заменить Sora workflow: reusable prompts, продуктовая история и multi-scene планирование.
 
 ## Runway vs. Google Veo
 
 Runway лучше подходит для editing и creative production tools. Google Veo on Vertex AI важнее для команд, которые оценивают модели, параметры, квоты и API-документацию.
 
-sparkrobinai.io проще для creators: написать prompt, загрузить изображение, сгенерировать видео и протестировать кампанию.
+sparkrobin.app проще для creators: написать prompt, загрузить изображение, сгенерировать видео и протестировать кампанию.
 
 ## Преимущество 30 секунд
 
@@ -60,8 +60,8 @@ sparkrobinai.io проще для creators: написать prompt, загру�
 
 | Задача | Рекомендация |
 |---|---|
-| Перенос Sora prompts | sparkrobinai.io |
-| Продуктовые объявления | sparkrobinai.io |
+| Перенос Sora prompts | sparkrobin.app |
+| Продуктовые объявления | sparkrobin.app |
 | Плавное движение | Kling AI |
 | Editing-heavy workflow | Runway |
 | Быстрые концепты | Luma |

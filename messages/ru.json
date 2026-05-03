@@ -104,7 +104,7 @@
     }
   },
   "footer": {
-    "description": "sparkrobinai.io helps creators follow Spark Robin release signals, organize prompt systems, and produce practical AI video drafts from text or images.",
+    "description": "sparkrobin.app helps creators follow Spark Robin release signals, organize prompt systems, and produce practical AI video drafts from text or images.",
     "product": "Product",
     "company": "Company",
     "resources": "Resources",
@@ -120,13 +120,13 @@
     "refundPolicy": "Refund Policy",
     "support247": "24/7 Support",
     "contactUs": "Contact Us / Partnership",
-    "disclaimer": "sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or official Sora products. All trademarks belong to their respective owners.",
+    "disclaimer": "sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or official Sora products. All trademarks belong to their respective owners.",
     "poweredBy": "Built for practical AI video planning, prompt reuse, and draft generation. Not affiliated with any official vendor.",
     "copyright": "© 2024 Spark Robin. All rights reserved.",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24/7 Support: support@sparkrobinai.io",
-    "businessEmail": "Business & Partnership: support@sparkrobinai.io",
+    "supportEmail": "24/7 Support: support@sparkrobin.app",
+    "businessEmail": "Business & Partnership: support@sparkrobin.app",
     "logoAlt": "Spark Robin AI Video Generator logo",
     "socialLabels": {
       "twitter": "Follow us on Twitter",
@@ -243,8 +243,8 @@
     "haveMoreQuestions": "Have more questions? We're here to help.",
     "questions": {
       "whatMakesDifferent": {
-        "question": "What is sparkrobinai.io?",
-        "answer": "sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It helps creators track confirmed updates, structure reusable prompts, and create practical video drafts from text or images."
+        "question": "What is sparkrobin.app?",
+        "answer": "sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. It helps creators track confirmed updates, structure reusable prompts, and create practical video drafts from text or images."
       },
       "characterConsistency": {
         "question": "Is Spark Robin officially available from Google?",
@@ -319,7 +319,7 @@
       "tryAgainLater": "Please try again later.",
       "failedToCreatePaymentLink": "Failed to create payment link",
       "needHelp": "Need Help?",
-      "contactSupport": "Contact support@sparkrobinai.io for assistance.",
+      "contactSupport": "Contact support@sparkrobin.app for assistance.",
       "contactSupportLink": "Contact Support",
       "features": {
         "creditsIncluded": "{count} credits included",
@@ -413,8 +413,8 @@
       "answer": "Subscription bucket resets each billing period and does not roll over. One-time add-on credits go to the flexible bucket and are not cleared by subscription resets."
     },
     "faqRefundPolicy": {
-      "question": "What is sparkrobinai.io refund policy?",
-      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@sparkrobinai.io for refunds. Refunds are processed within 5-7 business days."
+      "question": "What is sparkrobin.app refund policy?",
+      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@sparkrobin.app for refunds. Refunds are processed within 5-7 business days."
     },
     "faqContentRestrictions": {
       "question": "Are there any video content restrictions?",
@@ -515,7 +515,7 @@
     },
     "howToUseTitle": "How to Use the AI Video Generator for Text to Video",
     "howToUseStep1": {
-      "title": "Sign Up or Log In to sparkrobinai.io",
+      "title": "Sign Up or Log In to sparkrobin.app",
       "description": "Create an account so your drafts, prompt notes, and generation history stay organized."
     },
     "howToUseStep2": {
@@ -554,7 +554,7 @@
     },
     "imageToVideoHowToUseTitle": "How to Build an Image-Led Video Draft",
     "imageToVideoHowToUseStep1": {
-      "title": "Sign Up or Log In to sparkrobinai.io",
+      "title": "Sign Up or Log In to sparkrobin.app",
       "description": "Create an account to keep reference images, prompts, and drafts in one workflow."
     },
     "imageToVideoHowToUseStep2": {

@@ -4,16 +4,16 @@ export const metadata: Metadata = {
   title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
   description: 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, and pricing.',
   alternates: {
-    canonical: 'https://sparkrobinai.io/faq',
+    canonical: 'https://sparkrobin.app/faq',
   },
   openGraph: {
     title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
     description: 'Find answers about Spark Robin availability, prompt workflows, reference images, draft generation, and pricing.',
-    url: 'https://sparkrobinai.io/faq',
+    url: 'https://sparkrobin.app/faq',
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sparkrobinai.io/logo-v2.png',
+        url: 'https://sparkrobin.app/logo-v2.png',
         width: 1200,
         height: 630,
         alt: 'Spark Robin FAQ',
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
     description: 'Find answers about Spark Robin availability, prompt workflows, reference images, draft generation, and pricing.',
-    images: ['https://sparkrobinai.io/logo-v2.png']
+    images: ['https://sparkrobin.app/logo-v2.png']
   },
 }
 
 const faqs = [
   { 
-    q: 'What is sparkrobinai.io?', 
-    a: 'sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It helps creators track updates, prepare prompt systems, and create reviewable drafts from text or images.' 
+    q: 'What is sparkrobin.app?', 
+    a: 'sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. It helps creators track updates, prepare prompt systems, and create reviewable drafts from text or images.' 
   },
   { 
     q: 'Is Spark Robin officially available from Google?', 
@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     q: 'Is this an official Google product?',
-    a: 'No. sparkrobinai.io is independent and is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
+    a: 'No. sparkrobin.app is independent and is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
   },
   {
     q: 'How should I get started?',
@@ -94,8 +94,8 @@ const faqs = [
     a: 'You can start generating videos immediately. Credits are available through our pricing plans. Visit our pricing page to choose a plan that fits your needs.'
   },
   {
-    q: 'What is the relationship between sparkrobinai.io and Google Spark Robin?',
-    a: 'sparkrobinai.io is a completely independent AI video generation platform with no affiliation, partnership, or authorization relationship with Google or Google DeepMind. We provide Spark Robin video generation workflows using our own product layer and compatible generation pipeline. All trademarks belong to their respective owners.'
+    q: 'What is the relationship between sparkrobin.app and Google Spark Robin?',
+    a: 'sparkrobin.app is a completely independent AI video generation platform with no affiliation, partnership, or authorization relationship with Google or Google DeepMind. We provide Spark Robin video generation workflows using our own product layer and compatible generation pipeline. All trademarks belong to their respective owners.'
   }
 ]
 

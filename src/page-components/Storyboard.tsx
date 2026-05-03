@@ -319,8 +319,8 @@ const Storyboard = () => {
   };
 
   const canonicalUrl = locale === 'en' 
-    ? 'https://sparkrobinai.io/spark-robin-storyboard'
-    : `https://sparkrobinai.io/${locale}/spark-robin-storyboard`;
+    ? 'https://sparkrobin.app/spark-robin-storyboard'
+    : `https://sparkrobin.app/${locale}/spark-robin-storyboard`;
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -329,7 +329,7 @@ const Storyboard = () => {
         description={getSEODescription()}
         canonical={canonicalUrl}
         keywords="Spark Robin Pro Storyboard,spark-robin storyboard,AI video storyboard,multi-scene video,TikTok video generator,Instagram Reels,YouTube Shorts,AI video creator,Spark Robin,storyboard generator,AI video maker,social media video creator"
-        image="https://sparkrobinai.io/og-sora3-storyboard.jpg"
+        image="https://sparkrobin.app/og-sora3-storyboard.jpg"
       />
       
       {/* Structured Data */}
@@ -341,7 +341,7 @@ const Storyboard = () => {
             "@type": "SoftwareApplication",
             "name": "Spark Robin Pro Storyboard",
             "description": "Plan multi-scene AI video drafts with scene-by-scene notes, reference images, continuity rules, and review context using Spark Robin Pro Storyboard.",
-            "url": "https://sparkrobinai.io/spark-robin-storyboard",
+            "url": "https://sparkrobin.app/spark-robin-storyboard",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "Web Browser",
             "offers": {
@@ -358,7 +358,7 @@ const Storyboard = () => {
             "creator": {
               "@type": "Organization",
               "name": "ivido",
-              "url": "https://sparkrobinai.io"
+              "url": "https://sparkrobin.app"
             },
             "featureList": [
               "Multi-scene draft planning",
@@ -368,7 +368,7 @@ const Storyboard = () => {
               "Reference image support",
               "Portrait and landscape modes"
             ],
-            "screenshot": "https://sparkrobinai.io/sora3-storyboard-screenshot.jpg",
+            "screenshot": "https://sparkrobin.app/sora3-storyboard-screenshot.jpg",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.8",

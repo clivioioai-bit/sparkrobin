@@ -241,7 +241,7 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sparkrobinai.io'
+  const baseUrl = 'https://sparkrobin.app'
   const prefix = locale === 'en' ? '' : `/${locale}`
   const copy = pageCopy[locale as SupportedLocale] ?? pageCopy.en
 
@@ -256,7 +256,7 @@ export async function generateMetadata({
       siteName: 'Spark Robin',
       images: [
         {
-          url: 'https://sparkrobinai.io/logo-v2.png',
+          url: 'https://sparkrobin.app/logo-v2.png',
           width: 1200,
           height: 630,
           alt: copy.title,
@@ -269,7 +269,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: copy.title,
       description: copy.description,
-      images: ['https://sparkrobinai.io/logo-v2.png']
+      images: ['https://sparkrobin.app/logo-v2.png']
     },
     robots: {
       index: true,
@@ -297,7 +297,7 @@ export default async function SparkRobinVideoGeneratorPage({
     '@type': 'WebPage',
     name: copy.title,
     description: copy.description,
-    url: `https://sparkrobinai.io${prefix}/spark-robin-video-generator`,
+    url: `https://sparkrobin.app${prefix}/spark-robin-video-generator`,
     mainEntity: {
       '@type': 'SoftwareApplication',
       name: 'Spark Robin Video Generator',

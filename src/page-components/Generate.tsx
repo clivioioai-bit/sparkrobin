@@ -1163,8 +1163,8 @@ const Generate = () => {
           ? tGenerate('imageToVideoSubtitle')
           : tGenerate('textToVideoSubtitle')}
         canonical={isWatermarkRemover 
-          ? 'https://sparkrobinai.io/watermark-remover'
-          : routeFromMode(generationMode) === '/spark-robin-image-to-video' ? 'https://sparkrobinai.io/spark-robin-image-to-video' : 'https://sparkrobinai.io/spark-robin-text-to-video'}
+          ? 'https://sparkrobin.app/watermark-remover'
+          : routeFromMode(generationMode) === '/spark-robin-image-to-video' ? 'https://sparkrobin.app/spark-robin-image-to-video' : 'https://sparkrobin.app/spark-robin-text-to-video'}
         keywords={isWatermarkRemover
           ? "spark-robin watermark remover,Sora watermark remover,remove watermark sora,watermark removal Sora3"
           : routeFromMode(generationMode) === '/spark-robin-image-to-video'

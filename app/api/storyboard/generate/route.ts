@@ -200,7 +200,7 @@ export async function POST(request: NextRequest) {
       console.log(`[API] API Base: ${apiBase}`);
       
       // Build request body according to Spark Robin Pro Storyboard API spec
-      const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://sparkrobinai.io'}/api/storyboard/callback`;
+      const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://sparkrobin.app'}/api/storyboard/callback`;
       
       const requestBody = {
         model: 'sora-2-pro-storyboard',

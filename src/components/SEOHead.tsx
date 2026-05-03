@@ -22,10 +22,10 @@ const SEOHead = ({
   canonical,
   noindex = false,
   keywords = "Spark Robin release watch, AI video prompt workflow, text to video drafts, image to video references, AI video planning, reusable prompts",
-  image = "https://sparkrobinai.io/logo-v2.png"
+  image = "https://sparkrobin.app/logo-v2.png"
 }: SEOHeadProps) => {
   const pathname = usePathname();
-  const baseUrl = "https://sparkrobinai.io"; // Replace with your actual domain
+  const baseUrl = "https://sparkrobin.app"; // Replace with your actual domain
   const currentUrl = canonical || `${baseUrl}${pathname}`;
 
   useEffect(() => {
@@ -153,7 +153,7 @@ const SEOHead = ({
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Spark Robin",
-        "alternateName": ["Spark Robin", "sparkrobinai.io", "AI Video Ads", "AI Video Generator"],
+        "alternateName": ["Spark Robin", "sparkrobin.app", "AI Video Ads", "AI Video Generator"],
         "description": "Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images.",
         "url": baseUrl,
         "applicationCategory": "MultimediaApplication",

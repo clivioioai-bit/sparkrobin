@@ -45,7 +45,7 @@ const advertisingCards: ContentCard[] = [
   {
     title: "Less speculative messaging",
     description:
-      "Keep the difference between Spark Robin rumors, official Google documentation, and your own workflow capabilities visible."
+      "Keep the difference between rumors, official Google documentation, and your own workflow capabilities visible."
   },
   {
     title: "More useful first drafts",
@@ -55,7 +55,7 @@ const advertisingCards: ContentCard[] = [
   {
     title: "Reusable learning across models",
     description:
-      "The prompt system you build now can carry into Veo, Sora, Runway, Kling, or future Spark Robin access."
+      "The prompt system you build now can carry into Veo, Sora, Runway, Kling, or future model access."
   },
   {
     title: "Better editorial trust",
@@ -209,8 +209,8 @@ function ComparisonSection({ rows }: { rows: CompareRow[] }) {
 
           <div className="rounded-2xl border border-primary/20 bg-black/20 p-5 sm:p-6">
             <div className="text-white/40 uppercase tracking-[0.18em] text-[11px] mb-2">Why it wins for teams</div>
-            <p className="text-sm sm:text-base leading-7 text-white/80">
-              The Spark Robin workspace is strongest when the job is preparation: organizing prompts, references, assumptions, and review notes so your team can move faster when model access changes.
+              <p className="text-sm sm:text-base leading-7 text-white/80">
+              This workspace is strongest when the job is preparation: organizing prompts, references, assumptions, and review notes so your team can move faster when model access changes.
             </p>
             {renderCompareLink(primary, true)}
           </div>
@@ -258,7 +258,7 @@ function CTASection() {
   return (
     <section className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/14 via-white/[0.04] to-transparent p-8 sm:p-10 shadow-[0_16px_50px_rgba(0,0,0,0.25)]">
       <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-        Build a Spark Robin-Ready Workflow
+        Build a Release-Ready Workflow
       </h2>
       <p className="text-base sm:text-lg text-white/65 leading-8 max-w-3xl">
         Do not wait for rumors to settle before improving your workflow. Build reusable prompt
@@ -295,7 +295,7 @@ const SparkRobinKnowledgeSection = () => {
         <div className="space-y-16 sm:space-y-20">
           <section>
             <SectionHeader
-              title="What to Prepare for Spark Robin"
+              title="What to Prepare Before Access Changes"
               description="Use this workspace to organize prompt libraries, references, shot notes, and release-aware content before official model details are stable."
             />
             <CardGrid items={creationCards} />
@@ -304,7 +304,7 @@ const SparkRobinKnowledgeSection = () => {
           <section>
             <SectionHeader
               title="Why the New Copy Should Be Different"
-              description="Spark Robin content should not sound like a recycled model page. It should communicate uncertainty clearly and give creators something practical to do now."
+              description="Model-watch content should not sound like a recycled landing page. It should communicate uncertainty clearly and give creators something practical to do now."
             />
             <CardGrid items={advertisingCards} />
           </section>

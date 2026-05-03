@@ -7,16 +7,16 @@ export const metadata: Metadata = {
   description: 'Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information.',
   keywords: 'privacy policy, data protection, AI video generation service, personal information, GDPR',
   alternates: {
-    canonical: 'https://sparkrobinai.io/privacy',
+    canonical: 'https://sparkrobin.app/privacy',
   },
   openGraph: {
     title: 'Privacy Policy | AI video generation service',
     description: 'Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information.',
-    url: 'https://sparkrobinai.io/privacy',
+    url: 'https://sparkrobin.app/privacy',
     siteName: 'Saro 2',
     images: [
       {
-        url: 'https://sparkrobinai.io/logo-v2.png',
+        url: 'https://sparkrobin.app/logo-v2.png',
         width: 1200,
         height: 630,
         alt: 'Privacy Policy',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Privacy Policy | AI video generation service',
     description: 'Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information.',
-    images: ['https://sparkrobinai.io/logo-v2.png']
+    images: ['https://sparkrobin.app/logo-v2.png']
   },
 };
 
@@ -40,7 +40,7 @@ const PrivacyPolicy: React.FC = () => {
         title="Privacy Policy | AI video generation service"
         description="Privacy Policy for AI video generation service - Learn how we collect, use, and protect your personal information."
         keywords="privacy policy, data protection, AI video generation service, personal information, GDPR"
-        canonical="https://sparkrobinai.io/privacy"
+        canonical="https://sparkrobin.app/privacy"
       />
       
       <div className="min-h-screen bg-background">
@@ -219,7 +219,7 @@ const PrivacyPolicy: React.FC = () => {
                     Should you have any inquiries regarding this Privacy Policy or our data handling practices, please reach out to us at:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@sparkrobinai.io</p>
+                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@sparkrobin.app</p>
                     <p className="text-gray-700 mb-2"><strong>Company:</strong> AIVIDO LLC</p>
                     <p className="text-gray-700 mb-2"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
                     <p className="text-gray-700">We will respond to your inquiry within 30 days.</p>

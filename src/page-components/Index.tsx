@@ -19,7 +19,7 @@ const Index = () => {
         description="Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images."
         ogTitle="Spark Robin Workflow Lab | Release Watch and AI Video Drafts"
         ogDescription="Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images."
-        canonical="https://sparkrobinai.io/"
+        canonical="https://sparkrobin.app/"
         keywords="Spark Robin release watch, AI video workflow, prompt briefs, reference image video, text to video drafts, image to video drafts"
       />
       <ScrollProgress />

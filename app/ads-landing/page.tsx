@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
     description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts without relying on unconfirmed model claims.',
-    url: 'https://sparkrobinai.io/ads-landing',
+    url: 'https://sparkrobin.app/ads-landing',
     siteName: 'Spark Robin',
     images: [
       {
-        url: 'https://sparkrobinai.io/logo-v2.png',
+        url: 'https://sparkrobin.app/logo-v2.png',
         width: 1200,
         height: 630,
         alt: 'Spark Robin Video Generator',
@@ -33,10 +33,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
     description: 'Prepare prompt systems and reference-led video drafts for Spark Robin watchers.',
-    images: ['https://sparkrobinai.io/logo-v2.png'],
+    images: ['https://sparkrobin.app/logo-v2.png'],
   },
   alternates: {
-    canonical: 'https://sparkrobinai.io/ads-landing',
+    canonical: 'https://sparkrobin.app/ads-landing',
   },
 }
 
@@ -48,7 +48,7 @@ export default function AdsLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-primary">sparkrobinai.io</span>
+              <span className="text-xl font-bold text-primary">sparkrobin.app</span>
             </div>
             <Link href="/spark-robin-text-to-video">
               <Button variant="outline" size="sm">
@@ -160,7 +160,7 @@ export default function AdsLandingPage() {
       <section className="py-8 border-t border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-muted-foreground text-center">
-            sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or any official Sora products. All trademarks belong to their respective owners.
+            sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or any official Sora products. All trademarks belong to their respective owners.
           </p>
         </div>
       </section>

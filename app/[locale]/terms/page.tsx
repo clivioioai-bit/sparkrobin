@@ -15,7 +15,7 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sparkrobinai.io'
+  const baseUrl = 'https://sparkrobin.app'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Terms of Service | AI video generation service'
@@ -40,7 +40,7 @@ export async function generateMetadata({
       siteName: 'Spark Robin',
       images: [
         {
-          url: 'https://sparkrobinai.io/logo-v2.png',
+          url: 'https://sparkrobin.app/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sparkrobinai.io/logo-v2.png']
+      images: ['https://sparkrobin.app/logo-v2.png']
     },
   };
 }
@@ -283,7 +283,7 @@ const TermsOfService: React.FC<{ locale: string }> = ({ locale }) => {
                     For any questions or concerns regarding these Terms of Service, please get in touch with us at:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@sparkrobinai.io</p>
+                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@sparkrobin.app</p>
                     <p className="text-gray-700 mb-2"><strong>Company:</strong> AIVIDO LLC</p>
                     <p className="text-gray-700 mb-2"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
                     <p className="text-gray-700">We will respond to your inquiry within 5 business days.</p>

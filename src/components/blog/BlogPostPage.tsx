@@ -40,28 +40,28 @@ const BlogPostPage = async ({ post, locale = 'en' }: Props) => {
     '@type': 'BlogPosting',
     headline: post.meta.title,
     description: post.meta.description || '',
-    image: post.meta.coverImage || 'https://sparkrobinai.io/logo-v2.png',
+    image: post.meta.coverImage || 'https://sparkrobin.app/logo-v2.png',
     datePublished: post.meta.date || undefined,
     dateModified: post.meta.date || undefined,
     author: {
       '@type': post.meta.author ? 'Person' : 'Organization',
       name: post.meta.author || 'Spark Robin Team',
-      url: 'https://sparkrobinai.io',
+      url: 'https://sparkrobin.app',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Spark Robin',
-      url: 'https://sparkrobinai.io',
+      url: 'https://sparkrobin.app',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://sparkrobinai.io/logo-v2.png',
+        url: 'https://sparkrobin.app/logo-v2.png',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': locale === 'en'
-        ? `https://sparkrobinai.io/blog/${post.slug}`
-        : `https://sparkrobinai.io/${locale}/blog/${post.slug}`,
+        ? `https://sparkrobin.app/blog/${post.slug}`
+        : `https://sparkrobin.app/${locale}/blog/${post.slug}`,
     },
     wordCount: post.content.trim().split(/\s+/).length,
     keywords: post.meta.tags?.join(', ') || undefined,

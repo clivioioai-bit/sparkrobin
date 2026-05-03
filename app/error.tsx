@@ -57,10 +57,10 @@ export default function Error({
           <p className="text-sm text-muted-foreground">
             Need help? Contact{" "}
             <a
-              href="mailto:support@sparkrobinai.io?subject=Application Error"
+              href="mailto:support@sparkrobin.app?subject=Application Error"
               className="text-primary hover:underline"
             >
-              support@sparkrobinai.io
+              support@sparkrobin.app
             </a>
           </p>
         </div>

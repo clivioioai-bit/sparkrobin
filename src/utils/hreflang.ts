@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
 
-const baseUrl = 'https://sparkrobinai.io'
+const baseUrl = 'https://sparkrobin.app'
 
 /**
  * Generate hreflang alternates for a given pathname and locale
@@ -23,7 +23,7 @@ export function generateHreflangAlternates(
   supportedLocales.forEach((loc) => {
     // English (default locale) has no prefix
     if (loc === 'en') {
-      urls[loc] = normalizedPath ? `${baseUrl}/${normalizedPath}` : `${baseUrl}/en`
+      urls[loc] = normalizedPath ? `${baseUrl}/${normalizedPath}` : `${baseUrl}/`
     } else {
       urls[loc] = normalizedPath 
         ? `${baseUrl}/${loc}/${normalizedPath}` 
@@ -34,7 +34,7 @@ export function generateHreflangAlternates(
   // Create alternates object
   const alternates: Metadata['alternates'] = {
     canonical: locale === 'en'
-      ? (normalizedPath ? `${baseUrl}/${normalizedPath}` : `${baseUrl}/en`)
+      ? (normalizedPath ? `${baseUrl}/${normalizedPath}` : `${baseUrl}/`)
       : (normalizedPath ? `${baseUrl}/${locale}/${normalizedPath}` : `${baseUrl}/${locale}/`),
     languages: Object.fromEntries(
       [

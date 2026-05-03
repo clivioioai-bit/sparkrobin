@@ -6,21 +6,21 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Spark Robin Video Generator',
-  alternateName: ['Spark Robin Generator', 'Spark Robin Video Creator', 'Spark Robin'],
+  alternateName: ['AI Video Workflow Lab', 'Video Creator Workspace'],
   applicationCategory: 'MultimediaApplication',
   operatingSystem: 'Web',
-  description: 'Track Spark Robin updates, structure reusable AI video prompts, and create reviewable text-to-video or image-to-video drafts while the next model cycle develops.',
-  url: 'https://sparkrobinai.io',
+  description: 'Track release updates, structure reusable AI video prompts, and create reviewable text-to-video or image-to-video drafts while the next model cycle develops.',
+  url: 'https://sparkrobin.app',
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-    description: 'Spark Robin video generation with credits, paid plans available'
+    description: 'AI video generation with credits and paid plans available'
   },
   creator: {
     '@type': 'Organization',
-    name: 'Spark Robin',
-    url: 'https://sparkrobinai.io'
+    name: 'sparkrobin.app',
+    url: 'https://sparkrobin.app'
   },
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -30,7 +30,7 @@ const jsonLd = {
     worstRating: '1'
   },
   featureList: [
-    'Spark Robin release-watch guidance',
+    'Release-watch guidance',
     'Structured text-to-video prompt briefs',
     'Reference-led image-to-video drafts',
     'Reusable shot notes and continuity prompts',
@@ -49,7 +49,7 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://sparkrobinai.io'
+      item: 'https://sparkrobin.app'
     }
   ]
 }
@@ -57,19 +57,19 @@ const breadcrumbJsonLd = {
 const videoJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
-  name: 'Spark Robin Workflow Demo - From Brief to Reviewable Draft',
-  description: 'See how sparkrobinai.io helps creators turn concepts into structured prompts, reference-led drafts, and repeatable AI video workflows while tracking Spark Robin updates.',
-  thumbnailUrl: 'https://sparkrobinai.io/logo-v2.png',
+  name: 'Workflow Demo - From Brief to Reviewable Draft',
+  description: 'See how sparkrobin.app helps creators turn concepts into structured prompts, reference-led drafts, and repeatable AI video workflows while tracking release updates.',
+  thumbnailUrl: 'https://sparkrobin.app/logo-v2.png',
   uploadDate: '2024-01-01T00:00:00Z',
-  contentUrl: 'https://sparkrobinai.io',
-  embedUrl: 'https://sparkrobinai.io',
+  contentUrl: 'https://sparkrobin.app',
+  embedUrl: 'https://sparkrobin.app',
   duration: 'PT30S',
   publisher: {
     '@type': 'Organization',
-    name: 'Spark Robin',
+    name: 'sparkrobin.app',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://sparkrobinai.io/logo-v2.png'
+      url: 'https://sparkrobin.app/logo-v2.png'
     }
   }
 }
@@ -80,10 +80,10 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Is sparkrobinai.io an official Google Spark Robin product?',
+      name: 'Is sparkrobin.app an official Google product?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. sparkrobinai.io is an independent Spark Robin release-watch and AI video workflow site. It is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
+        text: 'No. sparkrobin.app is an independent release-watch and AI video workflow site. It is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
       }
     },
     {
@@ -96,7 +96,7 @@ const faqJsonLd = {
     },
     {
       '@type': 'Question',
-      name: 'Why prepare before official Spark Robin details are confirmed?',
+      name: 'Why prepare before official details are confirmed?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Reusable prompts, shot notes, and reference libraries remain useful across current AI video tools and future model access.'
@@ -104,7 +104,7 @@ const faqJsonLd = {
     },
     {
       '@type': 'Question',
-      name: 'How should I start a Spark Robin workflow?',
+      name: 'How should I start this workflow?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Start with a clear brief, split it into subject, camera, motion, style, and continuity notes, then generate drafts and compare them against the brief.'

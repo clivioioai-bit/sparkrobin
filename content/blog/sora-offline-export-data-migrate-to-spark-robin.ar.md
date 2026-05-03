@@ -1,6 +1,6 @@
 ---
 title: "أصبح Sora غير متاح رسميًا: كيفية تصدير بياناتك والانتقال إلى Spark Robin"
-description: "دليل عملي بعد إيقاف Sora: التواريخ المهمة، تصدير فيديوهات Sora، حفظ المطالبات، والانتقال إلى سير عمل sparkrobinai.io."
+description: "دليل عملي بعد إيقاف Sora: التواريخ المهمة، تصدير فيديوهات Sora، حفظ المطالبات، والانتقال إلى سير عمل sparkrobin.app."
 date: "2026-04-30"
 author: "فريق Spark Robin"
 tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Spark Robin", "ai-video"]
@@ -13,7 +13,7 @@ featured: true
 - تشير OpenAI إلى أن **واجهة Sora API ستتوقف في 24 سبتمبر 2026**.
 - إذا أنشأت محتوى على Sora، صدّره في أسرع وقت. بعد الإيقاف وأي نافذة تصدير نهائية، قد تُحذف البيانات نهائيًا.
 - لا تحفظ ملف MP4 فقط. احفظ المطالبات، الصور المرجعية، النسبة، الإعدادات، الملاحظات وحقوق الاستخدام.
-- يمكن لـ sparkrobinai.io دعم text-to-video و image-to-video وتخطيط المشاهد المتعددة وإنتاج فيديوهات إعلانية.
+- يمكن لـ sparkrobin.app دعم text-to-video و image-to-video وتخطيط المشاهد المتعددة وإنتاج فيديوهات إعلانية.
 
 ## جدول إيقاف Sora
 
@@ -62,7 +62,7 @@ featured: true
 
 مستخدمو Sora يحتاجون إلى استمرار الإنتاج: تحويل النصوص إلى مقاطع، اختبار إعلانات المنتجات، إنشاء فيديوهات عمودية، تحريك الصور وبناء مشاهد متعددة.
 
-يوفر sparkrobinai.io مسارات **Spark Robin text-to-video** و **Spark Robin image-to-video** وسير عمل storyboard للحملات.
+يوفر sparkrobin.app مسارات **Spark Robin text-to-video** و **Spark Robin image-to-video** وسير عمل storyboard للحملات.
 
 ## تحويل المطالبات
 

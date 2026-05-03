@@ -23,7 +23,7 @@ That distinction matters. Search results around the **Google Spark Robin release
 
 This article is a release-watch guide. It separates confirmed facts from reasonable expectations so you can track Spark Robin without building a content strategy on unsupported specs.
 
-For hands-on AI video creation workflows while the market waits, explore the [Spark Robin video generator](/spark-robin-video-generator), [Spark Robin text-to-video](/spark-robin-text-to-video), and [Spark Robin image-to-video](/spark-robin-image-to-video) pages on sparkrobinai.io.
+For hands-on AI video creation workflows while the market waits, explore the [Spark Robin video generator](/spark-robin-video-generator), [Spark Robin text-to-video](/spark-robin-text-to-video), and [Spark Robin image-to-video](/spark-robin-image-to-video) pages on sparkrobin.app.
 
 ## What Google Has Officially Confirmed
 
@@ -150,7 +150,7 @@ Strong article clusters include:
 - **Vertex AI Veo tutorials** for developers
 - **AI video workflow** guides for creators and marketing teams
 
-That is the editorial strategy behind sparkrobinai.io: clean guidance, current facts, and practical workflows.
+That is the editorial strategy behind sparkrobin.app: clean guidance, current facts, and practical workflows.
 
 ## Suggested Images and Alt Text
 

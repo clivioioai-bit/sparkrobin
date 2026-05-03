@@ -59,7 +59,7 @@
 ### 1. 设置 Bing Webmaster Tools
 
 1. 访问 [Bing Webmaster Tools](https://www.bing.com/webmasters)
-2. 添加你的网站 `https://sparkrobinai.io`
+2. 添加你的网站 `https://sparkrobin.app`
 3. 选择验证方式：
 
 #### 方式 A: Meta 标签验证（推荐）
@@ -74,23 +74,23 @@
 #### 方式 B: XML 文件验证
 1. 在 Bing Webmaster Tools 中选择 "上传 XML 文件"
 2. 确保 `.env.local` 中已设置 `BING_VERIFICATION_CODE`
-3. Bing 会自动访问 `https://sparkrobinai.io/BingSiteAuth.xml` 进行验证
+3. Bing 会自动访问 `https://sparkrobin.app/BingSiteAuth.xml` 进行验证
 
 ### 2. 提交 Sitemap 到 Bing
 
 1. 登录 Bing Webmaster Tools
 2. 进入 "Sitemaps" 部分
 3. 提交以下 sitemap URL：
-   - `https://sparkrobinai.io/sitemap.xml` (主索引)
-   - `https://sparkrobinai.io/sitemap-en.xml`
-   - `https://sparkrobinai.io/sitemap-ar.xml`
-   - `https://sparkrobinai.io/sitemap-ja.xml`
-   - `https://sparkrobinai.io/sitemap-ru.xml`
+   - `https://sparkrobin.app/sitemap.xml` (主索引)
+   - `https://sparkrobin.app/sitemap-en.xml`
+   - `https://sparkrobin.app/sitemap-ar.xml`
+   - `https://sparkrobin.app/sitemap-ja.xml`
+   - `https://sparkrobin.app/sitemap-ru.xml`
 
 ### 3. 验证配置
 
 #### 检查 robots.txt
-访问: `https://sparkrobinai.io/robots.txt`
+访问: `https://sparkrobin.app/robots.txt`
 
 应该看到：
 - 所有 Bing 爬虫的配置
@@ -98,12 +98,12 @@
 - 正确的 Allow/Disallow 规则
 
 #### 检查 sitemap
-访问: `https://sparkrobinai.io/sitemap.xml`
+访问: `https://sparkrobin.app/sitemap.xml`
 
 应该看到指向所有语言特定 sitemap 的索引。
 
 #### 检查 Bing 验证
-访问: `https://sparkrobinai.io/BingSiteAuth.xml`
+访问: `https://sparkrobin.app/BingSiteAuth.xml`
 
 如果设置了 `BING_VERIFICATION_CODE`，应该看到包含验证码的 XML 文件。
 
@@ -207,7 +207,7 @@ Bing 提供了 URL 提交 API，可以快速通知 Bing 新内容：
 # 提交单个 URL
 curl -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"siteUrl":"https://sparkrobinai.io","url":"https://sparkrobinai.io/spark-robin-video-generator"}'
+  -d '{"siteUrl":"https://sparkrobin.app","url":"https://sparkrobin.app/spark-robin-video-generator"}'
 ```
 
 **获取 API Key**:
@@ -222,7 +222,7 @@ curl -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=YOUR_
 #### 方法 B: 批量提交 URL
 在 Bing Webmaster Tools 中：
 1. 进入 "URL 提交" 或 "Submit URLs"
-2. 提交 sitemap URL: `https://sparkrobinai.io/sitemap.xml`
+2. 提交 sitemap URL: `https://sparkrobin.app/sitemap.xml`
 3. 或手动提交重要页面的 URL
 
 ### 2. 监控 Bing 索引状态
@@ -334,7 +334,7 @@ Bing 更注重内容质量，确保：
 
 1. **使用 Bing 搜索**:
    ```
-   site:sparkrobinai.io
+   site:sparkrobin.app
    ```
    查看已索引的页面数量
 
@@ -344,31 +344,31 @@ Bing 更注重内容质量，确保：
 
 3. **检查特定页面**:
    ```
-   site:sparkrobinai.io/spark-robin-video-generator
+   site:sparkrobin.app/spark-robin-video-generator
    ```
 
 ### 测试 Bing 验证
 
 1. **Meta 标签验证**:
-   - 访问 `https://sparkrobinai.io`
+   - 访问 `https://sparkrobin.app`
    - 查看页面源代码
    - 确认存在 `<meta name="msvalidate.01" content="...">`
 
 2. **XML 文件验证**:
-   - 访问 `https://sparkrobinai.io/BingSiteAuth.xml`
+   - 访问 `https://sparkrobin.app/BingSiteAuth.xml`
    - 确认返回包含验证码的 XML
 
 ### 测试 Sitemap
 
 1. **主 sitemap**:
    ```
-   https://sparkrobinai.io/sitemap.xml
+   https://sparkrobin.app/sitemap.xml
    ```
    应该返回指向语言特定 sitemap 的索引
 
 2. **语言 sitemap**:
    ```
-   https://sparkrobinai.io/sitemap-en.xml
+   https://sparkrobin.app/sitemap-en.xml
    ```
    应该返回所有英文页面的列表
 

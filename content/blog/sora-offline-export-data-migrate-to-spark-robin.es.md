@@ -1,6 +1,6 @@
 ---
 title: "Sora ya está offline: cómo exportar tus datos y migrar a Spark Robin"
-description: "Guía práctica tras la discontinuación de Sora: fechas clave, exportación de videos, preservación de prompts y migración del flujo creativo a sparkrobinai.io."
+description: "Guía práctica tras la discontinuación de Sora: fechas clave, exportación de videos, preservación de prompts y migración del flujo creativo a sparkrobin.app."
 date: "2026-04-30"
 author: "Equipo de Spark Robin"
 tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Spark Robin", "ai-video"]
@@ -13,7 +13,7 @@ featured: true
 - OpenAI indica que la **API de Sora será discontinuada el 24 de septiembre de 2026**.
 - Si creaste contenido en Sora, expórtalo cuanto antes. OpenAI señala que los datos asociados podrán eliminarse permanentemente después de la discontinuación y de cualquier ventana final de exportación.
 - No guardes solo el MP4. Conserva prompts, imágenes de referencia, relación de aspecto, ajustes, notas de revisión y contexto de cliente.
-- sparkrobinai.io puede cubrir flujos de texto a video, imagen a video, planificación multi-escena y producción de piezas para anuncios.
+- sparkrobin.app puede cubrir flujos de texto a video, imagen a video, planificación multi-escena y producción de piezas para anuncios.
 
 ## Cronología del cierre de Sora
 
@@ -62,7 +62,7 @@ Una estructura simple por proyecto ayuda mucho:
 
 Los usuarios de Sora necesitan continuidad: convertir guiones en clips, probar anuncios de producto, crear videos verticales, animar imágenes y construir secuencias multi-escena.
 
-sparkrobinai.io está pensado para ese trabajo práctico: **Spark Robin text-to-video**, **Spark Robin image-to-video** y flujos de storyboard para campañas y contenido social.
+sparkrobin.app está pensado para ese trabajo práctico: **Spark Robin text-to-video**, **Spark Robin image-to-video** y flujos de storyboard para campañas y contenido social.
 
 ## Guía de conversión de prompts
 
@@ -78,7 +78,7 @@ Output: 9:16, 16:9, anuncio, social, demo
 Avoid: deformaciones, texto roto, logos incorrectos, objetos extra
 ```
 
-Esta estructura permite comparar sparkrobinai.io, Kling, Runway u otras herramientas con más justicia.
+Esta estructura permite comparar sparkrobin.app, Kling, Runway u otras herramientas con más justicia.
 
 ## FAQ
 

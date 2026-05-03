@@ -18,7 +18,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const url = `https://sparkrobinai.io/blog/${post.slug}`;
+  const url = `https://sparkrobin.app/blog/${post.slug}`;
 
   return {
     title: post.meta.title,

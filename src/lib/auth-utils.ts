@@ -81,7 +81,7 @@ export function validateSignin(data: SigninFormData): string | null {
 export function getBaseUrl(): string {
   const isProduction = process.env.NODE_ENV === 'production';
   if (isProduction) {
-    return process.env.NEXT_PUBLIC_APP_URL || 'https://sparkrobinai.io';
+    return process.env.NEXT_PUBLIC_APP_URL || 'https://sparkrobin.app';
   }
   if (typeof window !== 'undefined') {
     return window.location.origin;

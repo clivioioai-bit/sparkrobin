@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllPosts, hasPostLocale } from '@/lib/blog';
 
-const BASE_URL = 'https://sparkrobinai.io';
+const BASE_URL = 'https://sparkrobin.app';
 
 const publicPages = [
   '',
@@ -19,8 +19,7 @@ const publicPages = [
 
 const getLocalizedUrl = (page: string, locale: string) => {
   if (locale === 'en') {
-    if (!page) return `${BASE_URL}/en`;
-    return page ? `${BASE_URL}/${page}` : BASE_URL;
+    return page ? `${BASE_URL}/${page}` : `${BASE_URL}/`;
   }
 
   return page ? `${BASE_URL}/${locale}/${page}` : `${BASE_URL}/${locale}/`;

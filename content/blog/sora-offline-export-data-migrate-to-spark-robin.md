@@ -1,6 +1,6 @@
 ---
 title: "Sora is Officially Offline: How to Export Your Data and Migrate to Spark Robin"
-description: "A practical Sora discontinuation guide for creators: key shutdown dates, how to export Sora videos, how to preserve prompts, and how to rebuild your workflow in sparkrobinai.io."
+description: "A practical Sora discontinuation guide for creators: key shutdown dates, how to export Sora videos, how to preserve prompts, and how to rebuild your workflow in sparkrobin.app."
 date: "2026-04-30"
 author: "Spark Robin Team"
 tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Spark Robin", "ai-video"]
@@ -13,7 +13,7 @@ featured: true
 - OpenAI says the **Sora API will be discontinued on September 24, 2026**.
 - If you created Sora content, export it now. OpenAI says Sora data will be permanently deleted after discontinuation and any final export window.
 - For migration, do not only save video files. Save prompts, aspect ratios, reference images, seed notes, shot lists, and review notes.
-- sparkrobinai.io can replace the everyday creative workflow around prompt writing, image-to-video, multi-scene planning, and ad-ready exports, even while official model names and platform specs continue to change.
+- sparkrobin.app can replace the everyday creative workflow around prompt writing, image-to-video, multi-scene planning, and ad-ready exports, even while official model names and platform specs continue to change.
 
 ## Sora Shutdown Timeline
 
@@ -96,7 +96,7 @@ Most Sora users are not simply looking for another toy. They need a replacement 
 - Building multi-scene drafts for campaigns
 - Iterating prompts quickly without rebuilding a whole production stack
 
-That is where sparkrobinai.io is positioned. It gives creators a practical workspace for **Spark Robin text-to-video**, **Spark Robin image-to-video**, and longer storyboard-style workflows from one site.
+That is where sparkrobin.app is positioned. It gives creators a practical workspace for **Spark Robin text-to-video**, **Spark Robin image-to-video**, and longer storyboard-style workflows from one site.
 
 The migration question is less "which model name wins this week?" and more "which workflow lets my team keep publishing?" For most creators, the priority is continuity: stable prompts, reusable creative direction, fast exports, and fewer dead ends when a product changes access rules.
 
@@ -108,7 +108,7 @@ Sora prompts often worked well when they described a rich scene in one cinematic
 
 > A sleek electric bicycle moves through a rainy neon city at night, cinematic lighting, reflections on the street, dramatic camera movement, premium commercial style.
 
-### sparkrobinai.io-Ready Prompt
+### sparkrobin.app-Ready Prompt
 
 ```text
 Subject: a matte black electric bicycle with visible frame details

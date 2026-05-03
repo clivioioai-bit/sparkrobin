@@ -20,8 +20,8 @@ export async function generateMetadata({
   }
 
   const url = locale === 'en'
-    ? `https://sparkrobinai.io/blog/${post.slug}`
-    : `https://sparkrobinai.io/${locale}/blog/${post.slug}`;
+    ? `https://sparkrobin.app/blog/${post.slug}`
+    : `https://sparkrobin.app/${locale}/blog/${post.slug}`;
   const hasLocalizedContent = hasPostLocale(post.slug, locale);
 
   return {
@@ -30,7 +30,7 @@ export async function generateMetadata({
     alternates: hasLocalizedContent
       ? generateHreflangAlternates(`/blog/${post.slug}`, locale, getAvailablePostLocales(post.slug))
       : {
-        canonical: `https://sparkrobinai.io/blog/${post.slug}`,
+        canonical: `https://sparkrobin.app/blog/${post.slug}`,
       },
     robots: hasLocalizedContent ? undefined : {
       index: false,

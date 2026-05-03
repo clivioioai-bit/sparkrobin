@@ -104,7 +104,7 @@
     }
   },
   "footer": {
-    "description": "sparkrobinai.io 是独立的 Spark Robin 发布观察与 AI 视频工作流站点，帮助创作者和团队整理提示词、参考素材、分镜草稿和可复盘的创作流程。",
+    "description": "sparkrobin.app 是独立的 Spark Robin 发布观察与 AI 视频工作流站点，帮助创作者和团队整理提示词、参考素材、分镜草稿和可复盘的创作流程。",
     "product": "产品",
     "company": "公司",
     "resources": "资源",
@@ -120,13 +120,13 @@
     "refundPolicy": "退款政策",
     "support247": "24/7 支持",
     "contactUs": "联系我们 / 合作",
-    "disclaimer": "sparkrobinai.io 是独立的 Spark Robin 发布观察与 AI 视频工作流站点。我们与 Google、Google DeepMind、OpenAI 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
+    "disclaimer": "sparkrobin.app 是独立的 Spark Robin 发布观察与 AI 视频工作流站点。我们与 Google、Google DeepMind、OpenAI 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
     "poweredBy": "面向 Spark Robin 关注者的独立创作工作流与资料整理站点。",
     "copyright": "© 2024 Spark Robin. 保留所有权利。",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24/7 支持: support@sparkrobinai.io",
-    "businessEmail": "商务与合作: support@sparkrobinai.io",
+    "supportEmail": "24/7 支持: support@sparkrobin.app",
+    "businessEmail": "商务与合作: support@sparkrobin.app",
     "logoAlt": "Spark Robin 工作流实验室标志",
     "socialLabels": {
       "twitter": "在 Twitter 上关注我们",
@@ -243,8 +243,8 @@
     "haveMoreQuestions": "还有更多问题？我们随时为您提供帮助。",
     "questions": {
       "whatMakesDifferent": {
-        "question": "sparkrobinai.io 是什么？",
-        "answer": "sparkrobinai.io 是独立的 Spark Robin 发布观察与 AI 视频工作流站点。我们帮助创作者整理模型动态、提示词、参考素材和分镜草稿，但不代表 Google、Google DeepMind 或任何官方模型团队。"
+        "question": "sparkrobin.app 是什么？",
+        "answer": "sparkrobin.app 是独立的 Spark Robin 发布观察与 AI 视频工作流站点。我们帮助创作者整理模型动态、提示词、参考素材和分镜草稿，但不代表 Google、Google DeepMind 或任何官方模型团队。"
       },
       "characterConsistency": {
         "question": "Spark Robin 已经正式发布了吗？",
@@ -323,7 +323,7 @@
       "tryAgainLater": "请稍后再试。",
       "failedToCreatePaymentLink": "创建支付链接失败",
       "needHelp": "需要帮助？",
-      "contactSupport": "联系 support@sparkrobinai.io 获取帮助。",
+      "contactSupport": "联系 support@sparkrobin.app 获取帮助。",
       "contactSupportLink": "联系支持",
       "features": {
         "creditsIncluded": "包含 {count} 积分",
@@ -416,8 +416,8 @@
       "answer": "订阅存储桶在每个计费期重置，不会结转。一次性附加积分转到灵活存储桶，不会被订阅重置清除。"
     },
     "faqRefundPolicy": {
-      "question": "sparkrobinai.io 的退款政策是什么？",
-      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@sparkrobinai.io 退款。退款在 5-7 个工作日内处理。"
+      "question": "sparkrobin.app 的退款政策是什么？",
+      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@sparkrobin.app 退款。退款在 5-7 个工作日内处理。"
     },
     "faqContentRestrictions": {
       "question": "是否有视频内容限制？",
@@ -494,7 +494,7 @@
     },
     "howToUseTitle": "如何准备文本转视频草稿",
     "howToUseStep1": {
-      "title": "注册或登录 sparkrobinai.io",
+      "title": "注册或登录 sparkrobin.app",
       "description": "创建账户后，可以保存提示词、草稿和生成历史。"
     },
     "howToUseStep2": {
@@ -533,7 +533,7 @@
     },
     "imageToVideoHowToUseTitle": "如何准备图片转视频草稿",
     "imageToVideoHowToUseStep1": {
-      "title": "注册或登录 sparkrobinai.io",
+      "title": "注册或登录 sparkrobin.app",
       "description": "创建账户后，可以保存参考素材、提示词版本和草稿历史。"
     },
     "imageToVideoHowToUseStep2": {

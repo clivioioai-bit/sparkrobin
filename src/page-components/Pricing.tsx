@@ -46,7 +46,7 @@ const PricingPage = () => {
       <SEOHead 
         title="Pricing Plans - Choose Your AI Video Generation Plan | Spark Robin"
         description="View plans for Spark Robin workflow credits, prompt tests, reference-led video drafts, and ongoing AI video iteration."
-        canonical="https://sparkrobinai.io/pricing"
+        canonical="https://sparkrobin.app/pricing"
       />
       
       <div className="pt-20 pb-16">

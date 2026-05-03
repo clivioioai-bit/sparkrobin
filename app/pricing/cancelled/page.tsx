@@ -43,10 +43,10 @@ export default function PaymentCancelledPage() {
           <p className="text-sm text-muted-foreground">
             Need help? Contact us at{" "}
             <a 
-              href="mailto:support@sparkrobinai.io?subject=Payment Question" 
+              href="mailto:support@sparkrobin.app?subject=Payment Question" 
               className="text-primary hover:underline"
             >
-              support@sparkrobinai.io
+              support@sparkrobin.app
             </a>
           </p>
         </div>
