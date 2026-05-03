@@ -3,6 +3,8 @@ import { ensureProvisionedUser } from '@/lib/account-provisioning';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { rateLimit, authRateLimiter } from '@/lib/rate-limiter';
 
+export const maxDuration = 10;
+
 export async function POST(request: NextRequest) {
   try {
     // Rate limiting check (5 attempts per 15 minutes per IP)

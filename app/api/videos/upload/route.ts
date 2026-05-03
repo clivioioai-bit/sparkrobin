@@ -4,6 +4,7 @@ import { createServerClient } from '@supabase/ssr';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
 
 export const runtime = 'nodejs';
+export const maxDuration = 60;
 
 export async function POST(request: NextRequest) {
   try {
