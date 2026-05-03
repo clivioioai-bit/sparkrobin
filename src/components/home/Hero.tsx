@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from 'react';
-import { Play, Image as ImageIcon, Sparkles } from 'lucide-react';
+import { Play, Sparkles, Tags } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/routing';
@@ -121,18 +121,18 @@ const Hero = () => {
                 className="glass-button-gradient w-full text-sm sm:text-base px-8 py-5 sm:py-6 text-white hover:scale-[1.02] transition-all duration-300 font-semibold rounded-xl"
               >
                 <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" />
-                {t('trySora3')}
+                Start Creating
               </Button>
             </Link>
 
-            <Link href="/spark-robin-image-to-video" className="w-full sm:w-auto">
+            <Link href="/pricing" className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="lg"
                 className="glass-chip w-full text-sm sm:text-base px-8 py-5 sm:py-6 text-white hover:bg-white/[0.12] hover:border-white/[0.25] hover:scale-[1.02] transition-all duration-300 font-medium rounded-xl"
               >
-                <ImageIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                {t('trySora2')}
+                <Tags className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                See Price
               </Button>
             </Link>
           </div>
