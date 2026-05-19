@@ -15,7 +15,7 @@ User-agent: msnbot-media
 Allow: /
 Crawl-delay: 1
 
-Sitemap: https://sparkrobin.app/sitemap.xml
+Sitemap: https://omniflashai.io/sitemap.xml
 
 Disallow: /api/
 Disallow: /admin/
@@ -24,11 +24,11 @@ Disallow: /payment/
 Disallow: /pricing/cancelled
 
 Allow: /_next/static/
-Allow: /spark-robin-text-to-video
-Allow: /spark-robin-storyboard
+Allow: /gemini-omni-flash-text-to-video
+Allow: /gemini-omni-flash-storyboard
 Allow: /multi-scene
-Allow: /spark-robin-image-to-video
-Allow: /spark-robin-video-generator
+Allow: /gemini-omni-flash-image-to-video
+Allow: /gemini-omni-flash-video-generator
 Allow: /pricing
 Allow: /blog
 Allow: /faq

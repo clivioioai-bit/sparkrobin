@@ -60,7 +60,7 @@ const NotFound = () => {
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
               <Link
-                href="/spark-robin-text-to-video"
+                href="/gemini-omni-flash-text-to-video"
                 className="text-sm text-primary hover:underline"
               >
                 Text to Video

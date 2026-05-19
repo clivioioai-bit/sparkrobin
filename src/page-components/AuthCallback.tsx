@@ -44,7 +44,7 @@ const AuthCallback = () => {
         if (data.session) {
           console.log('Authentication successful:', data.session.user.email);
           setStatus('success');
-          router.replace('/spark-robin-text-to-video');
+          router.replace('/gemini-omni-flash-text-to-video');
         } else {
           console.log('No session found');
           setStatus('error');

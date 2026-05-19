@@ -6,7 +6,7 @@ export type GenerationWorkflow =
   | 'image-editor';
 
 export type GenerationModelId =
-  | 'spark-robin-fast'
+  | 'gemini-omni-flash-fast'
   | 'veo31-fast'
   | 'veo31-quality'
   | 'nano-banana'
@@ -24,9 +24,9 @@ export interface GenerationModelOption {
 
 export const generationModels: GenerationModelOption[] = [
   {
-    id: 'spark-robin-fast',
-    label: 'Spark Robin Fast',
-    description: 'Spark Robin branding on the frontend, powered by the Veo3.1 fast backend.',
+    id: 'gemini-omni-flash-fast',
+    label: 'Gemini Omni Flash Fast',
+    description: 'Gemini Omni Flash branding on the frontend, powered by the Veo3.1 fast backend.',
     iconSrc: '/images/google_veo_logo.jpeg',
     workflows: ['text-to-video', 'image-to-video', 'video-to-video'],
     creditCost: 60,
@@ -113,19 +113,19 @@ export const getVideoGenerationCreditCost = ({
 export interface VideoModelState {
   model?: string;
   veo3SubModel?: 'veo3_fast' | 'veo3';
-  veoDisplayModel?: 'spark-robin' | 'veo3.1';
+  veoDisplayModel?: 'gemini-omni-flash' | 'veo3.1';
 }
 
 export interface VideoModelPatch {
   model: 'veo3.1';
   veo3SubModel?: 'veo3_fast' | 'veo3';
-  veoDisplayModel?: 'spark-robin' | 'veo3.1';
+  veoDisplayModel?: 'gemini-omni-flash' | 'veo3.1';
 }
 
 export const getVideoModelId = (state: VideoModelState): GenerationModelId => {
   if (state.veoDisplayModel === 'veo3.1' && state.veo3SubModel === 'veo3') return 'veo31-quality';
   if (state.veoDisplayModel === 'veo3.1') return 'veo31-fast';
-  return 'spark-robin-fast';
+  return 'gemini-omni-flash-fast';
 };
 
 export const getVideoModelPatch = (id: GenerationModelId): VideoModelPatch => {
@@ -148,6 +148,6 @@ export const getVideoModelPatch = (id: GenerationModelId): VideoModelPatch => {
   return {
     model: 'veo3.1',
     veo3SubModel: 'veo3_fast',
-    veoDisplayModel: 'spark-robin',
+    veoDisplayModel: 'gemini-omni-flash',
   };
 };

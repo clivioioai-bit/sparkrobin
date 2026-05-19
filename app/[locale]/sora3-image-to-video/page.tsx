@@ -2,11 +2,11 @@ import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-export default async function LegacyLocalizedSparkRobinImageToVideoPage({
+export default async function LegacyLocalizedGeminiOmniFlashImageToVideoPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  redirect(`/${locale}/spark-robin-image-to-video`);
+  redirect(`/${locale}/gemini-omni-flash-image-to-video`);
 }

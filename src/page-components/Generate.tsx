@@ -46,7 +46,7 @@ const createDefaultSora3Params = (): Sora3Params => ({
   style: 'realistic',
   n_frames: '10',
   model: 'veo3.1',
-  veoDisplayModel: 'spark-robin',
+  veoDisplayModel: 'gemini-omni-flash',
   veo3SubModel: 'veo3_fast',
 });
 
@@ -57,7 +57,7 @@ const createDefaultReframeParams = (): ReframeParams => ({
   speed: 'normal',
   model: 'veo3.1',
   veo3SubModel: 'veo3_fast', // Default to fast for image-to-video
-  veoDisplayModel: 'spark-robin',
+  veoDisplayModel: 'gemini-omni-flash',
   n_frames: '10'
 });
 
@@ -73,11 +73,11 @@ const Generate = () => {
   const { hasActiveSubscription } = useSubscription();
   const isMobile = useIsMobile();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
+
   // Sample video state
   const [sampleVideo, setSampleVideo] = useState<SampleVideo | null>(null);
   const [showingSample, setShowingSample] = useState(false);
-  
+
   // Mode state
   const [generationMode, setGenerationMode] = useState<GenerationMode>('text-to-video');
   const [modeParams, setModeParamsState] = useState<ModeParams>(() => ({
@@ -117,17 +117,17 @@ const Generate = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const routeFromMode = useCallback((mode: GenerationMode) => (
-    mode === 'image-to-video' ? '/spark-robin-image-to-video' : '/spark-robin-text-to-video'
+    mode === 'image-to-video' ? '/gemini-omni-flash-image-to-video' : '/gemini-omni-flash-text-to-video'
   ), []);
 
   const modeFromPathname = useCallback((path: string): GenerationMode => (
-    path?.startsWith('/spark-robin-image-to-video') ? 'image-to-video' : 'text-to-video'
+    path?.startsWith('/gemini-omni-flash-image-to-video') ? 'image-to-video' : 'text-to-video'
   ), []);
 
   const handleModeChange = useCallback(
@@ -185,16 +185,16 @@ const Generate = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   const [pendingCost, setPendingCost] = useState<number | undefined>(undefined);
-  
+
   // Job management state
   const [jobs, setJobs] = useState<Job[]>([]);
   const [currentJob, setCurrentJob] = useState<Job | undefined>(undefined);
   const [isGenerating, setIsGenerating] = useState(false);
-  
+
   // Auth modal state
   const [showAuthModal, setShowAuthModal] = useState(false);
   // subscription modal removed for generation gating
-  
+
   // Watermark remover state
   const [videoUrl, setVideoUrl] = useState('https://sora.chatgpt.com/p/s_68e83bd7eee88191be79d2ba7158516f');
   const [outputUrl, setOutputUrl] = useState<string | undefined>(undefined);
@@ -202,9 +202,9 @@ const Generate = () => {
   const [watermarkError, setWatermarkError] = useState<string | undefined>(undefined);
   const [isRunning, setIsRunning] = useState(false);
   const [showBalanceDialog, setShowBalanceDialog] = useState(false);
-  
+
   const userCredits = subscription?.credits || 0;
-  
+
   const isValid = useMemo(() => /^https:\/\/sora\.chatgpt\.com\//.test(videoUrl.trim()), [videoUrl]);
 
   // Get sample video based on generation mode (consistent with home page)
@@ -248,10 +248,10 @@ const Generate = () => {
   // Load sample video on mount for all users
   // Also check for prompt from URL query parameter
   useEffect(() => {
-    
+
     // Check if prompt is provided in URL
     const urlPrompt = searchParams?.get('prompt');
-    
+
     // Pre-fill the prompt with URL parameter if available, otherwise keep empty
     if (urlPrompt) {
       setModeParams(prev => {
@@ -267,12 +267,12 @@ const Generate = () => {
         return prev;
       });
     }
-    
+
     // Clean up URL parameter after reading
     if (urlPrompt) {
       const newSearchParams = new URLSearchParams(searchParams?.toString() || '');
       newSearchParams.delete('prompt');
-      const newUrl = newSearchParams.toString() 
+      const newUrl = newSearchParams.toString()
         ? `${pathname}?${newSearchParams.toString()}`
         : pathname;
       router.replace(newUrl);
@@ -282,7 +282,7 @@ const Generate = () => {
   // Polling for job updates
   const onJobUpdate = useCallback((updatedJob: Job) => {
     const prevJob = jobs.find(j => j.jobId === updatedJob.jobId);
-    
+
     console.log('🔄 onJobUpdate called:', {
       jobId: updatedJob.jobId,
       status: updatedJob.status,
@@ -297,35 +297,35 @@ const Generate = () => {
       currentJobHasUrl: !!currentJob?.result_url,
       willUpdateCurrentJob: currentJob?.jobId === updatedJob.jobId || (!currentJob && (updatedJob.status === 'SUCCEEDED' || !!updatedJob.result_url))
     });
-    
+
     // Update jobs list
-    setJobs(prevJobs => 
-      prevJobs.map(job => 
+    setJobs(prevJobs =>
+      prevJobs.map(job =>
         job.jobId === updatedJob.jobId ? updatedJob : job
       )
     );
-    
+
     // Update current job if it's the one being updated
     // 关键修复：只要有result_url，就应该更新currentJob，无论状态如何
-    const hasResultUrl = !!updatedJob.result_url && 
-                        typeof updatedJob.result_url === 'string' && 
+    const hasResultUrl = !!updatedJob.result_url &&
+                        typeof updatedJob.result_url === 'string' &&
                         updatedJob.result_url.trim().length > 0;
-    
+
     // 检查是否是当前job或者应该设置为当前job
     const isCurrentJob = currentJob?.jobId === updatedJob.jobId;
-    const currentJobHasResultUrl = !!currentJob?.result_url && 
-                                   typeof currentJob.result_url === 'string' && 
+    const currentJobHasResultUrl = !!currentJob?.result_url &&
+                                   typeof currentJob.result_url === 'string' &&
                                    currentJob.result_url.trim().length > 0;
-    
+
     // 修复：放宽更新条件
     // 1. 如果是当前job，总是更新
     // 2. 如果没有currentJob，且新job有result_url或状态是SUCCEEDED，设置为currentJob
     // 3. 如果新job有result_url，且当前job没有result_url，更新为新的job（即使不是同一个job）
     const shouldSetAsCurrent = !currentJob && (updatedJob.status === 'SUCCEEDED' || hasResultUrl);
-    const shouldUpdateCurrent = isCurrentJob || 
+    const shouldUpdateCurrent = isCurrentJob ||
                                 (currentJob && hasResultUrl && currentJob.jobId === updatedJob.jobId) ||
                                 (hasResultUrl && !currentJobHasResultUrl);
-    
+
     console.log('🔍 onJobUpdate currentJob check:', {
       jobId: updatedJob.jobId,
       currentJobId: currentJob?.jobId,
@@ -336,11 +336,11 @@ const Generate = () => {
       currentJobHasResultUrl: currentJobHasResultUrl,
       status: updatedJob.status,
       resultUrl: updatedJob.result_url ? updatedJob.result_url.substring(0, 80) + '...' : 'N/A',
-      updateReason: isCurrentJob ? 'isCurrentJob' : 
+      updateReason: isCurrentJob ? 'isCurrentJob' :
                     (currentJob && hasResultUrl && currentJob.jobId === updatedJob.jobId) ? 'sameJobWithResultUrl' :
                     (hasResultUrl && !currentJobHasResultUrl) ? 'newJobHasResultUrl' : 'none'
     });
-    
+
     if (shouldUpdateCurrent || shouldSetAsCurrent) {
       console.log('✅ Updating currentJob:', {
         jobId: updatedJob.jobId,
@@ -389,13 +389,13 @@ const Generate = () => {
     if (!isAuthenticated || !user) {
       return;
     }
-    
+
     // Only load jobs if user ID changed (not just reference)
     const userId = user.id;
     if (lastLoadedUserIdRef.current === userId) {
       return;
     }
-    
+
     const loadJobs = async () => {
       try {
         // Only load recent jobs to reduce polling overhead
@@ -407,14 +407,14 @@ const Generate = () => {
         console.error('Failed to load jobs:', error);
       }
     };
-    
+
     loadJobs();
   }, [isAuthenticated, user?.id]);
 
   // Form validation
   const validateForm = useCallback((): FormErrors => {
     const newErrors: FormErrors = {};
-    
+
     switch (modeParams.mode) {
       case 'text-to-video': {
         const params = modeParams.params;
@@ -439,7 +439,7 @@ const Generate = () => {
         }
         break;
       }
-      
+
       case 'image-to-video': {
         const params = modeParams.params;
         if (params.model === 'veo3.1') {
@@ -462,7 +462,7 @@ const Generate = () => {
         break;
       }
     }
-    
+
     return newErrors;
   }, [modeParams]);
 
@@ -473,7 +473,7 @@ const Generate = () => {
       setShowAuthModal(true);
       return;
     }
-    
+
     // Validate form first (check prompt/image)
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
@@ -484,7 +484,7 @@ const Generate = () => {
       setErrors(validationErrors);
       return;
     }
-    
+
     // Check credits balance using unified credit calculator
     const sora3Params = modeParams.mode === 'text-to-video' ? (modeParams.params as Sora3Params) : null;
     const reframeParams = modeParams.mode === 'image-to-video' ? (modeParams.params as ReframeParams) : null;
@@ -516,14 +516,14 @@ const Generate = () => {
       setShowSubscriptionModal(true);
       return;
     }
-    
+
     setErrors({});
     setIsGenerating(true);
     setShowingSample(false); // 关键修复：生成开始时立即隐藏示例视频
 
     try {
       let request: CreateJobRequest;
-      
+
       // Convert mode-specific params to CreateJobRequest
       if (modeParams.mode === 'text-to-video' && (modeParams.params as Sora3Params).model === 'storyboard') {
         // Storyboard generation — uses separate /api/storyboard/generate endpoint
@@ -630,7 +630,7 @@ const Generate = () => {
       // Add to jobs list and set as current job
       setJobs(prevJobs => [newJob, ...prevJobs]);
       setCurrentJob(newJob);
-      
+
       // Start polling for this job
       try {
         startPolling(response.jobId);
@@ -638,7 +638,7 @@ const Generate = () => {
         console.error('Failed to start polling:', pollingError);
         // 不抛出错误，因为任务已经创建成功
       }
-      
+
     } catch (error) {
       // 首先立即记录原始错误，避免在提取过程中丢失信息
       // 使用更安全的方式记录错误，避免序列化问题
@@ -648,7 +648,7 @@ const Generate = () => {
         isNull: error === null,
         isUndefined: error === undefined,
       };
-      
+
       if (error instanceof Error) {
         errorInfo.name = error.name;
         errorInfo.message = error.message;
@@ -663,7 +663,7 @@ const Generate = () => {
         } catch (e) {
           errorInfo.keysError = e instanceof Error ? e.message : String(e);
         }
-        
+
         // 尝试获取常见错误属性
         if ('message' in error) errorInfo.message = (error as any).message;
         if ('error' in error) errorInfo.error = (error as any).error;
@@ -673,14 +673,14 @@ const Generate = () => {
       } else {
         errorInfo.rawValue = String(error);
       }
-      
+
       console.error('[ERROR] Raw error caught:', errorInfo);
-      
+
       // 提取错误信息，处理各种错误类型
       let errorMessage = 'Failed to create generation job';
       let errorDetails: any = { _rawError: error };
       let errorType = 'unknown';
-      
+
       try {
         if (error === null || error === undefined) {
           errorMessage = 'Error is null or undefined';
@@ -706,11 +706,11 @@ const Generate = () => {
           } catch {
             errorType = typeof error;
           }
-          
+
           // 获取所有可枚举的属性
           const errorKeys = Object.keys(error as any);
           const errorEntries = Object.entries(error as any);
-          
+
           // 尝试从对象中提取错误信息
           const possibleMessages = [
             (error as any).message,
@@ -720,16 +720,16 @@ const Generate = () => {
             (error as any).toString?.(),
             String(error)
           ].filter(Boolean);
-          
+
           errorMessage = possibleMessages[0] || `Object error with ${errorKeys.length} keys`;
-          
+
           // 安全地序列化错误对象，处理循环引用
           try {
             const seen = new WeakSet();
-            const safeEntries = errorEntries.filter(([key]) => 
+            const safeEntries = errorEntries.filter(([key]) =>
               !['request', 'response', 'config', 'stack', 'cause'].includes(key)
             );
-            
+
             // 提取所有可序列化的属性
             const serializableProps: any = {};
             for (const [key, value] of safeEntries) {
@@ -750,7 +750,7 @@ const Generate = () => {
                 serializableProps[key] = '[Cannot serialize]';
               }
             }
-            
+
             errorDetails = {
               keys: errorKeys,
               entryCount: safeEntries.length,
@@ -779,7 +779,7 @@ const Generate = () => {
         } else {
           errorType = typeof error;
           errorMessage = String(error);
-          errorDetails = { 
+          errorDetails = {
             type: errorType,
             raw: error,
             stringified: String(error)
@@ -795,7 +795,7 @@ const Generate = () => {
           originalErrorType: typeof error
         };
       }
-      
+
       console.error('Failed to create job:', {
         errorMessage,
         errorDetails,
@@ -817,7 +817,7 @@ const Generate = () => {
         try {
           const errorData = JSON.parse(errorMessage);
           if (errorData.required && errorData.available !== undefined) {
-            setErrors({ 
+            setErrors({
               prompt: tGenerate('insufficientCreditsWithDetails', {
                 required: errorData.required,
                 available: errorData.available,
@@ -833,7 +833,7 @@ const Generate = () => {
       } else if (errorMessage.includes('upload') || errorMessage.includes('video') || errorMessage.includes('bucket') || errorMessage.includes('reference image') || errorMessage.includes('Reference image')) {
         // 检查是否是 bucket 不存在的错误
         if (errorMessage.includes('bucket') || errorMessage.includes('Bucket not found')) {
-          setErrors({ 
+          setErrors({
             reference_image: tGenerate('storageBucketNotConfigured')
           });
         } else {
@@ -841,7 +841,7 @@ const Generate = () => {
         }
       } else if (errorMessage.includes('credit') || errorMessage.includes('Failed to deduct credits')) {
         // 提供更详细的错误信息
-        const detailedError = errorMessage.includes('Failed to deduct credits') 
+        const detailedError = errorMessage.includes('Failed to deduct credits')
           ? tGenerate('creditDeductionFailed', { error: errorMessage })
           : tGenerate('creditSystemError', { error: errorMessage });
         setErrors({ prompt: detailedError });
@@ -863,20 +863,20 @@ const Generate = () => {
       setShowAuthModal(true);
       return;
     }
-    
+
     // Check credits balance
     if (userCredits <= 0) {
-      setErrors({ 
+      setErrors({
         prompt: tGenerate('insufficientCreditsRetry')
       });
       return;
     }
-    
+
     setErrors({});
-    
+
     try {
       const mode: GenerationMode = job.params.reference_image_url ? 'image-to-video' : 'text-to-video';
-      
+
       // 调试：检查重试参数
       console.log('🔄 Retry parameters:', {
         mode,
@@ -886,7 +886,7 @@ const Generate = () => {
         hasAspectRatio: !!job.params.aspect_ratio,
         hasReferenceImage: !!job.params.reference_image_url
       });
-      
+
       const response = await videoApi.createJob(job.params, videoApiModeFromWorkflow(mode));
 
       const retryCost = getVideoGenerationCreditCost({
@@ -913,7 +913,7 @@ const Generate = () => {
     } catch (error) {
       console.error('Failed to retry job:', error);
       const errorMessage = error instanceof Error ? error.message : 'Failed to retry job';
-      
+
       if (errorMessage.includes('credit')) {
         setErrors({ prompt: 'Insufficient credits. Please purchase more credits.' });
       } else {
@@ -926,7 +926,7 @@ const Generate = () => {
   const handleCancel = useCallback(async (jobId: string) => {
     try {
       await videoApi.cancelJob(jobId);
-      
+
       setJobs(prevJobs =>
         prevJobs.map(job =>
           job.jobId === jobId
@@ -1026,9 +1026,9 @@ const Generate = () => {
     setOutputUrl(undefined);
 
     if (!isAuthenticated) { setShowAuthModal(true); return; }
-    if (!hasActiveSubscription) { 
-      setShowSubscriptionModal(true); 
-      return; 
+    if (!hasActiveSubscription) {
+      setShowSubscriptionModal(true);
+      return;
     }
     if (!isValid) {
       setWatermarkError(tGenerate('errors.invalidSoraUrl'));
@@ -1036,10 +1036,10 @@ const Generate = () => {
     }
 
     // Pre-check: requires 10 credits
-    if ((subscription?.credits || 0) < 10) { 
-      setPendingCost(10); 
-      setShowBalanceDialog(true); 
-      return; 
+    if ((subscription?.credits || 0) < 10) {
+      setPendingCost(10);
+      setShowBalanceDialog(true);
+      return;
     }
 
     setIsRunning(true);
@@ -1051,40 +1051,40 @@ const Generate = () => {
         try {
           const session = await (await import('@/lib/supabase')).supabase.auth.getSession();
           const token = session.data.session?.access_token;
-          
+
           if (!token) {
             throw new Error('Authentication required');
           }
 
           let resp: Response;
           try {
-            resp = await fetch(`/api/kie/status/${res.jobId}`, { 
-              headers: { 
-                'Authorization': `Bearer ${token}` 
-              }, 
-              cache: 'no-store' 
+            resp = await fetch(`/api/kie/status/${res.jobId}`, {
+              headers: {
+                'Authorization': `Bearer ${token}`
+              },
+              cache: 'no-store'
             });
           } catch (fetchError) {
             // Handle network errors (CORS, connection refused, etc.)
-            const errorMessage = fetchError instanceof Error 
-              ? fetchError.message 
+            const errorMessage = fetchError instanceof Error
+              ? fetchError.message
               : (typeof fetchError === 'string' ? fetchError : 'Network error occurred');
-            
+
             console.error('Fetch error in watermark polling:', {
               error: errorMessage,
               url: `/api/kie/status/${res.jobId}`,
               isNetworkError: errorMessage.includes('fetch') || errorMessage.includes('network')
             });
-            
+
             // Retry on network errors
             throw new Error(`Network error: ${errorMessage}. Retrying...`);
           }
-          
+
           if (!resp.ok) {
             const errorText = await resp.text().catch(() => '');
             throw new Error(`Status HTTP ${resp.status}${errorText ? `: ${errorText}` : ''}`);
           }
-          
+
           let data: any;
           try {
             data = await safeJsonParse(resp);
@@ -1092,14 +1092,14 @@ const Generate = () => {
             console.error('Failed to parse status response:', parseError);
             throw new Error(`Invalid response from server: ${parseError instanceof Error ? parseError.message : String(parseError)}`);
           }
-          
+
           // If video URL is available, consider it completed regardless of status
           if (data.result_url && typeof data.result_url === 'string' && data.result_url.trim().length > 0) {
             setOutputUrl(data.result_url.trim());
             setIsRunning(false);
             return;
           }
-          
+
           // Also handle explicit completed status without URL
           if (data.status === 'completed') {
             if (data.result_url) {
@@ -1111,25 +1111,25 @@ const Generate = () => {
               throw new Error('Task completed but no video URL received');
             }
           }
-          
+
           // Continue polling if not completed
           if (data.status === 'failed' || data.status === 'error') {
             throw new Error(data.error || 'Task failed');
           }
-          
+
           setTimeout(poll, 2000);
         } catch (pollError: any) {
           console.error('Poll error:', pollError);
           const errorMsg = pollError?.message || 'Failed to check status';
-          
+
           // Don't retry on authentication errors or client errors
-          if (pollError?.message?.includes('Authentication') || 
+          if (pollError?.message?.includes('Authentication') ||
               (pollError?.message?.includes('HTTP 4'))) {
             setWatermarkError(errorMsg);
             setIsRunning(false);
             return;
           }
-          
+
           // Retry on network errors
           setTimeout(poll, 2000);
         }
@@ -1151,30 +1151,30 @@ const Generate = () => {
 
   return (
     <div className="min-h-screen bg-background flex">
-      <SEOHead 
-        title={isWatermarkRemover 
+      <SEOHead
+        title={isWatermarkRemover
           ? tGenerate('watermarkRemover.seoTitle')
-          : routeFromMode(generationMode) === '/spark-robin-image-to-video' 
+          : routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video'
           ? tGenerate('imageToVideoTitle')
           : tGenerate('textToVideoTitle')}
         description={isWatermarkRemover
           ? tGenerate('watermarkRemover.seoDescription')
-          : routeFromMode(generationMode) === '/spark-robin-image-to-video'
+          : routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video'
           ? tGenerate('imageToVideoSubtitle')
           : tGenerate('textToVideoSubtitle')}
-        canonical={isWatermarkRemover 
-          ? 'https://sparkrobin.app/watermark-remover'
-          : routeFromMode(generationMode) === '/spark-robin-image-to-video' ? 'https://sparkrobin.app/spark-robin-image-to-video' : 'https://sparkrobin.app/spark-robin-text-to-video'}
+        canonical={isWatermarkRemover
+          ? 'https://omniflashai.io/watermark-remover'
+          : routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video' ? 'https://omniflashai.io/gemini-omni-flash-image-to-video' : 'https://omniflashai.io/gemini-omni-flash-text-to-video'}
         keywords={isWatermarkRemover
-          ? "spark-robin watermark remover,Sora watermark remover,remove watermark sora,watermark removal Sora3"
-          : routeFromMode(generationMode) === '/spark-robin-image-to-video'
-          ? "Spark Robin workspace,Spark Robin studio,Sora video generator,image to video,Spark Robin AI,AI video workflow"
-          : "spark robin,spark robin text to video,spark robin video generator,spark robin ai video generator,text to video ai,cinematic ai video generator"}
+          ? "gemini-omni-flash watermark remover,Sora watermark remover,remove watermark sora,watermark removal Sora3"
+          : routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video'
+          ? "Gemini Omni Flash workspace,Gemini Omni Flash studio,Sora video generator,image to video,Gemini Omni Flash AI,AI video workflow"
+          : "gemini omni flash,gemini omni flash text to video,gemini omni flash video generator,gemini omni flash ai video generator,text to video ai,cinematic ai video generator"}
       />
       <GenerateSidebar open={isSidebarOpen} onOpenChange={setIsSidebarOpen} />
-      
-      <div 
-        className="flex-1 transition-all duration-300 pb-16 bg-background" 
+
+      <div
+        className="flex-1 transition-all duration-300 pb-16 bg-background"
         style={{ marginLeft: !mounted || isMobile ? '0' : 'var(--sidebar-width, 220px)' }}
       >
         {/* Mobile Menu Button */}
@@ -1188,7 +1188,7 @@ const Generate = () => {
             <Menu className="w-5 h-5 text-foreground" />
           </button>
         )}
-        
+
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-[5.25rem] md:pt-20">
           {isWatermarkRemover ? (
             <>
@@ -1274,9 +1274,9 @@ const Generate = () => {
                             {tGenerate('watermarkRemover.exampleVideoDescription')}
                           </p>
                         </div>
-                        
+
                         <div className="aspect-video bg-muted rounded-xl overflow-hidden">
-                          <video 
+                          <video
                             className="w-full h-full object-cover"
                             controls
                             poster={sampleVideo.thumbnailUrl}
@@ -1287,10 +1287,10 @@ const Generate = () => {
                             {tGenerate('watermarkRemover.browserNotSupportVideo')}
                           </video>
                         </div>
-                        
+
                         <div className="flex flex-wrap gap-2">
                           {sampleVideo.tags.map((tag) => (
-                            <span 
+                            <span
                               key={tag}
                               className="text-xs px-3 py-1 bg-muted text-muted-foreground rounded-full"
                             >
@@ -1316,29 +1316,29 @@ const Generate = () => {
 
               {/* Documentation block */}
               <section className="mt-10 mb-16">
-                <h2 className="text-2xl font-bold mb-6">Spark Robin Watermark Remover Documentation</h2>
+                <h2 className="text-2xl font-bold mb-6">Gemini Omni Flash Watermark Remover Documentation</h2>
 
                 {/* Feature rows */}
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                   <div>
-                    <h3 className="text-lg font-semibold">Intelligent Detection in Spark Robin Watermark Remover</h3>
+                    <h3 className="text-lg font-semibold">Intelligent Detection in Gemini Omni Flash Watermark Remover</h3>
                     <p className="text-muted-foreground mt-2">
-                      The <strong>spark-robin watermark remover</strong> detects and tracks static or moving overlays with AI. It pinpoints logos, text and stickers, then reconstructs pixels so colors, motion, and structure stay true to the original.
+                      The <strong>gemini-omni-flash watermark remover</strong> detects and tracks static or moving overlays with AI. It pinpoints logos, text and stickers, then reconstructs pixels so colors, motion, and structure stay true to the original.
                     </p>
                   </div>
                   <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden">
-                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/4.webp" alt="spark-robin watermark remover intelligent detection" className="w-full h-auto" loading="lazy" />
+                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/4.webp" alt="gemini-omni-flash watermark remover intelligent detection" className="w-full h-auto" loading="lazy" />
                   </figure>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-10 items-start mb-12">
                   <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden order-2 md:order-1">
-                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/2.webp" alt="spark-robin watermark remover frame consistent output" className="w-full h-auto" loading="lazy" />
+                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/2.webp" alt="gemini-omni-flash watermark remover frame consistent output" className="w-full h-auto" loading="lazy" />
                   </figure>
                   <div className="order-1 md:order-2">
                     <h3 className="text-lg font-semibold">Remove Watermark with Frame‑Consistent Output</h3>
                     <p className="text-muted-foreground mt-2">
-                      With motion‑aware tracking, the <strong>spark-robin watermark remover</strong> preserves flow and lighting balance. Your clips stay smooth and stable without flicker—ready for export or re‑edit.
+                      With motion‑aware tracking, the <strong>gemini-omni-flash watermark remover</strong> preserves flow and lighting balance. Your clips stay smooth and stable without flicker—ready for export or re‑edit.
                     </p>
                   </div>
                 </div>
@@ -1347,79 +1347,79 @@ const Generate = () => {
                   <div>
                     <h3 className="text-lg font-semibold">Seamless Restoration and Audio Sync</h3>
                     <p className="text-muted-foreground mt-2">
-                      Using AI reconstruction, the <strong>spark-robin watermark remover</strong> fills removed regions naturally, restoring textures and color while keeping audio perfectly in sync for clean, high‑quality Spark Robin videos.
+                      Using AI reconstruction, the <strong>gemini-omni-flash watermark remover</strong> fills removed regions naturally, restoring textures and color while keeping audio perfectly in sync for clean, high‑quality Gemini Omni Flash videos.
                     </p>
                   </div>
                   <figure className="bg-card/80 backdrop-blur-xl border border-border rounded-xl overflow-hidden">
-                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/3.webp" alt="spark-robin watermark remover seamless restoration" className="w-full h-auto" loading="lazy" />
+                    <img src="https://lwugseurlnaogrjjlbqj.supabase.co/storage/v1/object/public/showcase-videos/3.webp" alt="gemini-omni-flash watermark remover seamless restoration" className="w-full h-auto" loading="lazy" />
                   </figure>
                 </div>
 
                 {/* What you can remove */}
-                <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">What You Can Remove Using Spark Robin Watermark Remover</h3>
-                <p className="text-xl text-muted-foreground text-center mb-10">Capabilities of the <strong>spark-robin watermark remover</strong></p>
+                <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">What You Can Remove Using Gemini Omni Flash Watermark Remover</h3>
+                <p className="text-xl text-muted-foreground text-center mb-10">Capabilities of the <strong>gemini-omni-flash watermark remover</strong></p>
                 <div className="grid md:grid-cols-2 gap-8 mb-14">
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
-                    <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Spark Robin</div>
-                    <h4 className="text-xl font-semibold mb-2">Remove Watermark from Spark Robin Video</h4>
-                    <p className="text-muted-foreground">AI tracking clears moving or static overlays while the <strong>spark-robin watermark remover</strong> keeps motion smooth and natural.</p>
+                    <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Gemini Omni Flash</div>
+                    <h4 className="text-xl font-semibold mb-2">Remove Watermark from Gemini Omni Flash Video</h4>
+                    <p className="text-muted-foreground">AI tracking clears moving or static overlays while the <strong>gemini-omni-flash watermark remover</strong> keeps motion smooth and natural.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
-                    <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Spark Robin</div>
-                    <h4 className="text-xl font-semibold mb-2">Remove Watermark from Spark Robin Video</h4>
-                    <p className="text-muted-foreground">Optimized for 1080p/cinematic outputs, the <strong>spark-robin watermark remover</strong> handles embedded or semi‑transparent overlays.</p>
+                    <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Gemini Omni Flash</div>
+                    <h4 className="text-xl font-semibold mb-2">Remove Watermark from Gemini Omni Flash Video</h4>
+                    <p className="text-muted-foreground">Optimized for 1080p/cinematic outputs, the <strong>gemini-omni-flash watermark remover</strong> handles embedded or semi‑transparent overlays.</p>
                   </div>
                 </div>
 
                 {/* Why remove */}
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">Why remove watermarks</h3>
-                <p className="text-xl text-muted-foreground text-center mb-10">Benefits of using the <strong>spark-robin watermark remover</strong></p>
+                <p className="text-xl text-muted-foreground text-center mb-10">Benefits of using the <strong>gemini-omni-flash watermark remover</strong></p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Professional</div>
                     <h4 className="text-xl font-semibold mb-2">Create Clean, Professional Videos</h4>
-                    <p className="text-muted-foreground">The <strong>spark-robin watermark remover</strong> removes visual noise so clips look polished for marketing, social, and presentations.</p>
+                    <p className="text-muted-foreground">The <strong>gemini-omni-flash watermark remover</strong> removes visual noise so clips look polished for marketing, social, and presentations.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Editing</div>
                     <h4 className="text-xl font-semibold mb-2">Prepare Clips for Editing & Reuse</h4>
-                    <p className="text-muted-foreground">Start with a clean base—transitions, grading, and effects work better after the <strong>spark-robin watermark remover</strong> pass.</p>
+                    <p className="text-muted-foreground">Start with a clean base—transitions, grading, and effects work better after the <strong>gemini-omni-flash watermark remover</strong> pass.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="inline-block px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground mb-3">Workflow</div>
                     <h4 className="text-xl font-semibold mb-2">Integrate with AI Workflows</h4>
-                    <p className="text-muted-foreground">Consistent, watermark‑free outputs make it easy to chain the <strong>spark-robin watermark remover</strong> with other AI tools.</p>
+                    <p className="text-muted-foreground">Consistent, watermark‑free outputs make it easy to chain the <strong>gemini-omni-flash watermark remover</strong> with other AI tools.</p>
                   </div>
                 </div>
 
                 {/* How to remove for free */}
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">How to remove for free</h3>
-                <p className="text-xl text-muted-foreground text-center mb-10">Three easy steps with the <strong>spark-robin watermark remover</strong></p>
+                <p className="text-xl text-muted-foreground text-center mb-10">Three easy steps with the <strong>gemini-omni-flash watermark remover</strong></p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">1</div>
                     <h4 className="text-xl font-semibold mb-2">Paste your Sora URL</h4>
-                    <p className="text-muted-foreground">Open the playground and paste your video link; the <strong>spark-robin watermark remover</strong> prepares it for AI detection.</p>
+                    <p className="text-muted-foreground">Open the playground and paste your video link; the <strong>gemini-omni-flash watermark remover</strong> prepares it for AI detection.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">2</div>
                     <h4 className="text-xl font-semibold mb-2">Generate</h4>
-                    <p className="text-muted-foreground">Click once— the <strong>spark-robin watermark remover</strong> detects and removes logos/text across frames.</p>
+                    <p className="text-muted-foreground">Click once— the <strong>gemini-omni-flash watermark remover</strong> detects and removes logos/text across frames.</p>
                   </div>
                   <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold mb-4">3</div>
                     <h4 className="text-xl font-semibold mb-2">Download & integrate</h4>
-                    <p className="text-muted-foreground">Preview and save the clean clip; integrate the <strong>spark-robin watermark remover</strong> into your workflow.</p>
+                    <p className="text-muted-foreground">Preview and save the clean clip; integrate the <strong>gemini-omni-flash watermark remover</strong> into your workflow.</p>
                   </div>
                 </div>
 
                 {/* Use cases */}
                 <h3 className="text-3xl sm:text-4xl font-bold text-center mb-4">Use cases</h3>
-                <p className="text-xl text-muted-foreground text-center mb-10">Where the <strong>spark-robin watermark remover</strong> fits</p>
+                <p className="text-xl text-muted-foreground text-center mb-10">Where the <strong>gemini-omni-flash watermark remover</strong> fits</p>
                 <div className="grid md:grid-cols-3 gap-8 mb-14">
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Publish clean AI videos</h4><p className="text-muted-foreground">Use the <strong>spark-robin watermark remover</strong> before posting to social, YouTube, or portfolios.</p></div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Editing & remix</h4><p className="text-muted-foreground">A clean base from the <strong>spark-robin watermark remover</strong> avoids artifacts in transitions and effects.</p></div>
-                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Automated pipelines</h4><p className="text-muted-foreground">Developers can batch clips through the <strong>spark-robin watermark remover</strong> for consistent results.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Publish clean AI videos</h4><p className="text-muted-foreground">Use the <strong>gemini-omni-flash watermark remover</strong> before posting to social, YouTube, or portfolios.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Editing & remix</h4><p className="text-muted-foreground">A clean base from the <strong>gemini-omni-flash watermark remover</strong> avoids artifacts in transitions and effects.</p></div>
+                  <div className="p-8 border border-border/50 rounded-2xl bg-card/80 backdrop-blur-xl hover:border-primary/20 hover:shadow-lg transition-all"><h4 className="text-xl font-semibold mb-2">Automated pipelines</h4><p className="text-muted-foreground">Developers can batch clips through the <strong>gemini-omni-flash watermark remover</strong> for consistent results.</p></div>
                 </div>
               </section>
 
@@ -1428,33 +1428,33 @@ const Generate = () => {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center mb-10">
                     <h2 className="text-3xl sm:text-4xl font-bold mb-3">Frequently asked <span className="text-primary">questions</span></h2>
-                    <p className="text-xl text-muted-foreground">Quick answers about the <strong>spark-robin watermark remover</strong></p>
+                    <p className="text-xl text-muted-foreground">Quick answers about the <strong>gemini-omni-flash watermark remover</strong></p>
                   </div>
                   <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6">
                     <div className="divide-y divide-border">
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">How do I remove the watermark from a Sora video?</summary>
-                        <div className="text-muted-foreground pt-2">Open the playground, paste the URL, click Generate—the <strong>spark-robin watermark remover</strong> does the rest.</div>
+                        <div className="text-muted-foreground pt-2">Open the playground, paste the URL, click Generate—the <strong>gemini-omni-flash watermark remover</strong> does the rest.</div>
                       </details>
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">Can I use it for free?</summary>
-                        <div className="text-muted-foreground pt-2">Yes—try the <strong>spark-robin watermark remover</strong> with free credits after sign‑up.</div>
+                        <div className="text-muted-foreground pt-2">Yes—try the <strong>gemini-omni-flash watermark remover</strong> with free credits after sign‑up.</div>
                       </details>
                       <details className="group py-3">
-                        <summary className="cursor-pointer font-semibold group-open:text-primary">Does it support Spark Robin videos?</summary>
-                        <div className="text-muted-foreground pt-2">Yes, the <strong>spark-robin watermark remover</strong> handles semi‑transparent overlays in Pro outputs.</div>
+                        <summary className="cursor-pointer font-semibold group-open:text-primary">Does it support Gemini Omni Flash videos?</summary>
+                        <div className="text-muted-foreground pt-2">Yes, the <strong>gemini-omni-flash watermark remover</strong> handles semi‑transparent overlays in Pro outputs.</div>
                       </details>
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">What types of watermarks can be removed?</summary>
-                        <div className="text-muted-foreground pt-2">Logos, text, and overlays—static or moving—via the <strong>spark-robin watermark remover</strong>.</div>
+                        <div className="text-muted-foreground pt-2">Logos, text, and overlays—static or moving—via the <strong>gemini-omni-flash watermark remover</strong>.</div>
                       </details>
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">Does removal affect quality?</summary>
-                        <div className="text-muted-foreground pt-2">The <strong>spark-robin watermark remover</strong> uses reconstruction to keep texture and motion consistent.</div>
+                        <div className="text-muted-foreground pt-2">The <strong>gemini-omni-flash watermark remover</strong> uses reconstruction to keep texture and motion consistent.</div>
                       </details>
                       <details className="group py-3">
                         <summary className="cursor-pointer font-semibold group-open:text-primary">Can I integrate it into my workflow?</summary>
-                        <div className="text-muted-foreground pt-2">Yes, call the API directly or chain Spark Robin with the <strong>spark-robin watermark remover</strong>.</div>
+                        <div className="text-muted-foreground pt-2">Yes, call the API directly or chain Gemini Omni Flash with the <strong>gemini-omni-flash watermark remover</strong>.</div>
                       </details>
                     </div>
                   </div>
@@ -1562,15 +1562,15 @@ const Generate = () => {
                           <span className="font-bold text-accent-foreground/80">{tGenerate('exampleVideo')}</span>
                         </div>
                         <p className="text-sm text-accent-foreground/80">
-                          {isAuthenticated 
+                          {isAuthenticated
                             ? tGenerate('sampleVideoDescription')
                             : tGenerate('sampleVideoDescriptionUnauthenticated')
                           }
                         </p>
                       </div>
-                      
+
                       <div className="aspect-video bg-muted rounded-xl overflow-hidden">
-                        <video 
+                        <video
                           className="w-full h-full object-cover"
                           controls
                           poster={sampleVideo.thumbnailUrl}
@@ -1581,10 +1581,10 @@ const Generate = () => {
                           {tGenerate('browserNotSupportVideo')}
                         </video>
                       </div>
-                      
+
                       <div className="flex flex-wrap gap-2">
                         {sampleVideo.tags.map((tag) => (
-                          <span 
+                          <span
                             key={tag}
                             className="text-xs px-3 py-1 bg-muted text-muted-foreground rounded-full"
                           >
@@ -1592,7 +1592,7 @@ const Generate = () => {
                           </span>
                         ))}
                       </div>
-                      
+
                       {/* Only show signup button for unauthenticated users */}
                       {!isAuthenticated && (
                         <button
@@ -1611,7 +1611,7 @@ const Generate = () => {
                       isGenerating={isGenerating}
                     />
                   )}
-                  
+
                   {/* History Button */}
                   <div className="mt-4">
                     <Button
@@ -1630,47 +1630,47 @@ const Generate = () => {
             {/* Page Header with H1 - below the functional area */}
             <header className="text-center mt-10 mb-8">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                {routeFromMode(generationMode) === '/spark-robin-image-to-video'
+                {routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video'
                   ? tGenerate('imageToVideoPageTitle')
                   : tGenerate('textToVideoTitle')}
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {routeFromMode(generationMode) === '/spark-robin-image-to-video'
+                {routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video'
                   ? tGenerate('imageToVideoPageSubtitle')
                   : tGenerate('textToVideoSubtitle')}
               </p>
             </header>
 
             {/* Marketing Content - Only for text-to-video */}
-            {routeFromMode(generationMode) === '/spark-robin-text-to-video' && (
+            {routeFromMode(generationMode) === '/gemini-omni-flash-text-to-video' && (
               <>
                 <section className="mt-10 mb-12 max-w-5xl mx-auto">
                   <div className="rounded-2xl border border-border bg-card/70 backdrop-blur-xl p-8 md:p-10">
                     <h2 className="text-3xl font-bold text-foreground mb-5 text-center">
-                      Spark Robin Text to Video for Fast, Searchable, Ad-Ready AI Video
+                      Gemini Omni Flash Text to Video for Fast, Searchable, Ad-Ready AI Video
                     </h2>
                     <div className="space-y-4 text-muted-foreground leading-7 text-base">
                       <p>
-                        <strong>Spark Robin</strong> helps teams turn a simple prompt into a polished clip without building a full production workflow. This text to video page is designed for creators, advertisers, and product teams that need cinematic motion, clear scene intent, and quick turnaround from one interface.
+                        <strong>Gemini Omni Flash</strong> helps teams turn a simple prompt into a polished clip without building a full production workflow. This text to video page is designed for creators, advertisers, and product teams that need cinematic motion, clear scene intent, and quick turnaround from one interface.
                       </p>
                       <p>
-                        You can write a short concept, shape the ratio for social or landscape delivery, and generate a <strong>Spark Robin</strong> video suited for product launches, landing pages, paid campaigns, demos, and creative tests. The goal is not generic output. The goal is a workflow that gives you stronger visuals, faster iteration, and production-friendly exports.
+                        You can write a short concept, shape the ratio for social or landscape delivery, and generate a <strong>Gemini Omni Flash</strong> video suited for product launches, landing pages, paid campaigns, demos, and creative tests. The goal is not generic output. The goal is a workflow that gives you stronger visuals, faster iteration, and production-friendly exports.
                       </p>
                       <p>
-                        If you are comparing tools, this generator is optimized around prompt control, image-to-video expansion, and commercial-ready rendering. Use <strong>Spark Robin</strong> when you need quick experiments, repeatable campaign assets, or a direct path from prompt to polished AI video.
+                        If you are comparing tools, this generator is optimized around prompt control, image-to-video expansion, and commercial-ready rendering. Use <strong>Gemini Omni Flash</strong> when you need quick experiments, repeatable campaign assets, or a direct path from prompt to polished AI video.
                       </p>
                     </div>
                     <div className="mt-6 grid gap-4 md:grid-cols-3">
                       <div className="rounded-xl border border-border/70 bg-background/70 p-4">
-                        <h3 className="font-semibold text-foreground mb-2">Spark Robin for ad creative</h3>
+                        <h3 className="font-semibold text-foreground mb-2">Gemini Omni Flash for ad creative</h3>
                         <p className="text-sm text-muted-foreground">Build short video concepts for paid social, product hooks, and brand tests.</p>
                       </div>
                       <div className="rounded-xl border border-border/70 bg-background/70 p-4">
-                        <h3 className="font-semibold text-foreground mb-2">Spark Robin for content teams</h3>
+                        <h3 className="font-semibold text-foreground mb-2">Gemini Omni Flash for content teams</h3>
                         <p className="text-sm text-muted-foreground">Move from prompt drafts to ready-to-edit clips without heavy manual production.</p>
                       </div>
                       <div className="rounded-xl border border-border/70 bg-background/70 p-4">
-                        <h3 className="font-semibold text-foreground mb-2">Spark Robin for product storytelling</h3>
+                        <h3 className="font-semibold text-foreground mb-2">Gemini Omni Flash for product storytelling</h3>
                         <p className="text-sm text-muted-foreground">Create scenes for feature launches, onboarding, demos, and landing page media.</p>
                       </div>
                     </div>
@@ -1792,7 +1792,7 @@ const Generate = () => {
                 {/* Who Uses Section */}
                 <section className="mt-16 mb-12">
                   <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-                    Who Uses Spark Robin?
+                    Who Uses Gemini Omni Flash?
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
@@ -1850,7 +1850,7 @@ const Generate = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
-                      <p className="text-muted-foreground italic mb-4">"Spark Robin AI Text to Video tool helped me turn my blog posts into engaging videos in minutes. A total game-changer for my content strategy!"</p>
+                      <p className="text-muted-foreground italic mb-4">"Gemini Omni Flash AI Text to Video tool helped me turn my blog posts into engaging videos in minutes. A total game-changer for my content strategy!"</p>
                       <p className="font-semibold text-foreground">- Sophia M., Content Creator</p>
                     </Card>
 
@@ -1868,7 +1868,7 @@ const Generate = () => {
 
                     <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                       <Quote className="w-8 h-8 text-primary mb-4" />
-                      <p className="text-muted-foreground italic mb-4">"I used Spark Robin AI to create a product explainer video. The results looked like I hired a professional team!"</p>
+                      <p className="text-muted-foreground italic mb-4">"I used Gemini Omni Flash AI to create a product explainer video. The results looked like I hired a professional team!"</p>
                       <p className="font-semibold text-foreground">- Jason P., Startup Founder</p>
                     </Card>
 
@@ -1889,7 +1889,7 @@ const Generate = () => {
             )}
 
             {/* Marketing Content - Only for image-to-video */}
-            {routeFromMode(generationMode) === '/spark-robin-image-to-video' && (
+            {routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video' && (
               <>
                 {/* Features Section */}
                 <section className="mt-16 mb-12">
@@ -2114,82 +2114,82 @@ const Generate = () => {
             {/* SEO-Optimized FAQ Section */}
             <section className="mt-12 mb-8" itemScope itemType="https://schema.org/FAQPage">
               <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-                {routeFromMode(generationMode) === '/spark-robin-text-to-video' 
-                  ? "Frequently Asked Questions About Spark Robin Text to Video"
-                  : routeFromMode(generationMode) === '/spark-robin-image-to-video'
+                {routeFromMode(generationMode) === '/gemini-omni-flash-text-to-video'
+                  ? "Frequently Asked Questions About Gemini Omni Flash Text to Video"
+                  : routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video'
                   ? tGenerate('faqImageToVideoTitle')
-                  : "Frequently Asked Questions About Spark Robin AI Video Generator"}
+                  : "Frequently Asked Questions About Gemini Omni Flash AI Video Generator"}
               </h2>
               <div className="max-w-4xl mx-auto space-y-6">
-                {routeFromMode(generationMode) === '/spark-robin-text-to-video' ? (
+                {routeFromMode(generationMode) === '/gemini-omni-flash-text-to-video' ? (
                   <>
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        What is the Spark Robin text to video generator?
+                        What is the Gemini Omni Flash text to video generator?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          The Spark Robin text to video generator turns written prompts, scripts, and scene ideas into cinematic AI video. You describe the concept, and Spark Robin generates visuals, motion, pacing, and presentation-ready output from that prompt.
+                          The Gemini Omni Flash text to video generator turns written prompts, scripts, and scene ideas into cinematic AI video. You describe the concept, and Gemini Omni Flash generates visuals, motion, pacing, and presentation-ready output from that prompt.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Do I need editing experience to use Spark Robin?
+                        Do I need editing experience to use Gemini Omni Flash?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          No. Spark Robin is built so marketers, founders, creators, and content teams can move from prompt to video without traditional editing skills. Enter the idea, set the format, and let Spark Robin handle the heavy lifting.
+                          No. Gemini Omni Flash is built so marketers, founders, creators, and content teams can move from prompt to video without traditional editing skills. Enter the idea, set the format, and let Gemini Omni Flash handle the heavy lifting.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Can I customize style and scene direction in Spark Robin?
+                        Can I customize style and scene direction in Gemini Omni Flash?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Yes. Spark Robin follows prompt instructions for visual style, camera feel, pacing, tone, and scene detail. That makes Spark Robin useful for branded content, product video, explainers, and social-first creative testing.
+                          Yes. Gemini Omni Flash follows prompt instructions for visual style, camera feel, pacing, tone, and scene detail. That makes Gemini Omni Flash useful for branded content, product video, explainers, and social-first creative testing.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        How long does Spark Robin take to generate a video?
+                        How long does Gemini Omni Flash take to generate a video?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Most Spark Robin generations finish within a few minutes, depending on prompt complexity, ratio, and queue conditions. Once the Spark Robin job is complete, you can preview and download the result directly.
+                          Most Gemini Omni Flash generations finish within a few minutes, depending on prompt complexity, ratio, and queue conditions. Once the Gemini Omni Flash job is complete, you can preview and download the result directly.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        What kinds of videos can I create with Spark Robin?
+                        What kinds of videos can I create with Gemini Omni Flash?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          You can use Spark Robin for ad creatives, explainer clips, social videos, product demos, launch assets, educational scenes, and short brand stories. Spark Robin works well anywhere prompt-driven video production is useful.
+                          You can use Gemini Omni Flash for ad creatives, explainer clips, social videos, product demos, launch assets, educational scenes, and short brand stories. Gemini Omni Flash works well anywhere prompt-driven video production is useful.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Can I use Spark Robin videos for commercial work?
+                        Can I use Gemini Omni Flash videos for commercial work?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Yes. Spark Robin videos can be used for marketing, business, product, and campaign work, subject to our usage terms. That makes Spark Robin a practical option for teams producing conversion-focused video at speed.
+                          Yes. Gemini Omni Flash videos can be used for marketing, business, product, and campaign work, subject to our usage terms. That makes Gemini Omni Flash a practical option for teams producing conversion-focused video at speed.
                         </p>
                       </div>
                     </div>
                   </>
-                ) : routeFromMode(generationMode) === '/spark-robin-image-to-video' ? (
+                ) : routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video' ? (
                   <>
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
@@ -2261,18 +2261,18 @@ const Generate = () => {
                   <>
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        What is Spark Robin AI Video Generator?
+                        What is Gemini Omni Flash AI Video Generator?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Spark Robin on this site is a practical workflow for turning briefs, prompts, and reference images into reviewable AI video drafts. It is designed to help teams structure creative direction, compare versions, and prepare reusable notes for current and future video models.
+                          Gemini Omni Flash on this site is a practical workflow for turning briefs, prompts, and reference images into reviewable AI video drafts. It is designed to help teams structure creative direction, compare versions, and prepare reusable notes for current and future video models.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Can I try the Spark Robin workflow for free?
+                        Can I try the Gemini Omni Flash workflow for free?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
@@ -2294,22 +2294,22 @@ const Generate = () => {
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        What video formats and resolutions does Spark Robin support?
+                        What video formats and resolutions does Gemini Omni Flash support?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Spark Robin supports multiple aspect ratios including 16:9 (landscape), 9:16 (vertical/TikTok), and 1:1 (square). All videos are generated in HD quality with professional audio. You can download your videos in standard formats compatible with all platforms.
+                          Gemini Omni Flash supports multiple aspect ratios including 16:9 (landscape), 9:16 (vertical/TikTok), and 1:1 (square). All videos are generated in HD quality with professional audio. You can download your videos in standard formats compatible with all platforms.
                         </p>
                       </div>
                     </div>
 
                     <div className="bg-card/80 backdrop-blur-xl border border-border rounded-xl p-6 shadow-md" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                       <h3 className="text-xl font-semibold text-foreground mb-3" itemProp="name">
-                        Can I use Spark Robin videos for commercial purposes?
+                        Can I use Gemini Omni Flash videos for commercial purposes?
                       </h3>
                       <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                         <p className="text-muted-foreground leading-relaxed" itemProp="text">
-                          Yes! Videos generated with Spark Robin AI can be used for commercial purposes including social media marketing, advertising, content creation, and more. Premium subscribers get full commercial rights with no platform watermark on generated videos.
+                          Yes! Videos generated with Gemini Omni Flash AI can be used for commercial purposes including social media marketing, advertising, content creation, and more. Premium subscribers get full commercial rights with no platform watermark on generated videos.
                         </p>
                       </div>
                     </div>
@@ -2319,22 +2319,22 @@ const Generate = () => {
             </section>
 
             {/* Get Started Section - For text-to-video and image-to-video */}
-            {(routeFromMode(generationMode) === '/spark-robin-text-to-video' || routeFromMode(generationMode) === '/spark-robin-image-to-video') && (
+            {(routeFromMode(generationMode) === '/gemini-omni-flash-text-to-video' || routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video') && (
               <section className="mt-16 mb-12">
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/20 rounded-2xl p-8 text-center">
                   <h2 className="text-3xl font-bold text-foreground mb-4">
-                    {routeFromMode(generationMode) === '/spark-robin-text-to-video' 
-                      ? "Start Creating with Spark Robin Text to Video"
+                    {routeFromMode(generationMode) === '/gemini-omni-flash-text-to-video'
+                      ? "Start Creating with Gemini Omni Flash Text to Video"
                       : tGenerate('getStartedImageToVideo.title')}
                   </h2>
                   <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
-                    {routeFromMode(generationMode) === '/spark-robin-text-to-video' 
-                      ? "Use Spark Robin to turn scripts, prompts, and campaign ideas into polished AI video. Upgrade for faster rendering, longer durations, more flexible workflows, and a Spark Robin setup that supports creators, marketers, and product teams."
+                    {routeFromMode(generationMode) === '/gemini-omni-flash-text-to-video'
+                      ? "Use Gemini Omni Flash to turn scripts, prompts, and campaign ideas into polished AI video. Upgrade for faster rendering, longer durations, more flexible workflows, and a Gemini Omni Flash setup that supports creators, marketers, and product teams."
                       : tGenerate('getStartedImageToVideo.description')}
                   </p>
                   <Link href="/pricing">
                     <Button size="lg" className={`px-6 ${primaryActionButtonClass}`}>
-                      {routeFromMode(generationMode) === '/spark-robin-image-to-video' 
+                      {routeFromMode(generationMode) === '/gemini-omni-flash-image-to-video'
                         ? tGenerate('getStartedImageToVideo.button')
                         : tGenerate('fallbacks.getPremium')}
                     </Button>
@@ -2366,14 +2366,14 @@ const Generate = () => {
             </>
           )}
         </div>
-        
+
         <Footer />
       </div>
-      
+
       {/* Auth Modal */}
-      <AuthModal 
-        isOpen={showAuthModal} 
-        onClose={() => setShowAuthModal(false)} 
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
       />
       <SubscriptionRequiredModal
         isOpen={showSubscriptionModal}

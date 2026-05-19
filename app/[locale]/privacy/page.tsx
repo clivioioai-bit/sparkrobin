@@ -15,11 +15,11 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sparkrobin.app'
+  const baseUrl = 'https://omniflashai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Privacy Policy | AI video generation service'
-  let description = 'Read the Spark Robin privacy policy to learn how we collect, use, protect, and store account data, generation history, payment records, and support details.'
+  let description = 'Read the Gemini Omni Flash privacy policy to learn how we collect, use, protect, and store account data, generation history, payment records, and support details.'
   
   if (locale === 'ar') {
     title = 'سياسة الخصوصية | خدمة إنشاء فيديو AI'
@@ -37,10 +37,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/privacy`,
-      siteName: 'Spark Robin',
+      siteName: 'Gemini Omni Flash',
       images: [
         {
-          url: 'https://sparkrobin.app/logo-v2.png',
+          url: 'https://omniflashai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sparkrobin.app/logo-v2.png']
+      images: ['https://omniflashai.io/logo-v2.png']
     },
   };
 }
@@ -238,7 +238,7 @@ const PrivacyPolicy: React.FC<{ locale: string }> = ({ locale }) => {
                     Should you have any inquiries regarding this Privacy Policy or our data handling practices, please reach out to us at:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@sparkrobin.app</p>
+                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@omniflashai.io</p>
                     <p className="text-gray-700 mb-2"><strong>Company:</strong> AIVIDO LLC</p>
                     <p className="text-gray-700 mb-2"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
                     <p className="text-gray-700">We will respond to your inquiry within 30 days.</p>

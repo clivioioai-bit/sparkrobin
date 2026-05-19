@@ -198,6 +198,66 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/spark-robin-text-to-video',
+        destination: '/gemini-omni-flash-text-to-video',
+        permanent: true,
+      },
+      {
+        source: '/spark-robin-image-to-video',
+        destination: '/gemini-omni-flash-image-to-video',
+        permanent: true,
+      },
+      {
+        source: '/spark-robin-video-generator',
+        destination: '/gemini-omni-flash-video-generator',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar|ja|ru|es|zh-CN|de)/spark-robin-text-to-video',
+        destination: '/:locale/gemini-omni-flash-text-to-video',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar|ja|ru|es|zh-CN|de)/spark-robin-image-to-video',
+        destination: '/:locale/gemini-omni-flash-image-to-video',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar|ja|ru|es|zh-CN|de)/spark-robin-video-generator',
+        destination: '/:locale/gemini-omni-flash-video-generator',
+        permanent: true,
+      },
+      {
+        source: '/blog/spark-robin-release-date',
+        destination: '/blog/gemini-omni-flash-release-date',
+        permanent: true,
+      },
+      {
+        source: '/blog/sora-offline-export-data-migrate-to-spark-robin',
+        destination: '/blog/sora-offline-export-data-migrate-to-gemini-omni-flash',
+        permanent: true,
+      },
+      {
+        source: '/blog/top-5-sora-alternatives-may-2026-spark-robin',
+        destination: '/blog/top-5-sora-alternatives-may-2026-gemini-omni-flash',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar|ja|ru|es|zh-CN|de)/blog/spark-robin-release-date',
+        destination: '/:locale/blog/gemini-omni-flash-release-date',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar|ja|ru|es|zh-CN|de)/blog/sora-offline-export-data-migrate-to-spark-robin',
+        destination: '/:locale/blog/sora-offline-export-data-migrate-to-gemini-omni-flash',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar|ja|ru|es|zh-CN|de)/blog/top-5-sora-alternatives-may-2026-spark-robin',
+        destination: '/:locale/blog/top-5-sora-alternatives-may-2026-gemini-omni-flash',
+        permanent: true,
+      },
+      {
         source: '/:path*',
         has: [
           {
@@ -205,7 +265,7 @@ const nextConfig = {
             value: 'sora3ai.io',
           },
         ],
-        destination: 'https://sparkrobin.app/:path*',
+        destination: 'https://omniflashai.io/:path*',
         permanent: true,
       },
       {
@@ -216,7 +276,7 @@ const nextConfig = {
             value: 'www.sora3ai.io',
           },
         ],
-        destination: 'https://sparkrobin.app/:path*',
+        destination: 'https://omniflashai.io/:path*',
         permanent: true,
       },
     ];

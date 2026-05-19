@@ -114,7 +114,7 @@ const Hero = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto pt-2">
-            <Link href="/spark-robin-text-to-video" className="w-full sm:w-auto">
+            <Link href="/gemini-omni-flash-text-to-video" className="w-full sm:w-auto">
               <Button
                 variant="hero"
                 size="lg"

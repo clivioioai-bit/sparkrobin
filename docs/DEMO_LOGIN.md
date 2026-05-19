@@ -11,7 +11,7 @@
 4. 点击 "Sign Up" 创建账户
 
 ### 方法2：使用测试账户
-- 邮箱：support@sparkrobin.app  
+- 邮箱：support@omniflashai.io
 - 密码：123456
 
 ### 方法3：Google登录（如果已配置）

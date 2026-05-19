@@ -11,8 +11,8 @@ const Features = () => {
     },
     {
       icon: Zap,
-      title: "Spark Robin Fast Model",
-      description: "Access the latest Spark Robin Fast for rapid video generation. 3x faster than standard models.",
+      title: "Gemini Omni Flash Fast Model",
+      description: "Access the latest Gemini Omni Flash Fast for rapid video generation. 3x faster than standard models.",
       highlight: "Fast Generation"
     },
     {
@@ -59,8 +59,8 @@ const Features = () => {
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="p-6 bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg group"
             >
               <div className="space-y-4">
@@ -73,7 +73,7 @@ const Features = () => {
                     {feature.highlight}
                   </div>
                 </div>
-                
+
                 {/* Content */}
                 <div>
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors font-display">
@@ -93,8 +93,8 @@ const Features = () => {
           <div className="inline-flex items-center space-x-2 bg-card/50 backdrop-blur-sm border border-border rounded-lg px-6 py-3">
             <Code className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium">Ready to get started?</span>
-            <a 
-            href="/spark-robin-text-to-video" 
+            <a
+            href="/gemini-omni-flash-text-to-video"
               className="text-primary hover:text-primary-glow transition-colors font-medium"
             >
               Start Generating Videos →

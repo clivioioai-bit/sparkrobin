@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "Spark Robin",
+    "brand": "Gemini Omni Flash",
     "new": "新",
     "generate": "生成",
     "home": "首页",
@@ -23,17 +23,17 @@
   "hero": {
     "badge": "发布动态观察 + 创作工作流",
     "discord": "加入 Discord 社区",
-    "brandName": "Spark Robin",
+    "brandName": "Gemini Omni Flash",
     "tagline": "AI 视频工作流实验室",
-    "title": "Spark Robin — 为下一代 AI 视频准备创作系统",
-    "subtitle": "跟踪 Spark Robin 的可信动态，整理可复用提示词、参考素材和分镜草稿，让团队在模型真正发布前就准备好可执行的视频工作流。",
+    "title": "Gemini Omni Flash — 为下一代 AI 视频准备创作系统",
+    "subtitle": "跟踪 Gemini Omni Flash 的可信动态，整理可复用提示词、参考素材和分镜草稿，让团队在模型真正发布前就准备好可执行的视频工作流。",
     "placeholder": "描述您想要创建的视频...",
     "cta": "创建草稿",
     "trySora3": "整理视频提示词",
     "trySora2": "生成图片",
     "sora2Description": "把创意拆成镜头、参考图和迭代说明，先建立可复用的视频制作流程。",
-    "storyboard25s": "构建 Spark Robin 分镜系统",
-    "disclaimer": "独立的 Spark Robin 发布观察与 AI 视频工作流站点。与 Google、Google DeepMind、OpenAI 或任何官方 Sora 产品无关。",
+    "storyboard25s": "构建 Gemini Omni Flash 分镜系统",
+    "disclaimer": "独立的 Gemini Omni Flash 发布观察与 AI 视频工作流站点。与 Google、Google DeepMind、OpenAI 或任何官方 Sora 产品无关。",
     "features": {
       "noWatermark": {
         "title": "清晰的创作草稿",
@@ -41,7 +41,7 @@
       },
       "noRegionalLimits": {
         "title": "发布动态跟踪",
-        "description": "围绕已确认信息和公开信号更新 Spark Robin 相关内容"
+        "description": "围绕已确认信息和公开信号更新 Gemini Omni Flash 相关内容"
       },
       "noInviteCode": {
         "title": "提示词系统",
@@ -54,7 +54,7 @@
     "generate": "Video AI",
     "textToVideo": "文本转视频",
     "imageToVideo": "图片转视频",
-    "storyboard": "Spark Robin 故事板",
+    "storyboard": "Gemini Omni Flash 故事板",
     "watermarkRemover": "素材整理",
     "pricing": "定价",
     "myCreations": "我的作品",
@@ -70,9 +70,9 @@
     "startForFree": "立即开始",
     "preferences": "偏好设置",
     "generationHistory": "生成历史",
-    "textToVideoDescription": "把想法整理成 Spark Robin 风格的视频提示词草稿",
+    "textToVideoDescription": "把想法整理成 Gemini Omni Flash 风格的视频提示词草稿",
     "imageToVideoDescription": "用参考图规划镜头运动、主体关系和复盘方向",
-    "storyboardDescription": "构建多场景 Spark Robin 分镜和镜头说明",
+    "storyboardDescription": "构建多场景 Gemini Omni Flash 分镜和镜头说明",
     "watermarkRemoverDescription": "整理已生成素材，保持评审流程清晰",
     "imageAI": "AI 图像",
     "textToImage": "文字生成图片",
@@ -83,13 +83,13 @@
     "models": "模型",
     "nanoBanana": "Nano Banana",
     "nanoBananaPro": "Nano Banana Pro",
-    "sora3": "Spark Robin",
-    "sora3Pro": "Spark Robin Pro",
+    "sora3": "Gemini Omni Flash",
+    "sora3Pro": "Gemini Omni Flash Pro",
     "sora2": "Sora 2",
     "sora2Pro": "Sora 2 Pro",
     "veo3": "Veo 3",
     "wan26": "Wan 2.6",
-    "sparkRobinModel": "Spark Robin",
+    "sparkRobinModel": "Gemini Omni Flash",
     "veo31Model": "Veo 3.1",
     "whoThisIsFor": {
       "ecommerce": {
@@ -104,30 +104,30 @@
     }
   },
   "footer": {
-    "description": "sparkrobin.app 是独立的 Spark Robin 发布观察与 AI 视频工作流站点，帮助创作者和团队整理提示词、参考素材、分镜草稿和可复盘的创作流程。",
+    "description": "omniflashai.io 是独立的 Gemini Omni Flash 发布观察与 AI 视频工作流站点，帮助创作者和团队整理提示词、参考素材、分镜草稿和可复盘的创作流程。",
     "product": "产品",
     "company": "公司",
     "resources": "资源",
     "support": "支持",
-    "sora3TextToVideo": "Spark Robin 文本转视频",
-    "sora3ImageToVideo": "Spark Robin 图片转视频",
-    "sora3Pricing": "Spark Robin 定价",
-    "sora3Faq": "Spark Robin 常见问题",
-    "sora3Blog": "Spark Robin 博客",
+    "sora3TextToVideo": "Gemini Omni Flash 文本转视频",
+    "sora3ImageToVideo": "Gemini Omni Flash 图片转视频",
+    "sora3Pricing": "Gemini Omni Flash 定价",
+    "sora3Faq": "Gemini Omni Flash 常见问题",
+    "sora3Blog": "Gemini Omni Flash 博客",
     "aiVideoPromptGpt": "AI 视频提示 GPT",
     "privacyPolicy": "隐私政策",
     "termsOfService": "服务条款",
     "refundPolicy": "退款政策",
     "support247": "24/7 支持",
     "contactUs": "联系我们 / 合作",
-    "disclaimer": "sparkrobin.app 是独立的 Spark Robin 发布观察与 AI 视频工作流站点。我们与 Google、Google DeepMind、OpenAI 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
-    "poweredBy": "面向 Spark Robin 关注者的独立创作工作流与资料整理站点。",
-    "copyright": "© 2024 Spark Robin. 保留所有权利。",
+    "disclaimer": "omniflashai.io 是独立的 Gemini Omni Flash 发布观察与 AI 视频工作流站点。我们与 Google、Google DeepMind、OpenAI 或任何官方 Sora 产品无关。所有商标归其各自所有者所有。",
+    "poweredBy": "面向 Gemini Omni Flash 关注者的独立创作工作流与资料整理站点。",
+    "copyright": "© 2024 Gemini Omni Flash. 保留所有权利。",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24/7 支持: support@sparkrobin.app",
-    "businessEmail": "商务与合作: support@sparkrobin.app",
-    "logoAlt": "Spark Robin 工作流实验室标志",
+    "supportEmail": "24/7 支持: support@omniflashai.io",
+    "businessEmail": "商务与合作: support@omniflashai.io",
+    "logoAlt": "Gemini Omni Flash 工作流实验室标志",
     "socialLabels": {
       "twitter": "在 Twitter 上关注我们",
       "discord": "加入我们的 Discord 社区",
@@ -138,10 +138,10 @@
     }
   },
   "whyThisMatters": {
-    "title": "为什么现在需要 Spark Robin 工作流",
+    "title": "为什么现在需要 Gemini Omni Flash 工作流",
     "subtitle": "在新模型传闻和公开信号之间，团队更需要可验证的信息、稳定的提示词结构和可复盘的草稿流程，而不是只追热点。",
     "challenges": "常见问题",
-    "solutions": "Spark Robin 工作流如何处理",
+    "solutions": "Gemini Omni Flash 工作流如何处理",
     "watermarks": {
       "title": "信息来源分散",
       "description": "模型传闻、官方消息和第三方解读混在一起，很难判断哪些内容值得进入计划。"
@@ -160,7 +160,7 @@
     },
     "noWatermark": {
       "title": "可信动态整理",
-      "description": "围绕 Spark Robin 的已确认更新、公开信号和不确定项建立清晰边界。"
+      "description": "围绕 Gemini Omni Flash 的已确认更新、公开信号和不确定项建立清晰边界。"
     },
     "costPerformance": {
       "title": "可复用提示词库",
@@ -174,10 +174,10 @@
       "title": "分镜式迭代",
       "description": "把复杂想法拆成场景、镜头和修改记录，保留每次迭代的判断依据。"
     },
-    "solution": "Spark Robin 工作流让准备工作更清楚"
+    "solution": "Gemini Omni Flash 工作流让准备工作更清楚"
   },
   "whoThisIsFor": {
-    "title": "谁适合使用 Spark Robin 工作流",
+    "title": "谁适合使用 Gemini Omni Flash 工作流",
     "subtitle": "适合正在关注新模型、准备 AI 视频流程、或需要把创意快速整理成可评审草稿的团队。",
     "creators": {
       "title": "内容创作者和影响者",
@@ -205,7 +205,7 @@
     }
   },
   "blogShowcase": {
-    "title": "Spark Robin 动态与创作策略",
+    "title": "Gemini Omni Flash 动态与创作策略",
     "subtitle": "围绕模型发布、提示词结构、参考素材和 AI 视频工作流的可执行笔记。",
     "viewAll": "查看所有博客文章",
     "readMore": "阅读更多",
@@ -220,7 +220,7 @@
     "emptyDescription": "将 Markdown 文件添加到 content/blog，它们将显示在这里。"
   },
   "howItWorks": {
-    "title": "如何准备 Spark Robin 视频工作流",
+    "title": "如何准备 Gemini Omni Flash 视频工作流",
     "subtitle": "用三个步骤把概念变成可生成、可评审、可继续迭代的草稿。",
     "step1": {
       "title": "写清楚创意目标",
@@ -236,19 +236,19 @@
     }
   },
   "faq": {
-    "title": "关于 Spark Robin 的常见问题",
-    "subtitle": "了解 Spark Robin 发布观察、提示词工作流、参考素材草稿和商业使用边界。",
+    "title": "关于 Gemini Omni Flash 的常见问题",
+    "subtitle": "了解 Gemini Omni Flash 发布观察、提示词工作流、参考素材草稿和商业使用边界。",
     "viewAllFaqs": "查看所有常见问题",
     "contactSupport": "联系支持",
     "haveMoreQuestions": "还有更多问题？我们随时为您提供帮助。",
     "questions": {
       "whatMakesDifferent": {
-        "question": "sparkrobin.app 是什么？",
-        "answer": "sparkrobin.app 是独立的 Spark Robin 发布观察与 AI 视频工作流站点。我们帮助创作者整理模型动态、提示词、参考素材和分镜草稿，但不代表 Google、Google DeepMind 或任何官方模型团队。"
+        "question": "omniflashai.io 是什么？",
+        "answer": "omniflashai.io 是独立的 Gemini Omni Flash 发布观察与 AI 视频工作流站点。我们帮助创作者整理模型动态、提示词、参考素材和分镜草稿，但不代表 Google、Google DeepMind 或任何官方模型团队。"
       },
       "characterConsistency": {
-        "question": "Spark Robin 已经正式发布了吗？",
-        "answer": "截至目前，Spark Robin 相关信息应以 Google 或 Google DeepMind 的官方公告为准。本站会把已确认信息、公开信号和推测内容区分开来，避免把传闻写成事实。"
+        "question": "Gemini Omni Flash 已经正式发布了吗？",
+        "answer": "截至目前，Gemini Omni Flash 相关信息应以 Google 或 Google DeepMind 的官方公告为准。本站会把已确认信息、公开信号和推测内容区分开来，避免把传闻写成事实。"
       },
       "videosLongerThan10s": {
         "question": "现在能用它做什么？",
@@ -259,7 +259,7 @@
         "answer": "提示词、脚本和参考流程可以用于商业项目准备。最终视频的使用权取决于生成模型、素材来源、人物肖像、音乐和平台条款，发布前需要逐项确认。"
       },
       "watermarks": {
-        "question": "这里会冒充官方 Spark Robin 吗？",
+        "question": "这里会冒充官方 Gemini Omni Flash 吗？",
         "answer": "不会。本站是独立站点，不与 Google、Google DeepMind、OpenAI 或官方 Sora 产品有关。涉及模型能力、发布时间和访问方式的内容都应以官方公告为准。"
       },
       "25SecondVideos": {
@@ -293,8 +293,8 @@
     "ourPriceValue": "$0.05/秒",
     "fiftyPercentCheaper": "便宜 50%",
     "thanMarket": "比市场",
-    "chooseYourPlan": "选择您的 Spark Robin 计划",
-    "teaserSubtitle": "用于 Spark Robin 工作流、草稿测试和素材复盘的创作计划。随时取消。年度计划节省 50%。",
+    "chooseYourPlan": "选择您的 Gemini Omni Flash 计划",
+    "teaserSubtitle": "用于 Gemini Omni Flash 工作流、草稿测试和素材复盘的创作计划。随时取消。年度计划节省 50%。",
     "proTip": "💡 <strong>提示：</strong> 订阅计划适合持续测试提示词、参考素材和多版本草稿",
     "plans": {
       "monthly": "月度",
@@ -323,7 +323,7 @@
       "tryAgainLater": "请稍后再试。",
       "failedToCreatePaymentLink": "创建支付链接失败",
       "needHelp": "需要帮助？",
-      "contactSupport": "联系 support@sparkrobin.app 获取帮助。",
+      "contactSupport": "联系 support@omniflashai.io 获取帮助。",
       "contactSupportLink": "联系支持",
       "features": {
         "creditsIncluded": "包含 {count} 积分",
@@ -369,10 +369,10 @@
       "pleaseEnterPrompt": "请输入您的提示",
       "pleaseUploadImage": "请上传图片以生成视频",
       "watermarkRemover": {
-        "title": "Spark Robin 素材整理器",
+        "title": "Gemini Omni Flash 素材整理器",
         "description": "整理公开托管的视频素材 URL，帮助团队记录来源、版本和复盘备注。",
-        "seoTitle": "Spark Robin 素材整理器 | 视频素材工作流",
-        "seoDescription": "Spark Robin 素材整理器用于记录公开视频素材、版本备注和评审信息，适合 AI 视频工作流复盘。",
+        "seoTitle": "Gemini Omni Flash 素材整理器 | 视频素材工作流",
+        "seoDescription": "Gemini Omni Flash 素材整理器用于记录公开视频素材、版本备注和评审信息，适合 AI 视频工作流复盘。",
         "input": "输入",
         "output": "输出",
         "videoUrl": "video_url",
@@ -385,8 +385,8 @@
         "waitingForResult": "等待结果…",
         "noOutputYet": "暂无输出",
         "exampleVideo": "示例视频",
-        "exampleVideoDescription": "这是由 Spark Robin AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
-        "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Spark Robin 视频干净整洁，适合品牌使用。",
+        "exampleVideoDescription": "这是由 Gemini Omni Flash AI 生成的示例视频。上传您自己的 Sora 视频以移除水印！",
+        "creditsInfo": "此工具每次运行消耗 10 积分。保持您的 Gemini Omni Flash 视频干净整洁，适合品牌使用。",
         "browserNotSupportVideo": "您的浏览器不支持视频标签。"
       }
     },
@@ -416,8 +416,8 @@
       "answer": "订阅存储桶在每个计费期重置，不会结转。一次性附加积分转到灵活存储桶，不会被订阅重置清除。"
     },
     "faqRefundPolicy": {
-      "question": "sparkrobin.app 的退款政策是什么？",
-      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@sparkrobin.app 退款。退款在 5-7 个工作日内处理。"
+      "question": "omniflashai.io 的退款政策是什么？",
+      "answer": "我们为所有订阅计划提供 7 天退款保证。联系 support@omniflashai.io 退款。退款在 5-7 个工作日内处理。"
     },
     "faqContentRestrictions": {
       "question": "是否有视频内容限制？",
@@ -473,7 +473,7 @@
     "sampleVideoDescriptionUnauthenticated": "这是用于评审的示例视频草稿。注册后可以创建您自己的版本。",
     "browserNotSupportVideo": "您的浏览器不支持视频标签。",
     "signUpToCreate": "注册以创建您自己的视频",
-    "textToVideoTitle": "Spark Robin 文本转视频 | 提示词工作流",
+    "textToVideoTitle": "Gemini Omni Flash 文本转视频 | 提示词工作流",
     "textToVideoSubtitle": "把创意简报整理成镜头清晰、可评审、可继续迭代的视频提示词草稿。",
     "textToVideoFeaturesTitle": "文本转视频工作流",
     "featureAIPowered": {
@@ -494,7 +494,7 @@
     },
     "howToUseTitle": "如何准备文本转视频草稿",
     "howToUseStep1": {
-      "title": "注册或登录 sparkrobin.app",
+      "title": "注册或登录 omniflashai.io",
       "description": "创建账户后，可以保存提示词、草稿和生成历史。"
     },
     "howToUseStep2": {
@@ -509,10 +509,10 @@
       "title": "生成并复盘",
       "description": "生成草稿后，记录有效提示、失败细节和下一轮修改方向。"
     },
-    "whoUsesTitle": "谁使用 Spark Robin？",
+    "whoUsesTitle": "谁使用 Gemini Omni Flash？",
     "whoUsesContentCreators": "内容创作者",
     "whoUsesTikTokMarketers": "TikTok 营销人员",
-    "imageToVideoTitle": "Spark Robin 图片转视频 | 参考图驱动草稿",
+    "imageToVideoTitle": "Gemini Omni Flash 图片转视频 | 参考图驱动草稿",
     "imageToVideoSubtitle": "用产品图、人物图或视觉参考建立运动说明，生成更容易评审和迭代的视频草稿。",
     "imageToVideoFeaturesTitle": "图片转视频工作流",
     "imageToVideoFeature1": {
@@ -533,7 +533,7 @@
     },
     "imageToVideoHowToUseTitle": "如何准备图片转视频草稿",
     "imageToVideoHowToUseStep1": {
-      "title": "注册或登录 sparkrobin.app",
+      "title": "注册或登录 omniflashai.io",
       "description": "创建账户后，可以保存参考素材、提示词版本和草稿历史。"
     },
     "imageToVideoHowToUseStep2": {
@@ -548,7 +548,7 @@
       "title": "生成草稿并比较版本",
       "description": "生成后对比不同运动方向，记录最有效的相机语言和修改意见。"
     },
-    "imageToVideoPageTitle": "Spark Robin 图片转视频",
+    "imageToVideoPageTitle": "Gemini Omni Flash 图片转视频",
     "imageToVideoPageSubtitle": "用参考图建立可评审、可复用的视频草稿流程",
     "imageToVideoTestimonialsTitle": "为什么使用参考图工作流",
     "imageToVideoTestimonial1": {
@@ -610,8 +610,8 @@
     },
     "reframeMode": {
       "model": "模型",
-      "sora3": "Spark Robin",
-      "sora3Pro": "Spark Robin pro",
+      "sora3": "Gemini Omni Flash",
+      "sora3Pro": "Gemini Omni Flash pro",
       "sora3Description": "用于结构化提示词、参考素材和视频草稿的标准工作流。",
       "sora3ProDescription": "用于更复杂分镜、更多版本测试和团队复盘的增强工作流。",
       "prompt": "提示 *",
@@ -745,23 +745,23 @@
       "generationTimeNote": "⏱️ 这通常需要 5-15 分钟。请保持此页面打开。",
       "exampleDescription": "这是一个多场景故事板草稿示例。配置场景、镜头和参考素材后生成您自己的版本。",
       "exampleNote": "示例：3 个场景组成一个完整叙事节奏",
-      "whatIsSora3ProStoryboard": "什么是 Spark Robin Pro 故事板工作流？",
-      "sora3ProStoryboardDescription": "Spark Robin Pro 故事板用于把顺序内容拆成可管理的场景、镜头、参考素材和修改记录。它适合提前规划短视频、产品叙事、品牌提案和多版本草稿，让团队在评审时能看到每个镜头的目标和修改依据。",
+      "whatIsSora3ProStoryboard": "什么是 Gemini Omni Flash Pro 故事板工作流？",
+      "sora3ProStoryboardDescription": "Gemini Omni Flash Pro 故事板用于把顺序内容拆成可管理的场景、镜头、参考素材和修改记录。它适合提前规划短视频、产品叙事、品牌提案和多版本草稿，让团队在评审时能看到每个镜头的目标和修改依据。",
       "upTo25sDuration": "多场景节奏规划",
       "multiSceneControl": "多场景控制（故事板）",
       "socialMediaReady": "渠道版本规划",
       "hdQualityAudio": "声音与节奏备注",
-      "whatPeopleAreSaying": "人们对 Spark Robin Pro 故事板的评价",
-      "keyFeatures": "Spark Robin Pro 故事板的主要功能",
+      "whatPeopleAreSaying": "人们对 Gemini Omni Flash Pro 故事板的评价",
+      "keyFeatures": "Gemini Omni Flash Pro 故事板的主要功能",
       "multiSceneSequencing": "多场景排序",
-      "multiSceneSequencingDescription": "使用 Spark Robin Pro 故事板定义多个场景，明确每个镜头的目标、主体、动作和转场逻辑。",
+      "multiSceneSequencingDescription": "使用 Gemini Omni Flash Pro 故事板定义多个场景，明确每个镜头的目标、主体、动作和转场逻辑。",
       "visualConsistency": "视觉一致性",
       "visualConsistencyDescription": "在所有场景中记录需要保持一致的人物、产品、品牌色、材质和画面风格。",
       "flexibleOutputControl": "灵活的输出控制",
       "flexibleOutputControlDescription": "根据渠道和叙事目标规划不同长度、节奏和镜头数量，方便比较多个草稿方向。",
       "referenceImageSupport": "参考图片支持",
       "referenceImageSupportDescription": "上传参考图片并说明哪些细节必须保留，帮助每个场景保持视觉方向一致。",
-      "howToUse": "如何使用 Spark Robin Pro 故事板",
+      "howToUse": "如何使用 Gemini Omni Flash Pro 故事板",
       "step1DefineScenes": "定义场景",
       "step1Description": "为每个场景写清楚目标、主体、动作和镜头语言",
       "step2SetParameters": "设置参数",
@@ -780,13 +780,13 @@
       "socialMediaFormats": "社交媒体格式",
       "socialMediaFormatsDescription": "为 TikTok、Instagram Reels、YouTube Shorts 准备不同构图和节奏版本。",
       "fastExportShare": "快速导出和分享",
-      "fastExportShareDescription": "快速生成、预览和保存您的 Spark Robin 故事板草稿。"
+      "fastExportShareDescription": "快速生成、预览和保存您的 Gemini Omni Flash 故事板草稿。"
     },
     "watermarkRemover": {
-      "title": "Spark Robin 素材整理器",
+      "title": "Gemini Omni Flash 素材整理器",
       "description": "整理公开托管的视频素材 URL，帮助团队记录来源、版本和复盘备注。",
-      "seoTitle": "Spark Robin 素材整理器 | 视频素材工作流",
-      "seoDescription": "Spark Robin 素材整理器用于记录公开视频素材、版本备注和评审信息，适合 AI 视频工作流复盘。",
+      "seoTitle": "Gemini Omni Flash 素材整理器 | 视频素材工作流",
+      "seoDescription": "Gemini Omni Flash 素材整理器用于记录公开视频素材、版本备注和评审信息，适合 AI 视频工作流复盘。",
       "input": "输入",
       "output": "输出",
       "videoUrl": "video_url",
@@ -815,13 +815,13 @@
     }
   },
   "demoGallery": {
-    "title": "探索 Spark Robin 视频示例",
-    "description": "用于观察镜头结构、参考素材和提示词方向的 Spark Robin 视频草稿示例。",
+    "title": "探索 Gemini Omni Flash 视频示例",
+    "description": "用于观察镜头结构、参考素材和提示词方向的 Gemini Omni Flash 视频草稿示例。",
     "seeMoreExamples": "查看更多示例",
     "tapToUnmute": "点击取消静音"
   },
   "keyFeatures": {
-    "title": "Spark Robin AI 的独特之处",
+    "title": "Gemini Omni Flash AI 的独特之处",
     "noWatermark": {
       "title": "草稿清晰",
       "description": "每个版本都围绕明确的创意目标、参考素材和评审标准展开。"
@@ -835,7 +835,7 @@
       "description": "在浏览器中测试不同提示词、参考图和运动设定，尽快找到可继续推进的版本。"
     },
     "sora3ProStoryboard": {
-      "title": "Spark Robin 分镜系统",
+      "title": "Gemini Omni Flash 分镜系统",
       "description": "把多场景想法拆成镜头、角色、动作和转场，方便团队协作评审。"
     },
     "textToVideoImageToVideo": {
@@ -847,14 +847,14 @@
       "description": "为短视频、产品页、品牌内容和内部提案准备不同版本的创意草稿。"
     },
     "trySora3Free": {
-      "title": "试用 Spark Robin 工作流",
-      "description": "从提示词、参考图和分镜草稿开始，了解 Spark Robin 相关创作流程如何服务您的项目。",
+      "title": "试用 Gemini Omni Flash 工作流",
+      "description": "从提示词、参考图和分镜草稿开始，了解 Gemini Omni Flash 相关创作流程如何服务您的项目。",
       "startGenerating": "创建草稿"
     }
   },
   "testimonials": {
     "title": "受到全球创作者喜爱",
-    "subtitle": "看看创作者如何用 Spark Robin 工作流整理提示词、参考素材和多版本草稿。",
+    "subtitle": "看看创作者如何用 Gemini Omni Flash 工作流整理提示词、参考素材和多版本草稿。",
     "ctaTitle": "加入使用 AI 制作视频的创作者",
     "ctaDescription": "用结构化提示词、参考图说明和复盘记录准备下一轮 AI 视频创作。",
     "ctaButton": "开始创建草稿"
@@ -865,7 +865,7 @@
   },
   "auth": {
     "signIn": "登录",
-    "signInToSora3": "登录 Spark Robin",
+    "signInToSora3": "登录 Gemini Omni Flash",
     "createAccount": "创建账户",
     "checkEmail": "检查您的电子邮件",
     "backToSignUp": "返回注册",
@@ -888,8 +888,8 @@
     "redirectingToGoogle": "正在重定向到 Google..."
   },
   "sora3Capabilities": {
-    "title": "Spark Robin 工作流适合哪些创作环节",
-    "subtitle": "Spark Robin 相关能力仍需要以官方发布为准。本站重点帮助团队提前整理提示词、参考素材、分镜和评审流程。",
+    "title": "Gemini Omni Flash 工作流适合哪些创作环节",
+    "subtitle": "Gemini Omni Flash 相关能力仍需要以官方发布为准。本站重点帮助团队提前整理提示词、参考素材、分镜和评审流程。",
     "cinematicRealism": {
       "title": "视觉目标拆解",
       "description": "把“高级感”“真实感”等模糊描述拆成光线、镜头、材质、主体和构图。\n\n让每个草稿都有明确判断标准。\n\n减少团队只凭感觉评审的情况。"
@@ -925,14 +925,14 @@
     "autoRedirect": "您将在几秒钟内自动重定向..."
   },
   "account": {
-    "dashboardMetaTitle": "控制台 | 管理您的 Spark Robin 账户",
-    "dashboardMetaDescription": "在一个地方管理您的 Spark Robin 账户、积分、订阅、付款和生成历史。",
-    "myCreationsMetaTitle": "我的作品 | Spark Robin 生成历史",
-    "myCreationsMetaDescription": "查看您的 Spark Robin 生成历史，回放已完成的视频，并下载需要保留的作品。",
+    "dashboardMetaTitle": "控制台 | 管理您的 Gemini Omni Flash 账户",
+    "dashboardMetaDescription": "在一个地方管理您的 Gemini Omni Flash 账户、积分、订阅、付款和生成历史。",
+    "myCreationsMetaTitle": "我的作品 | Gemini Omni Flash 生成历史",
+    "myCreationsMetaDescription": "查看您的 Gemini Omni Flash 生成历史，回放已完成的视频，并下载需要保留的作品。",
     "dashboardPageTitle": "账户控制台",
     "dashboardPageDescription": "在一个页面中管理订阅、积分、付款记录和视频历史。",
     "myCreationsPageTitle": "我的作品",
-    "myCreationsPageDescription": "查看您的 Spark Robin 生成历史，回放完成的视频，并下载想保留的片段。",
+    "myCreationsPageDescription": "查看您的 Gemini Omni Flash 生成历史，回放完成的视频，并下载想保留的片段。",
     "stats": {
       "creditsAvailable": "可用积分",
       "videosGenerated": "已生成视频",

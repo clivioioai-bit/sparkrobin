@@ -1,13 +1,13 @@
 import type { MetadataRoute } from 'next';
 import { getAllPosts, hasPostLocale } from '@/lib/blog';
 
-const BASE_URL = 'https://sparkrobin.app';
+const BASE_URL = 'https://omniflashai.io';
 
 const publicPages = [
   '',
-  'spark-robin-video-generator',
-  'spark-robin-text-to-video',
-  'spark-robin-image-to-video',
+  'gemini-omni-flash-video-generator',
+  'gemini-omni-flash-text-to-video',
+  'gemini-omni-flash-image-to-video',
   'multi-scene',
   'pricing',
   'faq',
@@ -27,14 +27,14 @@ const getLocalizedUrl = (page: string, locale: string) => {
 
 const getPagePriority = (page: string) => {
   if (page === '') return 1;
-  if (page === 'spark-robin-video-generator' || page === 'spark-robin-text-to-video' || page === 'spark-robin-image-to-video') return 0.95;
+  if (page === 'gemini-omni-flash-video-generator' || page === 'gemini-omni-flash-text-to-video' || page === 'gemini-omni-flash-image-to-video') return 0.95;
   if (page === 'multi-scene') return 0.9;
   if (page === 'pricing' || page === 'faq' || page === 'blog') return 0.8;
   return 0.3;
 };
 
 const getChangeFrequency = (page: string): MetadataRoute.Sitemap[number]['changeFrequency'] => {
-  if (page === '' || page === 'spark-robin-video-generator' || page === 'spark-robin-text-to-video' || page === 'spark-robin-image-to-video') return 'daily';
+  if (page === '' || page === 'gemini-omni-flash-video-generator' || page === 'gemini-omni-flash-text-to-video' || page === 'gemini-omni-flash-image-to-video') return 'daily';
   if (page === 'pricing' || page === 'faq' || page === 'blog') return 'weekly';
   return 'yearly';
 };

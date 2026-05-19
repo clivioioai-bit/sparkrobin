@@ -59,13 +59,13 @@ console.log('Job ID:', result.job_id);`
     {
       prompt: "A serene sunset over calm ocean waves",
       duration: "6s",
-      model: "Spark Robin Fast",
+      model: "Gemini Omni Flash Fast",
       status: "completed",
       credits: 1.0
     },
     {
       prompt: "Futuristic city with flying cars at night",
-      duration: "10s", 
+      duration: "10s",
       model: "Reference Draft Workflow",
       status: "processing",
       credits: 1.8
@@ -73,7 +73,7 @@ console.log('Job ID:', result.job_id);`
     {
       prompt: "Close-up of a blooming flower in timelapse",
       duration: "10s",
-      model: "Spark Robin Fast", 
+      model: "Gemini Omni Flash Fast",
       status: "completed",
       credits: 1.6
     }
@@ -92,7 +92,7 @@ console.log('Job ID:', result.job_id);`
                 </span>
               </h2>
               <p className="text-xl text-muted-foreground">
-                Integrate Spark Robin video generation in minutes with our developer-friendly API。
+                Integrate Gemini Omni Flash video generation in minutes with our developer-friendly API。
               </p>
             </div>
 
@@ -104,7 +104,7 @@ console.log('Job ID:', result.job_id);`
                     <TabsTrigger value="python">Python</TabsTrigger>
                     <TabsTrigger value="javascript">JavaScript</TabsTrigger>
                   </TabsList>
-                  
+
                   {Object.entries(codeExamples).map(([lang, code]) => (
                     <TabsContent key={lang} value={lang}>
                       <div className="relative">
@@ -165,8 +165,8 @@ console.log('Job ID:', result.job_id);`
                           <span>{video.credits} credits</span>
                         </div>
                       </div>
-                      
-                      <Badge 
+
+                      <Badge
                         variant={video.status === 'completed' ? 'default' : 'secondary'}
                         className="ml-4"
                       >

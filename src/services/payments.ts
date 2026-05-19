@@ -85,9 +85,9 @@ export async function createCheckoutSession(
     
     // 提供用户友好的错误消息
     if (message.includes('API key') || message.includes('not configured')) {
-      error.message = 'Payment service is temporarily unavailable. Please contact support@sparkrobin.app for assistance.';
+      error.message = 'Payment service is temporarily unavailable. Please contact support@omniflashai.io for assistance.';
     } else if (message.includes('安全错误') || message.includes('Security')) {
-      error.message = 'Payment service configuration error. Please contact support@sparkrobin.app.';
+      error.message = 'Payment service configuration error. Please contact support@omniflashai.io.';
     } else if (message.includes('Plan not found') || message.includes('Plan is not configured') || message.includes('productId')) {
       error.message = 'This plan is not available. Please select a different plan or contact support.';
     } else if (message.includes('Too Many Requests') || message.includes('rate limit')) {

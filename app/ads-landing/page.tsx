@@ -5,8 +5,8 @@ import { Check, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
-  description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
+  title: 'Gemini Omni Flash AI Video Generator | Prompt and Reference Video Drafts',
+  description: 'Prepare Gemini Omni Flash-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
   robots: {
     index: false,
     follow: false,
@@ -14,16 +14,16 @@ export const metadata: Metadata = {
     // so search engines are aware of its existence
   },
   openGraph: {
-    title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
-    description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
-    url: 'https://sparkrobin.app/ads-landing',
-    siteName: 'Spark Robin',
+    title: 'Gemini Omni Flash AI Video Generator | Prompt and Reference Video Drafts',
+    description: 'Prepare Gemini Omni Flash-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
+    url: 'https://omniflashai.io/ads-landing',
+    siteName: 'Gemini Omni Flash',
     images: [
       {
-        url: 'https://sparkrobin.app/logo-v2.png',
+        url: 'https://omniflashai.io/logo-v2.png',
         width: 1200,
         height: 630,
-        alt: 'Spark Robin Video Generator',
+        alt: 'Gemini Omni Flash Video Generator',
       },
     ],
     locale: 'en_US',
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Spark Robin Workflow Lab | Prompt and Reference Video Drafts',
-    description: 'Prepare Spark Robin-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
-    images: ['https://sparkrobin.app/logo-v2.png'],
+    title: 'Gemini Omni Flash AI Video Generator | Prompt and Reference Video Drafts',
+    description: 'Prepare Gemini Omni Flash-ready prompts, reference images, and reviewable AI video drafts while separating confirmed model updates from unverified claims.',
+    images: ['https://omniflashai.io/logo-v2.png'],
   },
   alternates: {
-    canonical: 'https://sparkrobin.app/ads-landing',
+    canonical: 'https://omniflashai.io/ads-landing',
   },
 }
 
@@ -48,9 +48,9 @@ export default function AdsLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-primary">sparkrobin.app</span>
+              <span className="text-xl font-bold text-primary">omniflashai.io</span>
             </div>
-            <Link href="/spark-robin-text-to-video">
+            <Link href="/gemini-omni-flash-text-to-video">
               <Button variant="outline" size="sm">
                 Start Creating
               </Button>
@@ -63,13 +63,13 @@ export default function AdsLandingPage() {
       <section className="py-20 sm:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Build Spark Robin-Ready Video Drafts Before Official Details Settle
+            Build Gemini Omni Flash-Ready Video Drafts Before Official Details Settle
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Organize prompts, reference images, and shot notes into a repeatable workflow for AI video drafts. Keep producing while Spark Robin updates, specs, and access paths continue to evolve.
+            Organize prompts, reference images, and shot notes into a repeatable workflow for AI video drafts. Keep producing while Gemini Omni Flash updates, specs, and access paths continue to evolve.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/spark-robin-text-to-video">
+            <Link href="/gemini-omni-flash-text-to-video">
               <Button size="lg" className="w-full sm:w-auto">
                 Build a Video Draft
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -88,7 +88,7 @@ export default function AdsLandingPage() {
       <section className="py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Why Teams Use This Spark Robin Workflow
+            Why Teams Use This Gemini Omni Flash Workflow
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="p-6">
@@ -127,7 +127,7 @@ export default function AdsLandingPage() {
               'Draft generation for review and comparison',
               'Release-watch positioning that avoids overclaiming',
               'Creative iteration records your team can reuse',
-              'A practical bridge between current tools and future Spark Robin updates',
+              'A practical bridge between current tools and future Gemini Omni Flash updates',
             ].map((feature, index) => (
               <div key={index} className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -142,12 +142,12 @@ export default function AdsLandingPage() {
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready to Build a Spark Robin-Ready Workflow?
+            Ready to Build a Gemini Omni Flash-Ready Workflow?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
             Start with a prompt brief or reference image, generate a draft, and improve the creative notes before the next version.
           </p>
-          <Link href="/spark-robin-text-to-video">
+          <Link href="/gemini-omni-flash-text-to-video">
             <Button size="lg" className="bg-primary hover:bg-primary/90">
               Start a Draft
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -160,7 +160,7 @@ export default function AdsLandingPage() {
       <section className="py-8 border-t border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-muted-foreground text-center">
-            sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or any official Sora products. All trademarks belong to their respective owners.
+            omniflashai.io is an independent Gemini Omni Flash AI video generation tool site. We are not affiliated with Google, Google DeepMind, OpenAI, or any official Sora products. All trademarks belong to their respective owners.
           </p>
         </div>
       </section>

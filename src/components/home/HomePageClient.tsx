@@ -19,7 +19,7 @@ const PricingTeaser = dynamic(() => import('@/components/home/PricingTeaser'), {
   loading: () => <div className="h-96" />,
   ssr: true
 });
-const SparkRobinKnowledgeSection = dynamic(() => import('@/components/home/SparkRobinKnowledgeSection'), {
+const GeminiOmniFlashKnowledgeSection = dynamic(() => import('@/components/home/GeminiOmniFlashKnowledgeSection'), {
   loading: () => <div className="h-96" />,
   ssr: true
 });
@@ -99,7 +99,7 @@ export default function HomePageClient({ children }: { children?: ReactNode }) {
           <HowItWorks />
         </Suspense>
         <Suspense fallback={<div className="h-96" />}>
-          <SparkRobinKnowledgeSection />
+          <GeminiOmniFlashKnowledgeSection />
         </Suspense>
         <Suspense fallback={<div className="h-96" />}>
           <PricingTeaser />

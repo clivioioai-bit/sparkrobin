@@ -10,7 +10,7 @@ export interface StoryboardParams {
   aspect_ratio: "portrait" | "landscape";
 }
 
-// Spark Robin Pro Storyboard API Types
+// Gemini Omni Flash Pro Storyboard API Types
 export interface SoraStoryboardRequest {
   model: "sora-2-pro-storyboard";
   input: {

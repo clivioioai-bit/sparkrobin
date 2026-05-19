@@ -6,5 +6,5 @@ export default async function LegacyLocalizedNanoBananaProPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  redirect(`/${locale}/spark-robin-image-to-video`);
+  redirect(`/${locale}/gemini-omni-flash-image-to-video`);
 }

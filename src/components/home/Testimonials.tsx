@@ -172,7 +172,7 @@ const Testimonials = () => {
             asChild
             className="bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all"
           >
-            <Link href="/spark-robin-text-to-video">
+            <Link href="/gemini-omni-flash-text-to-video">
               {t('ctaButton')}
             </Link>
           </Button>

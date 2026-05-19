@@ -1,22 +1,22 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
-  description: 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
+  title: 'Gemini Omni Flash FAQ | AI Video Generator and AI Video Workflow Questions',
+  description: 'Find answers about Gemini Omni Flash availability, video generation workflows, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
   alternates: {
-    canonical: 'https://sparkrobin.app/faq',
+    canonical: 'https://omniflashai.io/faq',
   },
   openGraph: {
-    title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
-    description: 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
-    url: 'https://sparkrobin.app/faq',
-    siteName: 'Spark Robin',
+    title: 'Gemini Omni Flash FAQ | AI Video Generator and AI Video Workflow Questions',
+    description: 'Find answers about Gemini Omni Flash availability, video generation workflows, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
+    url: 'https://omniflashai.io/faq',
+    siteName: 'Gemini Omni Flash',
     images: [
       {
-        url: 'https://sparkrobin.app/logo-v2.png',
+        url: 'https://omniflashai.io/logo-v2.png',
         width: 1200,
         height: 630,
-        alt: 'Spark Robin FAQ',
+        alt: 'Gemini Omni Flash FAQ',
       }
     ],
     locale: 'en_US',
@@ -24,43 +24,43 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Spark Robin FAQ | Release Watch and AI Video Workflow Questions',
-    description: 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
-    images: ['https://sparkrobin.app/logo-v2.png']
+    title: 'Gemini Omni Flash FAQ | AI Video Generator and AI Video Workflow Questions',
+    description: 'Find answers about Gemini Omni Flash availability, video generation workflows, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.',
+    images: ['https://omniflashai.io/logo-v2.png']
   },
 }
 
 const faqs = [
-  { 
-    q: 'What is sparkrobin.app?', 
-    a: 'sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. It helps creators track updates, prepare prompt systems, and create reviewable drafts from text or images.' 
+  {
+    q: 'What is omniflashai.io?',
+    a: 'omniflashai.io is an independent Gemini Omni Flash AI video generation tool site. It helps creators track updates, prepare prompt systems, and create reviewable drafts from text or images.'
   },
-  { 
-    q: 'Is Spark Robin officially available from Google?', 
-    a: 'Official Spark Robin availability and specs should be checked through Google, Google DeepMind, or Google Cloud. This site avoids treating unconfirmed claims as facts.' 
+  {
+    q: 'Is Gemini Omni Flash officially available from Google?',
+    a: 'Official Gemini Omni Flash availability and specs should be checked through Google, Google DeepMind, or Google Cloud. This site avoids treating unconfirmed claims as facts.'
   },
-  { 
-    q: 'What can I do here now?', 
-    a: 'You can structure prompts, upload reference images, generate video drafts, and build a review process that can adapt when model access changes.' 
+  {
+    q: 'What can I do here now?',
+    a: 'You can structure prompts, upload reference images, generate video drafts, and build a review process that can adapt when model access changes.'
   },
-  { 
-    q: 'Why focus on prompts and references?', 
-    a: 'Reusable prompt briefs and reference packs make AI video work less random. They help teams compare drafts and preserve what worked.' 
+  {
+    q: 'Why focus on prompts and references?',
+    a: 'Reusable prompt briefs and reference packs make AI video work less random. They help teams compare drafts and preserve what worked.'
   },
-  
-  { 
-    q: 'Can I control style and tone?', 
-    a: 'Yes. Add style, tone, pacing, camera, and continuity notes to the prompt so the draft has a clearer creative target.' 
+
+  {
+    q: 'Can I control style and tone?',
+    a: 'Yes. Add style, tone, pacing, camera, and continuity notes to the prompt so the draft has a clearer creative target.'
   },
-  { 
-    q: 'Will AI video drafts make errors?', 
-    a: 'Yes. Treat each output as a draft. Review it against the brief, then refine the prompt or reference notes for the next version.' 
+  {
+    q: 'Will AI video drafts make errors?',
+    a: 'Yes. Treat each output as a draft. Review it against the brief, then refine the prompt or reference notes for the next version.'
   },
-  { 
-    q: 'Where should I verify official Spark Robin news?', 
-    a: 'Use official Google, Google DeepMind, and Google Cloud channels for confirmed model names, access rules, pricing, and technical limits.' 
+  {
+    q: 'Where should I verify official Gemini Omni Flash news?',
+    a: 'Use official Google, Google DeepMind, and Google Cloud channels for confirmed model names, access rules, pricing, and technical limits.'
   },
-  
+
   {
     q: 'Can I use drafts for commercial projects?',
     a: 'Commercial use depends on your plan, source assets, prompt content, and the applicable terms. Check rights before publishing.'
@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     q: 'Is this an official Google product?',
-    a: 'No. sparkrobin.app is independent and is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
+    a: 'No. omniflashai.io is independent and is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
   },
   {
     q: 'How should I get started?',
@@ -94,8 +94,8 @@ const faqs = [
     a: 'You can start generating videos immediately. Credits are available through our pricing plans. Visit our pricing page to choose a plan that fits your needs.'
   },
   {
-    q: 'What is the relationship between sparkrobin.app and Google Spark Robin?',
-    a: 'sparkrobin.app is a completely independent AI video generation platform with no affiliation, partnership, or authorization relationship with Google or Google DeepMind. We provide Spark Robin video generation workflows using our own product layer and compatible generation pipeline. All trademarks belong to their respective owners.'
+    q: 'What is the relationship between omniflashai.io and Google Gemini Omni Flash?',
+    a: 'omniflashai.io is a completely independent AI video generation platform with no affiliation, partnership, or authorization relationship with Google or Google DeepMind. We provide Gemini Omni Flash video generation workflows using our own product layer and compatible generation pipeline. All trademarks belong to their respective owners.'
   }
 ]
 
@@ -112,13 +112,13 @@ export default function FAQPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <h1 className="text-3xl font-bold mb-6">Spark Robin Video Generation — Frequently Asked Questions</h1>
+      <h1 className="text-3xl font-bold mb-6">Gemini Omni Flash Video Generation — Frequently Asked Questions</h1>
       <p className="text-muted-foreground mb-8">
-        Find answers to common questions about Spark Robin video generation. For more information, visit our 
-        <a href="/" className="text-primary hover:underline"> homepage</a>, 
-        <a href="/spark-robin-text-to-video" className="text-primary hover:underline"> Text to Video</a>, 
-        <a href="/pricing" className="text-primary hover:underline"> Pricing</a>, or review our 
-        <a href="/terms" className="text-primary hover:underline"> Terms of Service</a> and 
+        Find answers to common questions about Gemini Omni Flash video generation. For more information, visit our
+        <a href="/" className="text-primary hover:underline"> homepage</a>,
+        <a href="/gemini-omni-flash-text-to-video" className="text-primary hover:underline"> Text to Video</a>,
+        <a href="/pricing" className="text-primary hover:underline"> Pricing</a>, or review our
+        <a href="/terms" className="text-primary hover:underline"> Terms of Service</a> and
         <a href="/privacy" className="text-primary hover:underline"> Privacy Policy</a>.
       </p>
       <ul className="space-y-6">

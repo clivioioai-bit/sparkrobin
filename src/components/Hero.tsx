@@ -19,13 +19,13 @@ const Hero = () => {
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight font-display">
                 <span className="text-primary">
-                  Spark Robin Studio
+                  Gemini Omni Flash Studio
                 </span>
                 <br />
                 <span className="text-foreground">for Builders & Teams</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                Generate cinematic AI video with the latest Spark Robin models. Text-to-video and image-to-video。
+                Generate cinematic AI video with the latest Gemini Omni Flash models. Text-to-video and image-to-video。
               </p>
             </div>
 
@@ -33,7 +33,7 @@ const Hero = () => {
             <div className="grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0">
               <div className="flex items-center space-x-2 text-sm glass-effect rounded-lg px-3 py-2 hover-lift">
                 <Zap className="w-4 h-4 text-primary animate-glow-pulse" />
-                <span className="font-medium">Spark Robin Fast</span>
+                <span className="font-medium">Gemini Omni Flash Fast</span>
               </div>
               <div className="flex items-center space-x-2 text-sm glass-effect rounded-lg px-3 py-2 hover-lift">
                 <Shield className="w-4 h-4 text-primary animate-glow-pulse" />
@@ -51,7 +51,7 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="hero" size="lg" className="group" onClick={() => (window.location.pathname = '/spark-robin-text-to-video')}>
+              <Button variant="hero" size="lg" className="group" onClick={() => (window.location.pathname = '/gemini-omni-flash-text-to-video')}>
                 <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                 Generate Video
               </Button>

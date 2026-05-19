@@ -3,7 +3,7 @@ import { detectEntryLocale } from '@/i18n/detectEntryLocale';
 
 export const dynamic = 'force-dynamic';
 
-export default function SparkRobinImageToVideoPage() {
+export default function LegacyGeminiOmniFlashImageToVideoPage() {
   const locale = detectEntryLocale();
-  redirect(`/${locale}/spark-robin-image-to-video`);
+  redirect(`/${locale}/gemini-omni-flash-image-to-video`);
 }

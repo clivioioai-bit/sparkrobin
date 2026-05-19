@@ -17,7 +17,7 @@ export default function PaymentCancelledPage() {
             <XCircle className="h-12 w-12 text-orange-600 dark:text-orange-400" />
           </div>
         </div>
-        
+
         <div className="space-y-2">
           <h1 className="text-2xl sm:text-3xl font-bold">Payment Cancelled</h1>
           <p className="text-muted-foreground">
@@ -42,11 +42,11 @@ export default function PaymentCancelledPage() {
           </div>
           <p className="text-sm text-muted-foreground">
             Need help? Contact us at{" "}
-            <a 
-              href="mailto:support@sparkrobin.app?subject=Payment Question" 
+            <a
+              href="mailto:support@omniflashai.io?subject=Payment Question"
               className="text-primary hover:underline"
             >
-              support@sparkrobin.app
+              support@omniflashai.io
             </a>
           </p>
         </div>

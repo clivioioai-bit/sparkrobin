@@ -1,6 +1,6 @@
-# Spark RobinVideo.io – AI Video Generation Platform
+# Gemini Omni FlashVideo.io – AI Video Generation Platform
 
-Spark RobinVideo.io is an independent AI video generation platform supporting multiple models and features:
+Gemini Omni FlashVideo.io is an independent AI video generation platform supporting multiple models and features:
 
 - 🎬 Sora-style motion video generation
 - 🎞️ 10-second cinematic clips
@@ -8,7 +8,7 @@ Spark RobinVideo.io is an independent AI video generation platform supporting mu
 - 🚫 Watermark-free output
 - 🌍 Globally accessible models
 
-**Live Demo**: https://sparkrobin.app
+**Live Demo**: https://omniflashai.io
 
 ## 🚀 Quick Start
 
@@ -24,7 +24,7 @@ Spark RobinVideo.io is an independent AI video generation platform supporting mu
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd sparkrobin.app
+cd omniflashai.io
 
 # Install dependencies
 npm install
@@ -119,7 +119,7 @@ See [Database Architecture](./docs/DATABASE_ARCHITECTURE.md) for detailed inform
 ## 🏗️ Project Structure
 
 ```
-sparkrobin.app/
+omniflashai.io/
 ├── app/                    # Next.js app directory
 │   ├── api/               # API routes
 │   ├── auth/              # Authentication pages
@@ -198,7 +198,7 @@ For issues and questions:
 
 ## 🔗 Links
 
-- **Live Site**: https://sparkrobin.app
+- **Live Site**: https://omniflashai.io
 - **Supabase**: https://supabase.com
 - **Creem Payment**: https://creem.io
 - **Next.js Docs**: https://nextjs.org/docs

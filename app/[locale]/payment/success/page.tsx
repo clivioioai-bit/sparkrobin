@@ -64,7 +64,7 @@ export default function PaymentSuccessPage() {
           <div className="space-y-3">
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link 
-                href={`${localePrefix}/spark-robin-text-to-video`}
+                href={`${localePrefix}/gemini-omni-flash-text-to-video`}
                 className="inline-flex items-center justify-center px-6 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
               >
                 {t("goToStudio")}

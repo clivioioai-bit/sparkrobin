@@ -1,9 +1,9 @@
 ---
-title: "Sora は正式にオフラインへ：データを書き出して Spark Robin へ移行する方法"
-description: "Sora 終了後の実務ガイド。重要な日付、Sora 動画のエクスポート、プロンプト保存、sparkrobin.app ワークフローへの移行方法を解説します。"
+title: "Sora は正式にオフラインへ：データを書き出して Gemini Omni Flash へ移行する方法"
+description: "Sora 終了後の実務ガイド。重要な日付、Sora 動画のエクスポート、プロンプト保存、omniflashai.io ワークフローへの移行方法を解説します。"
 date: "2026-04-30"
-author: "Spark Robin チーム"
-tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Spark Robin", "ai-video"]
+author: "Gemini Omni Flash チーム"
+tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Gemini Omni Flash", "ai-video"]
 featured: true
 ---
 
@@ -13,7 +13,7 @@ featured: true
 - OpenAI は **Sora API を 2026 年 9 月 24 日**に終了すると案内しています。
 - Sora で作成した動画がある場合は、できるだけ早くエクスポートしてください。終了後、最終エクスポート期間が終わると関連データは永久削除される可能性があります。
 - MP4 だけでなく、prompt、参考画像、アスペクト比、生成設定、クライアントメモも保存してください。
-- sparkrobin.app は、テキスト動画生成、画像から動画、多シーン構成、広告向け出力の移行先として使えます。
+- omniflashai.io は、テキスト動画生成、画像から動画、多シーン構成、広告向け出力の移行先として使えます。
 
 ## Sora 終了タイムライン
 
@@ -56,7 +56,7 @@ OpenAI Help Center の案内では、`sora.chatgpt.com/sunset` にアクセス�
 | `notes.md` | 成功点、失敗点、再生成時の注意 |
 | `license.txt` | 使用権、公開範囲、クライアント条件 |
 
-## Spark Robin ワークフローへ移行する理由
+## Gemini Omni Flash ワークフローへ移行する理由
 
 Sora ユーザーが必要としているのは、単なる代替モデルではなく、制作を止めないためのワークフローです。
 
@@ -67,7 +67,7 @@ Sora ユーザーが必要としているのは、単なる代替モデルでは
 - 複数ショットの広告案を組む
 - prompt を素早く改善する
 
-sparkrobin.app は、Spark Robin text-to-video、Spark Robin image-to-video、多シーン制作をまとめて扱えるため、Sora からの移行先として実用的です。
+omniflashai.io は、Gemini Omni Flash text-to-video、Gemini Omni Flash image-to-video、多シーン制作をまとめて扱えるため、Sora からの移行先として実用的です。
 
 ## Prompt 変換ガイド
 
@@ -83,7 +83,7 @@ Output: 9:16、16:9、広告、SNS など
 Avoid: 歪み、読めない文字、余計な物体、ロゴ崩れ
 ```
 
-この構造にすると、古い Sora prompt を sparkrobin.app、Runway、Kling などで比較しやすくなります。
+この構造にすると、古い Sora prompt を omniflashai.io、Runway、Kling などで比較しやすくなります。
 
 ## FAQ
 

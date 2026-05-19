@@ -9,10 +9,10 @@ const SeoSection = () => {
         {/* Main SEO Content */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
-            A Practical <span className="text-primary">Spark Robin Watch & Workflow</span> Hub
+            A Practical <span className="text-primary">Gemini Omni Flash Watch & Workflow</span> Hub
           </h2>
           <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-            Spark Robin 相关信息还在快速变化。这个站点不再用夸张参数包装模型，
+            Gemini Omni Flash 相关信息还在快速变化。这个站点不再用夸张参数包装模型，
             而是帮助创作者整理提示词、参考图、镜头说明和可复用的 AI 视频工作流。
           </p>
           
@@ -22,10 +22,10 @@ const SeoSection = () => {
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <Zap className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold">Release Watch</h3>
+                <h3 className="text-lg font-semibold">AI Video Generator</h3>
               </div>
                 <p className="text-muted-foreground text-sm">
-                  跟踪 Spark Robin、Veo 与 Google Cloud 文档中的真实更新，把确认信息和市场传闻区分开，避免 SEO 文案过度承诺。
+                  跟踪 Gemini Omni Flash、Veo 与 Google Cloud 文档中的真实更新，把确认信息和市场传闻区分开，避免 SEO 文案过度承诺。
                 </p>
             </Card>
 
@@ -59,7 +59,7 @@ const SeoSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h3 className="text-2xl font-bold mb-6">
-              为什么需要新的 <span className="text-primary">Spark Robin</span> 文案逻辑？
+              为什么需要新的 <span className="text-primary">Gemini Omni Flash</span> 文案逻辑？
             </h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
@@ -81,7 +81,7 @@ const SeoSection = () => {
                 <div>
                   <h4 className="font-semibold mb-1">从“参数堆叠”转向“可信信息”</h4>
                   <p className="text-sm text-muted-foreground">
-                    对未确认的 Spark Robin 参数保持克制，把官方确认、合理推测和站内功能分开表达。
+                    对未确认的 Gemini Omni Flash 参数保持克制，把官方确认、合理推测和站内功能分开表达。
                   </p>
                 </div>
               </div>
@@ -125,11 +125,11 @@ const SeoSection = () => {
               <h4 className="text-lg font-semibold mb-4">Trending Keywords:</h4>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "spark-robin",
-                  "spark robin ai",
-                  "google spark robin",
-                  "spark-robin text to video",
-                  "spark robin api",
+                  "gemini-omni-flash",
+                  "gemini omni flash ai",
+                  "google gemini omni flash",
+                  "gemini-omni-flash text to video",
+                  "gemini omni flash api",
                   "ai video generator",
                   "text to video",
                   "image to video"
@@ -144,7 +144,7 @@ const SeoSection = () => {
             <div className="bg-card/30 rounded-lg p-4 border border-primary/20">
               <h4 className="font-semibold mb-2 text-primary">Release-aware SEO</h4>
               <p className="text-sm text-muted-foreground">
-                Spark Robin 还没有足够稳定的官方公开参数时，最好的 SEO 不是伪造确定性，而是建立可信、可更新、可操作的内容体系。
+                Gemini Omni Flash 还没有足够稳定的官方公开参数时，最好的 SEO 不是伪造确定性，而是建立可信、可更新、可操作的内容体系。
               </p>
             </div>
           </div>
@@ -154,7 +154,7 @@ const SeoSection = () => {
         <div className="mt-16 max-w-4xl mx-auto">
           <div className="bg-muted/30 rounded-lg p-8">
             <h3 className="text-xl font-bold mb-4 text-center">
-              如何准备 Spark Robin AI 视频工作流
+              如何准备 Gemini Omni Flash AI 视频工作流
             </h3>
             <div className="grid md:grid-cols-2 gap-6 text-sm text-muted-foreground">
               <div>
@@ -172,7 +172,7 @@ const SeoSection = () => {
                   图片、产品图、分镜图和品牌样张比抽象描述更稳定。把参考资产和 motion notes 组合起来，能让视频草稿更容易评审。
                 </p>
                 <p>
-                  当官方 Spark Robin 信息更新时，这套资产和提示词结构仍然可以复用，不会因为模型名称变化而重做全部内容。
+                  当官方 Gemini Omni Flash 信息更新时，这套资产和提示词结构仍然可以复用，不会因为模型名称变化而重做全部内容。
                 </p>
               </div>
             </div>

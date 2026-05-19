@@ -112,7 +112,7 @@ git log --all --full-history -- .env
 
 ## Reporting Security Issues
 
-If you discover a security vulnerability, please email support@sparkrobin.app
+If you discover a security vulnerability, please email support@omniflashai.io
 
 **DO NOT** open a public GitHub issue for security vulnerabilities.
 

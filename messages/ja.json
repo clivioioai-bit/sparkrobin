@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "Spark Robin",
+    "brand": "Gemini Omni Flash",
     "new": "新着",
     "generate": "生成",
     "home": "ホーム",
@@ -23,17 +23,17 @@
   "hero": {
     "badge": "Release watch + creative workspace",
     "discord": "Join Discord Community",
-    "brandName": "Spark Robin",
+    "brandName": "Gemini Omni Flash",
     "tagline": "Video Workflow Lab",
-    "title": "Spark Robin — Track the Next Google Video Wave",
-    "subtitle": "Follow Spark Robin signals, prepare reusable prompts, and turn text or images into production-ready video drafts while the next model cycle unfolds.",
+    "title": "Gemini Omni Flash — Track the Next Google Video Wave",
+    "subtitle": "Follow Gemini Omni Flash signals, prepare reusable prompts, and turn text or images into production-ready video drafts while the next model cycle unfolds.",
     "placeholder": "Describe the video you want to create...",
     "cta": "Generate",
     "trySora3": "Draft from Text",
     "trySora2": "Animate an Image",
-    "sora2Description": "Create practical video drafts today while tracking official Spark Robin updates.",
+    "sora2Description": "Create practical video drafts today while tracking official Gemini Omni Flash updates.",
     "storyboard25s": "Plan Multi-Shot Concepts",
-    "disclaimer": "Independent editorial and creation workspace for Spark Robin watchers. Not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.",
+    "disclaimer": "Independent editorial and creation workspace for Gemini Omni Flash watchers. Not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.",
     "features": {
       "noWatermark": {
         "title": "Clean draft exports",
@@ -54,7 +54,7 @@
     "generate": "Video AI",
     "textToVideo": "Text to Video",
     "imageToVideo": "Image to Video",
-    "storyboard": "Spark Robin Storyboard",
+    "storyboard": "Gemini Omni Flash Storyboard",
     "watermarkRemover": "Watermark Remover",
     "pricing": "Pricing",
     "myCreations": "My Creations",
@@ -83,13 +83,13 @@
     "models": "Models",
     "nanoBanana": "Nano Banana",
     "nanoBananaPro": "Nano Banana Pro",
-    "sora3": "Spark Robin",
-    "sora3Pro": "Spark Robin Pro",
+    "sora3": "Gemini Omni Flash",
+    "sora3Pro": "Gemini Omni Flash Pro",
     "sora2": "Sora 2",
     "sora2Pro": "Sora 2 Pro",
     "veo3": "Veo 3",
     "wan26": "Wan 2.6",
-    "sparkRobinModel": "Spark Robin",
+    "sparkRobinModel": "Gemini Omni Flash",
     "veo31Model": "Veo 3.1",
     "whoThisIsFor": {
       "ecommerce": {
@@ -104,30 +104,30 @@
     }
   },
   "footer": {
-    "description": "sparkrobin.app helps creators follow Spark Robin release signals, organize prompt systems, and produce practical AI video drafts from text or images.",
+    "description": "omniflashai.io helps creators follow Gemini Omni Flash release signals, organize prompt systems, and produce practical AI video drafts from text or images.",
     "product": "Product",
     "company": "Company",
     "resources": "Resources",
     "support": "Support",
-    "sora3TextToVideo": "Spark Robin Text to Video",
-    "sora3ImageToVideo": "Spark Robin Image to Video",
-    "sora3Pricing": "Spark Robin Pricing",
-    "sora3Faq": "Spark Robin FAQ",
-    "sora3Blog": "Spark Robin Blog",
+    "sora3TextToVideo": "Gemini Omni Flash Text to Video",
+    "sora3ImageToVideo": "Gemini Omni Flash Image to Video",
+    "sora3Pricing": "Gemini Omni Flash Pricing",
+    "sora3Faq": "Gemini Omni Flash FAQ",
+    "sora3Blog": "Gemini Omni Flash Blog",
     "aiVideoPromptGpt": "AI Video Prompt GPT",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "refundPolicy": "Refund Policy",
     "support247": "24/7 Support",
     "contactUs": "Contact Us / Partnership",
-    "disclaimer": "sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or official Sora products. All trademarks belong to their respective owners.",
+    "disclaimer": "omniflashai.io is an independent Gemini Omni Flash release-watch and AI video workflow site. We are not affiliated with Google, Google DeepMind, OpenAI, or official Sora products. All trademarks belong to their respective owners.",
     "poweredBy": "Built for practical AI video planning, prompt reuse, and draft generation. Not affiliated with any official vendor.",
-    "copyright": "© 2024 Spark Robin. All rights reserved.",
+    "copyright": "© 2024 Gemini Omni Flash. All rights reserved.",
     "companyName": "Aivido LLC",
     "companyAddress": "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM",
-    "supportEmail": "24/7 Support: support@sparkrobin.app",
-    "businessEmail": "Business & Partnership: support@sparkrobin.app",
-    "logoAlt": "Spark Robin AI Video Generator logo",
+    "supportEmail": "24/7 Support: support@omniflashai.io",
+    "businessEmail": "Business & Partnership: support@omniflashai.io",
+    "logoAlt": "Gemini Omni Flash AI Video Generator logo",
     "socialLabels": {
       "twitter": "Follow us on Twitter",
       "discord": "Join our Discord community",
@@ -138,10 +138,10 @@
     }
   },
   "whyThisMatters": {
-    "title": "Why Teams Prepare with Spark Robin",
+    "title": "Why Teams Prepare with Gemini Omni Flash",
     "subtitle": "The teams that benefit most from new video models already have prompts, references, shot lists, and review rules ready before access arrives.",
     "challenges": "Common Roadblocks",
-    "solutions": "How Spark Robin Solves This",
+    "solutions": "How Gemini Omni Flash Solves This",
     "watermarks": {
       "title": "Rumor-driven planning",
       "description": "Unconfirmed specs can push teams into fragile content plans."
@@ -174,10 +174,10 @@
       "title": "Reviewable drafts",
       "description": "Generate clips that are easy to compare, annotate, and route into the next edit."
     },
-    "solution": "Spark Robin preparation turns uncertainty into a usable workflow"
+    "solution": "Gemini Omni Flash preparation turns uncertainty into a usable workflow"
   },
   "whoThisIsFor": {
-    "title": "Who Uses This Spark Robin Workspace",
+    "title": "Who Uses This Gemini Omni Flash Workspace",
     "subtitle": "For creators and teams that want to be ready for the next video model without pausing current production.",
     "creators": {
       "title": "Content creators & influencers",
@@ -205,7 +205,7 @@
     }
   },
   "blogShowcase": {
-    "title": "Spark Robin Notes for Creators & Teams",
+    "title": "Gemini Omni Flash Notes for Creators & Teams",
     "subtitle": "Release tracking, prompt structure, workflow preparation, and practical AI video guidance.",
     "viewAll": "View all blog posts",
     "readMore": "Read More",
@@ -220,7 +220,7 @@
     "emptyDescription": "content/blog に Markdown ファイルを追加するとここに表示されます。"
   },
   "howItWorks": {
-    "title": "How to Prepare a Spark Robin Workflow",
+    "title": "How to Prepare a Gemini Omni Flash Workflow",
     "subtitle": "Start with a clear brief, turn it into reusable shot notes, then generate drafts you can evaluate.",
     "step1": {
       "title": "Write the creative brief",
@@ -236,23 +236,23 @@
     }
   },
   "faq": {
-    "title": "Spark Robin FAQ",
-    "subtitle": "Clear answers about the Spark Robin release watch, current workflow tools, prompts, references, and draft generation.",
+    "title": "Gemini Omni Flash FAQ",
+    "subtitle": "Clear answers about the Gemini Omni Flash release watch, current workflow tools, prompts, references, and draft generation.",
     "viewAllFaqs": "View All FAQs",
     "contactSupport": "Contact Support",
     "haveMoreQuestions": "Have more questions? We're here to help.",
     "questions": {
       "whatMakesDifferent": {
-        "question": "What is sparkrobin.app?",
-        "answer": "sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. It helps creators track confirmed updates, structure reusable prompts, and create practical video drafts from text or images."
+        "question": "What is omniflashai.io?",
+        "answer": "omniflashai.io is an independent Gemini Omni Flash release-watch and AI video workflow site. It helps creators track confirmed updates, structure reusable prompts, and create practical video drafts from text or images."
       },
       "characterConsistency": {
-        "question": "Is Spark Robin officially available from Google?",
-        "answer": "Google has not confirmed a public Spark Robin release in the materials we reference. Treat specific model specs as watch items until they appear in official Google, Google DeepMind, or Google Cloud documentation."
+        "question": "Is Gemini Omni Flash officially available from Google?",
+        "answer": "Google has not confirmed a public Gemini Omni Flash release in the materials we reference. Treat specific model specs as watch items until they appear in official Google, Google DeepMind, or Google Cloud documentation."
       },
       "videosLongerThan10s": {
         "question": "What can I do here before official access arrives?",
-        "answer": "You can prepare prompts, references, shot lists, and draft clips now. That makes it easier to move quickly when new model access or official Spark Robin details become available."
+        "answer": "You can prepare prompts, references, shot lists, and draft clips now. That makes it easier to move quickly when new model access or official Gemini Omni Flash details become available."
       },
       "commercialUse": {
         "question": "Can I use the drafts commercially?",
@@ -260,7 +260,7 @@
       },
       "watermarks": {
         "question": "Why focus on prompt systems instead of only generation?",
-        "answer": "AI video changes quickly. A structured prompt system gives your team reusable creative direction that can move across tools, models, and future Spark Robin updates."
+        "answer": "AI video changes quickly. A structured prompt system gives your team reusable creative direction that can move across tools, models, and future Gemini Omni Flash updates."
       },
       "paymentSafe": {
         "question": "What payment methods do you accept?",
@@ -319,7 +319,7 @@
       "tryAgainLater": "Please try again later.",
       "failedToCreatePaymentLink": "Failed to create payment link",
       "needHelp": "Need Help?",
-      "contactSupport": "Contact support@sparkrobin.app for assistance.",
+      "contactSupport": "Contact support@omniflashai.io for assistance.",
       "contactSupportLink": "Contact Support",
       "features": {
         "creditsIncluded": "{count} credits included",
@@ -366,10 +366,10 @@
       "pleaseEnterPrompt": "Please enter your prompt",
       "pleaseUploadImage": "Please upload an image to generate the video",
       "watermarkRemover": {
-        "title": "Spark Robin Watermark Remover",
+        "title": "Gemini Omni Flash Watermark Remover",
         "description": "Remove the Sora watermark from your Sora-hosted videos. Paste a public `sora.chatgpt.com` URL and run. Typical processing takes 1–3 seconds on the API.",
-        "seoTitle": "Spark Robin Watermark Remover | Remove Sora Watermarks",
-        "seoDescription": "Spark Robin watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
+        "seoTitle": "Gemini Omni Flash Watermark Remover | Remove Sora Watermarks",
+        "seoDescription": "Gemini Omni Flash watermark remover: remove Sora watermarks from Sora-hosted videos in seconds. Commercial use, API-ready, works with public sora.chatgpt.com links.",
         "input": "Input",
         "output": "Output",
         "videoUrl": "video_url",
@@ -382,8 +382,8 @@
         "waitingForResult": "Waiting for result…",
         "noOutputYet": "No output yet",
         "exampleVideo": "Example Video",
-        "exampleVideoDescription": "This is a sample video generated by Spark Robin AI. Upload your own Sora video to remove watermarks!",
-        "creditsInfo": "This tool consumes 10 credits per run. Keep your Spark Robin videos clean and brand-ready.",
+        "exampleVideoDescription": "This is a sample video generated by Gemini Omni Flash AI. Upload your own Sora video to remove watermarks!",
+        "creditsInfo": "This tool consumes 10 credits per run. Keep your Gemini Omni Flash videos clean and brand-ready.",
         "browserNotSupportVideo": "Your browser does not support the video tag."
       }
     },
@@ -413,8 +413,8 @@
       "answer": "Subscription bucket resets each billing period and does not roll over. One-time add-on credits go to the flexible bucket and are not cleared by subscription resets."
     },
     "faqRefundPolicy": {
-      "question": "What is sparkrobin.app refund policy?",
-      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@sparkrobin.app for refunds. Refunds are processed within 5-7 business days."
+      "question": "What is omniflashai.io refund policy?",
+      "answer": "We offer a 7-day money-back guarantee for all subscription plans. Contact support@omniflashai.io for refunds. Refunds are processed within 5-7 business days."
     },
     "faqContentRestrictions": {
       "question": "Are there any video content restrictions?",
@@ -470,7 +470,7 @@
     "sampleVideoDescriptionUnauthenticated": "This sample shows the kind of draft you can create after signing in.",
     "browserNotSupportVideo": "Your browser does not support the video tag.",
     "signUpToCreate": "Sign Up to Create Your Own",
-    "textToVideoTitle": "Spark Robin Text to Video | Prompt Workflow Lab",
+    "textToVideoTitle": "Gemini Omni Flash Text to Video | Prompt Workflow Lab",
     "textToVideoSubtitle": "Turn a loose idea into a structured video brief, then generate a draft you can review, compare, and improve.",
     "textToVideoFeaturesTitle": "A Better Way to Write AI Video Prompts",
     "featureAIPowered": {
@@ -491,7 +491,7 @@
     },
     "howToUseTitle": "How to Use the AI Video Generator for Text to Video",
     "howToUseStep1": {
-      "title": "Sign Up or Log In to sparkrobin.app",
+      "title": "Sign Up or Log In to omniflashai.io",
       "description": "Create an account so your drafts, prompt notes, and generation history stay organized."
     },
     "howToUseStep2": {
@@ -509,7 +509,7 @@
     "whoUsesTitle": "Who Uses This Workflow?",
     "whoUsesContentCreators": "Content creators",
     "whoUsesTikTokMarketers": "TikTok marketers",
-    "imageToVideoTitle": "Spark Robin Image to Video | Reference-Led Motion",
+    "imageToVideoTitle": "Gemini Omni Flash Image to Video | Reference-Led Motion",
     "imageToVideoSubtitle": "Use a product photo, frame, or visual reference as the anchor for a video draft with clearer motion direction.",
     "imageToVideoFeaturesTitle": "Use Images as Creative Direction",
     "imageToVideoFeature1": {
@@ -530,7 +530,7 @@
     },
     "imageToVideoHowToUseTitle": "How to Build an Image-Led Video Draft",
     "imageToVideoHowToUseStep1": {
-      "title": "Sign Up or Log In to sparkrobin.app",
+      "title": "Sign Up or Log In to omniflashai.io",
       "description": "Create an account to keep reference images, prompts, and drafts in one workflow."
     },
     "imageToVideoHowToUseStep2": {
@@ -607,8 +607,8 @@
     },
     "reframeMode": {
       "model": "Model",
-      "sora3": "Spark Robin",
-      "sora3Pro": "Spark Robin pro",
+      "sora3": "Gemini Omni Flash",
+      "sora3Pro": "Gemini Omni Flash pro",
       "sora3Description": "A structured AI video workflow for prompt briefs, reference images, and reviewable drafts.",
       "sora3ProDescription": "A higher-capacity workflow for teams testing more draft variations and reference-led scenes.",
       "prompt": "Prompt *",
@@ -748,14 +748,14 @@
       "generationTimeNote": "⏱️ This typically takes 5-15 minutes. Please keep this page open.",
       "exampleDescription": "Here is an example of a multi-scene storyboard draft. Configure scenes, references, and shot notes to create your own reviewable version.",
       "exampleNote": "Example: 3 scenes arranged into a complete narrative rhythm",
-      "whatIsSora3ProStoryboard": "What is the Spark Robin Pro Storyboard Workflow?",
-      "sora3ProStoryboardDescription": "Spark Robin Pro Storyboard helps teams break sequential ideas into scenes, shots, references, and revision notes. It is useful for planning short-form concepts, product narratives, brand pitches, and multi-version drafts before committing more production time.",
+      "whatIsSora3ProStoryboard": "What is the Gemini Omni Flash Pro Storyboard Workflow?",
+      "sora3ProStoryboardDescription": "Gemini Omni Flash Pro Storyboard helps teams break sequential ideas into scenes, shots, references, and revision notes. It is useful for planning short-form concepts, product narratives, brand pitches, and multi-version drafts before committing more production time.",
       "upTo25sDuration": "Multi-scene pacing",
       "multiSceneControl": "Multi-Scene Control (Storyboard)",
       "socialMediaReady": "Channel Version Planning",
       "hdQualityAudio": "Sound and Pacing Notes",
-      "whatPeopleAreSaying": "What People Are Saying About Spark Robin Pro Storyboard",
-      "keyFeatures": "Key Features of Spark Robin Pro Storyboard",
+      "whatPeopleAreSaying": "What People Are Saying About Gemini Omni Flash Pro Storyboard",
+      "keyFeatures": "Key Features of Gemini Omni Flash Pro Storyboard",
       "multiSceneSequencing": "Multi-Scene Sequencing",
       "multiSceneSequencingDescription": "Define multiple scenes in order, with a clear goal, subject, action, and transition for each shot.",
       "visualConsistency": "Visual Consistency",
@@ -764,7 +764,7 @@
       "flexibleOutputControlDescription": "Plan different pacing, shot counts, and draft lengths based on channel, audience, and story goal.",
       "referenceImageSupport": "Reference Image Support",
       "referenceImageSupportDescription": "Upload reference images and note which details must be preserved so each scene keeps the same visual direction.",
-      "howToUse": "How to Use Spark Robin Pro Storyboard",
+      "howToUse": "How to Use Gemini Omni Flash Pro Storyboard",
       "step1DefineScenes": "Define Scenes",
       "step1Description": "Describe the goal, subject, action, and camera language for each scene",
       "step2SetParameters": "Set Parameters",
@@ -783,13 +783,13 @@
       "socialMediaFormats": "Social Media Formats",
       "socialMediaFormatsDescription": "Prepare different framing and pacing versions for TikTok, Instagram Reels, and YouTube Shorts.",
       "fastExportShare": "Fast Export & Share",
-      "fastExportShareDescription": "Generate, preview, and save Spark Robin storyboard drafts for review."
+      "fastExportShareDescription": "Generate, preview, and save Gemini Omni Flash storyboard drafts for review."
     },
     "watermarkRemover": {
-      "title": "Spark Robin Asset Organizer",
+      "title": "Gemini Omni Flash Asset Organizer",
       "description": "Organize publicly hosted video assets so teams can track source links, versions, and review notes in one workflow.",
-      "seoTitle": "Spark Robin Asset Organizer | Video Review Workflow",
-      "seoDescription": "Spark Robin asset organizer for tracking public video references, version notes, and review context inside an AI video workflow.",
+      "seoTitle": "Gemini Omni Flash Asset Organizer | Video Review Workflow",
+      "seoDescription": "Gemini Omni Flash asset organizer for tracking public video references, version notes, and review context inside an AI video workflow.",
       "input": "Input",
       "output": "Output",
       "videoUrl": "video_url",
@@ -818,13 +818,13 @@
     }
   },
   "demoGallery": {
-    "title": "Spark Robin Draft Examples",
+    "title": "Gemini Omni Flash Draft Examples",
     "description": "Browse draft examples for text-to-video prompts, reference-led image motion, and storyboard planning.",
     "seeMoreExamples": "See more examples",
     "tapToUnmute": "Tap to unmute"
   },
   "keyFeatures": {
-    "title": "What makes the Spark Robin workflow useful",
+    "title": "What makes the Gemini Omni Flash workflow useful",
     "noWatermark": {
       "title": "Clear Drafts",
       "description": "Each version connects the creative goal, reference assets, and review criteria."
@@ -838,7 +838,7 @@
       "description": "Compare prompt, reference, and motion ideas in the browser before committing to production."
     },
     "sora3ProStoryboard": {
-      "title": "Spark Robin Storyboard System",
+      "title": "Gemini Omni Flash Storyboard System",
       "description": "Break multi-scene concepts into shots, characters, actions, and transitions for team review."
     },
     "textToVideoImageToVideo": {
@@ -850,7 +850,7 @@
       "description": "Prepare alternate versions for short-form, product pages, brand content, and internal pitches."
     },
     "trySora3Free": {
-      "title": "Try the Spark Robin Workflow",
+      "title": "Try the Gemini Omni Flash Workflow",
       "description": "Start with a prompt brief or reference image, generate a draft, and refine the creative notes for the next pass.",
       "startGenerating": "Create Draft"
     }
@@ -868,7 +868,7 @@
   },
   "auth": {
     "signIn": "ログイン",
-    "signInToSora3": "Spark Robinにログイン",
+    "signInToSora3": "Gemini Omni Flashにログイン",
     "createAccount": "アカウントを作成",
     "checkEmail": "メールを確認",
     "backToSignUp": "サインアップに戻る",
@@ -891,8 +891,8 @@
     "redirectingToGoogle": "Googleにリダイレクト中..."
   },
   "sora3Capabilities": {
-    "title": "Why Choose Spark Robin",
-    "subtitle": "Spark Robin helps teams prepare better AI video briefs across text, image, and video workflows, with clearer review notes and reusable creative direction.",
+    "title": "Why Choose Gemini Omni Flash",
+    "subtitle": "Gemini Omni Flash helps teams prepare better AI video briefs across text, image, and video workflows, with clearer review notes and reusable creative direction.",
     "cinematicRealism": {
       "title": "Create videos from text, images, or existing footage",
       "description": "Start with a prompt, still image, or source clip and turn it into a draft that is easier to review, compare, and revise."
@@ -928,14 +928,14 @@
     "autoRedirect": "数秒後に自動的にリダイレクトされます..."
   },
   "account": {
-    "dashboardMetaTitle": "ダッシュボード | Spark Robin アカウント管理",
-    "dashboardMetaDescription": "Spark Robin アカウント、クレジット、サブスクリプション、支払い、生成履歴を一か所で管理できます。",
-    "myCreationsMetaTitle": "My Creations | Spark Robin 生成履歴",
-    "myCreationsMetaDescription": "Spark Robin の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
+    "dashboardMetaTitle": "ダッシュボード | Gemini Omni Flash アカウント管理",
+    "dashboardMetaDescription": "Gemini Omni Flash アカウント、クレジット、サブスクリプション、支払い、生成履歴を一か所で管理できます。",
+    "myCreationsMetaTitle": "My Creations | Gemini Omni Flash 生成履歴",
+    "myCreationsMetaDescription": "Gemini Omni Flash の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
     "dashboardPageTitle": "アカウントダッシュボード",
     "dashboardPageDescription": "サブスクリプション、クレジット、支払い、動画履歴をまとめて管理できます。",
     "myCreationsPageTitle": "My Creations",
-    "myCreationsPageDescription": "Spark Robin の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
+    "myCreationsPageDescription": "Gemini Omni Flash の生成履歴を確認し、完成した動画を再生・ダウンロードできます。",
     "stats": {
       "creditsAvailable": "利用可能クレジット",
       "videosGenerated": "生成済み動画",

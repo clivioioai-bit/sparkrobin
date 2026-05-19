@@ -81,7 +81,7 @@ export function validateSignin(data: SigninFormData): string | null {
 export function getBaseUrl(): string {
   const isProduction = process.env.NODE_ENV === 'production';
   if (isProduction) {
-    return process.env.NEXT_PUBLIC_APP_URL || 'https://sparkrobin.app';
+    return process.env.NEXT_PUBLIC_APP_URL || 'https://omniflashai.io';
   }
   if (typeof window !== 'undefined') {
     return window.location.origin;
@@ -100,6 +100,6 @@ export function getRedirectPath(): string {
       return savedPath;
     }
   }
-  return '/spark-robin-text-to-video';
+  return '/gemini-omni-flash-text-to-video';
 }
 

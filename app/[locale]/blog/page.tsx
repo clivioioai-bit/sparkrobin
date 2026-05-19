@@ -11,10 +11,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params;
-  const baseUrl = 'https://sparkrobin.app';
+  const baseUrl = 'https://omniflashai.io';
   const prefix = locale === 'en' ? '' : `/${locale}`;
-  const title = 'AI Video Blog | Spark Robin';
-  const description = 'Read practical Spark Robin guides, release-watch updates, AI video workflow notes, prompt systems, and production tips for reviewable video drafts.';
+  const title = 'AI Video Blog | Gemini Omni Flash';
+  const description = 'Read practical Gemini Omni Flash guides, video generation guides, AI video workflow notes, prompt systems, and production tips for reviewable video drafts.';
 
   return {
     title,
@@ -24,10 +24,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/blog`,
-      siteName: 'Spark Robin',
+      siteName: 'Gemini Omni Flash',
       images: [
         {
-          url: 'https://sparkrobin.app/logo-v2.png',
+          url: 'https://omniflashai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -40,7 +40,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sparkrobin.app/logo-v2.png'],
+      images: ['https://omniflashai.io/logo-v2.png'],
     },
   };
 }

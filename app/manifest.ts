@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Spark Robin Workflow Lab',
-    short_name: 'Spark Robin',
-    description: 'Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts.',
+    name: 'Gemini Omni Flash AI Video Generator',
+    short_name: 'Gemini Omni Flash',
+    description: 'Create AI videos with Gemini Omni Flash from text prompts or images online.',
     start_url: '/',
     display: 'standalone',
     background_color: '#000000',

@@ -44,9 +44,9 @@ const PricingPage = () => {
   return (
     <div className="min-h-screen bg-background" suppressHydrationWarning>
       <SEOHead 
-        title="Pricing Plans - Choose Your AI Video Generation Plan | Spark Robin"
-        description="View plans for Spark Robin workflow credits, prompt tests, reference-led video drafts, and ongoing AI video iteration."
-        canonical="https://sparkrobin.app/pricing"
+        title="Pricing Plans - Choose Your AI Video Generation Plan | Gemini Omni Flash"
+        description="View plans for Gemini Omni Flash workflow credits, prompt tests, reference-led video drafts, and ongoing AI video iteration."
+        canonical="https://omniflashai.io/pricing"
       />
       
       <div className="pt-20 pb-16">

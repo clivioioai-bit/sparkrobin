@@ -66,12 +66,12 @@ const advertisingCards: ContentCard[] = [
 
 const comparisonRows: CompareRow[] = [
   {
-    model: "Spark Robin Workspace",
-    bestFor: "Teams preparing prompt systems, reference assets, and draft reviews around Spark Robin interest",
+    model: "Gemini Omni Flash Workspace",
+    bestFor: "Teams preparing prompt systems, reference assets, and draft reviews around Gemini Omni Flash interest",
     strengths: "Release-watch framing, structured prompts, image-led drafts, reusable shot notes, and a practical workflow for current production",
     chooseWhen: "You want to keep producing AI video drafts while staying honest about what Google has and has not confirmed.",
     recommendation: "Best for preparation",
-    href: "/spark-robin-text-to-video",
+    href: "/gemini-omni-flash-text-to-video",
   },
   {
     model: "Veo 3",
@@ -141,7 +141,7 @@ function CardGrid({
           className="rounded-3xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-6 sm:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.22)] transition-colors hover:border-primary/30"
         >
           <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary mb-4">
-            Spark Robin
+            Gemini Omni Flash
           </div>
           <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">{item.title}</h3>
           <p className="text-sm sm:text-base leading-7 text-white/65">{item.description}</p>
@@ -258,21 +258,21 @@ function CTASection() {
   return (
     <section className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/14 via-white/[0.04] to-transparent p-8 sm:p-10 shadow-[0_16px_50px_rgba(0,0,0,0.25)]">
       <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-        Build a Spark Robin-Ready Workflow
+        Build a Gemini Omni Flash-Ready Workflow
       </h2>
       <p className="text-base sm:text-lg text-white/65 leading-8 max-w-3xl">
-        Do not wait for Spark Robin rumors to settle before improving your workflow. Build reusable prompt
+        Do not wait for Gemini Omni Flash rumors to settle before improving your workflow. Build reusable prompt
         structures, organize reference assets, and create drafts your team can review today.
       </p>
       <div className="mt-7 flex flex-col sm:flex-row gap-3">
         <Link
-          href="/spark-robin-text-to-video"
+          href="/gemini-omni-flash-text-to-video"
           className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Try Text to Video
         </Link>
         <Link
-          href="/spark-robin-image-to-video"
+          href="/gemini-omni-flash-image-to-video"
           className="inline-flex items-center justify-center rounded-xl border border-white/[0.14] bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/[0.08]"
         >
           Try Image to Video
@@ -282,7 +282,7 @@ function CTASection() {
   );
 }
 
-const SparkRobinKnowledgeSection = () => {
+const GeminiOmniFlashKnowledgeSection = () => {
   const locale = useLocale();
 
   if (locale !== "en") {
@@ -295,7 +295,7 @@ const SparkRobinKnowledgeSection = () => {
         <div className="space-y-16 sm:space-y-20">
           <section>
             <SectionHeader
-              title="What to Prepare for Spark Robin"
+              title="What to Prepare for Gemini Omni Flash"
               description="Use this workspace to organize prompt libraries, references, shot notes, and release-aware content before official model details are stable."
             />
             <CardGrid items={creationCards} />
@@ -304,14 +304,14 @@ const SparkRobinKnowledgeSection = () => {
           <section>
             <SectionHeader
               title="Why the New Copy Should Be Different"
-              description="Spark Robin content should not sound like a recycled landing page. It should communicate uncertainty clearly and give creators something practical to do now."
+              description="Gemini Omni Flash content should not sound like a recycled landing page. It should communicate uncertainty clearly and give creators something practical to do now."
             />
             <CardGrid items={advertisingCards} />
           </section>
 
           <section>
             <SectionHeader
-              title="Spark Robin Workspace vs Other Models"
+              title="Gemini Omni Flash Workspace vs Other Models"
               description="Compare the preparation workflow here with Veo 3, Seedance 2.0, Kling, and Sora 2 so teams can choose between release watching, realism, control, and editing depth."
             />
             <ComparisonSection rows={comparisonRows} />
@@ -327,4 +327,4 @@ const SparkRobinKnowledgeSection = () => {
   );
 };
 
-export default SparkRobinKnowledgeSection;
+export default GeminiOmniFlashKnowledgeSection;

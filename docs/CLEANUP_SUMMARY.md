@@ -69,7 +69,7 @@
 ## 📁 新的文档结构
 
 ```
-spark-robinai.ai/
+gemini-omni-flashai.ai/
 ├── README.md                    # 主README（已完善）
 ├── docs/                        # 文档目录
 │   ├── README.md               # 文档索引

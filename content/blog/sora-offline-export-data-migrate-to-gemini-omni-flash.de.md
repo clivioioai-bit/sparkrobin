@@ -1,9 +1,9 @@
 ---
-title: "Sora ist offiziell offline: Daten exportieren und zu Spark Robin migrieren"
-description: "Praktischer Leitfaden zur Sora-Einstellung: wichtige Termine, Export von Sora-Videos, Prompt-Archivierung und Migration zu sparkrobin.app."
+title: "Sora ist offiziell offline: Daten exportieren und zu Gemini Omni Flash migrieren"
+description: "Praktischer Leitfaden zur Sora-Einstellung: wichtige Termine, Export von Sora-Videos, Prompt-Archivierung und Migration zu omniflashai.io."
 date: "2026-04-30"
-author: "Spark Robin Team"
-tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Spark Robin", "ai-video"]
+author: "Gemini Omni Flash Team"
+tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Gemini Omni Flash", "ai-video"]
 featured: true
 ---
 
@@ -13,7 +13,7 @@ featured: true
 - Laut OpenAI wird die **Sora API am 24. September 2026** eingestellt.
 - Wer Inhalte in Sora erstellt hat, sollte sie sofort exportieren. Nach der Einstellung und einem möglichen finalen Exportfenster können die Daten dauerhaft gelöscht werden.
 - Sichere nicht nur MP4-Dateien, sondern auch Prompts, Referenzbilder, Seitenverhältnis, Einstellungen und Projektnotizen.
-- sparkrobin.app kann Text-to-Video, Image-to-Video, Multi-Scene-Planung und werbetaugliche Workflows übernehmen.
+- omniflashai.io kann Text-to-Video, Image-to-Video, Multi-Scene-Planung und werbetaugliche Workflows übernehmen.
 
 ## Sora-Zeitplan
 
@@ -62,7 +62,7 @@ Lege pro Projekt eine einfache Struktur an:
 
 Sora-Nutzer brauchen vor allem Kontinuität: Skripte in Clips umwandeln, Produktanzeigen testen, vertikale Social-Videos erstellen, Bilder animieren und mehrere Shots planen.
 
-sparkrobin.app ist genau dafür gedacht: **Spark Robin text-to-video**, **Spark Robin image-to-video** und Multi-Scene-Workflows in einer creatorfreundlichen Oberfläche.
+omniflashai.io ist genau dafür gedacht: **Gemini Omni Flash text-to-video**, **Gemini Omni Flash image-to-video** und Multi-Scene-Workflows in einer creatorfreundlichen Oberfläche.
 
 ## Prompt-Konvertierung
 

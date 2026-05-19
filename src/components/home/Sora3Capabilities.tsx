@@ -9,28 +9,28 @@ const Sora3Capabilities = () => {
 
   const capabilities = [
     {
-      id: "spark-robin-text-and-image-input",
+      id: "gemini-omni-flash-text-and-image-input",
       title: t("cinematicRealism.title"),
       description: t("cinematicRealism.description"),
       videoUrl: CAPABILITY_VIDEO_PATHS.cinematic,
       tag: "Text + Image",
     },
     {
-      id: "spark-robin-motion-and-camera-control",
+      id: "gemini-omni-flash-motion-and-camera-control",
       title: t("naturalCameraMotion.title"),
       description: t("naturalCameraMotion.description"),
       videoUrl: CAPABILITY_VIDEO_PATHS.camera,
       tag: "Motion",
     },
     {
-      id: "spark-robin-ads-social-and-product-content",
+      id: "gemini-omni-flash-ads-social-and-product-content",
       title: t("consistentCharacters.title"),
       description: t("consistentCharacters.description"),
       videoUrl: CAPABILITY_VIDEO_PATHS.characters,
       tag: "Ads + Social",
     },
     {
-      id: "spark-robin-longer-clips-and-exports",
+      id: "gemini-omni-flash-longer-clips-and-exports",
       title: t("longFormPlatformReady.title"),
       description: t("longFormPlatformReady.description"),
       videoUrl: CAPABILITY_VIDEO_PATHS.longform,

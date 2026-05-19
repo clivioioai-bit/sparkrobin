@@ -22,8 +22,8 @@ const Footer = () => {
 
   const navigation = {
     product: [
-      { name: t('sora3TextToVideo'), href: `${localePrefix}/spark-robin-text-to-video` },
-      { name: t('sora3ImageToVideo'), href: `${localePrefix}/spark-robin-image-to-video` },
+      { name: t('sora3TextToVideo'), href: `${localePrefix}/gemini-omni-flash-text-to-video` },
+      { name: t('sora3ImageToVideo'), href: `${localePrefix}/gemini-omni-flash-image-to-video` },
       { name: t('sora3Pricing'), href: `${localePrefix}/pricing` },
       { name: t('sora3Faq'), href: `${localePrefix}/faq` },
       { name: t('sora3Blog'), href: `${localePrefix}/blog` },
@@ -70,7 +70,7 @@ const Footer = () => {
             {/* Social */}
             <div className="flex items-center space-x-1 mb-6">
               <a
-                href="mailto:support@sparkrobin.app"
+                href="mailto:support@omniflashai.io"
                 className="text-white/40 hover:text-white transition-all duration-200 p-2 rounded-lg hover:bg-white/[0.06]"
                 aria-label={t('socialLabels.email')}
               >
@@ -120,7 +120,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:support@sparkrobin.app"
+                  href="mailto:support@omniflashai.io"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/40 hover:text-white transition-colors duration-200"

@@ -4,19 +4,19 @@ import SEOHead from '@/components/SEOHead';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | AI video generation service',
-  description: 'Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
+  description: 'Read the Gemini Omni Flash terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
   keywords: 'terms of service, terms and conditions, AI video generation service, user agreement, legal terms',
   alternates: {
-    canonical: 'https://sparkrobin.app/terms',
+    canonical: 'https://omniflashai.io/terms',
   },
   openGraph: {
     title: 'Terms of Service | AI video generation service',
-    description: 'Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
-    url: 'https://sparkrobin.app/terms',
-    siteName: 'Spark Robin',
+    description: 'Read the Gemini Omni Flash terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
+    url: 'https://omniflashai.io/terms',
+    siteName: 'Gemini Omni Flash',
     images: [
       {
-        url: 'https://sparkrobin.app/logo-v2.png',
+        url: 'https://omniflashai.io/logo-v2.png',
         width: 1200,
         height: 630,
         alt: 'Terms of Service',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Terms of Service | AI video generation service',
-    description: 'Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
-    images: ['https://sparkrobin.app/logo-v2.png']
+    description: 'Read the Gemini Omni Flash terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules.',
+    images: ['https://omniflashai.io/logo-v2.png']
   },
 };
 
@@ -38,9 +38,9 @@ const TermsOfService: React.FC = () => {
     <>
       <SEOHead
         title="Terms of Service | AI video generation service"
-        description="Read the Spark Robin terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules."
+        description="Read the Gemini Omni Flash terms of service for account use, AI video generation, credits, subscriptions, acceptable content, payments, refunds, and platform rules."
         keywords="terms of service, terms and conditions, AI video generation service, user agreement, legal terms"
-        canonical="https://sparkrobin.app/terms"
+        canonical="https://omniflashai.io/terms"
       />
       
       <div className="min-h-screen bg-background">
@@ -264,7 +264,7 @@ const TermsOfService: React.FC = () => {
                     For any questions or concerns regarding these Terms of Service, please get in touch with us at:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@sparkrobin.app</p>
+                    <p className="text-gray-700 mb-2"><strong>Email:</strong> support@omniflashai.io</p>
                     <p className="text-gray-700 mb-2"><strong>Company:</strong> AIVIDO LLC</p>
                     <p className="text-gray-700 mb-2"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
                     <p className="text-gray-700">We will respond to your inquiry within 5 business days.</p>

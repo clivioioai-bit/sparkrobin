@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
 
-const baseUrl = 'https://sparkrobin.app'
+const baseUrl = 'https://omniflashai.io'
 
 /**
  * Generate hreflang alternates for a given pathname and locale

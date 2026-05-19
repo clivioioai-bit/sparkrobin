@@ -15,17 +15,17 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({ 
-  title = "Spark Robin Workflow Lab | Release Watch and AI Video Drafts",
-  description = "Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images.",
-  ogTitle = "Spark Robin Workflow Lab | Release Watch and AI Video Drafts",
-  ogDescription = "Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images.",
+  title = "Gemini Omni Flash AI Video Generator | Text to Video",
+  description = "Create AI videos with Gemini Omni Flash from text prompts or images for ads, social media, products, and creative projects.",
+  ogTitle = "Gemini Omni Flash AI Video Generator | Text to Video",
+  ogDescription = "Create AI videos with Gemini Omni Flash from text prompts or images for ads, social media, products, and creative projects.",
   canonical,
   noindex = false,
-  keywords = "Spark Robin release watch, AI video prompt workflow, text to video drafts, image to video references, AI video planning, reusable prompts",
-  image = "https://sparkrobin.app/logo-v2.png"
+  keywords = "gemini omni flash, gemini omni flash video generator, gemini omni flash text to video, gemini omni flash image to video, AI video generator",
+  image = "https://omniflashai.io/logo-v2.png"
 }: SEOHeadProps) => {
   const pathname = usePathname();
-  const baseUrl = "https://sparkrobin.app"; // Replace with your actual domain
+  const baseUrl = "https://omniflashai.io"; // Replace with your actual domain
   const currentUrl = canonical || `${baseUrl}${pathname}`;
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const SEOHead = ({
     if (!metaAuthor) {
       metaAuthor = document.createElement('meta');
       metaAuthor.setAttribute('name', 'author');
-      metaAuthor.setAttribute('content', 'Spark Robin');
+      metaAuthor.setAttribute('content', 'Gemini Omni Flash');
       document.head.appendChild(metaAuthor);
     }
 
@@ -115,7 +115,7 @@ const SEOHead = ({
     updateOGTag('og:image', image);
     updateOGTag('og:image:width', '1200');
     updateOGTag('og:image:height', '630');
-    updateOGTag('og:site_name', 'Spark Robin');
+    updateOGTag('og:site_name', 'Gemini Omni Flash');
     updateOGTag('og:locale', 'en_US');
 
     // Update Twitter Card tags
@@ -135,8 +135,8 @@ const SEOHead = ({
     updateTwitterTag('twitter:description', ogDescription);
     updateTwitterTag('twitter:card', 'summary_large_image');
     updateTwitterTag('twitter:image', image);
-    updateTwitterTag('twitter:site', '@sora3aiteam');
-    updateTwitterTag('twitter:creator', '@sora3aiteam');
+    updateTwitterTag('twitter:site', '@omniflashai');
+    updateTwitterTag('twitter:creator', '@omniflashai');
 
     // Add structured data for SEO
     const addStructuredData = () => {
@@ -152,9 +152,9 @@ const SEOHead = ({
       const structuredData = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Spark Robin",
-        "alternateName": ["Spark Robin", "sparkrobin.app", "AI Video Ads", "AI Video Generator"],
-        "description": "Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images.",
+        "name": "Gemini Omni Flash",
+        "alternateName": ["Gemini Omni Flash", "omniflashai.io", "AI Video Ads", "AI Video Generator"],
+        "description": "Create AI videos with Gemini Omni Flash from text prompts or images for ads, social media, products, and creative projects.",
         "url": baseUrl,
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Web Browser",
@@ -169,7 +169,7 @@ const SEOHead = ({
         },
         "creator": {
           "@type": "Organization",
-          "name": "Spark Robin",
+          "name": "Gemini Omni Flash",
           "url": baseUrl,
           "logo": `${baseUrl}/logo-v2.png`
         },
@@ -181,18 +181,18 @@ const SEOHead = ({
           "worstRating": "1"
         },
         "featureList": [
-          "Spark Robin release-watch guidance",
-          "Reusable AI video prompt briefs",
-          "Reference-led image to video drafts",
-          "Text to video draft workflow",
-          "Shot notes and continuity prompts",
-          "Creative review and iteration"
+          "Gemini Omni Flash text to video",
+          "Gemini Omni Flash image to video",
+          "AI video generation from prompts",
+          "Image animation and motion prompts",
+          "Marketing video generation",
+          "Creative video iteration"
         ],
         "screenshot": `${baseUrl}/placeholder.svg`,
         "video": {
           "@type": "VideoObject",
-          "name": "Spark Robin AI Video Workflow Tutorial",
-          "description": "Learn how to structure prompts, references, and draft reviews for Spark Robin-ready AI video workflows",
+          "name": "Gemini Omni Flash AI Video Workflow Tutorial",
+          "description": "Learn how to structure prompts, references, and draft reviews for Gemini Omni Flash-ready AI video workflows",
           "thumbnailUrl": `${baseUrl}/placeholder.svg`,
           "uploadDate": "2025-01-01"
         },

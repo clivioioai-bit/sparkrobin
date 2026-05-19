@@ -175,8 +175,8 @@ const SubscriptionPlans = ({
               title: t('needHelp'),
               description: t('contactSupport'),
               action: (
-                <a 
-                  href="mailto:support@sparkrobin.app?subject=Payment Issue" 
+                <a
+                  href="mailto:support@omniflashai.io?subject=Payment Issue"
                   className="text-primary hover:underline"
                 >
                   {t('contactSupportLink')}
@@ -287,19 +287,19 @@ const SubscriptionPlans = ({
           const nameParts = plan.name.split("·");
           const planNamePart = nameParts[0]?.trim() || '';
           const periodPart = nameParts[1]?.trim() || '';
-          
+
           // Translate plan name if it's a known plan
           const translatedPlanName = planNamePart === 'Basic' ? t('planNames.basic') :
                                     planNamePart === 'Creator' ? t('planNames.creator') :
                                     planNamePart === 'Pro' ? t('planNames.pro') :
                                     planNamePart;
-          
+
           // For teaser variant, only show plan name without period
           // For other variants, show plan name with period if available
-          const planTitle = variant === 'teaser' 
-            ? translatedPlanName 
-            : (periodPart 
-              ? `${translatedPlanName} · ${periodPart === 'Monthly' ? t('monthly') : periodPart === 'Annual' ? t('annual') : periodPart}` 
+          const planTitle = variant === 'teaser'
+            ? translatedPlanName
+            : (periodPart
+              ? `${translatedPlanName} · ${periodPart === 'Monthly' ? t('monthly') : periodPart === 'Annual' ? t('annual') : periodPart}`
               : translatedPlanName);
           const isAnnualPlan = plan.billingInterval === "year";
           const isOneTime = plan.billingInterval === "one-time";
@@ -363,7 +363,7 @@ const SubscriptionPlans = ({
                             ${matchingMonthly ? Math.round(matchingMonthly.priceCents / 100) : '0'} {t('perMonth')}
                           </span>
                         </div>
-                        
+
                         {/* Equivalent monthly price (annual/12) */}
                         <div className="flex items-baseline justify-center gap-2 font-display">
                           <span className="font-bold text-3xl sm:text-4xl md:text-5xl text-foreground">
@@ -371,12 +371,12 @@ const SubscriptionPlans = ({
                           </span>
                           <span className="text-xs sm:text-sm font-medium text-muted-foreground">{t('perMonth')}</span>
                         </div>
-                        
+
                         {/* Billed annually note */}
                         <p className="text-sm text-muted-foreground text-center">
                           ${Math.round(plan.priceCents / 100)} {t('billedAnnually')}
                         </p>
-                        
+
                         {/* Save percentage badge */}
                         {yearlySavings && yearlySavings > 0 && (
                           <div className="flex justify-center">
@@ -400,7 +400,7 @@ const SubscriptionPlans = ({
                             {plan.credits.replace(/Credits/gi, t('credits'))}
                           </span>
                         </div>
-                        
+
                         <div className="text-xs text-muted-foreground text-center bg-muted/50 rounded p-2">
                           {t('oneTimePurchase')}
                         </div>

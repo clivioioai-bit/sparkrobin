@@ -15,12 +15,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        title="Spark Robin Workflow Lab | Release Watch and AI Video Drafts"
-        description="Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images."
-        ogTitle="Spark Robin Workflow Lab | Release Watch and AI Video Drafts"
-        ogDescription="Track Spark Robin updates, structure reusable prompts, and create reviewable AI video drafts from text or images."
-        canonical="https://sparkrobin.app/"
-        keywords="Spark Robin release watch, AI video workflow, prompt briefs, reference image video, text to video drafts, image to video drafts"
+        title="Gemini Omni Flash AI Video Generator | Text to Video"
+        description="Create AI videos with Gemini Omni Flash from text prompts or images for ads, social media, products, and creative projects."
+        ogTitle="Gemini Omni Flash AI Video Generator | Text to Video"
+        ogDescription="Create AI videos with Gemini Omni Flash from text prompts or images for ads, social media, products, and creative projects."
+        canonical="https://omniflashai.io/"
+        keywords="gemini omni flash, gemini omni flash video generator, gemini omni flash text to video, gemini omni flash image to video, AI video generator"
       />
       <ScrollProgress />
       

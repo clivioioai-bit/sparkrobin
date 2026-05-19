@@ -47,7 +47,7 @@ const PricingTeaser = () => {
         {/* Header */}
         <div className="text-center mb-14 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
-            Spark Robin Pricing
+            Gemini Omni Flash Pricing
           </h2>
           <p className="text-base sm:text-lg text-white/40 max-w-2xl mx-auto leading-relaxed">
             {t('teaserSubtitle')}

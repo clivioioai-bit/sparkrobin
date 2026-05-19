@@ -16,24 +16,24 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sparkrobin.app'
+  const baseUrl = 'https://omniflashai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
-  let title = 'Spark Robin Pricing | Basic, Standard, and Pro'
-  let description = 'Compare Spark Robin plans for prompt tests, reference-led video drafts, workflow credits, commercial use, and ongoing AI video iteration needs.'
+  let title = 'Gemini Omni Flash Pricing | Basic, Standard, and Pro'
+  let description = 'Compare Gemini Omni Flash plans for prompt tests, reference-led video drafts, workflow credits, commercial use, and ongoing AI video iteration needs.'
   
   if (locale === 'ar') {
-    title = 'أسعار Spark Robin | Basic وStandard وPro'
-    description = 'قارن بين خطط أسعار Spark Robin للنص إلى فيديو والصورة إلى فيديو وإنشاء المحتوى الجاهز للحملات. اختر الخطة المناسبة لاحتياجك.'
+    title = 'أسعار Gemini Omni Flash | Basic وStandard وPro'
+    description = 'قارن بين خطط أسعار Gemini Omni Flash للنص إلى فيديو والصورة إلى فيديو وإنشاء المحتوى الجاهز للحملات. اختر الخطة المناسبة لاحتياجك.'
   } else if (locale === 'ja') {
-    title = 'Spark Robin 料金 | Basic・Standard・Pro'
-    description = 'テキストから動画、画像から動画、キャンペーン向け制作に対応するSpark Robinの料金プランを比較できます。'
+    title = 'Gemini Omni Flash 料金 | Basic・Standard・Pro'
+    description = 'テキストから動画、画像から動画、キャンペーン向け制作に対応するGemini Omni Flashの料金プランを比較できます。'
   } else if (locale === 'ru') {
-    title = 'Spark Robin Тарифы | Basic, Standard и Pro'
-    description = 'Сравните тарифы Spark Robin для текст-в-видео, изображение-в-видео и создания контента для кампаний. Выберите план под ваш объём.'
+    title = 'Gemini Omni Flash Тарифы | Basic, Standard и Pro'
+    description = 'Сравните тарифы Gemini Omni Flash для текст-в-видео, изображение-в-видео и создания контента для кампаний. Выберите план под ваш объём.'
   } else if (locale === 'es') {
-    title = 'Spark Robin Precios | Basic, Standard y Pro'
-    description = 'Compara los planes de Spark Robin para texto a video, imagen a video y creacion lista para campanas. Elige el plan adecuado para tu volumen.'
+    title = 'Gemini Omni Flash Precios | Basic, Standard y Pro'
+    description = 'Compara los planes de Gemini Omni Flash para texto a video, imagen a video y creacion lista para campanas. Elige el plan adecuado para tu volumen.'
   }
 
   return {
@@ -44,10 +44,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/pricing`,
-      siteName: 'Spark Robin',
+      siteName: 'Gemini Omni Flash',
       images: [
         {
-          url: 'https://sparkrobin.app/logo-v2.png',
+          url: 'https://omniflashai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -60,7 +60,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sparkrobin.app/logo-v2.png']
+      images: ['https://omniflashai.io/logo-v2.png']
     },
     robots: {
       index: true,

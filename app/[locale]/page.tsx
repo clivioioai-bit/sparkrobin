@@ -1,17 +1,17 @@
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import HomePageClient from '@/components/home/HomePageClient'
-import WhatIsSparkRobinSection from '@/components/home/WhatIsSparkRobinSection'
+import WhatIsGeminiOmniFlashSection from '@/components/home/WhatIsGeminiOmniFlashSection'
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Spark Robin Video Generator',
-  alternateName: ['AI Video Workflow Lab', 'Video Creator Workspace'],
+  name: 'Gemini Omni Flash Video Generator',
+  alternateName: ['Gemini Omni Flash AI Video Generator', 'Text to Video Generator', 'Image to Video Generator'],
   applicationCategory: 'MultimediaApplication',
   operatingSystem: 'Web',
-  description: 'Track release updates, structure reusable AI video prompts, and create reviewable text-to-video or image-to-video drafts while the next model cycle develops.',
-  url: 'https://sparkrobin.app',
+  description: 'Create AI videos with Gemini Omni Flash from text prompts or images for ads, social media, product demos, and creative projects online.',
+  url: 'https://omniflashai.io',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -20,8 +20,8 @@ const jsonLd = {
   },
   creator: {
     '@type': 'Organization',
-    name: 'sparkrobin.app',
-    url: 'https://sparkrobin.app'
+    name: 'omniflashai.io',
+    url: 'https://omniflashai.io'
   },
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -31,14 +31,14 @@ const jsonLd = {
     worstRating: '1'
   },
   featureList: [
-    'Release-watch guidance',
-    'Structured text-to-video prompt briefs',
-    'Reference-led image-to-video drafts',
-    'Reusable shot notes and continuity prompts',
-    'AI video workflow preparation',
-    'Creative review and iteration support',
-    'Prompt libraries for future model access',
-    'Marketing and product video draft workflows'
+    'Gemini Omni Flash text to video',
+    'Gemini Omni Flash image to video',
+    'AI video generation from prompts',
+    'Image animation and motion prompts',
+    'Marketing video generation',
+    'Product demo video generation',
+    'Social media video clips',
+    'Creative AI video workflows'
   ]
 }
 
@@ -50,7 +50,7 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://sparkrobin.app'
+      item: 'https://omniflashai.io'
     }
   ]
 }
@@ -58,19 +58,19 @@ const breadcrumbJsonLd = {
 const videoJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
-  name: 'Workflow Demo - From Brief to Reviewable Draft',
-  description: 'See how sparkrobin.app helps creators turn concepts into structured prompts, reference-led drafts, and repeatable AI video workflows while tracking release updates.',
-  thumbnailUrl: 'https://sparkrobin.app/logo-v2.png',
+  name: 'Gemini Omni Flash AI Video Generator Demo',
+  description: 'See how omniflashai.io helps creators turn text prompts and images into AI videos for ads, products, social media, and creative projects.',
+  thumbnailUrl: 'https://omniflashai.io/logo-v2.png',
   uploadDate: '2024-01-01T00:00:00Z',
-  contentUrl: 'https://sparkrobin.app',
-  embedUrl: 'https://sparkrobin.app',
+  contentUrl: 'https://omniflashai.io',
+  embedUrl: 'https://omniflashai.io',
   duration: 'PT30S',
   publisher: {
     '@type': 'Organization',
-    name: 'sparkrobin.app',
+    name: 'omniflashai.io',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://sparkrobin.app/logo-v2.png'
+      url: 'https://omniflashai.io/logo-v2.png'
     }
   }
 }
@@ -81,10 +81,10 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Is sparkrobin.app an official Google product?',
+      name: 'Is omniflashai.io an official Google product?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. sparkrobin.app is an independent release-watch and AI video workflow site. It is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
+        text: 'No. omniflashai.io is an independent AI video generation tool site. It is not affiliated with Google, Google DeepMind, OpenAI, or official Sora products.'
       }
     },
     {
@@ -92,23 +92,23 @@ const faqJsonLd = {
       name: 'What can I do here today?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You can organize prompts, prepare reference assets, create text-to-video or image-to-video drafts, and build a repeatable review workflow.'
+        text: 'You can create AI videos from text prompts or images, then refine motion, camera, style, and output settings for marketing or creative use.'
       }
     },
     {
       '@type': 'Question',
-      name: 'Why prepare before official details are confirmed?',
+      name: 'What types of videos can I create?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Reusable prompts, shot notes, and reference libraries remain useful across current AI video tools and future model access.'
+        text: 'You can create ad creatives, product demo videos, social media clips, visual concepts, and prompt-based cinematic AI video drafts.'
       }
     },
     {
       '@type': 'Question',
-      name: 'How should I start this workflow?',
+      name: 'How should I start generating a video?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Start with a clear brief, split it into subject, camera, motion, style, and continuity notes, then generate drafts and compare them against the brief.'
+        text: 'Start with a clear text prompt or upload an image, then describe subject, camera movement, motion, style, and aspect ratio before generating.'
       }
     }
   ]
@@ -148,7 +148,7 @@ export default async function HomePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <HomePageClient>
-        <WhatIsSparkRobinSection locale={locale} />
+        <WhatIsGeminiOmniFlashSection locale={locale} />
       </HomePageClient>
     </>
   )

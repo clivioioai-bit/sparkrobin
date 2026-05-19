@@ -3,7 +3,7 @@ import { detectEntryLocale } from '@/i18n/detectEntryLocale';
 
 export const dynamic = 'force-dynamic';
 
-export default function LegacySparkRobinStoryboardPage() {
+export default function LegacyGeminiOmniFlashStoryboardPage() {
   const locale = detectEntryLocale();
-  redirect(`/${locale}/spark-robin-text-to-video`);
+  redirect(`/${locale}/gemini-omni-flash-text-to-video`);
 }

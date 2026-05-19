@@ -5,7 +5,7 @@ import { buildLocalizedSitemap } from '@/lib/sitemap-pages';
 export const runtime = 'nodejs';
 
 const INDEXNOW_KEY = 'f4226aa28d5202485960101e1ad8874b';
-const SITE_HOST = 'sparkrobin.app';
+const SITE_HOST = 'omniflashai.io';
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
 
 function buildUrlList(): string[] {

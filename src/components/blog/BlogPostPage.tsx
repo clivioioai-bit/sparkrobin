@@ -40,28 +40,28 @@ const BlogPostPage = async ({ post, locale = 'en' }: Props) => {
     '@type': 'BlogPosting',
     headline: post.meta.title,
     description: post.meta.description || '',
-    image: post.meta.coverImage || 'https://sparkrobin.app/logo-v2.png',
+    image: post.meta.coverImage || 'https://omniflashai.io/logo-v2.png',
     datePublished: post.meta.date || undefined,
     dateModified: post.meta.date || undefined,
     author: {
       '@type': post.meta.author ? 'Person' : 'Organization',
-      name: post.meta.author || 'Spark Robin Team',
-      url: 'https://sparkrobin.app',
+      name: post.meta.author || 'Gemini Omni Flash Team',
+      url: 'https://omniflashai.io',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Spark Robin',
-      url: 'https://sparkrobin.app',
+      name: 'Gemini Omni Flash',
+      url: 'https://omniflashai.io',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://sparkrobin.app/logo-v2.png',
+        url: 'https://omniflashai.io/logo-v2.png',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': locale === 'en'
-        ? `https://sparkrobin.app/blog/${post.slug}`
-        : `https://sparkrobin.app/${locale}/blog/${post.slug}`,
+        ? `https://omniflashai.io/blog/${post.slug}`
+        : `https://omniflashai.io/${locale}/blog/${post.slug}`,
     },
     wordCount: post.content.trim().split(/\s+/).length,
     keywords: post.meta.tags?.join(', ') || undefined,

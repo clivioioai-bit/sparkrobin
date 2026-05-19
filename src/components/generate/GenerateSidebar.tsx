@@ -17,12 +17,12 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     nameKey: "imageToVideo",
-    href: "/spark-robin-image-to-video",
+    href: "/gemini-omni-flash-image-to-video",
     icon: ImageIcon,
   },
   {
     nameKey: "textToVideo",
-    href: "/spark-robin-text-to-video",
+    href: "/gemini-omni-flash-text-to-video",
     icon: FileText,
   },
   {

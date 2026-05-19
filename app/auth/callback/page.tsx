@@ -221,7 +221,7 @@ export default function AuthCallbackPage() {
             const savedPath = typeof window !== 'undefined' 
               ? sessionStorage.getItem('redirectAfterLogin')
               : null;
-            const redirectPath = savedPath || '/spark-robin-text-to-video';
+            const redirectPath = savedPath || '/gemini-omni-flash-text-to-video';
             
             // Clean up redirect path from storage
             if (typeof window !== 'undefined') {

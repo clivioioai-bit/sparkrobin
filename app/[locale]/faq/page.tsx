@@ -9,29 +9,29 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  
+
   if (!routing.locales.includes(locale as any)) {
     notFound()
   }
 
-  const baseUrl = 'https://sparkrobin.app'
+  const baseUrl = 'https://omniflashai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
-  
-  let title = 'Spark Robin FAQ | Pricing, Use, and Video Limits'
-  let description = 'Find answers about Spark Robin availability, release-watch claims, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.'
-  
+
+  let title = 'Gemini Omni Flash FAQ | Pricing, Use, and Video Limits'
+  let description = 'Find answers about Gemini Omni Flash availability, video generation workflows, prompt workflows, reference images, draft generation, pricing, credits, and review workflows.'
+
   if (locale === 'ar') {
-    title = 'أسئلة Spark Robin الشائعة | الأسعار والاستخدام والمدة'
-    description = 'اعثر على إجابات حول أسعار Spark Robin والاستخدام التجاري ومدة الفيديو والعلامات المائية وكيف تعمل المنصة قبل البدء.'
+    title = 'أسئلة Gemini Omni Flash الشائعة | الأسعار والاستخدام والمدة'
+    description = 'اعثر على إجابات حول أسعار Gemini Omni Flash والاستخدام التجاري ومدة الفيديو والعلامات المائية وكيف تعمل المنصة قبل البدء.'
   } else if (locale === 'ja') {
-    title = 'Spark Robin よくある質問 | 料金・用途・動画尺'
-    description = 'Spark Robinの料金、商用利用、動画の長さ、ウォーターマーク、プラットフォームの使い方に関する回答を確認できます。'
+    title = 'Gemini Omni Flash よくある質問 | 料金・用途・動画尺'
+    description = 'Gemini Omni Flashの料金、商用利用、動画の長さ、ウォーターマーク、プラットフォームの使い方に関する回答を確認できます。'
   } else if (locale === 'ru') {
-    title = 'Spark Robin FAQ | Тарифы, Использование и Лимиты'
-    description = 'Найдите ответы о тарифах Spark Robin, коммерческом использовании, длине видео, водяных знаках и работе платформы до начала генерации.'
+    title = 'Gemini Omni Flash FAQ | Тарифы, Использование и Лимиты'
+    description = 'Найдите ответы о тарифах Gemini Omni Flash, коммерческом использовании, длине видео, водяных знаках и работе платформы до начала генерации.'
   } else if (locale === 'es') {
-    title = 'Spark Robin FAQ | Precios, Uso y Duracion'
-    description = 'Encuentra respuestas sobre precios de Spark Robin, uso comercial, duracion del video, marcas de agua y funcionamiento de la plataforma.'
+    title = 'Gemini Omni Flash FAQ | Precios, Uso y Duracion'
+    description = 'Encuentra respuestas sobre precios de Gemini Omni Flash, uso comercial, duracion del video, marcas de agua y funcionamiento de la plataforma.'
   }
 
   return {
@@ -42,10 +42,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/faq`,
-      siteName: 'Spark Robin',
+      siteName: 'Gemini Omni Flash',
       images: [
         {
-          url: 'https://sparkrobin.app/logo-v2.png',
+          url: 'https://omniflashai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -58,15 +58,15 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sparkrobin.app/logo-v2.png']
+      images: ['https://omniflashai.io/logo-v2.png']
     },
   }
 }
 
 const faqs = [
   {
-    q: 'What is sparkrobin.app?',
-    a: 'sparkrobin.app is an independent Spark Robin release-watch and AI video workflow site. It helps creators track confirmed updates, structure reusable prompts, and create reviewable video drafts from text or images.'
+    q: 'What is omniflashai.io?',
+    a: 'omniflashai.io is an independent Gemini Omni Flash AI video generation tool site. It helps creators track confirmed updates, structure reusable prompts, and create reviewable video drafts from text or images.'
   },
   {
     q: 'Can I create drafts from text prompts?',
@@ -116,13 +116,13 @@ export default async function FAQPage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  
+
   if (!routing.locales.includes(locale as any)) {
     notFound()
   }
 
   const prefix = locale === 'en' ? '' : `/${locale}`
-  
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -135,14 +135,14 @@ export default async function FAQPage({
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <h1 className="text-3xl font-bold mb-6">Spark Robin FAQ</h1>
+      <h1 className="text-3xl font-bold mb-6">Gemini Omni Flash FAQ</h1>
       <p className="text-muted-foreground mb-8">
-        Find answers about Spark Robin pricing, text to video, image to video, commercial use, video length, watermarks, and platform setup. For more details, explore our 
-        <a href={`${prefix}/`} className="text-primary hover:underline"> homepage</a>, 
-        <a href={`${prefix}/spark-robin-text-to-video`} className="text-primary hover:underline"> Spark Robin Text to Video</a>, 
-        <a href={`${prefix}/spark-robin-image-to-video`} className="text-primary hover:underline"> Spark Robin Image to Video</a>, 
-        <a href={`${prefix}/pricing`} className="text-primary hover:underline"> Spark Robin Pricing</a>, or review our 
-        <a href={`${prefix}/terms`} className="text-primary hover:underline"> Terms of Service</a> and 
+        Find answers about Gemini Omni Flash pricing, text to video, image to video, commercial use, video length, watermarks, and platform setup. For more details, explore our
+        <a href={`${prefix}/`} className="text-primary hover:underline"> homepage</a>,
+        <a href={`${prefix}/gemini-omni-flash-text-to-video`} className="text-primary hover:underline"> Gemini Omni Flash Text to Video</a>,
+        <a href={`${prefix}/gemini-omni-flash-image-to-video`} className="text-primary hover:underline"> Gemini Omni Flash Image to Video</a>,
+        <a href={`${prefix}/pricing`} className="text-primary hover:underline"> Gemini Omni Flash Pricing</a>, or review our
+        <a href={`${prefix}/terms`} className="text-primary hover:underline"> Terms of Service</a> and
         <a href={`${prefix}/privacy`} className="text-primary hover:underline"> Privacy Policy</a>.
       </p>
       <ul className="space-y-6">

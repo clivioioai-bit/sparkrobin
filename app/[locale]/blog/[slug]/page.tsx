@@ -1,11 +1,14 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import BlogPostPage from '@/components/blog/BlogPostPage';
 import { routing } from '@/i18n/routing';
 import { getAvailablePostLocales, getPostBySlug, getPostSlugs, hasPostLocale } from '@/lib/blog';
 import { generateHreflangAlternates } from '@/utils/hreflang';
 
 export const dynamic = 'force-dynamic';
+
+const getLegacyBlogSlugRedirect = (slug: string) =>
+  slug.includes('spark-robin') ? slug.replaceAll('spark-robin', 'gemini-omni-flash') : null;
 
 export async function generateMetadata({
   params,
@@ -20,8 +23,8 @@ export async function generateMetadata({
   }
 
   const url = locale === 'en'
-    ? `https://sparkrobin.app/blog/${post.slug}`
-    : `https://sparkrobin.app/${locale}/blog/${post.slug}`;
+    ? `https://omniflashai.io/blog/${post.slug}`
+    : `https://omniflashai.io/${locale}/blog/${post.slug}`;
   const hasLocalizedContent = hasPostLocale(post.slug, locale);
 
   return {
@@ -30,7 +33,7 @@ export async function generateMetadata({
     alternates: hasLocalizedContent
       ? generateHreflangAlternates(`/blog/${post.slug}`, locale, getAvailablePostLocales(post.slug))
       : {
-        canonical: `https://sparkrobin.app/blog/${post.slug}`,
+        canonical: `https://omniflashai.io/blog/${post.slug}`,
       },
     robots: hasLocalizedContent ? undefined : {
       index: false,
@@ -68,6 +71,12 @@ export default async function Page({
   params: Promise<{ slug: string; locale: string }>
 }) {
   const { slug, locale } = await params;
+  const legacyRedirectSlug = getLegacyBlogSlugRedirect(slug);
+
+  if (legacyRedirectSlug) {
+    redirect(`/${locale}/blog/${legacyRedirectSlug}`);
+  }
+
   const post = getPostBySlug(slug, locale);
 
   if (!post) {

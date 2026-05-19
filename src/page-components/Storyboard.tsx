@@ -49,7 +49,7 @@ const Storyboard = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-  
+
   // Storyboard state
   const [storyboardParams, setStoryboardParams] = useState<StoryboardParams>({
     shots: [
@@ -100,7 +100,7 @@ const Storyboard = () => {
       default: return 125;
     }
   };
-  
+
   const creditCost = getCreditCost(storyboardParams.n_frames);
   const userCredits = subscription?.credits || 0;
 
@@ -153,7 +153,7 @@ const Storyboard = () => {
     // Check duration allocation
     const totalUsedDuration = storyboardParams.shots.reduce((sum, shot) => sum + shot.duration, 0);
     const maxDuration = parseInt(storyboardParams.n_frames);
-    
+
     if (totalUsedDuration > maxDuration) {
       newErrors.duration = `Total shot duration (${totalUsedDuration}s) exceeds maximum duration (${maxDuration}s)`;
     } else if (totalUsedDuration < maxDuration) {
@@ -173,7 +173,7 @@ const Storyboard = () => {
       formData.append('shots', JSON.stringify(storyboardParams.shots));
       formData.append('n_frames', storyboardParams.n_frames);
       formData.append('aspect_ratio', storyboardParams.aspect_ratio);
-      
+
       // Add image file if selected
       if (storyboardParams.image_file) {
         formData.append('image_file', storyboardParams.image_file);
@@ -195,7 +195,7 @@ const Storyboard = () => {
       }
 
       const result = await safeJsonParse(response);
-      
+
       // Create job object
       const newJob: StoryboardJob = {
         jobId: result.jobId,
@@ -211,11 +211,11 @@ const Storyboard = () => {
       setCurrentJob(newJob);
       setJobs(prev => [newJob, ...prev]);
       startStoryboardPolling(result.jobId);
-      
+
     } catch (error) {
       console.error('Error generating storyboard:', error);
       const errorMessage = error instanceof Error ? error.message : 'Failed to generate storyboard';
-      
+
       if (errorMessage.includes('credit')) {
         setPendingCost(creditCost);
         setShowSubscriptionModal(true);
@@ -233,7 +233,7 @@ const Storyboard = () => {
       const job = jobs.find(j => j.jobId === currentJob.jobId);
       if (job && (job.status !== currentJob.status || job.progress !== currentJob.progress)) {
         setCurrentJob(prev => prev ? { ...prev, ...job } : null);
-        
+
         if (job.status === 'completed' || job.status === 'failed') {
           setIsGenerating(false);
         }
@@ -247,16 +247,16 @@ const Storyboard = () => {
       setShowAuthModal(true);
       return;
     }
-    
+
     if (userCredits < creditCost) {
       setPendingCost(creditCost);
       setShowSubscriptionModal(true);
       return;
     }
-    
+
     setErrors({});
     setIsGenerating(true);
-    
+
     try {
       const response = await fetch('/api/storyboard/generate', {
         method: 'POST',
@@ -271,7 +271,7 @@ const Storyboard = () => {
       }
 
       const result = await safeJsonParse(response);
-      
+
       const newJob: StoryboardJob = {
         ...job,
         jobId: result.jobId,
@@ -298,40 +298,40 @@ const Storyboard = () => {
   // Get localized SEO content
   const getSEOTitle = () => {
     if (locale === 'ru') {
-      return 'Spark Robin Pro Storyboard | Multi-Scene Workflow';
+      return 'Gemini Omni Flash Pro Storyboard | Multi-Scene Workflow';
     } else if (locale === 'ar') {
-      return 'Spark Robin Pro Storyboard | Multi-Scene Workflow';
+      return 'Gemini Omni Flash Pro Storyboard | Multi-Scene Workflow';
     } else if (locale === 'ja') {
-      return 'Spark Robin Pro Storyboard | Multi-Scene Workflow';
+      return 'Gemini Omni Flash Pro Storyboard | Multi-Scene Workflow';
     }
-    return 'Spark Robin Pro Storyboard | Multi-Scene Workflow';
+    return 'Gemini Omni Flash Pro Storyboard | Multi-Scene Workflow';
   };
 
   const getSEODescription = () => {
     if (locale === 'ru') {
-      return 'Spark Robin Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
+      return 'Gemini Omni Flash Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
     } else if (locale === 'ar') {
-      return 'Spark Robin Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
+      return 'Gemini Omni Flash Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
     } else if (locale === 'ja') {
-      return 'Spark Robin Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
+      return 'Gemini Omni Flash Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
     }
-    return 'Spark Robin Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
+    return 'Gemini Omni Flash Pro Storyboard helps teams plan scenes, references, shot notes, and reviewable AI video drafts for short-form workflows.';
   };
 
-  const canonicalUrl = locale === 'en' 
-    ? 'https://sparkrobin.app/spark-robin-storyboard'
-    : `https://sparkrobin.app/${locale}/spark-robin-storyboard`;
+  const canonicalUrl = locale === 'en'
+    ? 'https://omniflashai.io/gemini-omni-flash-storyboard'
+    : `https://omniflashai.io/${locale}/gemini-omni-flash-storyboard`;
 
   return (
     <div className="min-h-screen bg-background flex">
-      <SEOHead 
+      <SEOHead
         title={getSEOTitle()}
         description={getSEODescription()}
         canonical={canonicalUrl}
-        keywords="Spark Robin Pro Storyboard,spark-robin storyboard,AI video storyboard,multi-scene video,TikTok video generator,Instagram Reels,YouTube Shorts,AI video creator,Spark Robin,storyboard generator,AI video maker,social media video creator"
-        image="https://sparkrobin.app/og-sora3-storyboard.jpg"
+        keywords="Gemini Omni Flash Pro Storyboard,gemini-omni-flash storyboard,AI video storyboard,multi-scene video,TikTok video generator,Instagram Reels,YouTube Shorts,AI video creator,Gemini Omni Flash,storyboard generator,AI video maker,social media video creator"
+        image="https://omniflashai.io/og-sora3-storyboard.jpg"
       />
-      
+
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -339,9 +339,9 @@ const Storyboard = () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "Spark Robin Pro Storyboard",
-            "description": "Plan multi-scene AI video drafts with scene-by-scene notes, reference images, continuity rules, and review context using Spark Robin Pro Storyboard.",
-            "url": "https://sparkrobin.app/spark-robin-storyboard",
+            "name": "Gemini Omni Flash Pro Storyboard",
+            "description": "Plan multi-scene AI video drafts with scene-by-scene notes, reference images, continuity rules, and review context using Gemini Omni Flash Pro Storyboard.",
+            "url": "https://omniflashai.io/gemini-omni-flash-storyboard",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "Web Browser",
             "offers": {
@@ -358,7 +358,7 @@ const Storyboard = () => {
             "creator": {
               "@type": "Organization",
               "name": "ivido",
-              "url": "https://sparkrobin.app"
+              "url": "https://omniflashai.io"
             },
             "featureList": [
               "Multi-scene draft planning",
@@ -368,7 +368,7 @@ const Storyboard = () => {
               "Reference image support",
               "Portrait and landscape modes"
             ],
-            "screenshot": "https://sparkrobin.app/sora3-storyboard-screenshot.jpg",
+            "screenshot": "https://omniflashai.io/sora3-storyboard-screenshot.jpg",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.8",
@@ -378,7 +378,7 @@ const Storyboard = () => {
         }}
       />
       <GenerateSidebar open={isSidebarOpen} onOpenChange={setIsSidebarOpen} />
-      
+
       <div
         className="flex-1 transition-all duration-300 pb-16 bg-background"
         style={{ marginLeft: !mounted || isMobile ? '0' : 'var(--sidebar-width, 220px)' }}
@@ -425,7 +425,7 @@ const Storyboard = () => {
                 {/* Tab switcher */}
                 <div className="flex items-center bg-muted/60 border border-border rounded-xl p-1 mb-5 gap-1">
                   <Link
-                    href="/spark-robin-text-to-video"
+                    href="/gemini-omni-flash-text-to-video"
                     className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center text-muted-foreground hover:text-foreground hover:bg-muted"
                   >
                     <FileText className="w-4 h-4" />
@@ -476,7 +476,7 @@ const Storyboard = () => {
                         </p>
                       </div>
                     )}
-                    
+
                     <VideoPreview
                     currentJob={{
                       jobId: currentJob.jobId,
@@ -509,25 +509,25 @@ const Storyboard = () => {
                         {tGenerate('storyboard.exampleDescription')}
                       </p>
                     </div>
-                    
+
                     <div className="aspect-video bg-muted rounded-xl overflow-hidden">
-                      <video 
+                      <video
                         className="w-full h-full object-cover"
                         controls
                         poster=""
                         preload="metadata"
                       >
-                        <source 
-                          src={getVideoUrl(DEMO_VIDEO_PATHS.storyboardExample)} 
-                          type="video/mp4" 
+                        <source
+                          src={getVideoUrl(DEMO_VIDEO_PATHS.storyboardExample)}
+                          type="video/mp4"
                         />
                         {tGenerate('browserNotSupportVideo')}
                       </video>
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {['storyboard', 'multi-scene', 'cinematic'].map((tag) => (
-                        <span 
+                        <span
                           key={tag}
                           className="text-xs px-3 py-1 bg-muted text-muted-foreground rounded-full"
                         >
@@ -535,7 +535,7 @@ const Storyboard = () => {
                         </span>
                       ))}
                     </div>
-                    
+
                     <div className="text-center">
                       <p className="text-xs text-muted-foreground">
                         {tGenerate('storyboard.exampleNote')}
@@ -568,7 +568,7 @@ const Storyboard = () => {
               </div>
             </div>
 
-            {/* What is Spark Robin Pro Storyboard */}
+            {/* What is Gemini Omni Flash Pro Storyboard */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-foreground mb-4 text-center">
                 {tGenerate('storyboard.whatIsSora3ProStoryboard')}
@@ -607,7 +607,7 @@ const Storyboard = () => {
                   <Card className="p-4 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="twitter-tweet">
                       <p lang="en" dir="ltr">
-                        2 Spark Robin updates:<br/><br/>
+                        2 Gemini Omni Flash updates:<br/><br/>
                         - Storyboard workflows help teams plan scenes before generation<br/>
                         - Reference notes and prompt systems make draft reviews easier
                         <a href="https://t.co/iINg7alWGL">pic.twitter.com/iINg7alWGL</a>
@@ -628,10 +628,10 @@ const Storyboard = () => {
                         - An increase in Pro to 25-Seconds!<br/>
                         - Start frame redesign!<br/>
                         - Better scene/shot transition designing now<br/><br/>
-                        Go on the web to SORA, click… 
+                        Go on the web to SORA, click…
                         <a href="https://t.co/d040XEE0FS">pic.twitter.com/d040XEE0FS</a>
                       </p>
-                      &mdash; Dustin Hollywood (@dustinhollywood) 
+                      &mdash; Dustin Hollywood (@dustinhollywood)
                       <a href="https://twitter.com/dustinhollywood/status/1978545835978703340?ref_src=twsrc%5Etfw">October 15, 2025</a>
                     </blockquote>
                   </Card>
@@ -640,11 +640,11 @@ const Storyboard = () => {
                   <Card className="p-4 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="twitter-tweet">
                       <p lang="en" dir="ltr">
-                        Here's an example of a 25s video I made in Spark Robin using the new storyboard feature.<br/><br/>
-                        Still learning what's the best way to use this… 
+                        Here's an example of a 25s video I made in Gemini Omni Flash using the new storyboard feature.<br/><br/>
+                        Still learning what's the best way to use this…
                         <a href="https://t.co/urYyCy3gqz">pic.twitter.com/urYyCy3gqz</a>
                       </p>
-                      &mdash; Cody Baker 🇺🇸 (@CodyBaker_xx) 
+                      &mdash; Cody Baker 🇺🇸 (@CodyBaker_xx)
                       <a href="https://twitter.com/CodyBaker_xx/status/1978813530292851188?ref_src=twsrc%5Etfw">October 16, 2025</a>
                     </blockquote>
                   </Card>
@@ -762,7 +762,7 @@ const Storyboard = () => {
                   </p>
                 </Card>
               </div>
-              
+
               <div className="mt-8 text-center">
                 <Card className="p-6 bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20">
                   <p className="text-muted-foreground">
@@ -797,10 +797,10 @@ const Storyboard = () => {
             </div>
           </section>
 
-          {/* Spark Robin Pro Storyboard Application */}
+          {/* Gemini Omni Flash Pro Storyboard Application */}
           <section className="mt-16 mb-8">
             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-              <span suppressHydrationWarning>Spark Robin Pro Storyboard Application</span>
+              <span suppressHydrationWarning>Gemini Omni Flash Pro Storyboard Application</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
@@ -809,10 +809,10 @@ const Storyboard = () => {
                     <Film className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">Spark Robin Storyboard AI Videos</h3>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Gemini Omni Flash Storyboard AI Videos</h3>
                     <p className="text-muted-foreground">
-                      Spark Robin Pro Storyboard API lets you design complete multi-scene video flows where every shot follows your creative vision. 
-                      You define each scene's visuals and pacing using text or image prompts, while the API ensures natural transitions 
+                      Gemini Omni Flash Pro Storyboard API lets you design complete multi-scene video flows where every shot follows your creative vision.
+                      You define each scene's visuals and pacing using text or image prompts, while the API ensures natural transitions
                       and consistent visual style throughout the video.
                     </p>
                   </div>
@@ -827,8 +827,8 @@ const Storyboard = () => {
                   <div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">Cinematic Ads & Storytelling</h3>
                     <p className="text-muted-foreground">
-                      The API helps brands and creators structure professional-grade short films or ad visuals. 
-                      You can plan camera movements, transitions, and tone precisely, producing cinematic ads 
+                      The API helps brands and creators structure professional-grade short films or ad visuals.
+                      You can plan camera movements, transitions, and tone precisely, producing cinematic ads
                       that clearly express your brand's story and aesthetic identity.
                     </p>
                   </div>
@@ -843,8 +843,8 @@ const Storyboard = () => {
                   <div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">Concept Videos & Prototypes</h3>
                     <p className="text-muted-foreground">
-                      Yes. It's ideal for turning creative concepts into structured visual prototypes. 
-                      Each scene becomes part of a connected flow, allowing you to test how storylines, 
+                      Yes. It's ideal for turning creative concepts into structured visual prototypes.
+                      Each scene becomes part of a connected flow, allowing you to test how storylines,
                       pacing, and compositions work together before moving into full-scale production.
                     </p>
                   </div>
@@ -859,8 +859,8 @@ const Storyboard = () => {
                   <div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">Character-Driven Animation</h3>
                     <p className="text-muted-foreground">
-                      You can maintain the same characters, environments, and tone across different shots to produce 
-                      cohesive narrative sequences. This is especially useful for storytelling videos, product explainers, 
+                      You can maintain the same characters, environments, and tone across different shots to produce
+                      cohesive narrative sequences. This is especially useful for storytelling videos, product explainers,
                       or social clips that depend on emotional and visual continuity.
                     </p>
                   </div>
@@ -877,7 +877,7 @@ const Storyboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="p-6 bg-card/80 backdrop-blur-xl hover:shadow-xl transition-shadow duration-300">
                 <Quote className="w-8 h-8 text-primary mb-4" />
-                <p className="text-muted-foreground italic mb-4">"Spark Robin Pro Storyboard transformed my content creation. My engagement has skyrocketed!"</p>
+                <p className="text-muted-foreground italic mb-4">"Gemini Omni Flash Pro Storyboard transformed my content creation. My engagement has skyrocketed!"</p>
                 <p className="font-semibold text-foreground">- Sarah Chen <span className="text-sm text-muted-foreground">(@sarahcreates)</span></p>
                 <p className="text-sm text-primary mt-2 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> +300% Engagement</p>
               </Card>
@@ -909,11 +909,11 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      How can Spark Robin Pro Storyboard API help in creating multi-scene AI videos?
+                      How can Gemini Omni Flash Pro Storyboard API help in creating multi-scene AI videos?
                     </h3>
                     <p className="text-muted-foreground">
-                      Spark Robin Pro Storyboard API lets you design complete Spark Robin Storyboard video flows where every shot follows your creative vision. 
-                      You define each scene's visuals and pacing using text or image prompts, while the API ensures natural transitions 
+                      Gemini Omni Flash Pro Storyboard API lets you design complete Gemini Omni Flash Storyboard video flows where every shot follows your creative vision.
+                      You define each scene's visuals and pacing using text or image prompts, while the API ensures natural transitions
                       and consistent visual style throughout the video.
                     </p>
                   </div>
@@ -927,11 +927,11 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      How can brands use Spark Robin Pro Storyboard API for cinematic ads and storytelling?
+                      How can brands use Gemini Omni Flash Pro Storyboard API for cinematic ads and storytelling?
                     </h3>
                     <p className="text-muted-foreground">
-                      The API helps brands and creators structure professional-grade short films or ad visuals. 
-                      You can plan camera movements, transitions, and tone precisely, producing cinematic ads 
+                      The API helps brands and creators structure professional-grade short films or ad visuals.
+                      You can plan camera movements, transitions, and tone precisely, producing cinematic ads
                       that clearly express your brand's story and aesthetic identity.
                     </p>
                   </div>
@@ -945,11 +945,11 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      Can Spark Robin Pro Storyboard API be used for concept videos or visual prototypes?
+                      Can Gemini Omni Flash Pro Storyboard API be used for concept videos or visual prototypes?
                     </h3>
                     <p className="text-muted-foreground">
-                      Yes. It's ideal for turning creative concepts into structured visual prototypes. 
-                      Each scene becomes part of a connected flow, allowing you to test how storylines, 
+                      Yes. It's ideal for turning creative concepts into structured visual prototypes.
+                      Each scene becomes part of a connected flow, allowing you to test how storylines,
                       pacing, and compositions work together before moving into full-scale production.
                     </p>
                   </div>
@@ -963,11 +963,11 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      How does Spark Robin Pro Storyboard API enable character-driven animation sequences?
+                      How does Gemini Omni Flash Pro Storyboard API enable character-driven animation sequences?
                     </h3>
                     <p className="text-muted-foreground">
-                      You can maintain the same characters, environments, and tone across different shots to produce 
-                      cohesive narrative sequences. This is especially useful for storytelling videos, product explainers, 
+                      You can maintain the same characters, environments, and tone across different shots to produce
+                      cohesive narrative sequences. This is especially useful for storytelling videos, product explainers,
                       or social clips that depend on emotional and visual continuity.
                     </p>
                   </div>
@@ -981,10 +981,10 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      What video durations are supported by Spark Robin Pro Storyboard?
+                      What video durations are supported by Gemini Omni Flash Pro Storyboard?
                     </h3>
                     <p className="text-muted-foreground">
-                      Spark Robin Pro Storyboard costs 250 credits per 10-second video and 450 credits per 15–25 second video. 
+                      Gemini Omni Flash Pro Storyboard costs 250 credits per 10-second video and 450 credits per 15–25 second video.
                       You can distribute the total duration across multiple scenes as needed.
                     </p>
                   </div>
@@ -998,11 +998,11 @@ const Storyboard = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      Can I upload reference images for Spark Robin Pro Storyboard generation?
+                      Can I upload reference images for Gemini Omni Flash Pro Storyboard generation?
                     </h3>
                     <p className="text-muted-foreground">
-                      Yes, you can upload a reference image to guide the Spark Robin Pro Storyboard generation process. 
-                      This helps ensure visual consistency throughout your Spark Robin Storyboard video. The image is applied globally 
+                      Yes, you can upload a reference image to guide the Gemini Omni Flash Pro Storyboard generation process.
+                      This helps ensure visual consistency throughout your Gemini Omni Flash Storyboard video. The image is applied globally
                       to all scenes in your storyboard.
                     </p>
                   </div>
@@ -1031,7 +1031,7 @@ const Storyboard = () => {
                 </>
               )}
             </button>
-            
+
             {/* Generation time hint */}
             {isGenerating && (
               <div className="mt-2 text-center">
@@ -1045,21 +1045,21 @@ const Storyboard = () => {
             )}
           </div>
         </div>
-        
+
         <Footer />
       </div>
-      
+
       {/* Auth Modal */}
-      <AuthModal 
-        isOpen={showAuthModal} 
-        onClose={() => setShowAuthModal(false)} 
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
       />
       <SubscriptionRequiredModal
         isOpen={showSubscriptionModal}
         onClose={() => setShowSubscriptionModal(false)}
         feature="generate videos"
       />
-      
+
       {/* Twitter Widgets Script */}
       <Script
         src="https://platform.twitter.com/widgets.js"

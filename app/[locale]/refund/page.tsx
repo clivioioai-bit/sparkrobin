@@ -15,11 +15,11 @@ export async function generateMetadata({
     notFound()
   }
 
-  const baseUrl = 'https://sparkrobin.app'
+  const baseUrl = 'https://omniflashai.io'
   const prefix = locale === 'en' ? '' : `/${locale}`
   
   let title = 'Refund Policy | AI video generation service'
-  let description = 'Review the Spark Robin refund policy for unused credits, subscription terms, case-by-case refund eligibility, processing timelines, and support requirements.'
+  let description = 'Review the Gemini Omni Flash refund policy for unused credits, subscription terms, case-by-case refund eligibility, processing timelines, and support requirements.'
   
   if (locale === 'ar') {
     title = 'سياسة الاسترداد | خدمة إنشاء فيديو AI'
@@ -37,10 +37,10 @@ export async function generateMetadata({
       title,
       description,
       url: `${baseUrl}${prefix}/refund`,
-      siteName: 'Spark Robin',
+      siteName: 'Gemini Omni Flash',
       images: [
         {
-          url: 'https://sparkrobin.app/logo-v2.png',
+          url: 'https://omniflashai.io/logo-v2.png',
           width: 1200,
           height: 630,
           alt: title,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sparkrobin.app/logo-v2.png']
+      images: ['https://omniflashai.io/logo-v2.png']
     },
   };
 }
@@ -143,7 +143,7 @@ const RefundPolicy: React.FC<{ locale: string }> = ({ locale }) => {
                     To submit a refund request, please adhere to these steps:
                   </p>
                   <ol className="list-decimal pl-6 text-gray-700 mb-4">
-                    <li>Reach out to our support department at <strong>support@sparkrobin.app</strong></li>
+                    <li>Reach out to our support department at <strong>support@omniflashai.io</strong></li>
                     <li>Provide your account email address and transaction/payment information</li>
                     <li>Submit a comprehensive explanation for your refund request</li>
                     <li>Attach any pertinent screenshots or supporting documents</li>
@@ -237,7 +237,7 @@ const RefundPolicy: React.FC<{ locale: string }> = ({ locale }) => {
                     For refund applications or inquiries regarding this policy, please reach out to us:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-gray-700 mb-2"><strong>Refund Requests:</strong> support@sparkrobin.app</p>
+                    <p className="text-gray-700 mb-2"><strong>Refund Requests:</strong> support@omniflashai.io</p>
                     <p className="text-gray-700 mb-2"><strong>Company:</strong> AIVIDO LLC</p>
                     <p className="text-gray-700 mb-2"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
                     <p className="text-gray-700 mb-2"><strong>Subject Line:</strong> "Refund Request - [Your Account Email]"</p>

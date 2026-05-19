@@ -1,9 +1,9 @@
 ---
-title: "Sora официально офлайн: как экспортировать данные и перейти на Spark Robin"
-description: "Практическое руководство после закрытия Sora: ключевые даты, экспорт видео, сохранение prompts и миграция рабочего процесса в sparkrobin.app."
+title: "Sora официально офлайн: как экспортировать данные и перейти на Gemini Omni Flash"
+description: "Практическое руководство после закрытия Sora: ключевые даты, экспорт видео, сохранение prompts и миграция рабочего процесса в omniflashai.io."
 date: "2026-04-30"
-author: "Команда Spark Robin"
-tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Spark Robin", "ai-video"]
+author: "Команда Gemini Omni Flash"
+tags: ["OpenAI Sora discontinuation guide", "how to export Sora videos", "Sora alternatives 2026", "transfer Sora prompts to Gemini Omni Flash", "ai-video"]
 featured: true
 ---
 
@@ -13,7 +13,7 @@ featured: true
 - OpenAI сообщает, что **API Sora будет закрыт 24 сентября 2026 года**.
 - Если вы создавали контент в Sora, экспортируйте его как можно скорее. После закрытия и возможного финального окна экспорта данные могут быть удалены навсегда.
 - Сохраняйте не только MP4, но и prompts, референсы, формат, настройки, заметки и права использования.
-- sparkrobin.app подходит для text-to-video, image-to-video, много сцен и рекламных рабочих процессов.
+- omniflashai.io подходит для text-to-video, image-to-video, много сцен и рекламных рабочих процессов.
 
 ## Хронология закрытия Sora
 
@@ -58,11 +58,11 @@ featured: true
 | `notes.md` | Что сработало и что нужно изменить |
 | `license.txt` | Права, клиент, условия публикации |
 
-## Зачем переходить на workflow Spark Robin
+## Зачем переходить на workflow Gemini Omni Flash
 
 Пользователям Sora нужна не просто новая модель, а непрерывность производства: превращать сценарии в ролики, тестировать продуктовые объявления, делать вертикальные видео, оживлять изображения и собирать много сцен.
 
-sparkrobin.app закрывает эти задачи через **Spark Robin text-to-video**, **Spark Robin image-to-video** и storyboard-подход для кампаний.
+omniflashai.io закрывает эти задачи через **Gemini Omni Flash text-to-video**, **Gemini Omni Flash image-to-video** и storyboard-подход для кампаний.
 
 ## Как конвертировать prompts
 
@@ -92,7 +92,7 @@ OpenAI указывает дату **24 сентября 2026 года**.
 
 Перейдите на `sora.chatgpt.com/sunset`, нажмите **Export** и дождитесь письма.
 
-### Можно ли напрямую перенести Sora prompts в Spark Robin?
+### Можно ли напрямую перенести Sora prompts в Gemini Omni Flash?
 
 Идею можно переиспользовать, но prompt лучше переписать структурно: объект, камера, движение, свет, формат и негативные ограничения.
 
