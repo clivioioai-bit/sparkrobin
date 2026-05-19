@@ -5,15 +5,9 @@ import { createDodoCheckoutSession } from '@/lib/dodo-payments';
 import { paymentPlansById, getPlanProductId } from '@/config/payment-plans';
 import { getPaymentProviderLabel, resolvePaymentProvider } from '@/lib/payment-provider';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
+import { getPublicBaseUrl } from '@/lib/site-url';
 
 export const runtime = 'nodejs';
-
-const normalizeBaseUrl = (value?: string | null) => {
-  if (!value || value.length === 0) {
-    return 'http://localhost:3000';
-  }
-  return value.endsWith('/') ? value.slice(0, -1) : value;
-};
 
 const sanitizeReturnPath = (value: string | undefined, baseUrl: string): string | null => {
   if (!value || value.length === 0) {
@@ -111,7 +105,7 @@ export async function POST(request: NextRequest) {
       console.error('[API] checkout user sync failed, fallback to auth user', userSyncError);
     }
 
-    const baseUrl = normalizeBaseUrl(process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin);
+    const baseUrl = getPublicBaseUrl({ currentOrigin: request.nextUrl.origin });
     debug.baseUrl = baseUrl;
     debug.vercelEnv = process.env.VERCEL_ENV || process.env.NODE_ENV || 'unknown';
     const providerProductId = getPlanProductId(plan);

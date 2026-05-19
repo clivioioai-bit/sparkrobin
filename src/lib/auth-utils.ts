@@ -1,6 +1,7 @@
 /**
  * Authentication utility functions
  */
+import { getPublicBaseUrl } from './site-url';
 
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const MIN_PASSWORD_LENGTH = 6;
@@ -79,14 +80,9 @@ export function validateSignin(data: SigninFormData): string | null {
  * Get base URL for redirects
  */
 export function getBaseUrl(): string {
-  const isProduction = process.env.NODE_ENV === 'production';
-  if (isProduction) {
-    return process.env.NEXT_PUBLIC_APP_URL || 'https://omniflashai.io';
-  }
-  if (typeof window !== 'undefined') {
-    return window.location.origin;
-  }
-  return 'http://localhost:3000';
+  return getPublicBaseUrl({
+    currentOrigin: typeof window !== 'undefined' ? window.location.origin : undefined,
+  });
 }
 
 /**
@@ -102,4 +98,3 @@ export function getRedirectPath(): string {
   }
   return '/gemini-omni-flash-text-to-video';
 }
-

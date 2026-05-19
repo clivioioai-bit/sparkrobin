@@ -279,6 +279,50 @@ const nextConfig = {
         destination: 'https://omniflashai.io/:path*',
         permanent: true,
       },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'sparkrobin.app',
+          },
+        ],
+        destination: 'https://omniflashai.io/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.sparkrobin.app',
+          },
+        ],
+        destination: 'https://omniflashai.io/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'omniflash.art',
+          },
+        ],
+        destination: 'https://omniflashai.io/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.omniflash.art',
+          },
+        ],
+        destination: 'https://omniflashai.io/:path*',
+        permanent: true,
+      },
     ];
   },
   // Configure rewrites if needed

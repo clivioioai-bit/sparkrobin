@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { User, Session } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
+import { getAuthCallbackUrl, getPublicBaseUrl } from '../lib/site-url'
 
 interface AuthContextType {
   user: User | null
@@ -45,15 +46,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signUp = async (email: string, password: string, metadata?: { full_name?: string }) => {
     // 使用 Supabase 自带的 signUp 触发确认邮件（依赖 Supabase Auth 邮件配置）
     try {
-      const isProduction = process.env.NODE_ENV === 'production'
-      const baseUrl = isProduction ? (process.env.NEXT_PUBLIC_APP_URL || 'https://omniflashai.io') : window.location.origin
-
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: metadata,
-          emailRedirectTo: `${baseUrl}/auth/callback`,
+          emailRedirectTo: getAuthCallbackUrl({
+            currentOrigin: typeof window !== 'undefined' ? window.location.origin : undefined,
+          }),
         }
       })
 
@@ -72,26 +72,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const signInWithGoogle = async () => {
-    // 根据环境设置重定向 URL
-    // 在开发环境，始终使用当前页面的 origin（localhost:3000）
-    // 在生产环境，使用环境变量或默认值
-    const isProduction = process.env.NODE_ENV === 'production';
-    let baseUrl: string;
-    
-    if (isProduction) {
-      baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://omniflashai.io';
-    } else {
-      // 开发环境：强制使用当前页面的 origin
-      if (typeof window !== 'undefined') {
-        baseUrl = window.location.origin;
-      } else {
-        baseUrl = 'http://localhost:3000';
-      }
-    }
-
+    const baseUrl = getPublicBaseUrl({
+      currentOrigin: typeof window !== 'undefined' ? window.location.origin : undefined,
+    });
     const redirectUrl = `${baseUrl}/auth/callback`;
     console.log('🔐 Google OAuth Configuration:', {
-      isProduction,
+      isProduction: process.env.NODE_ENV === 'production',
       baseUrl,
       redirectUrl,
       nodeEnv: process.env.NODE_ENV,

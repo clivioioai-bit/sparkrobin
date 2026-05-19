@@ -3,12 +3,12 @@
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/lib/supabase";
+import { getAuthCallbackUrl } from "@/lib/site-url";
 
 export default function SignInPage() {
-  const isProduction = process.env.NODE_ENV === 'production';
-  const baseUrl = isProduction
-    ? (process.env.NEXT_PUBLIC_APP_URL || 'https://omniflashai.io')
-    : (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+  const redirectTo = getAuthCallbackUrl({
+    currentOrigin: typeof window !== 'undefined' ? window.location.origin : undefined,
+  });
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
@@ -41,7 +41,7 @@ export default function SignInPage() {
             },
           }}
           providers={["google"]}
-          redirectTo={`${baseUrl}/auth/callback`}
+          redirectTo={redirectTo}
           showLinks={false}
           magicLink
         />

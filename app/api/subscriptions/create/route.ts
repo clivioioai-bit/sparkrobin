@@ -6,6 +6,7 @@ import { createDodoCheckoutSession } from '@/lib/dodo-payments';
 import { paymentPlansById, getPlanProductId } from '@/config/payment-plans';
 import { resolvePaymentProvider } from '@/lib/payment-provider';
 import { rateLimit, apiRateLimiter } from '@/lib/rate-limiter';
+import { getPublicBaseUrl } from '@/lib/site-url';
 
 export const runtime = 'nodejs';
 
@@ -23,14 +24,6 @@ const LEGACY_PLAN_MAP: Record<string, { monthly: string; yearly: string }> = {
     yearly: 'pro_yearly',
   },
 };
-
-function normalizeBaseUrl(value?: string | null) {
-  if (!value || value.length === 0) {
-    return 'http://localhost:3000';
-  }
-
-  return value.endsWith('/') ? value.slice(0, -1) : value;
-}
 
 function resolveLegacyPlanId(planId: string, billingCycle: string) {
   const legacyPlan = LEGACY_PLAN_MAP[planId];
@@ -92,7 +85,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Plan not configured for checkout' }, { status: 500 });
     }
 
-    const baseUrl = normalizeBaseUrl(process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin);
+    const baseUrl = getPublicBaseUrl({ currentOrigin: request.nextUrl.origin });
     const callbackParams = new URLSearchParams({ plan: plan.id });
     const successUrl = `${baseUrl}/api/pay/callback/dodo?${callbackParams.toString()}`;
     const cancelUrl = `${baseUrl}/pricing?${new URLSearchParams({ checkout: 'cancelled', plan: plan.id }).toString()}`;

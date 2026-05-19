@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getPublicBaseUrl } from '@/lib/site-url';
 import { createServerClient } from '@supabase/ssr';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { rateLimit, videoGenerationRateLimiter } from '@/lib/rate-limiter';
@@ -200,7 +201,7 @@ export async function POST(request: NextRequest) {
       console.log(`[API] API Base: ${apiBase}`);
       
       // Build request body according to Gemini Omni Flash Pro Storyboard API spec
-      const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://omniflashai.io'}/api/storyboard/callback`;
+      const callbackUrl = `${getPublicBaseUrl()}/api/storyboard/callback`;
       
       const requestBody = {
         model: 'sora-2-pro-storyboard',
